@@ -1,0 +1,19 @@
+html {
+	height: 100%;
+}
+
+body {
+  background-color: #eee;
+  height: 100%;
+}
+
+body > .container {
+  background-color: #fff;
+  min-height: 100%;
+  padding-top: 75px;
+}
+
+#content {
+  min-height: 100%;
+}
+
