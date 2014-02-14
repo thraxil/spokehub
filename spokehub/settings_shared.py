@@ -127,6 +127,7 @@ INSTALLED_APPS = [
     'userena',
     'guardian',
     'easy_thumbnails',
+    'spokehub.gravatar',
 ]
 
 INTERNAL_IPS = ('127.0.0.1', )
