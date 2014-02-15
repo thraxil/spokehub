@@ -56,8 +56,10 @@
 			<li><a href="/accounts/signup/" class="btn">signup</a></li>
       {% else %}
 			<li>
-					<button type="button" class="btn btn-xs">
-						<a href="/accounts/{{request.user.username}}/"><img src="{% gravatar_for_user request.user 40 g %}" /></a>
+					<button type="button" class="btn btn-xs btn-default">
+						<a href="/accounts/{{request.user.username}}/">
+{{request.user.get_profile.get_full_name_or_username}}
+						</a>
 					</button>
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
