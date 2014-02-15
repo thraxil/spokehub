@@ -10,3 +10,5 @@ class Profile(UserenaBaseProfile):
         unique=True,
         verbose_name=_('user'),
         related_name='profile')
+    bio = models.TextField(blank=True, default="")
+    location = models.CharField(max_length=256, blank=True, default="")
