@@ -57,7 +57,7 @@
       {% else %}
 			<li>
 					<button type="button" class="btn btn-xs">
-						<img src="{% gravatar_for_user request.user 40 g %}" />
+						<a href="/accounts/{{request.user.username}}/"><img src="{% gravatar_for_user request.user 40 g %}" /></a>
 					</button>
 					<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 						<span class="caret"></span>
