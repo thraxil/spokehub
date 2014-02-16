@@ -7,17 +7,11 @@
 <a href="add/" class="btn btn-primary pull-right">+Add</a>
 {% endif %}
 
+<h2>Case Studies</h2>
 
-<h2>NEWS</h2>
-
-<div class="row">
 {% for item in item_list %}
-	<div class="col-md-4 news-item">
-		<div class="well">
-			<h3><a href="{{item.get_absolute_url}}">{{item.title}}</a></h3>
-		</div>
-	</div>
+<h3><a href="{{item.get_absolute_url}}">{{item.title}}</a></h3>
+{{item.body|markdown}}
 {% endfor %}
-</div>
 
 {% endblock %}

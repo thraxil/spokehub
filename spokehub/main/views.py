@@ -24,5 +24,35 @@ class NewsCreateView(CreateView):
             author=self.request.user)
 
 
+class ChallengeIndexView(ListView):
+    model = Item
+    queryset = Item.objects.filter(section='challenge')
+    template_name = "main/challenge_list.html"
+
+
+class ChallengeCreateView(CreateView):
+    model = Item
+
+    def get_initial(self):
+        return dict(
+            section='challenge',
+            author=self.request.user)
+
+
+class CaseIndexView(ListView):
+    model = Item
+    queryset = Item.objects.filter(section='case')
+    template_name = "main/case_list.html"
+
+
+class CaseCreateView(CreateView):
+    model = Item
+
+    def get_initial(self):
+        return dict(
+            section='case',
+            author=self.request.user)
+
+
 class ItemDetailView(DetailView):
     model = Item
