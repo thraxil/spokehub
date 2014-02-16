@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load markup %}
+
+{% block content %}
+
+<h2>{{item.title}}</h2>
+<p class="byline">by
+	{{item.author.get_profile.get_full_name_or_username}}, {{item.added}}</p>
+{{item.body|markdown}}
+
+{% endblock %}

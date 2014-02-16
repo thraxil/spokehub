@@ -17,6 +17,11 @@ class Item(models.Model):
     class Meta:
         ordering = ['section', 'added']
 
+    def get_absolute_url(self):
+        return "/%s/%04d/%02d/%02d/%d/" % (
+            self.section, self.added.year, self.added.month,
+            self.added.day, self.id)
+
 
 class Reply(models.Model):
     item = models.ForeignKey(Item)

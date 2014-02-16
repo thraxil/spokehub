@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load markup %}
+
+{% block content %}
+
+{% if not request.user.is_anonymous %}
+<a href="add/" class="btn btn-primary pull-right">+Add</a>
+{% endif %}
+
+<h2>News</h2>
+
+{% for item in item_list %}
+<h3><a href="{{item.get_absolute_url}}">{{item.title}}</a></h3>
+{{item.body|markdown}}
+{% endfor %}
+
+{% endblock %}

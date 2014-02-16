@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+
+<form action="." method="post">{% csrf_token %}
+<fieldset><legend>Add Item</legend>
+{{form|bootstrap}}
+<input type="submit" value="add item" class="btn btn-primary"/>
+</fieldset>
+</form>
+
+{% endblock %}
