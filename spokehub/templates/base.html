@@ -81,19 +81,21 @@
 </nav>
 {% endblock %}
 
+{% block navbar %}
 <nav id="main-nav" class="navbar navbar-default" role="navigation">
   <div class="container">
 		<ul class="nav navbar-nav">
-			<li><a href="/">HOME</a></li>
-			<li><a href="/#news">NEWS</a></li>
-			<li><a href="/#about">ABOUT</a></li>
-			<li><a>CHALLENGES</a></li>
-			<li><a>CASE STUDIES</a></li>
-			<li><a>NETWORK</a></li>
-			<li><a>CONTACT</a></li>
+			<li {% if request.path == '/' %}class="active"{% endif %}><a href="/">HOME</a></li>
+			<li {% if request.path == '/news/' %}class="active"{% endif %}><a href="/news/">NEWS</a></li>
+			<li {% if request.path == '/about/' %}class="active"{% endif %}><a href="/about/">ABOUT</a></li>
+			<li {% if request.path == '/challenges/' %}class="active"{% endif %}><a href="/challenges/">CHALLENGES</a></li>
+			<li {% if request.path == '/cases/' %}class="active"{% endif %}><a href="/cases/">CASE STUDIES</a></li>
+			<li {% if request.path == '/network/' %}class="active"{% endif %}><a href="/network/">NETWORK</a></li>
+			<li {% if request.path == '/contact/' %}class="active"{% endif %}><a href="/contact/">CONTACT</a></li>
 		</ul>
   </div>
 </nav>
+{% endblock %}
 
   <div class="container" id="outer-container">
 {% block pagetitle %}{% endblock %}
