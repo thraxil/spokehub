@@ -30,6 +30,10 @@ urlpatterns = patterns(
      views.ItemDetailView.as_view()),
     (r'^case/add/$', views.CaseCreateView.as_view()),
 
+    (r'network/$', TemplateView.as_view(template_name='network/index.html')),
+
+    (r'contact/$', TemplateView.as_view(template_name='contact/index.html')),
+
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/$', TemplateView.as_view(template_name="stats.html")),
