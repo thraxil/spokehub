@@ -18,6 +18,6 @@ def deploy():
         run("./manage.py migrate")
         run("./manage.py collectstatic --noinput --settings=spokehub.settings_production")
         for n in nginx_hosts:
-            run(("rsync -avp --delete media/ "
+            run(("rsync -avp media/ "
                  "%s:/var/www/spokehub/spokehub/media/") % n)
     restart_gunicorn()
