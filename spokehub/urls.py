@@ -34,6 +34,8 @@ urlpatterns = patterns(
 
     (r'contact/$', TemplateView.as_view(template_name='contact/index.html')),
 
+    (r'item/(?P<pk>\d+)/reply/$', views.ReplyToItemView.as_view()),
+
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/$', TemplateView.as_view(template_name="stats.html")),

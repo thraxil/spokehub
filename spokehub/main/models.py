@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -21,6 +22,21 @@ class Item(models.Model):
         return "/%s/%04d/%02d/%02d/%d/" % (
             self.section, self.added.year, self.added.month,
             self.added.day, self.id)
+
+    def touch(self):
+        self.modified = datetime.now()
+        self.save()
+
+    def add_reply(self, author, body):
+        if not author:
+            return
+        if body.strip() == '':
+            return
+        r = Reply.objects.create(
+            item=self,
+            author=author,
+            body=body)
+        self.touch()
 
 
 class Reply(models.Model):

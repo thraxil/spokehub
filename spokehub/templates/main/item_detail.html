@@ -8,4 +8,38 @@
 	{{item.author.get_profile.get_full_name_or_username}}, {{item.added}}</p>
 {{item.body|markdown}}
 
+<div class="row">
+<div class="col-md-6">
+{% if item.reply_set.count %}
+
+{% for reply in item.reply_set.all %}
+<hr />
+<h4>Reply from <a href="/accounts/{{reply.author.username}}/">{{reply.author.get_profile.get_full_name_or_username}}</a>
+	at {{reply.added}}</h4>
+{{reply.body|markdown}}
+{% endfor %}
+
+{% endif %}
+
+</div>
+
+<div class="col-md-6">
+{% if not request.user.is_anonymous %}
+<form action="/item/{{item.pk}}/reply/" method="post">
+<fieldset>
+	<legend>Add Reply</legend>
+	<div class="form-group">
+    <label for="comment-body">Comment</label>
+		<textarea name="body" class="form-control" rows="10"
+		id="comment-body"></textarea>
+	</div>
+	<input type="submit" value="add comment" class="btn btn-primary pull-right"/>
+  </div>
+</fieldset>
+</form>
+
+{% endif %}
+</div>
+</div>
+
 {% endblock %}

@@ -1,4 +1,6 @@
-from django.views.generic.base import TemplateView
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
@@ -56,3 +58,10 @@ class CaseCreateView(CreateView):
 
 class ItemDetailView(DetailView):
     model = Item
+
+
+class ReplyToItemView(View):
+    def post(self, request, pk):
+        item = get_object_or_404(Item, pk=pk)
+        item.add_reply(request.user, request.POST.get('body', ''))
+        return HttpResponseRedirect(item.get_absolute_url())
