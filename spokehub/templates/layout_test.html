@@ -90,41 +90,40 @@ var limit_pos = function (p) {
 
 var k = w * h;
 var ease = function() {
-var anymoved = false;
-var boxes = $('.box');
-$('.box').each(
-   function(i, c) {
-   var current = $(c);
-	 var x_force = 0;
-   var y_force = 0;
-   $('.box').each(
-   function(j, n) {
-       if (i == j) {
-         return;
-       }
-       var dx = positions[i].left - positions[j].left;
-       var dy = positions[i].top - positions[j].top;
-       var r2 = (dx * dx) + (dy * dy);
-       if (Math.abs(r2) > 1 && Math.abs(r2) < (200 * 200 * 1.4)) {
-          var ux = dx / Math.sqrt(r2);
-          var uy = dy / Math.sqrt(r2);
-          x_force += k * (ux / r2);
-          y_force += k * (uy / r2);
-          anymoved = true;
-       }
-   });
-   var new_x = Math.round(positions[i].left + x_force);
-   var new_y = Math.round(positions[i].top + y_force);
-   var new_pos = limit_pos({left: new_x, top: new_y});
-   current.animate({left: new_pos.left + 'px', top: new_pos.top + 'px'});
-   positions[i] = {left: new_pos.left, top: new_pos.top};
-});
-if (anymoved) {
-  setTimeout(ease, 200);
-} else {
-  console.log("none moved, so we're done");
-}
-
+  var anymoved = false;
+  var boxes = $('.box');
+  $('.box').each(
+    function(i, c) {
+    var current = $(c);
+    var x_force = 0;
+    var y_force = 0;
+    $('.box').each(
+    function(j, n) {
+      if (i == j) {
+        return;
+      }
+      var dx = positions[i].left - positions[j].left;
+      var dy = positions[i].top - positions[j].top;
+      var r2 = (dx * dx) + (dy * dy);
+      if (Math.abs(r2) > 1 && Math.abs(r2) < (200 * 200 * 1.4)) {
+        var ux = dx / Math.sqrt(r2);
+        var uy = dy / Math.sqrt(r2);
+        x_force += k * (ux / r2);
+        y_force += k * (uy / r2);
+        anymoved = true;
+      }
+    });
+    var new_x = Math.round(positions[i].left + x_force);
+    var new_y = Math.round(positions[i].top + y_force);
+    var new_pos = limit_pos({left: new_x, top: new_y});
+    current.animate({left: new_pos.left + 'px', top: new_pos.top + 'px'});
+    positions[i] = {left: new_pos.left, top: new_pos.top};
+  });
+  if (anymoved) {
+    setTimeout(ease, 400);
+  } else {
+    console.log("none moved, so we're done");
+  }
 }
 
 // initial positioning
@@ -136,7 +135,7 @@ $('.box').each(
     positions[i] = {left: x, top: y};
 });
 
-setTimeout(ease, 200);
+setTimeout(ease, 400);
 
 </script>
 
