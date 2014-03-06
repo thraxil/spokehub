@@ -106,7 +106,7 @@ var ease = function() {
       var dy = positions[i].top - positions[j].top;
       var r2 = (dx * dx) + (dy * dy);
       if (Math.abs(r2) > 1 && Math.abs(r2) < (200 * 200 * 1.4)) {
-        var ux = dx / Math.sqrt(r2);
+      var ux = dx / Math.sqrt(r2);
         var uy = dy / Math.sqrt(r2);
         x_force += k * (ux / r2);
         y_force += k * (uy / r2);
