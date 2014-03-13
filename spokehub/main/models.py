@@ -32,7 +32,7 @@ class Item(models.Model):
             return
         if body.strip() == '':
             return
-        r = Reply.objects.create(
+        Reply.objects.create(
             item=self,
             author=author,
             body=body)
