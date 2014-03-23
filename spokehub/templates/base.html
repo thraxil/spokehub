@@ -26,11 +26,13 @@
 
 	{% block feeds %}{% endblock %}
 </head>
+{% block bodytag %}
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
+{% endblock %}
 <a class="sr-only" href="#content">Skip navigation</a>
 
 {% block topnavbar %}
-<nav class="navbar navbar-default navbar-inverse" role="navigation">
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -81,23 +83,10 @@
 </nav>
 {% endblock %}
 
+  <div class="container" id="outer-container">
 {% block navbar %}
-<nav id="main-nav" class="navbar navbar-default" role="navigation">
-  <div class="container">
-		<ul class="nav navbar-nav">
-			<li {% if request.path == '/' %}class="active"{% endif %}><a href="/">HOME</a></li>
-			<li {% if request.path == '/news/' %}class="active"{% endif %}><a href="/news/">NEWS</a></li>
-			<li {% if request.path == '/about/' %}class="active"{% endif %}><a href="/about/">ABOUT</a></li>
-			<li {% if request.path == '/challenge/' %}class="active"{% endif %}><a href="/challenge/">CHALLENGES</a></li>
-			<li {% if request.path == '/case/' %}class="active"{% endif %}><a href="/case/">CASE STUDIES</a></li>
-			<li {% if request.path == '/network/' %}class="active"{% endif %}><a href="/network/">NETWORK</a></li>
-			<li {% if request.path == '/contact/' %}class="active"{% endif %}><a href="/contact/">CONTACT</a></li>
-		</ul>
-  </div>
-</nav>
 {% endblock %}
 
-  <div class="container" id="outer-container">
 {% block pagetitle %}{% endblock %}
 {% block content %}{% endblock %}
 </div>

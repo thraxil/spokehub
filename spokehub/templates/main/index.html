@@ -1,91 +1,153 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<h2>FEATURED CHALLENGE</h2>
-<div class="well">
-<p>	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 	This is where the stuff shows up. 	This is where
-	the stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. </p>
-
-<p>	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. </p>
-
-<p>	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. </p>
-
-<p>	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. </p>
-
-<p>	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. </p>
-
-<p>	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. 	This is where the stuff shows up. 	This is where the
-	stuff shows up. 
-	This is where the stuff shows up. 	This is where the stuff shows
-	up. 	This is where the stuff shows up. 	This is where the stuff
-	shows up. </p>
-
+{% block navbar %}
+<div id="main-navbar" data-spy="affix" >
+<nav id="main-nav" class="navbar navbar-default" role="navigation">
+  <div class="container">
+		<ul class="nav navbar-nav">
+			<li><a href="#now">NOW</a></li>
+			<li><a href="#about">ABOUT</a></li>
+			<li><a href="#team">TEAM</a></li>
+			<li><a href="#work">WORK</a></li>
+			<li><a href="#contact">CONTACT</a></li>
+		</ul>
+  </div>
+</nav>
 </div>
+{% endblock %}
+
+{% block bodytag %}
+<body data-spy="scroll" data-offset="100" data-target="#main-navbar"
+class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
+{% endblock %}
+
+{% block content %}
+
+<section id="now">
+<h2>NOW</h2>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+</section>
+<section id="about">
+<h2>ABOUT</h2>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+</section>
+<section id="team">
+<h2>TEAM</h2>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+</section>
+<section id="work">
+<h2>WORK</h2>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+</section>
+<section id="contact">
+<h2>CONTACT</h2>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+<p>filler</p>
+</section>
+
 {% endblock %}
