@@ -25,124 +25,63 @@ class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}
 
 <section id="now">
 <h2>NOW</h2>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
+
+<p>Spokehub combines art, design and strategy to create original ideas, breakthrough solutions and extraordinary events.
+We are {independent / disruptive / international / cross-functional /
+	on the move  / unconventional / diverse  / 100+ creatives} but
+	connected.</p>
+
+<p>[[Insert Now Items]]</p>
+
 </section>
 
 <section id="about">
 <h2>ABOUT</h2>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
+
+<p>[[Insert Video animation]]</p>
+
+<ul>
+<li>Spokehub is not a<strike>n agency</strike> set cast of characters.</li>
+<li>We are a creative alliance between designers, artists, architects, engineers, developers, explorers and storytellers... with strategic thinking at our core.</li>
+<li>Diversity across disciplines and cultures gives us a broad spectrum of perspectives.</li>
+<li>Artistic interventions disrupt and advance our design thinking.</li>
+<li>When we collaborate on projects, we guarantee bespoke and breakthrough solutions.</li>
+<li>Our clients are individuals, start-ups and global brands, all seeking a creative life less ordinary.</li>
+<li>We align here to exchange and inspire future-focused ideas.</li>
+</ul>
 </section>
 
 <section id="team">
 <h2>TEAM</h2>
 
-<div class="row">
-	{% for user in team %}
-	<div class="thumbnail col-md-4">
-	<a href="/accounts/{{request.user.username}}/">
-      <img src="{{ user.get_profile.get_mugshot_url }}">
-    </a>
-	<div class="caption">
-    <h3>{{user.get_profile.get_full_name_or_username}}</h3>
-  </div>
-	{% endfor %}
-</div>
+
+<p>[[Flock animations over a world map]]</p>
+
+<p>(London & Berlin)
+Our core team for strategy and support, is based in London and Berlin
+(London, Berlin, Copenhagen, Budapest, Istanbul, Doha, Singapore, San Francisco, Seattle, New York, Durham)
+Our projects, hubchats and events are led by 30 independent creative principals.
+(Spheres of influence around the principal locations)
+Our global network has over 100 independent professionals and design studios who are available for Spokehub projects.
+</p>
 
 </section>
+
+
 <section id="work">
 <h2>WORK</h2>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
+
+Drop-down menu
+Headline copy:
+
+Insights / We explore possibilities for new creative solutions, from four perspectives. [graphic of - Cultural/Category/Consumer/Future]
+Strategy / Great strategy defines opportunities and inspires creatives in their own language. [examples for Identity - Design - Futures]
+Creative / Great creative solutions are the alchemy of analytic information with aesthetic presentation [annotated slide show of principals' work examples]
+Events / The first Spokehub art event is scheduled for September 2014. Join/Follow/Bookmark for timely announcements.
+
 </section>
 <section id="contact">
 <h2>CONTACT</h2>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
 </section>
 
 {% endblock %}
