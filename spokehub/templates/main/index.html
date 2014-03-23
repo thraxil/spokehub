@@ -40,6 +40,7 @@ class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}
 <p>filler</p>
 <p>filler</p>
 </section>
+
 <section id="about">
 <h2>ABOUT</h2>
 <p>filler</p>
@@ -56,28 +57,22 @@ class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}
 <p>filler</p>
 <p>filler</p>
 </section>
+
 <section id="team">
 <h2>TEAM</h2>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
-<p>filler</p>
+
+<div class="row">
+	{% for user in team %}
+	<div class="thumbnail col-md-4">
+	<a href="/accounts/{{request.user.username}}/">
+      <img src="{{ user.get_profile.get_mugshot_url }}">
+    </a>
+	<div class="caption">
+    <h3>{{user.get_profile.get_full_name_or_username}}</h3>
+  </div>
+	{% endfor %}
+</div>
+
 </section>
 <section id="work">
 <h2>WORK</h2>

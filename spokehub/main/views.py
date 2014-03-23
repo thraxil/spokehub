@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView, View
@@ -9,6 +10,11 @@ from .models import Item
 
 class IndexView(TemplateView):
     template_name = "main/index.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['team'] = User.objects.all().exclude(username='AnonymousUser')
+        return context
 
 
 class NewsIndexView(ListView):
