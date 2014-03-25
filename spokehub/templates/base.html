@@ -29,6 +29,9 @@
 {% block bodytag %}
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
+{% if request.user.is_anonymous %}
+<p>Coming Soon</p>
+{% else %}
 <a class="sr-only" href="#content">Skip navigation</a>
 
 {% block topnavbar %}
@@ -122,6 +125,7 @@ You are impersonating.<br />
   ga('create', '{{GA_CODE}}', 'spokehub.org');
   ga('send', 'pageview');
 </script>
+{% endif %}
 {% endif %}
 </body>
 </html>
