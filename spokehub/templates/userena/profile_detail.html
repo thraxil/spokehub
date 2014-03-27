@@ -54,6 +54,7 @@
               <dt>{% trans "About me" %}</dt>
               <dd>{{ profile.about_me }}</dd>
             {% endif %}
+{% if profile.discipline1 or profile.discipline2 or profile.discipline3 %}
 							<dt>Disciplines</dt>
 							<dd>
 							{% if profile.discipline1 %}
@@ -66,6 +67,7 @@
 							<span class="label label-default">{{profile.discipline3}}</span>
 							{% endif %}
 							</dd>
+{% endif %}
           {% endblock %}
         </dl>
       {% endblock %}
