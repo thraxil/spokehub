@@ -152,7 +152,7 @@ STATSD_PATCHES = ['django_statsd.patches.db', ]
 THUMBNAIL_SUBDIR = "thumbs"
 EMAIL_SUBJECT_PREFIX = "[spokehub] "
 EMAIL_HOST = 'localhost'
-SERVER_EMAIL = "spokehub@spokehub.thraxil.org"
+SERVER_EMAIL = "spokehub@spokehub.org"
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 STATIC_ROOT = os.path.join(os.path.dirname(__file__), "../media")
