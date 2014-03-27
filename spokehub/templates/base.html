@@ -30,7 +30,7 @@
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
 {% if request.user.is_anonymous %}
-<p>Coming Soon</p>
+{% block regcontent %}<p>Coming Soon</p>{% endblock %}
 {% else %}
 <a class="sr-only" href="#content">Skip navigation</a>
 
