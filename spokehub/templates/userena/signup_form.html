@@ -1,0 +1,36 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block regcontent %}
+<div class="container">
+<form action="" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>{% trans "Join Spokehub" %}</legend>
+		<p>You have been invited to join Spokehub. First you need to
+    create your account. A confirmation will be sent to the email you
+    set. Then you can fill out your profile and
+			join the conversation.</p>
+    {{ form.non_field_errors }}
+    {% for field in form %}
+    {{ field.errors }}
+    {% comment %} Displaying checkboxes differently {% endcomment %}
+    {% if field.name == 'tos' %}
+    <p class="checkbox">
+    <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
+    </p>
+    {% else %}
+    <p>
+    {{ field|bootstrap }}
+    </p>
+    {% endif %}
+    {% endfor %}
+  </fieldset>
+  <input type="submit" value="{% trans "Signup"%}" class="btn
+  btn-primary" />
+</form>
+</div>
+{% endblock %}
