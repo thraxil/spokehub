@@ -51,8 +51,7 @@ PROJECT_APPS = [
     'spokehub.main',
 ]
 
-ALLOWED_HOSTS = ['localhost', 'spokehub.com', 'spokehub.org',
-                 'spokehub.thraxil.org']
+ALLOWED_HOSTS = ['localhost', 'spokehub.com', 'spokehub.org']
 
 USE_TZ = True
 TIME_ZONE = 'America/New_York'
