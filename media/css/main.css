@@ -5,7 +5,8 @@
 section {
 padding-top: 100px;
 padding-bottom: 300px;
-
+//border: #000 solid 1px;
+margin-bottom: 2em;
 }
 
 #main-navbar {
