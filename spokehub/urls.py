@@ -10,6 +10,7 @@ site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 
 urlpatterns = patterns(
     '',
+
     (r'^accounts/', include('userena.urls')),
     (r'^$', views.IndexView.as_view()),
 
@@ -24,6 +25,8 @@ urlpatterns = patterns(
     (r'^challenge/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
      views.ItemDetailView.as_view()),
     (r'^challenge/add/$', views.ChallengeCreateView.as_view()),
+
+    (r'^add_work_sample/$', views.AddWorkSampleView.as_view()),
 
     (r'^case/$', views.CaseIndexView.as_view()),
     (r'^case/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',

@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
-from .models import Item
+from .models import Item, WorkSample
 
 
 class IndexView(TemplateView):
@@ -14,6 +14,7 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['team'] = User.objects.all().exclude(username='AnonymousUser')
+        context['work_samples'] = WorkSample.objects.all()
         return context
 
 
@@ -71,3 +72,14 @@ class ReplyToItemView(View):
         item = get_object_or_404(Item, pk=pk)
         item.add_reply(request.user, request.POST.get('body', ''))
         return HttpResponseRedirect(item.get_absolute_url())
+
+
+class AddWorkSampleView(View):
+    def post(self, request):
+        title = request.POST.get('title', 'no title')
+        caption = request.POST.get('caption', '')
+        ws = WorkSample.objects.create(title=title, user=request.user,
+                                       caption=caption)
+        ws.save_image(request.FILES['image'])
+        ws.save()
+        return HttpResponseRedirect("/accounts/%s/" % request.user.username)
