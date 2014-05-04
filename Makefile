@@ -50,6 +50,9 @@ rebase:
 collectstatic: ./ve/bin/python validate
 	$(MANAGE) collectstatic --noinput --settings=$(APP).settings_production
 
+deploy: ./ve/bin/python validate jenkins
+	./ve/bin/fab deploy
+
 # run this one the very first time you check
 # this out on a new machine to set up dev
 # database, etc. You probably *DON'T* want
