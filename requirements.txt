@@ -33,6 +33,7 @@ pycrypto==2.6
 paramiko==1.11.0
 BeautifulSoup==3.2.1
 Fabric==1.7
+mock==1.0.1
 
 sorl==3.1
 typogrify==2.0.0

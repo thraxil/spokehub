@@ -16,7 +16,7 @@ flake8: ./ve/bin/python
 runserver: ./ve/bin/python validate
 	$(MANAGE) runserver
 
-migrate: ./ve/bin/python validate jenkins
+migrate: ./ve/bin/python validate
 	$(MANAGE) migrate
 
 validate: ./ve/bin/python
