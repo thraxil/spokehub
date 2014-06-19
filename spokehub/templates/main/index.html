@@ -5,11 +5,14 @@
 <div id="main-navbar" data-spy="affix" >
 <nav id="main-nav" class="navbar navbar-default" role="navigation">
   <div class="container">
-		<ul class="nav navbar-nav">
+		<ul class="nav nav-justified">
 			<li><a href="#now">NOW</a></li>
-			<li><a href="#intro">INTRO</a></li>
+			<li><a href="#who">WHO</a></li>
 			<li><a href="#work">WORK</a></li>
 			<li><a href="#lab">LAB</a></li>
+{% if request.user.is_anonymous %}
+			<li><a href="/accounts/signin/">LOGIN</a></li>
+{% endif %}
 		</ul>
   </div>
 </nav>
@@ -24,34 +27,32 @@ class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}
 {% block content %}
 
 <section id="now">
+<div class="container">
 <h2>NOW</h2>
 
-<p>Spokehub combines art, design and strategy to create original ideas, breakthrough solutions and extraordinary events.
-We are {independent / disruptive / international / cross-functional /
-	on the move  / unconventional / diverse  / 100+ creatives} but
-	connected.</p>
+<p>Where we are and what we're doing right now</p>
+</div>
 
+<div id="now-items">
 <p>[[Insert Now Items]]</p>
-
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+</div>
 </section>
 
-<section id="intro">
-<h2>INTRO</h2>
+<section id="who">
+<div class="container">
+<h2>WHO</h2>
 
-<p>[[Insert Video animation]]</p>
-
-<ul>
-<li>Spokehub is not a<strike>n agency</strike> set cast of characters.</li>
-<li>We are a creative alliance between designers, artists, architects, engineers, developers, explorers and storytellers... with strategic thinking at our core.</li>
-<li>Diversity across disciplines and cultures gives us a broad spectrum of perspectives.</li>
-<li>Artistic interventions disrupt and advance our design thinking.</li>
-<li>When we collaborate on projects, we guarantee bespoke and breakthrough solutions.</li>
-<li>Our clients are individuals, start-ups and global brands, all seeking a creative life less ordinary.</li>
-<li>We align here to exchange and inspire future-focused ideas.</li>
-</ul>
+</div>
 </section>
 
 <section id="work">
+	<div class="container">
 <h2>WORK</h2>
 
 Drop-down menu
@@ -72,14 +73,21 @@ Events / The first Spokehub art event is scheduled for September 2014. Join/Foll
 {% endfor %}
   </ul>
 </div>
-
+</div>
 </section>
 
-
 <section id="lab">
+<div class="container">
+
 <h2>LAB</h2>
 
+<p>Lorem Ipsum Dolor set blahblahblhah</p>
 
+<p>04.14 - The Future of COOKING &amp; EATING</p>
+<p>05.14 - The Future of TEACHING &amp; LEARNING</p>
+<p>06.14 - The Future of SLEEP &amp; REST</p>
+
+</div>
 </section>
 
 {% endblock %}

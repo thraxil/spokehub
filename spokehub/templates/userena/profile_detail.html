@@ -8,6 +8,7 @@
 
 {% block content %}
 <section>
+<div class="container">
   <div class="white-box">
     {% block profile_navigation %}
       {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
@@ -150,6 +151,6 @@
 {% endif %}
 {% endif %}
 {% endwith %}
-
+</div>
 </section>
 {% endblock %}

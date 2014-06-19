@@ -4,19 +4,53 @@
 
 section {
 padding-top: 100px;
-padding-bottom: 300px;
+padding-bottom: 200px;
+
 //border: #000 solid 1px;
-margin-bottom: 2em;
+}
+
+#topnavbar {
+   position: fixed;
+	 width: 100%;
 }
 
 #main-navbar {
 		position: fixed;
-padding-top: 60px;
-width: 100%;
-left: -10px;
-top: -10px;
+    padding-top: 50px;
+    width: 100%;
 }
 
-//#main-nav {
-//		margin-top: -20px;
-//}
+#now {
+  text-align: center;
+}
+
+#now-items {
+  background-color: #ccc;
+}
+
+#who {
+  background-color: #eee;
+  text-align: center;
+}
+
+#work {
+  text-align: center;
+}
+
+#lab {
+  background-color: #333333;
+	color: #aaaaaa;
+	font-size: larger;
+  text-align: center;
+
+}
+
+#lab h2 {
+   color: #ffffff;
+}
+
+
+#footer {
+  padding-top: 1em;
+	padding-bottom: 1em;
+}

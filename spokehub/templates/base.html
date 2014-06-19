@@ -68,7 +68,7 @@ $( document ).ready(function() {
 <a class="sr-only" href="#content">Skip navigation</a>
 
 {% block topnavbar %}
-<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+<nav id="topnavbar" class="navbar navbar-default navbar-inverse" role="navigation">
   <div class="container">
   <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -119,17 +119,24 @@ $( document ).ready(function() {
 </nav>
 {% endblock %}
 
-  <div class="container" id="outer-container">
 {% block navbar %}
 {% endblock %}
 
+
+
 {% block pagetitle %}{% endblock %}
 {% block content %}{% endblock %}
-</div>
+
 
 {% block footer %}
-  <footer class="footer navbar-fixed-bottom hidden-phone">
-  </footer>
+
+<div id="footer">
+<div class="container">
+[ARTSHOW] [mail] [facebook] [Twitter]
+<span class="pull-right">&copy; 2014 Spokehub</span>
+</div>
+</div>
+
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
