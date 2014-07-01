@@ -29,9 +29,14 @@
 {% if request.user.is_anonymous %}
 {% block regcontent %}
 
-<h1 class="text-center">SPOKEHUB</h1>
+<h1 class="text-center"><video width="1920" height="1080" autoplay loop>
+	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Short.mp4">
+</video>
+</h1>
+
 <h2 class="text-center">{<span id="cycle"></span>}</h2>
 <p class="text-center">Coming Soon</p>
+
 
 <script>
 var phrases = [
