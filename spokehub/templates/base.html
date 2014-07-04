@@ -29,44 +29,9 @@
 {% if request.user.is_anonymous %}
 {% block regcontent %}
 
-<h1 class="text-center"><video width="1920" height="1080" autoplay loop>
-	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07_Invert.mp4">
+<video width="1920" height="1080" autoplay loop>
+	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07.mp4">
 </video>
-</h1>
-
-<h2 class="text-center">{<span id="cycle"></span>}</h2>
-<p class="text-center">Coming Soon</p>
-
-
-<script>
-var phrases = [
-  "Constructive Disruption",
-  "An Unholy Alliance",
-  "Aesthetic + Analytic",
-  "Creative Chemistry",
-  "Passion Shows",
-  "Work With Quirk",
-  "Incendiary Ideas",
-  "Next Level Networks",
-  "The House That Hack Built"
-];
-
-var randomPhrase = function() {
-  $('h2').fadeOut(400, function() {
-    var el = $("#cycle");
-    el.text(phrases[Math.floor((Math.random()*phrases.length))]);
-    $('h2').fadeIn(400, function() {
-      setTimeout(randomPhrase, 10000);
-    });
-  });
-};
-
-$( document ).ready(function() {
-  $('h2').hide();
-  randomPhrase();
-});
-
-</script>
 
 {% endblock %}
 {% else %}

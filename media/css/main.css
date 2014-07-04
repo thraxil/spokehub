@@ -55,6 +55,10 @@ padding-bottom: 200px;
 	padding-bottom: 1em;
 }
 
+body#index-page {
+		background-color: #000;
+}
+
 video {
 		width: 100% !important;
 		height: auto !important;
