@@ -29,9 +29,16 @@
 {% if request.user.is_anonymous %}
 {% block regcontent %}
 
-<video width="1920" height="1080" autoplay loop>
+<video id="video" width="1920" height="1080" autoplay loop>
 	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07.mp4">
 </video>
+
+<script>
+var video = document.getElementById('video');
+video.addEventListener('click',function(){
+  video.play();
+},false);
+</script>
 
 {% endblock %}
 {% else %}
