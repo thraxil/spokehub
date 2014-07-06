@@ -29,16 +29,14 @@
 {% if request.user.is_anonymous %}
 {% block regcontent %}
 
-<video id="video" width="1920" height="1080" autoplay loop>
+<link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
+<script src="//vjs.zencdn.net/4.6/video.js"></script>
+
+<video class="video-js vjs-default-skin" id="video" width="1920" height="1080" autoplay loop>
 	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07.mp4">
 </video>
 
-<script>
-$(document).ready(function() {
-    var video = document.getElementById('video');
-    video.play();
-});
-</script>
+
 
 {% endblock %}
 {% else %}
