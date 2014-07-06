@@ -32,8 +32,14 @@
 <link href="//vjs.zencdn.net/4.6/video-js.css" rel="stylesheet">
 <script src="//vjs.zencdn.net/4.6/video.js"></script>
 
-<video class="video-js vjs-default-skin" id="video" width="1920" height="1080" autoplay loop>
+<video class="video-js vjs-default-skin"
+        id="video" width="1920" height="1080"
+        autoplay loop
+        data-setup='{ "controls": false, "autoplay": true, "preload": "auto" }'
+  >
 	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07.mp4">
+	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07.mp4"
+        type="video/mp4">
 </video>
 
 
