@@ -28,40 +28,22 @@
 {% endblock %}
 {% if request.user.is_anonymous %}
 {% block regcontent %}
-
+<a href="#"
+	 onclick="document.getElementById('video');video.play();return false">Play</a>
 <video class="video-js vjs-default-skin"
         id="video" width="1920" height="1080"
         autoplay loop
   >
-	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07.mp4">
-	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_03.07.mp4"
+	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_07.07.mp4">
+	<source src="http://spokehub-video.s3.amazonaws.com/Spokehub_Long_07.07.mp4"
         type="video/mp4">
 </video>
 
 <script>
-// experimenting with getting this working
-// on mobile by simulating a click after
-// the video loads
-
-function simulateClick() {
-  console.log("simulateClick()");
-  var event = new MouseEvent('click', {
-    'view': window,
-    'bubbles': true,
-    'cancelable': true
-  });
-  var cb = document.getElementById('video'); 
-  var canceled = !cb.dispatchEvent(event);
-  console.log("event dispatched");
-}
-
-jQuery(document).ready(function() {
-  console.log($('#video'));
-  $('#video')[0].addEventListener('loadeddata', function() {
-    simulateClick();
-  }, false);
-});
-
+var video = document.getElementById('video');
+video.addEventListener('click',function(){
+  video.play();
+},false);
 </script>
 
 
