@@ -59,6 +59,9 @@ body#index-page {
 		background-color: #000;
 }
 
+div#video {
+		width: 100% !important;
+}
 video {
 		width: 100% !important;
 		height: auto !important;
