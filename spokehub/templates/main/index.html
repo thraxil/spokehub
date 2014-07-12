@@ -2,55 +2,35 @@
 {% load thumbnail %}
 
 {% block navbar %}
-<div id="main-navbar" data-spy="affix" >
-<nav id="main-nav" class="navbar navbar-default" role="navigation">
-  <div class="container">
 		<ul class="nav nav-justified">
-			<li><a href="#now">NOW</a></li>
-			<li><a href="#who">WHO</a></li>
+			<li><a href="#how">HOW</a></li>
+			<li><a href="#we">WE</a></li>
 			<li><a href="#work">WORK</a></li>
-			<li><a href="#lab">LAB</a></li>
-{% if request.user.is_anonymous %}
-			<li><a href="/accounts/signin/">LOGIN</a></li>
-{% endif %}
+			<li><a href="#now">NOW</a></li>
 		</ul>
-  </div>
-</nav>
-</div>
 {% endblock %}
 
 {% block bodytag %}
 {% if request.user.is_anonymous %}
-<body data-spy="scroll" data-offset="100" data-target="#main-navbar" class="" id="splash-page">
+<body class="" id="splash-page">
 {% else %}
-<body data-spy="scroll" data-offset="100" data-target="#main-navbar"
-class="{% block bodyclass %}{% endblock %}" id="index-page{% block bodyid %}{% endblock %}">
+<body class="{% block bodyclass %}{% endblock %}" id="index-page{% block bodyid %}{% endblock %}">
 {% endif %}
 {% endblock %}
 
 {% block content %}
 
-<section id="now">
+
+<section id="how">
 <div class="container">
-<h2>NOW</h2>
+<h2>HOW</h2>
 
-<p>Where we are and what we're doing right now</p>
-</div>
-
-<div id="now-items">
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
 </div>
 </section>
 
-<section id="who">
+<section id="we">
 <div class="container">
-<h2>WHO</h2>
+<h2>WE</h2>
 
 </div>
 </section>
@@ -80,19 +60,24 @@ Events / The first Spokehub art event is scheduled for September 2014. Join/Foll
 </div>
 </section>
 
-<section id="lab">
+<section id="now">
 <div class="container">
+<h2>NOW</h2>
 
-<h2>LAB</h2>
+<p>Where we are and what we're doing right now</p>
+</div>
 
-<p>Lorem Ipsum Dolor set blahblahblhah</p>
-
-<p>04.14 - The Future of COOKING &amp; EATING</p>
-<p>05.14 - The Future of TEACHING &amp; LEARNING</p>
-<p>06.14 - The Future of SLEEP &amp; REST</p>
-
+<div id="now-items">
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
+<p>[[Insert Now Items]]</p>
 </div>
 </section>
+
 
 {% endblock %}
 

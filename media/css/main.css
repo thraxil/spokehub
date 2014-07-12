@@ -62,7 +62,12 @@ body#splash-page {
 div#video {
 		width: 100% !important;
 }
-video {
+video#video {
 		width: 100% !important;
 		height: auto !important;
+}
+
+#banner-video {
+		height: 150px !important;
+		width: auto !important;
 }
