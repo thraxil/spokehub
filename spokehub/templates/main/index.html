@@ -21,63 +21,100 @@
 {% block content %}
 
 
-<section id="how">
-<div class="container">
-<h2>HOW</h2>
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          How
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+          We
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse">
+      <div class="panel-body">
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      </div>
+    </div>
+  </div>
 
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          Work
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse">
+      <div class="panel-body">
+				<p>
+					Drop-down menu
+					Headline copy:
+				</p>
+
+				<p>Insights / We explore possibilities for new creative solutions, from four perspectives. [graphic of - Cultural/Category/Consumer/Future]
+					Strategy / Great strategy defines opportunities and inspires creatives in their own language. [examples for Identity - Design - Futures]
+					Creative / Great creative solutions are the alchemy of analytic information with aesthetic presentation [annotated slide show of principals' work examples]
+					Events / The first Spokehub art event is scheduled for
+					September 2014. Join/Follow/Bookmark for timely
+					announcements.
+				</p>
+
+				<div class="work-samples">
+					<ul class="slides">
+						{% for ws in work_samples %}
+						<li>
+							<img src="{% thumbnail ws.image 900x600 %}" alt="{{ws.title}}"/>
+							<p class="flex-caption">{{ws.caption}}</p>
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          Now
+        </a>
+      </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse">
+      <div class="panel-body">
+				<p>Where we are and what we're doing right now</p>
+
+
+				<div id="now-items">
+					<p>[[Insert Now Items]]</p>
+					<p>[[Insert Now Items]]</p>
+					<p>[[Insert Now Items]]</p>
+					<p>[[Insert Now Items]]</p>
+					<p>[[Insert Now Items]]</p>
+					<p>[[Insert Now Items]]</p>
+					<p>[[Insert Now Items]]</p>
+				</div>
+      </div>
+    </div>
+  </div>
 </div>
-</section>
-
-<section id="we">
-<div class="container">
-<h2>WE</h2>
-
-</div>
-</section>
-
-<section id="work">
-	<div class="container">
-<h2>WORK</h2>
-
-Drop-down menu
-Headline copy:
-
-Insights / We explore possibilities for new creative solutions, from four perspectives. [graphic of - Cultural/Category/Consumer/Future]
-Strategy / Great strategy defines opportunities and inspires creatives in their own language. [examples for Identity - Design - Futures]
-Creative / Great creative solutions are the alchemy of analytic information with aesthetic presentation [annotated slide show of principals' work examples]
-Events / The first Spokehub art event is scheduled for September 2014. Join/Follow/Bookmark for timely announcements.
-
-<div class="work-samples">
-  <ul class="slides">
-{% for ws in work_samples %}
-    <li>
-      <img src="{% thumbnail ws.image 900x600 %}" alt="{{ws.title}}"/>
-			<p class="flex-caption">{{ws.caption}}</p>
-    </li>
-{% endfor %}
-  </ul>
-</div>
-</div>
-</section>
-
-<section id="now">
-<div class="container">
-<h2>NOW</h2>
-
-<p>Where we are and what we're doing right now</p>
-</div>
-
-<div id="now-items">
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-<p>[[Insert Now Items]]</p>
-</div>
-</section>
-
 
 {% endblock %}
 
