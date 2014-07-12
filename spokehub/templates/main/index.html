@@ -20,8 +20,12 @@
 {% endblock %}
 
 {% block bodytag %}
+{% if request.user.is_anonymous %}
+<body data-spy="scroll" data-offset="100" data-target="#main-navbar" class="" id="splash-page">
+{% else %}
 <body data-spy="scroll" data-offset="100" data-target="#main-navbar"
 class="{% block bodyclass %}{% endblock %}" id="index-page{% block bodyid %}{% endblock %}">
+{% endif %}
 {% endblock %}
 
 {% block content %}
