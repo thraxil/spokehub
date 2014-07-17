@@ -3,10 +3,23 @@
 
 {% block navbar %}
 		<ul class="nav nav-justified">
-			<li><a href="#how">HOW</a></li>
-			<li><a href="#we">WE</a></li>
-			<li><a href="#work">WORK</a></li>
-			<li><a href="#now">NOW</a></li>
+      <li><button type="button" class="btn"
+									data-toggle="collapse"
+									data-target="#collapseOne"
+									data-parent="#accordian">HOW</button></li>
+      <li><button type="button" class="btn"
+									data-toggle="collapse"
+									data-target="#collapseTwo"
+									data-parent="#accordian">WE</button></li>
+      <li><button type="button" class="btn"
+									data-toggle="collapse"
+									data-target="#collapseThree"
+									data-parent="#accordian">WORK</button></li>
+      <li><button type="button" class="btn"
+									data-toggle="collapse"
+									data-target="#collapseFour"
+									data-parent="#accordian">NOW</button></li>
+
 		</ul>
 {% endblock %}
 
@@ -22,12 +35,13 @@
 
 
 <div class="panel-group" id="accordion">
-  <div class="panel panel-default">
+  <div class="panel panel-default active-panel">
     <div class="panel-heading">
       <h4 class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
           How
         </a>
+        <span class="glyphicon glyphicon-play pull-right"></span>
       </h4>
     </div>
     <div id="collapseOne" class="panel-collapse collapse in">
@@ -42,6 +56,7 @@
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
           We
         </a>
+        <span class="glyphicon glyphicon-play pull-right"></span>
       </h4>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse">
@@ -57,6 +72,7 @@
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
           Work
         </a>
+        <span class="glyphicon glyphicon-play pull-right"></span>
       </h4>
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
@@ -95,6 +111,7 @@
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
           Now
         </a>
+        <span class="glyphicon glyphicon-play pull-right"></span>
       </h4>
     </div>
     <div id="collapseFour" class="panel-collapse collapse">
@@ -130,4 +147,14 @@ $(window).load(function() {
   });
 });
 </script>
+<script>
+$(".panel").on('hidden.bs.collapse', function (e) {
+   $(e.target).parent().removeClass('active-panel');
+})
+$(".panel").on('shown.bs.collapse', function (e) {
+   $(e.target).parent().addClass('active-panel');
+})
+</script>
+
+
 {% endblock %}

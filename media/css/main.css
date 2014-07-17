@@ -71,3 +71,8 @@ video#video {
 		height: 150px !important;
 		width: auto !important;
 }
+
+.active-panel .glyphicon-play {
+		transform(rotate(90deg));
+    -webkit-transform:rotate(90deg);
+}
