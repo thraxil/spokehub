@@ -28,8 +28,10 @@
 {% endblock %}
 {% if request.user.is_anonymous %}
 {% block regcontent %}
-<a href="#"
-	 onclick="document.getElementById('video');video.play();return false">Play</a>
+<a href="#" class="hidden-lg hidden-md hidden-sm"
+   style="color: #ddd"
+	 onclick="document.getElementById('video');video.play();return
+	 false">Play Video</a>
 <video class="video-js vjs-default-skin"
         id="video" width="1920" height="1080"
         autoplay loop
