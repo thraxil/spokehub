@@ -4,10 +4,31 @@ $hubblack: #262222
 
 $hubpurple: #8560a8
 
+/* Mixin Styles */
+
+=hubpanel1
+  background-color: $hubblack
+  color: #ffffff
+  border: none
+  border-radius: 0
+  
+=hubpanel2
+  background-color: #ffffff
+  color: $hubblack
+  border: none
+  border-radius: 0
 
 /* Base Styles */
 
+html, body 
+  margin: 0
+  
+.panel, .panel-group .panel
+  border: none
+  border-radius: 0
 
-#hub1, #hub3
-  background-color: $hubblack
-
+#hub1, #hub3, #collapseOne, #collapseThree
+  @include hubpanel1
+  
+#hub2, #hub4, #collapseTwo, #collapseFour
+  @include hubpanel2

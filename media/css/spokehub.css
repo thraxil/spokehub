@@ -1,4 +1,21 @@
 /* Colors */
+/* Mixin Styles */
 /* Base Styles */
-#hub1, #hub3 {
-  background-color: #262222; }
+html, body {
+  margin: 0; }
+
+.panel, .panel-group .panel {
+  border: none;
+  border-radius: 0; }
+
+#hub1, #hub3, #collapseOne, #collapseThree {
+  background-color: #262222;
+  color: white;
+  border: none;
+  border-radius: 0; }
+
+#hub2, #hub4, #collapseTwo, #collapseFour {
+  background-color: white;
+  color: #262222;
+  border: none;
+  border-radius: 0; }
