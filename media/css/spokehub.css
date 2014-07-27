@@ -5,10 +5,58 @@ html, body {
   margin: 0; }
 
 /* Home Nav */
+.hubauth {
+  margin-top: 60px; }
+  .hubauth button {
+    display: inline;
+    border: none;
+    border-radius: 0; }
+  .hubauth a {
+    color: #262222;
+    text-transform: uppercase; }
+  .hubauth ul {
+    border: none;
+    border-radius: 0;
+    padding: 10px; }
+
+.nav .open > a {
+  background-color: transparent; }
+.nav li > a {
+  padding: 0px;
+  display: inline; }
+.nav:hover, .nav:focus {
+  background-color: transparent; }
+
+.staticnav .nav-justified {
+  margin-top: 60px; }
+
+.nav-justified > li {
+  display: inline;
+  margin-right: 20px; }
+
+.hubnav button.hubnav {
+  background-color: transparent;
+  padding: 0;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: none; }
+
 /* Home Panels */
 .panel, .panel-group .panel {
   border: none;
   border-radius: 0; }
+
+.panel-heading {
+  min-height: 85px;
+  text-transform: uppercase;
+  font-weight: 200; }
+  .panel-heading div {
+    display: inline;
+    float: left; }
 
 .panel-default > .panel-heading + .panel-collapse .panel-body {
   border: 0; }

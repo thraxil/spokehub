@@ -73,17 +73,14 @@ video.addEventListener('click',function(){
 
 	<div class="col-md-4">
 		{% block usernav %}
-		<ul class="nav pull-right">
+		<ul class="nav hubauth">
       {% if request.user.is_anonymous %}
-			<li><a href="/accounts/signin/?next=/" class="btn"><span class="glyphicon glyphicon-log-in"></span> login</a></li>
-			<li><a href="/accounts/signup/" class="btn">signup</a></li>
+			<li><a href="/accounts/signin/?next=/">login</a></li>
+			<li><a href="/accounts/signup/">signup</a></li>
       {% else %}
-			<li>
-				<button type="button" class="btn btn-xs btn-default">
-					<a href="/accounts/{{request.user.username}}/"><span class="glyphicon glyphicon-user"></span> 
-{{request.user.get_profile.get_full_name_or_username}}
+			<li><a href="/accounts/{{request.user.username}}/">
+			{{request.user.get_profile.get_full_name_or_username}}
 					</a>
-				</button>
 				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 					<span class="caret"></span>
 					<span class="sr-only">Toggle Dropdown</span>

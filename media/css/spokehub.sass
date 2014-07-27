@@ -4,7 +4,13 @@ $hubblack: #262222
 
 $hubpurple: #8560a8
 
+
 /* Mixin Styles */
+
+=hubfont
+  text-transform: uppercase
+  font-weight: 200
+
 
 =killradius 
   border: none
@@ -29,12 +35,60 @@ html, body
   
 /* Home Nav */
 
+.hubauth
+  margin-top: 60px
+  button
+    display: inline
+    @include killradius
+  a
+    color: $hubblack
+    text-transform: uppercase
+  ul
+    @include killradius
+    padding: 10px
+    
+.nav
+  .open>a
+    background-color: transparent
+  li>a
+    padding: 0px
+    display: inline
+  &:hover, &:focus
+    background-color: transparent
+    
 
+.staticnav .nav-justified
+  margin-top: 60px
+
+.nav-justified>li 
+  display: inline
+  margin-right: 20px
+
+.hubnav
+  button.hubnav
+    background-color: transparent  
+    padding: 0 
+    font-size: 14px
+    font-weight: normal
+    text-align: center
+    white-space: nowrap
+    vertical-align: middle
+    cursor: pointer
+    border: none
+   
   
 /* Home Panels */
 
 .panel, .panel-group .panel
   @include killradius
+     
+.panel-heading
+  min-height: 85px
+  @include hubfont
+  div
+    display: inline
+    float: left
+    
   
 .panel-default>.panel-heading+.panel-collapse .panel-body 
   border: 0

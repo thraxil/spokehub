@@ -3,19 +3,19 @@
 
 {% block navbar %}
 	<ul class="nav nav-justified">
-      <li><button type="button" class="btn"
+      <li><button type="button" class="btn hubnav"
 									data-toggle="collapse"
 									data-target="#collapseOne"
 									data-parent="#accordian">HOW</button></li>
-      <li><button type="button" class="btn"
+      <li><button type="button" class="btn hubnav"
 									data-toggle="collapse"
 									data-target="#collapseTwo"
 									data-parent="#accordian">WE</button></li>
-      <li><button type="button" class="btn"
+      <li><button type="button" class="btn hubnav"
 									data-toggle="collapse"
 									data-target="#collapseThree"
 									data-parent="#accordian">WORK</button></li>
-      <li><button type="button" class="btn"
+      <li><button type="button" class="btn hubnav"
 									data-toggle="collapse"
 									data-target="#collapseFour"
 									data-parent="#accordian">NOW</button></li>
@@ -36,14 +36,16 @@
 
 <div class="panel-group" id="accordion">
   <div class="panel panel-default active-panel">
-    <div id="hub1" class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-          How
-        </a>
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+    	<div id="hub1" class="panel-heading">
+      	<div class="panel-title"> 
+         How
+        </div>
+        <div class="desc">Cross-functional conversations between Art, Design, and Strategy</div>
         <span class="glyphicon glyphicon-play pull-right"></span>
-      </h4>
-    </div>
+	    </div>
+     </a>
+
     <div id="collapseOne" class="panel-collapse collapse in">
       <div class="panel-body">
 				<div class="container">
@@ -113,12 +115,12 @@
   </div>
   <div class="panel panel-default">
     <div id="hub2" class="panel-heading">
-      <h4 class="panel-title">
+      <div class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
           We
         </a>
         <span class="glyphicon glyphicon-play pull-right"></span>
-      </h4>
+      </div>
     </div>
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
@@ -141,12 +143,12 @@
 
   <div class="panel panel-default">
     <div id="hub3" class="panel-heading">
-      <h4 class="panel-title">
+      <div class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
           Work
         </a>
         <span class="glyphicon glyphicon-play pull-right"></span>
-      </h4>
+      </div>
     </div>
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
@@ -182,12 +184,12 @@
 
   <div class="panel panel-default">
     <div id="hub4" class="panel-heading">
-      <h4 class="panel-title">
+      <div class="panel-title">
         <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
           Now
         </a>
         <span class="glyphicon glyphicon-play pull-right"></span>
-      </h4>
+      </div>
     </div>
     <div id="collapseFour" class="panel-collapse collapse">
       <div class="panel-body">
