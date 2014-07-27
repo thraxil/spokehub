@@ -4,9 +4,14 @@
 html, body {
   margin: 0; }
 
+/* Home Nav */
+/* Home Panels */
 .panel, .panel-group .panel {
   border: none;
   border-radius: 0; }
+
+.panel-default > .panel-heading + .panel-collapse .panel-body {
+  border: 0; }
 
 #hub1, #hub3, #collapseOne, #collapseThree {
   background-color: #262222;
@@ -17,5 +22,9 @@ html, body {
 #hub2, #hub4, #collapseTwo, #collapseFour {
   background-color: white;
   color: #262222;
+  border: none;
+  border-radius: 0; }
+
+.thumbnail {
   border: none;
   border-radius: 0; }
