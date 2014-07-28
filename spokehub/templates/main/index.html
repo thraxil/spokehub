@@ -201,58 +201,34 @@
       </a>
     <div id="collapseFour" class="panel-collapse collapse">
       <div class="panel-body">
-				<div class="container">
-				<div class="row">
+				<div id="worktiles">
+
+					<div class="tile">
+						<div class="videofiller"></div>
+					</div>
+					<div class="tile">
+						<h3>CLEVER QUOTABLE QUOTES CLEVER QUOTABLE QUOTES.</h3>
+
+					</div>
+					<div class="tile">
+											<div class="videofiller"></div>
+
+					</div>
+					<div class="tile">
+											ANIM PARIATUR CLICHE REPREHENDERIT, ENIM EIUSMOD HIGH LIFE ACCUSAMUS TERRY RICHARDSON AD SQUID. 3 WOLF MOON OFFICIA AUTE, NON CUPIDATAT SKATEBOARD DOLOR BRUNCH. FOOD TRUCK QUINOA NESCIUNT LABORUM EIUSMOD. BRUNCH 3 WOLF MOON TEMPOR, SUNT ALIQUA PUT A BIRD ON IT SQUID SINGLE-ORIGIN COFFEE NULLA ASSUMENDA SHOREDITCH ET. NIHIL ANIM KEFFIYEH HELVETICA, CRAFT BEER LABORE WES ANDERSON CRED NESCIUNT SAPIENTE EA PROIDENT. AD VEGAN EXCEPTEUR BUTCHER VICE LOMO. LEGGINGS OCCAECAT CRAFT BEER FARM-TO-TABLE, RAW DENIM AESTHETIC SYNTH NESCIUNT YOU PROBABLY HAVEN'T HEARD OF THEM ACCUSAMUS LABORE SUSTAINABLE VHS.
+
+					</div>
+					<div class="tile">
+											<div class="videofiller"></div>
+
+					</div>
+					<div class="tile">
+											<div class="videofiller"></div>
+
+					</div>
 					
-					<div class="col-sm-4 col-md-4">
-						<div class="thumbnail">
-							<img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
-							<div class="caption">
-								<h3>Thumbnail label</h3>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-4 col-md-4">
-						<div class="thumbnail">
-							<img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
-							<div class="caption">
-								<h3>Thumbnail label</h3>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-2"></div>
-				</div>
-
-				<div class="row">
-					<div class="col-sm-6 col-md-6">
-						<div class="thumbnail">
-							<img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
-							<div class="caption">
-								<h3>Thumbnail label</h3>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-sm-6 col-md-6">
-						<div class="thumbnail">
-							<img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail">
-							<div class="caption">
-								<h3>Thumbnail label</h3>
-								<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-								<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-
-      </div>
+				
+     			 </div>
     </div>
   </div>
 </div>
@@ -261,9 +237,18 @@
 
 {% block js %}
 <script src="/media/js/flexslide/jquery.flexslider-min.js"></script>
-<link rel="stylesheet" href="/media/js/flexslide/flexslider.css"
-			type="text/css">
+<script src="/media/js/masonry.pkgd.js"></script>
 
+<link rel="stylesheet" href="/media/js/flexslide/flexslider.css" type="text/css">
+<script>
+	var $container = $('#worktiles');
+	// initialize
+	$('#worktiles').masonry({
+  columnWidth: 20,
+  itemSelector: '.tile'
+});
+
+</script>
 <script>
 $(window).load(function() {
   $('.work-samples').flexslider({

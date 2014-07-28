@@ -116,7 +116,6 @@ video.addEventListener('click',function(){
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-
 <script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
 
 {% block js %}{% endblock %}
@@ -139,6 +138,7 @@ You are impersonating.<br />
   ga('create', '{{GA_CODE}}', 'spokehub.org');
   ga('send', 'pageview');
 </script>
+
 {% endif %}
 {% endif %}
 </body>

@@ -29,11 +29,11 @@ p {
 
 .nav .open > a {
   background-color: transparent; }
-.nav li > a {
+.nav li a {
   padding: 0px;
   display: inline; }
-.nav:hover, .nav:focus {
-  background-color: transparent; }
+.nav li:hover, .nav li:focus {
+  background-color: none; }
 
 .staticnav .nav-justified {
   margin-top: 60px; }
@@ -137,3 +137,17 @@ button.hubnav {
   width: 100%;
   min-height: 200px;
   background-color: #0054a6; }
+
+/* Masonry */
+#worktiles {
+  padding: 30px; }
+
+.tile {
+  width: 350px;
+  padding: 10px;
+  margin: 10px 0; }
+
+/* Footer */
+#footer {
+  background-color: #262222;
+  color: white; }
