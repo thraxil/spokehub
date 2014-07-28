@@ -82,13 +82,13 @@ button.hubnav {
 .panelbreak.white {
   width: 100%;
   border-bottom: solid 1px white;
-  margin: 0;
+  margin: 10px 0;
   padding: 0; }
 
 .panelbreak.black {
   width: 100%;
   border-bottom: solid 1px #262222;
-  margin: 0;
+  margin: 10px 0;
   padding: 0; }
 
 .panel-default > .panel-heading + .panel-collapse .panel-body {
@@ -115,7 +115,25 @@ button.hubnav {
   .hubconvo .col-sm-5.col-md-5 {
     padding-right: 1px;
     padding-left: 0; }
+  .hubconvo .col-sm-1.col-md-1 {
+    padding-left: 0;
+    padding-right: 0; }
 
-.thumbnail {
+.convoblock {
+  color: #262222;
+  background-color: white;
+  padding: 20px;
+  text-transform: uppercase;
+  font-weight: 200;
+  line-height: 20px;
+  font-size: 0.93333em;
+  letter-spacing: 0.0666em;
   border: none;
   border-radius: 0; }
+  .convoblock div, .convoblock p {
+    text-align: center; }
+
+.videofiller {
+  width: 100%;
+  min-height: 200px;
+  background-color: #0054a6; }

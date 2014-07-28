@@ -4,6 +4,7 @@ $hubblack: #262222
 
 $hubpurple: #8560a8
 
+$hubblue: #0054a6
 
 /* Mixin Styles */
 
@@ -110,13 +111,13 @@ button.hubnav
 .panelbreak.white
   width: 100%
   border-bottom: solid 1px #fff
-  margin: 0
+  margin: 10px 0
   padding: 0 
    
 .panelbreak.black
   width: 100%
   border-bottom: solid 1px $hubblack
-  margin: 0
+  margin: 10px 0
   padding: 0
     
 .panel-default>.panel-heading+.panel-collapse .panel-body 
@@ -139,8 +140,21 @@ button.hubnav
   .col-sm-5.col-md-5
     padding-right: 1px
     padding-left: 0
-    
+  .col-sm-1.col-md-1
+    padding-left: 0
+    padding-right: 0
 
-.thumbnail 
+.convoblock
+  color: $hubblack
+  background-color: #fff
+  padding: 20px
+  @include hubfont 
   @include killradius
+  div, p
+    text-align: center
+ 
   
+.videofiller 
+  width: 100%
+  min-height: 200px
+  background-color: $hubblue
