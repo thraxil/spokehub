@@ -8,6 +8,8 @@ p {
   text-transform: uppercase;
   font-weight: 200;
   line-height: 20px;
+  font-size: 0.93333em;
+  letter-spacing: 0.0666em;
   padding: 10px 0; }
 
 /* Home Nav */
@@ -63,7 +65,9 @@ button.hubnav {
   min-height: 85px;
   text-transform: uppercase;
   font-weight: 200;
-  line-height: 20px; }
+  line-height: 20px;
+  font-size: 0.93333em;
+  letter-spacing: 0.0666em; }
   .panel-heading div, .panel-heading span {
     display: inline;
     float: left;
