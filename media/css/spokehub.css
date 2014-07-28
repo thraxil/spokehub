@@ -151,3 +151,5 @@ button.hubnav {
 #footer {
   background-color: #262222;
   color: white; }
+  #footer img, #footer span {
+    margin: 0 0 0 15px; }
