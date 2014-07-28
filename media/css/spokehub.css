@@ -19,6 +19,8 @@ p {
     display: inline;
     border: none;
     border-radius: 0; }
+    .hubauth button:hover {
+      background-color: white; }
   .hubauth a {
     color: #262222;
     text-transform: uppercase; }
@@ -28,12 +30,19 @@ p {
     padding: 10px; }
 
 .nav .open > a {
-  background-color: transparent; }
-.nav li a {
+  background-color: white; }
+.nav .caret {
+  border-top-color: #262222;
+  border-bottom-color: #262222; }
+
+.open .dropdown-toggle.btn-default {
+  background-color: white; }
+
+.nav > li > a {
   padding: 0px;
   display: inline; }
-.nav li:hover, .nav li:focus {
-  background-color: none; }
+  .nav > li > a:hover, .nav > li > a:focus {
+    background-color: white; }
 
 .staticnav .nav-justified {
   margin-top: 60px; }

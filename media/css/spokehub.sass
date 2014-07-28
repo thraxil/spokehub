@@ -49,6 +49,8 @@ p
   button
     display: inline
     @include killradius
+    &:hover
+      background-color: #fff
   a
     color: $hubblack
     text-transform: uppercase
@@ -58,13 +60,19 @@ p
     
 .nav
   .open>a
-    background-color: transparent
-  li
-    a
-      padding: 0px
-      display: inline
-    &:hover, &:focus
-      background-color: none
+    background-color: #fff
+  .caret
+    border-top-color: $hubblack
+    border-bottom-color: $hubblack   
+
+.open .dropdown-toggle.btn-default
+  background-color: #fff
+    
+.nav>li>a
+  padding: 0px
+  display: inline
+  &:hover, &:focus
+    background-color: #fff
     
 
 .staticnav .nav-justified
