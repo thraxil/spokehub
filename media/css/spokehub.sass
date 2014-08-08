@@ -1,3 +1,15 @@
+/* Fonts */
+@font-face 
+  font-family: 'dinlight'
+  src: url('../fonts/DINWeb-light.eot')
+  src: url('../fonts/DINWeb-light.woff') format('woff')
+
+@font-face 
+  font-family: 'dinmed'
+  src: url('../fonts/DINWeb-medium.eot')
+  src: url('../fonts/DINWeb-medium.woff') format('woff')
+
+
 /* Colors */
 
 $hubblack: #262222
@@ -14,9 +26,8 @@ $hubblue: #0054a6
   line-height: 20px
   font-size: .93333em
   letter-spacing: .0666em
+  font-family: dinlight
   
-
-
 =killradius 
   border: none
   border-radius: 0
@@ -111,6 +122,8 @@ button.hubnav
     float: left
     margin-top: 20px
   .panel-title
+    font-family: dinmed
+    font-size: 1.5em
     margin-left: 5%
     width: 25%
   .nav.carat 
@@ -137,6 +150,10 @@ button.hubnav
   
 #hub2, #hub4, #collapseTwo, #collapseFour
   @include hubpanel2
+
+.panel-body
+  h2
+    font-family: dinmed
 
 
 /* Conversations */  

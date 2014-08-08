@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load url from future %}
+
 {% block pagetitle %}<h1>Django Impersonate User List</h1>{% endblock %}
 
 {% block content %}
@@ -9,7 +9,10 @@
 		{% if user.is_superuser %}
       <li>{{ user.username }} - Superuser (can't impersonate)</li>
 		{% else %}
-      <li><a href="{% url 'impersonate-start' user.id %}{{redirect}}">{{ user.username }}</a> - Impersonate</li>
+{% ifequal user.id -1 %}
+{% else %}
+      <li><a href="{%url 'impersonate-start' user.id %}{{redirect}}">{{ user.username }}</a> - Impersonate</li>
+{% endifequal %}
 			{% endif %}
     {% endfor %}
   </ul>

@@ -1,3 +1,12 @@
+/* Fonts */
+@font-face {
+  font-family: "dinlight";
+  src: url("../fonts/DINWeb-light.eot");
+  src: url("../fonts/DINWeb-light.woff") format("woff"); }
+@font-face {
+  font-family: "dinmed";
+  src: url("../fonts/DINWeb-medium.eot");
+  src: url("../fonts/DINWeb-medium.woff") format("woff"); }
 /* Colors */
 /* Mixin Styles */
 /* Base Styles */
@@ -10,6 +19,7 @@ p {
   line-height: 20px;
   font-size: 0.93333em;
   letter-spacing: 0.0666em;
+  font-family: dinlight;
   padding: 10px 0; }
 
 /* Home Nav */
@@ -76,12 +86,15 @@ button.hubnav {
   font-weight: 200;
   line-height: 20px;
   font-size: 0.93333em;
-  letter-spacing: 0.0666em; }
+  letter-spacing: 0.0666em;
+  font-family: dinlight; }
   .panel-heading div, .panel-heading span {
     display: inline;
     float: left;
     margin-top: 20px; }
   .panel-heading .panel-title {
+    font-family: dinmed;
+    font-size: 1.5em;
     margin-left: 5%;
     width: 25%; }
   .panel-heading .nav.carat {
@@ -115,6 +128,9 @@ button.hubnav {
   border: none;
   border-radius: 0; }
 
+.panel-body h2 {
+  font-family: dinmed; }
+
 /* Conversations */
 .hubconvo {
   margin: 30px 0; }
@@ -137,6 +153,7 @@ button.hubnav {
   line-height: 20px;
   font-size: 0.93333em;
   letter-spacing: 0.0666em;
+  font-family: dinlight;
   border: none;
   border-radius: 0; }
   .convoblock div, .convoblock p {
