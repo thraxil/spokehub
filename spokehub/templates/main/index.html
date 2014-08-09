@@ -1,23 +1,32 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
+{% load waffle_tags %}
 
 {% block navbar %}
 	<ul class="nav nav-justified">
       <li><button type="button" class="btn hubnav"
+{% flag section_how %}
 									data-toggle="collapse"
 									data-target="#collapseOne"
+{% endflag %}
 									data-parent="#accordian">HOW</button></li>
       <li><button type="button" class="btn hubnav"
+{% flag section_we %}
 									data-toggle="collapse"
 									data-target="#collapseTwo"
+{% endflag %}
 									data-parent="#accordian">WE</button></li>
       <li><button type="button" class="btn hubnav"
+{% flag section_work %}
 									data-toggle="collapse"
 									data-target="#collapseThree"
+{% endflag %}
 									data-parent="#accordian">WORK</button></li>
       <li><button type="button" class="btn hubnav"
+{% flag section_now %}
 									data-toggle="collapse"
 									data-target="#collapseFour"
+{% endflag %}
 									data-parent="#accordian">NOW</button></li>
 
 		</ul>
@@ -35,8 +44,9 @@
 
 
 <div class="panel-group" id="accordion">
-  <div class="panel panel-default active-panel">
-    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+  <div class="panel panel-default">
+    <a {% flag section_how %} data-toggle="collapse"
+			 data-parent="#accordion" href="#collapseOne"{% endflag %}>
     	<div id="hub1" class="panel-heading">
       	<div class="panel-title"> 
          How
@@ -46,8 +56,8 @@
         
 	    </div>
      </a>
-
-    <div id="collapseOne" class="panel-collapse collapse in">
+{% flag section_how %}
+    <div id="collapseOne" class="panel-collapse collapse">
       <div class="panel-body">
 				<div class="container">
        <div class="panelbreak white"></div>
@@ -64,9 +74,9 @@
         occaecat craft beer farm-to-table, raw denim aesthetic synth
         nesciunt you probably haven't heard of them accusamus labore
         sustainable VHS.
-		</p>
-		<div class="panelbreak white"></div>
-		<div class="hubconvo">
+			 </p>
+			 <div class="panelbreak white"></div>
+			 <div class="hubconvo">
 				<div class="row">
 					<div class="col-sm-1 col-md-1">
 					<img data-src="holder.js/100%x200" alt="Generic placeholder thumbnail" width="100" height="100">
@@ -117,17 +127,20 @@
 				</div>
       </div>
     </div>
+{% endflag %}
   </div>
   <div class="panel panel-default">
-  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+  <a {% flag section_we %}data-toggle="collapse"
+		 data-parent="#accordion" href="#collapseTwo"{% endflag %}>
   	 <div id="hub2" class="panel-heading">
       <div class="panel-title">
           We        
       </div>
-      <div class="desc">Explorers, thinkers and (trouble-)makers, figuring out the future</div>
+      <div class="desc">A MANIFESTO OF (TROUBLE) MAKERS</div>
       <span class="glyphicon glyphicon-play pull-right"></span>
     </div>
       </a>
+{% flag section_we %}
     <div id="collapseTwo" class="panel-collapse collapse">
       <div class="panel-body">
 				<div class="container">
@@ -145,10 +158,12 @@
 				</div>
       </div>
     </div>
+{% endflag %}
   </div>
 
   <div class="panel panel-default">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">  	
+<a {% flag section_work %} data-toggle="collapse"
+	 data-parent="#accordion" href="#collapseThree"{% endflag %}>  	
     <div id="hub3" class="panel-heading">
       <div class="panel-title">
           Work        
@@ -157,20 +172,13 @@
       <span class="glyphicon glyphicon-play pull-right"></span>
     </div>
 </a>
+{% flag section_work %}
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
 				<div class="container">
 				<p>
 					Drop-down menu
 					Headline copy:
-				</p>
-
-				<p>Insights / We explore possibilities for new creative solutions, from four perspectives. [graphic of - Cultural/Category/Consumer/Future]
-					Strategy / Great strategy defines opportunities and inspires creatives in their own language. [examples for Identity - Design - Futures]
-					Creative / Great creative solutions are the alchemy of analytic information with aesthetic presentation [annotated slide show of principals' work examples]
-					Events / The first Spokehub art event is scheduled for
-					September 2014. Join/Follow/Bookmark for timely
-					announcements.
 				</p>
 
 				<div class="work-samples">
@@ -187,10 +195,12 @@
 				</div>
       </div>
     </div>
+{% endflag %}
   </div>
 
-  <div class="panel panel-default">
-<a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+  <div class="panel panel-default active-panel">
+<a {% flag section_now %}data-toggle="collapse"
+	 data-parent="#accordion" href="#collapseFour"{% endflag %}>
   	    <div id="hub4" class="panel-heading">
       <div class="panel-title">
           Now
@@ -199,7 +209,8 @@
       <span class="glyphicon glyphicon-play pull-right"></span>
     </div>
       </a>
-    <div id="collapseFour" class="panel-collapse collapse">
+{% flag section_now %}
+    <div id="collapseFour" class="panel-collapse collapse in">
       <div class="panel-body">
 				<div id="worktiles">
 
@@ -231,6 +242,7 @@
      			 </div>
     </div>
   </div>
+{% endflag %}
 </div>
 
 {% endblock %}
