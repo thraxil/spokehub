@@ -40,6 +40,8 @@ urlpatterns = patterns(
     (r'item/(?P<pk>\d+)/reply/$', views.ReplyToItemView.as_view()),
     (r'test/$', TemplateView.as_view(template_name='layout_test.html')),
 
+    (r'link/twitter/', include('spokehub.twitter.urls')),
+
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/$', TemplateView.as_view(template_name="stats.html")),
