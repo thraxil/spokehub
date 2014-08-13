@@ -13,10 +13,13 @@
 html, body {
   margin: 0; }
 
-p, h1, h2, h3, h4, h5, h6 {
+p, span, h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   font-family: dinlight;
   letter-spacing: 0.045em; }
+
+a {
+  color: #262222; }
 
 /* Home Nav */
 .hubauth {
@@ -43,7 +46,8 @@ p, h1, h2, h3, h4, h5, h6 {
     color: #262222;
     text-transform: uppercase; }
     .hubauth a:hover {
-      color: #555555; }
+      color: #555555;
+      text-decoration: none; }
 
 .nav {
   text-transform: uppercase;
@@ -52,7 +56,8 @@ p, h1, h2, h3, h4, h5, h6 {
     font-size: 1.5em;
     background-color: white; }
     .nav .hubnav:hover {
-      color: #555555; }
+      color: #555555;
+      text-decoration: none; }
   .nav .caret {
     border-top-color: #262222;
     border-bottom-color: #262222; }
@@ -68,7 +73,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .staticnav .nav-justified {
   margin-top: 60px;
-  margin-left: -12%; }
+  margin-left: -11%; }
 
 .nav-justified > li {
   display: inline;
@@ -135,7 +140,8 @@ button.hubnav {
   border: none;
   border-radius: 0; }
   #hub1 .desc:hover, #hub3 .desc:hover, #collapseOne .desc:hover, #collapseThree .desc:hover {
-    color: whitesmoke; }
+    color: #dddddd;
+    text-decoration: none; }
 
 #hub2, #hub4, #collapseTwo, #collapseFour {
   background-color: white;
@@ -143,7 +149,11 @@ button.hubnav {
   border: none;
   border-radius: 0; }
   #hub2 .desc:hover, #hub4 .desc:hover, #collapseTwo .desc:hover, #collapseFour .desc:hover {
-    color: #555555; }
+    color: #555555;
+    text-decoration: none; }
+
+#hub1 .desc {
+  margin-top: 11px; }
 
 .panel-body h2 {
   text-transform: uppercase;
@@ -201,5 +211,16 @@ button.hubnav {
 #footer {
   background-color: #262222;
   color: white; }
-  #footer img, #footer span {
-    margin: 0 0 0 15px; }
+  #footer a {
+    text-transform: uppercase;
+    font-family: dinmed;
+    color: whitesmoke;
+    margin-left: 25px; }
+    #footer a:hover {
+      color: #dddddd;
+      text-decoration: none; }
+  #footer span {
+    text-transform: uppercase;
+    font-family: dinlight;
+    color: whitesmoke;
+    margin-left: 25px; }

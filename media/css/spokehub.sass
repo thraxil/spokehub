@@ -30,6 +30,11 @@ $hubblue: #0054a6
  
 =hubhover
   color: #555 
+  text-decoration: none
+  
+=hubhoverlt
+  color: #ddd
+  text-decoration: none
   
 =killradius 
   border: none
@@ -51,9 +56,12 @@ $hubblue: #0054a6
 html, body 
   margin: 0
   
-p, h1, h2, h3, h4, h5, h6
+p, span, h1, h2, h3, h4, h5, h6
   @include hubfont  
   letter-spacing: .045em
+
+a
+  color: $hubblack
   
   
 /* Home Nav */
@@ -106,7 +114,7 @@ p, h1, h2, h3, h4, h5, h6
 
 .staticnav .nav-justified
   margin-top: 60px
-  margin-left: -12%
+  margin-left: -11%
 
 .nav-justified>li 
   display: inline
@@ -172,12 +180,16 @@ button.hubnav
 #hub1, #hub3, #collapseOne, #collapseThree
   @include hubpanel1
   .desc:hover
-    color: #f5f5f5
+    @include hubhoverlt
 
 #hub2, #hub4, #collapseTwo, #collapseFour
   @include hubpanel2
   .desc:hover
     @include hubhover
+ 
+#hub1
+  .desc
+    margin-top: 11px 
   
 
 .panel-body
@@ -234,5 +246,13 @@ button.hubnav
 #footer
   background-color: $hubblack
   color: #fff
-  img, span
-    margin: 0 0 0 15px
+  a
+    @include hublink
+    color: #f5f5f5
+    margin-left: 25px
+    &:hover
+      @include hubhoverlt
+  span
+    @include hubfont
+    color: #f5f5f5
+    margin-left: 25px    
