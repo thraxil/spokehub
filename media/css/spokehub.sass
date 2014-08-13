@@ -28,6 +28,14 @@ $hubblue: #0054a6
   letter-spacing: .0666em
   font-family: dinlight
   
+=hublink
+  text-transform: uppercase
+  font-weight: 400
+  line-height: 20px
+  font-size: .93333em
+  letter-spacing: .0666em
+  font-family: dinmed 
+  
 =killradius 
   border: none
   border-radius: 0
@@ -70,6 +78,9 @@ p
     padding: 10px
     
 .nav
+  @include hublink
+  .hubnav
+    font-size: 1.5em
   .open>a
     background-color: #fff
   .caret
@@ -88,6 +99,7 @@ p
 
 .staticnav .nav-justified
   margin-top: 60px
+  margin-left: -12%
 
 .nav-justified>li 
   display: inline
@@ -129,6 +141,9 @@ button.hubnav
   .nav.carat 
     border-top-color: $hubblack
     border-bottom-color: $hubblack
+  .desc
+    font-size: 1.25em
+    width: 25%
 
 .panelbreak.white
   width: 100%
@@ -153,7 +168,8 @@ button.hubnav
 
 .panel-body
   h2
-    font-family: dinmed
+    @include hublink
+    font-size: 1.5em
 
 
 /* Conversations */  
@@ -176,6 +192,10 @@ button.hubnav
   padding: 20px
   @include hubfont 
   @include killradius
+  .user_name
+    @include hublink
+  .user_time
+    @include hublink
   div, p
     text-align: center
  

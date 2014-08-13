@@ -39,11 +39,20 @@ p {
     border-radius: 0;
     padding: 10px; }
 
-.nav .open > a {
-  background-color: white; }
-.nav .caret {
-  border-top-color: #262222;
-  border-bottom-color: #262222; }
+.nav {
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 0.93333em;
+  letter-spacing: 0.0666em;
+  font-family: dinmed; }
+  .nav .hubnav {
+    font-size: 1.5em; }
+  .nav .open > a {
+    background-color: white; }
+  .nav .caret {
+    border-top-color: #262222;
+    border-bottom-color: #262222; }
 
 .open .dropdown-toggle.btn-default {
   background-color: white; }
@@ -55,7 +64,8 @@ p {
     background-color: white; }
 
 .staticnav .nav-justified {
-  margin-top: 60px; }
+  margin-top: 60px;
+  margin-left: -12%; }
 
 .nav-justified > li {
   display: inline;
@@ -100,6 +110,9 @@ button.hubnav {
   .panel-heading .nav.carat {
     border-top-color: #262222;
     border-bottom-color: #262222; }
+  .panel-heading .desc {
+    font-size: 1.25em;
+    width: 25%; }
 
 .panelbreak.white {
   width: 100%;
@@ -129,7 +142,13 @@ button.hubnav {
   border-radius: 0; }
 
 .panel-body h2 {
-  font-family: dinmed; }
+  text-transform: uppercase;
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 0.93333em;
+  letter-spacing: 0.0666em;
+  font-family: dinmed;
+  font-size: 1.5em; }
 
 /* Conversations */
 .hubconvo {
@@ -156,6 +175,20 @@ button.hubnav {
   font-family: dinlight;
   border: none;
   border-radius: 0; }
+  .convoblock .user_name {
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 0.93333em;
+    letter-spacing: 0.0666em;
+    font-family: dinmed; }
+  .convoblock .user_time {
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 20px;
+    font-size: 0.93333em;
+    letter-spacing: 0.0666em;
+    font-family: dinmed; }
   .convoblock div, .convoblock p {
     text-align: center; }
 
