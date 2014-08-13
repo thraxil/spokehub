@@ -22,19 +22,14 @@ $hubblue: #0054a6
 
 =hubfont
   text-transform: uppercase
-  font-weight: 200
-  line-height: 20px
-  font-size: .93333em
-  letter-spacing: .0666em
   font-family: dinlight
   
 =hublink
   text-transform: uppercase
-  font-weight: 400
-  line-height: 20px
-  font-size: .93333em
-  letter-spacing: .0666em
   font-family: dinmed 
+ 
+=hubhover
+  color: #555 
   
 =killradius 
   border: none
@@ -56,15 +51,26 @@ $hubblue: #0054a6
 html, body 
   margin: 0
   
-p 
+p, h1, h2, h3, h4, h5, h6
   @include hubfont  
-  padding: 10px 0 
+  letter-spacing: .045em
   
   
 /* Home Nav */
 
 .hubauth
   margin-top: 60px
+  li
+    float: right
+    padding: 0 45px 0 0
+    ul
+      @include killradius
+      padding: 10px
+      left: -22%
+      &.dropdown-menu
+        box-shadow: none
+      li
+        float: left
   button
     display: inline
     @include killradius
@@ -73,16 +79,17 @@ p
   a
     color: $hubblack
     text-transform: uppercase
-  ul
-    @include killradius
-    padding: 10px
-    
+    &:hover
+      @include hubhover
+
 .nav
   @include hublink
   .hubnav
     font-size: 1.5em
-  .open>a
+    a
     background-color: #fff
+    &:hover
+      @include hubhover
   .caret
     border-top-color: $hubblack
     border-bottom-color: $hubblack   
@@ -128,7 +135,7 @@ button.hubnav
      
 .panel-heading
   min-height: 85px
-  @include hubfont
+  @include hublink
   div, span
     display: inline
     float: left
@@ -142,8 +149,10 @@ button.hubnav
     border-top-color: $hubblack
     border-bottom-color: $hubblack
   .desc
-    font-size: 1.25em
+    font-size: 1.15em
     width: 25%
+    letter-spacing: .045em
+
 
 .panelbreak.white
   width: 100%
@@ -162,9 +171,14 @@ button.hubnav
 
 #hub1, #hub3, #collapseOne, #collapseThree
   @include hubpanel1
-  
+  .desc:hover
+    color: #f5f5f5
+
 #hub2, #hub4, #collapseTwo, #collapseFour
   @include hubpanel2
+  .desc:hover
+    @include hubhover
+  
 
 .panel-body
   h2
@@ -210,7 +224,9 @@ button.hubnav
   padding: 30px
 
 .tile 
-  width: 350px
+  @include hubfont
+  letter-spacing: .045em
+  width: 300px
   padding: 10px
   margin: 10px 0
   

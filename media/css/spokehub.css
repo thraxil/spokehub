@@ -13,18 +13,26 @@
 html, body {
   margin: 0; }
 
-p {
+p, h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
-  font-weight: 200;
-  line-height: 20px;
-  font-size: 0.93333em;
-  letter-spacing: 0.0666em;
   font-family: dinlight;
-  padding: 10px 0; }
+  letter-spacing: 0.045em; }
 
 /* Home Nav */
 .hubauth {
   margin-top: 60px; }
+  .hubauth li {
+    float: right;
+    padding: 0 45px 0 0; }
+    .hubauth li ul {
+      border: none;
+      border-radius: 0;
+      padding: 10px;
+      left: -22%; }
+      .hubauth li ul.dropdown-menu {
+        box-shadow: none; }
+      .hubauth li ul li {
+        float: left; }
   .hubauth button {
     display: inline;
     border: none;
@@ -34,22 +42,17 @@ p {
   .hubauth a {
     color: #262222;
     text-transform: uppercase; }
-  .hubauth ul {
-    border: none;
-    border-radius: 0;
-    padding: 10px; }
+    .hubauth a:hover {
+      color: #555555; }
 
 .nav {
   text-transform: uppercase;
-  font-weight: 400;
-  line-height: 20px;
-  font-size: 0.93333em;
-  letter-spacing: 0.0666em;
   font-family: dinmed; }
   .nav .hubnav {
-    font-size: 1.5em; }
-  .nav .open > a {
+    font-size: 1.5em;
     background-color: white; }
+    .nav .hubnav:hover {
+      color: #555555; }
   .nav .caret {
     border-top-color: #262222;
     border-bottom-color: #262222; }
@@ -93,11 +96,7 @@ button.hubnav {
 .panel-heading {
   min-height: 85px;
   text-transform: uppercase;
-  font-weight: 200;
-  line-height: 20px;
-  font-size: 0.93333em;
-  letter-spacing: 0.0666em;
-  font-family: dinlight; }
+  font-family: dinmed; }
   .panel-heading div, .panel-heading span {
     display: inline;
     float: left;
@@ -111,8 +110,9 @@ button.hubnav {
     border-top-color: #262222;
     border-bottom-color: #262222; }
   .panel-heading .desc {
-    font-size: 1.25em;
-    width: 25%; }
+    font-size: 1.15em;
+    width: 25%;
+    letter-spacing: 0.045em; }
 
 .panelbreak.white {
   width: 100%;
@@ -134,19 +134,19 @@ button.hubnav {
   color: white;
   border: none;
   border-radius: 0; }
+  #hub1 .desc:hover, #hub3 .desc:hover, #collapseOne .desc:hover, #collapseThree .desc:hover {
+    color: whitesmoke; }
 
 #hub2, #hub4, #collapseTwo, #collapseFour {
   background-color: white;
   color: #262222;
   border: none;
   border-radius: 0; }
+  #hub2 .desc:hover, #hub4 .desc:hover, #collapseTwo .desc:hover, #collapseFour .desc:hover {
+    color: #555555; }
 
 .panel-body h2 {
   text-transform: uppercase;
-  font-weight: 400;
-  line-height: 20px;
-  font-size: 0.93333em;
-  letter-spacing: 0.0666em;
   font-family: dinmed;
   font-size: 1.5em; }
 
@@ -168,26 +168,14 @@ button.hubnav {
   background-color: white;
   padding: 20px;
   text-transform: uppercase;
-  font-weight: 200;
-  line-height: 20px;
-  font-size: 0.93333em;
-  letter-spacing: 0.0666em;
   font-family: dinlight;
   border: none;
   border-radius: 0; }
   .convoblock .user_name {
     text-transform: uppercase;
-    font-weight: 400;
-    line-height: 20px;
-    font-size: 0.93333em;
-    letter-spacing: 0.0666em;
     font-family: dinmed; }
   .convoblock .user_time {
     text-transform: uppercase;
-    font-weight: 400;
-    line-height: 20px;
-    font-size: 0.93333em;
-    letter-spacing: 0.0666em;
     font-family: dinmed; }
   .convoblock div, .convoblock p {
     text-align: center; }
@@ -202,7 +190,10 @@ button.hubnav {
   padding: 30px; }
 
 .tile {
-  width: 350px;
+  text-transform: uppercase;
+  font-family: dinlight;
+  letter-spacing: 0.045em;
+  width: 300px;
   padding: 10px;
   margin: 10px 0; }
 
