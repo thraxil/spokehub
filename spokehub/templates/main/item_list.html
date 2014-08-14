@@ -3,7 +3,8 @@
 
 {% block content %}
 
-{% if not request.user.is_anonymous %}
+<div class="container">
+{% if request.user.is_superuser %}
 <a href="add/" class="btn btn-primary pull-right">+Add</a>
 {% endif %}
 
@@ -13,5 +14,5 @@
 <h3><a href="{{item.get_absolute_url}}">{{item.title}}</a></h3>
 {{item.body|markdown}}
 {% endfor %}
-
+</div>
 {% endblock %}

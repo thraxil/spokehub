@@ -19,10 +19,9 @@ class Item(models.Model):
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User)
 
     class Meta:
-        ordering = ['added', ]
+        ordering = ['-added', ]
 
     def get_absolute_url(self):
         return "/item/%04d/%02d/%02d/%d/" % (

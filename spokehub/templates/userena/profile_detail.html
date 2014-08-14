@@ -116,6 +116,47 @@
 </div><!-- /.modal -->
 </form>
 
+{% if user.is_superuser %}
+<a href="#add-conversation" data-toggle="modal"
+	 data-target="#add-conversation" class="btn btn-primary">Start a
+	 new Conversation</a>
+
+<a href="/item/" 
+	 class="btn btn-primary">View Archived Conversations</a>
+
+
+<form action="/item/add/" method="post" enctype="multipart/form-data" role="form">
+<div class="modal fade" id="add-conversation">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Start a New Conversation</h4>
+      </div>
+      <div class="modal-body">
+
+				<div class="form-group">
+					<label for="conversation-title">Title</label>
+					<input type="text" class="form-control" id="conversation-title" placeholder="Title" name="title">
+				</div>
+
+				<div class="form-group">
+					<label for="caption">Body</label>
+					<textarea class="form-control" rows="10" name="body"></textarea>
+				</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <input type="submit" class="btn btn-primary" value="Go!"/>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</form>
+
+{% endif %}
+
 {% endif %}
 
 {% with profile.work_samples as work_samples %}
@@ -139,7 +180,7 @@
  {% if user.username == profile.user.username %}
 {% if work_samples.count < 3 %}
 <a href="#add-work-sample" data-toggle="modal"
-	 data-target="#add-work-sample" class="btn btn-primary">Upload Another Work Samples</a>
+	 data-target="#add-work-sample" class="btn btn-primary">Upload Another Work Sample</a>
 {% endif %}
 {% endif %}
 
