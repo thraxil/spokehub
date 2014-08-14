@@ -15,6 +15,8 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['team'] = User.objects.all().exclude(username='AnonymousUser')
         context['work_samples'] = WorkSample.objects.all()
+        if Item.objects.all().count() > 0:
+            context['conversation'] = Item.objects.all()[0]
         return context
 
 

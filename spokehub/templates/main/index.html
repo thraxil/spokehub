@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 {% load waffle_tags %}
+{% load markup %}
 
 {% block navbar %}
 	<ul class="nav nav-justified">
@@ -61,20 +62,12 @@
       <div class="panel-body">
 				<div class="container">
        <div class="panelbreak white"></div>
-       <h2>brainstorm: laughter by design</h2>
-       <p>
-       	Anim pariatur cliche reprehenderit, enim eiusmod high life
-        accusamus terry richardson ad squid. 3 wolf moon officia aute,
-        non cupidatat skateboard dolor brunch. Food truck quinoa
-        nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-        aliqua put a bird on it squid single-origin coffee nulla
-        assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-        beer labore wes anderson cred nesciunt sapiente ea
-        proident. Ad vegan excepteur butcher vice lomo. Leggings
-        occaecat craft beer farm-to-table, raw denim aesthetic synth
-        nesciunt you probably haven't heard of them accusamus labore
-        sustainable VHS.
-			 </p>
+			 {% if conversation %}
+       <h2>{{conversation.title}}</h2>
+			 {{conversation.body|markdown}}
+			 {% else %}
+			 <p>No conversations yet...</p>
+			 {% endif %}
 			 <div class="panelbreak white"></div>
 			 <div class="hubconvo">
 				<div class="row">
