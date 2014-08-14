@@ -18,49 +18,17 @@ class IndexView(TemplateView):
         return context
 
 
-class NewsIndexView(ListView):
+class ItemIndexView(ListView):
     model = Item
-    queryset = Item.objects.filter(section='news')
-    template_name = "main/news_list.html"
+    queryset = Item.objects.filter()
+    template_name = "main/item_list.html"
 
 
-class NewsCreateView(CreateView):
-    model = Item
-
-    def get_initial(self):
-        return dict(
-            section='news',
-            author=self.request.user)
-
-
-class ChallengeIndexView(ListView):
-    model = Item
-    queryset = Item.objects.filter(section='challenge')
-    template_name = "main/challenge_list.html"
-
-
-class ChallengeCreateView(CreateView):
+class ItemCreateView(CreateView):
     model = Item
 
     def get_initial(self):
-        return dict(
-            section='challenge',
-            author=self.request.user)
-
-
-class CaseIndexView(ListView):
-    model = Item
-    queryset = Item.objects.filter(section='case')
-    template_name = "main/case_list.html"
-
-
-class CaseCreateView(CreateView):
-    model = Item
-
-    def get_initial(self):
-        return dict(
-            section='case',
-            author=self.request.user)
+        return dict(author=self.request.user)
 
 
 class ItemDetailView(DetailView):

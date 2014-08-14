@@ -16,22 +16,17 @@ add_introspection_rules(
 
 class Item(models.Model):
     title = models.CharField(max_length=256)
-    section = models.CharField(
-        max_length=256,
-        choices=(('news', 'News Item'),
-                 ('challenge', 'Challenge'),
-                 ('case', 'Case Study')))
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User)
 
     class Meta:
-        ordering = ['section', 'added']
+        ordering = ['added', ]
 
     def get_absolute_url(self):
-        return "/%s/%04d/%02d/%02d/%d/" % (
-            self.section, self.added.year, self.added.month,
+        return "/item/%04d/%02d/%02d/%d/" % (
+            self.added.year, self.added.month,
             self.added.day, self.id)
 
     def touch(self):

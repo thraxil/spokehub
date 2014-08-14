@@ -14,24 +14,14 @@ urlpatterns = patterns(
     (r'^accounts/', include('userena.urls')),
     (r'^$', views.IndexView.as_view()),
 
-    (r'^news/$', views.NewsIndexView.as_view()),
-    (r'^news/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
-     views.ItemDetailView.as_view()),
-    (r'^news/add/$', views.NewsCreateView.as_view()),
-
     (r'^about/$', TemplateView.as_view(template_name="about.html")),
 
-    (r'^challenge/$', views.ChallengeIndexView.as_view()),
-    (r'^challenge/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
+    (r'^item/$', views.ItemIndexView.as_view()),
+    (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
      views.ItemDetailView.as_view()),
-    (r'^challenge/add/$', views.ChallengeCreateView.as_view()),
+    (r'^item/add/$', views.ItemCreateView.as_view()),
 
     (r'^add_work_sample/$', views.AddWorkSampleView.as_view()),
-
-    (r'^case/$', views.CaseIndexView.as_view()),
-    (r'^case/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
-     views.ItemDetailView.as_view()),
-    (r'^case/add/$', views.CaseCreateView.as_view()),
 
     (r'network/$', TemplateView.as_view(template_name='network/index.html')),
 
