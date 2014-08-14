@@ -22,6 +22,8 @@ urlpatterns = patterns(
     (r'^item/add/$', views.ItemCreateView.as_view()),
 
     (r'^add_work_sample/$', views.AddWorkSampleView.as_view()),
+    (r'^work_sample/(?P<pk>\d+)/delete/$',
+     views.DeleteWorkSampleView.as_view()),
 
     (r'network/$', TemplateView.as_view(template_name='network/index.html')),
 

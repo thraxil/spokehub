@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 from .models import Item, WorkSample
 
@@ -53,3 +53,10 @@ class AddWorkSampleView(View):
         ws.save_image(request.FILES['image'])
         ws.save()
         return HttpResponseRedirect("/accounts/%s/" % request.user.username)
+
+
+class DeleteWorkSampleView(DeleteView):
+    model = WorkSample
+
+    def get_success_url(self):
+        return "/accounts/" + self.object.user.username + "/"

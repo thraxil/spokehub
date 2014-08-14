@@ -169,6 +169,9 @@
     <div class="thumbnail">
       <img src="{% thumbnail ws.image 600x200 %}" alt="{{ws.title}}"/>
       <div class="caption">
+ {% if user.username == profile.user.username %}
+ <a href="/work_sample/{{ws.id}}/delete/" class="pull-right btn btn-danger btn-xs">delete</a>
+ {% endif %}
         <h3>{{ws.title}}</h3>
         <p>{{ws.caption}}</p>
       </div>
