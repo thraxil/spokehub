@@ -6,6 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
 from .models import Item, WorkSample
+import random
 
 
 class IndexView(TemplateView):
@@ -14,7 +15,9 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['team'] = User.objects.all().exclude(username='AnonymousUser')
-        context['work_samples'] = WorkSample.objects.all()
+        work_samples = list(WorkSample.objects.all())
+        random.shuffle(work_samples)
+        context['work_samples'] = work_samples
         if Item.objects.all().count() > 0:
             context['conversation'] = Item.objects.all()[0]
         return context
