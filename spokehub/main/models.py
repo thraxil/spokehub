@@ -23,6 +23,9 @@ class Item(models.Model):
     class Meta:
         ordering = ['-added', ]
 
+    def __unicode__(self):
+        return self.title
+
     def get_absolute_url(self):
         return "/item/%04d/%02d/%02d/%d/" % (
             self.added.year, self.added.month,
