@@ -2,7 +2,7 @@
 {% load markup %}
 
 {% block content %}
-
+<div class="container">
 <h2>{{item.title}}</h2>
 <p class="byline">{{item.added}}</p>
 {{item.body|markdown}}
@@ -40,5 +40,5 @@
 {% endif %}
 </div>
 </div>
-
+</div>
 {% endblock %}
