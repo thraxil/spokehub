@@ -67,6 +67,9 @@ class WorkSample(models.Model):
     title = models.TextField(default="", blank=True)
     caption = models.TextField(default="", blank=True)
 
+    def __unicode__(self):
+        return self.user.username + " - " + self.title
+
     def save_image(self, f):
         ext = f.name.split(".")[-1].lower()
         basename = slugify(f.name.split(".")[-2].lower())[:20]
