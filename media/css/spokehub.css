@@ -1,12 +1,12 @@
 /* Fonts */
 @font-face {
   font-family: "dinlight";
-  src: url("../fonts/DINWeb-Light.eot");
-  src: url("../fonts/DINWeb-Light.woff") format("woff"); }
+  src: url("../fonts/DINWeb-light.eot");
+  src: url("../fonts/DINWeb-light.woff") format("woff"); }
 @font-face {
   font-family: "dinmed";
-  src: url("../fonts/DINWeb-Medium.eot");
-  src: url("../fonts/DINWeb-Medium.woff") format("woff"); }
+  src: url("../fonts/DINWeb-medium.eot");
+  src: url("../fonts/DINWeb-medium.woff") format("woff"); }
 /* Colors */
 /* Mixin Styles */
 /* Base Styles */
@@ -101,7 +101,7 @@ button.hubnav {
 .panel-heading {
   min-height: 85px;
   text-transform: uppercase;
-  font-family: dinmed; }
+  font-family: dinlight; }
   .panel-heading div, .panel-heading span {
     display: inline;
     float: left;
