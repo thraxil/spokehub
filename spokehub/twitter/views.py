@@ -31,9 +31,10 @@ class CallbackView(View):
             )
         verifier = request.GET.get('oauth_verifier')
         auth.get_access_token(verifier)
-        TwitterAccount.objects.create(
+        ta = TwitterAccount.objects.create(
             user=request.user,
             oauth_token=auth.access_token.key,
             oauth_verifier=auth.access_token.secret)
+        ta.update_details()
         return HttpResponseRedirect(
             '/accounts/' + request.user.username + '/')

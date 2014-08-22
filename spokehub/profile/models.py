@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext as _
 from userena.models import UserenaBaseProfile
 from spokehub.main.models import WorkSample
+from spokehub.twitter.models import TwitterAccount
 
 
 class Profile(UserenaBaseProfile):
@@ -21,3 +22,10 @@ class Profile(UserenaBaseProfile):
 
     def work_samples(self):
         return WorkSample.objects.filter(user=self.user)
+
+    def twitter(self):
+        r = TwitterAccount.objects.filter(user=self)
+        if r.exists():
+            return r[0]
+        else:
+            return None
