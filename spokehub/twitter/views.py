@@ -13,14 +13,27 @@ class AuthView(View):
         auth = tweepy.OAuthHandler(settings.TWITTER_API_KEY,
                                    settings.TWITTER_API_SECRET,
                                    callback_url)
-        return HttpResponseRedirect(auth.get_authorization_url())
+        url = auth.get_authorization_url()
+        request.session[
+            'twitter_request_token_key'] = auth.request_token.key
+        request.session[
+            'twitter_request_token_secret'] = auth.request_token.secret
+        return HttpResponseRedirect(url)
 
 
 class CallbackView(View):
     def get(self, request):
+        auth = tweepy.OAuthHandler(settings.TWITTER_API_KEY,
+                                   settings.TWITTER_API_SECRET)
+        auth.set_request_token(
+            request.session['twitter_request_token_key'],
+            request.session['twitter_request_token_secret']
+            )
+        verifier = request.GET.get('oauth_verifier')
+        auth.get_access_token(verifier)
         TwitterAccount.objects.create(
             user=request.user,
-            oauth_token=request.GET.get('oauth_token'),
-            oauth_verifier=request.GET.get('oauth_verifier'))
+            oauth_token=auth.access_token.key,
+            oauth_verifier=auth.access_token.secret)
         return HttpResponseRedirect(
             '/accounts/' + request.user.username + '/')
