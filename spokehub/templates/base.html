@@ -88,20 +88,15 @@ video.addEventListener('click',function(){
         		<img class="mugshot" src="{{ profile.get_mugshot_url }}" />
         		</a>
         	</li>
-        	<!--
-				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-					<span class="caret"></span>
-					<span class="sr-only">Toggle Dropdown</span>
-				</button>
 
-				<ul class="dropdown-menu" role="menu">
-					{% if request.user.is_superuser %}
-					<li><a href="{% url 'impersonate-list' %}" class="">Impersonate</a></li>
-					{% endif %}
-					<li><a href="/accounts/signout/" class=""><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
-				</ul>
+			{% if request.user.is_superuser %}
+			<li>
+			<a href="{% url 'impersonate-list' %}" class="">Impersonate</a>
 			</li>
-			-->
+			{% endif %}
+			<li>
+			<a href="/accounts/signout/" class="">Log Out</a>
+			</li>
 			
 			{% endif %}
 		</ul>

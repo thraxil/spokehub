@@ -25,7 +25,8 @@ a {
 .hubauth {
   margin-top: 5em; }
   .hubauth li {
-    float: left; }
+    float: left;
+    margin: 0 0 0 1em; }
     .hubauth li ul {
       border: none;
       border-radius: 0;
