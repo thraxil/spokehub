@@ -23,10 +23,9 @@ a {
 
 /* Home Nav */
 .hubauth {
-  margin-top: 60px; }
+  margin-top: 5em; }
   .hubauth li {
-    float: right;
-    padding: 0 45px 0 0; }
+    float: left; }
     .hubauth li ul {
       border: none;
       border-radius: 0;
@@ -48,12 +47,17 @@ a {
     .hubauth a:hover {
       color: #555555;
       text-decoration: none; }
+  .hubauth .mugshot {
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    margin: -2em 2em; }
 
 .nav {
   text-transform: uppercase;
-  font-family: dinmed; }
+  font-family: dinmed;
+  font-size: 1em; }
   .nav .hubnav {
-    font-size: 1.5em;
     background-color: white; }
     .nav .hubnav:hover {
       color: #555555;
@@ -72,7 +76,7 @@ a {
     background-color: white; }
 
 .staticnav .nav-justified {
-  margin-top: 60px;
+  margin-top: 5em;
   margin-left: -11%; }
 
 .nav-justified > li {
@@ -82,7 +86,7 @@ a {
 button.hubnav {
   background-color: white;
   padding: 0;
-  font-size: 14px;
+  font-size: 1.25em;
   font-weight: normal;
   text-align: center;
   white-space: nowrap;
@@ -107,10 +111,11 @@ button.hubnav {
     float: left;
     margin-top: 20px; }
   .panel-heading .panel-title {
-    font-family: dinmed;
     font-size: 1.5em;
     margin-left: 5%;
     width: 25%; }
+  .panel-heading span.glyphicon {
+    margin: 20px 0 0 200px; }
   .panel-heading .nav.carat {
     border-top-color: #262222;
     border-bottom-color: #262222; }
@@ -156,8 +161,6 @@ button.hubnav {
   margin-top: 11px; }
 
 .panel-body h2 {
-  text-transform: uppercase;
-  font-family: dinmed;
   font-size: 1.5em; }
 
 /* Conversations */
@@ -181,12 +184,6 @@ button.hubnav {
   font-family: dinlight;
   border: none;
   border-radius: 0; }
-  .convoblock .user_name {
-    text-transform: uppercase;
-    font-family: dinmed; }
-  .convoblock .user_time {
-    text-transform: uppercase;
-    font-family: dinmed; }
   .convoblock div, .convoblock p {
     text-align: center; }
 
@@ -212,8 +209,6 @@ button.hubnav {
   background-color: #262222;
   color: white; }
   #footer a {
-    text-transform: uppercase;
-    font-family: dinmed;
     color: whitesmoke;
     margin-left: 25px; }
     #footer a:hover {

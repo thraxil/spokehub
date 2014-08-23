@@ -26,7 +26,7 @@ $hubblue: #0054a6
   
 =hublink
   text-transform: uppercase
-  font-family: dinmed 
+  font-family: dinmed  
  
 =hubhover
   color: #555 
@@ -67,10 +67,9 @@ a
 /* Home Nav */
 
 .hubauth
-  margin-top: 60px
+  margin-top: 5em
   li
-    float: right
-    padding: 0 45px 0 0
+    float: left
     ul
       @include killradius
       padding: 10px
@@ -89,11 +88,16 @@ a
     text-transform: uppercase
     &:hover
       @include hubhover
-
+  .mugshot
+    border-radius: 50%
+    width: 75px
+    height: 75px
+    margin: -2em 2em
+    
 .nav
   @include hublink
+  font-size: 1em
   .hubnav
-    font-size: 1.5em
     a
     background-color: #fff
     &:hover
@@ -113,7 +117,7 @@ a
     
 
 .staticnav .nav-justified
-  margin-top: 60px
+  margin-top: 5em
   margin-left: -11%
 
 .nav-justified>li 
@@ -124,7 +128,7 @@ a
 button.hubnav
   background-color: #fff  
   padding: 0 
-  font-size: 14px
+  font-size: 1.25em
   font-weight: normal
   text-align: center
   white-space: nowrap
@@ -149,10 +153,11 @@ button.hubnav
     float: left
     margin-top: 20px
   .panel-title
-    font-family: dinmed
     font-size: 1.5em
     margin-left: 5%
     width: 25%
+  span.glyphicon
+    margin: 20px 0 0 200px
   .nav.carat 
     border-top-color: $hubblack
     border-bottom-color: $hubblack
@@ -194,7 +199,6 @@ button.hubnav
 
 .panel-body
   h2
-    @include hublink
     font-size: 1.5em
 
 
@@ -218,10 +222,6 @@ button.hubnav
   padding: 20px
   @include hubfont 
   @include killradius
-  .user_name
-    @include hublink
-  .user_time
-    @include hublink
   div, p
     text-align: center
  
@@ -247,7 +247,6 @@ button.hubnav
   background-color: $hubblack
   color: #fff
   a
-    @include hublink
     color: #f5f5f5
     margin-left: 25px
     &:hover

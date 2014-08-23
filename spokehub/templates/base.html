@@ -78,9 +78,17 @@ video.addEventListener('click',function(){
 			<li><a href="/accounts/signin/?next=/">login</a></li>
 			<li><a href="/accounts/signup/">signup</a></li>
       {% else %}
-			<li><a href="/accounts/{{request.user.username}}/">
+			<li class="user-text">
+			<a href="/accounts/{{request.user.username}}/">
 			{{request.user.get_profile.get_full_name_or_username}}
-					</a>
+			</a>
+        	</li>
+        	<li>
+        		<a href="/accounts/{{request.user.username}}/">
+        		<img class="mugshot" src="{{ profile.get_mugshot_url }}" />
+        		</a>
+        	</li>
+        	<!--
 				<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
 					<span class="caret"></span>
 					<span class="sr-only">Toggle Dropdown</span>
@@ -93,6 +101,8 @@ video.addEventListener('click',function(){
 					<li><a href="/accounts/signout/" class=""><span class="glyphicon glyphicon-log-out"></span> Log Out</a></li>
 				</ul>
 			</li>
+			-->
+			
 			{% endif %}
 		</ul>
 		{% endblock %}
@@ -107,7 +117,7 @@ video.addEventListener('click',function(){
 {% block footer %}
 
 <div id="footer">
-<div class="container">
+
 <a href="http://artsho.org" target="_blank">ARTSHO</a>
 <a href="mailto:hello@spokehub.org"><img src="/media/img/email.png"></a>
 <a href="http://facebook.com/SpokehubNOW" target="_blank"><img src="/media/img/facebook.png"></a>
@@ -115,7 +125,7 @@ video.addEventListener('click',function(){
 <a href="http://instagram.com/spokehubnow" target="_blank"><img src="/media/img/instagram.png"></a>
 
 <span>&copy; copyright Spokehub 2014 all rights reserved</span>
-</div>
+
 </div>
 
 {% endblock %}
