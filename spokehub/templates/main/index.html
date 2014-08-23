@@ -186,6 +186,8 @@
 						{% for ws in work_samples %}
 						<li>
 							<img src="{% thumbnail ws.image 900x600 %}" alt="{{ws.title}}"/>
+						</li>
+						<li>
 							<p class="flex-caption">{{ws.caption}}</p>
 						</li>
 						{% endfor %}

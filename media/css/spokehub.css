@@ -193,6 +193,13 @@ button.hubnav {
   min-height: 200px;
   background-color: #0054a6; }
 
+/* Slideshow */
+.flex-active-slide .flex-caption {
+  float: left;
+  display: block;
+  clear: both;
+  width: 100%; }
+
 /* Masonry */
 #worktiles {
   padding: 30px; }
