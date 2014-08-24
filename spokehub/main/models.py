@@ -105,3 +105,12 @@ class NowPost(models.Model):
     image_url = models.TextField(default="", blank=True)
     image_width = models.IntegerField(default=0)
     image_height = models.IntegerField(default=0)
+
+    def twitter_handle(self):
+        print "twitter handle"
+        return self.user.get_profile().twitter().screen_name
+
+    def external_link(self):
+        # expand for other services later
+        return ("https://twitter.com/" + self.twitter_handle()
+                + "/status/" + self.service_id)
