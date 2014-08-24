@@ -85,7 +85,7 @@ video.addEventListener('click',function(){
         	</li>
         	<li>
         		<a href="/accounts/{{request.user.username}}/">
-        		<img class="mugshot" src="{{ profile.get_mugshot_url }}" />
+        		<img class="mugshot" src="{{ request.user.get_profile.get_mugshot_url }}" />
         		</a>
         	</li>
 
