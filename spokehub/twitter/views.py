@@ -36,5 +36,6 @@ class CallbackView(View):
             oauth_token=auth.access_token.key,
             oauth_verifier=auth.access_token.secret)
         ta.update_details()
+        ta.fetch_recent_posts()
         return HttpResponseRedirect(
             '/accounts/' + request.user.username + '/')
