@@ -92,3 +92,12 @@ class WorkSample(models.Model):
         fd.close()
         self.image = full_filename
         self.save()
+
+
+class NowPost(models.Model):
+    user = models.ForeignKey(User)
+    created = models.DateTimeField(auto_now_add=True)
+    service = models.TextField(default="", blank=True)
+    service_id = models.TextField(default="", blank=True)
+    text = models.TextField(default="", blank=True)
+    original = models.TextField(default="", blank=True)
