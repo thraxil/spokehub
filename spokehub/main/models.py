@@ -101,3 +101,7 @@ class NowPost(models.Model):
     service_id = models.TextField(default="", blank=True)
     text = models.TextField(default="", blank=True)
     original = models.TextField(default="", blank=True)
+
+    image_url = models.TextField(default="", blank=True)
+    image_width = models.IntegerField(default=0)
+    image_height = models.IntegerField(default=0)
