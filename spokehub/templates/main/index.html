@@ -218,7 +218,14 @@
 
 					{% for post in now_posts %}
 					<div class="tile">
-						{{post.text}} - {{post.user.username}}
+						{{post.user.username}}<br />
+						{{post.text}}<br />
+						{% if post.image_url %}
+						<img src="{{post.image_url}}"
+								 width="{{post.image_width}}"
+								 height="{{post.image_height}}" />
+						{% endif %}
+						{{post.created}}
 					</div>
 					{% endfor %}
 

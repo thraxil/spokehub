@@ -212,6 +212,10 @@ button.hubnav {
   padding: 10px;
   margin: 10px 0; }
 
+.tile img {
+  max-width: 280px;
+}
+
 /* Footer */
 #footer {
   background-color: #262222;

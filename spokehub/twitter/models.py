@@ -59,3 +59,14 @@ class TwitterAccount(models.Model):
             print t.created_at.isoformat()
             print str(np.created)
             print "new twitter post added"
+            if hasattr(t, 'extended_entities'):
+                ee = t.extended_entities
+                if 'media' not in ee:
+                    continue
+                if len(ee['media']) < 1:
+                    continue
+                np.image_url = ee['media'][0]['media_url']
+                np.image_width = ee['media'][0]['sizes']['small']['w']
+                np.image_height = ee['media'][0]['sizes']['small']['h']
+                np.save()
+                print "added an image"
