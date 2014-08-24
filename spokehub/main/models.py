@@ -96,7 +96,7 @@ class WorkSample(models.Model):
 
 class NowPost(models.Model):
     user = models.ForeignKey(User)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField()
     service = models.TextField(default="", blank=True)
     service_id = models.TextField(default="", blank=True)
     text = models.TextField(default="", blank=True)

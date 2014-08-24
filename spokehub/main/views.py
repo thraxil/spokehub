@@ -5,7 +5,7 @@ from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView
 from django.views.generic.list import ListView
-from .models import Item, WorkSample
+from .models import Item, WorkSample, NowPost
 import random
 
 
@@ -20,6 +20,7 @@ class IndexView(TemplateView):
         context['work_samples'] = work_samples
         if Item.objects.all().count() > 0:
             context['conversation'] = Item.objects.all()[0]
+        context['now_posts'] = NowPost.objects.all().order_by("-created")
         return context
 
 

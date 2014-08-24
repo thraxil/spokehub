@@ -215,10 +215,16 @@
     <div id="collapseFour" class="panel-collapse collapse in">
       <div class="panel-body">
 				<div id="worktiles">
+					{% for post in now_posts %}
+					<div class="tile">
+						{{post.text}} - {{post.user.username}}
+					</div>
+					{% endfor %}
 
 					<div class="tile">
 						<div class="videofiller"></div>
 					</div>
+
 					<div class="tile">
 						<h3>CLEVER QUOTABLE QUOTES CLEVER QUOTABLE QUOTES.</h3>
 

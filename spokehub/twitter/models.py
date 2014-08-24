@@ -2,6 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 import tweepy
 from django.conf import settings
+from json import dumps
+from ..main.models import NowPost
 
 
 class TwitterAccount(models.Model):
@@ -24,3 +26,36 @@ class TwitterAccount(models.Model):
         self.screen_name = tw_user.screen_name
         self.profile_image_url = tw_user.profile_image_url
         self.save()
+
+    def fetch_recent_posts(self):
+        api = self.twitter_api()
+        for t in api.user_timeline():
+            r = NowPost.objects.filter(
+                user=self.user,
+                service='twitter',
+                service_id=t.id_str)
+            if r.exists():
+                print "existing twitter post"
+                continue
+            np = NowPost.objects.create(
+                user=self.user,
+                service='twitter',
+                service_id=t.id_str,
+                text=t.text,
+                created=t.created_at.isoformat(),
+                original=dumps(
+                    dict(
+                        author_name=t.author.name,
+                        author_screen_name=t.author.screen_name,
+                        created_at=t.created_at.isoformat(),
+                        id=t.id,
+                        place=t.place,
+                        source=t.source,
+                        source_url=t.source_url,
+                        retweet_count=t.retweet_count,
+                        )
+                    )
+                )
+            print t.created_at.isoformat()
+            print str(np.created)
+            print "new twitter post added"
