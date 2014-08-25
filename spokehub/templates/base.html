@@ -89,11 +89,6 @@ video.addEventListener('click',function(){
         		</a>
         	</li>
 
-			{% if request.user.is_superuser %}
-			<li>
-			<a href="{% url 'impersonate-list' %}" class="">Impersonate</a>
-			</li>
-			{% endif %}
 			<li>
 			<a href="/accounts/signout/" class="">Log Out</a>
 			</li>
