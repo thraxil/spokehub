@@ -107,7 +107,6 @@ class NowPost(models.Model):
     image_height = models.IntegerField(default=0)
 
     def twitter_handle(self):
-        print "twitter handle"
         return self.user.get_profile().twitter().screen_name
 
     def external_link(self):
