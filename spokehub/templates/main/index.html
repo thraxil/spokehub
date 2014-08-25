@@ -225,7 +225,7 @@
 								 width="{{post.image_width}}"
 								 height="{{post.image_height}}" />
 						{% endif %}
-						<a href="{{post.external_link}}">{{post.created}}</a>
+						<a href="{{post.external_link}}">{{post.created|timesince}} ago</a>
 					</div>
 					{% endfor %}
 
