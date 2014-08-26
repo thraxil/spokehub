@@ -179,21 +179,16 @@
 {% flag section_work %}
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
-				<div class="container">
 
 				<div class="work-samples">
 					<ul class="slides">
 						{% for ws in work_samples %}
 						<li>
 							<img src="{% thumbnail ws.image 900x600 %}" alt="{{ws.title}}"/>
-						</li>
-						<li>
 							<p class="flex-caption">{{ws.caption}}</p>
 						</li>
 						{% endfor %}
 					</ul>
-				</div>
-
 				</div>
       </div>
     </div>
