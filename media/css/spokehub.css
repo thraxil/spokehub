@@ -194,6 +194,18 @@ button.hubnav {
   background-color: #0054a6; }
 
 /* Slideshow */
+.flex-direction-nav .flex-prev {
+  left: 0 !important;
+  float: left !important; }
+.flex-direction-nav .flex-next {
+  right: 0 !important;
+  float: right !important; }
+.flex-direction-nav a {
+  position: relative !important; }
+
+.flex-control-nav {
+  display: none !important; }
+
 .flex-active-slide .flex-caption {
   float: left;
   display: block;
@@ -211,10 +223,6 @@ button.hubnav {
   width: 300px;
   padding: 10px;
   margin: 10px 0; }
-
-.tile img {
-  max-width: 280px;
-}
 
 /* Footer */
 #footer {
