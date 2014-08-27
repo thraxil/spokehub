@@ -37,28 +37,31 @@ class TwitterAccount(models.Model):
             if r.exists():
                 print "existing twitter post"
                 continue
-            np = NowPost.objects.create(
-                user=self.user,
-                service='twitter',
-                service_id=t.id_str,
-                text=t.text,
-                created=t.created_at.isoformat(),
-                original=dumps(
-                    dict(
-                        author_name=t.author.name,
-                        author_screen_name=t.author.screen_name,
-                        created_at=t.created_at.isoformat(),
-                        id=t.id,
-                        place=t.place,
-                        source=t.source,
-                        source_url=t.source_url,
-                        retweet_count=t.retweet_count,
+            try:
+                np = NowPost.objects.create(
+                    user=self.user,
+                    service='twitter',
+                    service_id=t.id_str,
+                    text=t.text,
+                    created=t.created_at.isoformat(),
+                    original=dumps(
+                        dict(
+                            author_name=t.author.name,
+                            author_screen_name=t.author.screen_name,
+                            created_at=t.created_at.isoformat(),
+                            id=t.id,
+                            place=t.place,
+                            source=t.source,
+                            source_url=t.source_url,
+                            retweet_count=t.retweet_count,
+                            )
                         )
                     )
-                )
-            print t.created_at.isoformat()
-            print str(np.created)
-            print "new twitter post added"
+                print t.created_at.isoformat()
+                print str(np.created)
+                print "new twitter post added"
+            except Exception, e:
+                print "failed with exception: " + str(e)
             if hasattr(t, 'extended_entities'):
                 ee = t.extended_entities
                 if 'media' not in ee:
