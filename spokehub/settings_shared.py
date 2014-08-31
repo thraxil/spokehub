@@ -124,6 +124,7 @@ INSTALLED_APPS = [
     'spokehub.main',
     'spokehub.profile',
     'spokehub.twitter',
+    'spokehub.instagram',
     'gunicorn',
     'userena',
     'guardian',

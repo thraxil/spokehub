@@ -74,6 +74,11 @@
 					<dt>Twitter</dt>
 					<dd><a href="https://twitter.com/{{profile.twitter.screen_name}}/"><img src="{{profile.twitter.profile_image_url}}"/>@{{profile.twitter.screen_name}}</a></dd>
 {% endif %}
+
+{% if profile.instagram %}
+					<dt>Instagram</dt>
+					<dd><a href="http://instagram.com/{{profile.instagram.screen_name}}/"><img src="{{profile.instagram.profile_image_url}}"/>{{profile.instagram.screen_name}}</a></dd>
+{% endif %}
           {% endblock %}
         </dl>
       {% endblock %}
