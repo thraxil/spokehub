@@ -96,3 +96,7 @@ img#main-placeholder {
 		transform(rotate(90deg));
     -webkit-transform:rotate(90deg);
 }
+
+.tile img {
+    max-width: 280px;
+}
