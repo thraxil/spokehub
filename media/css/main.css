@@ -67,9 +67,29 @@ video#video {
 		height: auto !important;
 }
 
+div#video2 {
+		width: 100% !important;
+}
+video#video2 {
+		width: 100% !important;
+		height: auto !important;
+}
+
 #banner-video {
 		height: 150px !important;
 		width: auto !important;
+}
+
+#play-placeholder {
+  display: none;
+}
+#video2 {
+  display: none;
+}
+
+img#main-placeholder {
+		width: 100% !important;
+		height: auto !important;
 }
 
 .active-panel .glyphicon-play {

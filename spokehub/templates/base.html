@@ -30,27 +30,72 @@
 {% endblock %}
 {% if request.user.is_anonymous %}
 {% block regcontent %}
-<a href="#" class="hidden-lg hidden-md hidden-sm"
+
+<div class="hidden-lg hidden-md" id="video-fallback">
+<a href="#" 
+   id="play-placeholder"
    style="color: #ddd"
-	 onclick="document.getElementById('video');video.play();return
-	 false">Play Video</a>
+	 onclick="$('#video2').show();$('#video2')[0].play();$('#video')[0].pause();$('#play-placeholder').hide();return false">
+	<img src="{{STATIC_URL}}img/spokehub_manifesto.png" id="main-placeholder"/>
+</a>
+
 <video class="video-js vjs-default-skin"
-        id="video" width="1920" height="1080"
-        autoplay
-  >
+        id="video2" width="1920" height="1080">
+	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4">
+	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4"
+        type="video/mp4">
+</video>
+
+
+</div>
+
+<div class="hidden-sm hidden-xs" id="video-autoplay">
+<video class="video-js vjs-default-skin"
+        id="video" width="1920" height="1080">
 	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4">
 	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4"
         type="video/mp4">
 </video>
 
 <script>
-var video = document.getElementById('video');
+</script>
+</div>
+
+
+<script>
+
+// replace the autoplay attribute, only when the video
+// is initially visible 
+
+function playVideo() {
+    var video = document.getElementById('video');
+
+    if ($('#video-autoplay').is(':visible') && video.readyState == 4) {
+        console.log("autoplay");
+        video.play();
+        $('#video2')[0].pause();
+    } else {
+        console.log("still waiting");
+        console.log($('#video-autoplay').is(':visible'));
+        console.log(video.readyState);
+        setTimeout(playVideo, 1000);
+    }
+}
+
+$(document).ready(function() {
+    if ($('#video-fallback').is(':visible')) {
+        $('#play-placeholder').fadeIn("slow", function() {console.log('faded in')});
+    }
+    playVideo();
+});
+
 video.addEventListener('click',function(){
+  var video = document.getElementById('video');
   video.play();
 },false);
+
+
 </script>
-
-
 {% endblock %}
 {% else %}
 
