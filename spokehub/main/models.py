@@ -47,11 +47,12 @@ class Item(models.Model):
             return
         if body.strip() == '':
             return
-        Reply.objects.create(
+        r = Reply.objects.create(
             item=self,
             author=author,
             body=body)
         self.touch()
+        return r
 
     def reply_pairs(self):
         a = list(self.reply_set.all())
@@ -78,6 +79,26 @@ class Reply(models.Model):
     class Meta:
         order_with_respect_to = 'item'
         ordering = ['added']
+
+    def save_image(self, f):
+        ext = f.name.split(".")[-1].lower()
+        basename = slugify(f.name.split(".")[-2].lower())[:20]
+        if ext not in ['jpg', 'jpeg', 'gif', 'png']:
+            # unsupported image format
+            return None
+        now = datetime.now()
+        path = "replyimages/%04d/%02d/%02d/" % (now.year, now.month, now.day)
+        try:
+            os.makedirs(settings.MEDIA_ROOT + "/" + path)
+        except:
+            pass
+        full_filename = path + "%s.%s" % (basename, ext)
+        fd = open(settings.MEDIA_ROOT + "/" + full_filename, 'wb')
+        for chunk in f.chunks():
+            fd.write(chunk)
+        fd.close()
+        self.image = full_filename
+        self.save()
 
 
 class WorkSample(models.Model):

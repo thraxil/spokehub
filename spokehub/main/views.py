@@ -44,7 +44,10 @@ class ItemDetailView(DetailView):
 class ReplyToItemView(View):
     def post(self, request, pk):
         item = get_object_or_404(Item, pk=pk)
-        item.add_reply(request.user, request.POST.get('body', ''))
+        reply = item.add_reply(request.user, request.POST.get('body', ''))
+        if 'image' in request.FILES:
+            reply.save_image(request.FILES['image'])
+
         if 'item' in request.META.get('HTTP_REFERER'):
             return HttpResponseRedirect(item.get_absolute_url())
         else:
