@@ -19,6 +19,13 @@ class Item(models.Model):
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    image = ImageWithThumbnailsField(
+        upload_to="convoimages/%Y/%m/%d",
+        thumbnail={
+            'size': (400, 200)
+            },
+        null=True,
+        )
 
     class Meta:
         ordering = ['-added', ]
@@ -60,6 +67,13 @@ class Reply(models.Model):
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
+    image = ImageWithThumbnailsField(
+        upload_to="replyimages/%Y/%m/%d",
+        thumbnail={
+            'size': (400, 200)
+            },
+        null=True,
+        )
 
     class Meta:
         order_with_respect_to = 'item'
