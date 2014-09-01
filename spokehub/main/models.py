@@ -46,6 +46,13 @@ class Item(models.Model):
             body=body)
         self.touch()
 
+    def reply_pairs(self):
+        a = list(self.reply_set.all())
+        pairs = zip(a[0::2], a[1::2])
+        if (len(a) % 2) == 1:
+            pairs.append((a[-1],))
+        return pairs
+
 
 class Reply(models.Model):
     item = models.ForeignKey(Item)
@@ -111,5 +118,10 @@ class NowPost(models.Model):
 
     def external_link(self):
         # expand for other services later
-        return ("https://twitter.com/" + self.twitter_handle()
-                + "/status/" + self.service_id)
+        if self.service == 'twitter':
+            return ("https://twitter.com/" + self.twitter_handle()
+                    + "/status/" + self.service_id)
+        elif self.service == 'instagram':
+            return self.service_id
+        else:
+            return None
