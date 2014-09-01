@@ -45,7 +45,10 @@ class ReplyToItemView(View):
     def post(self, request, pk):
         item = get_object_or_404(Item, pk=pk)
         item.add_reply(request.user, request.POST.get('body', ''))
-        return HttpResponseRedirect(item.get_absolute_url())
+        if 'item' in request.META.get('HTTP_REFERER'):
+            return HttpResponseRedirect(item.get_absolute_url())
+        else:
+            return HttpResponseRedirect('/')
 
 
 class AddWorkSampleView(View):

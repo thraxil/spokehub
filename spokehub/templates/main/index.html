@@ -63,8 +63,46 @@
 				<div class="container">
        <div class="panelbreak white"></div>
 			 {% if conversation %}
+
+			 <form action="/item/{{conversation.id}}/reply/" method="post"
+						 enctype="multipart/form-data" role="form">
+				 <div class="modal fade" id="add-text-reply">
+					 <div class="modal-dialog">
+						 <div class="modal-content">
+							 <div class="modal-header">
+								 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								 <h4 class="modal-title">Add Reply</h4>
+							 </div>
+							 <div class="modal-body">
+
+								 <div class="form-group">
+									 <label for="comment-body">Comment</label>
+									 <textarea name="body" class="form-control" rows="10"
+														 id="comment-body"></textarea>
+								 </div>
+
+							 </div>
+							 <div class="modal-footer">
+								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								 <input type="submit" class="btn btn-primary" value="Reply"/>
+							 </div>
+						 </div><!-- /.modal-content -->
+					 </div><!-- /.modal-dialog -->
+				 </div><!-- /.modal -->
+			 </form>
+
+
        <h2>{{conversation.title}}</h2>
 			 {{conversation.body|markdown}}
+			 <div class="panelbreak white"></div>
+			 <p>Add your voice to the conversation:
+				 <ul class="list-inline">
+					 <li><a href="#add-text-reply" data-toggle="modal"
+									data-target="#add-text-reply" class="btn btn-primary">Text</a></li>
+					 <li><span class="btn btn-primary" disabled>Link</span></li>
+					 <li><span class="btn btn-primary" disabled>Image</span></li>
+				 </ul>
+			 </p>
 			 {% else %}
 			 <p>No conversations yet...</p>
 			 {% endif %}
