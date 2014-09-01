@@ -213,13 +213,13 @@
 
 					{% for post in now_posts %}
 					<div class="tile">
-						{{post.user.username}}<br />
-						{{post.text}}<br />
+						<a href="/accounts/{{post.user.username}}/">{{post.user.username}}</a><br />
 						{% if post.image_url %}
 						<img src="{{post.image_url}}"
 								 width="{{post.image_width}}"
-								 height="{{post.image_height}}" />
+								 height="{{post.image_height}}" /><br />
 						{% endif %}
+						{{post.text}}<br />
 						<a href="{{post.external_link}}">{{post.created|timesince}} ago</a>
 					</div>
 					{% endfor %}
