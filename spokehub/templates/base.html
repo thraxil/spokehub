@@ -31,7 +31,7 @@
 {% if request.user.is_anonymous %}
 {% block regcontent %}
 
-<div class="hidden-lg hidden-md" id="video-fallback">
+<div class="" id="video-fallback">
 <a href="#" 
    id="play-placeholder"
    style="color: #ddd"
@@ -49,7 +49,7 @@
 
 </div>
 
-<div class="hidden-sm hidden-xs" id="video-autoplay">
+<div class="hidden-sm hidden-xs hidden-md hidden-lg" id="video-autoplay">
 <video class="video-js vjs-default-skin"
         id="video" width="1920" height="1080">
 	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4">
