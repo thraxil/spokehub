@@ -233,7 +233,7 @@
 						{% for ws in work_samples %}
 						<li>
 							<img src="{% thumbnail ws.image 900x600 %}" alt="{{ws.title}}"/>
-							<p class="flex-caption">{{ws.caption}}</p>
+							<p class="flex-caption">{{ws.user.username}}: {{ws.title}}</p>
 						</li>
 						{% endfor %}
 					</ul>
