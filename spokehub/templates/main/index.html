@@ -151,7 +151,8 @@
 								<div class="user_name"><a href="/accounts/{{reply_one.author.username}}/">{{reply_one.author.username}}</a>
 								| {{reply_one.author.get_profile.discipline1}}{% if reply_one.author.get_profile.discipline2 %} /
 								{{reply_one.author.get_profile.discipline2}}{% endif %}</div>
-								<div class="user_time">{{reply_one.added|timesince}} ago  |  {{reply_one.author.get_profile.location}}</div>
+								<div class="user_time">{{reply_one.added|timesince}}
+								ago  |  {{reply_one.author.get_profile.city}}, {{reply_one.author.get_profile.country}}</div>
 								       <div class="panelbreak black"></div>
 								{{reply_one.body|markdown}}
 											 {% if reply_one.image %}
@@ -166,7 +167,8 @@
 									| {{reply_two.author.get_profile.discipline1}}
 {% if reply_two.author.get_profile.discipline1 %}
 / {{reply_two.author.get_profile.discipline2}}{% endif %}</div>
-								<div class="user_time">{{reply_two.added|timesince}} ago  |  {{reply_two.author.get_profile.location}}</div>
+								<div class="user_time">{{reply_two.added|timesince}}
+								ago  |  {{reply_two.author.get_profile.city}}, {{reply_two.author.get_profile.country}}</div>
 								       <div class="panelbreak black"></div>
 											 {{reply_two.body|markdown}}
 											 {% if reply_two.image %}

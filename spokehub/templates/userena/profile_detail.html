@@ -48,9 +48,13 @@
 									{% endif %}
 							</dd>
             {% endif %}
-            {% if profile.location %}
-              <dt>{% trans "Location" %}</dt>
-              <dd>{{ profile.location }}</dd>
+            {% if profile.city %}
+              <dt>{% trans "City" %}</dt>
+              <dd>{{ profile.city }}</dd>
+            {% endif %}
+            {% if profile.country %}
+              <dt>{% trans "Country" %}</dt>
+              <dd>{{ profile.country }}</dd>
             {% endif %}
             {% if profile.about_me %}
               <dt>{% trans "About me" %}</dt>
