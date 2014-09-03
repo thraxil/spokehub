@@ -30,70 +30,32 @@
 {% endblock %}
 {% if request.user.is_anonymous %}
 {% block regcontent %}
+<h1></h1>
 
 <div class="" id="video-fallback">
 <a href="#" 
    id="play-placeholder"
    style="color: #ddd"
-	 onclick="$('#video2').show();$('#video2')[0].play();$('#video')[0].pause();$('#play-placeholder').hide();return false">
+	 onclick="$('#video2').show();$('#video2')[0].play();$('#play-placeholder').hide();return false">
 	<img src="{{STATIC_URL}}img/spokehub_manifesto.png" id="main-placeholder"/>
 </a>
 
 <video class="video-js vjs-default-skin"
         id="video2" width="1920" height="1080">
-	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4">
-	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4"
+	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4?d={% now "U"%}">
+	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4?d={% now "U"%}"
         type="video/mp4">
 </video>
-
-
 </div>
-
-<div class="hidden-sm hidden-xs hidden-md hidden-lg" id="video-autoplay">
-<video class="video-js vjs-default-skin"
-        id="video" width="1920" height="1080">
-	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4">
-	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4"
-        type="video/mp4">
-</video>
-
-<script>
-</script>
-</div>
-
 
 <script>
 
 // replace the autoplay attribute, only when the video
 // is initially visible 
 
-function playVideo() {
-    var video = document.getElementById('video');
-
-    if ($('#video-autoplay').is(':visible') && video.readyState == 4) {
-        console.log("autoplay");
-        video.play();
-        $('#video2')[0].pause();
-    } else {
-        console.log("still waiting");
-        console.log($('#video-autoplay').is(':visible'));
-        console.log(video.readyState);
-        setTimeout(playVideo, 1000);
-    }
-}
-
 $(document).ready(function() {
-    if ($('#video-fallback').is(':visible')) {
-        $('#play-placeholder').fadeIn("slow", function() {console.log('faded in')});
-    }
-    playVideo();
+   $('#play-placeholder').fadeIn("slow", function() {console.log('faded in')});
 });
-
-video.addEventListener('click',function(){
-  var video = document.getElementById('video');
-  video.play();
-},false);
-
 
 </script>
 {% endblock %}
