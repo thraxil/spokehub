@@ -44,7 +44,11 @@ class ItemDetailView(DetailView):
 class ReplyToItemView(View):
     def post(self, request, pk):
         item = get_object_or_404(Item, pk=pk)
-        reply = item.add_reply(request.user, request.POST.get('body', ''))
+        reply = item.add_reply(
+            request.user,
+            request.POST.get('body', ''),
+            request.POST.get('url', ''),
+            request.POST.get('title', ''))
         if 'image' in request.FILES:
             reply.save_image(request.FILES['image'])
 

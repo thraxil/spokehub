@@ -42,15 +42,19 @@ class Item(models.Model):
         self.modified = datetime.now()
         self.save()
 
-    def add_reply(self, author, body):
+    def add_reply(self, author, body, url='', title=''):
         if not author:
             return
-        if body.strip() == '':
+        if body.strip() == '' and url.strip() == '':
             return
+        if (url.strip() != '' and
+                not (url.startswith('http://') or url.startswith('https://'))):
+            url = "http://" + url
         r = Reply.objects.create(
             item=self,
             author=author,
-            body=body)
+            body=body,
+            url=url.strip(), title=title.strip())
         self.touch()
         return r
 
@@ -75,6 +79,8 @@ class Reply(models.Model):
             },
         null=True,
         )
+    url = models.TextField(blank=True, default=u"")
+    title = models.TextField(blank=True, default=u"")
 
     class Meta:
         order_with_respect_to = 'item'
