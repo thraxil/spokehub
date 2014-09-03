@@ -80,6 +80,12 @@ class Reply(models.Model):
         order_with_respect_to = 'item'
         ordering = ['added']
 
+    def __unicode__(self):
+        return "Reply to [%s] by %s at %s" % (
+            str(self.item),
+            self.author.username,
+            self.added.isoformat())
+
     def save_image(self, f):
         ext = f.name.split(".")[-1].lower()
         basename = slugify(f.name.split(".")[-2].lower())[:20]
@@ -147,6 +153,10 @@ class NowPost(models.Model):
     image_url = models.TextField(default="", blank=True)
     image_width = models.IntegerField(default=0)
     image_height = models.IntegerField(default=0)
+
+    def __unicode__(self):
+        return "[%s] by %s at %s" % (self.service, self.user.username,
+                                     self.created.isoformat())
 
     def twitter_handle(self):
         return self.user.get_profile().twitter().screen_name
