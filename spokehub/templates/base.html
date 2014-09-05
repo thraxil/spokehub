@@ -89,7 +89,7 @@ $(document).ready(function() {
       {% else %}
 			<li class="user-text">
 			<a href="/accounts/{{request.user.username}}/">
-			{{request.user.get_profile.get_full_name_or_username}}
+			{{request.user.username}}
 			</a>
         	</li>
         	<li>

@@ -13,7 +13,7 @@
 
 {% for reply in item.reply_set.all %}
 <hr />
-<h4>Reply from <a href="/accounts/{{reply.author.username}}/">{{reply.author.get_profile.get_full_name_or_username}}</a>
+<h4>Reply from <a href="/accounts/{{reply.author.username}}/">{{reply.author.username}}</a>
 	at {{reply.added}}</h4>
 {{reply.body|markdown}}
 {% endfor %}
