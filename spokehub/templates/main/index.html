@@ -314,7 +314,9 @@
 
 					{% for post in now_posts %}
 					<div class="tile">
-						<a href="/accounts/{{post.user.username}}/">{{post.user.username}}</a><br />
+						<a href="/accounts/{{post.user.username}}/">{{post.user.username}}</a> |
+						{{post.user.get_profile.city}}, {{post.user.get_profile.country}}
+						<br />
 						{% if post.image_url %}
 						<img src="{{post.image_url}}"
 								 width="{{post.image_width}}"
