@@ -320,7 +320,7 @@
 								 width="{{post.image_width}}"
 								 height="{{post.image_height}}" /><br />
 						{% endif %}
-						{{post.text}}<br />
+						{{post.text|urlize}}<br />
 						<a href="{{post.external_link}}">{{post.created|timesince}} ago</a>
 					</div>
 					{% endfor %}
