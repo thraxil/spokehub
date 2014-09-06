@@ -60,8 +60,8 @@
 {% flag section_how %}
     <div id="collapseOne" class="panel-collapse collapse">
       <div class="panel-body">
-				<div class="container">
-       <div class="panelbreak white"></div>
+		<div class="container">
+       	<div class="panelbreak white"></div>
 			 {% if conversation %}
 
 			 <form action="/item/{{conversation.id}}/reply/" method="post"
@@ -169,75 +169,65 @@
 				 </ul>
 			 </p>
 			 </div>
-			 
-			 <div class="hubconvo" id="convotiles" data-masonry-options='{ "isFitWidth": true }'>
-	
+			 			 <div class="panelbreak white"></div>
 
-{% for reply_one, reply_two in conversation.reply_pairs %}
+			  <div class="hubconvo">
 
-				 	<div class="convotile">
-				 		<table>
-				 			<tr>
-					 <td class="convomug">
+				{% for reply_one, reply_two in conversation.reply_pairs %}
+
+				 <div class="row">
+					 <div class="col-sm-1 col-md-1">
 						 <a href="/accounts/{{reply_one.author.username}}/"><img class="mugshot" src="{{ reply_one.author.get_profile.get_mugshot_url }}" 
 									class="user_icon" width="100" height="100"></a>
-						 </td> 
-						 <td class="convoblock">
+						 </div>
+					<div class="col-sm-5 col-md-5">
+						<div class="convoblock">
 								<div class="user_name"><a href="/accounts/{{reply_one.author.username}}/">{{reply_one.author.username}}</a>
 								| {{reply_one.author.get_profile.discipline1}}{% if reply_one.author.get_profile.discipline2 %} /
 								{{reply_one.author.get_profile.discipline2}}{% endif %}</div>
 								<div class="user_time">{{reply_one.added|timesince}}
 								ago  |  {{reply_one.author.get_profile.city}}, {{reply_one.author.get_profile.country}}</div>
 								       <div class="panelbreak black"></div>
-						{% if reply_one.url %}
-					<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_one.url}}">{% if reply_one.title %}
-						{{reply_one.title}}{% else %}{{reply_one.url}}{% endif %}</h3>
-						{% endif %}
-								{{reply_one.body|markdown}}
-								{% if reply_one.image %}
-							 	<img src="{% thumbnail reply_one.image 400x400 %}" />
+										{% if reply_one.url %}
+								<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_one.url}}">{% if reply_one.title %}
+								{{reply_one.title}}{% else %}{{reply_one.url}}{% endif %}</h3>
 								{% endif %}
-						</td>
-						</tr>
-						</table>
-				</div>
-				
-				
-				
-					{% if reply_two %}
-					
-					<div class="convotile">
-						<table>
-							<tr>
-						<td class="convoblock">
+								{{reply_one.body|markdown}}
+											 {% if reply_one.image %}
+											 <img src="{% thumbnail reply_one.image 400x400 %}" />
+								{% endif %}
+						</div>
+					</div>
+{% if reply_two %}
+					<div class="col-sm-5 col-md-5">
+						<div class="convoblock">
 								<div class="user_name"><a href="/accounts/{{reply_two.author.username}}/">{{reply_two.author.username}}</a>
-									| {{reply_two.author.get_profile.discipline1}}{% if reply_two.author.get_profile.discipline1 %}
-								/ {{reply_two.author.get_profile.discipline2}}{% endif %}</div>
-								<div class="user_time">{{reply_two.added|timesince}}
-								ago  |  {{reply_two.author.get_profile.city}}, {{reply_two.author.get_profile.country}}</div>
-								       <div class="panelbreak black"></div>
-							{% if reply_two.url %}
-							<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_two.url}}">{% if reply_two.title %}
-						{{reply_two.title}}{% else %}{{reply_two.url}}{% endif %}</h3>
-						{% endif %}
+									| {{reply_two.author.get_profile.discipline1}}
+									{% if reply_two.author.get_profile.discipline1 %}
+									/ {{reply_two.author.get_profile.discipline2}}{% endif %}</div>
+																	<div class="user_time">{{reply_two.added|timesince}}
+																	ago  |  {{reply_two.author.get_profile.city}}, {{reply_two.author.get_profile.country}}</div>
+																	       <div class="panelbreak black"></div>
+									{% if reply_two.url %}
+									<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_two.url}}">{% if reply_two.title %}
+									{{reply_two.title}}{% else %}{{reply_two.url}}{% endif %}</h3>
+									{% endif %}
 											 {{reply_two.body|markdown}}
 											 {% if reply_two.image %}
 											 <img src="{% thumbnail reply_two.image 400x400 %}" />
 								{% endif %}
-					</td>
-
-					<td class="convomug">
+								
+						</div>
+					</div>
+					<div class="col-sm-1 col-md-1">
 						 <a href="/accounts/{{reply_two.author.username}}/"><img class="mugshot" src="{{ reply_two.author.get_profile.get_mugshot_url }}" 
 									class="user_icon" width="100" height="100"></a>
-						</td>
-						</tr>
-						</table>
+					</div>
+{% endif %}
+				 </div>
+				 {% endfor %}
 
-					{% endif %}
-
-	</div>
-					 {% endfor %}
-
+				</div>
 			 {% else %}
 
 			 <p>No conversations yet...</p>
@@ -248,6 +238,9 @@
     </div>
 {% endflag %}
   </div>
+			 
+		
+
   <div class="panel panel-default">
   <a {% flag section_we %}data-toggle="collapse"
 		 data-parent="#accordion" href="#collapseTwo"{% endflag %}>

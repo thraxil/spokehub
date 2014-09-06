@@ -209,6 +209,9 @@ button.hubnav
   float: left
   clear: both
   padding: 30px 0
+  img
+    &:hover
+      opacity: .8
   p
     float: left
     margin: 20px 30px 0 0
@@ -217,17 +220,8 @@ button.hubnav
     li
       margin: 0 40px 0 0
  
-
 .hubconvo
-  float: left
-  width: 100%
-  .convomug
-    float: left
-    display: inline
-    width: 100px
-  .convotile
-    width: 49.8%
-    color: #fff
+  margin: 30px 0
   .row
     margin-right: 0
     margin-left: 0
@@ -242,17 +236,12 @@ button.hubnav
   color: $hubblack
   background-color: #fff
   padding: 20px
+  max-height: 300px
   @include hubfont 
   @include killradius
   div, p
     text-align: center
  
-  
-.videofiller 
-  width: 100%
-  min-height: 200px
-  background-color: $hubblue
-
 
 /* Slideshow */
 .flex-direction-nav
