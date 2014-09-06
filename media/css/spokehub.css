@@ -196,13 +196,20 @@ button.hubnav {
   color: #262222;
   background-color: white;
   padding: 20px;
-  max-height: 300px;
+  height: 300px;
+  margin: 1px 0 0 0;
   text-transform: uppercase;
   font-family: dinlight;
   border: none;
   border-radius: 0; }
   .convoblock div, .convoblock p {
     text-align: center; }
+  .convoblock .convoheader {
+    clear: both;
+    text-align: center; }
+  .convoblock .convocontent {
+    float: left;
+    clear: both; }
 
 /* Slideshow */
 .flex-direction-nav .flex-prev {

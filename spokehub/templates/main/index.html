@@ -182,12 +182,16 @@
 						 </div>
 					<div class="col-sm-5 col-md-5">
 						<div class="convoblock">
+							<div class="convoheader">
 								<div class="user_name"><a href="/accounts/{{reply_one.author.username}}/">{{reply_one.author.username}}</a>
 								| {{reply_one.author.get_profile.discipline1}}{% if reply_one.author.get_profile.discipline2 %} /
 								{{reply_one.author.get_profile.discipline2}}{% endif %}</div>
 								<div class="user_time">{{reply_one.added|timesince}}
 								ago  |  {{reply_one.author.get_profile.city}}, {{reply_one.author.get_profile.country}}</div>
+								</div>
 								       <div class="panelbreak black"></div>
+								       
+								<div class="convocontent">
 										{% if reply_one.url %}
 								<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_one.url}}">{% if reply_one.title %}
 								{{reply_one.title}}{% else %}{{reply_one.url}}{% endif %}</h3>
@@ -196,18 +200,20 @@
 											 {% if reply_one.image %}
 											 <img src="{% thumbnail reply_one.image 400x400 %}" />
 								{% endif %}
+								</div>
 						</div>
 					</div>
 {% if reply_two %}
 					<div class="col-sm-5 col-md-5">
 						<div class="convoblock">
+							<div class="convoheader">s
 								<div class="user_name"><a href="/accounts/{{reply_two.author.username}}/">{{reply_two.author.username}}</a>
 									| {{reply_two.author.get_profile.discipline1}}
 									{% if reply_two.author.get_profile.discipline1 %}
 									/ {{reply_two.author.get_profile.discipline2}}{% endif %}</div>
-																	<div class="user_time">{{reply_two.added|timesince}}
-																	ago  |  {{reply_two.author.get_profile.city}}, {{reply_two.author.get_profile.country}}</div>
-																	       <div class="panelbreak black"></div>
+								<div class="user_time">{{reply_two.added|timesince}} ago  |  {{reply_two.author.get_profile.city}}, {{reply_two.author.get_profile.country}}</div>
+								</div>
+								 <div class="panelbreak black"></div>
 									{% if reply_two.url %}
 									<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_two.url}}">{% if reply_two.title %}
 									{{reply_two.title}}{% else %}{{reply_two.url}}{% endif %}</h3>
