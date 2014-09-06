@@ -32,6 +32,7 @@ class ItemIndexView(ListView):
 
 class ItemCreateView(CreateView):
     model = Item
+    fields = ['title', 'body']
 
     def get_initial(self):
         return dict(author=self.request.user)
