@@ -3,6 +3,11 @@
 
 {% block content %}
 <div class="container">
+{% if request.user.is_superuser %}
+<a href="edit/" class="btn btn-primary pull-right">Edit</a>
+{% endif %}
+
+
 <h2>{{item.title}}</h2>
 <p class="byline">{{item.added}}</p>
 {{item.body|markdown}}

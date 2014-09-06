@@ -4,10 +4,13 @@
 {% block content %}
 <div class="container">
 {% if request.user.is_superuser %}
+<a class="btn btn-danger pull-right"
+  href="../delete/">Delete</a>
+
 <form action="." method="post">{% csrf_token %}
-<fieldset><legend>Add Conversation</legend>
+<fieldset><legend>Edit Conversation</legend>
 {{form|bootstrap}}
-<input type="submit" value="Add" class="btn btn-primary"/>
+<input type="submit" value="Save" class="btn btn-primary"/>
 </fieldset>
 </form>
 {% else %}
