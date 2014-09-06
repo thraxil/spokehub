@@ -64,6 +64,29 @@ a
   color: $hubblack
   
   
+/* Modals */
+@media screen and (min-width: 768px)
+  .modal-dialog
+    width: 400px
+
+.modal-content
+  border-radius: 0px
+  color: $hubblack
+  .modal-title
+    @include hublink
+  
+/* Buttons */
+.btn
+  border-radius: 0px
+  @include hubfont
+  
+.btn-primary
+  background-color: $hubblack
+  border: none
+  color: #fff  
+  &:hover
+    background-color: #000
+
 /* Home Nav */
 
 .hubauth
@@ -250,6 +273,8 @@ button.hubnav
   .convocontent
     clear: both
  
+
+
 
 /* Slideshow */
 .flex-direction-nav

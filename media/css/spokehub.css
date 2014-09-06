@@ -21,6 +21,30 @@ p, span, h1, h2, h3, h4, h5, h6 {
 a {
   color: #262222; }
 
+/* Modals */
+@media screen and (min-width: 768px) {
+  .modal-dialog {
+    width: 400px; } }
+.modal-content {
+  border-radius: 0px;
+  color: #262222; }
+  .modal-content .modal-title {
+    text-transform: uppercase;
+    font-family: dinmed; }
+
+/* Buttons */
+.btn {
+  border-radius: 0px;
+  text-transform: uppercase;
+  font-family: dinlight; }
+
+.btn-primary {
+  background-color: #262222;
+  border: none;
+  color: white; }
+  .btn-primary:hover {
+    background-color: black; }
+
 /* Home Nav */
 .hubauth {
   margin-top: 5em; }
