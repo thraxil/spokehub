@@ -19,6 +19,8 @@ urlpatterns = patterns(
     (r'^item/$', views.ItemIndexView.as_view()),
     (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
      views.ItemDetailView.as_view()),
+    (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/edit/$',
+     views.ItemUpdateView.as_view()),
     (r'^item/add/$', views.ItemCreateView.as_view()),
 
     (r'^add_work_sample/$', views.AddWorkSampleView.as_view()),
@@ -30,6 +32,7 @@ urlpatterns = patterns(
     (r'contact/$', TemplateView.as_view(template_name='contact/index.html')),
 
     (r'item/(?P<pk>\d+)/reply/$', views.ReplyToItemView.as_view()),
+
     (r'test/$', TemplateView.as_view(template_name='layout_test.html')),
 
     (r'link/twitter/', include('spokehub.twitter.urls')),

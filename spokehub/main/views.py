@@ -3,7 +3,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from .models import Item, WorkSample, NowPost
 import random
@@ -40,6 +40,12 @@ class ItemCreateView(CreateView):
 
 class ItemDetailView(DetailView):
     model = Item
+
+
+class ItemUpdateView(UpdateView):
+    model = Item
+    fields = ['title', 'body']
+    template_name_suffix = '_update_form'
 
 
 class ReplyToItemView(View):
