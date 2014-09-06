@@ -61,9 +61,7 @@ class ReplyToItemView(View):
 class AddWorkSampleView(View):
     def post(self, request):
         title = request.POST.get('title', 'no title')
-        caption = request.POST.get('caption', '')
-        ws = WorkSample.objects.create(title=title, user=request.user,
-                                       caption=caption)
+        ws = WorkSample.objects.create(title=title, user=request.user)
         ws.save_image(request.FILES['image'])
         ws.save()
         return HttpResponseRedirect("/accounts/%s/" % request.user.username)
