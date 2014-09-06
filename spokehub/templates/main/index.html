@@ -285,19 +285,59 @@
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
 
-				<div class="work-samples">
-					<ul class="slides">
-						{% for ws in work_samples %}
-						<li>
-							<img src="{% thumbnail ws.image 900x600 %}" alt="{{ws.title}}"/>
-							<p class="flex-caption">{{ws.user.username}}: {{ws.title}}</p>
-						</li>
-						{% endfor %}
-					</ul>
-				</div>
-      </div>
+<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 600px; height: 300px; overflow: hidden;">
+    <!-- Slides Container -->
+    <div u="slides" style="cursor: move; position: absolute; overflow: hidden; left: 0px; top: 0px; width: 600px; height: 300px;">
+    	{% for ws in work_samples %}	
+        <div><img u="image" src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}"/></div>
+        <div u="caption" t="caption-transition-name" style="position: absolute; top: 125px; left: 125px; width: 350px;height: 50px;">
+     		 {{ws.user.username}}: {{ws.title}}
+			</div>
+	{% endfor %}
     </div>
-{% endflag %}
+    <!-- Trigger -->
+    <script>jssor_slider1_starter('slider1_container');</script>
+	 <!-- Arrow Navigator Skin Begin -->
+        <style>
+            /* jssor slider arrow navigator skin 21 css */
+            /*
+            .jssora21l              (normal)
+            .jssora21r              (normal)
+            .jssora21l:hover        (normal mouseover)
+            .jssora21r:hover        (normal mouseover)
+            .jssora21ldn            (mousedown)
+            .jssora21rdn            (mousedown)
+            */
+            .jssora21l, .jssora21r, .jssora21ldn, .jssora21rdn
+            {
+            	position: absolute;
+            	cursor: pointer;
+            	display: block;
+                background: url(/media/img/a21.png) center center no-repeat;
+                overflow: hidden;
+            }
+            .jssora21l { background-position: -3px -33px; }
+            .jssora21r { background-position: -63px -33px; }
+            .jssora21l:hover { background-position: -123px -33px; }
+            .jssora21r:hover { background-position: -183px -33px; }
+            .jssora21ldn { background-position: -243px -33px; }
+            .jssora21rdn { background-position: -303px -33px; }
+        </style>
+        <!-- Arrow Left -->
+        <span u="arrowleft" class="jssora21l" style="width: 55px; height: 55px; top: 123px; left: 8px;">
+        </span>
+        <!-- Arrow Right -->
+        <span u="arrowright" class="jssora21r" style="width: 55px; height: 55px; top: 123px; right: 8px">
+        </span>
+        <!-- Arrow Navigator Skin End -->
+	</div>
+
+</div>
+      
+      
+    </div>
+          	{% endflag %}
+
   </div>
 
   <div class="panel panel-default active-panel">
@@ -343,7 +383,7 @@
 {% block js %}
 <script src="/media/js/flexslide/jquery.flexslider-min.js"></script>
 <script src="/media/js/masonry.pkgd.js"></script>
-
+<script src="/media/js/jssor.slider.mini.js"></script>
 <link rel="stylesheet" href="/media/js/flexslide/flexslider.css" type="text/css">
 <script>
 	var $container = $('#nowtiles');
@@ -353,20 +393,46 @@
   itemSelector: '.nowtile'
 });
 </script>
+
 <script>
-$(window).load(function() {
-  $('.work-samples').flexslider({
-    animation: "slide"
-  });
-});
+jQuery(document).ready(function ($) {
+
+     function ScaleSlider() {
+            var parentWidth = $('#slider1_container').parent().width();
+            if (parentWidth) {
+                jssor_slider1.$SetScaleWidth(parentWidth);
+            }
+            else
+                window.setTimeout(ScaleSlider, 30);
+        }
+        //Scale slider after document ready
+        ScaleSlider();
+        if (!navigator.userAgent.match(/(iPhone|iPod|iPad|BlackBerry|IEMobile)/)) {
+            //Capture window resize event
+            $(window).bind('resize', ScaleSlider);
+        }
+        //responsive code end
+         var options = {
+            $ArrowNavigatorOptions: {
+                $Class: $JssorArrowNavigator$,
+                $ChanceToShow: 2
+            }
+        };
+        
+        var options = {};                            
+     var jssor_slider1 = new $JssorSlider$('slider1_container', options);
+    });
+    
+   
 </script>
+
 <script>
 $(".panel").on('hidden.bs.collapse', function (e) {
    $(e.target).parent().removeClass('active-panel');
-})
+});
 $(".panel").on('shown.bs.collapse', function (e) {
    $(e.target).parent().addClass('active-panel');
-})
+});
 </script>
 
 
