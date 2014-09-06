@@ -166,7 +166,15 @@ button.hubnav {
 
 /* Conversations */
 .hubconvo {
-  margin: 30px 0; }
+  float: left;
+  width: 100%; }
+  .hubconvo .convomug {
+    float: left;
+    display: inline;
+    width: 100px; }
+  .hubconvo .convotile {
+    width: 49.8%;
+    color: white; }
   .hubconvo .row {
     margin-right: 0;
     margin-left: 0; }
@@ -212,7 +220,7 @@ button.hubnav {
   clear: both;
   width: 100%; }
 
-/* Masonry */
+/* Masonry For NOW */
 #worktiles {
   padding: 30px; }
 
