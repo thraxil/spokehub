@@ -262,15 +262,24 @@ button.hubnav
     width: 100%
 
 /* Masonry For NOW */
-#worktiles 
+#nowtiles 
   padding: 30px
 
-.tile 
+.nowtile 
   @include hubfont
   letter-spacing: .045em
-  width: 300px
+  width: 400px
   padding: 10px
   margin: 10px 0
+  .nowtileheader
+    @include hublink
+  .nowtilefooter
+    @include hublink
+  img
+    max-width: 380px
+    margin: 10px 0
+  p
+    font-size: 20px
   
 /* Footer */
 #footer

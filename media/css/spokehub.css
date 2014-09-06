@@ -221,16 +221,27 @@ button.hubnav {
   width: 100%; }
 
 /* Masonry For NOW */
-#worktiles {
+#nowtiles {
   padding: 30px; }
 
-.tile {
+.nowtile {
   text-transform: uppercase;
   font-family: dinlight;
   letter-spacing: 0.045em;
-  width: 300px;
+  width: 400px;
   padding: 10px;
   margin: 10px 0; }
+  .nowtile .nowtileheader {
+    text-transform: uppercase;
+    font-family: dinmed; }
+  .nowtile .nowtilefooter {
+    text-transform: uppercase;
+    font-family: dinmed; }
+  .nowtile img {
+    max-width: 380px;
+    margin: 10px 0; }
+  .nowtile p {
+    font-size: 20px; }
 
 /* Footer */
 #footer {

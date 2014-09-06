@@ -321,20 +321,21 @@
 {% flag section_now %}
     <div id="collapseFour" class="panel-collapse collapse in">
       <div class="panel-body">
-				<div id="worktiles">
+				<div id="nowtiles">
 
 					{% for post in now_posts %}
-					<div class="tile">
-						<a href="/accounts/{{post.user.username}}/">{{post.user.username}}</a> |
-						{{post.user.get_profile.city}}, {{post.user.get_profile.country}}
-						<br />
+					<div class="nowtile">
+						<div class="nowtileheader"><a href="/accounts/{{post.user.username}}/">{{post.user.username}}</a> |	{{post.user.get_profile.city}}, {{post.user.get_profile.country}}
+						</div>
 						{% if post.image_url %}
 						<img src="{{post.image_url}}"
 								 width="{{post.image_width}}"
 								 height="{{post.image_height}}" /><br />
 						{% endif %}
-						{{post.text|urlize}}<br />
+						<p>{{post.text|urlize}}</p>
+						<div class="nowtilefooter">
 						<a href="{{post.external_link}}">{{post.created|timesince}} ago</a>
+						</div>
 					</div>
 					{% endfor %}
 				
@@ -352,11 +353,11 @@
 
 <link rel="stylesheet" href="/media/js/flexslide/flexslider.css" type="text/css">
 <script>
-	var $container = $('#worktiles');
+	var $container = $('#nowtiles');
 	// initialize
-	$('#worktiles').masonry({
+	$('#nowtiles').masonry({
   columnWidth: 40,
-  itemSelector: '.tile'
+  itemSelector: '.nowtile'
 });
 var $container = $('#convotiles');
 	$('#convotiles').masonry({
