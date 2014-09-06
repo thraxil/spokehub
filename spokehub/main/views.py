@@ -48,6 +48,11 @@ class ItemUpdateView(UpdateView):
     template_name_suffix = '_update_form'
 
 
+class ItemDeleteView(DeleteView):
+    model = Item
+    success_url = "/"
+
+
 class ReplyToItemView(View):
     def post(self, request, pk):
         item = get_object_or_404(Item, pk=pk)

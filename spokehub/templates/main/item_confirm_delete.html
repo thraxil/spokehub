@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div class="container">
+{% if request.user.is_superuser %}
+<form action="." method="post">{% csrf_token %}
+<fieldset><legend>Delete Conversation</legend>
+<p>Are you sure you want to delete this? The conversation and all
+	replies to it will be deleted and cannot easily be retrieved.</p>
+<a href="/" class="btn btn-default">nevermind</a>
+<input type="submit" value="Yes, delete" class="btn btn-primary"/>
+</fieldset>
+</form>
+{% else %}
+<p>Sorry, this is admin only for now.</p>
+{% endif %}
+</div>
+{% endblock %}

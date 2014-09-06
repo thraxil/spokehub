@@ -21,6 +21,8 @@ urlpatterns = patterns(
      views.ItemDetailView.as_view()),
     (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/edit/$',
      views.ItemUpdateView.as_view()),
+    (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/delete/$',
+     views.ItemDeleteView.as_view()),
     (r'^item/add/$', views.ItemCreateView.as_view()),
 
     (r'^add_work_sample/$', views.AddWorkSampleView.as_view()),
