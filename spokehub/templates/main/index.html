@@ -160,21 +160,16 @@
        <h2>{{conversation.title}}</h2>
 			 {{conversation.body|markdown}}
 			 <div class="panelbreak white"></div>
-			 <p>Add your voice to the conversation:
+			 <div class="addvoice">
+			 	<p>Add your voice to the conversation:
 				 <ul class="list-inline">
-					 <li><a href="#add-text-reply" data-toggle="modal"
-									data-target="#add-text-reply" class="btn btn-primary">Text</a></li>
-					 <li><a href="#add-link-reply" data-toggle="modal"
-									data-target="#add-link-reply" class="btn
-									btn-primary"><span class="glyphicon
-									glyphicon-link"></span> Link</a></li>
-					 <li><a href="#add-image-reply" data-toggle="modal"
-									data-target="#add-image-reply" class="btn
-									btn-primary"><span class="glyphicon
-									glyphicon-picture"></span> Image</a></li>
+					 <li><a href="#add-text-reply" data-toggle="modal" data-target="#add-text-reply"><img src="/media/img/text_convo.png"></a></li>
+					 <li><a href="#add-link-reply" data-toggle="modal" data-target="#add-link-reply" ><img src="/media/img/link_convo.png"></a></li>
+					 <li><a href="#add-image-reply" data-toggle="modal" data-target="#add-image-reply"><img src="/media/img/image_convo.png"></a></li>
 				 </ul>
 			 </p>
-			 <div class="panelbreak white"></div>
+			 </div>
+			 
 			 <div class="hubconvo" id="convotiles" data-masonry-options='{ "isFitWidth": true }'>
 	
 
