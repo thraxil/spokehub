@@ -206,7 +206,7 @@
 {% if reply_two %}
 					<div class="col-sm-5 col-md-5">
 						<div class="convoblock">
-							<div class="convoheader">s
+							<div class="convoheader">
 								<div class="user_name"><a href="/accounts/{{reply_two.author.username}}/">{{reply_two.author.username}}</a>
 									| {{reply_two.author.get_profile.discipline1}}
 									{% if reply_two.author.get_profile.discipline1 %}
@@ -315,7 +315,7 @@
 {% flag section_now %}
     <div id="collapseFour" class="panel-collapse collapse in">
       <div class="panel-body">
-				<div id="nowtiles">
+				<div id="nowtiles" data-masonry-options='{ "gutter": 30 }'>
 
 					{% for post in now_posts %}
 					<div class="nowtile">
@@ -353,12 +353,6 @@
   columnWidth: 40,
   itemSelector: '.nowtile'
 });
-var $container = $('#convotiles');
-	$('#convotiles').masonry({
-  columnWidth: 2,
-  itemSelector: '.convotile'
-});
-
 </script>
 <script>
 $(window).load(function() {

@@ -207,8 +207,10 @@ button.hubnav {
   .convoblock .convoheader {
     clear: both;
     text-align: center; }
+    .convoblock .convoheader .user_name a {
+      text-transform: uppercase;
+      font-family: dinmed; }
   .convoblock .convocontent {
-    float: left;
     clear: both; }
 
 /* Slideshow */
@@ -243,13 +245,14 @@ button.hubnav {
   margin: 10px 0; }
   .nowtile .nowtileheader {
     text-transform: uppercase;
-    font-family: dinmed; }
+    font-family: dinmed;
+    margin: 0 0 10px 0; }
   .nowtile .nowtilefooter {
     text-transform: uppercase;
     font-family: dinmed; }
   .nowtile img {
     max-width: 380px;
-    margin: 10px 0; }
+    margin: 0 0 10px 0; }
   .nowtile p {
     font-size: 20px; }
 

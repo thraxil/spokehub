@@ -245,8 +245,9 @@ button.hubnav
   .convoheader
     clear: both
     text-align: center
+    .user_name a
+      @include hublink
   .convocontent
-    float: left
     clear: both
  
 
@@ -283,11 +284,12 @@ button.hubnav
   margin: 10px 0
   .nowtileheader
     @include hublink
+    margin: 0 0 10px 0
   .nowtilefooter
     @include hublink
   img
     max-width: 380px
-    margin: 10px 0
+    margin: 0 0 10px 0
   p
     font-size: 20px
   
