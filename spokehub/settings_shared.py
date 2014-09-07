@@ -58,7 +58,7 @@ PROJECT_APPS = [
 ALLOWED_HOSTS = ['localhost', 'spokehub.com', 'spokehub.org']
 
 USE_TZ = True
-TIME_ZONE = 'America/New_York'
+TIME_ZONE = 'GMT'
 LANGUAGE_CODE = 'en-us'
 SITE_ID = 1
 USE_I18N = False
