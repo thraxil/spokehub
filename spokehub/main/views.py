@@ -5,6 +5,7 @@ from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Item, WorkSample, NowPost
 import random
 
@@ -20,7 +21,17 @@ class IndexView(TemplateView):
         context['work_samples'] = work_samples
         if Item.objects.all().count() > 0:
             context['conversation'] = Item.objects.all()[0]
-        context['now_posts'] = NowPost.objects.all().order_by("-created")
+
+        now_posts_list = NowPost.objects.all().order_by("-created")
+        paginator = Paginator(now_posts_list, 100)
+        page = self.request.GET.get('page')
+        try:
+            now_posts = paginator.page(page)
+        except PageNotAnInteger:
+            now_posts = paginator.page(1)
+        except EmptyPage:
+            now_posts = paginator.page(paginator.num_pages)
+        context['now_posts'] = now_posts
         return context
 
 

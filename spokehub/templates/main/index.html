@@ -406,7 +406,10 @@ $(document).ready(function() {
 					</div>
 					{% endfor %}
 				
-     			 </div>
+     		</div>
+				{% if now_posts.has_next %}
+				<p><a href="/?page={{now_posts.next_page_number}}">load more</a></p>
+				{% endif %}
     </div>
   </div>
 {% endflag %}
