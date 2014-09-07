@@ -401,7 +401,7 @@ $(document).ready(function() {
 						{% endif %}
 						<p>{{post.text|urlize}}</p>
 						<div class="nowtilefooter">
-						<a href="{{post.external_link}}">{{post.created|timesince}} ago</a>
+						<a target="_blank" href="{{post.external_link}}">{{post.created|timesince}} ago</a>
 						</div>
 					</div>
 					{% endfor %}
