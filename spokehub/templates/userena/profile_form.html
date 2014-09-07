@@ -28,7 +28,19 @@
 		</div>
           {% endblock %}
 
-    {{ form|bootstrap }}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+		{% if field.name == 'first_name' or field.name == 'last_name' %}
+		{% comment %}skip it{% endcomment %}
+		{% else %}
+    {{ field.errors }}
+    <p>
+    {{ field|bootstrap }}
+    </p>
+    {% endif %}
+    {% endfor %}
+
+
   </fieldset>
   <input type="submit" value="{% trans "Save changes" %}" class="btn
   btn-primary" />
