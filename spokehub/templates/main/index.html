@@ -43,6 +43,36 @@
 
 {% block content %}
 
+{% if request.user.is_anonymous %}
+<h1></h1>
+
+<div class="" id="video-fallback">
+<a href="#" 
+   id="play-placeholder"
+   style="color: #ddd"
+	 onclick="$('#video2').show();$('#video2')[0].play();$('#play-placeholder').hide();return false">
+	<img src="{{STATIC_URL}}img/spokehub_manifesto.png" id="main-placeholder"/>
+</a>
+
+<video class="video-js vjs-default-skin"
+        id="video2" width="1920" height="1080">
+	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4?d={% now "U"%}">
+	<source src="http://spokehub-video.s3.amazonaws.com/spokehub_manifesto.mp4?d={% now "U"%}"
+        type="video/mp4">
+</video>
+</div>
+
+<script>
+
+// replace the autoplay attribute, only when the video
+// is initially visible 
+
+$(document).ready(function() {
+   $('#play-placeholder').fadeIn("slow", function() {console.log('faded in')});
+});
+
+</script>
+{% else %}
 
 <div class="panel-group" id="accordion">
   <div class="panel panel-default">
@@ -382,9 +412,12 @@
 {% endflag %}
 </div>
 
+{% endif %}
 {% endblock %}
 
 {% block js %}
+{% if request.user.is_anonymous %}
+{% else %}
 <script src="/media/js/flexslide/jquery.flexslider-min.js"></script>
 <script src="/media/js/masonry.pkgd.js"></script>
 <script src="/media/js/jssor.slider.mini.js"></script>
@@ -484,5 +517,5 @@ $(".panel").on('shown.bs.collapse', function (e) {
 });
 </script>
 
-
+{% endif %}
 {% endblock %}
