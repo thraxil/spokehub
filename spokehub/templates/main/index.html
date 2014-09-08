@@ -2,6 +2,7 @@
 {% load thumbnail %}
 {% load waffle_tags %}
 {% load markup %}
+{% load urlize_target_blank %}
 
 {% block navbar %}
 	<ul class="nav nav-justified">
@@ -399,7 +400,7 @@ $(document).ready(function() {
 								 width="{{post.image_width}}"
 								 height="{{post.image_height}}" /><br />
 						{% endif %}
-						<p>{{post.text|urlize}}</p>
+						<p>{{post.text|urlize|url_target_blank}}</p>
 						<div class="nowtilefooter">
 						<a target="_blank" href="{{post.external_link}}">{{post.created|timesince}} ago</a>
 						</div>
