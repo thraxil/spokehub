@@ -224,7 +224,7 @@ $(document).ready(function() {
 								       
 								<div class="convocontent">
 										{% if reply_one.url %}
-								<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_one.url}}">{% if reply_one.title %}
+								<h3><a target="_blank" href="{{reply_one.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_one.title %}
 								{{reply_one.title}}{% else %}{{reply_one.url}}{% endif %}</h3>
 								{% endif %}
 								{{reply_one.body|markdown}}
@@ -246,7 +246,7 @@ $(document).ready(function() {
 								</div>
 								 <div class="panelbreak black"></div>
 									{% if reply_two.url %}
-									<h3><span class="glyphicon glyphicon-link"></span><a href="{{reply_two.url}}">{% if reply_two.title %}
+									<h3><a target="_blank" href="{{reply_two.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_two.title %}
 									{{reply_two.title}}{% else %}{{reply_two.url}}{% endif %}</h3>
 									{% endif %}
 											 {{reply_two.body|markdown}}
