@@ -1,0 +1,54 @@
+{% extends 'userena/base_userena.html' %}
+{% load i18n %}
+{% load bootstrap %}
+
+{% block title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div class="container">
+<form action="/accounts/signup/" method="post">
+  {% csrf_token %}
+  <fieldset>
+    <legend>Join Spokehub</legend>
+
+		<p>You have been invited to join Spokehub. First you need to
+    create your account. A confirmation will be sent to the email you
+    set. Then you can fill out your profile and
+			join the conversation.</p>
+
+<div class="control-group">
+  <label class="control-label" for="id_username">Username</label>
+  <div class="controls">
+    <input class="required" id="id_username" maxlength="30" name="username" type="text" />
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="id_email">Email</label>
+  <div class="controls">
+    <input class="required" id="id_email" maxlength="75" name="email"
+    type="text" value="{{email}}"/>
+  </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="id_password1">Create password</label>
+     <div class="controls">
+        <input class="required" id="id_password1" name="password1" type="password" />
+     </div>
+</div>
+
+<div class="control-group">
+  <label class="control-label" for="id_password2">Repeat password</label>
+  <div class="controls">
+    <input class="required" id="id_password2" name="password2" type="password" />
+  </div>
+</div>
+
+
+  </fieldset>
+  <input type="submit" value="{% trans "Signup"%}" class="btn
+  btn-primary" />
+</form>
+</div>
+{% endblock %}

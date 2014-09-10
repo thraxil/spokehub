@@ -117,12 +117,14 @@
 </form>
 
 {% if user.is_superuser %}
-<a href="#add-conversation" data-toggle="modal"
+
+<p><a href="#add-conversation" data-toggle="modal"
 	 data-target="#add-conversation" class="btn btn-primary">Start a
 	 new Conversation</a>
 
 <a href="/item/" 
-	 class="btn btn-primary">View Archived Conversations</a>
+	 class="btn btn-primary">View Archived Conversations</a></p>
+<p><a href="/invite/" class="btn btn-primary">Invite People to Join</a></p>
 
 
 <form action="/item/add/" method="post" enctype="multipart/form-data" role="form">

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if request.user.is_superuser %}
+<div class="container">
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<form action="." method="post" class="form-horizontal">
+<fieldset><legend>Invite Someone</legend>
+	<div class="row">
+	<div class="form-group">
+		<label for="email" class="col-md-2 control-label">Email Address</label>
+		<div class="col-md-4">
+			<input type="text" class="form-control" name="email" id="email"
+						 placeholder="someone@somewhere.com" />
+		</div>
+		<div class="col-md-2">
+			<input type="submit" class="btn btn-primary" value="invite" />
+		</div>
+		</div>
+</fieldset>
+</form>
+
+<p></p>
+<p></p>
+<p></p>
+
+
+</div>
+{% else %}
+<p>Sorry, superuser only</p>
+{% endif %}
+{% endblock %}

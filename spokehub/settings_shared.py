@@ -77,6 +77,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'gacontext.ga_processor',
     'django.core.context_processors.static',
+    'django.contrib.messages.context_processors.messages',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -125,6 +126,7 @@ INSTALLED_APPS = [
     'spokehub.profile',
     'spokehub.twitter',
     'spokehub.instagram',
+    'spokehub.invite',
     'gunicorn',
     'userena',
     'guardian',
