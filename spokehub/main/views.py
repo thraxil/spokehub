@@ -75,6 +75,7 @@ class ReplyToItemView(View):
         if 'image' in request.FILES:
             reply.save_image(request.FILES['image'])
 
+        reply.email_mentions()
         if 'item' in request.META.get('HTTP_REFERER'):
             return HttpResponseRedirect(item.get_absolute_url())
         else:

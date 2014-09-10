@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 from south.modelsinspector import add_introspection_rules
-
+import re
 import os.path
 from django.template.defaultfilters import slugify
 
@@ -111,6 +111,26 @@ class Reply(models.Model):
         fd.close()
         self.image = full_filename
         self.save()
+
+    def email_mentions(self):
+        pattern = re.compile('\@(\S+)', re.MULTILINE)
+        usernames = [u.lower() for u in pattern.findall(self.body)]
+        usernames = list(set(usernames))
+        for u in usernames:
+            if u == self.author.username:
+                continue
+            r = User.objects.filter(username=u)
+            if not r.exists():
+                continue
+            user = r[0]
+            user.email_user(
+                "someone mentioned you on spokehub",
+                """%s mentioned you in a reply:
+
+%s
+""" % (self.author.username, self.body),
+                'hello@spokehub.org',
+                )
 
 
 class WorkSample(models.Model):
