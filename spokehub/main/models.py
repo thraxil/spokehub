@@ -119,7 +119,7 @@ class Reply(models.Model):
         for u in usernames:
             if u == self.author.username:
                 continue
-            r = User.objects.filter(username=u)
+            r = User.objects.filter(username__iexact=u)
             if not r.exists():
                 continue
             user = r[0]
