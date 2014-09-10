@@ -113,7 +113,7 @@ class Reply(models.Model):
         self.save()
 
     def email_mentions(self):
-        pattern = re.compile('\@(\S+)', re.MULTILINE)
+        pattern = re.compile('\@(\w+)', re.MULTILINE)
         usernames = [u.lower() for u in pattern.findall(self.body)]
         usernames = list(set(usernames))
         for u in usernames:
