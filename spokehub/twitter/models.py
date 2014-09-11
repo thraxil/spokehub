@@ -53,7 +53,7 @@ class TwitterAccount(models.Model):
                             author_screen_name=t.author.screen_name,
                             created_at=t.created_at.isoformat(),
                             id=t.id,
-                            place=t.place,
+                            place=str(t.place),
                             source=t.source,
                             source_url=t.source_url,
                             retweet_count=t.retweet_count,
