@@ -33,11 +33,15 @@ class InstagramAccount(models.Model):
                 continue
             try:
                 sru = media.get_standard_resolution_url()
+                try:
+                    text = media.caption.text
+                except:
+                    text = ""
                 np = NowPost.objects.create(
                     user=self.user,
                     service='instagram',
                     service_id=media.link,
-                    text=media.caption.text,
+                    text=text,
                     created=media.created_time.isoformat(),
                     image_url=media.get_low_resolution_url(),
                     image_width=306,
