@@ -22,12 +22,12 @@ Here is your unique sign up link:
 http://spokehub.org/invite/signup/%s/
 
 There are only 3 rules:
-1. Connect don't compete. This is a unicorn party (that's why you're
-invited).
+1. Shoot any feedback to hello@spokehub.org (that's why you've been invited
+first!).
 2. Share dreams not creds. We like how you think (that's why you're
 invited).
-3. Shoot any feedback to hello@spokehub.org (that's why you've been invited
-first!).
+3. Connect don't compete. This is a unicorn party (that's why you're
+invited).
 
 We look forward to seeing you in the hub.
 
