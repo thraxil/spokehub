@@ -243,6 +243,9 @@ button.hubnav {
   text-align: center; }
 
 /* Slideshow */
+#slider1_container {
+  margin: 0 auto; }
+
 .slide_caption {
   text-transform: uppercase;
   font-family: dinlight; }
