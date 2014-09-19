@@ -357,7 +357,9 @@ $(document).ready(function() {
         </span>
         <!-- Arrow Navigator Skin End -->
 	</div>
-    <script>jssor_slider1_starter('slider1_container');</script>
+{% comment %}    
+<script>jssor_slider1_starter('slider1_container');</script>
+{% endcomment %}
 
 </div>
       
@@ -401,7 +403,7 @@ $(document).ready(function() {
 				
      		</div>
 				{% if now_posts.has_next %}
-				<p><a href="/?page={{now_posts.next_page_number}}">load more</a></p>
+				<p id="now-nav"><a href="/?page={{now_posts.next_page_number}}">load more</a></p>
 				{% endif %}
     </div>
   </div>
@@ -417,14 +419,54 @@ $(document).ready(function() {
 <script src="/media/js/flexslide/jquery.flexslider-min.js"></script>
 <script src="/media/js/masonry.pkgd.js"></script>
 <script src="/media/js/jssor.slider.mini.js"></script>
+<script src="/media/js/jquery.infinitescroll.min.js"></script>
+
 <link rel="stylesheet" href="/media/js/flexslide/flexslider.css" type="text/css">
 <script>
 	var $container = $('#nowtiles');
 	// initialize
 	$('#nowtiles').masonry({
-  columnWidth: 40,
-  itemSelector: '.nowtile'
-});
+    columnWidth: 40,
+    itemSelector: '.nowtile'
+  });
+
+  $container.infinitescroll({
+      navSelector  : '#now-nav',
+      nextSelector : '#now-nav a',
+      itemSelector : '.nowtile',
+
+      errorCallback: function () { console.log('had an error'); },
+
+      loading: {
+          finishedMsg: 'No more pages to load.'
+//          img: 'http://i.imgur.com/6RMhx.gif'
+        }
+      },
+
+      // trigger Masonry as a callback
+      function( newElements ) {
+        // hide new items while they are loading
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        // ensure that images load before adding to masonry layout
+// imagesLoaded seems to be broken...
+// going without for now..
+//        $newElems.imagesLoaded(function(){
+          // show elems now they're ready
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true );
+//        });
+
+// don't know why, but it seems that I need to manually
+// detect the end of the scrolling and stop it
+// or it does weird stuff...
+        if ($newElems.length < 50) {
+           $container.infinitescroll('destroy');
+           return;
+        }
+
+      }
+    );
+
 </script>
   <script>
         jQuery(document).ready(function ($) {
@@ -522,6 +564,7 @@ $(".panel").on('shown.bs.collapse', function (e) {
    $(e.target).parent().addClass('active-panel');
 });
 </script>
+
 
 {% endif %}
 {% endblock %}
