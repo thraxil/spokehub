@@ -7,8 +7,7 @@
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 
 {% block content %}
-<section>
-<div class="container">
+<div class="container userena">
   <div class="white-box">
     {% block profile_navigation %}
       {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
@@ -196,6 +195,5 @@
 {% endif %}
 {% endif %}
 {% endwith %}
-</di>
-</section>
+</div>
 {% endblock %}

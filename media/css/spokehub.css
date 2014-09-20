@@ -13,13 +13,17 @@
 html, body {
   margin: 0; }
 
-p, span, h1, h2, h3, h4, h5, h6, label {
+p, span, h1, h2, h3, h4, h5, h6, label, dd {
   text-transform: uppercase;
   font-family: dinlight;
   letter-spacing: 0.045em; }
 
 a {
   color: #262222; }
+
+dt, strong {
+  text-transform: uppercase;
+  font-family: dinmed; }
 
 /* Modals */
 @media screen and (min-width: 768px) {
@@ -318,3 +322,7 @@ button.hubnav {
     margin-left: 25px; }
 
 /* All user areas */
+.mugshot {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px; }
