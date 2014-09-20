@@ -315,16 +315,17 @@ $(document).ready(function() {
 {% flag section_work %}
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
-      	
-<ul class="bxslider">
-    	{% for ws in work_samples %}
-        	<li><img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}" title="{{ws.title}} by {{ws.user.username}}"/></li>
-       {% endfor %}
-</ul>
+
+    	    {% for ws in work_samples %}
+        		<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}" title="{{ws.title}} by {{ws.user.username}}"/>
+        	{% endfor %}
+      
+
     </div>
 	</div>
+	{% endflag %}
+
 </div>
-{% endflag %}
 
   </div>
 
@@ -376,18 +377,7 @@ $(document).ready(function() {
 {% if request.user.is_anonymous %}
 {% else %}
 <script src="/media/js/masonry.pkgd.js"></script>
-<script src="/media/js/jquery.bxslider.min.js"></script>
 <script src="/media/js/jquery.infinitescroll.min.js"></script>
-
-<script>
-	$(document).ready(function(){
-  $('.bxslider').bxSlider({
-  	captions: true,
-  	mode: 'fade'
-  });
-});
-
-</script>
 
 <script>
 	var $container = $('#nowtiles');
