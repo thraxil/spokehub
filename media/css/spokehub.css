@@ -54,16 +54,18 @@ input, textarea, keygen, select, button {
   text-transform: uppercase;
   font-family: dinlight; }
 
-.control-group {
+.userena p {
+  margin: 0 0 40px 0; }
+.userena .control-group {
   clear: both;
   margin: 0 0 20px 0; }
-  .control-group .control-label {
-    width: 30%;
+  .userena .control-group .control-label {
+    width: 50%;
     float: left;
     display: inline;
     padding: 0 15px 0 0; }
-  .control-group .controls input {
-    width: 70%; }
+  .userena .control-group .controls input {
+    width: 50%; }
 
 /* Home Nav */
 .hubauth {

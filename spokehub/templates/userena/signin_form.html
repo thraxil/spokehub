@@ -6,7 +6,22 @@
 {% block title %}{% trans "Signin" %}{% endblock %}
 
 {% block content %}
-<div class="container">
+<div class="container userena">
+		<div class="row staticnav">
+	<div class="col-md-4">
+		<a href="/">
+		<video class="video-js vjs-default-skin"
+					 id="banner-video" 
+					 autoplay loop>
+			<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4">
+				<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4"
+								type="video/mp4">
+		</video>
+		</a>
+	</div>
+	</div>
+		<div class="row">
+		<div class="col-md-6 col-md-offset-3">
 <form action="" method="post">
   {% csrf_token %}
   <fieldset>
@@ -26,11 +41,12 @@
     {% endif %}
     {% endfor %}
   </fieldset>
-  <input type="submit" class="btn btn-primary" value="{% trans "Signin" %}" />
+  <input type="submit" class="btn btn-primary pull-right" value="{% trans "Signin" %}" />
 <!--  <p class="forgot-password"><a href="{% url --
 	--  'userena_password_reset' %}" title="{% trans 'Forgot your --
 	--  password?' %}">{% trans "Forgot your password?" %}</a></p> -->
   {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
 </form>
+</div>
 </div>
 {% endblock %}
