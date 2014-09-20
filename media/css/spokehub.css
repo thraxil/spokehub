@@ -210,9 +210,12 @@ button.hubnav {
   .hubconvo .row {
     margin-right: 0;
     margin-left: 0; }
-  .hubconvo .col-sm-5.col-md-5 {
+  .hubconvo .col-sm-5.col-md-5.left {
     padding-right: 1px;
     padding-left: 0; }
+  .hubconvo .col-sm-5.col-md-5.right {
+    padding-right: 0;
+    padding-left: 1px; }
   .hubconvo .col-sm-1.col-md-1 {
     padding-left: 0;
     padding-right: 0; }
