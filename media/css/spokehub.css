@@ -13,7 +13,7 @@
 html, body {
   margin: 0; }
 
-p, span, h1, h2, h3, h4, h5, h6 {
+p, span, h1, h2, h3, h4, h5, h6, label {
   text-transform: uppercase;
   font-family: dinlight;
   letter-spacing: 0.045em; }
@@ -45,6 +45,25 @@ a {
   color: white; }
   .btn-primary:hover {
     background-color: black; }
+
+/* Input and Submit */
+input, textarea, keygen, select, button {
+  border: none;
+  background-color: #262222;
+  color: white;
+  text-transform: uppercase;
+  font-family: dinlight; }
+
+.control-group {
+  clear: both;
+  margin: 0 0 20px 0; }
+  .control-group .control-label {
+    width: 30%;
+    float: left;
+    display: inline;
+    padding: 0 15px 0 0; }
+  .control-group .controls input {
+    width: 70%; }
 
 /* Home Nav */
 .hubauth {
@@ -295,3 +314,5 @@ button.hubnav {
     font-family: dinlight;
     color: whitesmoke;
     margin-left: 25px; }
+
+/* All user areas */

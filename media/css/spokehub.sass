@@ -57,7 +57,7 @@ $hubblue: #0054a6
 html, body 
   margin: 0
   
-p, span, h1, h2, h3, h4, h5, h6
+p, span, h1, h2, h3, h4, h5, h6, label
   @include hubfont  
   letter-spacing: .045em
 
@@ -87,6 +87,25 @@ a
   color: #fff  
   &:hover
     background-color: #000
+    
+/* Input and Submit */
+input, textarea, keygen, select, button
+  border: none
+  background-color: $hubblack
+  color: #fff
+  @include hubfont
+  
+.control-group
+  clear: both
+  margin: 0 0 20px 0
+  .control-label
+    width: 30%
+    float: left
+    display: inline
+    padding: 0 15px 0 0
+  .controls
+    input
+      width: 70%
 
 /* Home Nav */
 
@@ -328,3 +347,11 @@ button.hubnav
     @include hubfont
     color: #f5f5f5
     margin-left: 25px    
+
+
+/* All user areas */
+
+
+
+.container
+  

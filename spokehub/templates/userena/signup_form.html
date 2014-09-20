@@ -6,14 +6,27 @@
 
 {% block content %}
 <div class="container">
-<form action="" method="post">
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Join Spokehub" %}</legend>
-		<p>You have been invited to join Spokehub. First you need to
-    create your account. A confirmation will be sent to the email you
-    set. Then you can fill out your profile and
-			join the conversation.</p>
+	
+	<div class="row staticnav">
+	<div class="col-md-4">
+		<a href="/">
+		<video class="video-js vjs-default-skin"
+					 id="banner-video" 
+					 autoplay loop>
+			<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4">
+				<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4"
+								type="video/mp4">
+		</video>
+		</a>
+	</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+	<form action="" method="post">
+  	{% csrf_token %}
+  	<fieldset>
+    <h1>{% trans "Join Spokehub" %}</h1>
+	<p>You have been invited to join Spokehub. First you need to create your account. A confirmation will be sent to the email you set. Then you can fill out your profile and join the conversation.</p>
     {{ form.non_field_errors }}
     {% for field in form %}
     {{ field.errors }}
@@ -30,7 +43,8 @@
     {% endfor %}
   </fieldset>
   <input type="submit" value="{% trans "Signup"%}" class="btn
-  btn-primary" />
+  btn-primary pull-right" />
 </form>
+</div>
 </div>
 {% endblock %}
