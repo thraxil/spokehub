@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="container userena">
-  <div class="white-box">
+	<div class="row">
     {% block profile_navigation %}
       {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
       {% if user.username == profile.user.username %}
@@ -79,10 +79,9 @@
         </dl>
       {% endblock %}
     </div>
-  </div>
-
+</div>
      {% if user.username == profile.user.username %}
- 
+<div class="row"> 
 <form action="/add_work_sample/" method="post"
 			enctype="multipart/form-data" role="form">
 <div class="modal fade" id="add-work-sample">
@@ -114,7 +113,7 @@
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 </form>
-
+</div>
 {% if user.is_superuser %}
 
 <p><a href="#add-conversation" data-toggle="modal"
@@ -166,7 +165,7 @@
 
 <div class="row">
 {% for ws in work_samples %}
-  <div class="col-sm-6 col-md-4">
+  <div class="col-md-4 col-md-offset-4">
     <div class="thumbnail">
       <img src="{% thumbnail ws.image 600x200 %}" alt="{{ws.title}}"/>
       <div class="caption">
