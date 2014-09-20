@@ -315,12 +315,16 @@ $(document).ready(function() {
 {% flag section_work %}
     <div id="collapseThree" class="panel-collapse collapse">
       <div class="panel-body">
-
+		<div class="flexslider">
+			<ul class="slides">
     	    {% for ws in work_samples %}
-        		<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}" title="{{ws.title}} by {{ws.user.username}}"/>
+    	    <li>
+        		<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}"/>
+        		<div class="caption">{{ws.title}} by {{ws.user.username}}</div>
+        	</li>
         	{% endfor %}
-      
-
+      </ul>
+	</div>
     </div>
 	</div>
 	{% endflag %}
@@ -378,6 +382,7 @@ $(document).ready(function() {
 {% else %}
 <script src="/media/js/masonry.pkgd.js"></script>
 <script src="/media/js/jquery.infinitescroll.min.js"></script>
+<script src="/media/js/jquery.flexslider-min.js"></script>
 
 <script>
 	var $container = $('#nowtiles');
@@ -425,7 +430,16 @@ $(document).ready(function() {
     );
 
 </script>
-
+<script type="text/javascript" charset="utf-8">
+  $(window).load(function() {
+    $('.flexslider').flexslider({
+    	smoothHeight: true,
+    	itemWidth: 1200,
+    	maxItems: 1,
+    	controlNav: false
+    });
+  });
+</script>
 
 <script>
 $(".panel").on('hidden.bs.collapse', function (e) {

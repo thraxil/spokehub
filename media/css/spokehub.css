@@ -243,9 +243,15 @@ button.hubnav {
   text-align: center; }
 
 /* Slideshow */
-.slide_caption {
+.flexslider {
+  margin: 0 auto;
+  max-width: 1000px; }
+
+.slides .caption {
   text-transform: uppercase;
-  font-family: dinlight; }
+  font-family: dinlight;
+  font-size: 18px;
+  padding-top: 20px; }
 
 /* Masonry For NOW */
 #nowtiles {
