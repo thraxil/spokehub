@@ -233,8 +233,7 @@ button.hubnav {
 .hubconvo {
   margin: 30px 0; }
   .hubconvo .row {
-    margin-right: 0;
-    margin-left: 0; }
+    margin: 1px 0 0 0; }
   .hubconvo .col-sm-5.col-md-5.left {
     padding-right: 1px;
     padding-left: 0; }
@@ -248,7 +247,7 @@ button.hubnav {
 .convoblock {
   color: #262222;
   background-color: white;
-  padding: 20px;
+  padding: 15px 20px 15px 20px;
   height: 300px;
   margin: 1px 0 0 0;
   text-transform: uppercase;
@@ -267,6 +266,8 @@ button.hubnav {
     clear: both;
     height: 200px;
     overflow: hidden; }
+    .convoblock .convocontent img {
+      max-height: 150px; }
 
 /* Video */
 .video {
