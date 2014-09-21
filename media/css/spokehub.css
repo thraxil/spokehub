@@ -264,7 +264,9 @@ button.hubnav {
       text-transform: uppercase;
       font-family: dinmed; }
   .convoblock .convocontent {
-    clear: both; }
+    clear: both;
+    height: 200px;
+    overflow: hidden; }
 
 /* Video */
 .video {
