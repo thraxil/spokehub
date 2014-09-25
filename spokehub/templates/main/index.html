@@ -320,7 +320,7 @@ $(document).ready(function() {
     	    {% for ws in work_samples %}
     	    <li>
         		<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}"/>
-        		<div class="caption">{{ws.title}} by {{ws.user.username}}</div>
+        		<div class="caption">{{ws.title}} by <a href="/accounts/{{ws.user.username}}/">{{ws.user.username}}</a></div>
         	</li>
         	{% endfor %}
       </ul>
