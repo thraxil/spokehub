@@ -229,7 +229,16 @@ $(document).ready(function() {
 								{% endif %}
 								{{reply_one.body|markdown}}
 											 {% if reply_one.image %}
-											 <img src="{% thumbnail reply_one.image 400x400 %}" />
+											 <a data-toggle="lightbox" href="#how-image-{{reply_one.id}}"><img src="{% thumbnail reply_one.image 400x400 %}" /></a>
+
+											 <div id="how-image-{{reply_one.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+												 <div class="lightbox-dialog">
+													 <div class="lightbox-content">
+														 <img src="{% thumbnail reply_one.image 960x960 %}">
+													 </div>
+												 </div>
+											 </div>
+
 								{% endif %}
 								</div>
 						</div>
@@ -251,7 +260,16 @@ $(document).ready(function() {
 									{% endif %}
 											 {{reply_two.body|markdown}}
 											 {% if reply_two.image %}
-											 <img src="{% thumbnail reply_two.image 400x400 %}" />
+											 <a data-toggle="lightbox" href="#how-image-{{reply_two.id}}"><img src="{% thumbnail reply_two.image 400x400 %}" /></a>
+
+											 <div id="how-image-{{reply_two.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+												 <div class="lightbox-dialog">
+													 <div class="lightbox-content">
+														 <img src="{% thumbnail reply_two.image 960x960 %}">
+													 </div>
+												 </div>
+											 </div>
+
 								{% endif %}
 								
 						</div>
@@ -380,6 +398,9 @@ $(document).ready(function() {
 {% block js %}
 {% if request.user.is_anonymous %}
 {% else %}
+<script src="/media/bootstrap-lightbox.js"></script>
+<link href="/media/bootstrap-lightbox.css" rel="stylesheet"></script>
+
 <script src="/media/js/masonry.pkgd.js"></script>
 <script src="/media/js/jquery.infinitescroll.min.js"></script>
 <script src="/media/js/jquery.flexslider-min.js"></script>
