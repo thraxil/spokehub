@@ -283,6 +283,9 @@ button.hubnav {
   font-family: dinlight;
   font-size: 18px;
   padding-top: 20px; }
+.slides .caption a {
+  color: #ffffff;
+}
 
 /* Masonry For NOW */
 #nowtiles {
