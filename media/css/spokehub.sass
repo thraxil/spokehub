@@ -148,7 +148,7 @@ input, textarea, keygen, select, button
   font-size: 1em
   .hubnav
     a
-    background-color: #fff
+      background-color: #fff
     &:hover
       @include hubhover
   .caret
@@ -175,7 +175,9 @@ input, textarea, keygen, select, button
 
 
 button.hubnav
-  background-color: #fff  
+  @include hublink
+  color: $hubblack 
+  background-color: transparent
   padding: 0 
   font-size: 1.25em
   font-weight: normal
@@ -271,14 +273,14 @@ button.hubnav
 .hubconvo
   margin: 30px 0
   .row
-    margin: 1px 0 0 0
+    margin: 0 0 6px 0
   .col-sm-5.col-md-5
     &.left
-      padding-right: 1px
+      padding-right: 3px
       padding-left: 0
     &.right
       padding-right: 0
-      padding-left: 1px
+      padding-left: 3px
   .col-sm-1.col-md-1
     padding-left: 0
     padding-right: 0
@@ -287,12 +289,10 @@ button.hubnav
   color: $hubblack
   background-color: #fff
   padding: 15px 20px 15px 20px
-  min-height: 300px
+  height: auto
   margin: 1px 0 0 0
   @include hubfont 
   @include killradius
-  div, p
-    text-align: center
   .convoheader
     clear: both
     text-align: center
@@ -300,8 +300,7 @@ button.hubnav
       @include hublink
   .convocontent
     clear: both
-    height: 200px
-    overflow: hidden
+    height: auto
     img
       max-height: 150px
  
@@ -347,7 +346,10 @@ button.hubnav
 /* Footer */
 #footer
   background-color: $hubblack
+  width: 100%
   color: #fff
+  position: fixed
+  bottom: 0
   a
     color: #f5f5f5
     margin-left: 25px
@@ -361,7 +363,3 @@ button.hubnav
 
 /* All user areas */
 
-
-
-.container
-  

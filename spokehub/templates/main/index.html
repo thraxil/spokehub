@@ -227,7 +227,7 @@ $(document).ready(function() {
 								<h3><a target="_blank" href="{{reply_one.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_one.title %}
 								{{reply_one.title}}{% else %}{{reply_one.url}}{% endif %}</h3>
 								{% endif %}
-								{{reply_one.body|markdown}}
+								<h3>{{reply_one.body|markdown}}</h3>
 											 {% if reply_one.image %}
 											 <a data-toggle="lightbox" href="#how-image-{{reply_one.id}}"><img src="{% thumbnail reply_one.image 400x400 %}" /></a>
 
@@ -258,7 +258,7 @@ $(document).ready(function() {
 									<h3><a target="_blank" href="{{reply_two.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_two.title %}
 									{{reply_two.title}}{% else %}{{reply_two.url}}{% endif %}</h3>
 									{% endif %}
-											 {{reply_two.body|markdown}}
+											 <h3>{{reply_two.body|markdown}}</h3>
 											 {% if reply_two.image %}
 											 <a data-toggle="lightbox" href="#how-image-{{reply_two.id}}"><img src="{% thumbnail reply_two.image 400x400 %}" /></a>
 
