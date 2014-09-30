@@ -318,7 +318,8 @@ button.hubnav {
   width: 100%;
   color: white;
   position: fixed;
-  bottom: 0; }
+  bottom: 0;
+  z-index: 9000; }
   #footer a {
     color: whitesmoke;
     margin-left: 25px; }
