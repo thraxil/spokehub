@@ -257,6 +257,10 @@ button.hubnav {
   font-family: dinlight;
   border: none;
   border-radius: 0; }
+  .convoblock img {
+    max-height: 150px;
+    display: block;
+    margin: 0 auto; }
   .convoblock .convoheader {
     clear: both;
     text-align: center; }
@@ -266,8 +270,6 @@ button.hubnav {
   .convoblock .convocontent {
     clear: both;
     height: auto; }
-    .convoblock .convocontent img {
-      max-height: 150px; }
 
 /* Video */
 .video {
