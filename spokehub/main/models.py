@@ -7,6 +7,8 @@ from south.modelsinspector import add_introspection_rules
 import re
 import os.path
 from django.template.defaultfilters import slugify
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 
 add_introspection_rules(
@@ -64,6 +66,21 @@ class Item(models.Model):
         if (len(a) % 2) == 1:
             pairs.append((a[-1],))
         return pairs
+
+
+@receiver(post_save, sender=Item)
+def new_item_emails(sender, **kwargs):
+    if not kwargs.get('created', False):
+        # only send it on creation
+        return
+    for u in User.objects.all():
+        if u.is_anonymous() or u.username == 'AnonymousUser':
+            continue
+        i = kwargs['instance']
+        u.email_user(
+            "new spokehub conversation: " + i.title,
+            i.body,
+            'hello@spokehub.org')
 
 
 class Reply(models.Model):
