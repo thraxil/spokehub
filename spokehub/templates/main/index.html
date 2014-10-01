@@ -7,21 +7,17 @@
 {% block navbar %}
 	<ul class="nav nav-justified">
       <li><button type="button" class="btn hubnav"
-									data-toggle="collapse"
-									data-target="#collapseOne"
-									data-parent="#accordian">HOW</button></li>
+									onclick="showSection('#how')"
+									><a href="/#how">HOW</a></button></li>
       <li><button type="button" class="btn hubnav"
-									data-toggle="collapse"
-									data-target="#collapseTwo"
-									data-parent="#accordian">WE</button></li>
+									onclick="showSection('#we')"
+									><a href="/#we">WE</a></button></li>
       <li><button type="button" class="btn hubnav"
-									data-toggle="collapse"
-									data-target="#collapseThree"
-									data-parent="#accordian">WORK</button></li>
+									onclick="showSection('#work')"
+									><a href="/#work">WORK</a></button></li>
       <li><button type="button" class="btn hubnav"
-									data-toggle="collapse"
-									data-target="#collapseFour"
-									data-parent="#accordian">NOW</button></li>
+									onclick="showSection('#now')"
+									><a href="/#now">NOW</a></button></li>
 
 		</ul>
 {% endblock %}
@@ -69,8 +65,8 @@ $(document).ready(function() {
 
 <div class="panel-group" id="accordion">
   <div class="panel panel-default">
-    <a  data-toggle="collapse"
-			 data-parent="#accordion" href="#collapseOne">
+    <a data-toggle="collapse"
+	 data-parent="#accordion"  href="#how">
     	<div id="hub1" class="panel-heading">
       	<div class="panel-title"> 
          How
@@ -80,7 +76,7 @@ $(document).ready(function() {
         
 	    </div>
      </a>
-    <div id="collapseOne" class="panel-collapse collapse">
+    <div id="how" class="panel-collapse collapse">
       <div class="panel-body">
 		<div class="container">
        	<div class="panelbreak white"></div>
@@ -290,7 +286,7 @@ $(document).ready(function() {
 
   <div class="panel panel-default">
   <a data-toggle="collapse"
-		 data-parent="#accordion" href="#collapseTwo">
+	 data-parent="#accordion" href="#we">
   	 <div id="hub2" class="panel-heading">
       <div class="panel-title">
           We        
@@ -300,7 +296,7 @@ $(document).ready(function() {
     </div>
       </a>
 
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="we" class="panel-collapse collapse">
       <div class="panel-body">
 				<div class="container video">
 <iframe src="//player.vimeo.com/video/104999392?portrait=0&badge=0&byline=0&title=0" width="900"height="506" frameborder="0" webkitallowfullscreen
@@ -313,7 +309,7 @@ $(document).ready(function() {
 
   <div class="panel panel-default">
 <a  data-toggle="collapse"
-	 data-parent="#accordion" href="#collapseThree">
+	 data-parent="#accordion" href="#work">
     <div id="hub3" class="panel-heading">
       <div class="panel-title">
           Work        
@@ -323,7 +319,7 @@ $(document).ready(function() {
     </div>
 </a>
 
-    <div id="collapseThree" class="panel-collapse collapse">
+    <div id="work" class="panel-collapse collapse">
       <div class="panel-body">
 
 {% for ws in work_samples %}
@@ -359,7 +355,7 @@ $(document).ready(function() {
 
   <div class="panel panel-default active-panel">
 <a data-toggle="collapse"
-	 data-parent="#accordion" href="#collapseFour">
+	 data-parent="#accordion" href="#now">
   	    <div id="hub4" class="panel-heading">
       <div class="panel-title">
           Now
@@ -369,7 +365,7 @@ $(document).ready(function() {
     </div>
       </a>
 
-    <div id="collapseFour" class="panel-collapse collapse in">
+    <div id="now" class="panel-collapse collapse in">
       <div class="panel-body">
 				<div id="nowtiles" data-masonry-options='{ "gutter": 30 }'>
 
@@ -458,6 +454,15 @@ $(document).ready(function() {
 
 </script>
 <script type="text/javascript" charset="utf-8">
+
+  function showSection(identifier) {
+     console.log('hide them all');
+	   $('.collapse').collapse({'toggle':false, 'parent': '#accordian'})
+                   .collapse('hide');
+     console.log('show ' + identifier);
+     $(identifier).collapse({'toggle':true, 'parent': '#accordian'}).collapse('show');
+  }
+
   $(window).load(function() {
     $('.flexslider').flexslider({
     	smoothHeight: false,
@@ -465,41 +470,24 @@ $(document).ready(function() {
     	maxItems: 1,
     	controlNav: false
     });
-  if (window.location.hash !== '') {
-     // close them all
-	   $('.collapse').collapse({'toggle':false}).collapse('hide');
-  }
 
-  if (window.location.hash === '#how') {
-     $('#collapseOne').collapse({'toggle':false}).collapse('show');
-  }
-
-  if (window.location.hash === '#we') {
-     $('#collapseTwo').collapse({'toggle':false}).collapse('show');
-  }
-
-  if (window.location.hash === '#work') {
-     $('#collapseThree').collapse({'toggle':false}).collapse('show');
-  }
-
-  if (window.location.hash === '#now') {
-     $('#collapseFour').collapse({'toggle':false}).collapse('show');
-  }
+  if (window.location.hash === '#how')  { showSection('#how'); }
+  if (window.location.hash === '#we')   { showSection('#we'); }
+  if (window.location.hash === '#work') { showSection('#work'); }
+  if (window.location.hash === '#now')  { showSection('#now'); }
 
   if (window.location.hash === '') {
     // if nothing is specified, open NOW
-     $('#collapseFour').collapse({'toggle':false}).collapse('show');
+     showSection('#now');
   }
   });
 </script>
 
 <script>
 $(".panel").on('hidden.bs.collapse', function (e) {
-   console.log("hiding " + e.id);
    $(e.target).parent().removeClass('active-panel');
 });
 $(".panel").on('shown.bs.collapse', function (e) {
-   console.log("showing " + e.id);
    $(e.target).parent().addClass('active-panel');
 });
 </script>
