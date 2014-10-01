@@ -334,16 +334,17 @@ $(document).ready(function() {
 </div>
 
 {% endfor %}
-		<div class="flexslider">
+		<div class="flexslider" id="flexslider">
 			<ul class="slides">
     	    {% for ws in work_samples %}
-    	    <li>
+    	    <li id="slide-{{ws.id}}">
         		<a data-toggle="lightbox"
 							 href="#work-image-{{ws.id}}">
 							<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}"/></a>
         		<div class="caption">{{ws.title}} by <a href="/accounts/{{ws.user.username}}/">{{ws.user.username}}</a></div>
         	</li>
         	{% endfor %}
+
       </ul>
 	</div>
     </div>
@@ -456,18 +457,18 @@ $(document).ready(function() {
 <script type="text/javascript" charset="utf-8">
 
   function showSection(identifier) {
-     console.log('hide them all');
 	   $('.collapse').collapse({'toggle':false, 'parent': '#accordian'})
                    .collapse('hide');
-     console.log('show ' + identifier);
      $(identifier).collapse({'toggle':true, 'parent': '#accordian'}).collapse('show');
   }
 
   $(window).load(function() {
-    $('.flexslider').flexslider({
+    $('#flexslider').flexslider({
     	smoothHeight: false,
-    	itemWidth: 1200,
-    	maxItems: 1,
+// this one breaks it. don't know why.
+//    	itemWidth: 1200,
+    	maxItems: 0,
+      animationLoop: true,
     	controlNav: false
     });
 
