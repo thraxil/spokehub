@@ -194,21 +194,21 @@ button.hubnav {
 .panel-default > .panel-heading + .panel-collapse .panel-body {
   border: 0; }
 
-#hub1, #hub3, #collapseOne, #collapseThree {
+#hub1, #hub3, #how, #work {
   background-color: #262222;
   color: white;
   border: none;
   border-radius: 0; }
-  #hub1 .desc:hover, #hub3 .desc:hover, #collapseOne .desc:hover, #collapseThree .desc:hover {
+  #hub1 .desc:hover, #hub3 .desc:hover, #how .desc:hover, #work .desc:hover {
     color: #dddddd;
     text-decoration: none; }
 
-#hub2, #hub4, #collapseTwo, #collapseFour {
+#hub2, #hub4, #we, #now {
   background-color: white;
   color: #262222;
   border: none;
   border-radius: 0; }
-  #hub2 .desc:hover, #hub4 .desc:hover, #collapseTwo .desc:hover, #collapseFour .desc:hover {
+  #hub2 .desc:hover, #hub4 .desc:hover, #we .desc:hover, #now .desc:hover {
     color: #555555;
     text-decoration: none; }
 
