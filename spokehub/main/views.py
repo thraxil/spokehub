@@ -79,7 +79,7 @@ class ReplyToItemView(View):
         if 'item' in request.META.get('HTTP_REFERER'):
             return HttpResponseRedirect(item.get_absolute_url())
         else:
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/#how')
 
 
 class AddWorkSampleView(View):
