@@ -257,7 +257,7 @@ button.hubnav {
   font-family: dinlight;
   border: none;
   border-radius: 0; }
-  .convoblock img {
+  .convoblock a img {
     max-height: 150px;
     display: block;
     margin: 0 auto; }
