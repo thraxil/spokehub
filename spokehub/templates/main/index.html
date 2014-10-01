@@ -378,9 +378,9 @@ $(document).ready(function() {
 						<div class="nowtileheader"><a href="/accounts/{{post.user.username}}/">{{post.user.username}}</a> |	{{post.user.get_profile.city}}, {{post.user.get_profile.country}}
 						</div>
 						{% if post.image_url %}
-						<img src="{{post.image_url}}"
+						<a target="_blank" href="{{post.external_link}}"><img src="{{post.image_url}}"
 								 width="{{post.image_width}}"
-								 height="{{post.image_height}}" /><br />
+								 height="{{post.image_height}}" /><br /></a>
 						{% endif %}
 						<p>{{post.text|urlize|url_target_blank}}</p>
 						<div class="nowtilefooter">
