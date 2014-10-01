@@ -465,14 +465,41 @@ $(document).ready(function() {
     	maxItems: 1,
     	controlNav: false
     });
+  if (window.location.hash !== '') {
+     // close them all
+	   $('.collapse').collapse({'toggle':false}).collapse('hide');
+  }
+
+  if (window.location.hash === '#how') {
+     $('#collapseOne').collapse({'toggle':false}).collapse('show');
+  }
+
+  if (window.location.hash === '#we') {
+     $('#collapseTwo').collapse({'toggle':false}).collapse('show');
+  }
+
+  if (window.location.hash === '#work') {
+     $('#collapseThree').collapse({'toggle':false}).collapse('show');
+  }
+
+  if (window.location.hash === '#now') {
+     $('#collapseFour').collapse({'toggle':false}).collapse('show');
+  }
+
+  if (window.location.hash === '') {
+    // if nothing is specified, open NOW
+     $('#collapseFour').collapse({'toggle':false}).collapse('show');
+  }
   });
 </script>
 
 <script>
 $(".panel").on('hidden.bs.collapse', function (e) {
+   console.log("hiding " + e.id);
    $(e.target).parent().removeClass('active-panel');
 });
 $(".panel").on('shown.bs.collapse', function (e) {
+   console.log("showing " + e.id);
    $(e.target).parent().addClass('active-panel');
 });
 </script>
