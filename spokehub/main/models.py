@@ -129,17 +129,33 @@ class Reply(models.Model):
         self.image = full_filename
         self.save()
 
-    def email_mentions(self):
+    def mentioned_users(self):
         pattern = re.compile('\@(\w+)', re.MULTILINE)
         usernames = [u.lower() for u in pattern.findall(self.body)]
         usernames = list(set(usernames))
+        users = []
         for u in usernames:
             if u == self.author.username:
                 continue
             r = User.objects.filter(username__iexact=u)
             if not r.exists():
                 continue
-            user = r[0]
+            users.append(r[0])
+        return users
+
+    def conversation_users(self):
+        users = []
+        for r in self.item.reply_set.all():
+            if r.author.username == self.author.username:
+                continue
+            users.append(r.author)
+        return list(set(users))
+
+    def email_mentions(self):
+        conv_users = self.conversation_users()
+        mentioned = self.mentioned_users()
+        unmentioned = set(conv_users) - set(mentioned)
+        for user in mentioned:
             user.email_user(
                 "someone mentioned you on spokehub",
                 """%s mentioned you in a reply:
@@ -148,6 +164,13 @@ class Reply(models.Model):
 """ % (self.author.username, self.body),
                 'hello@spokehub.org',
                 )
+        for user in unmentioned:
+            user.email_user(
+                "spokehub conversation reply",
+                """%s replied to a spokehub conversation that you
+are participating in:
+%s
+""" % (self.author.username, self.body))
 
 
 class WorkSample(models.Model):
