@@ -181,6 +181,8 @@ $(document).ready(function() {
 
        <h2>{{conversation.title}}</h2>
 			 {{conversation.body|markdown}}
+{% if request.user.is_anonymous %}
+{% else %}
 			 <div class="panelbreak white"></div>
 			 <div class="addvoice">
 			 	<p>Join the conversation:
@@ -192,7 +194,7 @@ $(document).ready(function() {
 			 </p>
 			 </div>
 			 			 <div class="panelbreak white"></div>
-
+{% endif %}
 			  <div class="hubconvo">
 
 				{% for reply_one, reply_two in conversation.reply_pairs %}
