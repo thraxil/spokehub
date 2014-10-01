@@ -56,7 +56,6 @@
 		<ul class="nav hubauth">
       {% if request.user.is_anonymous %}
 			<li><a href="/accounts/signin/?next=/">login</a></li>
-			<li><a href="/accounts/signup/">signup</a></li>
       {% else %}
 			<li class="user-text">
 			<a href="/accounts/{{request.user.username}}/">
