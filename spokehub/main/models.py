@@ -78,8 +78,8 @@ def new_item_emails(sender, **kwargs):
             continue
         i = kwargs['instance']
         u.email_user(
-            "new spokehub conversation: " + i.title,
-            i.body,
+            "[spokehub] new conversation: " + i.title,
+            i.body + "\n\n---\nhttp://spokehub.org/\n",
             'hello@spokehub.org')
 
 
@@ -157,7 +157,7 @@ class Reply(models.Model):
         unmentioned = set(conv_users) - set(mentioned)
         for user in mentioned:
             user.email_user(
-                "someone mentioned you on spokehub",
+                "[spokehub] someone mentioned you on spokehub",
                 """%s mentioned you in a reply:
 
 %s
@@ -166,9 +166,10 @@ class Reply(models.Model):
                 )
         for user in unmentioned:
             user.email_user(
-                "spokehub conversation reply",
+                "[spokehub] conversation reply",
                 """%s replied to a spokehub conversation that you
 are participating in:
+
 %s
 """ % (self.author.username, self.body))
 
