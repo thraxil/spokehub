@@ -79,12 +79,21 @@
 {% endif %}
 {% if profile.twitter %}
 					<dt>Twitter</dt>
-					<dd><a href="https://twitter.com/{{profile.twitter.screen_name}}/"><img src="{{profile.twitter.profile_image_url}}"/>@{{profile.twitter.screen_name}}</a></dd>
+					<dd><a href="https://twitter.com/{{profile.twitter.screen_name}}/"><img src="{{profile.twitter.profile_image_url}}"/>@{{profile.twitter.screen_name}}</a>
+{% if user.username == profile.user.username %}
+(<a href="/link/twitter/unlink/">unlink</a>)
+{% endif %}
+</dd>
 {% endif %}
 
 {% if profile.instagram %}
 					<dt>Instagram</dt>
-					<dd><a href="http://instagram.com/{{profile.instagram.screen_name}}/"><img src="{{profile.instagram.profile_image_url}}"/>{{profile.instagram.screen_name}}</a></dd>
+					<dd><a href="http://instagram.com/{{profile.instagram.screen_name}}/"><img src="{{profile.instagram.profile_image_url}}"/>{{profile.instagram.screen_name}}</a>
+{% if user.username == profile.user.username %}
+(<a href="/link/instagram/unlink/">unlink</a>)
+{% endif %}
+
+</dd>
 {% endif %}
           {% endblock %}
         </dl>

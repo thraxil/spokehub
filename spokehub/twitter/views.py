@@ -2,7 +2,9 @@ from django.http import HttpResponseRedirect
 from django.views.generic.base import View
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.shortcuts import render
 from .models import TwitterAccount
+from ..main.models import NowPost
 import tweepy
 
 
@@ -37,5 +39,26 @@ class CallbackView(View):
             oauth_verifier=auth.access_token.secret)
         ta.update_details()
         ta.fetch_recent_posts()
+        return HttpResponseRedirect(
+            '/accounts/' + request.user.username + '/')
+
+
+class UnlinkView(View):
+    def get(self, request):
+        if request.user.is_anonymous():
+            return HttpResponseRedirect("/")
+        ta = TwitterAccount.objects.filter(user=request.user)
+        if not ta.exists():
+            return HttpResponseRedirect("/")
+        return render(request, "twitter/unlink.html", dict())
+
+    def post(self, request):
+        if request.user.is_anonymous():
+            return HttpResponseRedirect("/")
+        ta = TwitterAccount.objects.filter(user=request.user)
+        if not ta.exists():
+            return HttpResponseRedirect("/")
+        NowPost.objects.filter(user=request.user, service="twitter").delete()
+        ta.delete()
         return HttpResponseRedirect(
             '/accounts/' + request.user.username + '/')
