@@ -174,21 +174,19 @@
 {% if work_samples.count %}
 <h3>Work Samples</h3>
 
-<div class="row">
+
 {% for ws in work_samples %}
-  <div class="col-md-4 col-md-offset-4">
-    <div class="thumbnail">
-      <img src="{% thumbnail ws.image 600x200 %}" alt="{{ws.title}}"/>
+<div class="row">
+      <img src="{% thumbnail ws.image 960x2000 %}" alt="{{ws.title}}"/>
       <div class="caption">
  {% if user.username == profile.user.username %}
  <a href="/work_sample/{{ws.id}}/delete/" class="pull-right btn btn-danger btn-xs">delete</a>
  {% endif %}
-        <h3>{{ws.title}}</h3>
-      </div>
-    </div>
-  </div>
-{% endfor %}
+        <p>{{ws.title}}</p>
+			</div>
 </div>
+{% endfor %}
+
 
  {% if user.username == profile.user.username %}
 {% if work_samples.count < 3 %}
