@@ -98,6 +98,7 @@ class Reply(models.Model):
         )
     url = models.TextField(blank=True, default=u"")
     title = models.TextField(blank=True, default=u"")
+    youtube_id = models.TextField(default="", blank=True)
 
     class Meta:
         order_with_respect_to = 'item'
