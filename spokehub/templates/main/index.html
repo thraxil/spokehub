@@ -294,7 +294,10 @@
 <div id="work-image-{{ws.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="lightbox-dialog">
 		<div class="lightbox-content">
+{% if ws.youtube_id %}
+{% else %}
 			<img src="{% thumbnail ws.image 1140x700 %}">
+{% endif %}
 		</div>
 	</div>
 </div>
@@ -304,9 +307,20 @@
 			<ul class="slides">
     	    {% for ws in work_samples %}
     	    <li id="slide-{{ws.id}}">
+{% if ws.youtube_id %}
+<div class="embed video-player">
+<iframe class="youtube-player" type="text/html"
+    width="853" height="480"
+    src="http://www.youtube.com/embed/{{ws.youtube_id}}"
+    allowfullscreen frameborder="0">
+</iframe>
+</div>
+
+{% else %}
         		<a data-toggle="lightbox"
 							 href="#work-image-{{ws.id}}">
 							<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}"/></a>
+{% endif %}
         		<div class="caption">{{ws.title}} by <a href="/accounts/{{ws.user.username}}/">{{ws.user.username}}</a></div>
         	</li>
         	{% endfor %}

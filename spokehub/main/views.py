@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView, View
 from django.views.generic.detail import DetailView
@@ -7,6 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Item, WorkSample, NowPost
+from urlparse import urlparse, parse_qs
 import random
 
 
@@ -85,8 +86,20 @@ class ReplyToItemView(View):
 class AddWorkSampleView(View):
     def post(self, request):
         title = request.POST.get('title', 'no title')
+        youtube_url = request.POST.get('youtube_url', '')
         ws = WorkSample.objects.create(title=title, user=request.user)
-        ws.save_image(request.FILES['image'])
+        if youtube_url != '':
+            try:
+                q = urlparse(youtube_url).query
+                ws.youtube_id = parse_qs(q)['v'][0]
+            except:
+                # not a valid youtube URL
+                return HttpResponse(
+                    """couldn't parse youtube URL. Please make sure
+                    it looks something like
+                    'https://www.youtube.com/watch?v=345sdfg4D'""")
+        else:
+            ws.save_image(request.FILES['image'])
         ws.save()
         return HttpResponseRedirect("/accounts/%s/" % request.user.username)
 
