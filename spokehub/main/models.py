@@ -185,6 +185,7 @@ class WorkSample(models.Model):
         )
     title = models.TextField(default="", blank=True)
     youtube_id = models.TextField(default="", blank=True)
+    vimeo_id = models.TextField(default="", blank=True)
 
     def __unicode__(self):
         return self.user.username + " - " + self.title
