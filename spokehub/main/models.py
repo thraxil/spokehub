@@ -235,6 +235,8 @@ class NowPost(models.Model):
         if self.service == 'twitter':
             return ("https://twitter.com/" + self.twitter_handle()
                     + "/status/" + self.service_id)
+        if self.service == 'feed':
+            return ""
         elif self.service == 'instagram':
             return self.service_id
         else:

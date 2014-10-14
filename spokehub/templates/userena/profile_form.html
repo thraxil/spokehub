@@ -79,6 +79,17 @@
 <p>You have an Instagram account linked</p>
 {% endif %}
 
+{% if not profile.feed %}
+<form action="{% url 'feed_add' %}" method="post">
+<fieldset><legend>Link an RSS/Atom feed</legend></fieldset>
+<input type="text" name="feed_url" value="" placeholder="feed url" />
+<input type="submit" value="link feed" class="btn btn-primary" />
+</fieldset>
+</form>
+{% else %}
+<p>You have a feed linked</p>
+{% endif %}
+
 </section>
 </div>
 {% endblock %}
