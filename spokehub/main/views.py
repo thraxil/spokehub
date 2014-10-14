@@ -87,6 +87,7 @@ class AddWorkSampleView(View):
     def post(self, request):
         title = request.POST.get('title', 'no title')
         youtube_url = request.POST.get('youtube_url', '')
+        vimeo_url = request.POST.get('vimeo_url', '')
         ws = WorkSample.objects.create(title=title, user=request.user)
         if youtube_url != '':
             try:
@@ -98,6 +99,16 @@ class AddWorkSampleView(View):
                     """couldn't parse youtube URL. Please make sure
                     it looks something like
                     'https://www.youtube.com/watch?v=345sdfg4D'""")
+        elif vimeo_url != '':
+            try:
+                q = urlparse(vimeo_url)
+                ws.vimeo_id = q.path[1:]
+            except:
+                # not a valid vimeo URL
+                return HttpResponse(
+                    """couldn't parse vimeo URL. Please make sure
+                    it looks something like
+                    'http://vimeo.com/86466357'""")
         else:
             ws.save_image(request.FILES['image'])
         ws.save()

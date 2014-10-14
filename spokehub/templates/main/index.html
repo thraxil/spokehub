@@ -296,7 +296,10 @@
 		<div class="lightbox-content">
 {% if ws.youtube_id %}
 {% else %}
+{% if ws.vimeo_id %}
+{% else %}
 			<img src="{% thumbnail ws.image 1140x700 %}">
+{% endif %}
 {% endif %}
 		</div>
 	</div>
@@ -317,9 +320,15 @@
 </div>
 
 {% else %}
+{% if ws.vimeo_id %}
+<div class="embed video-player">
+<iframe src="//player.vimeo.com/video/{{ws.vimeo_id}}?title=0&amp;byline=0&amp;portrait=0" width="853" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+{% else %}
         		<a data-toggle="lightbox"
 							 href="#work-image-{{ws.id}}">
 							<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}"/></a>
+{% endif %}
 {% endif %}
         		<div class="caption">{{ws.title}} by <a href="/accounts/{{ws.user.username}}/">{{ws.user.username}}</a></div>
         	</li>
