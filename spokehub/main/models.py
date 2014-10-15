@@ -230,6 +230,9 @@ class NowPost(models.Model):
     def twitter_handle(self):
         return self.user.get_profile().twitter().screen_name
 
+    def is_feed(self):
+        return self.service == "feed"
+
     def external_link(self):
         # expand for other services later
         if self.service == 'twitter':

@@ -368,7 +368,11 @@
 								 width="{{post.image_width}}"
 								 height="{{post.image_height}}" /><br /></a>
 						{% endif %}
-						<p>{{post.text|urlize|url_target_blank|markdown}}</p>
+						{% if post.is_feed %}
+						<p>{{post.text|markdown|urlize|url_target_blank}}</p>
+						{% else %}
+						<p>{{post.text|urlize|url_target_blank}}</p>
+						{% endif %}
 						<div class="nowtilefooter">
 						<a target="_blank" href="{{post.external_link}}">{{post.created|timesince}} ago</a>
 						</div>
