@@ -3,17 +3,11 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 from sorl.thumbnail.fields import ImageWithThumbnailsField
-from south.modelsinspector import add_introspection_rules
 import re
 import os.path
 from django.template.defaultfilters import slugify
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-
-
-add_introspection_rules(
-    [],
-    ["sorl.thumbnail.fields.ImageWithThumbnailsField"])
 
 
 class Item(models.Model):
@@ -228,7 +222,7 @@ class NowPost(models.Model):
                                      self.created.isoformat())
 
     def twitter_handle(self):
-        return self.user.get_profile().twitter().screen_name
+        return self.user.profile.twitter().screen_name
 
     def is_feed(self):
         return self.service == "feed"
