@@ -1,7 +1,13 @@
 language: python
 python:
   - "2.7"
+before_install:
+  - openssl aes-256-cbc -K $encrypted_42099b4af021_key -iv $encrypted_42099b4af021_iv -in spokehub_rsa.enc -out spokehub_rsa -d
 install:
   - ./bootstrap.py
 script:
   - make
+after_success:
+  - chmod 600 spokehub_rsa
+  - ssh-add spokehub_rsa
+  - make deploy
