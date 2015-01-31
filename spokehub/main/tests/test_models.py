@@ -24,3 +24,39 @@ class ItemTest(TestCase):
         i = ItemFactory()
         i.add_reply(u, 'a body')
         self.assertEqual(i.reply_set.all().count(), 1)
+
+    def test_add_reply_no_author(self):
+        i = ItemFactory()
+        i.add_reply(None, 'a body')
+        self.assertEqual(i.reply_set.all().count(), 0)
+
+    def test_add_reply_empty_body(self):
+        i = ItemFactory()
+        u = UserFactory()
+        i.add_reply(u, '')
+        self.assertEqual(i.reply_set.all().count(), 0)
+
+    def test_add_reply_fix_url(self):
+        i = ItemFactory()
+        u = UserFactory()
+        i.add_reply(u, 'a body', 'example.com')
+        r = i.reply_set.all()[0]
+        self.assertEqual(r.url, "http://example.com")
+
+    def test_reply_pairs(self):
+        i = ItemFactory()
+        u = UserFactory()
+        r = i.reply_pairs()
+        self.assertEqual(len(r), 0)
+        i.add_reply(u, 'a body')
+        r = i.reply_pairs()
+        self.assertEqual(len(r), 1)
+        i.add_reply(u, 'another body')
+        r = i.reply_pairs()
+        self.assertEqual(len(r), 1)
+        i.add_reply(u, 'third body')
+        r = i.reply_pairs()
+        self.assertEqual(len(r), 2)
+        self.assertEqual(r[0][0].body, "a body")
+        self.assertEqual(r[0][1].body, "another body")
+        self.assertEqual(r[1][0].body, "third body")
