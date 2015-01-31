@@ -8,7 +8,7 @@ jenkins: ./ve/bin/python validate test flake8
 	./bootstrap.py
 
 test: ./ve/bin/python
-	$(MANAGE) jenkins
+	$(MANAGE) test --jenkins
 
 flake8: ./ve/bin/python
 	$(FLAKE8) $(APP) --max-complexity=10

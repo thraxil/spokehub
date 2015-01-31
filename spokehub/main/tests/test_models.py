@@ -1,18 +1,17 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
-from spokehub.main.models import Item
+from .factories import UserFactory, ItemFactory
 
 
 class ItemTest(TestCase):
     def test_get_absolute_url(self):
-        i = Item.objects.create(title='foo')
+        i = ItemFactory()
         self.assertTrue(i.get_absolute_url().startswith('/item/'))
 
     def test_touch(self):
-        i = Item.objects.create(title='foo')
+        i = ItemFactory()
         i.touch()
 
     def test_add_reply(self):
-        u = User.objects.create(username='test')
-        i = Item.objects.create(title='foo')
+        u = UserFactory()
+        i = ItemFactory()
         i.add_reply(u, 'a body')

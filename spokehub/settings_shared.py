@@ -33,20 +33,15 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
         }
     }
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+TEST_RUNNER = 'discover_jenkins.runner.DiscoverCIRunner'
+TEST_OUTPUT_DIR = 'reports'
 
 
-NOSE_ARGS = [
-    '--with-coverage',
-    '--cover-package=spokehub',
+PROJECT_APPS = [
+    'spokehub.main',
 ]
 
-JENKINS_TASKS = (
-    'django_jenkins.tasks.run_pylint',
-    'django_jenkins.tasks.run_pep8',
-    'django_jenkins.tasks.run_pyflakes',
-)
-PROJECT_APPS = [
+TEST_PROJECT_APPS = [
     'spokehub.main',
 ]
 
@@ -111,7 +106,7 @@ INSTALLED_APPS = [
     'django_statsd',
     'bootstrapform',
     'waffle',
-    'django_jenkins',
+    'discover_jenkins',
     'smoketest',
     'django_extensions',
     'impersonate',
