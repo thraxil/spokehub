@@ -25,6 +25,10 @@ validate: ./ve/bin/python
 shell: ./ve/bin/python
 	$(MANAGE) shell_plus
 
+coverage: ./ve/bin/python flake8
+	. ./ve/bin/activate && ./ve/bin/coverage run --source='spokehub' ./manage.py test \
+	&& ./ve/bin/coverage html -d reports --omit='*migrations*,*settings_*,*wsgi*'
+
 clean:
 	rm -rf ve
 	rm -rf media/CACHE
