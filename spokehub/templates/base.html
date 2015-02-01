@@ -13,12 +13,7 @@
   <script src="../assets/js/respond.min.js"></script>
 <![endif]-->
 
-
-    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-glyphicons.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
 
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
@@ -31,12 +26,12 @@
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
 
-{% block topnavbar %}
+<!-- {% block topnavbar %}
 <div class="row staticnav">
 	<div class="col-md-4">
 		<a href="/">
 		<video class="video-js vjs-default-skin"
-					 id="banner-video" 
+					 id="banner-video"
 					 autoplay loop>
 			<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4">
 				<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4"
@@ -69,13 +64,13 @@
 			<li>
 			<a href="/accounts/signout/" class="">Log Out</a>
 			</li>
-			
+
 			{% endif %}
 		</ul>
 		{% endblock %}
 	</div>
 </div>
-{% endblock %}
+{% endblock %} -->
 
 {% block pagetitle %}{% endblock %}
 {% block content %}{% endblock %}
