@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .factories import UserFactory, ItemFactory
+from .factories import UserFactory, ItemFactory, ReplyFactory
 from spokehub.main.models import Item
 
 
@@ -60,3 +60,23 @@ class ItemTest(TestCase):
         self.assertEqual(r[0][0].body, "a body")
         self.assertEqual(r[0][1].body, "another body")
         self.assertEqual(r[1][0].body, "third body")
+
+
+class ReplyTest(TestCase):
+    def test_unicode(self):
+        r = ReplyFactory()
+        self.assertTrue(str(r).startswith("Reply to"))
+
+    def test_mentioned_users(self):
+        u = UserFactory()
+        u2 = UserFactory()
+        r = ReplyFactory(
+            body="@nonexistent @%s @%s" % (u.username, u2.username),
+            author=u2)
+        self.assertEqual(r.mentioned_users(), [u])
+
+    def test_conversation_users(self):
+        r = ReplyFactory()
+        self.assertEqual(len(r.conversation_users()), 0)
+        ReplyFactory(item=r.item)
+        self.assertEqual(len(r.conversation_users()), 1)
