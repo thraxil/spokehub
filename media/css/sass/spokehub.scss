@@ -2,6 +2,9 @@
 
 @import '../../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap';
 
+//Bourbon (what I'd like to use from now on)
+@import '../../../bourbon/bourbon';
+
 //new new
 @import 'typography';
 @import 'temporary';
