@@ -16,6 +16,15 @@ $L: 1170px;
 }
 
 //STYLES
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
 
 body {
   font: {
@@ -197,5 +206,42 @@ body {
   width: 100%;
   background: black;
 }
-
+#about-container {
+  width: 70%;
+  display: none;
+  position: absolute;
+  top: 3%;
+  right: 5%;
+  padding: 7% 5%;
+  background: white;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24), 0 6px 9.5px rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  margin: 0 auto;
+  background: black;
+  color: #fff;
+  .about-title {
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-size: 1.2em;
+  }
+  .about-copy {
+    font-size: 0.6em;
+    width: 80%;
+    margin: 0 auto;
+    font-weight: 400;
+    b {
+      font-weight: 700;
+    }
+  }
+  .about-undertitle {
+    font-size: 0.7em;
+    text-align: center;
+    text-transform: uppercase;
+    a:visited {
+      color: white;
+    }
+  }
+}
 
