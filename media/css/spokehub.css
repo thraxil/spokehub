@@ -7373,6 +7373,30 @@ body {
     opacity: 0;
   }
 }
+.video-container {
+  height: 98vh;
+  width: 98%;
+  margin: 0 auto;
+  background: white;
+  position: relative;
+}
+
+.master {
+  position: relative;
+  height: 98vh;
+  display: block;
+  margin: 0 auto;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 5%;
+  height: 10vh;
+  width: 100%;
+  background: black;
+}
+
 /* Fonts */
 @font-face {
   font-family: "dinlight";
