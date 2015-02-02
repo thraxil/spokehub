@@ -4,7 +4,395 @@
 {% load markup %}
 {% load urlize_target_blank %}
 
+{% flag "main" %}
+
+{% block navbar %}
+	<ul class="nav nav-justified">
+      <li><button type="button" class="btn hubnav"
+									onclick="showSection('#how')"
+									><a href="/#how">HOW</a></button></li>
+      <li><button type="button" class="btn hubnav"
+									onclick="showSection('#we')"
+									><a href="/#we">WE</a></button></li>
+      <li><button type="button" class="btn hubnav"
+									onclick="showSection('#work')"
+									><a href="/#work">WORK</a></button></li>
+      <li><button type="button" class="btn hubnav"
+									onclick="showSection('#now')"
+									><a href="/#now">NOW</a></button></li>
+
+		</ul>
+{% endblock %}
+
+{% block bodytag %}
+<body class="{% block bodyclass %}{% endblock %}" id="index-page{% block bodyid %}{% endblock %}">
+{% endblock %}
+
+
+{% endflag %}
+
 {% block content %}
+{% flag "main" %}
+
+<div class="panel-group" id="accordion">
+  <div class="panel panel-default">
+    <a data-toggle="collapse"
+	 data-parent="#accordion"  href="#how">
+    	<div id="hub1" class="panel-heading">
+      	<div class="panel-title"> 
+         How
+        </div>
+        <div class="desc">Cross-functional conversations between Art, Design, and Strategy</div>
+        <span class="glyphicon glyphicon-play"></span>
+        
+	    </div>
+     </a>
+    <div id="how" class="panel-collapse collapse">
+      <div class="panel-body">
+		<div class="container">
+       	<div class="panelbreak white"></div>
+			 {% if conversation %}
+
+			 <form action="/item/{{conversation.id}}/reply/" method="post"
+						 enctype="multipart/form-data" role="form">
+				 <div class="modal fade" id="add-text-reply">
+					 <div class="modal-dialog">
+						 <div class="modal-content">
+							 <div class="modal-header">
+								 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								 <h4 class="modal-title">Add Reply</h4>
+							 </div>
+							 <div class="modal-body">
+
+								 <div class="form-group">
+									 <label for="comment-body">Comment</label>
+									 <textarea name="body" class="form-control" rows="10"
+														 id="comment-body"></textarea>
+								 </div>
+
+							 </div>
+							 <div class="modal-footer">
+								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								 <input type="submit" class="btn btn-primary" value="Reply"/>
+							 </div>
+						 </div><!-- /.modal-content -->
+					 </div><!-- /.modal-dialog -->
+				 </div><!-- /.modal -->
+			 </form>
+
+			 <form action="/item/{{conversation.id}}/reply/" method="post"
+						 enctype="multipart/form-data" role="form">
+				 <div class="modal fade" id="add-link-reply">
+					 <div class="modal-dialog">
+						 <div class="modal-content">
+							 <div class="modal-header">
+								 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								 <h4 class="modal-title">Add Link Reply</h4>
+							 </div>
+							 <div class="modal-body">
+
+								 <div class="form-group">
+									 <label for="link-url">URL</label>
+									 <input type="text" name="url" class="form-control"
+									 id="link-url" placeholder="http://" />
+								 </div>
+
+								 <div class="form-group">
+									 <label for="link-title">Link Title</label>
+									 <input type="text" name="title" class="form-control"
+									 id="link-title" />
+								 </div>
+
+							 </div>
+							 <div class="modal-footer">
+								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								 <input type="submit" class="btn btn-primary" value="Reply"/>
+							 </div>
+						 </div><!-- /.modal-content -->
+					 </div><!-- /.modal-dialog -->
+				 </div><!-- /.modal -->
+			 </form>
+
+			 <form action="/item/{{conversation.id}}/reply/" method="post"
+						 enctype="multipart/form-data" role="form">
+				 <div class="modal fade" id="add-image-reply">
+					 <div class="modal-dialog">
+						 <div class="modal-content">
+							 <div class="modal-header">
+								 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								 <h4 class="modal-title">Add Image Reply</h4>
+							 </div>
+							 <div class="modal-body">
+
+								 <div class="form-group">
+									 <label for="exampleInputFile">Image</label>
+									 <input type="file" id="image" name="image">
+								 </div>
+
+								 <div class="form-group">
+									 <label for="comment-body">Caption</label>
+									 <textarea name="body" class="form-control" rows="10"
+														 id="comment-body"></textarea>
+								 </div>
+
+							 </div>
+							 <div class="modal-footer">
+								 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+								 <input type="submit" class="btn btn-primary" value="Reply"/>
+							 </div>
+						 </div><!-- /.modal-content -->
+					 </div><!-- /.modal-dialog -->
+				 </div><!-- /.modal -->
+			 </form>
+
+
+       <h2>{{conversation.title}}</h2>
+			 {{conversation.body|markdown}}
+{% if request.user.is_anonymous %}
+{% else %}
+			 <div class="panelbreak white"></div>
+			 <div class="addvoice">
+			 	<p>Join the conversation:
+				 <ul class="list-inline">
+					 <li><a href="#add-text-reply" data-toggle="modal" data-target="#add-text-reply"><img src="/media/img/text_convo.png"></a></li>
+					 <li><a href="#add-link-reply" data-toggle="modal" data-target="#add-link-reply" ><img src="/media/img/link_convo.png"></a></li>
+					 <li><a href="#add-image-reply" data-toggle="modal" data-target="#add-image-reply"><img src="/media/img/image_convo.png"></a></li>
+				 </ul>
+			 </p>
+			 </div>
+			 			 <div class="panelbreak white"></div>
+{% endif %}
+			  <div class="hubconvo">
+
+				{% for reply_one, reply_two in conversation.reply_pairs %}
+
+				 <div class="row">
+					 <div class="col-sm-1 col-md-1">
+						 <a href="/accounts/{{reply_one.author.username}}/"><img class="mugshot" src="{{ reply_one.author.profile.get_mugshot_url }}" 
+									class="user_icon" width="100" height="100"></a>
+						 </div>
+					<div class="col-sm-5 col-md-5 left">
+						<div class="convoblock">
+							<div class="convoheader">
+								<div class="user_name"><a href="/accounts/{{reply_one.author.username}}/">{{reply_one.author.username}}</a>
+								| {{reply_one.author.profile.discipline1}}{% if reply_one.author.profile.discipline2 %} /
+								{{reply_one.author.profile.discipline2}}{% endif %}</div>
+								<div class="user_time">{{reply_one.added|timesince}}
+								ago  |  {{reply_one.author.profile.city}}, {{reply_one.author.profile.country}}</div>
+								</div>
+								       <div class="panelbreak black"></div>
+								       
+								<div class="convocontent">
+										{% if reply_one.url %}
+								<h3><a target="_blank" href="{{reply_one.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_one.title %}
+								{{reply_one.title}}{% else %}{{reply_one.url}}{% endif %}</h3>
+								{% endif %}
+								<h3>{{reply_one.body|markdown}}</h3>
+											 {% if reply_one.image %}
+											 <a data-toggle="lightbox" href="#how-image-{{reply_one.id}}"><img src="{% thumbnail reply_one.image 400x400 %}" /></a>
+
+											 <div id="how-image-{{reply_one.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+												 <div class="lightbox-dialog">
+													 <div class="lightbox-content">
+														 <img src="{% thumbnail reply_one.image 960x960 %}">
+													 </div>
+												 </div>
+											 </div>
+
+								{% endif %}
+								</div>
+						</div>
+					</div>
+{% if reply_two %}
+					<div class="col-sm-5 col-md-5 right">
+						<div class="convoblock">
+							<div class="convoheader">
+								<div class="user_name"><a href="/accounts/{{reply_two.author.username}}/">{{reply_two.author.username}}</a>
+									| {{reply_two.author.profile.discipline1}}
+									{% if reply_two.author.profile.discipline1 %}
+									/ {{reply_two.author.profile.discipline2}}{% endif %}</div>
+								<div class="user_time">{{reply_two.added|timesince}} ago  |  {{reply_two.author.profile.city}}, {{reply_two.author.profile.country}}</div>
+								</div>
+								 <div class="panelbreak black"></div>
+									{% if reply_two.url %}
+									<h3><a target="_blank" href="{{reply_two.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_two.title %}
+									{{reply_two.title}}{% else %}{{reply_two.url}}{% endif %}</h3>
+									{% endif %}
+											 <h3>{{reply_two.body|markdown}}</h3>
+											 {% if reply_two.image %}
+											 <a data-toggle="lightbox" href="#how-image-{{reply_two.id}}"><img src="{% thumbnail reply_two.image 400x400 %}" /></a>
+
+											 <div id="how-image-{{reply_two.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+												 <div class="lightbox-dialog">
+													 <div class="lightbox-content">
+														 <img src="{% thumbnail reply_two.image 960x960 %}">
+													 </div>
+												 </div>
+											 </div>
+
+								{% endif %}
+								
+						</div>
+					</div>
+					<div class="col-sm-1 col-md-1">
+						 <a href="/accounts/{{reply_two.author.username}}/"><img class="mugshot" src="{{ reply_two.author.profile.get_mugshot_url }}" 
+									class="user_icon" width="100" height="100"></a>
+					</div>
+{% endif %}
+				 </div>
+				 {% endfor %}
+
+				</div>
+			 {% else %}
+
+			 <p>No conversations yet...</p>
+			 {% endif %}
+
+				</div>
+      </div>
+    </div>
+  </div>
+			 
+		
+
+  <div class="panel panel-default">
+  <a data-toggle="collapse"
+	 data-parent="#accordion" href="#we">
+  	 <div id="hub2" class="panel-heading">
+      <div class="panel-title">
+          We        
+      </div>
+      <div class="desc">A MANIFESTO OF (TROUBLE) MAKERS</div>
+      <span class="glyphicon glyphicon-play"></span>
+    </div>
+      </a>
+
+    <div id="we" class="panel-collapse collapse">
+      <div class="panel-body">
+				<div class="container video">
+<iframe src="//player.vimeo.com/video/104999392?portrait=0&badge=0&byline=0&title=0" width="900"height="506" frameborder="0" webkitallowfullscreen
+				mozallowfullscreen allowfullscreen></iframe>
+				</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="panel panel-default">
+<a  data-toggle="collapse"
+	 data-parent="#accordion" href="#work">
+    <div id="hub3" class="panel-heading">
+      <div class="panel-title">
+          Work        
+      </div>
+      <div class="desc">Shiny ideas + blood, sweat and tears</div>
+      <span class="glyphicon glyphicon-play"></span>
+    </div>
+</a>
+
+    <div id="work" class="panel-collapse collapse">
+      <div class="panel-body">
+
+{% for ws in work_samples %}
+
+
+<div id="work-image-{{ws.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="lightbox-dialog">
+		<div class="lightbox-content">
+{% if ws.youtube_id %}
+{% else %}
+{% if ws.vimeo_id %}
+{% else %}
+			<img src="{% thumbnail ws.image 1140x700 %}">
+{% endif %}
+{% endif %}
+		</div>
+	</div>
+</div>
+
+{% endfor %}
+		<div class="flexslider" id="flexslider">
+			<ul class="slides">
+    	    {% for ws in work_samples %}
+    	    <li id="slide-{{ws.id}}">
+{% if ws.youtube_id %}
+<div class="embed video-player">
+<iframe class="youtube-player" type="text/html"
+    width="853" height="480"
+    src="http://www.youtube.com/embed/{{ws.youtube_id}}"
+    allowfullscreen frameborder="0">
+</iframe>
+</div>
+
+{% else %}
+{% if ws.vimeo_id %}
+<div class="embed video-player">
+<iframe src="//player.vimeo.com/video/{{ws.vimeo_id}}?title=0&amp;byline=0&amp;portrait=0" width="853" height="480" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+{% else %}
+        		<a data-toggle="lightbox"
+							 href="#work-image-{{ws.id}}">
+							<img src="{% thumbnail ws.image 1140x700 %}" alt="{{ws.title}}"/></a>
+{% endif %}
+{% endif %}
+        		<div class="caption">{{ws.title}} by <a href="/accounts/{{ws.user.username}}/">{{ws.user.username}}</a></div>
+        	</li>
+        	{% endfor %}
+
+      </ul>
+	</div>
+    </div>
+	</div>
+
+</div>
+
+  </div>
+
+  <div class="panel panel-default active-panel">
+<a data-toggle="collapse"
+	 data-parent="#accordion" href="#now">
+  	    <div id="hub4" class="panel-heading">
+      <div class="panel-title">
+          Now
+      </div>
+      <div class="desc">Updates in Hub Mean Time (HMT)</div>
+      <span class="glyphicon glyphicon-play"></span>
+    </div>
+      </a>
+
+    <div id="now" class="panel-collapse collapse in">
+      <div class="panel-body">
+				<div id="nowtiles" data-masonry-options='{ "gutter": 30 }'>
+
+					{% for post in now_posts %}
+					<div class="nowtile">
+						<div class="nowtileheader"><a href="/accounts/{{post.user.username}}/">{{post.user.username}}</a> |	{{post.user.profile.city}}, {{post.user.profile.country}}
+						</div>
+						{% if post.image_url %}
+						<a target="_blank" href="{{post.external_link}}"><img src="{{post.image_url}}"
+								 width="{{post.image_width}}"
+								 height="{{post.image_height}}" /><br /></a>
+						{% endif %}
+						{% if post.is_feed %}
+						<p>{{post.text|markdown|urlize|url_target_blank}}</p>
+						{% else %}
+						<p>{{post.text|urlize|url_target_blank}}</p>
+						{% endif %}
+						<div class="nowtilefooter">
+						<a target="_blank" href="{{post.external_link}}">{{post.created|timesince}} ago</a>
+						</div>
+					</div>
+					{% endfor %}
+				
+     		</div>
+				{% if now_posts.has_next %}
+				<p id="now-nav"><a href="/?page={{now_posts.next_page_number}}">load more</a></p>
+				{% endif %}
+    </div>
+  </div>
+
+</div>
+{% else %}
 <div class="loader">
 </div>
 <div class="container">
@@ -36,9 +424,100 @@
     </div>
 </div>
 
+{% endflag %}
 {% endblock %}
 
 {% block js %}
+{% flag "main" %}
+
+<link href="/media/bootstrap-lightbox.css" rel="stylesheet"></script>
+<script src="/media/bootstrap-lightbox.js"></script>
+<script src="/media/js/masonry.pkgd.js"></script>
+<script src="/media/js/jquery.infinitescroll.min.js"></script>
+<script src="/media/js/jquery.flexslider-min.js"></script>
+
+<script>
+	var $container = $('#nowtiles');
+	// initialize
+	$('#nowtiles').masonry({
+    columnWidth: 40,
+    itemSelector: '.nowtile'
+  });
+
+  $container.infinitescroll({
+      navSelector  : '#now-nav',
+      nextSelector : '#now-nav a',
+      itemSelector : '.nowtile',
+
+      errorCallback: function () { console.log('had an error'); },
+
+      loading: {
+          finishedMsg: 'No more pages to load.'
+//          img: 'http://i.imgur.com/6RMhx.gif'
+        }
+      },
+
+      // trigger Masonry as a callback
+      function( newElements ) {
+        // hide new items while they are loading
+        var $newElems = $( newElements ).css({ opacity: 0 });
+        // ensure that images load before adding to masonry layout
+// imagesLoaded seems to be broken...
+// going without for now..
+//        $newElems.imagesLoaded(function(){
+          // show elems now they're ready
+          $newElems.animate({ opacity: 1 });
+          $container.masonry( 'appended', $newElems, true );
+//        });
+
+// don't know why, but it seems that I need to manually
+// detect the end of the scrolling and stop it
+// or it does weird stuff...
+        if ($newElems.length < 50) {
+           $container.infinitescroll('destroy');
+           return;
+        }
+
+      }
+    );
+
+</script>
+<script type="text/javascript" charset="utf-8">
+
+  function showSection(identifier) {
+	   $('.collapse').collapse({'toggle':false, 'parent': '#accordian'})
+                   .collapse('hide');
+     $(identifier).collapse({'toggle':true, 'parent': '#accordian'}).collapse('show');
+  }
+
+  $(window).ready(function() {
+    $('#flexslider').flexslider({
+    	smoothHeight: false,
+// this one breaks it. don't know why.
+//    	itemWidth: 1200,
+    	maxItems: 0,
+      animationLoop: true,
+    	controlNav: false
+    });
+
+  if (window.location.hash === '#how')  { showSection('#how'); }
+  if (window.location.hash === '#we')   { showSection('#we'); }
+  if (window.location.hash === '#work') { showSection('#work'); }
+  if (window.location.hash === '#now')  { showSection('#now'); }
+
+  });
+</script>
+
+<script>
+$(".panel").on('hidden.bs.collapse', function (e) {
+   $(e.target).parent().removeClass('active-panel');
+});
+$(".panel").on('shown.bs.collapse', function (e) {
+   $(e.target).parent().addClass('active-panel');
+});
+</script>
+
+{% else %}
 <script src="/bower_components/jquery/dist/jquery.js"></script>
 <script src="/media/bootstrap-lightbox.js"></script>
 <script src="/media/js/masonry.pkgd.js"></script>
@@ -46,4 +525,5 @@
 <script src="/media/js/jquery.flexslider-min.js"></script>
 <!-- words animation -->
 <script src="/media/js/animate-headline.js"></script>
+{% endflag %}
 {% endblock %}
