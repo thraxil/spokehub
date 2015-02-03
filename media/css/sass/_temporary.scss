@@ -191,12 +191,20 @@ body {
   margin: 0 auto;
   background: white;
   position: relative;
-  .master {
-    position: relative;
-    width: 90%;
-    display: block;
-    margin: 0 auto;
-  }
+}
+.master {
+  position: relative;
+  height: 98vh;
+  display: block;
+  margin: 0 auto;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 5%;
+  height: 10vh;
+  width: 100%;
+  background: black;
 }
 #about-container {
   width: 70%;
@@ -206,8 +214,7 @@ body {
   right: 5%;
   padding: 7% 5%;
   background: white;
-  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24),
-                        0 6px 9.5px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24), 0 6px 9.5px rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   margin: 0 auto;
   background: black;
