@@ -7165,19 +7165,18 @@ body {
 }
 
 .video-container {
-  width: 98%;
-  height: 98vh;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
   background: white;
   position: relative;
 }
-
-.master {
+.video-container .master {
   position: relative;
   margin: 0 auto;
   display: block;
   margin: 0 auto;
-  width: 100%;
+  width: 90%;
 }
 
 #about-container {
