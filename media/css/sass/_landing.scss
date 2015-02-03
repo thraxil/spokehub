@@ -292,17 +292,22 @@ button.hubnav {
   color: white;
   position: fixed;
   bottom: 0;
-  z-index: 9000; }
-  #footer a {
-    color: whitesmoke;
-    margin-left: 25px; }
-    #footer a:hover {
-      color: #dddddd;
-      text-decoration: none; }
-  #footer span {
-    text-transform: uppercase;
-    font-family: dinlight;
-    color: whitesmoke;
-    margin-left: 25px; }
+  z-index: 9000;
+  padding: 1%;
+}
+#footer a {
+  color: whitesmoke;
+  margin-left: 25px;
+}
+  #footer a:hover {
+    color: #dddddd;
+    text-decoration: none;
+  }
+#footer span {
+  text-transform: uppercase;
+  font-family: dinlight;
+  color: whitesmoke;
+  margin-left: 25px;
+}
 
 /* All user areas */
