@@ -4,8 +4,6 @@
 {% load markup %}
 {% load urlize_target_blank %}
 
-{% flag "main" %}
-
 {% block navbar %}
 	<ul class="nav nav-justified">
       <li><button type="button" class="btn hubnav"
@@ -28,11 +26,8 @@
 <body class="{% block bodyclass %}{% endblock %}" id="index-page{% block bodyid %}{% endblock %}">
 {% endblock %}
 
-
-{% endflag %}
-
 {% block content %}
-{% flag "main" %}
+
 
 <div class="panel-group" id="accordion">
   <div class="panel panel-default">
@@ -392,46 +387,13 @@
   </div>
 
 </div>
-{% else %}
-<div class="loader">
-</div>
-<div class="container">
 
-<div class="video-container">
-  <video class="master"
-   autoplay
-   loop
-   preload="metadata"
-   >
-    <source src="http://spokehub-video.s3.amazonaws.com/All_Loop.mp4" type="video/mp4">
-  </video>
-</div>
-
-<div class="about-container">
-    <div class="about-title">
-       <h3>SPOKEHUB is an art + design think tank, based in Berlin, with global creative partners.</h3>
-    </div>
-    <div class="about-copy">
-      <p>We offer insights, strategy, design and curation, with 5 principles in mind:</p>
-      <p>#1 SPOKEHUB unfucks today's issues, to make the <b>future</b> better for everyone.</p>
-      <p>#2 SPOKEHUB creates design with <b>he(art);</b> passion and meaning are our priorities.</p>
-      <p>#3 SPOKEHUB combines strategy, art and design thinking, on every <b>team</b> and mission.</p>
-      <p>#4 SPOKEHUB breaks bad habits, patterns and <b>norms</b>, with constructive disruption.</p>
-      <p>#5 SPOKEHUB works with knowledge (not guess-ledge), so our work is grounded in <b>truth</b> and effects real change.</p>
-    </div>
-    <div class="about-undertitle">
-      <p>Our website is undergoing its annual polish, so give <a href="https://www.linkedin.com/in/onikasimon">Onika</a> a call if you'd like to know more.</p>
-    </div>
-</div>
-
-{% endflag %}
 {% endblock %}
 
 {% block js %}
-{% flag "main" %}
-
-<link href="/media/bootstrap-lightbox.css" rel="stylesheet"></script>
 <script src="/media/bootstrap-lightbox.js"></script>
+<link href="/media/bootstrap-lightbox.css" rel="stylesheet"></script>
+
 <script src="/media/js/masonry.pkgd.js"></script>
 <script src="/media/js/jquery.infinitescroll.min.js"></script>
 <script src="/media/js/jquery.flexslider-min.js"></script>
@@ -517,13 +479,5 @@ $(".panel").on('shown.bs.collapse', function (e) {
 });
 </script>
 
-{% else %}
-<script src="/bower_components/jquery/dist/jquery.js"></script>
-<script src="/media/bootstrap-lightbox.js"></script>
-<script src="/media/js/masonry.pkgd.js"></script>
-<script src="/media/js/jquery.infinitescroll.min.js"></script>
-<script src="/media/js/jquery.flexslider-min.js"></script>
-<!-- words animation -->
-<script src="/media/js/animate-headline.js"></script>
-{% endflag %}
+
 {% endblock %}
