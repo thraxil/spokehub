@@ -19,15 +19,11 @@
     <link href="{{STATIC_URL}}bootstrap/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
-{% endflag %}
-
     <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
-
-	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
+    <script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
+  {% endflag %}
 	{% block css %}{% endblock %}
-  	<script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
-
-
 	{% block feeds %}{% endblock %}
 </head>
 {% block bodytag %}
@@ -87,7 +83,6 @@
 
 
 {% block footer %}
-<div class="footer">
 <div id="footer">
 
 <a href="#" onclick="$('#about-container').toggle();">ABOUT</a>
@@ -99,10 +94,8 @@
 <span>&copy; copyright Spokehub 2014 all rights reserved</span>
 
 </div>
-</div>
 {% endblock %}
-
-<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+<script src="//platform.twitter.com/widgets.js"></script>
 <script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
 
 {% block js %}{% endblock %}

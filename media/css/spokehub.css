@@ -7423,21 +7423,11 @@ body {
   background: white;
   position: relative;
 }
-
-.master {
+.video-container .master {
   position: relative;
-  height: 98vh;
+  width: 90%;
   display: block;
   margin: 0 auto;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  height: 5%;
-  height: 10vh;
-  width: 100%;
-  background: black;
 }
 
 #about-container {
