@@ -5,3 +5,8 @@ reports/
 media/CACHE
 local_settings.py
 .coverage
+node_modules/*
+.sass-cache/*
+bower_components/*
+bourbon/*
+.sass-cache/*
