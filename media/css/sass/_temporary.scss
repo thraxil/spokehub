@@ -33,8 +33,6 @@ body {
   }
   color: rgba(0, 0, 0, 0.87);
   background: white;
-  width: 100%;
-  position: relative;
 }
 
 .cd-title {
@@ -193,12 +191,20 @@ body {
   margin: 0 auto;
   background: white;
   position: relative;
-  .master {
-    position: relative;
-    width: 90%;
-    display: block;
-    margin: 0 auto;
-  }
+}
+.master {
+  position: relative;
+  height: 98vh;
+  display: block;
+  margin: 0 auto;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  height: 5%;
+  height: 10vh;
+  width: 100%;
+  background: black;
 }
 #about-container {
   width: 70%;

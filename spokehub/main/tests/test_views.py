@@ -4,7 +4,6 @@ from waffle.models import Flag
 from .factories import (UserFactory, ItemFactory)
 
 
-
 class BasicTest(TestCase):
     def setUp(self):
         self.c = Client()
