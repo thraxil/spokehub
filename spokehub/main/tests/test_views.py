@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.test.client import Client
+from waffle.models import Flag
 from .factories import (UserFactory, ItemFactory)
 
 
@@ -46,6 +47,7 @@ class LoggedInTest(TestCase):
         self.assertTrue('foo' in r.content)
 
     def test_reploy_to_item(self):
+        Flag.objects.create(name="main", everyone=True)
         i = ItemFactory()
         r = self.c.post(
             "/item/%d/reply/" % i.id,
