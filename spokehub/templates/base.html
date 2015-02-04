@@ -20,6 +20,10 @@
     <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
 
+{% endflag %}
+
+    <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
+
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
   	<script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
@@ -36,7 +40,7 @@
 	<div class="col-md-4">
 		<a href="/">
 		<video class="video-js vjs-default-skin"
-					 id="banner-video" 
+					 id="banner-video"
 					 autoplay loop>
 			<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4">
 				<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4"
@@ -69,7 +73,7 @@
 			<li>
 			<a href="/accounts/signout/" class="">Log Out</a>
 			</li>
-			
+
 			{% endif %}
 		</ul>
 		{% endblock %}
@@ -85,6 +89,7 @@
 <div id="footer">
 
 <a href="http://artsho.org" target="_blank">ARTSHO</a>
+<a href="#" onclick="$('#about-container').toggle();">ABOUT</a>
 <a href="mailto:hello@spokehub.org"><img src="/media/img/email.png"></a>
 <a href="http://facebook.com/SpokehubNOW" target="_blank"><img src="/media/img/facebook.png"></a>
 <a href="http://twitter.com/spokehubnow" target="_blank"><img src="/media/img/twitter.png"></a>
