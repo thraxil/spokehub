@@ -1,3 +1,4 @@
+{% load waffle_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +14,10 @@
   <script src="../assets/js/respond.min.js"></script>
 <![endif]-->
 
-
+{% flag "main" %}
     <link href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="{{STATIC_URL}}bootstrap/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
 {% endflag %}
 
@@ -34,6 +34,7 @@
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
 
+{% flag "main" %}
 {% block topnavbar %}
 <div class="row staticnav">
 	<div class="col-md-4">
@@ -79,6 +80,7 @@
 	</div>
 </div>
 {% endblock %}
+{% endflag %}
 
 {% block pagetitle %}{% endblock %}
 {% block content %}{% endblock %}
@@ -86,8 +88,6 @@
 
 {% block footer %}
 <div id="footer">
-
-<a href="http://artsho.org" target="_blank">ARTSHO</a>
 
 <a href="#" onclick="$('#about-container').toggle();">ABOUT</a>
 <a href="mailto:hello@spokehub.org"><img src="/media/img/email.png"></a>
