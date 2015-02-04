@@ -1,19 +1,23 @@
 [![Build Status](https://travis-ci.org/thraxil/spokehub.svg?branch=master)](https://travis-ci.org/thraxil/spokehub)
 
-# Updates
+# Spokehub Website
 
-### We're running with grunt, bower, and bourbon now. It'll help keep the frontend more organized and the repos smaller.
+### Grunt, Bower, and Bourbon
 
-When you open the repo for the first time run
+Installing for the first time on a new machine make sure you have [node](http://nodejs.org/) and [bourbon](http://bourbon.io/) installed.
 
+run
     npm install
     bower install
+    bourbon install
 
-in the terminal.
+once installed, use grunt in the root directory to run tasks for sass compile.
 
-install bourbon with
+    grunt
 
-    gem install bourbon
+will run a compile and listen for saves of scss files.
+
+
 
 
 
