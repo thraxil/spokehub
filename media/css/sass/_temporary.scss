@@ -29,19 +29,36 @@ body {
     width: 90%;
   }
 }
+.copyright {
+  float: right;
+  @media screen and (max-width: 731px) {
+    clear: both;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 2%;
+  }
+}
+#about-link {
+  font-size: 1.2em;
+  vertical-align: baseline;
+}
 #about-container {
-  width: 70%;
+  width: 80%;
   display: none;
   position: absolute;
   top: 10%;
-  right: 15%;
+  right: 10%;
   padding: 5% 5%;
-  background: white;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24), 0 6px 9.5px rgba(0, 0, 0, 0.12);
   border-radius: 2px;
   margin: 0 auto;
-  background: black;
+  background: rgba(0, 0, 0, 0.87);
   color: #fff;
+  h5 {
+    text-align: center;
+    font-size: 1em;
+  }
   .about-title {
     width: 100%;
     padding: 0;
@@ -52,17 +69,26 @@ body {
   .about-copy {
     font-size: 0.9em;
     width: 80%;
-    margin: 3% auto;
+    margin: 7% auto;
     font-weight: 400;
-    text-align: center;
     b {
-      font-size: 1.1em;
+      font-weight: bold;
     }
   }
   .about-undertitle {
     font-size: 1em;
     text-align: center;
     text-transform: uppercase;
+    a:visited {
+      color: white;
+    }
+  }
+  #about-exit-button {
+    position: absolute;
+    z-index: 9999;
+    right: 1%;
+    top: 1%;
+    font-size: 1.5em;
     a:visited {
       color: white;
     }

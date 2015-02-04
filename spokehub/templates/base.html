@@ -20,7 +20,6 @@
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
 {% endflag %}
-
     <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
 
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
@@ -89,13 +88,13 @@
 {% block footer %}
 <div id="footer">
 
-<a href="#" onclick="$('#about-container').toggle();">ABOUT</a>
+<a href="#" onclick="$('#about-container').toggle();"><span id="about-link">ABOUT</span></a>
 <a href="mailto:hello@spokehub.org"><img src="/media/img/email.png"></a>
 <a href="http://facebook.com/SpokehubNOW" target="_blank"><img src="/media/img/facebook.png"></a>
 <a href="http://twitter.com/spokehubnow" target="_blank"><img src="/media/img/twitter.png"></a>
 <a href="http://instagram.com/spokehubnow" target="_blank"><img src="/media/img/instagram.png"></a>
 
-<span>&copy; copyright Spokehub 2014 all rights reserved</span>
+<span class="copyright">&copy; copyright Spokehub 2014 all rights reserved</span>
 
 </div>
 {% endblock %}
