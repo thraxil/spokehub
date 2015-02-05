@@ -8,4 +8,8 @@ local_settings.py
 node_modules/*
 .sass-cache/*
 media/components/*
+<<<<<<< HEAD
 bourbon/*
+=======
+bourbon/*
+>>>>>>> dev
