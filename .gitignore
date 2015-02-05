@@ -9,4 +9,3 @@ node_modules/*
 .sass-cache/*
 media/components/*
 bourbon/*
-.sass-cache/*
