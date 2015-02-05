@@ -40,15 +40,22 @@ body {
   }
 }
 #about-link {
-  font-size: 1.2em;
-  vertical-align: baseline;
+  font-size: 1.5em;
+  vertical-align: -10%;
+}
+.hidden {
+  display: none;
+}
+.show {
+  display: block;
 }
 #about-container {
   width: 80%;
-  display: none;
   position: absolute;
-  top: 10%;
+  display: none;
+  top: 5%;
   right: 10%;
+  margin: 0 auto;
   padding: 5% 5%;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24), 0 6px 9.5px rgba(0, 0, 0, 0.12);
   border-radius: 2px;
@@ -56,7 +63,6 @@ body {
   background: rgba(0, 0, 0, 0.87);
   color: #fff;
   h5 {
-    text-align: center;
     font-size: 1em;
   }
   .about-title {
@@ -67,10 +73,11 @@ body {
     font-size: 1.2em;
   }
   .about-copy {
-    font-size: 0.9em;
-    width: 80%;
+    font-size: 1.2em;
+    width: 100%;
     margin: 7% auto;
     font-weight: 400;
+    text-align: center;
     b {
       font-weight: bold;
     }
@@ -81,6 +88,9 @@ body {
     text-transform: uppercase;
     a:visited {
       color: white;
+    }
+    #onika {
+      text-decoration: underline;
     }
   }
   #about-exit-button {
