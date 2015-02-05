@@ -3,6 +3,12 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    concat: {
+      dist: {
+        src: ['media/components/**/*.min.js'],
+        dest: 'media/js/concat.js'
+      }
+      },
     sass: {                            // Task
       dist: {                            // Target
         options: {                    // Target options
@@ -22,11 +28,7 @@ module.exports = function(grunt) {
         tasks: ['sass']
       },
       js: {
-        files: [
-          'assets/js/*.js',
-          'Gruntfile.js'
-        ],
-        tasks: ['jshint']
+        tasks: ['concat']
       }
     },
     compass: {
@@ -51,6 +53,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
   // Register the default tasks.
   grunt.registerTask('default', ['watch']);

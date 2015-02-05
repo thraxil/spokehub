@@ -15,16 +15,12 @@
 <![endif]-->
 
 {% flag "main" %}
-    <link href="{{STATIC_URL}}bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{STATIC_URL}}bootstrap/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
 {% endflag %}
     <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
-
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
-  	<script src="{{STATIC_URL}}js/jquery-1.7.2.min.js"></script>
 
 
 	{% block feeds %}{% endblock %}
@@ -100,7 +96,7 @@
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-<script src="{{STATIC_URL}}components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js"></script>
+<script src="{{STATIC_URL}}js/concat.js"></script>
 <script>
   $(document).ready(function() {
     var currentYear = (new Date).getFullYear();
