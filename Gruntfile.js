@@ -3,9 +3,12 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    concat: {
+    concagrut: {
       dist: {
-        src: ['media/components/jquery/dist/jquery.min.js', 'media/components/bootstrap/dist/js/bootstrap.min.js'],
+        src: [
+        'media/components/jquery/dist/jquery.min.js',
+        'media/components/bootstrap/dist/js/bootstrap.min.js'
+        ],
         dest: 'media/js/concat.js'
       }
       },
@@ -26,9 +29,6 @@ module.exports = function(grunt) {
           '**/*.scss'
         ],
         tasks: ['sass']
-      },
-      js: {
-        tasks: ['concat']
       }
     },
     compass: {

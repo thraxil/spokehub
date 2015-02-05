@@ -15,7 +15,15 @@ body {
   position: relative;
 }
 
+.loader {
+  display: block;
+  width: 5%;
+  margin: 20% auto;
+
+}
+
 .video-container {
+  display: none;
   width: 100%;
   height: 100%;
   margin: 0 auto;
