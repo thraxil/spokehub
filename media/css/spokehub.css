@@ -7193,16 +7193,25 @@ body {
 }
 
 #about-link {
-  font-size: 1.2em;
-  vertical-align: baseline;
+  font-size: 1.5em;
+  vertical-align: -10%;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
 }
 
 #about-container {
   width: 80%;
-  display: none;
   position: absolute;
-  top: 10%;
+  display: none;
+  top: 5%;
   right: 10%;
+  margin: 0 auto;
   padding: 5% 5%;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 0.24), 0 6px 9.5px rgba(0, 0, 0, 0.12);
   border-radius: 2px;
@@ -7211,7 +7220,6 @@ body {
   color: #fff;
 }
 #about-container h5 {
-  text-align: center;
   font-size: 1em;
 }
 #about-container .about-title {
@@ -7222,10 +7230,11 @@ body {
   font-size: 1.2em;
 }
 #about-container .about-copy {
-  font-size: 0.9em;
-  width: 80%;
+  font-size: 1.2em;
+  width: 100%;
   margin: 7% auto;
   font-weight: 400;
+  text-align: center;
 }
 #about-container .about-copy b {
   font-weight: bold;
@@ -7237,6 +7246,9 @@ body {
 }
 #about-container .about-undertitle a:visited {
   color: white;
+}
+#about-container .about-undertitle #onika {
+  text-decoration: underline;
 }
 #about-container #about-exit-button {
   position: absolute;
@@ -7677,7 +7689,6 @@ button.hubnav:active {
   text-transform: uppercase;
   font-family: dinlight;
   color: whitesmoke;
-  margin-left: 25px;
 }
 
 /* All user areas */

@@ -94,15 +94,22 @@
 <a href="http://twitter.com/spokehubnow" target="_blank"><img src="/media/img/twitter.png"></a>
 <a href="http://instagram.com/spokehubnow" target="_blank"><img src="/media/img/instagram.png"></a>
 
-<span class="copyright">&copy; copyright Spokehub 2014 all rights reserved</span>
+<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
 
 </div>
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-<script src="{{STATIC_URL}}bootstrap/js/bootstrap.js"></script>
+<script src="{{STATIC_URL}}components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js"></script>
+<script>
+  $(document).ready(function() {
+    var currentYear = (new Date).getFullYear();
+    $('#copyright-year').text(currentYear);
+  });
+</script>
 
 {% block js %}{% endblock %}
+
 
 {% if GA_CODE %}
 <script type="text/javascript">
