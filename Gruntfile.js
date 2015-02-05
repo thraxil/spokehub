@@ -5,7 +5,7 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
     concat: {
       dist: {
-        src: ['media/components/**/*.min.js'],
+        src: ['media/components/jquery/dist/jquery.min.js', 'media/components/bootstrap/dist/js/bootstrap.min.js'],
         dest: 'media/js/concat.js'
       }
       },
