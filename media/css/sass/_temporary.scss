@@ -82,16 +82,15 @@ body {
   }
   .about-copy {
     font-size: 1.2em;
-    width: 100%;
+    width: 90%;
     margin: 7% auto;
     font-weight: 400;
-    text-align: center;
-    b {
-      font-weight: bold;
+    h5 {
+      text-align: center;
     }
   }
   .about-undertitle {
-    font-size: 1em;
+    font-size: 1.2em;
     text-align: center;
     text-transform: uppercase;
     a:visited {

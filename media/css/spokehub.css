@@ -7238,16 +7238,15 @@ body {
 }
 #about-container .about-copy {
   font-size: 1.2em;
-  width: 100%;
+  width: 90%;
   margin: 7% auto;
   font-weight: 400;
+}
+#about-container .about-copy h5 {
   text-align: center;
 }
-#about-container .about-copy b {
-  font-weight: bold;
-}
 #about-container .about-undertitle {
-  font-size: 1em;
+  font-size: 1.2em;
   text-align: center;
   text-transform: uppercase;
 }
