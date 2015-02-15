@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     sass: {                            // Task
       dist: {                            // Target
         options: {                    // Target options
-          style: 'expanded'
+          style: 'compressed'
         },
         files: {                                    // Dictionary of files
           'media/css/spokehub.css': 'media/sass/spokehub.scss',        // 'destination': 'source'
