@@ -92,7 +92,7 @@ body {
     }
   }
   .about-undertitle {
-    font-size: 1.2em;
+    @include font-size (1);
     text-align: center;
     text-transform: uppercase;
     a:visited {

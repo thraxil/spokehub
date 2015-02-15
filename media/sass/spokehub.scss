@@ -1,17 +1,18 @@
 
-//Bourbon (what I'd like to use from now on)
+//Bourbon
 @import '../components/bourbon/app/assets/stylesheets/bourbon';
 @import '../components/neat/app/assets/stylesheets/neat';
 @import '../components/neat/app/assets/stylesheets/neat-helpers';
 
 // mdi
 @import '../components/mdi/materialdesignicons.css';
+
 //new new
 @import 'grid-settings';
 @import 'typography';
 @import 'temporary';
 
-//old styles that I really didn't want to fuck with
+//Old Styles
 @import 'landing';
 @import 'main';
 @import 'plain_header';
