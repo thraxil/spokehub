@@ -1,10 +1,8 @@
-//Vendor BOOTSTRAP
-/* @import '../components/bootstrap-sass-official/assets/stylesheets/bootstrap';
- */
+
 //Bourbon (what I'd like to use from now on)
-@import '../vendor/bourbon/bourbon';
-@import '../vendor/neat/neat';
-@import '../vendor/neat/neat-helpers';
+@import '../components/bourbon/app/assets/stylesheets/bourbon';
+@import '../components/neat/app/assets/stylesheets/neat';
+@import '../components/neat/app/assets/stylesheets/neat-helpers';
 
 // mdi
 @import '../components/mdi/materialdesignicons.css';
