@@ -27,6 +27,7 @@
   ],
   "dependencies": {
     "bootstrap-sass-official": "~3.3.3",
-    "bootstrap-lightbox": "~0.7.0"
+    "bootstrap-lightbox": "~0.7.0",
+    "mdi": "~0.8.82-alpha"
   }
 }

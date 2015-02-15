@@ -1,11 +1,15 @@
 //Vendor BOOTSTRAP
-
-@import '../../components/bootstrap-sass-official/assets/stylesheets/bootstrap';
-
+/* @import '../components/bootstrap-sass-official/assets/stylesheets/bootstrap';
+ */
 //Bourbon (what I'd like to use from now on)
-@import '../../../bourbon/bourbon';
+@import '../vendor/bourbon/bourbon';
+@import '../vendor/neat/neat';
+@import '../vendor/neat/neat-helpers';
 
+// mdi
+@import '../components/mdi/materialdesignicons.css';
 //new new
+@import 'grid-settings';
 @import 'typography';
 @import 'temporary';
 
