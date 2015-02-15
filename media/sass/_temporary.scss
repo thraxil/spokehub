@@ -49,7 +49,6 @@ body {
 }
 #about-link {
   font-size: 1.5em;
-  vertical-align: -10%;
 }
 .hidden {
   display: none;
@@ -87,9 +86,6 @@ body {
     margin-bottom: 7%;
     margin-left: 8%;
     font-weight: 400;
-    strong {
-      text-decoration: underline;
-    }
   }
   .about-undertitle {
     @include font-size (1);
