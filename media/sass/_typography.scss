@@ -1,12 +1,12 @@
 /* Fonts */
 @font-face {
   font-family: "dinlight";
-  src: url("../fonts/DINWeb-Light.eot");
-  src: url("../fonts/DINWeb-Light.woff") format("woff"); }
+  src: url("fonts/DINWeb-Light.eot");
+  src: url("fonts/DINWeb-Light.woff") format("woff"); }
   @font-face {
   font-family: "dinmed";
-  src: url("../fonts/DINWeb-Medium.eot");
-  src: url("../fonts/DINWeb-Medium.woff") format("woff"); }
+  src: url("fonts/DINWeb-Medium.eot");
+  src: url("fonts/DINWeb-Medium.woff") format("woff"); }
 
   // Variables
 $base-font: 'dinlight', sans-serif;
