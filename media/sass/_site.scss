@@ -44,7 +44,6 @@ ul.tabbernav
  margin:0;
  padding: 3px 0;
  border-bottom: 1px solid #778;
-        font-family: arial, helvetica, verdana, sans-serif;
 }
 
 ul.tabbernav li
@@ -53,7 +52,7 @@ ul.tabbernav li
  margin: 0;
  display: inline;
 }
-        
+
 ul.tabbernav li a
 {
  padding: 3px 0.5em;
@@ -63,10 +62,10 @@ ul.tabbernav li a
  background: #DDE;
  text-decoration: none;
 }
- 
+
 ul.tabbernav li a:link { color: #448; }
 ul.tabbernav li a:visited { color: #667; }
-        
+
 ul.tabbernav li a:hover
 {
  color: #000;
