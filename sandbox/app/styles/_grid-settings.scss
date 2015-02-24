@@ -1,0 +1,27 @@
+// Visual grid
+$visual-grid: false;
+$visual-grid-index: front;
+$visual-grid-color: pink;
+$visual-grid-opacity: 0.2;
+
+// Change the grid settings
+$column: 54px;
+$gutter: 30px;
+$grid-columns: 12;
+$max-width: 980px;
+
+// Define your breakpoints
+$small: new-breakpoint(max-width 480px and media screen);
+$medium: new-breakpoint(min-width 481px);
+$large: new-breakpoint(min-width 769px);
+$xlarge: new-breakpoint(min-width 1025px);
+
+// Omega reset
+@mixin omega-grid-reset($nth, $num-grid: 12) {
+    &:nth-child(#{$nth}) { margin-right: flex-gutter($num-grid); }
+    &:nth-child(#{$nth}+1) { clear: none }
+}
+
+// Variables
+$fg-column: $column;
+$fg-gutter: $gutter;
