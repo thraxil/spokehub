@@ -4,11 +4,40 @@
   box-sizing: border-box;
 }
 
-html, body, #site-wrapper {
-  width: 100%;
+.flex {
+  display: flex;
+}
+
+html, body {
   height: 100%;
+  width: 100%;
 }
 
 body, #site-wrapper {
   position: relative;
+}
+.content-wrapper{
+  @extend .flex;
+  section {
+    height: 85vh;
+    margin-bottom: 8vh;
+    @extend .flex;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+    &:last-of-type {
+      @include omega;
+    }
+    &:nth-of-type(2n) {
+      color: white;
+      background: black;
+    }
+    h1 {
+      text-transform: uppercase;
+
+    }
+  }
+}
+a {
+  color: inherit;
 }
