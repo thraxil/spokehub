@@ -1,0 +1,10 @@
+{
+  "name": "sandbox",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "bourbon": "~4.2.1",
+    "neat": "~1.7.1",
+    "sass-partials-pkrawc": "*"
+  }
+}

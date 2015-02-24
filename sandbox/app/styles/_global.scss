@@ -1,0 +1,14 @@
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body, #site-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+body, #site-wrapper {
+  position: relative;
+}
