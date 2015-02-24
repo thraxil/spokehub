@@ -1,0 +1,14 @@
+// bower:scss
+@import "bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "neat/app/assets/stylesheets/_neat.scss";
+@import "sass-partials-pkrawc/partials/_grid-settings.scss";
+@import "sass-partials-pkrawc/partials/_typography.scss";
+// endbower
+
+@import "global",
+        "header",
+        "footer",
+        "how",
+        "we",
+        "work",
+        "now";
