@@ -17,7 +17,7 @@
   </head>
   <body>
     <!--[if lt IE 10]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
 
@@ -29,34 +29,26 @@
         </div>
       </header>
       <div class="content-wrapper">
-        <section id="how">
-          <div class="title">
-            <h1><a class="section-link" href="#">how</a></h1>
-          </div>
-          <div class="content">
-          </div>
-        </section>
-        <section id="we">
-          <div class="title">
-            <h1><a class="section-link" href="#">we</a></h1>
-          </div>
-          <div class="content">
-          </div>
-        </section>
-        <section id="work">
-          <div class="title">
-            <h1><a class="section-link" href="#">work</a></h1>
-          </div>
-          <div class="content">
-          </div>
-        </section>
-        <section id="now">
-          <div class="title">
-            <h1><a class="section-link" href="#">now</a></h1>
-          </div>
-          <div class="content">
-          </div>
-        </section>
+        <div class="columns">
+          <div class="column full-column" id="how"><h1>how</h1></div>
+          <div class="column full-column" id="we"><h1>we</h1></div>
+          <div class="column full-column" id="work"><h1>work</h1></div>
+          <div class="column full-column" id="now"><h1>now</h1></div>
+        </div>
+        <div class="sections">
+          <section class="main-section hide" data-target="how">
+            {{ include how_template}}
+          </section>
+          <section class="main-section hide" data-target="we">
+            {{ include we_template}}
+          </section>
+          <section class="main-section hide" data-target="work">
+            {{ include work_template}}
+          </section>
+          <section class="main-section hide" data-target="now">
+            {{ include now_template}}
+          </section>
+        </div>
       </div>
       <footer>
         <div class="footer-wrapper">

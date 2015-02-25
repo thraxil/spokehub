@@ -17,31 +17,58 @@ body, #site-wrapper {
   position: relative;
 }
 .content-wrapper{
-  @extend .flex;
-  section {
-    height: 85vh;
-    margin-bottom: 8vh;
+  margin-bottom: 8vh;
+  position: relative;
+  .columns {
     @extend .flex;
-    justify-content: center;
-    align-items: center;
-    width: 25%;
-    transition: width 0.3s;
-    &:nth-of-type(2n) {
-      color: white;
-      background: black;
-    }
-    h1 {
-      text-transform: uppercase;
+    width: 100%;
+    .column {
+      @extend .flex;
+      justify-content: center;
+      align-items: center;
+      width: 25%;
+      transition: width 0.33s cubic-bezier(0.72, 0, 0.28, 1), height 0.1s cubic-bezier(0.72, 0, 0.28, 1) 0.33s;
+      &:nth-of-type(2n) {
+        color: white;
+        background: black;
+      }
+      h1 {
+        text-transform: uppercase;
 
+      }
+    }
+  }
+  .sections {
+    @extend .flex;
+    .main-section {
+      width: 100%;
+      transition: height 0.33s cubic-bezier(0.72, 0, 0.28, 1);
+      &:nth-of-type(2n) {
+        background: #000;
+      }
     }
   }
 }
 a {
   color: inherit;
+  text-decoration: inherit;
 }
-.active {
+.hide {
+  display: none;
+}
+.show {
+  display: flex;
+  height: 79vh;
+}
+.full-column {
+  height: 85vh;
+}
+.tabed-column {
+  height: 6vh;
+  h1 {
+    @include font-size (1);
+  }
+}
+.expanded {
   width: 100% !important;
-}
-.inactive {
-  height: 5vh !important;
 }
