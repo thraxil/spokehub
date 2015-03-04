@@ -17,7 +17,7 @@ body, #site-wrapper {
   position: relative;
 }
 .content-wrapper{
-  margin-bottom: 8vh;
+  margin-bottom: 6vh;
   position: relative;
   .columns {
     @extend .flex;
@@ -28,13 +28,14 @@ body, #site-wrapper {
       align-items: center;
       width: 25%;
       transition: width 0.33s cubic-bezier(0.72, 0, 0.28, 1), height 0.1s cubic-bezier(0.72, 0, 0.28, 1) 0.33s;
-      &:nth-of-type(2n) {
+      &:nth-of-type(2n+1) {
         color: white;
         background: black;
       }
       h1 {
         text-transform: uppercase;
-
+        @include font-size (1);
+        cursor: pointer;
       }
     }
   }
@@ -43,7 +44,7 @@ body, #site-wrapper {
     .main-section {
       width: 100%;
       transition: height 0.33s cubic-bezier(0.72, 0, 0.28, 1);
-      &:nth-of-type(2n) {
+      &:nth-of-type(2n+1) {
         background: #000;
       }
     }
@@ -58,16 +59,13 @@ a {
 }
 .show {
   display: flex;
-  height: 79vh;
+  height: 83vh;
 }
 .full-column {
-  height: 85vh;
+  height: 87vh;
 }
 .tabed-column {
-  height: 6vh;
-  h1 {
-    @include font-size (1);
-  }
+  height: 4vh;
 }
 .expanded {
   width: 100% !important;
