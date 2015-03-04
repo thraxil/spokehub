@@ -1,6 +1,6 @@
 'use strict';
 
-$(document).ready(function(){
+$(function(){
   $('.column').click(function(){
 
     var target = $(this);
@@ -21,6 +21,7 @@ $(document).ready(function(){
     $('.main-section').each(function(){
       if ($(this).data('target') === sectionTarget) {
         $(this).addClass('show');
+        $(this).removeClass('hide');
       } else {
         $(this).removeClass('show').addClass('hide');
 
@@ -35,3 +36,76 @@ $(document).ready(function(){
     $('.column').addClass('full-column').removeClass('tabed-column').removeClass('expanded');
   });
 });
+
+// Slide getter
+
+var Slider = function(sliderDom) {
+  this.slider = sliderDom;
+  this.currentIndex = 0;
+
+  var self = this;
+
+  $('<button>')
+  .addClass('prev')
+  .on('click', function(){
+    self.displayImage(self.currentIndex - 1);
+  })
+  .appendTo(this.slider);
+
+  $('<button>')
+  .addClass('next')
+  .on('click', function(){
+    self.displayImage(self.currentIndex + 1);
+  })
+  .appendTo(this.slider);
+
+  //Show first picture
+
+  this.displayImage(this.currentIndex);
+
+  setInterval(function() {
+    if ($('#how-column').hasClass('expanded')){
+      if (self.currentIndex === self.slider.children('img').length - 1){
+        self.displayImage(0);
+      } else {
+        self.displayImage(self.currentIndex + 1);
+      }
+    }
+  }, 7000);
+
+};
+
+$(function(){
+  $('.slider').each(function(){
+    new Slider($(this));
+  });
+});
+
+// Slideshow Object
+
+Slider.prototype.displayImage = function(imageIndex) {
+  var numberOfImages = this.slider.children('img').length;
+  if (imageIndex < 0 || imageIndex > numberOfImages){
+    return;
+  }
+
+  this.slider.children('img.visible').removeClass('visible');
+  this.slider.children('img:nth-of-type(' + (imageIndex + 1) + ')').addClass('visible');
+
+  var prevButton = this.slider.children('.prev');
+  if (imageIndex === 0) {
+    prevButton.hide();
+  } else {
+    prevButton.show();
+  }
+
+  var nextButton = this.slider.children('.next');
+
+  if (imageIndex === numberOfImages - 1) {
+    nextButton.hide();
+  } else {
+    nextButton.show();
+  }
+
+  this.currentIndex = imageIndex;
+};

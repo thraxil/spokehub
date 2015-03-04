@@ -24,29 +24,39 @@
     <div id="site-wrapper">
       <header>
         <div id="header-wrapper">
-          <h2>SPOKEHUB</h2>
-          <h3>member login</h3>
+          <a href="#"><h2>SPOKEHUB</h2></a>
+          <a href="#"><h3>member login</h3></a>
         </div>
       </header>
       <div class="content-wrapper">
         <div class="columns">
-          <div class="column full-column" id="how"><h1>how</h1></div>
-          <div class="column full-column" id="we"><h1>we</h1></div>
-          <div class="column full-column" id="work"><h1>work</h1></div>
-          <div class="column full-column" id="now"><h1>now</h1></div>
+          <div class="column full-column" id="how-column"><h1>how</h1></div>
+          <div class="column full-column" id="we-column"><h1>we</h1></div>
+          <div class="column full-column" id="work-column"><h1>work</h1></div>
+          <div class="column full-column" id="now-column"><h1>now</h1></div>
         </div>
         <div class="sections">
-          <section class="main-section hide" data-target="how">
-            {{ include how_template}}
+          <section class="main-section hide" data-target="how-column">
+            <!-- {{ include how.html }} -->
+            <div class="how-wrapper" id="how">
+              <div class="slider">
+                <img src="images/50_shades2-01_72_960x540.jpg">
+                <img src="images/AIADW_storytelling101_72_960x540.jpg">
+                <img src="images/Artshow_StreetArt_72_960x540.jpg">
+                <img src="images/Artshow_team_72_960x540.jpg">
+                <img src="images/Design Alchemy-01_72_960x540-01.jpg">
+                <img src="images/LV Ad_72_960x540.jpg">
+              </div>
+            </div>
           </section>
-          <section class="main-section hide" data-target="we">
-            {{ include we_template}}
+          <section class="main-section hide" data-target="we-column">
+            <!-- {{ include we.html }} -->
           </section>
-          <section class="main-section hide" data-target="work">
-            {{ include work_template}}
+          <section class="main-section hide" data-target="work-column">
+            <!-- {{ include work.html }} -->
           </section>
-          <section class="main-section hide" data-target="now">
-            {{ include now_template}}
+          <section class="main-section hide" data-target="now-column">
+            <!-- {{ include now.html }} -->
           </section>
         </div>
       </div>
