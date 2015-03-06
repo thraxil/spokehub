@@ -18,7 +18,7 @@
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
 {% endflag %}
-    <link href="{{STATIC_URL}}css/spokehub.css" rel="stylesheet">
+    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
 
@@ -82,29 +82,28 @@
 
 
 {% block footer %}
-<div id="footer">
-
-<a href="#" onclick="$('#about-container').toggle();"><span id="about-link">ABOUT</span></a>
-<a href="mailto:hello@spokehub.org"><img src="/media/img/email.png"></a>
-<a href="http://facebook.com/SpokehubNOW" target="_blank"><img src="/media/img/facebook.png"></a>
-<a href="http://twitter.com/spokehubnow" target="_blank"><img src="/media/img/twitter.png"></a>
-
-<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
-
-</div>
+<footer>
+	<div class="footer-wrapper">
+			<ul>
+				<li><a onClick="$('#about-button').toggle(333);" href="#">about</a></li>
+				<li><a href="mailto:info@spokehub.com"><i class="mdi mdi-email"></i></a></li>
+				<li><a href="https://twitter.com/spokehubnow"><i class="mdi mdi-twitter"></i></a></li>
+				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"><i class="mdi mdi-facebook"></i></a></li>
+			</ul>
+		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
+	</div>
+</footer>
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-<script src="{{STATIC_URL}}js/concat.js"></script>
+
+{% block js %}{% endblock %}
 <script>
   $(document).ready(function() {
     var currentYear = (new Date).getFullYear();
     $('#copyright-year').text(currentYear);
   });
 </script>
-
-{% block js %}{% endblock %}
-
 
 {% if GA_CODE %}
 <script type="text/javascript">
