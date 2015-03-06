@@ -1,0 +1,30 @@
+.about-container {
+  display: none;
+  position: absolute;
+  top: 10vh;
+  left: 15vw;
+  width: 70vw;
+  height: 80vh;
+  padding: 2em;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  overflow: hidden;
+  b {
+    font-weight: 900;
+  }
+  @media all and (max-width: 540px) {
+    h1 {
+      @include font-size(1);
+    }
+    p {
+      @include font-size(0.7);
+    }
+  }
+}
+.about-title, .about-undertitle {
+  text-align: center;
+}
+.about-copy {
+  width: 80%;
+  text-align: justify;
+}
