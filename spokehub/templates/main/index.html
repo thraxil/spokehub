@@ -8,8 +8,6 @@
 
 {% block content %}
 {% flag "main" %}
-
-{% else %}
 <div class="loader">
   <svg version="1.1"
     class="svg-loader"
@@ -89,12 +87,26 @@
     </div>
 </div>
 
+
+{% else %}
+{% comment %}placeholder mode{% endcomment %}
 {% endflag %}
 {% endblock %}
 
 {% block js %}
 {% flag "main" %}
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/main.js"></script>
+<script type="text/javascript">
+  $(window).load(function(){
+     // PAGE IS FULLY LOADED
+     // FADE OUT YOUR OVERLAYING DIV
+     $('.loader').delay(800).fadeOut();
+     $('#site-wrapper').delay(1600).fadeIn();
+  });
+</script>
 
+{% else %}
 <link href="{{STATIC_URL}}bootstrap-lightbox.css" rel="stylesheet"></script>
 <script src="{{STATIC_URL}}bootstrap-lightbox.js"></script>
 <script src="{{STATIC_URL}}js/masonry.pkgd.js"></script>
@@ -182,16 +194,6 @@ $(".panel").on('shown.bs.collapse', function (e) {
 });
 </script>
 
-{% else %}
-<script src="{{STATIC_URL}}js/jquery.min.js"></script>
-<script src="{{STATIC_URL}}js/main.js"></script>
-<script type="text/javascript">
-  $(window).load(function(){
-     // PAGE IS FULLY LOADED
-     // FADE OUT YOUR OVERLAYING DIV
-     $('.loader').delay(800).fadeOut();
-     $('#site-wrapper').delay(1600).fadeIn();
-  });
-</script>
+
 {% endflag %}
 {% endblock %}

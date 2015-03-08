@@ -15,7 +15,7 @@
 <![endif]-->
 
 {% flag "main" %}
-    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+{% else %}
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
 {% endflag %}
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
@@ -30,6 +30,8 @@
 {% endblock %}
 
 {% flag "main" %}
+{% else %}
+{% comment %} placeholder mode {% endcomment %}
 {% block topnavbar %}
 <div class="row staticnav">
 	<div class="col-md-4">
