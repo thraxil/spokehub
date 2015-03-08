@@ -15,10 +15,12 @@
 <![endif]-->
 
 {% flag "main" %}
-{% else %}
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
-{% endflag %}
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+{% else %}
+    <link href="{{STATIC_URL}}css/landing.css" rel="stylesheet">
+{% endflag %}
+
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
 
@@ -32,51 +34,6 @@
 {% flag "main" %}
 {% else %}
 {% comment %} placeholder mode {% endcomment %}
-{% block topnavbar %}
-<div class="row staticnav">
-	<div class="col-md-4">
-		<a href="/">
-		<video class="video-js vjs-default-skin"
-					 id="banner-video"
-					 autoplay loop>
-			<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4">
-				<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4"
-								type="video/mp4">
-		</video>
-		</a>
-	</div>
-
-	<div class="col-md-4">
-{% block navbar %}{% endblock %}
-	</div>
-
-	<div class="col-md-4">
-		{% block usernav %}
-		<ul class="nav hubauth">
-      {% if request.user.is_anonymous %}
-			<li><a href="/accounts/signin/?next=/">login</a></li>
-      {% else %}
-			<li class="user-text">
-			<a href="/accounts/{{request.user.username}}/">
-			{{request.user.username}}
-			</a>
-        	</li>
-        	<li>
-        		<a href="/accounts/{{request.user.username}}/">
-        		<img class="mugshot" src="{{ request.user.profile.get_mugshot_url }}" />
-        		</a>
-        	</li>
-
-			<li>
-			<a href="/accounts/signout/" class="">Log Out</a>
-			</li>
-
-			{% endif %}
-		</ul>
-		{% endblock %}
-	</div>
-</div>
-{% endblock %}
 {% endflag %}
 
 {% block pagetitle %}{% endblock %}
@@ -84,6 +41,7 @@
 
 
 {% block footer %}
+{% flag main %}
 <footer>
 	<div class="footer-wrapper">
 			<ul>
@@ -95,6 +53,8 @@
 		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
 	</div>
 </footer>
+{% else %}
+{% endflag %}
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>

@@ -90,12 +90,90 @@
 
 {% else %}
 {% comment %}placeholder mode{% endcomment %}
+<div class="loader">
+  <svg version="1.1"
+    class="svg-loader"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    viewBox="0 0 80 80"
+    xml:space="preserve">
+
+    <path
+      id="spinner"
+      fill="#000"
+      d="M40,72C22.4,72,8,57.6,8,40C8,22.4,
+      22.4,8,40,8c17.6,0,32,14.4,32,32c0,1.1-0.9,2-2,2
+      s-2-0.9-2-2c0-15.4-12.6-28-28-28S12,24.6,12,40s12.6,
+      28,28,28c1.1,0,2,0.9,2,2S41.1,72,40,72z"
+    >
+
+      <animateTransform
+        attributeType="xml"
+        attributeName="transform"
+        type="rotate"
+        from="0 40 40"
+        to="360 40 40"
+        dur="0.6s"
+        repeatCount="indefinite"
+      />
+    </path>
+  </svg>
+</div>
+
+<div class="video-container">
+  <video class="master"
+   autoplay
+   loop
+   preload="metadata"
+   >
+    <source src="http://spokehub-video.s3.amazonaws.com/All_Loop.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div id="about-container">
+<div id="about-exit-button"><a href="#" onclick="$('#about-container').toggle();"><i class="mdi mdi-close-box-outline"></i></a></div>
+    <div class="about-title">
+       <h3>SPOKEHUB is an art + design think tank, based in Berlin.</h3>
+			<h5>We offer insights, strategy, design and curation, with 5 principles in mind:</h5>
+    </div>
+    <div class="about-copy">
+      <br>
+      <p>#1 - UNF*CKING EVERYTHING WE CAN TODAY, TO MAKE THE <strong>FUTURE</strong> BETTER FOR EVERYONE.</p>
+      <p>#2 - ASSIGNING A HYBRID <strong>TEAM</strong> OF THINKERS AND MAKERS, TO EACH MISSION.</p>
+      <p>#3 - GATHERING <strong>KNOWLEDGE</strong> (NOT GUESS-LEDGE), SO OUR WORK IS GROUNDED IN TRUTH.</p>
+      <p>#4 - DESIGNING WITH <strong>HE(ART)</strong>, MEANING ARTISTIC EXPRESSION AND ZEAL.</p>
+      <p>#5 - BREAKING BAD HABITS AND <strong>NORMS</strong>, WITH CONSTRUCTIVE DISRUPTION.</p>
+    </div>
+    <div class="about-undertitle">
+      <h5>Our website is undergoing its annual polish, so give <a id="onika" href="https://www.linkedin.com/in/onikasimon">Onika</a> a call if you'd like to know more.</h5>
+    </div>
+</div>
+
+
+
+
+
+
+<div id="footer">
+
+<a href="#" onclick="$('#about-container').toggle();"><span id="about-link">ABOUT</span></a>
+<a href="mailto:hello@spokehub.org"><img src="/media/img/email.png"></a>
+<a href="http://facebook.com/SpokehubNOW" target="_blank"><img src="/media/img/facebook.png"></a>
+<a href="http://twitter.com/spokehubnow" target="_blank"><img src="/media/img/twitter.png"></a>
+
+<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
+
+</div>
+
+
 {% endflag %}
 {% endblock %}
 
 {% block js %}
-{% flag "main" %}
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>
+{% flag "main" %}
 <script src="{{STATIC_URL}}js/main.js"></script>
 <script type="text/javascript">
   $(window).load(function(){
@@ -107,93 +185,6 @@
 </script>
 
 {% else %}
-<link href="{{STATIC_URL}}bootstrap-lightbox.css" rel="stylesheet"></script>
-<script src="{{STATIC_URL}}bootstrap-lightbox.js"></script>
-<script src="{{STATIC_URL}}js/masonry.pkgd.js"></script>
-<script src="{{STATIC_URL}}js/jquery.infinitescroll.min.js"></script>
-<script src="{{STATIC_URL}}js/jquery.flexslider-min.js"></script>
-
-<script>
-	var $container = $('#nowtiles');
-	// initialize
-	$('#nowtiles').masonry({
-    columnWidth: 40,
-    itemSelector: '.nowtile'
-  });
-
-  $container.infinitescroll({
-      navSelector  : '#now-nav',
-      nextSelector : '#now-nav a',
-      itemSelector : '.nowtile',
-
-      errorCallback: function () { console.log('had an error'); },
-
-      loading: {
-          finishedMsg: 'No more pages to load.'
-//          img: 'http://i.imgur.com/6RMhx.gif'
-        }
-      },
-
-      // trigger Masonry as a callback
-      function( newElements ) {
-        // hide new items while they are loading
-        var $newElems = $( newElements ).css({ opacity: 0 });
-        // ensure that images load before adding to masonry layout
-// imagesLoaded seems to be broken...
-// going without for now..
-//        $newElems.imagesLoaded(function(){
-          // show elems now they're ready
-          $newElems.animate({ opacity: 1 });
-          $container.masonry( 'appended', $newElems, true );
-//        });
-
-// don't know why, but it seems that I need to manually
-// detect the end of the scrolling and stop it
-// or it does weird stuff...
-        if ($newElems.length < 50) {
-           $container.infinitescroll('destroy');
-           return;
-        }
-
-      }
-    );
-
-</script>
-<script type="text/javascript" charset="utf-8">
-
-  function showSection(identifier) {
-	   $('.collapse').collapse({'toggle':false, 'parent': '#accordian'})
-                   .collapse('hide');
-     $(identifier).collapse({'toggle':true, 'parent': '#accordian'}).collapse('show');
-  }
-
-  $(window).ready(function() {
-    $('#flexslider').flexslider({
-    	smoothHeight: false,
-// this one breaks it. don't know why.
-//    	itemWidth: 1200,
-    	maxItems: 0,
-      animationLoop: true,
-    	controlNav: false
-    });
-
-  if (window.location.hash === '#how')  { showSection('#how'); }
-  if (window.location.hash === '#we')   { showSection('#we'); }
-  if (window.location.hash === '#work') { showSection('#work'); }
-  if (window.location.hash === '#now')  { showSection('#now'); }
-
-  });
-</script>
-
-<script>
-$(".panel").on('hidden.bs.collapse', function (e) {
-   $(e.target).parent().removeClass('active-panel');
-});
-$(".panel").on('shown.bs.collapse', function (e) {
-   $(e.target).parent().addClass('active-panel');
-});
-</script>
-
 
 {% endflag %}
 {% endblock %}
