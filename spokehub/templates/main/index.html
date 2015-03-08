@@ -95,11 +95,11 @@
 {% block js %}
 {% flag "main" %}
 
-<link href="/media/bootstrap-lightbox.css" rel="stylesheet"></script>
-<script src="/media/bootstrap-lightbox.js"></script>
-<script src="/media/js/masonry.pkgd.js"></script>
-<script src="/media/js/jquery.infinitescroll.min.js"></script>
-<script src="/media/js/jquery.flexslider-min.js"></script>
+<link href="{{STATIC_URL}}bootstrap-lightbox.css" rel="stylesheet"></script>
+<script src="{{STATIC_URL}}bootstrap-lightbox.js"></script>
+<script src="{{STATIC_URL}}js/masonry.pkgd.js"></script>
+<script src="{{STATIC_URL}}js/jquery.infinitescroll.min.js"></script>
+<script src="{{STATIC_URL}}js/jquery.flexslider-min.js"></script>
 
 <script>
 	var $container = $('#nowtiles');
@@ -183,8 +183,8 @@ $(".panel").on('shown.bs.collapse', function (e) {
 </script>
 
 {% else %}
-<script src="/media/js/jquery.min.js"></script>
-<script src="/media/js/main.js"></script>
+<script src="{{STATIC_URL}}js/jquery.min.js"></script>
+<script src="{{STATIC_URL}}js/main.js"></script>
 <script type="text/javascript">
   $(window).load(function(){
      // PAGE IS FULLY LOADED
