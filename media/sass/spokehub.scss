@@ -1,21 +1,20 @@
+@import "../components/bourbon/app/assets/stylesheets/_bourbon.scss";
+@import "../components/neat/app/assets/stylesheets/_neat.scss";
+@import "../components/normalize-scss/_normalize.scss";
 
-//Bourbon
-@import '../components/bourbon/app/assets/stylesheets/bourbon';
-@import '../components/neat/app/assets/stylesheets/neat';
-@import '../components/neat/app/assets/stylesheets/neat-helpers';
+@import "mdi-variables",
+        "path",
+        "core",
+        "icons";
 
-// mdi
-@import 'mdi';
 
-//new new
-@import 'grid-settings';
-@import 'typography';
-@import 'temporary';
-
-//Old Styles
-@import 'landing';
-@import 'main';
-@import 'plain_header';
-@import 'site';
-@import 'print';
-@import 'flexslider';
+@import "grid-settings",
+        "typography",
+        "global",
+        "header",
+        "footer",
+        "how",
+        "we",
+        "work",
+        "now",
+        "about";

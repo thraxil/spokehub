@@ -1,4 +1,4 @@
-/* Fonts */
+/* Import some fonts here */
 @font-face {
   font-family: "dinlight";
   src: url("fonts/DINWeb-Light.eot");
@@ -8,9 +8,9 @@
   src: url("fonts/DINWeb-Medium.eot");
   src: url("fonts/DINWeb-Medium.woff") format("woff"); }
 
-  // Variables
-$base-font: dinlight, sans-serif;
-$header-font: dinmed, sans-serif;
+// Variables
+$base-font: 'dinlight', Helvetica, sans-serif;
+$header-font: 'dinmed', Helvetica, sans-serif;
 $base-line-height: 1.5;
 $base-font-size: 13px;
 
@@ -64,9 +64,7 @@ strong, b {
   line-height: inherit;
 }
 
-p,
-ul,
-ol {
+p {
     @include leading-rows(0);
     @include trailing-rows(1);
 }
@@ -102,8 +100,6 @@ h6 {
 h1,
 .h1 {
     @include font-size(2.5);
-    @include leading-rows(1);
-    @include trailing-rows(1);
 
     @include media($medium) { @include font-size(3); }
 }
@@ -111,8 +107,6 @@ h1,
 h2,
 .h2 {
     @include font-size(1.8);
-    @include leading-rows(2);
-    @include trailing-rows(1);
 
     @include media($medium) { @include font-size(2); }
 }
@@ -120,8 +114,6 @@ h2,
 h3,
 .h3 {
     @include font-size(1.1);
-    @include leading-rows(1.5);
-    @include trailing-rows(0.5);
 
     @include media($medium) { @include font-size(1.2); }
 }
@@ -130,8 +122,6 @@ h4,
 h5,
 h6 {
   @include font-size(1);
-  @include leading-rows(1.5);
-    @include trailing-rows(0.5);
 }
 
 h2,
@@ -143,5 +133,3 @@ h3 {
     orphans: 3;
     widows: 3;
 }
-
-p ~ h1 { @include leading-rows(2); }
