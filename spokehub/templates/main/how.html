@@ -1,3 +1,5 @@
+{% load markup %}
+{% load thumbnail %}
 <div class="how-wrapper" id="how">
   <div class="slider">
     <img src="{{STATIC_URL}}img/50_shades2-01_72_960x540.jpg">
@@ -8,3 +10,206 @@
     <img src="{{STATIC_URL}}img/LV Ad_72_960x540.jpg">
   </div>
 </div>
+
+
+{% comment %}
+Unit tests are expecting the conversations and their replies
+to show up in some form here.
+{% endcomment %}
+
+			 {% if conversation %}
+
+<form action="/item/{{conversation.id}}/reply/" method="post"
+			enctype="multipart/form-data" role="form">
+	<div class="modal fade" id="add-text-reply">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Add Reply</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<label for="comment-body">Comment</label>
+						<textarea name="body" class="form-control" rows="10"
+											id="comment-body"></textarea>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="Reply"/>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</form>
+
+<form action="/item/{{conversation.id}}/reply/" method="post"
+			enctype="multipart/form-data" role="form">
+	<div class="modal fade" id="add-link-reply">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Add Link Reply</h4>
+				</div>
+				<div class="modal-body">
+					
+					<div class="form-group">
+						<label for="link-url">URL</label>
+						<input type="text" name="url" class="form-control"
+									 id="link-url" placeholder="http://" />
+					</div>
+
+					<div class="form-group">
+						<label for="link-title">Link Title</label>
+						<input type="text" name="title" class="form-control"
+									 id="link-title" />
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="Reply"/>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</form>
+
+<form action="/item/{{conversation.id}}/reply/" method="post"
+			enctype="multipart/form-data" role="form">
+	<div class="modal fade" id="add-image-reply">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Add Image Reply</h4>
+				</div>
+				<div class="modal-body">
+
+					<div class="form-group">
+						<label for="exampleInputFile">Image</label>
+						<input type="file" id="image" name="image">
+					</div>
+
+					<div class="form-group">
+						<label for="comment-body">Caption</label>
+						<textarea name="body" class="form-control" rows="10"
+											id="comment-body"></textarea>
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<input type="submit" class="btn btn-primary" value="Reply"/>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</form>
+
+
+<h2>{{conversation.title}}</h2>
+{{conversation.body|markdown}}
+{% if request.user.is_anonymous %}
+{% else %}
+<div class="panelbreak white"></div>
+<div class="addvoice">
+	<p>Join the conversation:
+		<ul class="list-inline">
+			<li><a href="#add-text-reply" data-toggle="modal" data-target="#add-text-reply"><img src="/media/img/text_convo.png"></a></li>
+			<li><a href="#add-link-reply" data-toggle="modal" data-target="#add-link-reply" ><img src="/media/img/link_convo.png"></a></li>
+			<li><a href="#add-image-reply" data-toggle="modal" data-target="#add-image-reply"><img src="/media/img/image_convo.png"></a></li>
+		</ul>
+	</p>
+</div>
+<div class="panelbreak white"></div>
+{% endif %}
+<div class="hubconvo">
+
+	{% for reply_one, reply_two in conversation.reply_pairs %}
+
+	<div class="row">
+		<div class="col-sm-1 col-md-1">
+			<a href="/accounts/{{reply_one.author.username}}/"><img class="mugshot" src="{{ reply_one.author.profile.get_mugshot_url }}"
+																															class="user_icon" width="100" height="100"></a>
+		</div>
+		<div class="col-sm-5 col-md-5 left">
+			<div class="convoblock">
+				<div class="convoheader">
+					<div class="user_name"><a href="/accounts/{{reply_one.author.username}}/">{{reply_one.author.username}}</a>
+						| {{reply_one.author.profile.discipline1}}{% if reply_one.author.profile.discipline2 %} /
+						{{reply_one.author.profile.discipline2}}{% endif %}</div>
+					<div class="user_time">{{reply_one.added|timesince}}
+						ago  |  {{reply_one.author.profile.city}}, {{reply_one.author.profile.country}}</div>
+				</div>
+				<div class="panelbreak black"></div>
+				
+				<div class="convocontent">
+					{% if reply_one.url %}
+					<h3><a target="_blank" href="{{reply_one.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_one.title %}
+							{{reply_one.title}}{% else %}{{reply_one.url}}{% endif %}</h3>
+					{% endif %}
+					<h3>{{reply_one.body|markdown}}</h3>
+					{% if reply_one.image %}
+					<a data-toggle="lightbox" href="#how-image-{{reply_one.id}}"><img src="{% thumbnail reply_one.image 400x400 %}" /></a>
+					
+					<div id="how-image-{{reply_one.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="lightbox-dialog">
+							<div class="lightbox-content">
+								<img src="{% thumbnail reply_one.image 960x960 %}">
+							</div>
+						</div>
+					</div>
+
+					{% endif %}
+				</div>
+			</div>
+		</div>
+{% if reply_two %}
+		<div class="col-sm-5 col-md-5 right">
+			<div class="convoblock">
+				<div class="convoheader">
+					<div class="user_name"><a href="/accounts/{{reply_two.author.username}}/">{{reply_two.author.username}}</a>
+						| {{reply_two.author.profile.discipline1}}
+						{% if reply_two.author.profile.discipline1 %}
+						/ {{reply_two.author.profile.discipline2}}{% endif %}</div>
+					<div class="user_time">{{reply_two.added|timesince}} ago  |  {{reply_two.author.profile.city}}, {{reply_two.author.profile.country}}</div>
+				</div>
+				<div class="panelbreak black"></div>
+				{% if reply_two.url %}
+				<h3><a target="_blank" href="{{reply_two.url}}"><span class="glyphicon glyphicon-link"></span>{% if reply_two.title %}
+						{{reply_two.title}}{% else %}{{reply_two.url}}{% endif %}</h3>
+				{% endif %}
+				<h3>{{reply_two.body|markdown}}</h3>
+				{% if reply_two.image %}
+				<a data-toggle="lightbox" href="#how-image-{{reply_two.id}}"><img src="{% thumbnail reply_two.image 400x400 %}" /></a>
+
+				<div id="how-image-{{reply_two.id}}" class="lightbox fade"  tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="lightbox-dialog">
+						<div class="lightbox-content">
+							<img src="{% thumbnail reply_two.image 960x960 %}">
+						</div>
+					</div>
+				</div>
+
+				{% endif %}
+
+			</div>
+		</div>
+		<div class="col-sm-1 col-md-1">
+			<a href="/accounts/{{reply_two.author.username}}/"><img class="mugshot" src="{{ reply_two.author.profile.get_mugshot_url }}"
+																															class="user_icon" width="100" height="100"></a>
+		</div>
+		{% endif %}
+	</div>
+	{% endfor %}
+
+</div>
+{% else %}
+
+<p>No conversations yet...</p>
+{% endif %}
