@@ -15,10 +15,10 @@ $slider-arrow-height: $slider-button-height/4;
 
 .how-wrapper {
   display:flex;
-  -webkit-display: flex;
   align-items: center;
   width: 100%;
   height: 100%;
+  padding-top: 5vh;
   @media all and (max-width: 960px) {
     align-items: flex-start;
     padding-top: 5vh;
@@ -44,14 +44,13 @@ $slider-arrow-height: $slider-button-height/4;
   }
   button {
     position: absolute;
-    top: 0;
     border: $slider-button-height/2 transparent solid;
     background: none;
     width: 0;
     height: 0;
     outline: none;
     cursor: pointer;
-    top: calc(50% - #{$slider-button-height}/2);
+    top: calc(90% - #{$slider-button-height}/2);
 
     &:before,
     &after {

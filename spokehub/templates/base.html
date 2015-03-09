@@ -18,7 +18,7 @@
     <link href="{{STATIC_URL}}css/flexslider.css" rel="stylesheet">
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
 {% else %}
-    <link href="{{STATIC_URL}}css/landing.css" rel="stylesheet">
+		<link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
 {% endflag %}
 
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
@@ -54,6 +54,17 @@
 	</div>
 </footer>
 {% else %}
+<footer>
+	<div class="footer-wrapper">
+			<ul>
+				<li><a onClick="$('#about-button').toggle(333);" href="#">about</a></li>
+				<li><a href="mailto:info@spokehub.com"><i class="mdi mdi-email"></i></a></li>
+				<li><a href="https://twitter.com/spokehubnow"><i class="mdi mdi-twitter"></i></a></li>
+				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"><i class="mdi mdi-facebook"></i></a></li>
+			</ul>
+		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
+	</div>
+</footer>
 {% endflag %}
 {% endblock %}
 
