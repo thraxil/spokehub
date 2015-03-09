@@ -2,13 +2,13 @@
   display: none;
   position: absolute;
   top: 10vh;
-  left: 15vw;
-  width: 70vw;
+  left: 5vw;
+  width: 90vw;
   height: 80vh;
   padding: 2em;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   color: white;
-  overflow: hidden;
+  overflow: auto;
   b {
     font-weight: 900;
   }
@@ -26,5 +26,11 @@
 }
 .about-copy {
   width: 80%;
-  text-align: justify;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-close-button {
+  position: absolute;
+  top: 1%;
+  right: 1%;
 }
