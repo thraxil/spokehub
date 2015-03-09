@@ -55,22 +55,23 @@
 			<div class="column full-column" id="now-column"><h1>now</h1></div>
 		</div>
 		<div class="sections">
-			<section class="main-section hide" data-target="how-column">
+			<section class="main-section hide how" data-target="how-column">
 				{% include "main/how.html" %}
 			</section>
-			<section class="main-section hide" data-target="we-column">
+			<section class="main-section hide we" data-target="we-column">
 				{% include "main/we.html" %}
 			</section>
-			<section class="main-section hide" data-target="work-column">
+			<section class="main-section hide work" data-target="work-column">
 				{% include "main/work.html" %}
 			</section>
-			<section class="main-section hide" data-target="now-column">
+			<section class="main-section hide now" data-target="now-column">
 				{% include "main/now.html" %}
 			</section>
 		</div>
 	</div>
 </div>
 <div class="about-container" id="about-button">
+  <a href="#" onclick="$('#about-button').toggle(333);" class="about-close-button"><i class="mdi mdi-close-box"></i></a>
     <div class="about-title">
        <h3>SPOKEHUB is an art + design think tank, based in Berlin, with global creative partners.</h3>
     </div>
