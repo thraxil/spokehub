@@ -52,15 +52,17 @@ body, #site-wrapper {
   }
   .sections {
     @extend .flex;
-    .main-section {
-      width: 100%;
-      transition: height 0.33s cubic-bezier(0.72, 0, 0.28, 1);
-      &:nth-of-type(2n+1) {
-        background: #000;
-        color: #fff;
-      }
-    }
   }
+}
+.main-section {
+  width: 100%;
+  &:nth-of-type(2n+1) {
+    background: #000;
+    color: #fff;
+  }
+}
+.transition {
+  transition: height 0.33s cubic-bezier(0.72, 0, 0.28, 1);
 }
 a {
   color: inherit;
