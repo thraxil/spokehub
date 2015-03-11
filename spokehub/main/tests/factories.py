@@ -1,7 +1,7 @@
 import factory
 
 from django.contrib.auth.models import User
-from spokehub.main.models import Item, Reply
+from spokehub.main.models import Conversation, Reply
 
 
 class UserFactory(factory.DjangoModelFactory):
@@ -10,14 +10,14 @@ class UserFactory(factory.DjangoModelFactory):
     email = factory.Sequence(lambda n: 'user{0}@example.com'.format(n))
 
 
-class ItemFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Item
+class ConversationFactory(factory.DjangoModelFactory):
+    FACTORY_FOR = Conversation
     title = 'foo'
 
 
 class ReplyFactory(factory.DjangoModelFactory):
     FACTORY_FOR = Reply
-    item = factory.SubFactory(ItemFactory)
+    item = factory.SubFactory(ConversationFactory)
     author = factory.SubFactory(UserFactory)
     body = "reply body"
     title = "reply title"

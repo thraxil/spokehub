@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.test.client import Client
 from waffle.models import Flag
-from .factories import (UserFactory, ItemFactory)
+from .factories import (UserFactory, ConversationFactory)
 
 
 class BasicTest(TestCase):
@@ -29,8 +29,8 @@ class LoggedInTest(TestCase):
         r = self.c.get("/")
         self.assertEqual(r.status_code, 200)
 
-    def test_root_with_item(self):
-        i = ItemFactory()
+    def test_root_with_conversation(self):
+        i = ConversationFactory()
         r = self.c.get("/")
         self.assertEqual(r.status_code, 200)
         self.assertTrue(i.title in r.content)
@@ -39,18 +39,18 @@ class LoggedInTest(TestCase):
         r = self.c.get("/accounts/" + self.u.username + "/")
         self.assertEqual(r.status_code, 200)
 
-    def test_add_item(self):
-        r = self.c.post("/item/add/", dict(title='foo', body='bar'))
+    def test_add_conversation(self):
+        r = self.c.post("/conversation/add/", dict(title='foo', body='bar'))
         self.assertEqual(r.status_code, 302)
         r = self.c.get("/")
         self.assertEqual(r.status_code, 200)
         self.assertTrue('foo' in r.content)
 
-    def test_reploy_to_item(self):
+    def test_reploy_to_conversation(self):
         Flag.objects.create(name="main", everyone=True)
-        i = ItemFactory()
+        i = ConversationFactory()
         r = self.c.post(
-            "/item/%d/reply/" % i.id,
+            "/conversation/%d/reply/" % i.id,
             dict(
                 title='reply title',
                 body='reply body',

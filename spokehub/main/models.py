@@ -10,7 +10,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 
 
-class Item(models.Model):
+class Conversation(models.Model):
     title = models.CharField(max_length=256)
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
@@ -30,7 +30,7 @@ class Item(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return "/item/%04d/%02d/%02d/%d/" % (
+        return "/conversation/%04d/%02d/%02d/%d/" % (
             self.added.year, self.added.month,
             self.added.day, self.id)
 
@@ -62,8 +62,8 @@ class Item(models.Model):
         return pairs
 
 
-@receiver(post_save, sender=Item)
-def new_item_emails(sender, **kwargs):
+@receiver(post_save, sender=Conversation)
+def new_conversation_emails(sender, **kwargs):
     if not kwargs.get('created', False):
         # only send it on creation
         return
@@ -78,7 +78,7 @@ def new_item_emails(sender, **kwargs):
 
 
 class Reply(models.Model):
-    item = models.ForeignKey(Item)
+    item = models.ForeignKey(Conversation)
     author = models.ForeignKey(User)
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)

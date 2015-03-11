@@ -6,7 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Item, NowPost
+from .models import Conversation, NowPost
 
 
 class IndexView(TemplateView):
@@ -15,8 +15,8 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['team'] = User.objects.all().exclude(username='AnonymousUser')
-        if Item.objects.all().count() > 0:
-            context['conversation'] = Item.objects.all()[0]
+        if Conversation.objects.all().count() > 0:
+            context['conversation'] = Conversation.objects.all()[0]
 
         now_posts_list = NowPost.objects.all().order_by("-created")
         paginator = Paginator(now_posts_list, 50)
@@ -31,39 +31,39 @@ class IndexView(TemplateView):
         return context
 
 
-class ItemIndexView(ListView):
-    model = Item
-    queryset = Item.objects.filter()
-    template_name = "main/item_list.html"
+class ConversationIndexView(ListView):
+    model = Conversation
+    queryset = Conversation.objects.filter()
+    template_name = "main/conversation_list.html"
 
 
-class ItemCreateView(CreateView):
-    model = Item
+class ConversationCreateView(CreateView):
+    model = Conversation
     fields = ['title', 'body']
 
     def get_initial(self):
         return dict(author=self.request.user)
 
 
-class ItemDetailView(DetailView):
-    model = Item
+class ConversationDetailView(DetailView):
+    model = Conversation
 
 
-class ItemUpdateView(UpdateView):
-    model = Item
+class ConversationUpdateView(UpdateView):
+    model = Conversation
     fields = ['title', 'body']
     template_name_suffix = '_update_form'
 
 
-class ItemDeleteView(DeleteView):
-    model = Item
+class ConversationDeleteView(DeleteView):
+    model = Conversation
     success_url = "/"
 
 
-class ReplyToItemView(View):
+class ReplyToConversationView(View):
     def post(self, request, pk):
-        item = get_object_or_404(Item, pk=pk)
-        reply = item.add_reply(
+        conversation = get_object_or_404(Conversation, pk=pk)
+        reply = conversation.add_reply(
             request.user,
             request.POST.get('body', ''),
             request.POST.get('url', ''),
@@ -72,7 +72,7 @@ class ReplyToItemView(View):
             reply.save_image(request.FILES['image'])
 
         reply.email_mentions()
-        if 'item' in request.META.get('HTTP_REFERER', ''):
-            return HttpResponseRedirect(item.get_absolute_url())
+        if 'conversation' in request.META.get('HTTP_REFERER', ''):
+            return HttpResponseRedirect(conversation.get_absolute_url())
         else:
             return HttpResponseRedirect('/#how')

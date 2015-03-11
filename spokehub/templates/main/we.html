@@ -12,7 +12,7 @@ to show up in some form here.
 
 			 {% if conversation %}
 
-<form action="/item/{{conversation.id}}/reply/" method="post"
+<form action="/conversation/{{conversation.id}}/reply/" method="post"
 			enctype="multipart/form-data" role="form">
 	<div class="modal fade" id="add-text-reply">
 		<div class="modal-dialog">
@@ -39,7 +39,7 @@ to show up in some form here.
 	</div><!-- /.modal -->
 </form>
 
-<form action="/item/{{conversation.id}}/reply/" method="post"
+<form action="/conversation/{{conversation.id}}/reply/" method="post"
 			enctype="multipart/form-data" role="form">
 	<div class="modal fade" id="add-link-reply">
 		<div class="modal-dialog">
@@ -72,7 +72,7 @@ to show up in some form here.
 	</div><!-- /.modal -->
 </form>
 
-<form action="/item/{{conversation.id}}/reply/" method="post"
+<form action="/conversation/{{conversation.id}}/reply/" method="post"
 			enctype="multipart/form-data" role="form">
 	<div class="modal fade" id="add-image-reply">
 		<div class="modal-dialog">

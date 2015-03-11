@@ -10,9 +10,9 @@
 
 <h2>Conversations</h2>
 
-{% for item in item_list %}
-<h3><a href="{{item.get_absolute_url}}">{{item.title}}</a></h3>
-{{item.body|markdown}}
+{% for conversation in conversation_list %}
+<h3><a href="{{conversation.get_absolute_url}}">{{conversation.title}}</a></h3>
+{{conversation.body|markdown}}
 {% endfor %}
 </div>
 {% endblock %}

@@ -16,20 +16,23 @@ urlpatterns = patterns(
 
     (r'^about/$', TemplateView.as_view(template_name="about.html")),
 
-    (r'^item/$', views.ItemIndexView.as_view()),
-    (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
-     views.ItemDetailView.as_view()),
-    (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/edit/$',
-     views.ItemUpdateView.as_view()),
-    (r'^item/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/delete/$',
-     views.ItemDeleteView.as_view()),
-    (r'^item/add/$', views.ItemCreateView.as_view()),
+    (r'^conversation/$', views.ConversationIndexView.as_view()),
+    (r'^conversation/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
+     views.ConversationDetailView.as_view()),
+    (r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
+     r'(?P<day>\d+)/(?P<pk>\d+)/edit/$',
+     views.ConversationUpdateView.as_view()),
+    (r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
+     r'(?P<day>\d+)/(?P<pk>\d+)/delete/$',
+     views.ConversationDeleteView.as_view()),
+    (r'^conversation/add/$', views.ConversationCreateView.as_view()),
 
     (r'network/$', TemplateView.as_view(template_name='network/index.html')),
 
     (r'contact/$', TemplateView.as_view(template_name='contact/index.html')),
 
-    (r'item/(?P<pk>\d+)/reply/$', views.ReplyToItemView.as_view()),
+    (r'conversation/(?P<pk>\d+)/reply/$',
+     views.ReplyToConversationView.as_view()),
 
     (r'test/$', TemplateView.as_view(template_name='layout_test.html')),
 

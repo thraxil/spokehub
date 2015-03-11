@@ -8,15 +8,15 @@
 {% endif %}
 
 
-<h2>{{item.title}}</h2>
-<p class="byline">{{item.added}}</p>
-{{item.body|markdown}}
+<h2>{{conversation.title}}</h2>
+<p class="byline">{{conversation.added}}</p>
+{{conversation.body|markdown}}
 
 <div class="row">
 <div class="col-md-6">
-{% if item.reply_set.count %}
+{% if conversation.reply_set.count %}
 
-{% for reply in item.reply_set.all %}
+{% for reply in conversation.reply_set.all %}
 <hr />
 <h4>Reply from <a href="/accounts/{{reply.author.username}}/">{{reply.author.username}}</a>
 	at {{reply.added}}</h4>
@@ -29,7 +29,7 @@
 
 <div class="col-md-6">
 {% if not request.user.is_anonymous %}
-<form action="/item/{{item.pk}}/reply/" method="post">
+<form action="/conversation/{{conversation.pk}}/reply/" method="post">
 <fieldset>
 	<legend>Add Reply</legend>
 	<div class="form-group">
