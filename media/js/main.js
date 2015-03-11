@@ -109,3 +109,39 @@ Slider.prototype.displayImage = function(imageIndex) {
 
   this.currentIndex = imageIndex;
 };
+
+var Fader = function(faderDom) {
+  this.fader = faderDom;
+  this.currentIndex = 0;
+
+  var self = this;
+
+  self.displayImage(self.currentIndex);
+
+  setInterval(function() {
+    if (self.currentIndex === self.fader.children('img').length - 1){
+      self.displayImage(0);
+    } else {
+      self.displayImage(self.currentIndex + 1);
+    }
+  }, 5000);
+
+};
+
+$(function(){
+  $('.fader').each(function(){
+    new Fader($(this));
+  });
+});
+
+Fader.prototype.displayImage = function(imageIndex) {
+  var numberOfImages = this.fader.children('img').length;
+  if (imageIndex < 0 || imageIndex > numberOfImages){
+    return;
+  }
+
+  this.fader.children('img.spotlight').removeClass('spotlight');
+  this.fader.children('img:nth-of-type(' + (imageIndex + 1) + ')').addClass('spotlight');
+
+  this.currentIndex = imageIndex;
+};
