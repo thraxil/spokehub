@@ -8,3 +8,4 @@ local_settings.py
 node_modules
 .sass-cache
 media/components
+.DS_Store
