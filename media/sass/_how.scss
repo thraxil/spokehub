@@ -33,7 +33,7 @@ $slider-arrow-height: $slider-button-height/4;
   display: flex;
   overflow: hidden;
   img {
-    width: 0%;
+    width: 0;
     height: 100%;
     flex-shrink: 0;
     transition: width 0.33s cubic-bezier(0.72, 0, 0.28, 1);
