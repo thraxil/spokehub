@@ -101,49 +101,6 @@
     </div>
 </div>
      {% if user.username == profile.user.username %}
-<div class="row"> 
-<form action="/add_work_sample/" method="post"
-			enctype="multipart/form-data" role="form">
-<div class="modal fade" id="add-work-sample">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Upload Work Sample</h4>
-      </div>
-      <div class="modal-body">
-
-				<div class="form-group">
-					<label for="title">Title</label>
-					<input type="text" class="form-control" id="title"
-								 placeholder="Title" name="title">
-				</div>
-
-				<div class="form-group">
-					<label for="exampleInputFile">Image</label>
-					<input type="file" id="image" name="image">
-				</div>
-
-				<div class="form-group">
-					<label for="youtubeUrl">Or, enter a Vimeo URL for a
-					video sample</label>
-					<input class="form-control" type="text" id="vimeourl"
-					name="vimeo_url"
-								 placeholder="vimeo"
-								 />
-				</div>
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="Upload"/>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-</form>
-</div>
 {% if user.is_superuser %}
 
 <p><a href="#add-conversation" data-toggle="modal"
@@ -189,55 +146,5 @@
 
 {% endif %}
 
-{% with profile.work_samples as work_samples %}
-{% if work_samples.count %}
-<h3>Work Samples</h3>
-
-
-{% for ws in work_samples %}
-<div class="row">
-{% if ws.youtube_id %}
-<div class="embed video-player">
-<iframe class="youtube-player" type="text/html"
-    width="640" height="385"
-    src="http://www.youtube.com/embed/{{ws.youtube_id}}"
-    allowfullscreen frameborder="0">
-</iframe>
-</div>
-{% else %}
-{% if ws.vimeo_id %}
-<iframe src="//player.vimeo.com/video/{{ws.vimeo_id}}?title=0&amp;byline=0&amp;portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-{% else %}
-      <img src="{% thumbnail ws.image 960x2000 %}" alt="{{ws.title}}"/>
-{% endif %}
-{% endif %}
-      <div class="caption">
- {% if user.username == profile.user.username %}
- <a href="/work_sample/{{ws.id}}/delete/" class="pull-right btn btn-danger btn-xs">delete</a>
- {% endif %}
-        <p>{{ws.title}}</p>
-			</div>
-</div>
-{% endfor %}
-
-
- {% if user.username == profile.user.username %}
-{% if work_samples.count < 3 %}
-<a href="#add-work-sample" data-toggle="modal"
-	 data-target="#add-work-sample" class="btn btn-primary">Upload Another Work Sample</a>
-
-<p style="height:100px"></p>
-{% endif %}
-{% endif %}
-
-{% else %}
- {% if user.username == profile.user.username %}
- 
-<p>You have no work samples. <a href="#add-work-sample" data-toggle="modal" data-target="#add-work-sample">Upload some?</a></p>
-
-<p style="height:100px"></p>
-{% endif %}
-{% endif %}
-{% endwith %}
 </div>
 {% endblock %}
