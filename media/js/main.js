@@ -124,7 +124,7 @@ var Fader = function(faderDom) {
     } else {
       self.displayImage(self.currentIndex + 1);
     }
-  }, 5000);
+  }, 10000);
 
 };
 
