@@ -1,22 +1,23 @@
 .about-container {
   display: none;
   position: absolute;
+  text-transform: uppercase;
   top: 10vh;
   left: 5vw;
   width: 90vw;
   height: 80vh;
-  padding: 2em;
+  padding: 5%;
   background: rgba(0, 0, 0, 0.95);
   color: white;
   overflow: auto;
   b {
-    font-weight: 900;
+    font-weight: 700;
   }
   @media all and (max-width: 540px) {
     h1 {
       @include font-size(1);
     }
-    p {
+    ol li {
       @include font-size(0.7);
     }
   }
@@ -25,12 +26,28 @@
   text-align: center;
 }
 .about-copy {
-  width: 80%;
-  margin: 0 auto;
-  text-align: center;
+  max-width: 70%;
+  margin: 5% auto;
+  text-align: left;
+  h4 {
+    text-align: center;
+  }
+  ol {
+    margin-left: 0;
+    padding-left: 1em;
+    text-indent: -0.5em;
+    li:before {
+      content: '#';
+      position: relative;
+      right: 1.5em;
+    }
+  }
 }
 .about-close-button {
   position: absolute;
   top: 1%;
   right: 1%;
+}
+.about-undertitle a {
+  text-decoration: underline;
 }

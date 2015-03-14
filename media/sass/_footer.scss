@@ -26,6 +26,7 @@ footer {
   }
   .copyright {
     padding-right: 10px;
+    text-transform: uppercase;
     @media all and (max-width: 640px) {
       @include font-size(0.6);
       text-align: right;

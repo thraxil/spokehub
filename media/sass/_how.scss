@@ -53,7 +53,7 @@ $slider-arrow-height: $slider-button-height/4;
     top: calc(90% - #{$slider-button-height}/2);
 
     &:before,
-    &after {
+    &:after {
       content: '';
       position: absolute;
       top: -$slider-arrow-height/2;
