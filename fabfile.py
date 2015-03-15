@@ -30,6 +30,7 @@ def design_deploy():
     with cd(code_dir):
         run("git pull origin master")
         run("make collectstatic")
+        run("make compress")
         for n in nginx_hosts:
             run(("rsync -avp media/ "
                  "%s:/var/www/spokehub/spokehub/media/") % n)

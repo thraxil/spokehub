@@ -14,11 +14,7 @@
   <script src="../assets/js/respond.min.js"></script>
 <![endif]-->
 
-{% flag "main" %}
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
-{% else %}
-		<link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
-{% endflag %}
 
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}

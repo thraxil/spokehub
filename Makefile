@@ -54,6 +54,9 @@ rebase:
 collectstatic: ./ve/bin/python validate
 	$(MANAGE) collectstatic --noinput --settings=$(APP).settings_production
 
+compress: ./ve/bin/python validate
+	$(MANAGE) compress --settings=$(APP).settings_production
+
 deploy: ./ve/bin/python validate jenkins
 	./ve/bin/fab deploy
 
