@@ -24,14 +24,3 @@ def deploy():
             run(("rsync -avp media/ "
                  "%s:/var/www/spokehub/spokehub/media/") % n)
     restart_gunicorn()
-
-
-def design_deploy():
-    code_dir = "/var/www/spokehub/spokehub"
-    with cd(code_dir):
-        run("git pull origin master")
-        run("make collectstatic")
-        run("make compress")
-        for n in nginx_hosts:
-            run(("rsync -avp media/ "
-                 "%s:/var/www/spokehub/spokehub/media/") % n)
