@@ -173,11 +173,10 @@
 {% block js %}
 {% compress js %}
 <script src="{{STATIC_URL}}js/jquery.min.js"></script>
-{% endcompress %}
-{% flag "main" %}
-{% compress js %}
 <script src="{{STATIC_URL}}js/main.js"></script>
 {% endcompress %}
+
+{% flag "main" %}
 <script type="text/javascript">
   $(window).load(function(){
      // PAGE IS FULLY LOADED
@@ -188,9 +187,6 @@
 </script>
 
 {% else %}
-{% compress js %}
-<script src="{{STATIC_URL}}js/main.js"></script>
-{% endcompress %}
 <script type="text/javascript">
   $(window).load(function(){
      // PAGE IS FULLY LOADED
