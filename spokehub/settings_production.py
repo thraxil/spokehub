@@ -1,8 +1,9 @@
 # flake8: noqa
 from settings_shared import *
+import os.path
 
 TEMPLATE_DIRS = (
-    "/var/www/spokehub/spokehub/spokehub/templates",
+    os.path.join(os.path.dirname(__file__), "templates"),
 )
 
 MEDIA_ROOT = '/var/www/spokehub/uploads/'
@@ -22,7 +23,8 @@ DATABASES = {
     }
 }
 
-COMPRESS_ROOT = "/var/www/spokehub/spokehub/media/"
+COMPRESS_OFFLINE = True
+COMPRESS_ROOT = os.path.join(os.path.dirname(__file__), "../media")
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
