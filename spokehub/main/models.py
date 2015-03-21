@@ -8,6 +8,7 @@ import os.path
 from django.template.defaultfilters import slugify
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+import urlparse
 
 
 class Conversation(models.Model):
@@ -51,6 +52,11 @@ class Conversation(models.Model):
             author=author,
             body=body,
             url=url.strip(), title=title.strip())
+        if 'youtube.com' in url:
+            url_data = urlparse.urlparse(r.url)
+            query = urlparse.parse_qs(url_data.query)
+            r.youtube_id = query["v"][0]
+            r.save()
         self.touch()
         return r
 
@@ -160,6 +166,21 @@ are participating in:
 
 %s
 """ % (self.author.username, self.body))
+
+    def is_video(self):
+        if self.url == "":
+            return False
+        return 'youtube.com' in self.url or 'vimeo.com' in self.url
+
+    def is_youtube(self):
+        return self.youtube_id != ""
+
+    def is_vimeo(self):
+        return 'vimeo.com' in self.url
+
+    def vimeo_id(self):
+        p = urlparse.urlparse(self.url)
+        return p.path[1:]
 
 
 class NowPost(models.Model):

@@ -16,6 +16,7 @@
 <p><i>{{reply.added}}</i></p>
 
 
+
 {% if reply.image %}
 {% comment %}Image Reply{% endcomment %}
 <img src="{% thumbnail reply.image 400x400 %}" />
@@ -23,9 +24,18 @@
 {% endif %}
 
 {% if reply.url %}
+  {% if reply.is_video %}
+    {% if reply.is_vimeo %}
+       <iframe src="https://player.vimeo.com/video/{{reply.vimeo_id}}?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    {% endif %}
+    {% if reply.is_youtube %}
+       <iframe width="420" height="315" src="https://www.youtube.com/embed/{{reply.youtube_id}}" frameborder="0" allowfullscreen></iframe>
+    {% endif %}
+  {% else %}
 {% comment %}Link Reply{% endcomment %}
 <p><a href="{{reply.url}}">{{reply.title}}</a></p>
 <p class="caption">{{reply.body|markdown}}</p>
+{% endif %}
 {% endif %}
 
 </div>
@@ -68,6 +78,25 @@
 
 	</form>
 </div>
+
+
+<div>
+	<h3>Add Video Reply</h3>
+	<form action="/conversation/{{conversation.id}}/reply/" method="post"
+			enctype="multipart/form-data" role="form">
+
+			<label>Youtube/Vimeo URL
+			<input type="text" name="url" placeholder="http://" />
+			</label>
+
+		<label for="comment-body">Caption
+			<textarea name="body" class="form-control" rows="10"
+								id="comment-body"></textarea></label>
+
+			<input type="submit" class="btn btn-primary" value="Link Reply"/>
+	</form>
+</div>
+
 {% endif %}
 <br clear="both"/>
 </section>
