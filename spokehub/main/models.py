@@ -54,13 +54,6 @@ class Conversation(models.Model):
         self.touch()
         return r
 
-    def reply_pairs(self):
-        a = list(self.reply_set.all())
-        pairs = zip(a[0::2], a[1::2])
-        if (len(a) % 2) == 1:
-            pairs.append((a[-1],))
-        return pairs
-
 
 @receiver(post_save, sender=Conversation)
 def new_conversation_emails(sender, **kwargs):

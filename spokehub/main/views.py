@@ -15,8 +15,8 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['team'] = User.objects.all().exclude(username='AnonymousUser')
-        if Conversation.objects.all().count() > 0:
-            context['conversation'] = Conversation.objects.all()[0]
+        context['conversations'] = Conversation.objects.all().order_by(
+            '-added')[:10]
 
         now_posts_list = NowPost.objects.all().order_by("-created")
         paginator = Paginator(now_posts_list, 50)

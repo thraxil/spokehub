@@ -43,24 +43,6 @@ class ConversationTest(TestCase):
         r = i.reply_set.all()[0]
         self.assertEqual(r.url, "http://example.com")
 
-    def test_reply_pairs(self):
-        i = ConversationFactory()
-        u = UserFactory()
-        r = i.reply_pairs()
-        self.assertEqual(len(r), 0)
-        i.add_reply(u, 'a body')
-        r = i.reply_pairs()
-        self.assertEqual(len(r), 1)
-        i.add_reply(u, 'another body')
-        r = i.reply_pairs()
-        self.assertEqual(len(r), 1)
-        i.add_reply(u, 'third body')
-        r = i.reply_pairs()
-        self.assertEqual(len(r), 2)
-        self.assertEqual(r[0][0].body, "a body")
-        self.assertEqual(r[0][1].body, "another body")
-        self.assertEqual(r[1][0].body, "third body")
-
 
 class ReplyTest(TestCase):
     def test_unicode(self):

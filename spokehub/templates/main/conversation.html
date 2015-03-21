@@ -1,0 +1,73 @@
+{% load markup %}
+{% load thumbnail %}
+<section>
+<h2>{{conversation.title}}</h2>
+<p><i>{{conversation.added}}</i></p>
+
+{% if conversation.image %}
+<img src="{% thumbnail conversation.image 400x400 %}" />
+{% endif %}
+{{conversation.body|markdown}}
+
+{% if conversation.reply_set.count %}
+{% for reply in conversation.reply_set.all %}
+<div class="reply">
+<h3>Reply from {{reply.author.username}}</h3>
+<p><i>{{reply.added}}</i></p>
+
+
+{% if reply.image %}
+{% comment %}Image Reply{% endcomment %}
+<img src="{% thumbnail reply.image 400x400 %}" />
+<p class="caption">{{reply.body|markdown}}</p>
+{% endif %}
+
+{% if reply.url %}
+{% comment %}Link Reply{% endcomment %}
+<p><a href="{{reply.url}}">{{reply.title}}</a></p>
+<p class="caption">{{reply.body|markdown}}</p>
+{% endif %}
+
+</div>
+{% endfor %}
+{% else %}
+<p>No replies</p>
+{% endif %}
+
+{% if request.user.is_anonymous %}
+{% comment %}have to be logged in to add reply{% endcomment %}
+{% else %}
+<div>
+	<h3>Add Link Reply</h3>
+	<form action="/conversation/{{conversation.id}}/reply/" method="post"
+			enctype="multipart/form-data" role="form">
+
+			<label for="link-url">URL
+			<input type="text" name="url" id="link-url" placeholder="http://" />
+			</label>
+
+			<label for="link-title">Link Title
+				<input type="text" name="title" class="form-control" id="link-title" /></label>
+
+			<input type="submit" class="btn btn-primary" value="Link Reply"/>
+	</form>
+</div>
+
+<div>
+	<h3>Add Image Reply</h3>
+	<form action="/conversation/{{conversation.id}}/reply/" method="post"
+				enctype="multipart/form-data" role="form">
+		<label for="exampleInputFile">Image
+			<input type="file" id="image" name="image"></label>
+
+		<label for="comment-body">Caption
+			<textarea name="body" class="form-control" rows="10"
+								id="comment-body"></textarea></label>
+
+		<input type="submit" class="btn btn-primary" value="Image Reply"/>
+
+	</form>
+</div>
+{% endif %}
+<br clear="both"/>
+</section>
