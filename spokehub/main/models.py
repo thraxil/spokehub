@@ -57,6 +57,10 @@ class Conversation(models.Model):
             query = urlparse.parse_qs(url_data.query)
             r.youtube_id = query["v"][0]
             r.save()
+        if 'vimeo.com' in url:
+            url_data = urlparse.urlparse(r.url)
+            r.vimeo_id = url_data.path[1:]
+            r.save()
         self.touch()
         return r
 
@@ -92,6 +96,7 @@ class Reply(models.Model):
     url = models.TextField(blank=True, default=u"")
     title = models.TextField(blank=True, default=u"")
     youtube_id = models.TextField(default="", blank=True)
+    vimeo_id = models.TextField(default="", blank=True)
 
     class Meta:
         order_with_respect_to = 'item'
@@ -176,11 +181,7 @@ are participating in:
         return self.youtube_id != ""
 
     def is_vimeo(self):
-        return 'vimeo.com' in self.url
-
-    def vimeo_id(self):
-        p = urlparse.urlparse(self.url)
-        return p.path[1:]
+        return self.vimeo_id != ""
 
 
 class NowPost(models.Model):
