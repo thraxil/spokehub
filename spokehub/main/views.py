@@ -41,6 +41,8 @@ class ConversationCreateView(CreateView):
     model = Conversation
     fields = ['title', 'body']
 
+    success_url = "/#we"
+
     def get_initial(self):
         return dict(author=self.request.user)
 

@@ -6,7 +6,15 @@
 
 {% if request.user.is_anonymous %}
 {% else %}
-<p>add a new conversation</p>
+<form action="/conversation/add/" method="post">
+<label>title
+<input type="text" name="title" placeholder="title for conversation"
+			 /></label><br />
+
+<textarea name="body" rows="5" cols="50"></textarea><br />
+<input type="submit" value="start new conversation" />
+
+</form>
 {% endif %}
 
 {% for conversation in conversations %}
