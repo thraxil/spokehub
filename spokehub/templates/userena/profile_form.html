@@ -59,26 +59,6 @@
   btn-primary" />
 </form>
 
-{% if not profile.twitter %}
-<form action="{% url 'twitter_auth' %}" method="post">
-<fieldset><legend>link up a twitter account</legend>
-<input type="submit" value="link twitter account" class="btn btn-primary" />
-</fieldset>
-</form>
-{% else %}
-<p>You have a Twitter account linked</p>
-{% endif %}
-
-{% if not profile.instagram %}
-<form action="{% url 'instagram_auth' %}" method="post">
-<fieldset><legend>link up an instagram account</legend>
-<input type="submit" value="link instagram account" class="btn btn-primary" />
-</fieldset>
-</form>
-{% else %}
-<p>You have an Instagram account linked</p>
-{% endif %}
-
 </section>
 </div>
 {% endblock %}
