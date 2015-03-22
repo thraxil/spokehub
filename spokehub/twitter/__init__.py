@@ -12,8 +12,7 @@ def hashtag_search():
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
     api = tweepy.API(auth)
-
-    search_text = "#erlang"
+    search_text = settings.HASHTAG
 
     max_tweets = 20
     for t in tweepy.Cursor(api.search, q=search_text).items(max_tweets):
@@ -40,14 +39,14 @@ def hashtag_search():
             print(np.id)
         except Exception, e:
             print "failed with exception: " + str(e)
-        # if hasattr(t, 'extended_entities'):
-        #     ee = t.extended_entities
-        #     if 'media' not in ee:
-        #         continue
-        #     if len(ee['media']) < 1:
-        #         continue
-        #     np.image_url = ee['media'][0]['media_url']
-        #     np.image_width = ee['media'][0]['sizes']['small']['w']
-        #     np.image_height = ee['media'][0]['sizes']['small']['h']
-        #     np.save()
-        #     print "added an image"
+        if hasattr(t, 'extended_entities'):
+            ee = t.extended_entities
+            if 'media' not in ee:
+                continue
+            if len(ee['media']) < 1:
+                continue
+            np.image_url = ee['media'][0]['media_url']
+            np.image_width = ee['media'][0]['sizes']['large']['w']
+            np.image_height = ee['media'][0]['sizes']['large']['h']
+            np.save()
+            print "added an image"
