@@ -185,7 +185,7 @@ are participating in:
 
 
 class NowPost(models.Model):
-    user = models.ForeignKey(User)
+    screen_name = models.TextField(default="", blank=True)
     created = models.DateTimeField()
     service = models.TextField(default="", blank=True)
     service_id = models.TextField(default="", blank=True)

@@ -36,9 +36,6 @@ urlpatterns = patterns(
 
     (r'test/$', TemplateView.as_view(template_name='layout_test.html')),
 
-    (r'link/twitter/', include('spokehub.twitter.urls')),
-    (r'link/instagram/', include('spokehub.instagram.urls')),
-
     (r'invite/', include('spokehub.invite.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
