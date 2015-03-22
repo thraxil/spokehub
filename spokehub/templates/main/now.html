@@ -23,6 +23,10 @@
 				 height="{{nowpost.image_height}}" />
 		{% endif %}
 
+		{% if nowpost.video_url %}
+		<video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
+		{% endif %}
+
 </div>
 
 {% endfor %}

@@ -12,9 +12,6 @@ def hashtag_search():
 
     recent_media, n = api.tag_recent_media(tag_name=tag_name)
     for media in recent_media:
-        if media.type != 'image':
-            # all we can handle right now
-            continue
         r = NowPost.objects.filter(
             service='instagram',
             service_id=media.link)
@@ -27,13 +24,25 @@ def hashtag_search():
                 text = media.caption.text
             except:
                 text = ""
+
+            media_url = media.get_standard_resolution_url()
+            image_url = ""
+            video_url = ""
+
+            if media.type == 'image':
+                # all we can handle right now
+                image_url = media_url
+            if media.type == 'video':
+                video_url = media_url
+
             NowPost.objects.create(
                 screen_name=media.user.username,
                 service='instagram',
                 service_id=media.link,
                 text=text,
                 created=media.created_time.isoformat(),
-                image_url=media.get_standard_resolution_url(),
+                image_url=image_url,
+                video_url=video_url,
                 image_width=640,
                 image_height=640,
                 original=dumps(

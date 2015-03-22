@@ -196,6 +196,8 @@ class NowPost(models.Model):
     image_width = models.IntegerField(default=0)
     image_height = models.IntegerField(default=0)
 
+    video_url = models.TextField(default="", blank=True)
+
     def __unicode__(self):
         return "[%s] by %s at %s" % (self.service, self.user.username,
                                      self.created.isoformat())
