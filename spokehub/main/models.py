@@ -200,14 +200,11 @@ class NowPost(models.Model):
         return "[%s] by %s at %s" % (self.service, self.user.username,
                                      self.created.isoformat())
 
-    def twitter_handle(self):
-        return self.user.profile.twitter().screen_name
-
     def external_link(self):
         # expand for other services later
         if self.service == 'twitter':
-            return ("https://twitter.com/" + self.twitter_handle()
-                    + "/status/" + self.service_id)
+            return ("https://twitter.com/%s/status/%s" % (
+                self.screen_name, self.service_id))
         elif self.service == 'instagram':
             return self.service_id
         else:

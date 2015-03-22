@@ -1,1 +1,28 @@
 <h1 class="coming-soon">Coming Soon</h1>
+
+{% for nowpost in now_posts %}
+
+<div class="now-post">
+
+	<dl>
+		<dt>screen name</dt>
+		<dd>{{nowpost.screen_name}}</dd>
+
+		<dt>created</dt>
+		<dd>{{nowpost.created}}</dd>
+
+		<dt>service</dt>
+		<dd><a href="{{nowpost.external_link}}">{{nowpost.service}}</a></dd>
+
+		<dt>text</dt>
+		<dd>{{nowpost.text}}</dd>
+	</dl>
+
+		{% if nowpost.image_url %}
+		<img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
+				 height="{{nowpost.image_height}}" />
+		{% endif %}
+
+</div>
+
+{% endfor %}
