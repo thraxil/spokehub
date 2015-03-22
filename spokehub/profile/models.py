@@ -4,7 +4,6 @@ from django.utils.translation import ugettext as _
 from userena.models import UserenaBaseProfile
 from spokehub.twitter.models import TwitterAccount
 from spokehub.instagram.models import InstagramAccount
-from spokehub.feed.models import UserFeed
 
 
 class Profile(UserenaBaseProfile):
@@ -30,13 +29,6 @@ class Profile(UserenaBaseProfile):
 
     def instagram(self):
         r = InstagramAccount.objects.filter(user=self)
-        if r.exists():
-            return r[0]
-        else:
-            return None
-
-    def feed(self):
-        r = UserFeed.objects.filter(user=self)
         if r.exists():
             return r[0]
         else:
