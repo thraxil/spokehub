@@ -1,6 +1,8 @@
 from django.core import mail
 from django.test import TestCase
-from .factories import UserFactory, ConversationFactory, ReplyFactory
+from .factories import (
+    UserFactory, ConversationFactory, ReplyFactory,
+    NowPostFactory)
 from spokehub.main.models import Conversation
 
 
@@ -119,3 +121,21 @@ class ReplyTest(TestCase):
         self.assertEqual(len(r.conversation_users()), 0)
         ReplyFactory(item=r.item)
         self.assertEqual(len(r.conversation_users()), 1)
+
+
+class NowPostTest(TestCase):
+    def test_unicode(self):
+        n = NowPostFactory()
+        self.assertTrue(str(n).startswith("[twitter]"))
+
+    def test_twitter_external_link(self):
+        n = NowPostFactory()
+        self.assertTrue(n.external_link().startswith("https://twitter.com/"))
+
+    def test_instagram_external_link(self):
+        n = NowPostFactory(service="instagram")
+        self.assertTrue(n.external_link().startswith(n.service_id))
+
+    def test_misc_external_link(self):
+        n = NowPostFactory(service="foo")
+        self.assertIsNone(n.external_link())

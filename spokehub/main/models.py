@@ -203,7 +203,7 @@ class NowPost(models.Model):
     video_url = models.TextField(default="", blank=True)
 
     def __unicode__(self):
-        return "[%s] by %s at %s" % (self.service, self.user.username,
+        return "[%s] by %s at %s" % (self.service, self.screen_name,
                                      self.created.isoformat())
 
     def external_link(self):
