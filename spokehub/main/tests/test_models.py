@@ -41,7 +41,40 @@ class ConversationTest(TestCase):
         u = UserFactory()
         i.add_reply(u, 'a body', 'example.com')
         r = i.reply_set.all()[0]
+        self.assertFalse(r.is_video())
+        self.assertFalse(r.is_youtube())
+        self.assertFalse(r.is_vimeo())
         self.assertEqual(r.url, "http://example.com")
+
+    def test_add_reply_no_url(self):
+        i = ConversationFactory()
+        u = UserFactory()
+        i.add_reply(u, 'a body', '')
+        r = i.reply_set.all()[0]
+        self.assertFalse(r.is_video())
+        self.assertFalse(r.is_youtube())
+        self.assertFalse(r.is_vimeo())
+        self.assertEqual(r.url, "")
+
+    def test_add_reply_youtube(self):
+        i = ConversationFactory()
+        u = UserFactory()
+        i.add_reply(u, 'a body', 'http://youtube.com/?v=foo')
+        r = i.reply_set.all()[0]
+        self.assertTrue(r.is_video())
+        self.assertTrue(r.is_youtube())
+        self.assertFalse(r.is_vimeo())
+        self.assertEqual(r.youtube_id, "foo")
+
+    def test_add_reply_vimeo(self):
+        i = ConversationFactory()
+        u = UserFactory()
+        i.add_reply(u, 'a body', 'http://vimeo.com/foo')
+        r = i.reply_set.all()[0]
+        self.assertTrue(r.is_video())
+        self.assertFalse(r.is_youtube())
+        self.assertTrue(r.is_vimeo())
+        self.assertEqual(r.vimeo_id, "foo")
 
 
 class ReplyTest(TestCase):
