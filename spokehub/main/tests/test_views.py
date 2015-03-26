@@ -13,6 +13,10 @@ class BasicTest(TestCase):
         response = self.c.get("/")
         self.assertEquals(response.status_code, 200)
 
+    def test_root_paginator(self):
+        response = self.c.get("/?page=5")
+        self.assertEquals(response.status_code, 200)
+
     def test_smoketest(self):
         response = self.c.get("/smoketest/")
         self.assertEquals(response.status_code, 200)
