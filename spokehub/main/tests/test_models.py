@@ -1,3 +1,4 @@
+from django.core import mail
 from django.test import TestCase
 from .factories import UserFactory, ConversationFactory, ReplyFactory
 from spokehub.main.models import Conversation
@@ -24,6 +25,29 @@ class ConversationTest(TestCase):
         i = ConversationFactory()
         i.add_reply(u, 'a body')
         self.assertEqual(i.reply_set.all().count(), 1)
+
+    def test_add_reply_with_mention(self):
+        u = UserFactory()
+        i = ConversationFactory()
+        u2 = UserFactory()
+        i.add_reply(u, "a body that mentions @%s" % u2.username)
+        self.assertEqual(i.reply_set.all().count(), 1)
+        r = i.reply_set.all()[0]
+        r.email_mentions()
+        self.assertEqual(len(mail.outbox), 2)
+
+    def test_add_reply_with_other_participants(self):
+        u = UserFactory()
+        i = ConversationFactory()
+        i.add_reply(u, "a body")
+        self.assertEqual(i.reply_set.all().count(), 1)
+        self.assertEqual(len(mail.outbox), 1)
+        u2 = UserFactory()
+        i.add_reply(u2, "another message")
+        self.assertEqual(i.reply_set.all().count(), 2)
+        r = i.reply_set.all()[0]
+        r.email_mentions()
+        self.assertEqual(len(mail.outbox), 2)
 
     def test_add_reply_no_author(self):
         i = ConversationFactory()
