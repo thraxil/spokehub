@@ -8,6 +8,7 @@ import os.path
 from django.template.defaultfilters import slugify
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.core.urlresolvers import reverse
 import urlparse
 
 
@@ -31,9 +32,12 @@ class Conversation(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return "/conversation/%04d/%02d/%02d/%d/" % (
-            self.added.year, self.added.month,
-            self.added.day, self.id)
+        return reverse(
+            'conversation', args=[
+                "%04d" % self.added.year,
+                "%02d" % self.added.month,
+                "%02d" % self.added.day,
+                str(self.id)])
 
     def touch(self):
         self.modified = datetime.now()

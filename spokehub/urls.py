@@ -16,9 +16,11 @@ urlpatterns = patterns(
 
     (r'^about/$', TemplateView.as_view(template_name="about.html")),
 
-    (r'^conversation/$', views.ConversationIndexView.as_view()),
-    (r'^conversation/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
-     views.ConversationDetailView.as_view()),
+    url(r'^conversation/$', views.ConversationIndexView.as_view(), {},
+        'conversation-index'),
+    url((r'^conversation/(?P<year>\d+)/'
+         '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$'),
+        views.ConversationDetailView.as_view(), {}, 'conversation'),
     (r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
      r'(?P<day>\d+)/(?P<pk>\d+)/edit/$',
      views.ConversationUpdateView.as_view()),
