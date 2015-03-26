@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.test.client import Client
+from django.test.utils import override_settings
 from waffle.models import Flag
 from .factories import (UserFactory, ConversationFactory)
 
@@ -61,3 +62,19 @@ class LoggedInTest(TestCase):
         self.assertTrue('reply title' in r.content)
         self.assertTrue('reply body' in r.content)
         self.assertTrue('http://foo.example.com/' in r.content)
+
+    @override_settings(MEDIA_ROOT="/tmp/")
+    def test_reply_to_conversaion_with_image(self):
+        Flag.objects.create(name="main", everyone=True)
+        c = ConversationFactory()
+        with open('media/img/bullet.gif') as img:
+            r = self.c.post(
+                "/conversation/%d/reply/" % c.id,
+                dict(
+                    title='reply title',
+                    body='reply body',
+                    url='http://foo.example.com/',
+                    image=img,
+                ),
+            )
+            self.assertEqual(r.status_code, 302)
