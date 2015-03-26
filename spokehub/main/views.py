@@ -74,7 +74,4 @@ class ReplyToConversationView(View):
             reply.save_image(request.FILES['image'])
 
         reply.email_mentions()
-        if 'conversation' in request.META.get('HTTP_REFERER', ''):
-            return HttpResponseRedirect(conversation.get_absolute_url())
-        else:
-            return HttpResponseRedirect('/#how')
+        return HttpResponseRedirect('/#we')
