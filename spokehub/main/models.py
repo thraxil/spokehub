@@ -213,5 +213,7 @@ class NowPost(models.Model):
                 self.screen_name, self.service_id))
         elif self.service == 'instagram':
             return self.service_id
+        elif self.service == 'tumblr':
+            return self.service_id
         else:
             return None
