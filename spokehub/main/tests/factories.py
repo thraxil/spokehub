@@ -5,18 +5,21 @@ from spokehub.main.models import Conversation, Reply, NowPost
 
 
 class UserFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = User
+    class Meta:
+        model = User
     username = factory.Sequence(lambda n: 'user{0}'.format(n))
     email = factory.Sequence(lambda n: 'user{0}@example.com'.format(n))
 
 
 class ConversationFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Conversation
+    class Meta:
+        model = Conversation
     title = 'foo'
 
 
 class ReplyFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = Reply
+    class Meta:
+        model = Reply
     item = factory.SubFactory(ConversationFactory)
     author = factory.SubFactory(UserFactory)
     body = "reply body"
@@ -24,7 +27,8 @@ class ReplyFactory(factory.DjangoModelFactory):
 
 
 class NowPostFactory(factory.DjangoModelFactory):
-    FACTORY_FOR = NowPost
+    class Meta:
+        model = NowPost
     screen_name = factory.Sequence(lambda n: 'user{0}'.format(n))
     created = datetime.now()
     service = "twitter"
