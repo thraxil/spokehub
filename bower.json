@@ -7,7 +7,7 @@
     "Patrick Krawczykowski <pkrawz@gmail.com>"
   ],
   "description": "Spokehub, a nomadic design agency",
-  "main": "views.py",
+  "main": "manage.py",
   "moduleType": [
     "node"
   ],
@@ -25,9 +25,9 @@
     "test",
     "tests"
   ],
-  "dependencies": {
+  "devDependencies": {
     "bourbon": "~4.2.0",
     "neat": "~1.7.1",
-    "normalize-scss": "~3.0.2",
+    "normalize-scss": "~3.0.2"
   }
 }
