@@ -34,6 +34,7 @@ if 'migrate' not in sys.argv:
         'raven.contrib.django.raven_compat',
     ]
 
+TWITTER_USER = 'spokehubNOW'
 
 try:
     from local_settings import *
