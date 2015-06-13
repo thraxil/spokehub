@@ -11,59 +11,49 @@
 
 <div id="tabs" class="tab-content">
 <div id="day" class="tab-pane active">
-<h2>Nginx Traffic</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=nonNegativeDerivative(nginx.octopus.requests)&graphOnly=false&hideGrid=true&hideLegend=true&from=-1days">
-
-<h2>App Traffic</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.200&graphOnly=false&hideGrid=true&hideLegend=true">
-<h2>Response Times (max/mean/min)</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.spokehub.view.GET.lower)&target=keepLastValue(stats.timers.spokehub.view.GET.mean)&target=keepLastValue(stats.timers.spokehub.view.GET.upper)&hideGrid=true&hideLegend=true&from=-24hours"/>
+<h1>Last 24 Hours</h1>
+<h2>Traffic</h2>
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.200.count&graphOnly=false&hideGrid=true&hideLegend=true">
+<h2>Response Times (mean/90th percentile)</h2>
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.nginx.spokehub.request_time.mean)&target=keepLastValue(stats.timers.nginx.spokehub.request_time.upper_90)&hideGrid=true&hideLegend=true&from=-24hours"/>
 <h2>Errors</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.404&target=stats_counts.spokehub.response.500&graphOnly=false&hideGrid=true">
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.404.count&target=sumSeries(stats.counters.nginx.spokehub.status.5*.count)&graphOnly=false&hideGrid=true">
 </div>
 
 
 <div id="week" class="tab-pane">
-
-<h2>Nginx Traffic</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=nonNegativeDerivative(nginx.octopus.requests)&graphOnly=false&hideGrid=true&hideLegend=true&from=-7days">
+<h1>Last Week</h1>
 
 <h2>App Traffic</h2>
 
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.200&graphOnly=false&hideGrid=true&hideLegend=true&from=-7days">
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.200.count&graphOnly=false&hideGrid=true&hideLegend=true&from=-7days">
 
-<h2>Response Times (max/mean/min)</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.spokehub.view.GET.lower)&target=keepLastValue(stats.timers.spokehub.view.GET.mean)&target=keepLastValue(stats.timers.spokehub.view.GET.upper)&hideGrid=true&hideLegend=true&from=-7days"/>
+<h2>Response Times (mean/90th percentile)</h2>
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.nginx.spokehub.request_time.mean)&target=keepLastValue(stats.timers.nginx.spokehub.request_time.mean)&hideGrid=true&hideLegend=true&from=-7days"/>
 
 <h2>Errors</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.404&target=stats_counts.spokehub.response.500&graphOnly=false&hideGrid=true&from=-7days">
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.404.count&target=sumSeries(stats.counters.nginx.spokehub.status.5*.count)&graphOnly=false&hideGrid=true&from=-7days">
 </div>
 
 <div id="month" class="tab-pane">
-
-<h2>Nginx Traffic</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=nonNegativeDerivative(nginx.octopus.requests)&graphOnly=false&hideGrid=true&hideLegend=true&from=-1months">
-
+<h1>Last Month</h1>
 <h2>App Traffic</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.200&graphOnly=false&hideGrid=true&hideLegend=true&from=-1months">
-<h2>Response Times (max/mean/min)</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.spokehub.view.GET.lower)&target=keepLastValue(stats.timers.spokehub.view.GET.mean)&target=keepLastValue(stats.timers.spokehub.view.GET.upper)&hideGrid=true&hideLegend=true&from=-1months"/>
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.200.count&graphOnly=false&hideGrid=true&hideLegend=true&from=-1months">
+<h2>Response Times (mean/90th percentile)</h2>
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.nginx.spokehub.request_time.mean)&target=keepLastValue(stats.timers.nginx.spokehub.request_time.mean)&hideGrid=true&hideLegend=true&from=-1months"/>
 <h2>Errors</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.404&target=stats_counts.spokehub.response.500&graphOnly=false&hideGrid=true&from=-1months">
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.404.count&target=sumSeries(stats.counters.nginx.spokehub.status.5*.count)&graphOnly=false&hideGrid=true&from=-1months">
 </div>
 
 
 <div id="year" class="tab-pane">
-
-<h2>Nginx Traffic</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=nonNegativeDerivative(nginx.octopus.requests)&graphOnly=false&hideGrid=true&hideLegend=true&from=-1years">
-
+<h1>Last Year</h1>
 <h2>App Traffic</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.200&graphOnly=false&hideGrid=true&hideLegend=true&from=-1years">
-<h2>Response Times (max/mean/min)</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.spokehub.view.GET.lower)&target=keepLastValue(stats.timers.spokehub.view.GET.mean)&target=keepLastValue(stats.timers.spokehub.view.GET.upper)&hideGrid=true&hideLegend=true&from=-1years"/>
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.200.count&graphOnly=false&hideGrid=true&hideLegend=true&from=-1years">
+<h2>Response Times (mean/90th percentile)</h2>
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976726.925&target=keepLastValue(stats.timers.nginx.spokehub.request_time.mean)&target=keepLastValue(stats.timers.nginx.spokehub.request_time.mean)&hideGrid=true&hideLegend=true&from=-1years"/>
 <h2>Errors</h2>
-<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats_counts.spokehub.response.404&target=stats_counts.spokehub.response.500&graphOnly=false&hideGrid=true&from=-1years">
+<img width="900" height="200" src="http://graphite.thraxil.org/render/?width=900&height=200&_salt=1337976132.743&target=stats.counters.nginx.spokehub.status.404.count&target=sumSeries(stats.counters.nginx.spokehub.status.5*.count)&graphOnly=false&hideGrid=true&from=-1years">
 </div>
 </div>
 
