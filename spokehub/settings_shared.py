@@ -33,12 +33,8 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
         }
     }
 
-TEST_RUNNER = 'discover_jenkins.runner.DiscoverCIRunner'
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 TEST_OUTPUT_DIR = 'reports'
-
-TEST_TASKS = (
-    'discover_jenkins.tasks.with_coverage.CoverageTask',
-)
 
 PROJECT_APPS = [
     'spokehub.main',
