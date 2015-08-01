@@ -53,7 +53,7 @@ django-smoketest==0.3.0
 django-extensions==1.5.5
 django-ga-context==0.1.0
 django-impersonate==0.9.1
-django-registration==1.1
+django-registration-redux==1.2
 django-markwhat==1.4
 easy-thumbnails==2.2
 django-guardian==1.3
