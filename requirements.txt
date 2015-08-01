@@ -30,11 +30,11 @@ paramiko==1.15.2
 BeautifulSoup==3.2.1
 Fabric==1.10.2
 mock==1.3.0
-sqlparse==0.1.15
+sqlparse==0.1.16
 html2text==2015.6.21
 tweepy==2.3.0
 python-instagram==1.1.3
-astroid==1.3.6
+astroid==1.3.7
 oauth2==1.5.211
 PyTumblr==0.0.6
 
