@@ -29,20 +29,20 @@ urlpatterns = patterns(
      views.ConversationDeleteView.as_view()),
     (r'^conversation/add/$', views.ConversationCreateView.as_view()),
 
-    (r'network/$', TemplateView.as_view(template_name='network/index.html')),
+    (r'^network/$', TemplateView.as_view(template_name='network/index.html')),
 
-    (r'contact/$', TemplateView.as_view(template_name='contact/index.html')),
+    (r'^contact/$', TemplateView.as_view(template_name='contact/index.html')),
 
-    (r'conversation/(?P<pk>\d+)/reply/$',
+    (r'^conversation/(?P<pk>\d+)/reply/$',
      views.ReplyToConversationView.as_view()),
 
-    (r'test/$', TemplateView.as_view(template_name='layout_test.html')),
+    (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
-    (r'invite/', include('spokehub.invite.urls')),
+    (r'^invite/', include('spokehub.invite.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     (r'^stats/$', TemplateView.as_view(template_name="stats.html")),
-    (r'smoketest/', include('smoketest.urls')),
+    (r'^smoketest/', include('smoketest.urls')),
     (r'^uploads/(?P<path>.*)$', 'django.views.static.serve',
      {'document_root': settings.MEDIA_ROOT}),
 )
