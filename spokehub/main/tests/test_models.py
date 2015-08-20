@@ -122,6 +122,19 @@ class ReplyTest(TestCase):
         ReplyFactory(item=r.item)
         self.assertEqual(len(r.conversation_users()), 1)
 
+    def test_link_usernames(self):
+        u = UserFactory()
+        u2 = UserFactory()
+        r = ReplyFactory(
+            body="@nonexistent @%s @%s" % (u.username, u2.username),
+            author=u2)
+        new_body = r.link_usernames()
+        self.assertEquals(
+            new_body,
+            """@nonexistent [@%s](/accounts/%s/) [@%s](/accounts/%s/)""" % (
+                u.username, u.username, u2.username, u2.username)
+        )
+
 
 class NowPostTest(TestCase):
     def test_unicode(self):

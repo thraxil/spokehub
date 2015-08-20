@@ -74,4 +74,6 @@ class ReplyToConversationView(View):
             reply.save_image(request.FILES['image'])
 
         reply.email_mentions()
+        reply.body = reply.link_usernames()
+        reply.save()
         return HttpResponseRedirect('/#we')

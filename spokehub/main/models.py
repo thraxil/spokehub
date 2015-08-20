@@ -154,6 +154,29 @@ class Reply(models.Model):
             users.append(r.author)
         return list(set(users))
 
+    def all_mentioned_users(self):
+        pattern = re.compile('\@(\w+)', re.MULTILINE)
+        usernames = [u.lower() for u in pattern.findall(self.body)]
+        usernames = list(set(usernames))
+        users = []
+        for u in usernames:
+            r = User.objects.filter(username__iexact=u)
+            if not r.exists():
+                continue
+            users.append(r[0])
+        return users
+
+    def link_usernames(self):
+        body = self.body
+        for u in self.all_mentioned_users():
+            link = reverse('userena_profile_detail', args=[u.username, ])
+            body = re.sub(
+                '@' + u.username,
+                '[@%s](%s)' % (u.username, link),
+                body
+            )
+        return body
+
     def email_mentions(self):
         conv_users = self.conversation_users()
         mentioned = self.mentioned_users()
