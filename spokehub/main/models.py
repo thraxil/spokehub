@@ -259,6 +259,23 @@ class NowPostManager(models.Manager):
         np.save()
         return np
 
+    def create_tumblr(self, screen_name, service_id, text, created, image_url,
+                      image_width, image_height, original_json):
+        np = NowPost(
+            screen_name=screen_name,
+            service='tumblr',
+            service_id=service_id,
+            text=text,
+            created=created,
+            image_url=image_url,
+            video_url="",
+            image_width=image_width,
+            image_height=image_height,
+            original=original_json,
+        )
+        np.save()
+        return np
+
 
 class NowPost(models.Model):
     screen_name = models.TextField(default="", blank=True)

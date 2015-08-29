@@ -42,17 +42,15 @@ def hashtag_search():
                 text = i['player'][-1]['embed_code']
             if ptype == 'audio':
                 text = i['player']
-            NowPost.objects.create(
+            NowPost.objects.create_tumblr(
                 screen_name=screen_name,
-                service='tumblr',
                 service_id=url,
                 text=text,
                 created=created,
                 image_url=image_url,
-                video_url="",
                 image_width=image_width,
                 image_height=image_height,
-                original=original,
+                original_json=original,
             )
             print("new tumblr post added")
         except Exception, e:
