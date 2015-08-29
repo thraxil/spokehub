@@ -50,7 +50,7 @@ class Conversation(models.Model):
         self.modified = datetime.now()
         self.save()
 
-    def add_reply(self, author, body, url='', title=''):
+    def add_reply(self, author, body, url='', title='', image=None):
         if not author:
             return
         if body.strip() == '' and url.strip() == '':
@@ -59,7 +59,13 @@ class Conversation(models.Model):
                 not (url.startswith('http://') or url.startswith('https://'))):
             url = "http://" + url
         r = Reply.objects.create_reply(self, author, body, url, title)
+        r.save()
         self.touch()
+        if image is not None:
+            r.save_image(image)
+        r.email_mentions()
+        r.body = r.link_usernames()
+        r.save()
         return r
 
 

@@ -34,8 +34,6 @@ class ConversationTest(TestCase):
         u2 = UserFactory()
         i.add_reply(u, "a body that mentions @%s" % u2.username)
         self.assertEqual(i.reply_set.all().count(), 1)
-        r = i.reply_set.all()[0]
-        r.email_mentions()
         self.assertEqual(len(mail.outbox), 2)
 
     def test_add_reply_with_other_participants(self):
@@ -47,8 +45,6 @@ class ConversationTest(TestCase):
         u2 = UserFactory()
         i.add_reply(u2, "another message")
         self.assertEqual(i.reply_set.all().count(), 2)
-        r = i.reply_set.all()[0]
-        r.email_mentions()
         self.assertEqual(len(mail.outbox), 2)
 
     def test_add_reply_no_author(self):

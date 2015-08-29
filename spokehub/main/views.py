@@ -64,15 +64,14 @@ class ConversationDeleteView(DeleteView):
 class ReplyToConversationView(View):
     def post(self, request, pk):
         conversation = get_object_or_404(Conversation, pk=pk)
-        reply = conversation.add_reply(
+        image = None
+        if 'image' in request.FILES:
+            image = request.FILES['image']
+        conversation.add_reply(
             request.user,
             request.POST.get('body', ''),
             request.POST.get('url', ''),
-            request.POST.get('title', ''))
-        if 'image' in request.FILES:
-            reply.save_image(request.FILES['image'])
-
-        reply.email_mentions()
-        reply.body = reply.link_usernames()
-        reply.save()
+            request.POST.get('title', ''),
+            image,
+        )
         return HttpResponseRedirect('/#we')
