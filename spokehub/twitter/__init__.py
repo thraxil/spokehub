@@ -12,14 +12,13 @@ def add_tweet(t):
         return
 
     try:
-        np = NowPost.objects.create(
+        np = NowPost.objects.create_twitter(
             screen_name=t.user.screen_name,
-            service='twitter',
             service_id=t.id_str,
             text=t.text,
             created=t.created_at.isoformat(),
-            original=t._json,
-            )
+            original_json=t._json,
+        )
         print(t.created_at.isoformat())
         print("new twitter post added")
         print(np.id)

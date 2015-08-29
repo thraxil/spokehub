@@ -239,6 +239,19 @@ class NowPostManager(models.Manager):
         np.save()
         return np
 
+    def create_twitter(self, screen_name, service_id, text, created,
+                       original_json):
+        np = NowPost(
+            screen_name=screen_name,
+            service='twitter',
+            service_id=service_id,
+            text=text,
+            created=created,
+            original=original_json,
+            )
+        np.save()
+        return np
+
 
 class NowPost(models.Model):
     screen_name = models.TextField(default="", blank=True)
