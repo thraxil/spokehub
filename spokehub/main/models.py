@@ -58,20 +58,7 @@ class Conversation(models.Model):
         if (url.strip() != '' and
                 not (url.startswith('http://') or url.startswith('https://'))):
             url = "http://" + url
-        r = Reply.objects.create(
-            item=self,
-            author=author,
-            body=body,
-            url=url.strip(), title=title.strip())
-        if 'youtube.com' in url:
-            url_data = urlparse.urlparse(r.url)
-            query = urlparse.parse_qs(url_data.query)
-            r.youtube_id = query["v"][0]
-            r.save()
-        if 'vimeo.com' in url:
-            url_data = urlparse.urlparse(r.url)
-            r.vimeo_id = url_data.path[1:]
-            r.save()
+        r = Reply.objects.create_reply(self, author, body, url, title)
         self.touch()
         return r
 
@@ -91,6 +78,24 @@ def new_conversation_emails(sender, **kwargs):
             'hello@spokehub.org')
 
 
+class ReplyManager(models.Manager):
+    def create_reply(self, item, author, body, url, title):
+        r = Reply(
+            item=item,
+            author=author,
+            body=body,
+            url=url.strip(), title=title.strip())
+        if 'youtube.com' in url:
+            url_data = urlparse.urlparse(r.url)
+            query = urlparse.parse_qs(url_data.query)
+            r.youtube_id = query["v"][0]
+        if 'vimeo.com' in url:
+            url_data = urlparse.urlparse(r.url)
+            r.vimeo_id = url_data.path[1:]
+        r.save()
+        return r
+
+
 class Reply(models.Model):
     item = models.ForeignKey(Conversation)
     author = models.ForeignKey(User)
@@ -108,6 +113,8 @@ class Reply(models.Model):
     title = models.TextField(blank=True, default=u"")
     youtube_id = models.TextField(default="", blank=True)
     vimeo_id = models.TextField(default="", blank=True)
+
+    objects = ReplyManager()
 
     class Meta:
         order_with_respect_to = 'item'
