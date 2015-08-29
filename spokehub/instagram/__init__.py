@@ -35,17 +35,10 @@ def hashtag_search():
             if media.type == 'video':
                 video_url = media_url
 
-            NowPost.objects.create(
-                screen_name=media.user.username,
-                service='instagram',
-                service_id=media.link,
-                text=text,
-                created=media.created_time.isoformat(),
-                image_url=image_url,
-                video_url=video_url,
-                image_width=640,
-                image_height=640,
-                original=dumps(
+            NowPost.objects.create_instagram(
+                media.user.username, media.link, text,
+                media.created_time.isoformat(),
+                image_url, video_url, dumps(
                     dict(
                         standard_resolution_url=sru,
                         thumbnail_url=media.get_thumbnail_url(),
@@ -57,7 +50,7 @@ def hashtag_search():
                         user_username=media.user.username,
                         )
                     )
-                )
+            )
             print "new instagram post added"
         except Exception, e:
             print "failed with exception: " + str(e)

@@ -12,6 +12,11 @@ from django.core.urlresolvers import reverse
 import urlparse
 
 
+class ConversationManager(models.Manager):
+    def newest(self):
+        return Conversation.objects.all().order_by('-added')[:10]
+
+
 class Conversation(models.Model):
     title = models.CharField(max_length=256)
     body = models.TextField(blank=True, default=u"")
@@ -24,6 +29,8 @@ class Conversation(models.Model):
             },
         null=True,
         )
+
+    objects = ConversationManager()
 
     class Meta:
         ordering = ['-added', ]
@@ -211,6 +218,28 @@ are participating in:
         return self.vimeo_id != ""
 
 
+class NowPostManager(models.Manager):
+    def newest(self):
+        return NowPost.objects.all().order_by("-created")
+
+    def create_instagram(self, screen_name, service_id, text, created,
+                         image_url, video_url, original_json):
+        np = NowPost(
+            screen_name=screen_name,
+            service='instagram',
+            service_id=service_id,
+            text=text,
+            created=created,
+            image_url=image_url,
+            video_url=video_url,
+            image_width=640,
+            image_height=640,
+            original=original_json,
+        )
+        np.save()
+        return np
+
+
 class NowPost(models.Model):
     screen_name = models.TextField(default="", blank=True)
     created = models.DateTimeField()
@@ -224,6 +253,8 @@ class NowPost(models.Model):
     image_height = models.IntegerField(default=0)
 
     video_url = models.TextField(default="", blank=True)
+
+    objects = NowPostManager()
 
     def __unicode__(self):
         return "[%s] by %s at %s" % (self.service, self.screen_name,
