@@ -3,7 +3,8 @@
 ## Development setup
 
 Download:
-1. [Node w/ npm](https://nodejs.org/)
+
+1. [Node](https://nodejs.org/)
 
 2. [Grunt](http://gruntjs.com/getting-started)
 
