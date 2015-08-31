@@ -6,6 +6,6 @@ media/CACHE
 local_settings.py
 .coverage
 node_modules
+bower_components
 .sass-cache
-media/components
 .DS_Store

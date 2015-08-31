@@ -1,0 +1,102 @@
+/* Import some fonts here */
+@font-face {
+  font-family: "dinlight";
+  src: url("../fonts/DINWeb-Light.eot");
+  src: url("../fonts/DINWeb-Light.woff") format("woff"); }
+@font-face {
+  font-family: "dinmed";
+  src: url("../fonts/DINWeb-Medium.eot");
+  src: url("../fonts/DINWeb-Medium.woff") format("woff"); }
+
+ html {
+    font-size: $base-font-size;
+
+    @media all and (min-width: $medium) { font-size: 14px; }
+
+    @media all and (min-width: $xlarge) { font-size: 16px; }
+}
+
+body {
+  font-family: $base-font;
+  line-height: $base-line-height;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0,0,0,.01) 0 0 1px;
+}
+
+em, i {
+  font-style: italic;
+  line-height: inherit;
+}
+
+strong, b {
+  font-weight: bold;
+  line-height: inherit;
+}
+
+p {
+    @include leading-rows(0);
+    @include trailing-rows(1);
+}
+
+blockquote {
+  position: relative;
+
+  &:before {
+    display: block;
+    float: left;
+    content: "\"";
+    @include font-size(2.5);
+    margin: 0 15px 15px 0;
+  }
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font;
+  line-height: 1.2;
+    text-transform: uppercase;
+
+    @media all and (min-width: $large) { word-wrap: normal; }
+}
+
+h1,
+.h1 {
+    @include font-size(2.5);
+    @media all and (min-width: $medium) { @include font-size(3); }
+}
+
+h2,
+.h2 {
+    @include font-size(1.8);
+    @media all and (min-width: $medium) { @include font-size(2); }
+}
+
+h3,
+.h3 {
+    @include font-size(1.1);
+    @media all and (min-width: $medium) { @include font-size(1.2); }
+}
+
+h4,
+h5,
+h6 {
+  @include font-size(1);
+}
+
+h2,
+h3 { page-break-after: avoid; }
+
+p,
+h2,
+h3 {
+    orphans: 3;
+    widows: 3;
+}

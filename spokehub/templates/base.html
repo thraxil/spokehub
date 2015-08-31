@@ -8,28 +8,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="spokehub">
   <meta name="author" content="spokehub">
-
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="../assets/js/html5shiv.js"></script>
-  <script src="../assets/js/respond.min.js"></script>
-<![endif]-->
-
 {% compress css %}
-    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+	<link href="{{STATIC_URL}}dist/styles/spokehub.css" rel="stylesheet">
 {% endcompress %}
-
+{% block css %}{% endblock %}
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
-	{% block css %}{% endblock %}
-
-
-	{% block feeds %}{% endblock %}
+{% block feeds %}{% endblock %}
 </head>
 {% block bodytag %}
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
 
 {% flag "main" %}
+
+<!-- This is were the main header should go -->
+<header>
+
+</header>
+
 {% else %}
 {% comment %} placeholder mode {% endcomment %}
 {% endflag %}
@@ -37,20 +33,14 @@
 {% block pagetitle %}{% endblock %}
 {% block content %}{% endblock %}
 
-
 {% block footer %}
 {% flag main %}
+
+<!-- This is were the main footer should go -->
 <footer>
-	<div class="footer-wrapper">
-			<ul>
-				<li><a onClick="$('#about-button').toggle(333);" href="#">about</a></li>
-				<li><a href="mailto:info@spokehub.com"><i class="mdi mdi-email"></i></a></li>
-				<li><a href="https://twitter.com/spokehubnow"><i class="mdi mdi-twitter"></i></a></li>
-				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"><i class="mdi mdi-facebook"></i></a></li>
-			</ul>
-		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
-	</div>
+
 </footer>
+
 {% else %}
 <footer>
 	<div class="footer-wrapper">
@@ -67,14 +57,7 @@
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-
 {% block js %}{% endblock %}
-<script>
-  $(document).ready(function() {
-    var currentYear = (new Date).getFullYear();
-    $('#copyright-year').text(currentYear);
-  });
-</script>
 
 {% if GA_CODE %}
 <script type="text/javascript">
@@ -86,7 +69,6 @@
   ga('create', '{{GA_CODE}}', 'spokehub.org');
   ga('send', 'pageview');
 </script>
-
 {% endif %}
 </body>
 </html>

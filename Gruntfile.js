@@ -1,80 +1,65 @@
 module.exports = function(grunt) {
 
-  // Project configuration.
+  // load tasks here from package.json
+  require('load-grunt-tasks')(grunt);
+  require('time-grunt')(grunt);
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-
-    sass: {                            // Task
-      dist: {                            // Target
-        options: {                    // Target options
-          style: 'compressed'
-        },
-        files: {                                    // Dictionary of files
-          'media/css/spokehub.css': 'media/sass/spokehub.scss',        // 'destination': 'source'
+    sass: {
+      dist: {
+        options: {style: 'compact', sourcemap: 'none'},
+        files: {'media/dist/styles/spokehub.css': 'media/preprocess/styles/spokehub.scss'}
+      }
+    },
+    postcss: {
+      options: {
+        map: false,
+        processors: [require('autoprefixer-core')({browsers: 'last 2 versions'})]
+      },
+      dist: {src: 'media/dist/styles/spokehub.css'}
+    },
+    jshint: {
+      dist: ['Gruntfile.js','media/preprocess/js/app.js']
+    },
+    uglify: {
+      options: {
+        mangle: {except:['jQuery']}
+      },
+      dist:{
+        files: {
+          'media/dist/js/app.js' : ['media/preprocess/js/app.js']
         }
       }
     },
-
-    watch: {
-      css: {
-        files: [
-          '**/*.sass',
-          '**/*.scss'
-        ],
-        tasks: [
-          'sass',
-          'autoprefixer',
-          'jshint'
-        ]
-      }
-    },
-
-    compass: {
+    bower: {
       dist: {
         options: {
-          sassDir: 'media/sass',
-          cssDir: 'media/css',
-          outputStyle: 'compressed'
-        }
+          keepExpandedHierarchy: false,
+          packageSpecific: {
+            'jquery': {
+              files: ['dist/jquery.min.js']
+            }
+          }
+        },
+        dest:'media/',
+        js_dest: 'media/dist/js',
+        scss_dest: 'media/preprocess/styles/vendor',
+        fonts_dest: 'media/dist/fonts'
       }
     },
-
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'media/scripts/{,*/}*.js'
-      ]
-    },
-
-    autoprefixer: {
-      options: {
-        browsers: ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+    watch: {
+      css: {
+        files: ['media/preprocess/styles/**/*.scss'],
+        tasks: ['sass','postcss']
       },
-      single_file: {
-        src: 'media/css/spokehub.css',
-        dest: 'media/css/main.css'
-      }
-    },
-
-    concat: {
-      dist: {
-        src: [
-          'media/components/jquery/dist/jquery.min.js',
-          'media/js/main.js'
-        ],
-        dest: 'media/js/concat.js'
+      js: {
+        files: ['media/preprocess/js/*.js'],
+        tasks: ['jshint','uglify']
       }
     }
   });
 
-  // Load the Grunt plugins.
-  grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-sass');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-autoprefixer');
-
-  // Register the default tasks.
   grunt.registerTask('default', ['watch']);
+  grunt.registerTask('build', ['bower','sass','postcss','uglify']);
 };

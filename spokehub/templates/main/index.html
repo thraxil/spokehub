@@ -8,86 +8,31 @@
 
 {% block content %}
 {% flag "main" %}
-<div class="loader">
-  <svg version="1.1"
-    class="svg-loader"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    x="0px"
-    y="0px"
-    viewBox="0 0 80 80"
-    xml:space="preserve">
 
-    <path
-      id="spinner"
-      fill="#000"
-      d="M40,72C22.4,72,8,57.6,8,40C8,22.4,
-      22.4,8,40,8c17.6,0,32,14.4,32,32c0,1.1-0.9,2-2,2
-      s-2-0.9-2-2c0-15.4-12.6-28-28-28S12,24.6,12,40s12.6,
-      28,28,28c1.1,0,2,0.9,2,2S41.1,72,40,72z"
-    >
-
-      <animateTransform
-        attributeType="xml"
-        attributeName="transform"
-        type="rotate"
-        from="0 40 40"
-        to="360 40 40"
-        dur="0.6s"
-        repeatCount="indefinite"
-      />
-    </path>
-  </svg>
-</div>
-
-<div id="site-wrapper">
-	<header>
-		<div id="header-wrapper">
-			<a href="#"><h2>SPOKEHUB</h2></a>
-			<a href="#"><h3>member login</h3></a>
-		</div>
-	</header>
-	<div class="content-wrapper">
-		<div class="columns">
-			<div class="column full-column" id="how-column"><h1>how</h1></div>
-			<div class="column full-column" id="we-column"><h1>we</h1></div>
-			<div class="column full-column" id="work-column"><h1>work</h1></div>
-			<div class="column full-column" id="now-column"><h1>now</h1></div>
-		</div>
-		<div class="sections">
-			<section class="main-section transition hide how" data-target="how-column">
-				{% include "main/how.html" %}
-			</section>
-			<section class="main-section transition hide we" data-target="we-column">
-				{% include "main/we.html" %}
-			</section>
-			<section class="main-section transition hide work" data-target="work-column">
-				{% include "main/work.html" %}
-			</section>
-			<section class="main-section transition hide now" data-target="now-column">
-				{% include "main/now.html" %}
-			</section>
-		</div>
-	</div>
-</div>
-<div class="about-container" id="about-button">
-  <a href="#" onclick="$('#about-button').toggle(333);" class="about-close-button"><i class="mdi mdi-close-box"></i></a>
-    <div class="about-title">
-       <h3>SPOKEHUB is an art + design think tank, based in Berlin, with global creative partners.</h3>
+<main>
+  <div class="columns-wrapper">
+    <div class="column" data-section="how">
+      <h2 class="section-title">HOW</h2>
     </div>
-    <div class="about-copy">
-      <p>We offer insights, strategy, design and curation, with 5 principles in mind:</p>
-      <p>#1 SPOKEHUB unfucks today's issues, to make the <strong>future</strong> better for everyone.</p>
-      <p>#2 SPOKEHUB creates design with <strong>he(art);</strong> passion and meaning are our priorities.</p>
-      <p>#3 SPOKEHUB combines strategy, art and design thinking, on every <strong>team</strong> and mission.</p>
-      <p>#4 SPOKEHUB breaks bad habits, patterns and <strong>norms</strong>, with constructive disruption.</p>
-      <p>#5 SPOKEHUB works with knowledge (not guess-ledge), so our work is grounded in <strong>truth</strong> and effects real change.</p>
+    <div class="column" data-section="we">
+      <h2 class="section-title">WE</h2>
     </div>
-    <div class="about-undertitle">
-      <p>Our website is undergoing its annual polish, so give <a href="https://www.linkedin.com/in/onikasimon">Onika</a> a call if you'd like to know more.</p>
+    <div class="column" data-section="work">
+      <h2 class="section-title">WORK</h2>
     </div>
-</div>
-
+    <div class="column" data-section="now">
+      <h2 class="section-title">NOW</h2>
+    </div>
+  </div>
+  <section class="how">
+  </section>
+  <section class="we">
+  </section>
+  <section class="work">
+  </section>
+  <section class="now">
+  </section>
+</main>
 
 {% else %}
 {% comment %}placeholder mode{% endcomment %}
@@ -170,20 +115,11 @@
 
 {% block js %}
 {% compress js %}
-<script src="{{STATIC_URL}}js/jquery.min.js"></script>
-<script src="{{STATIC_URL}}js/main.js"></script>
+<script src="{{STATIC_URL}}dist/js/jquery.min.js"></script>
+<script src="{{STATIC_URL}}dist/js/app.js"></script>
 {% endcompress %}
 
 {% flag "main" %}
-<script type="text/javascript">
-  $(window).load(function(){
-     // PAGE IS FULLY LOADED
-     // FADE OUT YOUR OVERLAYING DIV
-     $('.loader').delay(800).fadeOut();
-     $('#site-wrapper').delay(1600).fadeIn();
-  });
-</script>
-
 {% else %}
 <script type="text/javascript">
   $(window).load(function(){
@@ -193,6 +129,5 @@
      $('#site-wrapper').delay(1600).fadeIn();
   });
 </script>
-
 {% endflag %}
 {% endblock %}

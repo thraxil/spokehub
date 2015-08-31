@@ -1,0 +1,10 @@
+section.how {
+  background-color: $black;
+  color: $white;
+  display: none;
+  width: 100%;
+  height: 82vh;
+  &.open {
+    display: flex;
+  }
+}

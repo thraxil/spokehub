@@ -1,23 +1,16 @@
 {
   "name": "spokehub",
-  "version": "0.1.0",
-  "homepage": "https://github.com/thraxil/spokehub",
+  "version": "0.1.2",
+  "homepage": "http://spokehub.org",
   "authors": [
-    "Anders Pearson <anders@columbia.edu>",
-    "Patrick Krawczykowski <pkrawz@gmail.com>"
+    "collective"
   ],
-  "description": "Spokehub, a nomadic design agency",
-  "main": "manage.py",
-  "moduleType": [
-    "node"
-  ],
+  "description": "nomadic design and branding",
+  "main": "./manage.py",
   "keywords": [
-    "design",
-    "hub",
-    "Berlin"
+    "design"
   ],
   "license": "MIT",
-  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -25,9 +18,7 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "bourbon": "~4.2.0",
-    "neat": "~1.7.1",
-    "normalize-scss": "~3.0.2"
+  "dependencies": {
+    "jquery": "~2.1.4"
   }
 }

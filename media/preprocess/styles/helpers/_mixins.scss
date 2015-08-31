@@ -1,0 +1,13 @@
+// Font size mixin for REM output with PX fallback
+@mixin font-size($size) {
+    font-size: $size * $base-font-size;
+    font-size: #{$size}rem;
+}
+
+// Top margin mixin for REM output with PX fallback
+@mixin leading-rows($size: 1) { margin-top: $size * $base-line-height * 1rem; }
+
+// Bottom margin mixin for REM output with PX fallback
+@mixin trailing-rows($size: 1) {
+  margin-bottom: $size * $base-line-height * 1rem;
+}
