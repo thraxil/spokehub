@@ -1,23 +1,48 @@
 [![Build Status](https://travis-ci.org/thraxil/spokehub.svg?branch=master)](https://travis-ci.org/thraxil/spokehub)
 
-# Spokehub Website
+## Development setup
 
-### Grunt, Bower, and Bourbon
+Download:
+1. [Node w/ npm](https://nodejs.org/)
+2. [Grunt](http://gruntjs.com/getting-started)
+3. [Bower](http://bower.io/)
+4. [Vagrant](https://www.vagrantup.com/)
 
-Installing for the first time on a new machine make sure you have [node](http://nodejs.org/) and [bourbon](http://bourbon.io/) installed.
+open whatever terminal or terminal emulator you prefer and run:
 
-run
-    npm install
-    bower install
-    bourbon install
+```
+vagrant up
+vagrant ssh
+```
 
-once installed, use grunt in the root directory to run tasks for sass compile.
+Now you'll be in a virtual linux box from here you need to make a couple users and then run the server.
 
-    grunt
+```
+sudo -i -u postgres
+createuser -s vagrant
+createuser -s root
+cd /vagrant/
+```
 
-will run a compile and listen for saves of scss files.
+This is probably the first time you're setting this up. If so you'll want to run:
 
+```
+make install
+make migrate
+```
 
+then you can start a development server
 
+```
+./manage.py runserver 0.0.0.0:8000
+```
 
+Leave that session running and in a new tab run
+```
+npm install
+bower install
+grunt build
+grunt
+```
 
+Now you can open localhost:8080 and you should see the site up and running.
