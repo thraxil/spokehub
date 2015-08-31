@@ -1,6 +1,5 @@
 module.exports = function(grunt) {
 
-  // load tasks here from package.json
   require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
