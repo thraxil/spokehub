@@ -4,8 +4,11 @@
 
 Download:
 1. [Node w/ npm](https://nodejs.org/)
+
 2. [Grunt](http://gruntjs.com/getting-started)
+
 3. [Bower](http://bower.io/)
+
 4. [Vagrant](https://www.vagrantup.com/)
 
 open whatever terminal or terminal emulator you prefer and run:
