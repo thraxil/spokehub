@@ -21,10 +21,10 @@
 
 {% flag "main" %}
 
-<!-- This is were the main header should go -->
-<header>
-
-</header>
+	<header>
+		<h1>SPOKEHUB</h1>
+		<span onclick="$('.card-signin').toggle(300);">LOGIN</span>
+	</header>
 
 {% else %}
 {% comment %} placeholder mode {% endcomment %}
@@ -36,7 +36,6 @@
 {% block footer %}
 {% flag main %}
 
-<!-- This is were the main footer should go -->
 <footer>
 
 </footer>
@@ -45,7 +44,7 @@
 <footer>
 	<div class="footer-wrapper">
 			<ul>
-				<li><a onClick="$('#about-button').toggle(333);" href="#">about</a></li>
+				<li><a onclick="$('#about-button').toggle(333);" href="#">about</a></li>
 				<li><a href="mailto:info@spokehub.com"><i class="mdi mdi-email"></i></a></li>
 				<li><a href="https://twitter.com/spokehubnow"><i class="mdi mdi-twitter"></i></a></li>
 				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"><i class="mdi mdi-facebook"></i></a></li>

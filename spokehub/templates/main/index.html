@@ -24,14 +24,20 @@
       <h2 class="section-title">NOW</h2>
     </div>
   </div>
-  <section class="how">
-  </section>
-  <section class="we">
-  </section>
-  <section class="work">
-  </section>
-  <section class="now">
-  </section>
+  <div class="section-wrapper">
+    <section class="how closed">
+      {% include 'main/how.html' %}
+    </section>
+    <section class="we closed">
+      {% include 'main/we.html' %}
+    </section>
+    <section class="work closed">
+      {% include 'main/work.html' %}
+    </section>
+    <section class="now closed">
+      {% include 'main/now.html' %}
+    </section>
+  </div>
 </main>
 
 {% else %}

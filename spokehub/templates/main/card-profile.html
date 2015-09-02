@@ -1,0 +1,37 @@
+<div class="card-profile">
+  {% if user.username == profile.user.username %}
+    <span class="edit-profile">EDIT PROFILE</span>
+  {% endif %}
+  {% if user.editing %}
+    <span class="edit-profile editing" onclick="user.saveProfile();">SAVE PROFILE</span>
+  {% endif %}
+  <!-- user.coverPhotoUrl -->
+  <div class="cover-photo" style="background-image:url(https://images.unsplash.com/photo-1433785124354-92116416b870?q=80&fm=jpg&s=38f06298f26c11c59024eabf3b0be3bb)"></div>
+
+  {% if user.editing %}
+    <img class="profile-photo editing" onclick="#" src="{% if user.profilePhotoUrl %} {{user.profilePhotoUrl}} {% else %} {{STATIC_URL}}dist/img/account-circle.svg {% endif %}">
+    <div class="name-input">
+      <input type="text" name="name" onfocus="if(this.value == 'Full Name') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Full Name'; }" value="{% if user.username %} {{user.username}} {% else %}Full Name{% endif %}">
+    </div>
+    <div class="title-input">
+      <input type="text" name="title" onfocus="if(this.value == 'Title') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'Title'; }" value="{% if user.title %} {{user.title}} {% else %}Title{% endif %}">
+    </div>
+    <div class="location-input">
+      <input type="text" name="location" onfocus="if(this.value == 'City, Country') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'City, Country'; }" value="{% if user.location %} {{user.location}} {% else %}City, Country{% endif %}">
+    </div>
+    <div class="website-input">
+      <input type="text" name="website-url" onfocus="if(this.value == 'URL') { this.value = ''; }" onblur="if(this.value == '') { this.value = 'URL'; }" value="{% if user.websiteUrl %} {{user.websiteUrl}} {% else %}URL{% endif %}">
+    </div>
+  {% else %}
+    <!-- user.profilePhotoUrl -->
+    <img src="https://randomuser.me/api/portraits/med/men/95.jpg" class="profile-photo">
+    <!-- user.username -->
+    <h2>Jack Martinez</h2>
+    <!-- user.title -->
+    <h4>Brand Manager</h4>
+    <!-- user.location -->
+    <h4>Krakow, Poland</h4>
+    <!-- user.websiteUrl -->
+    <a class="user-website" href="#">WEBSITE</a>
+  {% endif %}
+</div>

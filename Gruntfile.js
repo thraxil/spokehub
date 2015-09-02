@@ -23,11 +23,11 @@ module.exports = function(grunt) {
     },
     uglify: {
       options: {
-        mangle: {except:['jQuery']}
+        mangle: false
       },
       dist:{
         files: {
-          'media/dist/js/app.js' : ['media/preprocess/js/app.js']
+          'media/dist/js/app.js' : ['media/preprocess/js/**/*.js']
         }
       }
     },
@@ -53,7 +53,7 @@ module.exports = function(grunt) {
         tasks: ['sass','postcss']
       },
       js: {
-        files: ['media/preprocess/js/*.js'],
+        files: ['media/preprocess/js/**/*.js'],
         tasks: ['jshint','uglify']
       }
     }

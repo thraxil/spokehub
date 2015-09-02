@@ -18,4 +18,10 @@ html {
 body {
   @extend html;
   position: relative;
+  &.black {
+    background-color: $black;
+  }
+  &.white {
+    background-color: $white;
+  }
 }
