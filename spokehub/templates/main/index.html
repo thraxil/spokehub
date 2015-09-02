@@ -40,6 +40,8 @@
   </div>
 </main>
 
+{% include 'main/card-profile.html' %}
+
 {% else %}
 {% comment %}placeholder mode{% endcomment %}
 <div class="loader">
@@ -122,6 +124,7 @@
 {% block js %}
 {% compress js %}
 <script src="{{STATIC_URL}}dist/js/jquery.min.js"></script>
+<script src="{{STATIC_URL}}dist/js/text-tailor.min.js"></script>
 <script src="{{STATIC_URL}}dist/js/app.js"></script>
 {% endcompress %}
 

@@ -4,4 +4,15 @@ footer {
   background: $black;
   bottom: 0;
   color: $white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  a,
+  > span {
+    margin: 4px 16px;
+  }
+  a {
+    font-weight: bold;
+    color: $white;
+  }
 }

@@ -7,7 +7,7 @@ var sectionNavigation = (function() {
   $('.column').on('click', toggleSection);
 
   function toggleSection() {
-    
+
     //cache DOM
     var $selection = $(this);
     var $selectionSiblings = $selection.siblings();
@@ -32,7 +32,12 @@ var sectionNavigation = (function() {
 
     // expand corresponding section
     if(!$section.hasClass('open')) {
-      $section.removeClass('closed').addClass('open');
+      setTimeout(function() {
+        $section.removeClass('closed').addClass('open');
+        if(sectionStr == 'we') {
+          conversations.resizeText();
+        }
+      },1000);
       $sectionSiblings.removeClass('open').addClass('closed');
     } else {
       $section.removeClass('open').addClass('closed');

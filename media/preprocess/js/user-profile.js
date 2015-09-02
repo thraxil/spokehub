@@ -1,5 +1,7 @@
 var user = (function() {
 
+  var $userCard = $('div.card-profile');
+
   function saveProfile() {
     var username = $('.name-input input').val();
     var title = $('.title-input input').val();
@@ -13,6 +15,17 @@ var user = (function() {
       websiteUrl
     );
   }
+
+  $('#user-link').click(function (e) {
+      $($userCard).fadeToggle('fast');
+      e.stopImmediatePropagation();
+  });
+
+  $(document).click(function (e) {
+      if($userCard.css('display') == 'block' && !$userCard.is(e.target)) {
+        $($userCard).fadeToggle('fast');
+      }
+  });
 
   return {
     saveProfile: saveProfile

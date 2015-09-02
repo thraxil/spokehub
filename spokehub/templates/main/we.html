@@ -1,8 +1,56 @@
 {% load markup %}
 {% load thumbnail %}
 
-
-<h1 class="coming-soon">Coming Soon</h1>
+<div class="card-conversation">
+	<div class="conversation-title">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut molestiae, nesciunt ad cum non, sapiente illo quia.
+	</div>
+	<div class="user-info">
+		<ul>
+			<li>Date</li>
+			<li><a href="#?userid=blank" id="user-link">User Name</a></li>
+			<li>Title</li>
+			<li>Location</li>
+		</ul>
+	</div>
+</div>
+<div class="card-conversation">
+	<div class="conversation-title">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut molestiae, nesciunt ad cum non, sapiente illo quia. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+	</div>
+	<div class="user-info">
+		<ul>
+			<li>Date</li>
+			<li>User Name / name is link</li>
+			<li>Title</li>
+			<li>Location</li>
+		</ul>
+	</div>
+</div><div class="card-conversation">
+	<div class="conversation-title">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque quos pariatur eveniet expedita maxime ex explicabo dolore deserunt harum sint, rem, minus numquam commodi obcaecati ipsum temporibus, accusamus dignissimos repudiandae!
+	</div>
+	<div class="user-info">
+		<ul>
+			<li>Date</li>
+			<li>User Name / name is link</li>
+			<li>Title</li>
+			<li>Location</li>
+		</ul>
+	</div>
+</div><div class="card-conversation">
+	<div class="conversation-title">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, placeat illo quas, commodi.
+	</div>
+	<div class="user-info">
+		<ul>
+			<li>Date</li>
+			<li>User Name / name is link</li>
+			<li>Title</li>
+			<li>Location</li>
+		</ul>
+	</div>
+</div>
 
 {% if request.user.is_anonymous %}
 {% else %}
@@ -20,4 +68,3 @@
 {% for conversation in conversations %}
 {% include "main/conversation.html" %}
 {% endfor %}
-

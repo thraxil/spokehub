@@ -1,0 +1,21 @@
+div.card-conversation {
+  width: 40%;
+  min-width: 40%;
+  height: 90%;
+  border: 4px solid $black;
+  margin: 8px;
+  padding: 8px;
+  position: relative;
+
+  .conversation-title {
+    height: 80%;
+    font-weight: bold;
+  }
+  .user-info ul {
+    margin: 0;
+    padding: 4px;
+    li {
+      display: block;
+    }
+  }
+}

@@ -37,6 +37,7 @@ strong, b {
 p {
     @include leading-rows(0);
     @include trailing-rows(1);
+    font-size: 1em;
 }
 
 blockquote {
@@ -99,4 +100,8 @@ h2,
 h3 {
     orphans: 3;
     widows: 3;
+}
+
+a {
+  font-size: 1rem;
 }

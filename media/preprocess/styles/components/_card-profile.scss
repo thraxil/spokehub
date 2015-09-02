@@ -10,6 +10,9 @@ div.card-profile {
   border-radius: 2px;
   overflow: hidden;
   text-align: center;
+  display: none;
+  transition: none;
+  z-index: 1;
 
   h2 {
     margin-top: 0;
@@ -32,7 +35,7 @@ div.card-profile {
     border-radius: 50%;
     position: relative;
     top: -36px;
-    z-index: 1;
+    z-index: 2;
 
     &.editing {
       cursor: pointer;
@@ -102,7 +105,7 @@ div.card-profile {
     width: 60vw;
     left: calc(50% - 30vw);
   }
-  @media all and (min-width: $large) {
+  @media all and (min-width: $medium) {
     width: 40vw;
     left: calc(50% - 20vw);
   }

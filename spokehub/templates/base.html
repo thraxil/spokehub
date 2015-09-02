@@ -37,7 +37,8 @@
 {% flag main %}
 
 <footer>
-
+	<a href="/blog">BLOG</a>
+	<span>&copy; SPOKEHUB LTD. <span class="year"></span></span>
 </footer>
 
 {% else %}
@@ -49,7 +50,7 @@
 				<li><a href="https://twitter.com/spokehubnow"><i class="mdi mdi-twitter"></i></a></li>
 				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"><i class="mdi mdi-facebook"></i></a></li>
 			</ul>
-		<span class="copyright">&copy; copyright SPOKEHUB <span id="copyright-year"></span> all rights reserved.</span>
+		<span class="copyright">&copy; copyright SPOKEHUB <span class="year" onload="placeDate();"></span></span>
 	</div>
 </footer>
 {% endflag %}
