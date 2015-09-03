@@ -66,9 +66,10 @@ section.how { background-color: #212121; color: #F9F9F9; width: 100%; height: 10
 section.how.open { display: -webkit-flex; display: -ms-flexbox; display: flex; }
 section.how.closed { display: none; }
 
-section.we { background-color: #F9F9F9; color: #212121; width: 100%; height: 100%; position: relative; overflow: auto; -webkit-align-items: center; -ms-flex-align: center; align-items: center; }
+section.we { background-color: #F9F9F9; color: #212121; width: 100%; height: 100%; position: relative; overflow: auto; -webkit-align-items: center; -ms-flex-align: center; align-items: center; -webkit-flex-direction: column; -ms-flex-direction: column; flex-direction: column; }
 section.we.open { display: -webkit-flex; display: -ms-flexbox; display: flex; }
 section.we.closed { display: none; }
+@media all and (min-width: 960px) { section.we { -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; } }
 
 section.work { background-color: #212121; color: #F9F9F9; width: 100%; height: 100%; -webkit-align-items: center; -ms-flex-align: center; align-items: center; }
 section.work.open { display: -webkit-flex; display: -ms-flexbox; display: flex; }
@@ -122,6 +123,7 @@ div.card-conversation { width: 40%; min-width: 40%; height: 90%; border: 4px sol
 div.card-conversation .conversation-title { height: 80%; font-weight: bold; }
 div.card-conversation .user-info ul { margin: 0; padding: 4px; }
 div.card-conversation .user-info ul li { display: block; }
+@media all and (max-width: 960px) { div.card-conversation { width: calc(100% - 16px); margin: 8px auto; min-height: 550px; } }
 
 .fader-wrapper { width: 100%; height: 80vh; padding: 5vh; }
 

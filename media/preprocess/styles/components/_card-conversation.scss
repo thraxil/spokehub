@@ -11,11 +11,19 @@ div.card-conversation {
     height: 80%;
     font-weight: bold;
   }
+
   .user-info ul {
     margin: 0;
     padding: 4px;
+
     li {
       display: block;
     }
+  }
+
+  @media all and (max-width: $medium) {
+    width: calc(100% - 16px);
+    margin: 8px auto;
+    min-height: 550px;
   }
 }
