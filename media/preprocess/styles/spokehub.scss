@@ -1,3 +1,4 @@
+
 @import 'helpers/variables',
         'helpers/mixins';
 
@@ -5,22 +6,21 @@
         'base/grid',
         'base/global';
 
-@import 'pages/landing',
-        'pages/how',
-        'pages/we',
-        'pages/we-individual',
-        'pages/work',
-        'pages/work-individual',
-        'pages/now';
-
-@import 'sections/header',
+@import 'sections/landing',
+        'sections/header',
         'sections/footer',
-        'sections/about';
+        'sections/about',
+        'sections/how',
+        'sections/we',
+        'sections/we-expanded',
+        'sections/work',
+        'sections/work-expanded',
+        'sections/now';
 
 @import 'components/card-profile',
         'components/card-signin',
         'components/card-conversation',
-        'components/card-tweet',
+        'components/card-twitter',
         'components/card-instagram',
         'components/card-question-response';
 
