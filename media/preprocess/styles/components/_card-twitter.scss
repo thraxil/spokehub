@@ -1,0 +1,10 @@
+.now-post.twitter {
+  max-height: 50%;
+
+  p {
+    margin-bottom: 2px;
+    &.screen-name {
+      font-weight: bold;
+    }
+  }
+}

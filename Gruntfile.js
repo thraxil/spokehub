@@ -43,6 +43,7 @@ module.exports = function(grunt) {
         },
         dest:'media/',
         js_dest: 'media/dist/js',
+        css_dest: 'media/dist/styles',
         scss_dest: 'media/preprocess/styles/vendor',
         fonts_dest: 'media/dist/fonts'
       }

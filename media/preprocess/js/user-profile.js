@@ -31,4 +31,4 @@ var user = (function() {
     saveProfile: saveProfile
   };
 
-})();
+})()

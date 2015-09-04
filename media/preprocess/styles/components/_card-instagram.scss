@@ -1,0 +1,36 @@
+.now-post.instagram {
+  max-height: 100%;
+  overflow: hidden;
+
+  .video-wrapper {
+    position: relative;
+
+    video {
+      display: block;
+      width: 100%;
+    }
+    i {
+      color: $white;
+      font-size: 2em;
+      position: absolute;
+      top: calc(50% - 14px);
+      left: calc(50% - 14px);
+    }
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+
+  }
+
+  p {
+    margin-bottom: 4px;
+    &.screen-name {
+      font-weight: bold;
+    }
+    &.text {
+      word-wrap: break-word;
+    }
+  }
+}

@@ -13,4 +13,4 @@ var conversations = (function() {
   return {
     resizeText: resizeText
   }
-})();
+})()

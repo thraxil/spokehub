@@ -15,13 +15,17 @@ div.card-profile {
   z-index: 1;
 
   h2 {
-    margin-top: 0;
+    margin: 0 auto 16px;
+  }
+
+  h4 {
+    margin: 8px auto;
   }
 
   .cover-photo {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 50%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -88,7 +92,7 @@ div.card-profile {
     width: 70%;
     padding: 4px 8px;
     margin-bottom: 16px;
-    font-size: 1rem;
+    font-size: 1em;
     color: #727272;
     border-top: none;
     border-right:none;
@@ -98,6 +102,9 @@ div.card-profile {
     &:focus {
       outline: none;
       border-bottom: 2px solid $black;
+    }
+    &[name="name"] {
+      font-size: 1.4em;
     }
   }
 

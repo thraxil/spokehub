@@ -3,11 +3,34 @@ section.how {
   color: $white;
   width: 100%;
   height: 100%;
+  padding: 0;
   align-items: center;
+  justify-content: center;
   &.open {
     display: flex;
   }
   &.closed {
     display: none;
+  }
+  
+  .principle-wrapper {
+    display: flex;
+    height: 100%;
+    width: 98%;
+    .how-image {
+      width: 100%;
+      flex: 0 1 auto;
+      display: none;
+
+      &.is-visible {
+        display: block;
+      }
+    }
+    @media all and (min-width: $small) {
+      width: 80%;
+    }
+  }
+  @media all and (min-width: $small) {
+    padding: 16px 4px;
   }
 }

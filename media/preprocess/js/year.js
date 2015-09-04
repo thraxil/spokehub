@@ -7,4 +7,4 @@ var date = (function() {
   function placeDate() {
     $('.year').html(year);
   }
-})();
+})()
