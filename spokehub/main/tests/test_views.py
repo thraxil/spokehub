@@ -71,7 +71,7 @@ class LoggedInTest(TestCase):
     def test_reply_to_conversaion_with_image(self):
         Flag.objects.create(name="main", everyone=True)
         c = ConversationFactory()
-        with open('media/img/bullet.gif') as img:
+        with open('spokehub/main/tests/bullet.gif') as img:
             r = self.c.post(
                 "/conversation/%d/reply/" % c.id,
                 dict(
