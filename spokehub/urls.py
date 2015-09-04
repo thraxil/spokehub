@@ -12,7 +12,7 @@ urlpatterns = patterns(
     '',
 
     (r'^accounts/', include('userena.urls')),
-    (r'^$', views.IndexView.as_view()),
+    (r'^(how|we|work|now)?/?$', views.IndexView.as_view()),
 
     (r'^about/$', TemplateView.as_view(template_name="about.html")),
 

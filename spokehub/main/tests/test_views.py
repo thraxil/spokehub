@@ -13,6 +13,19 @@ class BasicTest(TestCase):
         response = self.c.get("/")
         self.assertEquals(response.status_code, 200)
 
+    def test_pushstate_urls(self):
+        """ to support pushstate on the client, we also serve up the
+        index at /how /we /work /now (and with trailing slashes) """
+        reference = self.c.get("/")
+
+        for path in ['how', 'we', 'work', 'now']:
+            response = self.c.get("/" + path)
+            self.assertEquals(response.status_code, 200)
+            self.assertEquals(response.content, reference.content)
+            response = self.c.get("/" + path + "/")
+            self.assertEquals(response.status_code, 200)
+            self.assertEquals(response.content, reference.content)
+
     def test_root_paginator(self):
         response = self.c.get("/?page=5")
         self.assertEquals(response.status_code, 200)
