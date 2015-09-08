@@ -39,17 +39,18 @@ var section = (function() {
         $targetSection.removeClass('closed').addClass('open');
         switch(sectionString) {
           case 'how':
-            // window.location.pathname += 'how';
+
+            window.location.pathname = 'how';
             break;
           case 'we':
-            // window.location.pathname += 'we';
+            window.location.pathname = 'we';
             conversations.resizeText();
             break;
           case 'work':
-            // window.location.pathname += 'work';
+            window.location.pathname = 'work';
             break;
           case 'now':
-            // window.location.pathname += 'now';
+            window.location.pathname = 'now';
             break;
         }
       },1000);
@@ -74,7 +75,7 @@ var section = (function() {
     switch (windowLocation) {
       case '/how':
 
-        var target = $columns.data('section') == 'how';
+        var target = $columns.data('section', 'how');
         var siblings = target.siblings();
 
         target.addClass('open tabbed');
@@ -83,22 +84,26 @@ var section = (function() {
 
         $('section.how').removeClass('closed').addClass('open');
 
+
         break;
       case '/we':
 
-        var target = $columns.data('section') == 'we';
+        var target = $columns.data('section', 'we');
         var siblings = target.siblings();
 
         target.addClass('open tabbed');
         siblings.addClass('tabbed');
         addBottomBorder('how', $columns);
 
-        $('section.we').removeClass('closed').addClass('open');
+        setTimeout(function(){
+          $('section.we').removeClass('closed').addClass('open');
+          conversations.resizeText();
+        });
 
         break;
       case '/work':
 
-        var target = $columns.data('section') == 'work';
+        var target = $columns.data('section', 'work');
         var siblings = target.siblings();
 
         target.addClass('open tabbed');
@@ -110,7 +115,7 @@ var section = (function() {
         break;
       case '/now':
 
-        var target = $columns.data('section') == 'now';
+        var target = $columns.data('section', 'now');
         var siblings = target.siblings();
 
         target.addClass('open tabbed');
