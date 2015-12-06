@@ -15,6 +15,7 @@ cssselect==0.9.1
 lxml==3.4.4
 fuzzywuzzy==0.7.0
 sure==1.2.24
+ptyprocess==0.5
 ipython==4.0.0
 ipdb==0.8.1
 coverage==4.0.2
