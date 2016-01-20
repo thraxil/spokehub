@@ -1,10 +1,11 @@
 from instagram.client import InstagramAPI
 from django.conf import settings
-from ..main.models import NowPost
 from json import dumps
 
 
 def hashtag_search():
+    from ..main.models import NowPost
+
     api = InstagramAPI(access_token=settings.INSTAGRAM_ACCESS_TOKEN)
 
     # instagram wants it without the hashtag

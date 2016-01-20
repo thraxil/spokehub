@@ -124,7 +124,6 @@ class Reply(models.Model):
 
     class Meta:
         order_with_respect_to = 'item'
-        ordering = ['added']
 
     def __unicode__(self):
         return "Reply to [%s] by %s at %s" % (

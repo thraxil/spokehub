@@ -1,9 +1,9 @@
 import tweepy
 from django.conf import settings
-from ..main.models import NowPost
 
 
 def add_tweet(t):
+    from ..main.models import NowPost
     r = NowPost.objects.filter(
         service='twitter',
         service_id=t.id_str)
