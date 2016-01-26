@@ -35,3 +35,4 @@ def deploy():
             run(("rsync -avp media/ "
                  "%s:/var/www/spokehub/spokehub/media/") % n)
     restart_gunicorn()
+    opbeat()
