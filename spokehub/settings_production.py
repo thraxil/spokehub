@@ -29,10 +29,6 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 STATSD_PATCHES = ['django_statsd.patches.db', ]
-if 'migrate' not in sys.argv:
-    INSTALLED_APPS = INSTALLED_APPS + [
-        'raven.contrib.django.raven_compat',
-    ]
 
 TWITTER_USER = 'spokehubNOW'
 
