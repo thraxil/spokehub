@@ -36,6 +36,11 @@ if 'migrate' not in sys.argv:
 
 TWITTER_USER = 'spokehubNOW'
 
+INSTALLED_APPS += [
+    'opbeat.contrib.django',
+]
+MIDDLEWARE_CLASSES.insert(0, 'opbeat.contrib.django.middleware.OpbeatAPMMiddleware')
+
 try:
     from local_settings import *
 except ImportError:
