@@ -1,4 +1,4 @@
-jenkins: $(SENTINAL) check test flake8
+jenkins: $(SENTINAL) check flake8 jshint jscs test
 
 test: $(SENTINAL)
 	$(MANAGE) test

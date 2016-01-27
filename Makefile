@@ -3,6 +3,8 @@ APP=spokehub
 
 include *.mk
 
+all: jenkins
+
 deploy: ./ve/bin/python check jenkins
 	./ve/bin/fab deploy
 
