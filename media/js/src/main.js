@@ -1,7 +1,7 @@
-'use strict';
-
 $(function(){
-  $('.column').click(function(){
+    'use strict';
+
+    $('.column').click(function(){
 
     var target = $(this);
     var others = $(this).siblings();
