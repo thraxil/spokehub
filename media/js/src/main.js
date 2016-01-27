@@ -1,7 +1,7 @@
-$(function(){
+$(function() {
     'use strict';
 
-    $('.column').click(function(){
+    $('.column').click(function() {
 
         var target = $(this);
         var others = $(this).siblings();
@@ -11,14 +11,14 @@ $(function(){
 
         others.removeClass('expanded');
 
-        $('.column').each(function(){
-            if ($(this).hasClass('full-column')){
+        $('.column').each(function() {
+            if ($(this).hasClass('full-column')) {
                 $(this).removeClass('full-column');
                 $(this).addClass('tabed-column');
             }
         });
 
-        $('.main-section').each(function(){
+        $('.main-section').each(function() {
             if ($(this).data('target') === sectionTarget) {
                 $(this).addClass('show');
                 $(this).removeClass('hide');
@@ -28,12 +28,14 @@ $(function(){
             }
         });
     });
-    $('#header-wrapper h2').click(function(){
-        $('.main-section').each(function(){
+    $('#header-wrapper h2').click(function() {
+        $('.main-section').each(function() {
             $(this).addClass('hide');
             $(this).removeClass('show');
         });
-        $('.column').addClass('full-column').removeClass('tabed-column').removeClass('expanded');
+        $('.column').addClass('full-column')
+            .removeClass('tabed-column')
+            .removeClass('expanded');
     });
 });
 
@@ -47,14 +49,14 @@ var Slider = function(sliderDom) {
 
     $('<button>')
         .addClass('prev')
-        .on('click', function(){
+        .on('click', function() {
             self.displayImage(self.currentIndex - 1);
         })
         .appendTo(this.slider);
 
     $('<button>')
         .addClass('next')
-        .on('click', function(){
+        .on('click', function() {
             self.displayImage(self.currentIndex + 1);
         })
         .appendTo(this.slider);
@@ -64,8 +66,8 @@ var Slider = function(sliderDom) {
     this.displayImage(this.currentIndex);
 
     setInterval(function() {
-        if ($('#how-column').hasClass('expanded')){
-            if (self.currentIndex === self.slider.children('img').length - 1){
+        if ($('#how-column').hasClass('expanded')) {
+            if (self.currentIndex === self.slider.children('img').length - 1) {
                 self.displayImage(0);
             } else {
                 self.displayImage(self.currentIndex + 1);
@@ -75,8 +77,8 @@ var Slider = function(sliderDom) {
 
 };
 
-$(function(){
-    $('.slider').each(function(){
+$(function() {
+    $('.slider').each(function() {
         new Slider($(this));
     });
 });
@@ -85,12 +87,13 @@ $(function(){
 
 Slider.prototype.displayImage = function(imageIndex) {
     var numberOfImages = this.slider.children('img').length;
-    if (imageIndex < 0 || imageIndex > numberOfImages){
+    if (imageIndex < 0 || imageIndex > numberOfImages) {
         return;
     }
 
     this.slider.children('img.visible').removeClass('visible');
-    this.slider.children('img:nth-of-type(' + (imageIndex + 1) + ')').addClass('visible');
+    this.slider.children('img:nth-of-type(' + (imageIndex + 1) + ')')
+        .addClass('visible');
 
     var prevButton = this.slider.children('.prev');
     if (imageIndex === 0) {
@@ -119,7 +122,7 @@ var Fader = function(faderDom) {
     self.displayImage(self.currentIndex);
 
     setInterval(function() {
-        if (self.currentIndex === self.fader.children('img').length - 1){
+        if (self.currentIndex === self.fader.children('img').length - 1) {
             self.displayImage(0);
         } else {
             self.displayImage(self.currentIndex + 1);
@@ -128,20 +131,21 @@ var Fader = function(faderDom) {
 
 };
 
-$(function(){
-    $('.fader').each(function(){
+$(function() {
+    $('.fader').each(function() {
         new Fader($(this));
     });
 });
 
 Fader.prototype.displayImage = function(imageIndex) {
     var numberOfImages = this.fader.children('img').length;
-    if (imageIndex < 0 || imageIndex > numberOfImages){
+    if (imageIndex < 0 || imageIndex > numberOfImages) {
         return;
     }
 
     this.fader.children('img.spotlight').removeClass('spotlight');
-    this.fader.children('img:nth-of-type(' + (imageIndex + 1) + ')').addClass('spotlight');
+    this.fader.children('img:nth-of-type(' + (imageIndex + 1) + ')')
+        .addClass('spotlight');
 
     this.currentIndex = imageIndex;
 };
