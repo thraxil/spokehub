@@ -1,3 +1,21 @@
+/* COLORS */
+
+$yellow: #fff200;
+$cyan: #00aeef;
+$magenta: #ec008c;
+$black: #262222;
+$white: #fff;
+$dark-gray: #464646;
+$light-gray: #a6a6a6;
+
+/* BOX SHADOW */
+
+@mixin box-shadow($horizontal-length, $vertical-length, $blur-radius, $spread-radius, $r, $g, $b, $opacity) {
+  -webkit-box-shadow: $horizontal-length $vertical-length $blur-radius $spread-radius rgba($r,$g,$b,$opacity);
+  -moz-box-shadow: $horizontal-length $vertical-length $blur-radius $spread-radius rgba($r,$g,$b,$opacity);
+  box-shadow: $horizontal-length $vertical-length $blur-radius $spread-radius rgba($r,$g,$b,$opacity);
+}
+
 *,
 *:before,
 *:after {
@@ -21,13 +39,35 @@ html, body {
 
 body, #site-wrapper {
   position: relative;
+  font-size: $base-font-size;
 }
 
 #site-wrapper {
-  display: none;
+  width: 100%;
+}
+
+.content-container {
+  margin: 0 auto;
+  width: 960px;
+  @media only screen and (min-width: 1600px) {
+    width: 1520px;
+  }
+  @media only screen and (min-width: 1200px) and (max-width: 1599px) {
+    width: 1120px;
+  }
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 708px;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    width: 450px;
+  }
+  @media only screen and (max-width: 499px) {
+    width: 300px;
+  }
 }
 
 .content-wrapper{
+  padding-top: 20px;
   margin-bottom: 6vh;
   position: relative;
   .columns {
@@ -45,7 +85,6 @@ body, #site-wrapper {
       }
       h1 {
         text-transform: uppercase;
-        @include font-size (1);
         cursor: pointer;
       }
     }
@@ -57,7 +96,7 @@ body, #site-wrapper {
 .main-section {
   width: 100%;
   &:nth-of-type(2n+1) {
-    background: #000;
+    background: $black;
     color: #fff;
   }
 }
@@ -90,4 +129,19 @@ a {
   padding-top: 3em;
   display: block;
   margin: 0 auto;
+}
+
+a {
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+/* SCSS FOR PAGES WITH BLACK BACKGROUNDS */
+
+.black-bg {
+  background: $black;
+  color: $white;
+}
+
+.black-bg h1 {
+  border-bottom: 1px $white solid;
 }

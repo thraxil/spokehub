@@ -33,6 +33,12 @@ urlpatterns = patterns(
 
     (r'^contact/$', TemplateView.as_view(template_name='contact/index.html')),
 
+    (r'^how/$', TemplateView.as_view(template_name='how/index.html')),
+
+    (r'^now/$', TemplateView.as_view(template_name='now/index.html')),
+
+    (r'^profilecompletion/$', TemplateView.as_view(template_name='profile-completion.html')),
+
     (r'^conversation/(?P<pk>\d+)/reply/$',
      views.ReplyToConversationView.as_view()),
 

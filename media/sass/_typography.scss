@@ -3,36 +3,47 @@
   font-family: "dinlight";
   src: url("fonts/DINWeb-Light.eot");
   src: url("fonts/DINWeb-Light.woff") format("woff"); }
-  @font-face {
+@font-face {
   font-family: "dinmed";
   src: url("fonts/DINWeb-Medium.eot");
   src: url("fonts/DINWeb-Medium.woff") format("woff"); }
+
+@font-face {
+  font-family: 'din_alternatebold';
+  src: url('fonts/din_alternate_bold-webfont.eot');
+  src: url('fonts/din_alternate_bold-webfont.eot?#iefix') format('embedded-opentype'),
+       url('fonts/din_alternate_bold-webfont.woff2') format('woff2'),
+       url('fonts/din_alternate_bold-webfont.woff') format('woff'),
+       url('fonts/din_alternate_bold-webfont.ttf') format('truetype'),
+       url('fonts/din_alternate_bold-webfont.svg#din_alternatebold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
 
 // Variables
 $base-font: 'dinlight', Helvetica, sans-serif;
 $header-font: 'dinmed', Helvetica, sans-serif;
 $base-line-height: 1.5;
-$base-font-size: 13px;
+$base-font-size: 14px;
 
 /* Media Query calcs */
 
- html {
+/* html {
     font-size: \$base-font-size;
 
     @include media(\$medium) { font-size: 14px; }
 
     @include media(\$xlarge) { font-size: 16px; }
-}
+}*/
 
 
 /******************************************************************************\
   Font calculation mixins
 \******************************************************************************/
 
-// Font size mixin for REM output with PX fallback
+// Font size mixin for PX output
 @mixin font-size($size) {
-    font-size: $size * $base-font-size;
-    font-size: #{$size}rem;
+    font-size: #{$size}px;
 }
 
 // Top margin mixin for REM output with PX fallback
@@ -52,6 +63,7 @@ body {
   font-family: $base-font;
   line-height: $base-line-height;
   font-weight: 400;
+  letter-spacing: 1px;
 }
 
 em, i {
@@ -99,23 +111,19 @@ h6 {
 
 h1,
 .h1 {
-    @include font-size(2.5);
-
-    @include media($medium) { @include font-size(3); }
+    @include font-size(30);
+    padding-bottom: 20px;
+    border-bottom: 1px #262222 solid;
 }
 
 h2,
 .h2 {
-    @include font-size(1.8);
-
-    @include media($medium) { @include font-size(2); }
+    @include font-size(24);
 }
 
 h3,
 .h3 {
-    @include font-size(1.1);
-
-    @include media($medium) { @include font-size(1.2); }
+    @include font-size(18);
 }
 
 h4,

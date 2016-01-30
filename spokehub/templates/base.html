@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8" />
-	<title>spokehub: {% block title %}{% endblock %}</title>
+	<title>Spokehub: {% block title %}{% endblock %}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="spokehub">
   <meta name="author" content="spokehub">
@@ -29,6 +29,19 @@
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
 
+<header>
+	<div id="header-wrapper" class="content-container">
+		<a href="/" id="spokehub-logo"><img src="{{STATIC_URL}}img/spokehub-web-logo.png"></a>
+	  	<nav>
+	    	<a href="/how">HOW</a>
+	    	<a href="/we">WE</a>
+	    	<a href="/work">WORK</a>
+	    	<a href="/now">NOW</a>
+	  	</nav>
+		<a href="#" id="login-link">Login</a>
+	</div>
+</header>
+
 {% flag "main" %}
 {% else %}
 {% comment %} placeholder mode {% endcomment %}
@@ -41,26 +54,26 @@
 {% block footer %}
 {% flag main %}
 <footer>
-	<div class="footer-wrapper">
+	<div class="footer-wrapper content-container">
 			<ul>
-				<li><a onClick="$('#about-button').toggle(333);" href="#">about</a></li>
-				<li><a href="mailto:info@spokehub.com"><i class="mdi mdi-email"></i></a></li>
-				<li><a href="https://twitter.com/spokehubnow"><i class="mdi mdi-twitter"></i></a></li>
-				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"><i class="mdi mdi-facebook"></i></a></li>
+				<li><a href="https://www.linkedin.com/company/spokehub-ltd-"target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
+				<li><a href="https://twitter.com/spokehubnow"target="_blank"><i class="mdi mdi-twitter"></i></a></li>
+				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"target="_blank"><i class="mdi mdi-facebook-box"></i></a></li>
+				<li><a href="https://www.instagram.com/spokehubnow/"target="_blank"><i class="mdi mdi-instagram"></i></a></li>
 			</ul>
-		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
+		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved | <a href="#" class="blog-link">Blog</a></span>
 	</div>
 </footer>
 {% else %}
 <footer>
 	<div class="footer-wrapper">
 			<ul>
-				<li><a onClick="$('#about-button').toggle(333);" href="#">about</a></li>
-				<li><a href="mailto:info@spokehub.com"><i class="mdi mdi-email"></i></a></li>
-				<li><a href="https://twitter.com/spokehubnow"><i class="mdi mdi-twitter"></i></a></li>
-				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"><i class="mdi mdi-facebook"></i></a></li>
+				<li><a href="https://www.linkedin.com/company/spokehub-ltd-"target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
+				<li><a href="https://twitter.com/spokehubnow"target="_blank"><i class="mdi mdi-twitter"></i></a></li>
+				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"target="_blank"><i class="mdi mdi-facebook-box"></i></a></li>
+				<li><a href="https://www.instagram.com/spokehubnow/"target="_blank"><i class="mdi mdi-instagram"></i></a></li>
 			</ul>
-		<span class="copyright">&copy; copyright SPOKEHUB <span id="copyright-year"></span> all rights reserved.</span>
+		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved | <a href="#" class="blog-link">Blog</a></span>
 	</div>
 </footer>
 {% endflag %}
