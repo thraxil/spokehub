@@ -29,12 +29,13 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 STATSD_PATCHES = ['django_statsd.patches.db', ]
-if 'migrate' not in sys.argv:
-    INSTALLED_APPS = INSTALLED_APPS + [
-        'raven.contrib.django.raven_compat',
-    ]
 
 TWITTER_USER = 'spokehubNOW'
+
+INSTALLED_APPS += [
+    'opbeat.contrib.django',
+]
+MIDDLEWARE_CLASSES.insert(0, 'opbeat.contrib.django.middleware.OpbeatAPMMiddleware')
 
 try:
     from local_settings import *

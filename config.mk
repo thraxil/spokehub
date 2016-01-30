@@ -12,7 +12,7 @@ VIRTUALENV ?= virtualenv.py
 SUPPORT_DIR ?= requirements/virtualenv_support/
 WHEELHOUSE ?= wheelhouse
 
-JS_FILES ?= media/js/
+JS_FILES ?= media/js/src/
 
 ifeq ($(TAG), undefined)
 	IMAGE ?= $(REPO)/$(APP)
