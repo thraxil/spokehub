@@ -1,1 +1,29 @@
+.now-post img {
+	width: 100%;
+	height: auto;
+}
 
+.now-post p {
+	margin-bottom: 0.5em;
+}
+
+.now-post {
+	font-family: $header-font;
+	margin-bottom: 50px;
+}
+
+.now-post-text {
+	font-family: $base-font;
+	font-size: 18px;
+}
+
+ul.now-posts {
+    -moz-column-count: 4;
+    -moz-column-gap: 25px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 25px;
+    column-count: 4;
+    column-gap: 25px;
+    list-style-type: none;
+    padding: 0;
+}

@@ -6,36 +6,32 @@
 		<div class="content-wrapper content-container">
 			<h1>NOW</h1>
 
-			{% for nowpost in now_posts %}
+				<ul class="now-posts">
 
-			<div class="now-post">
+					{% for nowpost in now_posts %}
 
-				<dl>
-					<dt>screen name</dt>
-					<dd>{{nowpost.screen_name}}</dd>
+					<li class="now-post">
 
-					<dt>created</dt>
-					<dd>{{nowpost.created}}</dd>
+						<p><a href="{{nowpost.external_link}}">{{nowpost.created}}</a></p>
 
-					<dt>service</dt>
-					<dd><a href="{{nowpost.external_link}}">{{nowpost.service}}</a></dd>
+						<p class="now-post-text">{{nowpost.text}}</p>
 
-					<dt>text</dt>
-					<dd>{{nowpost.text}}</dd>
-				</dl>
+						{% if nowpost.image_url %}
+						<img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
+								 height="{{nowpost.image_height}}" />
+						{% endif %}
 
-					{% if nowpost.image_url %}
-					<img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
-							 height="{{nowpost.image_height}}" />
-					{% endif %}
+						{% if nowpost.video_url %}
+						<video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
+						{% endif %}
 
-					{% if nowpost.video_url %}
-					<video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
-					{% endif %}
+						<p>{{nowpost.screen_name}}</p>
 
-			</div>
+					</li>
 
-			{% endfor %}
+					{% endfor %}
+				
+				</ul>
 
 		</div>
 	</div>
