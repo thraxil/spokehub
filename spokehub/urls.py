@@ -14,6 +14,8 @@ urlpatterns = patterns(
     (r'^accounts/', include('userena.urls')),
     (r'^$', views.IndexView.as_view()),
 
+    (r'^about/$', TemplateView.as_view(template_name="about.html")),
+
     url(r'^conversation/$', views.ConversationIndexView.as_view(), {},
         'conversation-index'),
     url((r'^conversation/(?P<year>\d+)/'
@@ -27,20 +29,20 @@ urlpatterns = patterns(
      views.ConversationDeleteView.as_view()),
     (r'^conversation/add/$', views.ConversationCreateView.as_view()),
 
-    (r'^network/$', TemplateView.as_view(template_name='network/index.html')),
+    (r'^network/$', views.IndexView.as_view(
+        template_name='network/index.html')),
+    (r'^contact/$', views.IndexView.as_view(
+        template_name='contact/index.html')),
+    (r'^how/$', views.IndexView.as_view(template_name='how/index.html')),
+    (r'^now/$', views.IndexView.as_view(template_name='now/index.html')),
 
-    (r'^contact/$', TemplateView.as_view(template_name='contact/index.html')),
-
-    (r'^how/$', TemplateView.as_view(template_name='how/index.html')),
-
-    (r'^work/$', TemplateView.as_view(template_name='work/index.html')),
-
-    (r'^now/$', TemplateView.as_view(template_name='now/index.html')),
-
-    (r'^profilecompletion/$', TemplateView.as_view(template_name='profile-completion.html')),
+    (r'^profilecompletion/$',
+     TemplateView.as_view(template_name='profile-completion.html')),
 
     (r'^conversation/(?P<pk>\d+)/reply/$',
      views.ReplyToConversationView.as_view()),
+
+    (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
     (r'^invite/', include('spokehub.invite.urls')),
     (r'^admin/', include(admin.site.urls)),
