@@ -35,6 +35,7 @@ urlpatterns = patterns(
         template_name='contact/index.html')),
     (r'^how/$', views.IndexView.as_view(template_name='how/index.html')),
     (r'^now/$', views.IndexView.as_view(template_name='now/index.html')),
+    (r'^work/$', views.IndexView.as_view(template_name='work/index.html')),
 
     (r'^profilecompletion/$',
      TemplateView.as_view(template_name='profile-completion.html')),
