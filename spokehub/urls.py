@@ -14,8 +14,6 @@ urlpatterns = patterns(
     (r'^accounts/', include('userena.urls')),
     (r'^$', views.IndexView.as_view()),
 
-    (r'^about/$', TemplateView.as_view(template_name="about.html")),
-
     url(r'^conversation/$', views.ConversationIndexView.as_view(), {},
         'conversation-index'),
     url((r'^conversation/(?P<year>\d+)/'
@@ -35,14 +33,14 @@ urlpatterns = patterns(
 
     (r'^how/$', TemplateView.as_view(template_name='how/index.html')),
 
+    (r'^work/$', TemplateView.as_view(template_name='work/index.html')),
+
     (r'^now/$', TemplateView.as_view(template_name='now/index.html')),
 
     (r'^profilecompletion/$', TemplateView.as_view(template_name='profile-completion.html')),
 
     (r'^conversation/(?P<pk>\d+)/reply/$',
      views.ReplyToConversationView.as_view()),
-
-    (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
     (r'^invite/', include('spokehub.invite.urls')),
     (r'^admin/', include(admin.site.urls)),

@@ -10,3 +10,4 @@ node_modules
 media/components
 .DS_Store
 wheelhouse
+spokehub/lib

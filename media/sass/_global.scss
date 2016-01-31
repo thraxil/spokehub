@@ -46,6 +46,14 @@ body, #site-wrapper {
   width: 100%;
 }
 
+#site-wrapper a {
+  color: $cyan;
+}
+
+#site-wrapper a:hover {
+  color: $black;
+}
+
 .content-container {
   margin: 0 auto;
   width: 960px;
@@ -67,8 +75,8 @@ body, #site-wrapper {
 }
 
 .content-wrapper{
-  padding-top: 20px;
-  margin-bottom: 6vh;
+  padding: 20px 0;
+  margin-bottom: 0;
   position: relative;
   .columns {
     @extend .flex;
@@ -142,6 +150,10 @@ a {
   color: $white;
 }
 
-.black-bg h1 {
+#site-wrapper.black-bg h1 {
   border-bottom: 1px $white solid;
+}
+
+#site-wrapper.black-bg a:hover {
+  color: $white;
 }

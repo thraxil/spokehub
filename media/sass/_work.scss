@@ -1,0 +1,21 @@
+#work-nav {
+	width: 100%;
+	border-bottom: 1px $white solid;
+	text-transform: uppercase;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 20.1px;
+    padding-bottom: 15px;
+    font-family: $header-font;
+    padding-bottom: 20px;
+}
+
+.project-writeup {
+    padding-top: 30px;
+}

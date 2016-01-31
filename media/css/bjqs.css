@@ -1,0 +1,79 @@
+/* Basic jQuery Slider essential styles */
+
+ul.bjqs{position:relative; list-style:none;padding:0;margin:0;overflow:hidden; display:none;}
+li.bjqs-slide{position:absolute; display:none;}
+ul.bjqs-controls{list-style:none;margin:0;padding:0;z-index:9999;}
+ul.bjqs-controls.v-centered li a{position:absolute;}
+ul.bjqs-controls.v-centered li.bjqs-next a{right:0;}
+ul.bjqs-controls.v-centered li.bjqs-prev a{left:0;}
+ol.bjqs-markers{list-style: none; padding: 0; margin: 0; width:100%;}
+ol.bjqs-markers.h-centered{text-align: center;}
+ol.bjqs-markers li{display:inline;}
+ol.bjqs-markers li a{display:inline-block;}
+p.bjqs-caption{display:block;width:96%;margin:0;padding:2%;position:absolute;bottom:0;}
+
+
+pre{
+	display: block;
+	padding: 9.5px;
+	margin: 0 0 10px;
+	font-size: 13px;
+	line-height: 20px;
+	word-break: break-all;
+	word-wrap: break-word;
+	white-space: pre;
+	white-space: pre-wrap;
+	background-color: whiteSmoke;
+	border: 1px solid #CCC;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+pre + h2{
+	margin-top: 80px;
+}
+
+#bjqs-container{
+	max-width:960px;
+	margin:0 auto;
+	padding-bottom:80px;
+}
+
+#banner-fade,
+#banner-slide{
+	margin-bottom: 60px;
+	margin: 0 auto;
+	margin-top: 30px;
+}
+
+#site-wrapper ul.bjqs-controls.v-centered li a{
+	display:block;
+	padding:10px;
+	background:#fff;
+	color:#000;
+	text-decoration: none;
+	font-size: 30px;
+}
+
+#site-wrapper ul.bjqs-controls.v-centered li a:hover{
+	background:#262222;
+	color:#fff;
+}
+
+#site-wrapper ol.bjqs-markers li a{
+	padding:5px 10px;
+	background:#fff;
+	color:#000;
+	margin:5px;
+	text-decoration: none;
+}
+
+#site-wrapper ol.bjqs-markers li.active-marker a,
+#site-wrapper ol.bjqs-markers li a:hover{
+	background: #a6a6a6;
+}
+
+p.bjqs-caption{
+	background: rgba(255,255,255,0.5);
+}
