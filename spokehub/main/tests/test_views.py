@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.test.client import Client
 from django.test.utils import override_settings
+from unittest import skip
 from waffle.models import Flag
 from .factories import (UserFactory, ConversationFactory)
 
@@ -51,6 +52,7 @@ class LoggedInTest(TestCase):
         self.assertEqual(r.status_code, 200)
         self.assertTrue('foo' in r.content)
 
+    @skip("skip until work is put into conversations again")
     def test_reploy_to_conversation(self):
         Flag.objects.create(name="main", everyone=True)
         i = ConversationFactory()
