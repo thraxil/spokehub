@@ -50,7 +50,6 @@ def my_tweets():
 
     for t in api.user_timeline(USER):
         print("@" + t.user.screen_name)
-        print(t.text)
         add_tweet(t)
 
 
@@ -68,5 +67,4 @@ def hashtag_search():
     max_tweets = 20
     for t in tweepy.Cursor(api.search, q=search_text).items(max_tweets):
         print("@" + t.user.screen_name)
-        print(t.text)
         add_tweet(t)
