@@ -84,13 +84,23 @@ body, #site-wrapper {
 }
 
 .page-heading {
+  border-bottom: 1px $black solid;
   margin-bottom: 30px;
-  @media only screen and (min-width: 768px) {
+  span {
+    font-size: 18px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-right: 4px;
+  }
+  h2 {
+    margin-top: 0;
+  }
+  /*@media only screen and (min-width: 768px) {
     display: none;
   }
   @media only screen and (max-width: 767px) {
     display: block;
-  }
+  }*/
 }
 
 input[type=text] {
@@ -182,6 +192,10 @@ a {
     transition: background 0.3s ease 0s, color 0.3s ease 0s;
 }
 
+.clearfix {
+  overflow: auto;
+}
+
 /* SCSS FOR PAGES WITH BLACK BACKGROUNDS */
 
 .black-bg {
@@ -197,6 +211,6 @@ a {
   color: $white;
 }
 
-.clearfix {
-  overflow: auto;
+#site-wrapper.black-bg .page-heading {
+  border-bottom: 1px $white solid;
 }

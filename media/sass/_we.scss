@@ -12,12 +12,12 @@
 	border: 1px $black solid;
 }
 
-.we p,
-.we span {
+.we .grid-item p,
+.we .grid-item span {
 	font-family: $header-font;
 }
 
-.we span {
+.we .grid-item span {
 	margin-right: 20px;
 }
 

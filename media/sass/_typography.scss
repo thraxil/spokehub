@@ -112,8 +112,6 @@ h6 {
 h1,
 .h1 {
     @include font-size(24);
-    padding-bottom: 20px;
-    border-bottom: 1px #000 solid;
 }
 
 h2,

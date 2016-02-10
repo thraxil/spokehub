@@ -11,34 +11,37 @@
 <div id="site-wrapper">
 	<div class="content-wrapper content-container">
 
-    <h1>NOW</h1>
+    <div class="page-heading">
+      <span><h2>NOW</h2></span>
+      <span>on social media {#spokehubnow}</span>
+    </div>
 
-      <ul class="now-posts">
+    <ul class="now-posts">
 
-        {% for nowpost in now_posts %}
+      {% for nowpost in now_posts %}
 
-        <li class="now-post">
+      <li class="now-post">
 
-          {% if nowpost.image_url %}
-          <img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
-               height="{{nowpost.image_height}}" />
-          {% endif %}
+        {% if nowpost.image_url %}
+        <img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
+             height="{{nowpost.image_height}}" />
+        {% endif %}
 
-          {% if nowpost.video_url %}
-          <video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
-          {% endif %}
+        {% if nowpost.video_url %}
+        <video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
+        {% endif %}
 
-          <p>{{nowpost.screen_name}}</p>
+        <p>{{nowpost.screen_name}}</p>
 
-          <p><a href="{{nowpost.external_link}}">{{nowpost.created}}</a></p>
+        <p><a href="{{nowpost.external_link}}">{{nowpost.created}}</a></p>
 
-          <p class="now-post-text">{{nowpost.text}}</p>
+        <p class="now-post-text">{{nowpost.text}}</p>
 
-        </li>
+      </li>
 
-        {% endfor %}
+      {% endfor %}
 
-      </ul>
+    </ul>
 
 	</div>
 </div>
