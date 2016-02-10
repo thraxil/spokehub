@@ -33,19 +33,32 @@ urlpatterns = patterns(
         template_name='network/index.html')),
     (r'^contact/$', views.IndexView.as_view(
         template_name='contact/index.html')),
-    (r'^how/$', views.IndexView.as_view(template_name='how/index.html')),
-    (r'^we/$', views.IndexView.as_view(template_name='we/index.html')),
-    (r'^we/question/$', views.IndexView.as_view(template_name='we/question.html')),
-    (r'^work/$', views.IndexView.as_view(template_name='work/index.html')),
-    (r'^work/maddie/$', views.IndexView.as_view(template_name='work/maddie/index.html')),
-    (r'^work/havana/$', views.IndexView.as_view(template_name='work/havana/index.html')),
-    (r'^work/fightclub/$', views.IndexView.as_view(template_name='work/fightclub/index.html')),
-    (r'^work/sperry/$', views.IndexView.as_view(template_name='work/sperry/index.html')),
-    (r'^work/supper/$', views.IndexView.as_view(template_name='work/supper/index.html')),
-    (r'^work/artsho5/$', views.IndexView.as_view(template_name='work/artsho5/index.html')),
-    (r'^work/sorry/$', views.IndexView.as_view(template_name='work/sorry/index.html')),
-    (r'^work/bca/$', views.IndexView.as_view(template_name='work/bca/index.html')),
-    (r'^now/$', views.IndexView.as_view(template_name='now/index.html')),
+    (r'^how/$', views.IndexView.as_view(
+        template_name='how/index.html')),
+    (r'^we/$', views.IndexView.as_view(
+        template_name='we/index.html')),
+    (r'^we/question/$', views.IndexView.as_view(
+        template_name='we/question.html')),
+    (r'^work/$', views.IndexView.as_view(
+        template_name='work/index.html')),
+    (r'^work/maddie/$', views.IndexView.as_view(
+        template_name='work/maddie/index.html')),
+    (r'^work/havana/$', views.IndexView.as_view(
+        template_name='work/havana/index.html')),
+    (r'^work/fightclub/$', views.IndexView.as_view(
+        template_name='work/fightclub/index.html')),
+    (r'^work/sperry/$', views.IndexView.as_view(
+        template_name='work/sperry/index.html')),
+    (r'^work/supper/$', views.IndexView.as_view(
+        template_name='work/supper/index.html')),
+    (r'^work/artsho5/$', views.IndexView.as_view(
+        template_name='work/artsho5/index.html')),
+    (r'^work/sorry/$', views.IndexView.as_view(
+        template_name='work/sorry/index.html')),
+    (r'^work/bca/$', views.IndexView.as_view(
+        template_name='work/bca/index.html')),
+    (r'^now/$', views.IndexView.as_view(
+        template_name='now/index.html')),
 
     (r'^profilecompletion/$',
      TemplateView.as_view(template_name='profile-completion.html')),
