@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="{{STATIC_URL}}css/bjqs.css">
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="{{STATIC_URL}}js/libs/bjqs-1.3.js"></script>
+<script src="{{STATIC_URL}}components/masonry/dist/masonry.pkgd.min.js"></script>
 
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
@@ -35,11 +36,11 @@
 <header>
 	<div id="header-wrapper" class="content-container">
 		<a href="/" id="spokehub-logo"><img src="{{STATIC_URL}}img/spokehub-web-logo.png"></a>
-	  	<nav>
-	    	<a href="/how">HOW</a>
-	    	<a href="/we">WE</a>
-	    	<a href="/work">WORK</a>
-	    	<a href="/now">NOW</a>
+	  	<nav class="desktop-nav">
+	    	<a class="how" href="/how">HOW</a>
+	    	<a class="we" href="/we">WE</a>
+	    	<a class="work" href="/work">WORK</a>
+	    	<a class="now" href="/now">NOW</a>
 	  	</nav>
 		<a href="#" id="login-link">Login</a>
 	</div>
@@ -53,33 +54,19 @@
 {% block pagetitle %}{% endblock %}
 {% block content %}{% endblock %}
 
-
 {% block footer %}
-{% flag main %}
 <footer>
 	<div class="footer-wrapper content-container">
-			<ul>
-				<li><a href="https://www.linkedin.com/company/spokehub-ltd-"target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
-				<li><a href="https://twitter.com/spokehubnow"target="_blank"><i class="mdi mdi-twitter"></i></a></li>
-				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"target="_blank"><i class="mdi mdi-facebook-box"></i></a></li>
-				<li><a href="https://www.instagram.com/spokehubnow/"target="_blank"><i class="mdi mdi-instagram"></i></a></li>
-			</ul>
-		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved | <a href="#" class="blog-link">Blog</a></span>
+		<ul>
+			<li><a href="https://www.linkedin.com/company/spokehub-ltd-"target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
+			<li><a href="https://twitter.com/spokehubnow"target="_blank"><i class="mdi mdi-twitter"></i></a></li>
+			<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"target="_blank"><i class="mdi mdi-facebook-box"></i></a></li>
+			<li><a href="https://www.instagram.com/spokehubnow/"target="_blank"><i class="mdi mdi-instagram"></i></a></li>
+			<li><a href="http://spokehub.tumblr.com/"target="_blank"><i class="mdi mdi-tumblr"></i></a></li>
+		</ul>
+		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved</span>
 	</div>
 </footer>
-{% else %}
-<footer>
-	<div class="footer-wrapper">
-			<ul>
-				<li><a href="https://www.linkedin.com/company/spokehub-ltd-"target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
-				<li><a href="https://twitter.com/spokehubnow"target="_blank"><i class="mdi mdi-twitter"></i></a></li>
-				<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"target="_blank"><i class="mdi mdi-facebook-box"></i></a></li>
-				<li><a href="https://www.instagram.com/spokehubnow/"target="_blank"><i class="mdi mdi-instagram"></i></a></li>
-			</ul>
-		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> all rights reserved | <a href="#" class="blog-link">Blog</a></span>
-	</div>
-</footer>
-{% endflag %}
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>

@@ -3,7 +3,7 @@
 $yellow: #fff200;
 $cyan: #00ffff;
 $magenta: #ec008c;
-$black: #262222;
+$black: #000;
 $white: #fff;
 $dark-gray: #464646;
 $light-gray: #a6a6a6;
@@ -44,6 +44,15 @@ body, #site-wrapper {
 
 #site-wrapper {
   width: 100%;
+  padding-top: 50px;
+  min-height: 100%;
+  /*margin-bottom: -50px;*/
+}
+
+#site-wrapper:after {
+  content: "";
+  display:block;
+  height: 50px;
 }
 
 #site-wrapper a {
@@ -74,10 +83,40 @@ body, #site-wrapper {
   }
 }
 
+.page-heading {
+  margin-bottom: 30px;
+  @media only screen and (min-width: 768px) {
+    display: none;
+  }
+  @media only screen and (max-width: 767px) {
+    display: block;
+  }
+}
+
+input[type=text] {
+  border: 1px $black solid;
+  padding: 10px;
+  font-family: $header-font;
+}
+
+input[type=submit] {
+  padding: 10px;
+  background: $black;
+  color: $white;
+  border: 1px $black solid;
+}
+
+textarea {
+  border: 1px $black solid;
+  padding: 10px;
+  font-family: $header-font;
+}
+
 .content-wrapper{
-  padding: 20px 0;
+  padding: 50px 0 20px 0;
   margin-bottom: 0;
   position: relative;
+  /*overflow: auto;*/
   .columns {
     @extend .flex;
     width: 100%;
@@ -156,4 +195,8 @@ a {
 
 #site-wrapper.black-bg a:hover {
   color: $white;
+}
+
+.clearfix {
+  overflow: auto;
 }

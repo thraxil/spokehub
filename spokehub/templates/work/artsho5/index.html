@@ -1,0 +1,56 @@
+<div class="work">
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="site-wrapper" class="black-bg"> 
+		<div class="content-wrapper content-container">
+			<div id="work-nav">
+				<a href="../supper"><i class="mdi mdi-arrow-left"></i> Previous</a>
+				<a href=".."><i class="mdi mdi-view-dashboard"></i> View All</a>
+				<a href="../maddie">Next <i class="mdi mdi-arrow-right"></i></a>
+			</div>
+
+	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <div id="banner-fade">
+
+	        <!-- start Basic Jquery Slider -->
+	        <ul class="bjqs">
+	          <li><img src="{{STATIC_URL}}img/artsho5/01_ARTSHO5_EXPERIMENT.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/artsho5/02_ARTSHO5_EXPERIMENT.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/artsho5/03_ARTSHO5_EXPERIMENT.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/artsho5/04_ARTSHO5_EXPERIMENT.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/artsho5/05_ARTSHO5_EXPERIMENT.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/artsho5/06_ARTSHO5_EXPERIMENT.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/artsho5/07_ARTSHO5_EXPERIMENT.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/artsho5/08_ARTSHO5_EXPERIMENT.jpg"></li>
+	        </ul>
+	        <!-- end Basic jQuery Slider -->
+
+	      </div>
+	      <!-- End outer wrapper -->
+
+	      <script class="secret-source">
+	        jQuery(document).ready(function($) {
+
+	          $('#banner-fade').bjqs({
+	            height      : 612,
+	            width       : 865,
+	            responsive  : true
+	          });
+
+	        });
+	      </script>
+
+      	<div class="project-writeup">
+			<h2>ARTSHO5 - Exhibition</h2>
+			<p class="project-date">November 2014</p>
+			<p><a href="#">Gaspar Bonta</a> / <a href="#">Tim Boyce</a> / <a href="#">Kwame Charles</a> / <a href="#">Winston Chmielinski</a> / <a href="#">Carleen Coulter</a> / <a href="#">Dolly Demoratti</a> / <a href="#">Catherine Greig</a> / <a href="#">Tom Horak</a> / <a href="#">Valencia James</a> / <a href="#">Seyhan Musaoglu</a> / <a href="#">Anders Pearson</a> / <a href="#">James Pendergrast</a> / <a href="#">Valerie Schmidt</a> / <a href="#">Onika Simon</a> / <a href="#">An Paenhuysen</a> / <a href="#">Saleem Reshamwala</a> / <a href="#">Richard Watkins</a></p>
+			<p>The 5th annual ARTSHO exhibition on the subject of experimentation, a process both artists and scientists share. The team included 8 international artists and an architect, who worked together to convert a derelict space into a makeshift art lab, in under 3 days. The aim of the event itself was to produce 8 interactive artworks with the public in real time. Social media posts with the hashtag #ARTSHO5 were streamed into the lab 24/7 and a 9th project involved transatlantic collaboration between Istanbul, Turkey and Durham, USA.</p>
+		</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+</div>

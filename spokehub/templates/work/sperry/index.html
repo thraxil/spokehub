@@ -1,0 +1,55 @@
+<div class="work">
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="site-wrapper" class="black-bg"> 
+		<div class="content-wrapper content-container">
+			<div id="work-nav">
+				<a href="../fightclub"><i class="mdi mdi-arrow-left"></i> Previous</a>
+				<a href=".."><i class="mdi mdi-view-dashboard"></i> View All</a>
+				<a href="../supper">Next <i class="mdi mdi-arrow-right"></i></a>
+			</div>
+
+	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <div id="banner-fade">
+
+	        <!-- start Basic Jquery Slider -->
+	        <ul class="bjqs">
+	          <li><img src="{{STATIC_URL}}img/sperry/01_SPERRY_IMG_7708.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sperry/02_SPERRY_IMG_2200.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sperry/03_SPERRY_IMG_8001.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sperry/04_SPERRY_IMG_8048.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sperry/05_SPERRY_IMG_2286.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sperry/06_SPERRY_IMG_2293.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sperry/07_SPERRY_IMG_0506.jpg"></li>
+	        </ul>
+	        <!-- end Basic jQuery Slider -->
+
+	      </div>
+	      <!-- End outer wrapper -->
+
+	      <script class="secret-source">
+	        jQuery(document).ready(function($) {
+
+	          $('#banner-fade').bjqs({
+	            height      : 649,
+	            width       : 865,
+	            responsive  : true
+	          });
+
+	        });
+	      </script>
+
+      	<div class="project-writeup">
+			<h2>Sperry Odyssey</h2>
+			<p class="project-date">May 2015</p>
+			<p>Kwame Charles / Carleen Coulter / Onika Simon</p>
+			<p>A week-long intrepid adventure around Cuba, to explore the meaning and importance of water in a Communist Caribbean time capsule.</p>
+		</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+</div>

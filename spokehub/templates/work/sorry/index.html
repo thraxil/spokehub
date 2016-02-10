@@ -1,0 +1,55 @@
+<div class="work">
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="site-wrapper" class="black-bg"> 
+		<div class="content-wrapper content-container">
+			<div id="work-nav">
+				<a href="../maddie"><i class="mdi mdi-arrow-left"></i> Previous</a>
+				<a href=".."><i class="mdi mdi-view-dashboard"></i> View All</a>
+				<a href="../bca">Next <i class="mdi mdi-arrow-right"></i></a>
+			</div>
+
+	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <div id="banner-fade">
+
+	        <!-- start Basic Jquery Slider -->
+	        <ul class="bjqs">
+	          <li><img src="{{STATIC_URL}}img/sorry/01_INVITE_image.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sorry/02_Sorry_for_laughing_133.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sorry/03_Sorry_for_laughing_004.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sorry/04_Sorry_for_laughing_033.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sorry/05_Sorry_for_laughing_013.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sorry/06_Sorry_for_laughing_045.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/sorry/07_Sorry_for_laughing_085.jpg"></li>
+	        </ul>
+	        <!-- end Basic jQuery Slider -->
+
+	      </div>
+	      <!-- End outer wrapper -->
+
+	      <script class="secret-source">
+	        jQuery(document).ready(function($) {
+
+	          $('#banner-fade').bjqs({
+	            height      : 577,
+	            width       : 865,
+	            responsive  : true
+	          });
+
+	        });
+	      </script>
+
+      	<div class="project-writeup">
+			<h2>Sorry For Laughing - Exhibition</h2>
+			<p class="project-date">August 2014</p>
+			<p>Raphael Abrams / Ditte Lyngkaer-Pedersen / Patrick Krawczykowski / Jana Nowack / Valerie Schmidt / Onika Simon</p>
+			<p>The first installment of a curatorial conversation between contemporary art works and design objects. In this exchange art looks at the shape of society and irritates its boundaries, whereas design takes the functionality of objects in service to society and stretches their limitations. This exhibition featured a photographic series based on an original portrait of friends laughing in Japan in 1956 - juxtaposed with a "twitchie" robot designed to trigger laughter instantaneously.</p>
+		</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+</div>

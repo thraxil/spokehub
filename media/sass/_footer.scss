@@ -1,12 +1,16 @@
 footer {
   width: 100%;
   height: 46px;
-  background: #262222;
+  background: $black;
   /*position: fixed;*/
   bottom: 0;
   color: #fff;
   @media only screen and (max-width: 767px) {
     height: 80px;
+    text-align: center;
+  }
+  @media only screen and (max-width: 499px) {
+    height: 98px;
   }
 }
 .footer-wrapper {
@@ -30,6 +34,9 @@ footer {
     margin-right: auto;
     @media only screen and (max-width: 767px) {
       float: none;
+      margin-top: 0;
+      padding-top: 15px;
+      margin-bottom: 10px;
     }
 
     li{
@@ -53,9 +60,10 @@ footer {
       padding-right: 0;
       padding-top: 0;
       margin: 0 auto;
-      padding-left: 25px;
       float: none;
-      padding-top: 0;
+    }
+    @media only screen and (max-width: 499px) {
+      line-height: 20px;
     }
   }
   .blog-link {

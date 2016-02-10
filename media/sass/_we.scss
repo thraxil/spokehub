@@ -4,7 +4,98 @@
   .coming-soon {
     width: 100%;
   }
-  p {
-    text-align: center;
-  }
+}
+
+.grid-item { 
+	width: 530px; 
+	padding: 5px 20px 15px 20px;
+	border: 1px $black solid;
+}
+
+.we p,
+.we span {
+	font-family: $header-font;
+}
+
+.we span {
+	margin-right: 20px;
+}
+
+.grid-sizer {
+	width: 45%;
+}
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.we #site-wrapper .grid-item h3 a {
+	color: $black;
+}
+
+.we .grid-item p,
+.convo-response p {
+	margin-bottom: 0px;
+}
+
+.upload-enter {
+	margin-bottom: 20px;
+}
+
+.conversation {
+	width: 768px;
+	margin: 0 auto;
+	.grid-item {
+		width: 100%;
+		margin-bottom: 30px;
+	}
+}
+
+.we .select-file {
+	width: 665px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+textarea.convo-question {
+	width: 100%;
+	height: 120px;
+	margin-bottom: 20px;
+}
+
+input.convo-submit {
+	width: 100%;
+	margin-bottom: 30px;
+}
+
+.convo-responses {
+	border-bottom: 1px $black solid;
+	padding-bottom: 20px;
+}
+
+.convo-response {
+	border: 1px $black solid;
+	width: 100%; 
+	padding: 20px 20px 20px 20px;
+	margin-bottom: 20px;
+}
+
+.convo-response img {
+	width: 80%;
+	margin: 20px auto;
+}
+
+.response-vid {
+	margin: 20px auto;
+}
+
+.media-center {
+	text-align: center;
+}
+
+#chars-left {
+	margin-bottom: 20px;
 }

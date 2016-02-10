@@ -111,14 +111,14 @@ h6 {
 
 h1,
 .h1 {
-    @include font-size(30);
+    @include font-size(24);
     padding-bottom: 20px;
-    border-bottom: 1px #262222 solid;
+    border-bottom: 1px #000 solid;
 }
 
 h2,
 .h2 {
-    @include font-size(24);
+    @include font-size(18);
 }
 
 h3,

@@ -1,114 +1,48 @@
-{% extends 'base.html' %}
+<div class="index_page">
+
+{% extends 'base-no-hyperlinks.html' %}
 {% load compress %}
 {% load thumbnail %}
 {% load waffle_tags %}
 {% load markup %}
 
-
-
 {% block content %}
-{% flag "main" %}
-<div class="loader">
-  <svg version="1.1"
-    class="svg-loader"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    x="0px"
-    y="0px"
-    viewBox="0 0 80 80"
-    xml:space="preserve">
-
-    <path
-      id="spinner"
-      fill="#262222"
-      d="M40,72C22.4,72,8,57.6,8,40C8,22.4,
-      22.4,8,40,8c17.6,0,32,14.4,32,32c0,1.1-0.9,2-2,2
-      s-2-0.9-2-2c0-15.4-12.6-28-28-28S12,24.6,12,40s12.6,
-      28,28,28c1.1,0,2,0.9,2,2S41.1,72,40,72z"
-    >
-
-      <animateTransform
-        attributeType="xml"
-        attributeName="transform"
-        type="rotate"
-        from="0 40 40"
-        to="360 40 40"
-        dur="0.6s"
-        repeatCount="indefinite"
-      />
-    </path>
-  </svg>
-</div>
 
 <div id="site-wrapper">
 	<div class="content-wrapper content-container">
 
+    <h1>NOW</h1>
+
+      <ul class="now-posts">
+
+        {% for nowpost in now_posts %}
+
+        <li class="now-post">
+
+          {% if nowpost.image_url %}
+          <img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
+               height="{{nowpost.image_height}}" />
+          {% endif %}
+
+          {% if nowpost.video_url %}
+          <video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
+          {% endif %}
+
+          <p>{{nowpost.screen_name}}</p>
+
+          <p><a href="{{nowpost.external_link}}">{{nowpost.created}}</a></p>
+
+          <p class="now-post-text">{{nowpost.text}}</p>
+
+        </li>
+
+        {% endfor %}
+
+      </ul>
+
 	</div>
 </div>
 
+{% endblock %}
 
-{% else %}
-{% comment %}placeholder mode{% endcomment %}
-<div class="loader">
-  <svg version="1.1"
-    class="svg-loader"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:xlink="http://www.w3.org/1999/xlink"
-    x="0px"
-    y="0px"
-    viewBox="0 0 80 80"
-    xml:space="preserve">
-
-    <path
-      id="spinner"
-      fill="#262222"
-      d="M40,72C22.4,72,8,57.6,8,40C8,22.4,
-      22.4,8,40,8c17.6,0,32,14.4,32,32c0,1.1-0.9,2-2,2
-      s-2-0.9-2-2c0-15.4-12.6-28-28-28S12,24.6,12,40s12.6,
-      28,28,28c1.1,0,2,0.9,2,2S41.1,72,40,72z"
-    >
-
-      <animateTransform
-        attributeType="xml"
-        attributeName="transform"
-        type="rotate"
-        from="0 40 40"
-        to="360 40 40"
-        dur="0.6s"
-        repeatCount="indefinite"
-      />
-    </path>
-  </svg>
 </div>
-
-{% endflag %}
-{% endblock %}
-
-{% block js %}
-{% compress js %}
-<script src="{{STATIC_URL}}js/libs/jquery.min.js"></script>
-<script src="{{STATIC_URL}}js/src/main.js"></script>
-{% endcompress %}
-
-{% flag "main" %}
-<script type="text/javascript">
-  $(window).load(function(){
-     // PAGE IS FULLY LOADED
-     // FADE OUT YOUR OVERLAYING DIV
-     $('.loader').delay(800).fadeOut();
-     $('#site-wrapper').delay(1600).fadeIn();
-  });
-</script>
-
-{% else %}
-<script type="text/javascript">
-  $(window).load(function(){
-     // PAGE IS FULLY LOADED
-     // FADE OUT YOUR OVERLAYING DIV
-     $('.loader').delay(800).fadeOut();
-     $('#site-wrapper').delay(1600).fadeIn();
-  });
-</script>
-
-{% endflag %}
-{% endblock %}

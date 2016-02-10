@@ -1,48 +1,93 @@
+<div class="work">
+
 {% extends 'base.html' %}
 
 {% block content %}
 	<div id="site-wrapper" class="black-bg"> 
 		<div class="content-wrapper content-container">
-			<div id="work-nav">
-				<a href="#"><i class="mdi mdi-arrow-left"></i> Previous</a>
-				<a href="#"><i class="mdi mdi-grid"></i> View All</a>
-				<a href="#">Next <i class="mdi mdi-arrow-right"></i></a>
+
+			<h1 class="page-heading">WORK</h1>
+
+			<div class="projects-section-container">
+
+				<a href="havana">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/havana-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>Havana Series</h3>
+						</div>
+					</div>
+				</a>
+
+				<a href="fightclub">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/fightclub-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>Fight Club Sandwich</h3>
+						</div>
+					</div>
+				</a>
+
+				<a href="sperry">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/sperry-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>Sperry Odyssey</h3>
+						</div>
+					</div>
+				</a>
+
+				<a href="supper">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/supper-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>Supper Salon 1</h3>
+						</div>
+					</div>
+				</a>
+
+				<a href="artsho5">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/artsho-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>ARTSHO5</h3>
+						</div>
+					</div>
+				</a>
+
+				<a href="maddie">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/maddie-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>Maddie Peterson</h3>
+						</div>
+					</div>
+				</a>
+
+				<a href="sorry">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/sorry-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>Sorry For Laughing</h3>
+						</div>
+					</div>
+				</a>
+
+				<a href="bca">
+					<div class="thumb-container">
+						<img src="{{STATIC_URL}}img/thumbs/bca-thumb.jpg" class="thumb">
+						<div class="thumb-overlay">
+							<h3>Black Cultural Archives</h3>
+						</div>
+					</div>
+				</a>
+
+				<div class="clearfix"></div>
+
 			</div>
-
-	      <!--  Outer wrapper for presentation only, this can be anything you like -->
-	      <div id="banner-fade">
-
-	        <!-- start Basic Jquery Slider -->
-	        <ul class="bjqs">
-	          <li><img src="{{STATIC_URL}}img/maddie/1866-photography_graphic-assets.jpg"></li>
-	          <li><img src="{{STATIC_URL}}img/maddie/1866-brand-dimensions.jpg"></li>
-	          <li><img src="{{STATIC_URL}}img/maddie/1866-graphic-toolkit.jpg"></li>
-	          <li><img src="{{STATIC_URL}}img/maddie/1866-photography.jpg"></li>
-	        </ul>
-	        <!-- end Basic jQuery Slider -->
-
-	      </div>
-	      <!-- End outer wrapper -->
-
-	      <script class="secret-source">
-	        jQuery(document).ready(function($) {
-
-	          $('#banner-fade').bjqs({
-	            height      : 540,
-	            width       : 960,
-	            responsive  : true
-	          });
-
-	        });
-	      </script>
-
-      	<div class="project-writeup">
-			<p>PROJECT: Maddie Peterson - Identity</p>
-			<p>DATE: October 2014</p>
-			<p>TEAM: Tamara Connolly / Onika Simon</p>
-			<p>BLURBS: Concept development and creation of a feminist identity strategy for 17 year old surfer and philanthropist Maddie Peterson. Crafting a visual language emphasizing athleticism and social media messaging hierarchy around holistic interests, broke with conventions of the surfing category and broader portrayal of American female athletes overall.</p>
-		</div>
 
 		</div>
 	</div>
 {% endblock %}
+
+</div>

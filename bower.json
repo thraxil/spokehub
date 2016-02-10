@@ -29,5 +29,8 @@
     "bourbon": "~4.2.0",
     "neat": "~1.7.1",
     "normalize-scss": "~3.0.2"
+  },
+  "dependencies": {
+    "masonry": "^4.0.0"
   }
 }

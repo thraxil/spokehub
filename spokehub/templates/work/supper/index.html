@@ -1,0 +1,58 @@
+<div class="work">
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="site-wrapper" class="black-bg"> 
+		<div class="content-wrapper content-container">
+			<div id="work-nav">
+				<a href="../sperry"><i class="mdi mdi-arrow-left"></i> Previous</a>
+				<a href=".."><i class="mdi mdi-view-dashboard"></i> View All</a>
+				<a href="../artsho5">Next <i class="mdi mdi-arrow-right"></i></a>
+			</div>
+
+	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <div id="banner-fade">
+
+	        <!-- start Basic Jquery Slider -->
+	        <ul class="bjqs">
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-01.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-02.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-03.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-04.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-05.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-06.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-07.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-08.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-09.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/supper/SPOKEHUB_SUPPER_SALON_Case_Study-10.jpg"></li>
+	        </ul>
+	        <!-- end Basic jQuery Slider -->
+
+	      </div>
+	      <!-- End outer wrapper -->
+
+	      <script class="secret-source">
+	        jQuery(document).ready(function($) {
+
+	          $('#banner-fade').bjqs({
+	            height      : 649,
+	            width       : 865,
+	            responsive  : true
+	          });
+
+	        });
+	      </script>
+
+      	<div class="project-writeup">
+			<h2>Supper Salon 1</h2>
+			<p class="project-date">February 2015</p>
+			<p>Kwame Charles / Winston Chmielinski / Carleen Coulter / Vivian Kvitka / Onika Simon</p>
+			<p>Symposium and dinner on the subject of Nature & Technology. Subject, menu and attire were designed to reflect the installed exhibition Show Me How at the KN Gallery in Berlin. Guests were curated to include artists, academics and tech entrepreneurs - and their thoughts and ideas were captured and shared on a physical web installation above the dining tables.</p>
+		</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+</div>

@@ -1,39 +1,44 @@
+<div class="now">
+
 {% extends 'base.html' %}
 
 {% block content %}
 
 	<div id="site-wrapper"> 
 		<div class="content-wrapper content-container">
-			<h1>NOW</h1>
 
-				<ul class="now-posts">
+			<h1 class="page-heading">NOW</h1>
 
-					{% for nowpost in now_posts %}
+			<ul class="now-posts">
 
-					<li class="now-post">
+				{% for nowpost in now_posts %}
 
-						<p><a href="{{nowpost.external_link}}">{{nowpost.created}}</a></p>
+				<li class="now-post">
 
-						<p class="now-post-text">{{nowpost.text}}</p>
+					{% if nowpost.image_url %}
+					<img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
+							 height="{{nowpost.image_height}}" />
+					{% endif %}
 
-						{% if nowpost.image_url %}
-						<img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
-								 height="{{nowpost.image_height}}" />
-						{% endif %}
+					{% if nowpost.video_url %}
+					<video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
+					{% endif %}
 
-						{% if nowpost.video_url %}
-						<video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
-						{% endif %}
+					<p>{{nowpost.screen_name}}</p>
 
-						<p>{{nowpost.screen_name}}</p>
+					<p><a href="{{nowpost.external_link}}">{{nowpost.created}}</a></p>
 
-					</li>
+					<p class="now-post-text">{{nowpost.text}}</p>
 
-					{% endfor %}
-				
-				</ul>
+				</li>
+
+				{% endfor %}
+
+			</ul>
 
 		</div>
 	</div>
 
 {% endblock %}
+
+</div>

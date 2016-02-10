@@ -17,13 +17,38 @@
 	font-size: 18px;
 }
 
+@mixin columns($column-count, $column-gap) {
+    -moz-column-count: $column-count;
+    -moz-column-gap: $column-gap;
+    -webkit-column-count: $column-count;
+    -webkit-column-gap: $column-gap;
+    column-count: $column-count;
+    column-gap: $column-gap;
+}
+
 ul.now-posts {
-    -moz-column-count: 4;
-    -moz-column-gap: 25px;
-    -webkit-column-count: 4;
-    -webkit-column-gap: 25px;
-    column-count: 4;
-    column-gap: 25px;
+    @include columns(4, 33px);
     list-style-type: none;
     padding: 0;
+    margin-top: 0;
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        @include columns(3, 33px);
+    }
+    @media only screen and (min-width: 500px) and (max-width: 767px) {
+        @include columns(2, 33px);
+    }
+    @media only screen and (max-width: 499px) {
+        @include columns(1, 0px);
+    }
 }
+
+/*ul.now-posts li {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 33px;
+    width: 250px;
+}
+
+ul.now-posts li:nth-child(4n+0) {
+    margin-right: 0;
+}*/

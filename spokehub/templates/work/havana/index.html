@@ -1,0 +1,55 @@
+<div class="work">
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="site-wrapper" class="black-bg"> 
+		<div class="content-wrapper content-container">
+			<div id="work-nav">
+				<a href="../bca"><i class="mdi mdi-arrow-left"></i> Previous</a>
+				<a href=".."><i class="mdi mdi-view-dashboard"></i> View All</a>
+				<a href="../fightclub">Next <i class="mdi mdi-arrow-right"></i></a>
+			</div>
+
+	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <div id="banner-fade">
+
+	        <!-- start Basic Jquery Slider -->
+	        <ul class="bjqs">
+	          <li><img src="{{STATIC_URL}}img/havana/01_IMG_2235.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/havana/02_IMG_2328.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/havana/03_IMG_2330.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/havana/04_IMG_7782.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/havana/05_IMG_7952.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/havana/06_IMG_2308.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/havana/07_IMG_2317.jpg"></li>
+	        </ul>
+	        <!-- end Basic jQuery Slider -->
+
+	      </div>
+	      <!-- End outer wrapper -->
+
+	      <script class="secret-source">
+	        jQuery(document).ready(function($) {
+
+	          $('#banner-fade').bjqs({
+	            height      : 612,
+	            width       : 865,
+	            responsive  : true
+	          });
+
+	        });
+	      </script>
+
+      	<div class="project-writeup">
+			<h2>Havana Series - Photography</h2>
+			<p class="project-date">February 2016</p>
+			<p>Kwame Charles / Onika Simon</p>
+			<p>Feature article and photo series commissioned by the <a href="http://calvert22.org/"target="_blank">Calvert 22 Foundation</a> in London, to explore the social and visual integration of Soviet and African design principles in Cuba.</p>
+		</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+</div>

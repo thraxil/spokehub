@@ -1,0 +1,56 @@
+<div class="work">
+
+{% extends 'base.html' %}
+
+{% block content %}
+	<div id="site-wrapper" class="black-bg"> 
+		<div class="content-wrapper content-container">
+			<div id="work-nav">
+				<a href="../sorry"><i class="mdi mdi-arrow-left"></i> Previous</a>
+				<a href=".."><i class="mdi mdi-view-dashboard"></i> View All</a>
+				<a href="../havana">Next <i class="mdi mdi-arrow-right"></i></a>
+			</div>
+
+	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <div id="banner-fade">
+
+	        <!-- start Basic Jquery Slider -->
+	        <ul class="bjqs">
+	          <li><img src="{{STATIC_URL}}img/identity/02-BCA-Enterance-Logo.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/identity/01-BCA-Cafe-and-Stationary.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/identity/03-BCA-Photoshoot_Courtyard.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/identity/04-BCA-Ground-Floor-Signage.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/identity/05-BCA-Print-Overview-Case-Study.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/identity/06-BCA-Print-Overview-Case-Study2.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/identity/07-BCA-Reception-Mural.jpg"></li>
+	          <li><img src="{{STATIC_URL}}img/identity/08-BCA-Reception.jpg"></li>
+	        </ul>
+	        <!-- end Basic jQuery Slider -->
+
+	      </div>
+	      <!-- End outer wrapper -->
+
+	      <script class="secret-source">
+	        jQuery(document).ready(function($) {
+
+	          $('#banner-fade').bjqs({
+	            height      : 612,
+	            width       : 865,
+	            responsive  : true
+	          });
+
+	        });
+	      </script>
+
+      	<div class="project-writeup">
+			<h2>Black Cultural Archives - Identity</h2>
+			<p class="project-date">May 2014</p>
+			<p>Kwame Charles / Otu Larkai / Onika Simon</p>
+			<p>Brand positioning and creation of a new graphic identity  across print, digital and environmental assets - in the run up to the grand opening of the UK's first black heritage centre, situated on Windrush Square in Brixton, London.</p>
+		</div>
+
+		</div>
+	</div>
+{% endblock %}
+
+</div>

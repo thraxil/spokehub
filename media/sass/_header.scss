@@ -2,6 +2,9 @@ header {
   width: 100%;
   @include box-shadow(0px, 0px, 5px, 0px, 38, 34, 34, 0.25);
   font-family: $header-font;
+  background: $white;
+  z-index: 9999;
+  position: fixed;
 }
 #header-wrapper {
   height: 50px;
@@ -17,10 +20,15 @@ header {
   }
   nav a {
     margin: 0px 15px;
-  }
-  a:hover {
     color: $light-gray;
   }
+  a:hover {
+    color: $black;
+  }
+  nav .nav_deactivated {
+    margin: 0px 15px;
+  }
+
   #login-link,
   #login-info {
     width: 180px;
@@ -30,5 +38,17 @@ header {
 
 #header-wrapper img {
 	width: 180px;
-  margin-top: 6px;
+}
+
+.now #header-wrapper nav a.now,
+.work #header-wrapper nav a.work,
+.how #header-wrapper nav a.how,
+.we #header-wrapper nav a.we {
+  color: $black;
+}
+
+.desktop-nav {
+  @media only screen and (max-width: 767px) {
+    display: none;
+  }
 }
