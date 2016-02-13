@@ -20,12 +20,9 @@ def add_post(media):
             text = ""
 
         media_url = media.get_standard_resolution_url()
-        image_url = ""
         video_url = ""
 
-        if media.type == 'image':
-            # all we can handle right now
-            image_url = media_url
+        image_url = image_image_url(media, media_url)
         if media.type == 'video':
             video_url = media_url
 
@@ -48,6 +45,13 @@ def add_post(media):
         print "new instagram post added"
     except Exception, e:
         print "failed with exception: " + str(e)
+
+
+def image_image_url(media, media_url):
+    if media.type == 'image':
+        # all we can handle right now
+        return media_url
+    return ""
 
 
 def hashtag_search():

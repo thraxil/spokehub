@@ -31,8 +31,7 @@ def add_post(i):
             image_height = p['original_size']['height']
             text = i['caption']
         text = video_text(ptype, i, text)
-        if ptype == 'audio':
-            text = i['player']
+        text = audio_text(ptype, i, text)
         NowPost.objects.create_tumblr(
             screen_name=screen_name,
             service_id=url,
@@ -51,6 +50,12 @@ def add_post(i):
 def video_text(ptype, i, text):
     if ptype == 'video':
         return i['player'][-1]['embed_code']
+    return text
+
+
+def audio_text(ptype, i, text):
+    if ptype == 'audio':
+        text = i['player']
     return text
 
 
