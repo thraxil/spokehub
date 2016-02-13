@@ -10,10 +10,10 @@ def add_post(i):
     r = NowPost.objects.filter(service='tumblr', service_id=url)
     ptype = i['type']
     if ptype not in ['photo', 'video', 'audio']:
-        continue
+        return
     if r.exists():
         print "existing tumblr post"
-        continue
+        return
     try:
         original = json.dumps(i)
         screen_name = i['blog_name']
@@ -24,14 +24,13 @@ def add_post(i):
         image_height = 0
         if i['type'] == 'photo':
             if len(i['photos']) < 1:
-                continue
+                return
             p = i['photos'][0]
             image_url = p['original_size']['url']
             image_width = p['original_size']['width']
             image_height = p['original_size']['height']
             text = i['caption']
-        if ptype == 'video':
-            text = i['player'][-1]['embed_code']
+        text = video_text(ptype, i, text)
         if ptype == 'audio':
             text = i['player']
         NowPost.objects.create_tumblr(
@@ -47,6 +46,12 @@ def add_post(i):
         print("new tumblr post added")
     except Exception, e:
         print(str(e))
+
+
+def video_text(ptype, i, text):
+    if ptype == 'video':
+        return i['player'][-1]['embed_code']
+    return text
 
 
 def hashtag_search():

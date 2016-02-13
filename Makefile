@@ -1,6 +1,6 @@
 REPO=thraxil
 APP=spokehub
-MAX_COMPLEXITY=9
+MAX_COMPLEXITY=8
 
 include *.mk
 
