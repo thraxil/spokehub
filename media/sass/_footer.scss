@@ -2,6 +2,10 @@ footer {
   width: 100%;
   height: 46px;
   background: $black;
+  p,
+  span {
+   font-family: $base-font;
+  }
   /*position: fixed;*/
   bottom: 0;
   color: #fff;
@@ -46,7 +50,7 @@ footer {
         margin-right: 20px;
       }
       a:hover {
-        color: $light-gray;
+        color: $yellow;
       }
     }
   }

@@ -39,6 +39,8 @@ urlpatterns = patterns(
         template_name='we/index.html')),
     (r'^we/question/$', views.IndexView.as_view(
         template_name='we/question.html')),
+    (r'^we/ask/$', views.IndexView.as_view(
+        template_name='we/ask.html')),
     (r'^work/$', views.IndexView.as_view(
         template_name='work/index.html')),
     (r'^work/maddie/$', views.IndexView.as_view(

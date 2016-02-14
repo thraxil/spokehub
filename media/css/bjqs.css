@@ -105,6 +105,14 @@ p.bjqs-caption{
 	}*/
 }
 
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+	#banner-fade {
+        width: 630px;
+        height: 355px;
+		display: inline-block;
+    }
+}
+
 @media only screen and (min-width: 1600px) {
 	#banner-fade {
 		height: 612px;

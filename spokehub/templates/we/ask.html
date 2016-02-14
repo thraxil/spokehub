@@ -1,0 +1,32 @@
+<div class="we">
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div id="site-wrapper"> 
+		<div class="content-wrapper content-container">
+
+		    <div class="page-heading">
+		    	<h2><b>ASK A QUESTION</b></h2>
+
+		      <div class="archives-post">
+		      	<a href=".."><i class="mdi mdi-arrow-left"></i> Back to Forum</a>
+		      	<!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
+		      </div>
+		    </div>
+			<div class="conversation">
+
+				<textarea id="textarea" class="convo-question" maxlength="140" placeholder="What's on your mind?"></textarea>
+				<p id="textarea_feedback"></p>
+
+				<input type="submit" value="SUBMIT" class="convo-submit">
+			</div>
+			
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+
+</div>

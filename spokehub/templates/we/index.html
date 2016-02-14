@@ -1,4 +1,4 @@
-<div class="we">
+<div class="we we-main">
 
 {% extends 'base.html' %}
 
@@ -8,12 +8,19 @@
 		<div class="content-wrapper content-container">
 
 		    <div class="page-heading">
-		      <span><h2>WE</h2></span>
-		      <span>ask questions with visual answers</span>
+		    	<h2><b>WE</b> ask questions with visual answers</h2>
+
+		      <div class="archives-post">
+		      	<!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
+		      	<a href="ask"><i class="mdi mdi-comment-processing"></i> Ask a Question</a>
+		      </div>
 		    </div>
 
-			<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer" }'>
-  			<div class="grid-sizer"></div>
+			<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
+  				<div class="grid-sizer"></div>
+				<!--<div class="grid-item ask-box">
+					<h3><a href="ask">Ask a question!</a></h3>
+				</div>-->
 				<div class="grid-item">
 					<h3><a href="question">Where do socks go in the laundry?</a></h3>
 					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>

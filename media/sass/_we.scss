@@ -6,10 +6,49 @@
   }
 }
 
-.grid-item { 
-	width: 530px; 
-	padding: 5px 20px 15px 20px;
+.grid-item {  
+	width: 48.75%;
+	padding: 2px 20px 15px 20px;
 	border: 1px $black solid;
+	margin-bottom: 30px;
+	@media only screen and (min-width: 1600px) {
+		width: 49%;
+	}
+	@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+		width: 48.5%;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 1023px) {
+		width: 48%;
+	}
+	@media only screen and (max-width: 767px) {
+		width: 100%;
+	}
+}
+
+.grid-item:nth-child(odd) {
+	margin-left: 1.25%;
+	@media only screen and (min-width: 1600px) {
+		margin-left: 1%;
+	}
+	@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+		margin-left: 1.5%;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 1023px) {
+		margin-left: 2%;
+	}
+	@media only screen and (max-width: 767px) {
+		margin-left: 0%;
+	}
+}
+
+.we #site-wrapper .grid-item.ask-box {
+	background: $black;
+	color: $white;
+	text-align: center;
+}
+
+.we #site-wrapper .grid-item.ask-box h3 a {
+	color: $white;
 }
 
 .we .grid-item p,
@@ -21,8 +60,15 @@
 	margin-right: 20px;
 }
 
+.grid-item img {
+	width: 100%;
+}
+
 .grid-sizer {
-	width: 45%;
+	width: 50%;
+	@media only screen and (max-width: 767px) {
+		width: 100%;
+	}
 }
 
 /* clearfix */
@@ -32,8 +78,42 @@
   clear: both;
 }
 
+.archives-post {
+	float: right;
+	text-transform: uppercase;
+	font-family: $header-font;
+	margin-top: 2px;
+	list-style-type: none;
+	li {
+		float: left;
+		margin-left: 20px;
+		line-height: 24px;
+	}
+	@media only screen and (max-width: 1023px) {
+		li {
+			float: none;
+			margin-left: 0;
+		}
+		margin-bottom: 0px;
+	}
+	@media only screen and (max-width: 767px) {
+		float: none;
+		padding: 0;
+		margin-top: 5px;
+		margin-bottom: 0;
+	}
+}
+
+.we #site-wrapper .grid-item h3 {
+	margin-bottom: 15px;
+}
+
 .we #site-wrapper .grid-item h3 a {
 	color: $black;
+}
+
+.we #site-wrapper .grid-item h3 a:hover {
+	color: $cyan;
 }
 
 .we .grid-item p,
@@ -51,7 +131,14 @@
 	.grid-item {
 		width: 100%;
 		margin-bottom: 30px;
+		margin-left: 0;
 	}
+	#counter {
+		border: 0;
+	}
+	@media only screen and (max-width: 1023px) {
+    	width: 100%;
+  	}
 }
 
 .we .select-file {
@@ -96,6 +183,7 @@ input.convo-submit {
 	text-align: center;
 }
 
-#chars-left {
+#chars-left,
+#textarea_feedback {
 	margin-bottom: 20px;
 }

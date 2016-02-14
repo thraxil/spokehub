@@ -46,7 +46,7 @@ body, #site-wrapper {
   width: 100%;
   padding-top: 50px;
   min-height: 100%;
-  /*margin-bottom: -50px;*/
+  margin-bottom: -50px;
 }
 
 #site-wrapper:after {
@@ -86,6 +86,7 @@ body, #site-wrapper {
 .page-heading {
   border-bottom: 1px $black solid;
   margin-bottom: 30px;
+  padding-bottom: 10px;
   span {
     font-size: 18px;
     text-transform: uppercase;
@@ -94,6 +95,13 @@ body, #site-wrapper {
   }
   h2 {
     margin-top: 0;
+    margin-bottom: 0;
+    display: inline-block;
+    vertical-align: top;
+    font-family: $base-font;
+    b {
+      font-family: $header-font;
+    }
   }
   /*@media only screen and (min-width: 768px) {
     display: none;
@@ -103,10 +111,19 @@ body, #site-wrapper {
   }*/
 }
 
+p, span {
+  font-family: $header-font;
+}
+
+span.intro-text {
+  font-family: $base-font;
+}
+
 input[type=text] {
   border: 1px $black solid;
   padding: 10px;
   font-family: $header-font;
+  outline-color: $yellow;
 }
 
 input[type=submit] {
@@ -114,12 +131,22 @@ input[type=submit] {
   background: $black;
   color: $white;
   border: 1px $black solid;
+  outline-color: $yellow;
+  transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+input[type=submit]:hover {
+  color: $black;
+  background: $white;
+  font-family: $header-font;
 }
 
 textarea {
   border: 1px $black solid;
   padding: 10px;
   font-family: $header-font;
+  letter-spacing: 1px;
+  outline-color: $yellow;
 }
 
 .content-wrapper{
@@ -213,4 +240,8 @@ a {
 
 #site-wrapper.black-bg .page-heading {
   border-bottom: 1px $white solid;
+}
+
+#site-wrapper.black-bg p, #site-wrapper.black-bg span {
+  font-family: $base-font;
 }
