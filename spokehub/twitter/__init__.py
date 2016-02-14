@@ -24,6 +24,10 @@ def add_tweet(t):
         print(np.id)
     except Exception, e:
         print "failed with exception: " + str(e)
+    process_extended_attributes(t, np)
+
+
+def process_extended_attributes(t, np):
     if hasattr(t, 'extended_entities'):
         ee = t.extended_entities
         if 'media' not in ee:
