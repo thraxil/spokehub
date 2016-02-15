@@ -6,6 +6,14 @@
   }
 }
 
+.we-question .grid-item {
+	width: 31%;
+}
+
+.we-question .grid-sizer {
+	width: 33.3%;
+}
+
 .grid-item {  
 	width: 48.75%;
 	padding: 2px 20px 15px 20px;
@@ -83,6 +91,7 @@
 	text-transform: uppercase;
 	font-family: $header-font;
 	margin-top: 2px;
+	margin-bottom: 0;
 	list-style-type: none;
 	li {
 		float: left;
@@ -177,6 +186,7 @@ input.convo-submit {
 
 .response-vid {
 	margin: 20px auto;
+	width: 100%;
 }
 
 .media-center {
