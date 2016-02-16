@@ -40,6 +40,7 @@ html, body {
 body, #site-wrapper {
   position: relative;
   font-size: $base-font-size;
+  letter-spacing: 1px;
 }
 
 #site-wrapper {
@@ -47,6 +48,9 @@ body, #site-wrapper {
   padding-top: 50px;
   min-height: 100%;
   margin-bottom: -50px;
+    @media only screen and (max-width: 767px) {
+      margin-bottom: -76px;
+    }
 }
 
 #site-wrapper:after {
@@ -119,15 +123,18 @@ span.intro-text {
   font-family: $base-font;
 }
 
-input[type=text] {
+input[type=text],
+input[type=password] {
   border: 1px $black solid;
   padding: 10px;
   font-family: $header-font;
   outline-color: $yellow;
+  letter-spacing: 1px;
 }
 
 input[type=submit] {
   padding: 10px;
+  letter-spacing: 1px;
   background: $black;
   color: $white;
   border: 1px $black solid;
@@ -149,8 +156,17 @@ textarea {
   outline-color: $yellow;
 }
 
+@mixin columns($column-count, $column-gap) {
+    -moz-column-count: $column-count;
+    -moz-column-gap: $column-gap;
+    -webkit-column-count: $column-count;
+    -webkit-column-gap: $column-gap;
+    column-count: $column-count;
+    column-gap: $column-gap;
+}
+
 .content-wrapper{
-  padding: 50px 0 20px 0;
+  padding: 40px 0;
   margin-bottom: 0;
   position: relative;
   /*overflow: auto;*/
@@ -230,18 +246,39 @@ a {
   color: $white;
 }
 
-#site-wrapper.black-bg h1 {
+.black-bg #site-wrapper h1 {
   border-bottom: 1px $white solid;
 }
 
-#site-wrapper.black-bg a:hover {
+.black-bg #site-wrapper a:hover {
   color: $white;
 }
 
-#site-wrapper.black-bg .page-heading {
+.black-bg #site-wrapper .page-heading {
   border-bottom: 1px $white solid;
 }
 
-#site-wrapper.black-bg p, #site-wrapper.black-bg span {
+.black-bg #site-wrapper p, .black-bg #site-wrapper span {
   font-family: $base-font;
+}
+
+.black-bg #site-wrapper input[type="text"], 
+.black-bg #site-wrapper input[type="password"]{
+  background: $black;
+  font-family: $base-font;
+  border: 1px $white solid;
+}
+
+.black-bg #site-wrapper input[type="submit"] {
+  background: $white;
+  border: 1px $white solid;
+  font-family: $header-font;
+  color: $black;
+}
+
+.black-bg #site-wrapper input[type="submit"]:hover {
+  background: $black;
+  border: 1px $white solid;
+  font-family: $base-font;
+  color: $white;
 }

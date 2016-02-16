@@ -17,7 +17,7 @@
 .grid-item {  
 	width: 48.75%;
 	padding: 2px 20px 15px 20px;
-	border: 1px $black solid;
+	border: 1px $light-gray solid;
 	margin-bottom: 30px;
 	@media only screen and (min-width: 1600px) {
 		width: 49%;
@@ -100,16 +100,15 @@
 	}
 	@media only screen and (max-width: 1023px) {
 		li {
-			float: none;
-			margin-left: 0;
+			float: right;
+			margin-left: 20px;
 		}
-		margin-bottom: 0px;
+		margin-bottom: 20px;
 	}
 	@media only screen and (max-width: 767px) {
-		float: none;
+		/*float: none;*/
 		padding: 0;
 		margin-top: 5px;
-		margin-bottom: 0;
 	}
 }
 
@@ -159,7 +158,9 @@
 textarea.convo-question {
 	width: 100%;
 	height: 120px;
-	margin-bottom: 20px;
+	margin-bottom: 25px;
+	font-size: 18px;
+	text-transform: uppercase;
 }
 
 input.convo-submit {
@@ -169,7 +170,7 @@ input.convo-submit {
 
 .convo-responses {
 	border-bottom: 1px $black solid;
-	padding-bottom: 20px;
+	padding-bottom: 10px;
 }
 
 .convo-response {
@@ -195,5 +196,5 @@ input.convo-submit {
 
 #chars-left,
 #textarea_feedback {
-	margin-bottom: 20px;
+	margin-bottom: 25px;
 }

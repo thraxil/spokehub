@@ -19,7 +19,7 @@ header {
     font-size: 18px;
   }
   nav a {
-    margin: 0px 15px;
+    margin: 0px 10px;
     color: $light-gray;
   }
   a:hover {
@@ -33,6 +33,12 @@ header {
   #login-info {
     width: 180px;
     text-align: right;
+    color: $black;
+    /*margin-top: -14px;*/
+  }
+
+  #login-link:hover{
+    color: $cyan;
   }
 }
 
@@ -52,3 +58,7 @@ header {
     display: none;
   }
 }
+
+/*#spokehub-logo {
+  margin-top: -7px;
+}*/

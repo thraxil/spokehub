@@ -17,15 +17,6 @@
 	font-size: 18px;
 }
 
-@mixin columns($column-count, $column-gap) {
-    -moz-column-count: $column-count;
-    -moz-column-gap: $column-gap;
-    -webkit-column-count: $column-count;
-    -webkit-column-gap: $column-gap;
-    column-count: $column-count;
-    column-gap: $column-gap;
-}
-
 ul.now-posts {
     @include columns(4, 33px);
     list-style-type: none;
@@ -52,3 +43,7 @@ ul.now-posts {
 ul.now-posts li:nth-child(4n+0) {
     margin-right: 0;
 }*/
+
+.now footer {
+    position: fixed;
+}

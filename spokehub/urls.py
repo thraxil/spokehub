@@ -64,6 +64,9 @@ urlpatterns = patterns(
     (r'^now/$', views.IndexView.as_view(
         template_name='now/index.html')),
 
+    (r'^signupform/$', views.IndexView.as_view(
+        template_name='userarena/signup_form.html')),
+
     (r'^profilecompletion/$',
      TemplateView.as_view(template_name='profile-completion.html')),
 

@@ -1,3 +1,34 @@
-#site-wrapper {
-  background: $black;
+ul.profile-form {
+    /*@include columns(2, 30px);
+    height: 250px;*/
+    margin: 0;
+    display:inline-block;
+    vertical-align: top;
+    list-style-type: none;
+    padding-left: 0;
+	@media only screen and (min-width: 1600px) {
+		width: 747px;
+	}
+	@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+		width: 547px;
+	}
+	@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+		width: 467px;
+	}
+	@media only screen and (max-width: 1023px) {
+		width: 100%;
+	}
+    li {
+    	margin-bottom: 20px;
+    	input {
+    		width: 100%;
+    	}
+    }
+}
+
+ul.profile-form.column2 {
+	margin-left: 20px;
+	@media only screen and (max-width: 1023px) {
+		margin-left: 0;
+	}
 }
