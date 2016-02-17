@@ -8,6 +8,7 @@ install:
   - pip install -r requirements.txt
   - pip install coveralls
 script:
+  - make
   - python manage.py test spokehub
   - coverage run --source=spokehub manage.py test spokehub
 after_success:
