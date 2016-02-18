@@ -1,3 +1,5 @@
+<div class="black-bg">
+
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 {% load bootstrap %}
@@ -6,20 +8,6 @@
 
 {% block content %}
 <div class="container userena">
-	
-	<div class="row staticnav">
-	<div class="col-md-4">
-		<a href="/">
-		<video class="video-js vjs-default-skin"
-					 id="banner-video" 
-					 autoplay loop>
-			<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4">
-				<source src="http://spokehub-video.s3.amazonaws.com/spokehub_banner_1650_900.mp4"
-								type="video/mp4">
-		</video>
-		</a>
-	</div>
-	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-4">
 	<form action="" method="post">
@@ -47,3 +35,5 @@
 </div>
 </div>
 {% endblock %}
+
+</div>

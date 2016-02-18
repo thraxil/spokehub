@@ -168,9 +168,14 @@ input.convo-submit {
 	margin-bottom: 30px;
 }
 
-.convo-responses {
+.responses-heading {
 	border-bottom: 1px $black solid;
 	padding-bottom: 10px;
+	margin-bottom: 30px;
+}
+
+.convo-responses .grid-item {
+	padding: 20px;
 }
 
 .convo-response {
