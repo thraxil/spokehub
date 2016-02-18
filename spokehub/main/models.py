@@ -74,6 +74,9 @@ def new_conversation_emails(sender, **kwargs):
     if not kwargs.get('created', False):
         # only send it on creation
         return
+    if settings.DEBUG:
+        # don't do this in dev/staging
+        return
     for u in User.objects.all():
         if u.is_anonymous() or u.username == 'AnonymousUser':
             continue
