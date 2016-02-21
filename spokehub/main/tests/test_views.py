@@ -84,3 +84,13 @@ class LoggedInTest(TestCase):
                 ),
             )
             self.assertEqual(r.status_code, 302)
+
+
+class TestUserProfiles(TestCase):
+    def setUp(self):
+        self.c = Client()
+
+    def test_profile_view(self):
+        u = UserFactory()
+        r = self.c.get("/accounts/" + u.username + "/")
+        self.assertEqual(r.status_code, 200)
