@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/thraxil/spokehub.svg?branch=master)](https://travis-ci.org/thraxil/spokehub)
+[![Coverage Status](https://coveralls.io/repos/github/thraxil/spokehub/badge.svg?branch=master)](https://coveralls.io/github/thraxil/spokehub?branch=master)
 
 # Spokehub Website
 
