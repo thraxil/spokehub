@@ -3,3 +3,4 @@ omit =
     *_settings.py
     */wsgi.py
 		*/settings_*.py
+		*gravatar*
