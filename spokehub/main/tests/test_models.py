@@ -99,6 +99,10 @@ class ConversationTest(TestCase):
         self.assertEqual(r.vimeo_id, "foo")
 
 
+class DummyFile(object):
+    pass
+
+
 class ReplyTest(TestCase):
     def test_unicode(self):
         r = ReplyFactory()
@@ -130,6 +134,12 @@ class ReplyTest(TestCase):
             """@nonexistent [@%s](/accounts/%s/) [@%s](/accounts/%s/)""" % (
                 u.username, u.username, u2.username, u2.username)
         )
+
+    def test_save_image_invalid_ext(self):
+        r = ReplyFactory()
+        d = DummyFile()
+        d.name = "invalid.extension"
+        self.assertIsNone(r.save_image(d))
 
 
 class NowPostTest(TestCase):
