@@ -1,5 +1,6 @@
 import unittest
-from spokehub.tumblr import video_text, audio_text
+from django.test import TestCase
+from spokehub.tumblr import video_text, audio_text, add_post
 
 
 class TestHelpers(unittest.TestCase):
@@ -20,3 +21,13 @@ class TestHelpers(unittest.TestCase):
         d = {'player': 'some audio text'}
         r = audio_text('audio', d, 'some text')
         self.assertEqual(r, 'some audio text')
+
+
+class TestAddPost(TestCase):
+    def test_unknown_ptype(self):
+        d = dict(short_url='foo', type='unknown')
+        self.assertIsNone(add_post(d))
+
+    def test_valid_ptype_but_otherwise_invalid(self):
+        d = dict(short_url='foo', type='photo')
+        self.assertIsNone(add_post(d))
