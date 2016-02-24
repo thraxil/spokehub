@@ -42,24 +42,24 @@ urlpatterns = patterns(
         template_name='we/question-old.html')),
     (r'^we/ask/$', views.IndexView.as_view(
         template_name='we/ask.html')),
-    (r'^work/$', views.IndexView.as_view(
-        template_name='work/index.html')),
 
-    url(r'^work/maddie/$', views.IndexView.as_view(
+    url(r'^work/$', views.TemplateView.as_view(
+        template_name='work/index.html'), name='work'),
+    url(r'^work/maddie/$', views.TemplateView.as_view(
         template_name='work/maddie/index.html'), name='work-maddie'),
-    url(r'^work/havana/$', views.IndexView.as_view(
+    url(r'^work/havana/$', views.TemplateView.as_view(
         template_name='work/havana/index.html'), name='work-havana'),
-    url(r'^work/fightclub/$', views.IndexView.as_view(
+    url(r'^work/fightclub/$', views.TemplateView.as_view(
         template_name='work/fightclub/index.html'), name='work-fightclub'),
-    url(r'^work/sperry/$', views.IndexView.as_view(
+    url(r'^work/sperry/$', views.TemplateView.as_view(
         template_name='work/sperry/index.html'), name='work-sperry'),
-    url(r'^work/supper/$', views.IndexView.as_view(
+    url(r'^work/supper/$', views.TemplateView.as_view(
         template_name='work/supper/index.html'), name='work-supper'),
-    url(r'^work/artsho5/$', views.IndexView.as_view(
+    url(r'^work/artsho5/$', views.TemplateView.as_view(
         template_name='work/artsho5/index.html'), name='work-artsho5'),
-    url(r'^work/sorry/$', views.IndexView.as_view(
+    url(r'^work/sorry/$', views.TemplateView.as_view(
         template_name='work/sorry/index.html'), name='work-sorry'),
-    url(r'^work/bca/$', views.IndexView.as_view(
+    url(r'^work/bca/$', views.TemplateView.as_view(
         template_name='work/bca/index.html'), name='work-bca'),
 
     (r'^now/$', views.IndexView.as_view(
