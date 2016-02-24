@@ -53,7 +53,7 @@ class Conversation(models.Model):
     def add_reply(self, author, body, url='', title='', image=None):
         if not author:
             return
-        if body.strip() == '' and url.strip() == '':
+        if body.strip() == '' and url.strip() == '' and image is None:
             return
         if (url.strip() != '' and
                 not (url.startswith('http://') or url.startswith('https://'))):

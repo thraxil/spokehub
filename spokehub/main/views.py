@@ -74,4 +74,4 @@ class ReplyToConversationView(View):
             request.POST.get('title', ''),
             image,
         )
-        return HttpResponseRedirect('/#we')
+        return HttpResponseRedirect(conversation.get_absolute_url())
