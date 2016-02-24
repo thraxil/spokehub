@@ -16,11 +16,13 @@
 		    	<h2><b>ASK A QUESTION</b></h2>
 		    </div>
 			<div class="conversation">
+          <form action="{% url 'add-conversation' %}" method="post" role="form">
 
-				<textarea id="textarea" class="convo-question" maxlength="140" placeholder="What's on your mind?"></textarea>
-				<p id="textarea_feedback"></p>
+				      <textarea id="textarea" class="convo-question" maxlength="140" placeholder="What's on your mind?" name="body"></textarea>
+				      <p id="textarea_feedback"></p>
 
-				<input type="submit" value="SUBMIT" class="convo-submit">
+				      <input type="submit" value="SUBMIT" class="convo-submit">
+          </form>
 			</div>
 			
 			</div>
