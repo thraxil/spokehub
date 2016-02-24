@@ -24,7 +24,7 @@
 				<!--<div class="grid-item ask-box">
 					<h3><a href="ask">Ask a question!</a></h3>
 				</div>-->
-          {% for conversation in conversations %}
+          {% for conversation in conversation_list %}
               <div class="grid-item">
 					        <h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
 					        <p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>

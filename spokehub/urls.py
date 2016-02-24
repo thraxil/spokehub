@@ -15,8 +15,6 @@ urlpatterns = patterns(
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),
         name='about'),
-    url(r'^conversation/$', views.ConversationIndexView.as_view(), {},
-        'conversation-index'),
     url((r'^conversation/(?P<year>\d+)/'
          '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$'),
         views.ConversationDetailView.as_view(), {}, 'conversation'),
@@ -33,7 +31,7 @@ urlpatterns = patterns(
         template_name='contact/index.html')),
     url(r'^how/$', views.IndexView.as_view(
         template_name='how/index.html'), name='how'),
-    url(r'^we/$', views.IndexView.as_view(
+    url(r'^we/$', views.ConversationIndexView.as_view(
         template_name='we/index.html'), name='we'),
     (r'^we/question/$', views.IndexView.as_view(
         template_name='we/question.html')),
