@@ -32,10 +32,10 @@ urlpatterns = patterns(
         template_name='network/index.html')),
     (r'^contact/$', views.IndexView.as_view(
         template_name='contact/index.html')),
-    (r'^how/$', views.IndexView.as_view(
-        template_name='how/index.html')),
-    (r'^we/$', views.IndexView.as_view(
-        template_name='we/index.html')),
+    url(r'^how/$', views.IndexView.as_view(
+        template_name='how/index.html'), name='how'),
+    url(r'^we/$', views.IndexView.as_view(
+        template_name='we/index.html'), name='we'),
     (r'^we/question/$', views.IndexView.as_view(
         template_name='we/question.html')),
     (r'^we/questionold/$', views.IndexView.as_view(
@@ -62,8 +62,8 @@ urlpatterns = patterns(
     url(r'^work/bca/$', views.TemplateView.as_view(
         template_name='work/bca/index.html'), name='work-bca'),
 
-    (r'^now/$', views.IndexView.as_view(
-        template_name='now/index.html')),
+    url(r'^now/$', views.IndexView.as_view(
+        template_name='now/index.html'), name='now'),
     (r'^weold/$', views.IndexView.as_view(
         template_name='main/we.html')),
     (r'^convo/$', views.IndexView.as_view(
