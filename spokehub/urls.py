@@ -26,8 +26,7 @@ urlpatterns = patterns(
     url(r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
         r'(?P<day>\d+)/(?P<pk>\d+)/delete/$',
         views.ConversationDeleteView.as_view(), name='delete-conversation'),
-    url(r'^conversation/add/$', views.ConversationCreateView.as_view(),
-        name='add-conversation'),
+
     (r'^network/$', views.IndexView.as_view(
         template_name='network/index.html')),
     (r'^contact/$', views.IndexView.as_view(
@@ -40,8 +39,8 @@ urlpatterns = patterns(
         template_name='we/question.html')),
     (r'^we/questionold/$', views.IndexView.as_view(
         template_name='we/question-old.html')),
-    (r'^we/ask/$', views.IndexView.as_view(
-        template_name='we/ask.html')),
+    url(r'^we/ask/$', views.ConversationCreateView.as_view(
+        template_name='we/ask.html'), name='ask-question'),
 
     url(r'^work/$', views.TemplateView.as_view(
         template_name='work/index.html'), name='work'),
