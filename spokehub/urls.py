@@ -12,23 +12,22 @@ urlpatterns = patterns(
     '',
 
     (r'^accounts/', include('userena.urls')),
-    (r'^$', views.IndexView.as_view()),
-
-    (r'^about/$', TemplateView.as_view(template_name="about.html")),
-
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^about/$', TemplateView.as_view(template_name="about.html"),
+        name='about'),
     url(r'^conversation/$', views.ConversationIndexView.as_view(), {},
         'conversation-index'),
     url((r'^conversation/(?P<year>\d+)/'
          '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$'),
         views.ConversationDetailView.as_view(), {}, 'conversation'),
-    (r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
-     r'(?P<day>\d+)/(?P<pk>\d+)/edit/$',
-     views.ConversationUpdateView.as_view()),
-    (r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
-     r'(?P<day>\d+)/(?P<pk>\d+)/delete/$',
-     views.ConversationDeleteView.as_view()),
-    (r'^conversation/add/$', views.ConversationCreateView.as_view()),
-
+    url(r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
+        r'(?P<day>\d+)/(?P<pk>\d+)/edit/$',
+        views.ConversationUpdateView.as_view(), name='edit-conversation'),
+    url(r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
+        r'(?P<day>\d+)/(?P<pk>\d+)/delete/$',
+        views.ConversationDeleteView.as_view(), name='delete-conversation'),
+    url(r'^conversation/add/$', views.ConversationCreateView.as_view(),
+        name='add-conversation'),
     (r'^network/$', views.IndexView.as_view(
         template_name='network/index.html')),
     (r'^contact/$', views.IndexView.as_view(
@@ -75,15 +74,17 @@ urlpatterns = patterns(
     (r'^profilecompletion/$',
      TemplateView.as_view(template_name='profile-completion.html')),
 
-    (r'^conversation/(?P<pk>\d+)/reply/$',
-     views.ReplyToConversationView.as_view()),
+    url(r'^conversation/(?P<pk>\d+)/reply/$',
+        views.ReplyToConversationView.as_view(),
+        name='reply-to-conversation'),
 
     (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
     (r'^invite/', include('spokehub.invite.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
-    (r'^stats/$', TemplateView.as_view(template_name="stats.html")),
+    url(r'^stats/$', TemplateView.as_view(template_name="stats.html"),
+        name='stats'),
     (r'^smoketest/', include('smoketest.urls')),
     (r'^uploads/(?P<path>.*)$', 'django.views.static.serve',
      {'document_root': settings.MEDIA_ROOT}),
