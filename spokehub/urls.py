@@ -44,25 +44,26 @@ urlpatterns = patterns(
         template_name='we/ask.html')),
     (r'^work/$', views.IndexView.as_view(
         template_name='work/index.html')),
-    (r'^work/maddie/$', views.IndexView.as_view(
-        template_name='work/maddie/index.html')),
-    (r'^work/havana/$', views.IndexView.as_view(
-        template_name='work/havana/index.html')),
-    (r'^work/fightclub/$', views.IndexView.as_view(
-        template_name='work/fightclub/index.html')),
-    (r'^work/sperry/$', views.IndexView.as_view(
-        template_name='work/sperry/index.html')),
-    (r'^work/supper/$', views.IndexView.as_view(
-        template_name='work/supper/index.html')),
-    (r'^work/artsho5/$', views.IndexView.as_view(
-        template_name='work/artsho5/index.html')),
-    (r'^work/sorry/$', views.IndexView.as_view(
-        template_name='work/sorry/index.html')),
-    (r'^work/bca/$', views.IndexView.as_view(
-        template_name='work/bca/index.html')),
+
+    url(r'^work/maddie/$', views.IndexView.as_view(
+        template_name='work/maddie/index.html'), name='work-maddie'),
+    url(r'^work/havana/$', views.IndexView.as_view(
+        template_name='work/havana/index.html'), name='work-havana'),
+    url(r'^work/fightclub/$', views.IndexView.as_view(
+        template_name='work/fightclub/index.html'), name='work-fightclub'),
+    url(r'^work/sperry/$', views.IndexView.as_view(
+        template_name='work/sperry/index.html'), name='work-sperry'),
+    url(r'^work/supper/$', views.IndexView.as_view(
+        template_name='work/supper/index.html'), name='work-supper'),
+    url(r'^work/artsho5/$', views.IndexView.as_view(
+        template_name='work/artsho5/index.html'), name='work-artsho5'),
+    url(r'^work/sorry/$', views.IndexView.as_view(
+        template_name='work/sorry/index.html'), name='work-sorry'),
+    url(r'^work/bca/$', views.IndexView.as_view(
+        template_name='work/bca/index.html'), name='work-bca'),
+
     (r'^now/$', views.IndexView.as_view(
         template_name='now/index.html')),
-
     (r'^weold/$', views.IndexView.as_view(
         template_name='main/we.html')),
     (r'^convo/$', views.IndexView.as_view(
