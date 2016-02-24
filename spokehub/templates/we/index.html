@@ -1,6 +1,7 @@
+{% extends 'base.html' %}
+{% load markup %}
 <div class="we we-main">
 
-{% extends 'base.html' %}
 
 {% block content %}
 
@@ -23,11 +24,21 @@
 				<!--<div class="grid-item ask-box">
 					<h3><a href="ask">Ask a question!</a></h3>
 				</div>-->
-				<div class="grid-item">
+          {% for conversation in conversations %}
+              <div class="grid-item">
+					        <h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
+					        <p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
+					        <p>Berlin, Germany, 21/11/15 23:40</p>
+				      </div>
+          {% endfor %}
+
+
+          <div class="grid-item">
 					<h3><a href="question">Where do socks go in the laundry?</a></h3>
 					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
 					<p>Berlin, Germany, 21/11/15 23:40</p>
-				</div>
+				  </div>
+          
 				<div class="grid-item">
 					<h3>Python vs. Javascript vs. Ruby. Which one is best for a front-end developer to learn?</h3>
 					<p><a href="#">UserUserUser</a>, Java Developer</p>
