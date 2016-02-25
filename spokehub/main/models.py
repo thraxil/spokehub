@@ -29,6 +29,7 @@ class Conversation(models.Model):
             },
         null=True,
         )
+    author = models.ForeignKey(User, null=True)
 
     objects = ConversationManager()
 
