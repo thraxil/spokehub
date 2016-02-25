@@ -29,8 +29,8 @@
 			  <div class="conversation">
 				    <div class="grid-item">
 					      <h3><a href="question">{{conversation.body|markdown}}</a></h3>
-					      <p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					      <p>Berlin, Germany, {{conversation.added}}</p>
+					      <p><a href="/accounts/{{conversation.author.username}}/">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
+					      <p>{{conversation.author.profile.city}}, {{conversation.author.profile.country}}, {{conversation.added}}</p>
 				    </div>
 
             {% if not request.user.is_anonymous %}
