@@ -216,6 +216,9 @@ class Reply(models.Model):
         return body
 
     def email_mentions(self):
+        if settings.DEBUG:
+            # don't do this in dev/staging
+            return
         conv_users = self.conversation_users()
         mentioned = self.mentioned_users()
         unmentioned = set(conv_users) - set(mentioned)
