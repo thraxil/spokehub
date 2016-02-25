@@ -15,6 +15,7 @@ class ConversationFactory(factory.DjangoModelFactory):
     class Meta:
         model = Conversation
     title = 'foo'
+    body = 'foo'
 
 
 class ReplyFactory(factory.DjangoModelFactory):

@@ -38,7 +38,7 @@ class Conversation(models.Model):
         ordering = ['-added', ]
 
     def __unicode__(self):
-        return self.title
+        return self.body[:140]
 
     def get_absolute_url(self):
         return reverse(
