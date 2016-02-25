@@ -1,9 +1,6 @@
 {% load markup %}
 {% load thumbnail %}
 
-
-<h1 class="coming-soon">Coming Soon</h1>
-
 {% if request.user.is_anonymous %}
 {% else %}
 <form action="/conversation/add/" method="post">
