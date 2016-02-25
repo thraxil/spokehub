@@ -46,6 +46,22 @@ class Conversation(models.Model):
                 "%02d" % self.added.day,
                 str(self.id)])
 
+    def get_edit_url(self):
+        return reverse(
+            'edit-question', args=[
+                "%04d" % self.added.year,
+                "%02d" % self.added.month,
+                "%02d" % self.added.day,
+                str(self.id)])
+
+    def get_delete_url(self):
+        return reverse(
+            'delete-question', args=[
+                "%04d" % self.added.year,
+                "%02d" % self.added.month,
+                "%02d" % self.added.day,
+                str(self.id)])
+
     def touch(self):
         self.modified = datetime.now()
         self.save()
