@@ -28,6 +28,7 @@ class Conversation(models.Model):
             'size': (400, 200)
             },
         null=True,
+        blank=True,
         )
     author = models.ForeignKey(User, null=True)
 
