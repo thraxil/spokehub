@@ -18,7 +18,6 @@ class ConversationManager(models.Manager):
 
 
 class Conversation(models.Model):
-    title = models.CharField(max_length=256)
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -28,7 +27,9 @@ class Conversation(models.Model):
             'size': (400, 200)
             },
         null=True,
+        blank=True,
         )
+    author = models.ForeignKey(User)
 
     objects = ConversationManager()
 
@@ -36,11 +37,27 @@ class Conversation(models.Model):
         ordering = ['-added', ]
 
     def __unicode__(self):
-        return self.title
+        return self.body[:140]
 
     def get_absolute_url(self):
         return reverse(
-            'conversation', args=[
+            'question', args=[
+                "%04d" % self.added.year,
+                "%02d" % self.added.month,
+                "%02d" % self.added.day,
+                str(self.id)])
+
+    def get_edit_url(self):
+        return reverse(
+            'edit-question', args=[
+                "%04d" % self.added.year,
+                "%02d" % self.added.month,
+                "%02d" % self.added.day,
+                str(self.id)])
+
+    def get_delete_url(self):
+        return reverse(
+            'delete-question', args=[
                 "%04d" % self.added.year,
                 "%02d" % self.added.month,
                 "%02d" % self.added.day,
@@ -50,15 +67,15 @@ class Conversation(models.Model):
         self.modified = datetime.now()
         self.save()
 
-    def add_reply(self, author, body, url='', title='', image=None):
+    def add_reply(self, author, body, url='', image=None):
         if not author:
             return
-        if body.strip() == '' and url.strip() == '':
+        if body.strip() == '' and url.strip() == '' and image is None:
             return
         if (url.strip() != '' and
                 not (url.startswith('http://') or url.startswith('https://'))):
             url = "http://" + url
-        r = Reply.objects.create_reply(self, author, body, url, title)
+        r = Reply.objects.create_reply(self, author, body, url)
         r.save()
         self.touch()
         if image is not None:
@@ -82,18 +99,18 @@ def new_conversation_emails(sender, **kwargs):
             continue
         i = kwargs['instance']
         u.email_user(
-            "[spokehub] new conversation: " + i.title,
+            "[spokehub] new conversation: ",
             i.body + "\n\n---\nhttp://spokehub.org/\n",
             'hello@spokehub.org')
 
 
 class ReplyManager(models.Manager):
-    def create_reply(self, item, author, body, url, title):
+    def create_reply(self, item, author, body, url):
         r = Reply(
             item=item,
             author=author,
             body=body,
-            url=url.strip(), title=title.strip())
+            url=url.strip())
         if 'youtube.com' in url:
             url_data = urlparse.urlparse(r.url)
             query = urlparse.parse_qs(url_data.query)
@@ -119,7 +136,6 @@ class Reply(models.Model):
         null=True,
         )
     url = models.TextField(blank=True, default=u"")
-    title = models.TextField(blank=True, default=u"")
     youtube_id = models.TextField(default="", blank=True)
     vimeo_id = models.TextField(default="", blank=True)
 

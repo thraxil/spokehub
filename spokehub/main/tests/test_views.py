@@ -1,7 +1,6 @@
 from django.test import TestCase
 from django.test.client import Client
 from django.test.utils import override_settings
-from unittest import skip
 from waffle.models import Flag
 from .factories import (UserFactory, ConversationFactory)
 
@@ -39,33 +38,30 @@ class LoggedInTest(TestCase):
         i = ConversationFactory()
         r = self.c.get("/")
         self.assertEqual(r.status_code, 200)
-        self.assertTrue(i.title in r.content)
+        self.assertTrue(i.body in r.content)
 
     def test_userpage(self):
         r = self.c.get("/accounts/" + self.u.username + "/")
         self.assertEqual(r.status_code, 200)
 
     def test_add_conversation(self):
-        r = self.c.post("/conversation/add/", dict(title='foo', body='bar'))
+        r = self.c.post("/we/ask/", dict(body='bar'))
         self.assertEqual(r.status_code, 302)
-        r = self.c.get("/")
+        r = self.c.get("/we/")
         self.assertEqual(r.status_code, 200)
         self.assertTrue('foo' in r.content)
 
-    @skip("skip until work is put into conversations again")
     def test_reploy_to_conversation(self):
         Flag.objects.create(name="main", everyone=True)
         i = ConversationFactory()
         r = self.c.post(
             "/conversation/%d/reply/" % i.id,
             dict(
-                title='reply title',
                 body='reply body',
                 url='http://foo.example.com/'),
         )
         self.assertEqual(r.status_code, 302)
-        r = self.c.get("/")
-        self.assertTrue('reply title' in r.content)
+        r = self.c.get(i.get_absolute_url())
         self.assertTrue('reply body' in r.content)
         self.assertTrue('http://foo.example.com/' in r.content)
 
@@ -77,10 +73,19 @@ class LoggedInTest(TestCase):
             r = self.c.post(
                 "/conversation/%d/reply/" % c.id,
                 dict(
-                    title='reply title',
                     body='reply body',
                     url='http://foo.example.com/',
                     image=img,
                 ),
             )
             self.assertEqual(r.status_code, 302)
+
+
+class TestUserProfiles(TestCase):
+    def setUp(self):
+        self.c = Client()
+
+    def test_profile_view(self):
+        u = UserFactory()
+        r = self.c.get("/accounts/" + u.username + "/")
+        self.assertEqual(r.status_code, 200)

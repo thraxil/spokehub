@@ -9,7 +9,7 @@ from spokehub.main.models import Conversation
 class ConversationTest(TestCase):
     def test_get_absolute_url(self):
         i = ConversationFactory()
-        self.assertTrue(i.get_absolute_url().startswith('/conversation/'))
+        self.assertTrue(i.get_absolute_url().startswith('/we/'))
 
     def test_unicode(self):
         i = ConversationFactory()
@@ -30,7 +30,7 @@ class ConversationTest(TestCase):
 
     def test_add_reply_with_mention(self):
         u = UserFactory()
-        i = ConversationFactory()
+        i = ConversationFactory(author=u)
         u2 = UserFactory()
         i.add_reply(u, "a body that mentions @%s" % u2.username)
         self.assertEqual(i.reply_set.all().count(), 1)
@@ -38,7 +38,7 @@ class ConversationTest(TestCase):
 
     def test_add_reply_with_other_participants(self):
         u = UserFactory()
-        i = ConversationFactory()
+        i = ConversationFactory(author=u)
         i.add_reply(u, "a body")
         self.assertEqual(i.reply_set.all().count(), 1)
         self.assertEqual(len(mail.outbox), 1)
@@ -99,6 +99,10 @@ class ConversationTest(TestCase):
         self.assertEqual(r.vimeo_id, "foo")
 
 
+class DummyFile(object):
+    pass
+
+
 class ReplyTest(TestCase):
     def test_unicode(self):
         r = ReplyFactory()
@@ -130,6 +134,12 @@ class ReplyTest(TestCase):
             """@nonexistent [@%s](/accounts/%s/) [@%s](/accounts/%s/)""" % (
                 u.username, u.username, u2.username, u2.username)
         )
+
+    def test_save_image_invalid_ext(self):
+        r = ReplyFactory()
+        d = DummyFile()
+        d.name = "invalid.extension"
+        self.assertIsNone(r.save_image(d))
 
 
 class NowPostTest(TestCase):

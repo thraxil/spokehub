@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView, View
@@ -38,12 +39,15 @@ class ConversationIndexView(ListView):
 
 class ConversationCreateView(CreateView):
     model = Conversation
-    fields = ['title', 'body']
+    fields = ['body']
 
-    success_url = "/#we"
+    def get_success_url(self):
+        return reverse('we', args=[])
 
-    def get_initial(self):
-        return dict(author=self.request.user)
+    def form_valid(self, form):
+        convo = form.save(commit=False)
+        convo.author = self.request.user
+        return super(ConversationCreateView, self).form_valid(form)
 
 
 class ConversationDetailView(DetailView):
@@ -52,7 +56,7 @@ class ConversationDetailView(DetailView):
 
 class ConversationUpdateView(UpdateView):
     model = Conversation
-    fields = ['title', 'body']
+    fields = ['body']
     template_name_suffix = '_update_form'
 
 
@@ -71,7 +75,6 @@ class ReplyToConversationView(View):
             request.user,
             request.POST.get('body', ''),
             request.POST.get('url', ''),
-            request.POST.get('title', ''),
             image,
         )
-        return HttpResponseRedirect('/#we')
+        return HttpResponseRedirect(conversation.get_absolute_url())
