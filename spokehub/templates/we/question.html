@@ -1,56 +1,80 @@
-<div class="we we-question">
-
 {% extends 'base.html' %}
+{% load markup %}
+{% load thumbnail %}
 
 {% block content %}
 
-	<div id="site-wrapper"> 
-		<div class="content-wrapper content-container">
+	  <div id="site-wrapper"> 
+		    <div class="content-wrapper content-container">
 
-		    <div class="page-heading clearfix">
+		        <div class="page-heading clearfix">
 
-				<ul class="archives-post">
-					<li><a href=".."><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
-					<!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
-					<li><a href="../ask"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
-				</ul>
+				        <ul class="archives-post">
+					          <li><a href=".."><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+					          <!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
+					          <li><a href="../ask"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+				        </ul>
 
-		    	<h2><b>WE</b> ask questions with visual answers</h2>
+		    	      <h2><b>WE</b> ask questions with visual answers</h2>
 
+			      </div>
+      
+            {% if request.user.is_superuser %}
+                <a href="edit/" class="btn btn-primary pull-right">Edit</a>
+            {% endif %}
+
+        </div>
+
+      
+			  <div class="conversation">
+				    <div class="grid-item">
+					      <h3><a href="question">{{conversation.body|markdown}}</a></h3>
+					      <p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
+					      <p>Berlin, Germany, {{conversation.added}}</p>
+				    </div>
+
+            {% if not request.user.is_anonymous %}
+                <h2>Add a visual to the conversation</h2>
+                
+                <form action="{% url 'reply-to-conversation' conversation.pk %}" method="post" enctype="multipart/form-data">
+				            <div class="upload-enter">
+                        <input type="file" name="image" id="comment-image" />
+                        <input type="text" name="url" id="comment-url" placeholder="Video URL"/>
+				            </div>                    
+				            <div class="clearfix"></div>
+				            <textarea name="styled-textarea" class="convo-question" name="body" placeholder="Got anything to say about it?"></textarea>                    
+				            <p id="chars-left">140 characters left</p>
+				            <input type="submit" value="SUBMIT" class="convo-submit">-->
+            </form>
+
+        {% endif %}
+
+        
 			</div>
 
-			<div class="conversation">
-				<div class="grid-item">
-					<h3><a href="question">Where do socks go in the laundry?</a></h3>
-					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					<p>Berlin, Germany, 21/11/15 23:40</p>
-				</div>
-				<!--<h2>Add a visual to the conversation</h2>
-				<div class="upload-enter">
-					<span>Upload File</span>
-					<span><a href="#">Enter URL</a></span>
-				</div>
-				<div class="clearfix"></div>
-				<input type="text" placeholder="Select image or video file" class="select-file"> <input type="submit" value="BROWSE" class="browse-files">
-				<textarea name="styled-textarea" class="convo-question" placeholder="Got anything to say about it?"></textarea>
-				<p id="chars-left">140 characters left</p>
-				<input type="submit" value="SUBMIT" class="convo-submit">-->
-
-			</div>
-
-			<h3 class="responses-heading">2 RESPONSES</h3>
+			<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSES</h3>
 
 			<div class="grid convo-responses" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
 
 				<div class="grid-sizer"></div>
 
-				<div class="grid-item">
-					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					<p>Berlin, Germany, 21/11/15 23:40</p>
-					<div class="media-center"><img src="{{STATIC_URL}}img/dummy/bauhaus.jpg"></div>
-					<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-				</div>
+        {% for reply in conversation.reply_set.all %}
+				    <div class="grid-item">
+					      <p><a href="#">{{reply.author.username}}</a>, UI/UX Designer</p>
+					      <p>{{reply.author.profile.city}}, {{reply.author.profile.country}}, {{reply.added}}</p>
 
+                {% if reply.image %}
+					          <div class="media-center"><img src="{% thumbnail reply.image 400x400 %}"></div>
+                {% endif %}
+                {% if reply.url %}
+                    <a href="{{reply.url}}">{{reply.url}}</a>
+                {% endif %}
+                {% if reply.body %}
+                    {{reply.body|markdown}}
+                {% endif %}
+				    </div>
+        {% endfor %}
+        
 				<div class="grid-item">
 					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
 					<p>Berlin, Germany, 21/11/15 23:40</p>

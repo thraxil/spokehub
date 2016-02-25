@@ -40,7 +40,7 @@ class Conversation(models.Model):
 
     def get_absolute_url(self):
         return reverse(
-            'conversation', args=[
+            'question', args=[
                 "%04d" % self.added.year,
                 "%02d" % self.added.month,
                 "%02d" % self.added.day,

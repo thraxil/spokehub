@@ -9,7 +9,7 @@ from spokehub.main.models import Conversation
 class ConversationTest(TestCase):
     def test_get_absolute_url(self):
         i = ConversationFactory()
-        self.assertTrue(i.get_absolute_url().startswith('/conversation/'))
+        self.assertTrue(i.get_absolute_url().startswith('/we/'))
 
     def test_unicode(self):
         i = ConversationFactory()

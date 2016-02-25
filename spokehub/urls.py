@@ -15,9 +15,6 @@ urlpatterns = patterns(
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),
         name='about'),
-    url((r'^conversation/(?P<year>\d+)/'
-         '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$'),
-        views.ConversationDetailView.as_view(), {}, 'conversation'),
     url(r'^conversation/(?P<year>\d+)/(?P<month>\d+)/'
         r'(?P<day>\d+)/(?P<pk>\d+)/edit/$',
         views.ConversationUpdateView.as_view(), name='edit-conversation'),
@@ -33,8 +30,10 @@ urlpatterns = patterns(
         template_name='how/index.html'), name='how'),
     url(r'^we/$', views.ConversationIndexView.as_view(
         template_name='we/index.html'), name='we'),
-    (r'^we/question/$', views.IndexView.as_view(
-        template_name='we/question.html')),
+    url(r'^we/question/(?P<year>\d+)/'
+        '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
+        views.ConversationDetailView.as_view(
+            template_name='we/question.html'), name='question'),
     (r'^we/questionold/$', views.IndexView.as_view(
         template_name='we/question-old.html')),
     url(r'^we/ask/$', views.ConversationCreateView.as_view(
