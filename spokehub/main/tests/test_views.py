@@ -38,7 +38,7 @@ class LoggedInTest(TestCase):
         i = ConversationFactory()
         r = self.c.get("/")
         self.assertEqual(r.status_code, 200)
-        self.assertTrue(i.title in r.content)
+        self.assertTrue(i.body in r.content)
 
     def test_userpage(self):
         r = self.c.get("/accounts/" + self.u.username + "/")
@@ -73,7 +73,6 @@ class LoggedInTest(TestCase):
             r = self.c.post(
                 "/conversation/%d/reply/" % c.id,
                 dict(
-                    title='reply title',
                     body='reply body',
                     url='http://foo.example.com/',
                     image=img,

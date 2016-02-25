@@ -14,7 +14,6 @@ class UserFactory(factory.DjangoModelFactory):
 class ConversationFactory(factory.DjangoModelFactory):
     class Meta:
         model = Conversation
-    title = 'foo'
     body = 'foo'
     author = factory.SubFactory(UserFactory)
 
@@ -25,7 +24,6 @@ class ReplyFactory(factory.DjangoModelFactory):
     item = factory.SubFactory(ConversationFactory)
     author = factory.SubFactory(UserFactory)
     body = "reply body"
-    title = "reply title"
 
 
 class NowPostFactory(factory.DjangoModelFactory):

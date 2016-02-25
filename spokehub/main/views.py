@@ -56,7 +56,7 @@ class ConversationDetailView(DetailView):
 
 class ConversationUpdateView(UpdateView):
     model = Conversation
-    fields = ['title', 'body']
+    fields = ['body']
     template_name_suffix = '_update_form'
 
 
@@ -75,7 +75,6 @@ class ReplyToConversationView(View):
             request.user,
             request.POST.get('body', ''),
             request.POST.get('url', ''),
-            request.POST.get('title', ''),
             image,
         )
         return HttpResponseRedirect(conversation.get_absolute_url())
