@@ -71,7 +71,7 @@ urlpatterns = patterns(
 
     url(r'^conversation/(?P<pk>\d+)/reply/$',
         views.ReplyToConversationView.as_view(),
-        name='reply-to-conversation'),
+        name='reply-to-question'),
 
     (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
