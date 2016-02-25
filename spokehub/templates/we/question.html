@@ -60,7 +60,7 @@
 
         {% for reply in conversation.reply_set.all %}
 				    <div class="grid-item">
-					      <p><a href="#">{{reply.author.username}}</a>, UI/UX Designer</p>
+					      <p><a href="#">{{reply.author.username}}</a>, {{reply.author.discipline1}}</p>
 					      <p>{{reply.author.profile.city}}, {{reply.author.profile.country}}, {{reply.added}}</p>
 
                 {% if reply.image %}
