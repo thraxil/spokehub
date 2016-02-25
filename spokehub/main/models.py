@@ -30,7 +30,7 @@ class Conversation(models.Model):
         null=True,
         blank=True,
         )
-    author = models.ForeignKey(User, null=True)
+    author = models.ForeignKey(User)
 
     objects = ConversationManager()
 

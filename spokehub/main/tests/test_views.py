@@ -45,7 +45,7 @@ class LoggedInTest(TestCase):
         self.assertEqual(r.status_code, 200)
 
     def test_add_conversation(self):
-        r = self.c.post("/we/ask/", dict(title='foo', body='bar'))
+        r = self.c.post("/we/ask/", dict(body='bar'))
         self.assertEqual(r.status_code, 302)
         r = self.c.get("/we/")
         self.assertEqual(r.status_code, 200)

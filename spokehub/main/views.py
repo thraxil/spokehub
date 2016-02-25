@@ -44,8 +44,10 @@ class ConversationCreateView(CreateView):
     def get_success_url(self):
         return reverse('we', args=[])
 
-    def get_initial(self):
-        return dict(author=self.request.user)
+    def form_valid(self, form):
+        convo = form.save(commit=False)
+        convo.author = self.request.user
+        return super(ConversationCreateView, self).form_valid(form)
 
 
 class ConversationDetailView(DetailView):

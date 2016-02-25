@@ -16,6 +16,7 @@ class ConversationFactory(factory.DjangoModelFactory):
         model = Conversation
     title = 'foo'
     body = 'foo'
+    author = factory.SubFactory(UserFactory)
 
 
 class ReplyFactory(factory.DjangoModelFactory):

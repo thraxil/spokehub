@@ -30,7 +30,7 @@ class ConversationTest(TestCase):
 
     def test_add_reply_with_mention(self):
         u = UserFactory()
-        i = ConversationFactory()
+        i = ConversationFactory(author=u)
         u2 = UserFactory()
         i.add_reply(u, "a body that mentions @%s" % u2.username)
         self.assertEqual(i.reply_set.all().count(), 1)
@@ -38,7 +38,7 @@ class ConversationTest(TestCase):
 
     def test_add_reply_with_other_participants(self):
         u = UserFactory()
-        i = ConversationFactory()
+        i = ConversationFactory(author=u)
         i.add_reply(u, "a body")
         self.assertEqual(i.reply_set.all().count(), 1)
         self.assertEqual(len(mail.outbox), 1)
