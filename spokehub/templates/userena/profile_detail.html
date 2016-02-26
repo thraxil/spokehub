@@ -6,20 +6,13 @@
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 
 {% block content %}
-<div class="container userena">
-	<div class="row">
-    {% block profile_navigation %}
-      {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-      {% if user.username == profile.user.username %}
-          {% block profile_navigation_items %}
-		<div class="btn-group pull-right">
-      <a class="btn btn-primary" href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit details" %}</a>
-      <a class="btn btn-primary" href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
-      <a class="btn btn-primary" href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
-		</div>
-          {% endblock %}
+    {% if user.username == profile.user.username %}
+
+        <a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit details" %}</a>
+        <a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
+        <a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
+
       {% endif %}
-    {% endblock %}
 
     <div id="details">
       {% block profile_details %}
@@ -65,24 +58,7 @@
 							{% endif %}
 							</dd>
 {% endif %}
-{% if profile.twitter %}
-					<dt>Twitter</dt>
-					<dd><a href="https://twitter.com/{{profile.twitter.screen_name}}/"><img src="{{profile.twitter.profile_image_url}}"/>@{{profile.twitter.screen_name}}</a>
-{% if user.username == profile.user.username %}
-(<a href="/link/twitter/unlink/">unlink</a>)
-{% endif %}
-</dd>
-{% endif %}
 
-{% if profile.instagram %}
-					<dt>Instagram</dt>
-					<dd><a href="http://instagram.com/{{profile.instagram.screen_name}}/"><img src="{{profile.instagram.profile_image_url}}"/>{{profile.instagram.screen_name}}</a>
-{% if user.username == profile.user.username %}
-(<a href="/link/instagram/unlink/">unlink</a>)
-{% endif %}
-
-</dd>
-{% endif %}
           {% endblock %}
         </dl>
       {% endblock %}
