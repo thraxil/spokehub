@@ -52,7 +52,7 @@
         {% endif %}
 			</div>
 
-			<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSES</h3>
+			<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
 
 			<div class="grid convo-responses" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
 
