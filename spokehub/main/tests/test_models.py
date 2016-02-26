@@ -1,9 +1,10 @@
+from datetime import datetime
 from django.core import mail
 from django.test import TestCase
 from .factories import (
     UserFactory, ConversationFactory, ReplyFactory,
     NowPostFactory)
-from spokehub.main.models import Conversation
+from spokehub.main.models import Conversation, NowPost
 
 
 class ConversationTest(TestCase):
@@ -158,3 +159,24 @@ class NowPostTest(TestCase):
     def test_misc_external_link(self):
         n = NowPostFactory(service="foo")
         self.assertIsNone(n.external_link())
+
+    def test_create_instagram(self):
+        np = NowPost.objects.create_instagram(
+            "foo", "bar", "text", datetime.now(),
+            "http://example.com/image", "http://example.com/video",
+            "{}")
+        self.assertEqual(np.image_width, 640)
+        self.assertEqual(np.service, "instagram")
+
+    def test_create_twitter(self):
+        np = NowPost.objects.create_twitter(
+            "foo", "bar", "text", datetime.now(),
+            "{}")
+        self.assertEqual(np.service, "twitter")
+
+    def test_create_tumblr(self):
+        np = NowPost.objects.create_tumblr(
+            "foo", "bar", "text", datetime.now(),
+            "http://example.com/image", 640, 480,
+            "{}")
+        self.assertEqual(np.service, "tumblr")
