@@ -29,7 +29,7 @@
 			  <div class="conversation">
 				    <div class="grid-item">
 					      <h3><a href="question">{{conversation.body|markdown}}</a></h3>
-					      <p><a href="/accounts/{{conversation.author.username}}/">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
+					      <p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
 					      <p>{{conversation.author.profile.city}}, {{conversation.author.profile.country}}, {{conversation.added}}</p>
 				    </div>
 
@@ -58,7 +58,7 @@
 
         {% for reply in conversation.reply_set.all %}
 				    <div class="grid-item">
-					      <p><a href="#">{{reply.author.username}}</a>, {{reply.author.profile.discipline1}}</p>
+					      <p><a href="{% url 'userena_profile_detail' reply.author.username %}">{{reply.author.username}}</a>, {{reply.author.profile.discipline1}}</p>
 					      <p>{{reply.author.profile.city}}, {{reply.author.profile.country}}, {{reply.added}}</p>
 
                 {% if reply.image %}
