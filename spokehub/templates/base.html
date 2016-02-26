@@ -42,7 +42,13 @@
 	    	<a class="work" href="{% url 'work' %}">WORK</a>
 	    	<a class="now" href="{% url 'now' %}">NOW</a>
 	  	</nav>
-		<a href="#" id="login-link">Login</a>
+
+	  	{% if request.user.is_anonymous %}
+			<p><a href="#" id="login-link">Login</a></p>
+			{% else %}
+			<p><img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/> {{request.user.username}} | <a href="../accounts/signout">Log Out</a></p>
+		{% endif %}
+
 	</div>
 </header>
 
