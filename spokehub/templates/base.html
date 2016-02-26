@@ -44,7 +44,7 @@
 	  	</nav>
 
 	  	{% if request.user.is_anonymous %}
-			<p><a href="#" id="login-link">Login</a></p>
+			<p><a href="{% url 'userena_signin' %}" id="login-link">Login</a></p>
 			{% else %}
 			<p><img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/> {{request.user.username}} | <a href="{% url 'userena_signout' %}">Log Out</a></p>
 		{% endif %}
