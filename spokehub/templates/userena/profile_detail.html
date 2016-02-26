@@ -5,17 +5,6 @@
 {% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 
-{% block navbar %}
-	<ul class="nav nav-justified">
-      <li><button type="button" class="btn hubnav"><a href="/#how">HOW</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#we">WE</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#work">WORK</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#now">NOW</a></button></li>
-
-		</ul>
-{% endblock %}
-
-
 {% block content %}
 <div class="container userena">
 	<div class="row">
