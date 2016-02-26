@@ -12,7 +12,9 @@
 				        <ul class="archives-post">
 					          <li><a href=".."><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
 					          <!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
-					          <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                    {% if request.user.is_authenticated %}
+					              <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                    {% endif %}
 				        </ul>
 
 		    	      <h2><b>WE</b> ask questions with visual answers</h2>
