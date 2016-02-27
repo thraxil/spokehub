@@ -63,6 +63,7 @@ class SignupView(View):
         # handle profile fields (location, discipline, website, etc)
         p = get_user_profile(user)
         p.website_url = request.POST.get('website', '')
+        p.profession = request.POST.get('profession', '')
         p.save()
 
         # clear out invite token
