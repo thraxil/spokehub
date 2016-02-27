@@ -37,12 +37,15 @@ class TestSignupView(TestCase):
                             password1='pass',
                             password2='pass',
                             username='newuser',
+                            firstname='first',
+                            lastname='last',
                             website='http://example.com/',
                             profession='anarchist',
                             email=i.email,
                         ))
         # should make a new user with the appropriate fields
-        u = User.objects.filter(username='newuser', email=i.email)
+        u = User.objects.filter(username='newuser', email=i.email,
+                                first_name='first', last_name='last')
         self.assertEqual(u.count(), 1)
 
         # should make a new profile
