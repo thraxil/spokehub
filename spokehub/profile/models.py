@@ -17,3 +17,4 @@ class Profile(UserenaBaseProfile):
     discipline2 = models.CharField(max_length=256, blank=True, default="")
     website_url = models.CharField(max_length=256, blank=True, default="")
     website_name = models.CharField(max_length=256, blank=True, default="")
+    location = models.CharField(max_length=256, blank=True, default="")
