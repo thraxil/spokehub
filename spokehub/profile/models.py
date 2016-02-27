@@ -15,3 +15,11 @@ class Profile(UserenaBaseProfile):
     website_url = models.CharField(max_length=256, blank=True, default="")
     website_name = models.CharField(max_length=256, blank=True, default="")
     location = models.CharField(max_length=256, blank=True, default="")
+
+    def completed(self):
+        return (
+            self.profession != "" and
+            self.location != "" and
+            self.user.first_name != "" and
+            self.user.last_name != ""
+        )
