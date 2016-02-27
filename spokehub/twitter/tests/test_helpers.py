@@ -1,5 +1,5 @@
 import unittest
-from spokehub.twitter import process_extended_attributes
+from spokehub.twitter import process_extended_attributes, add_tweet
 
 
 class Dummy(object):
@@ -48,3 +48,11 @@ class TestProcessExtendedAttributes(unittest.TestCase):
         self.assertEqual(m.image_url, 'test')
         self.assertEqual(m.image_width, 400)
         self.assertEqual(m.image_height, 500)
+
+
+class TestAddTweet(unittest.TestCase):
+    def test_invalid(self):
+        d = Dummy()
+        d.link = None
+        d.id_str = "foo"
+        self.assertIsNone(add_tweet(d))
