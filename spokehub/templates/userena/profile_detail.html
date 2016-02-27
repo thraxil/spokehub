@@ -9,13 +9,13 @@
 
 <div id="site-wrapper">
 
-    <!--{% if user.username == profile.user.username %}
+    {% if user.username == profile.user.username %}
 
         <a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit details" %}</a>
         <a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
         <a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
 
-      {% endif %}-->
+      {% endif %}
 
     <div id="details" class="profile-details">
       {% block profile_details %}
