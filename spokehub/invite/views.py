@@ -60,6 +60,10 @@ class SignupView(View):
         user = form.save()
         userena_signals.signup_complete.send(sender=None, user=user)
 
+        user.first_name = request.POST['firstname']
+        user.last_name = request.POST['lastname']
+        user.save()
+
         # handle profile fields (location, discipline, website, etc)
         p = get_user_profile(user)
         p.website_url = request.POST.get('website', '')
