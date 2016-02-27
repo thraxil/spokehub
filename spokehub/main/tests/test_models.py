@@ -16,6 +16,14 @@ class ConversationTest(TestCase):
         i = ConversationFactory()
         self.assertTrue(str(i), "foo")
 
+    def test_edit_url(self):
+        i = ConversationFactory()
+        self.assertIsNotNone(i.get_edit_url())
+
+    def test_delete_url(self):
+        i = ConversationFactory()
+        self.assertIsNotNone(i.get_delete_url())
+
     def test_touch(self):
         i = ConversationFactory()
         modified = i.modified
