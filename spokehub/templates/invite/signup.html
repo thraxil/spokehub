@@ -1,54 +1,31 @@
-{% extends 'userena/base_userena.html' %}
-{% load i18n %}
-{% load bootstrap %}
+<div class="profile black-bg">
 
-{% block title %}{% trans "Signup" %}{% endblock %}
+{% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-<form action="{% url 'userena_signup' %}" method="post">
-  {% csrf_token %}
-  <fieldset>
-    <legend>Join Spokehub</legend>
-
-		<p>You have been invited to join Spokehub. First you need to
-    create your account. A confirmation will be sent to the email you
-    set. Then you can fill out your profile and
-			join the conversation.</p>
-
-<div class="control-group">
-  <label class="control-label" for="id_username">Username</label>
-  <div class="controls">
-    <input class="required" id="id_username" maxlength="30" name="username" type="text" />
-  </div>
-</div>
-
-<div class="control-group">
-  <label class="control-label" for="id_email">Email</label>
-  <div class="controls">
-    <input class="required" id="id_email" maxlength="75" name="email"
-    type="text" value="{{email}}"/>
-  </div>
-</div>
-
-<div class="control-group">
-  <label class="control-label" for="id_password1">Create password</label>
-     <div class="controls">
-        <input class="required" id="id_password1" name="password1" type="password" />
-     </div>
-</div>
-
-<div class="control-group">
-  <label class="control-label" for="id_password2">Repeat password</label>
-  <div class="controls">
-    <input class="required" id="id_password2" name="password2" type="password" />
-  </div>
-</div>
-
-
-  </fieldset>
-  <input type="submit" value="{% trans "Signup"%}" class="btn
-  btn-primary" />
-</form>
-</div>
+	<div id="site-wrapper"> 
+		<div class="content-wrapper content-container">
+			<div class="page-heading">
+				<h2><b>Welcome, {{email}}!</b></h2>
+			</div>
+			<p>Please create your Spokehub profile. All fields are required.</p>
+      <form action="." method="post">
+          {% csrf_token %}
+          <input type="hidden" name="email" value="{{email}}" />
+			    <ul class="profile-form">
+				      <li><input name="username" type="text" placeholder="Username"></li>
+				      <li><input name="password1" type="password" placeholder="Password"></li>
+				      <li><input name="location" type="text" placeholder="City & country"></li>
+				      <li><input name="profession" type="text" placeholder="Profession"></li>
+			    </ul>
+			    <ul class="profile-form column2">
+				      <li><input name="website" type="text" placeholder="Website"></li>
+				      <li><input name="password2" type="password" placeholder="Repeat Password"></li>          
+				      <li><input type="submit" value="SUBMIT" class="submit"></li>
+			    </ul>
+      </form>
+		</div>
+	</div>
 {% endblock %}
+
+</div>

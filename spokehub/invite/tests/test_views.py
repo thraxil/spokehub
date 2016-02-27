@@ -1,8 +1,10 @@
 import unittest
-from django.test import TestCase, Client
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.test import TestCase, Client
 from spokehub.invite.views import new_token
 from spokehub.invite.models import Invite
+from .factories import InviteFactory
 
 
 class TestNewToken(unittest.TestCase):
@@ -18,6 +20,38 @@ class TestSignupView(TestCase):
     def test_no_token(self):
         r = self.c.get(reverse('invite_signup_form', args=['asdfasdf']))
         self.assertTrue("sorry" in r.content)
+
+    def test_post_no_token(self):
+        r = self.c.post(reverse('invite_signup_form', args=['asdfasdf']))
+        self.assertTrue("sorry" in r.content)
+
+    def test_get_valid_token(self):
+        i = InviteFactory()
+        r = self.c.get(reverse("invite_signup_form", args=[i.token]))
+        self.assertTrue("password" in r.content)
+
+    def test_post(self):
+        i = InviteFactory()
+        r = self.c.post(reverse("invite_signup_form", args=[i.token]),
+                        data=dict(
+                            password1='pass',
+                            password2='pass',
+                            username='newuser',
+                            website='http://example.com/',
+                            email=i.email,
+                        ))
+        # should make a new user with the appropriate fields
+        u = User.objects.filter(username='newuser', email=i.email)
+        self.assertEqual(u.count(), 1)
+
+        # should make a new profile
+        self.assertEqual(u.first().profile.website_url, 'http://example.com/')
+
+        # should clear out the invite so it can't be reused
+        self.assertEqual(Invite.objects.filter(token=i.token).count(), 0)
+
+        # should redirect to user profile edit page
+        self.assertEqual(r.status_code, 302)
 
 
 class TestInviteView(TestCase):
@@ -36,4 +70,4 @@ class TestInviteView(TestCase):
         self.assertEqual(i.status, 'OPEN')
         # now if we get the signup page with the token it should be ok
         r = self.c.get(reverse('invite_signup_form', args=[i.token]))
-        self.assertTrue("Join" in r.content)
+        self.assertTrue("password" in r.content)
