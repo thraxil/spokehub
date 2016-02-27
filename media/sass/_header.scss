@@ -121,6 +121,9 @@ header {
     margin: 10% auto;
     padding: 5px 20px 13px 20px;
     background: $white;
+    @media only screen and (max-width: 499px) {
+      width: 300px;
+    }
 }
 .close {
     color: $black;
