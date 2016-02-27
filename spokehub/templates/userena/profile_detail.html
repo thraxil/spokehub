@@ -47,18 +47,6 @@
               <dt>{% trans "About me" %}</dt>
               <dd>{{ profile.about_me }}</dd>
             {% endif %}
-{% if profile.discipline1 or profile.discipline2 %}
-							<dt>Disciplines</dt>
-							<dd>
-							{% if profile.discipline1 %}
-							<span class="label label-default">{{profile.discipline1}}</span>
-							{% endif %}
-							{% if profile.discipline2 %}
-							<span class="label label-default">{{profile.discipline2}}</span>
-							{% endif %}
-							</dd>
-{% endif %}
-
           {% endblock %}
         </dl>
       {% endblock %}
