@@ -22,9 +22,9 @@ def add_tweet(t):
         print(t.created_at.isoformat())
         print("new twitter post added")
         print(np.id)
+        process_extended_attributes(t, np)
     except Exception, e:
         print "failed with exception: " + str(e)
-    process_extended_attributes(t, np)
 
 
 def process_extended_attributes(t, np):
