@@ -144,6 +144,11 @@ input[type=password] {
   letter-spacing: 1px;
 }
 
+input[type="checkbox"],
+label {
+  font-family: $header-font;
+}
+
 input[type=submit] {
   padding: 10px;
   letter-spacing: 1px;

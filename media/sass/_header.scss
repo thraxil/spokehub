@@ -137,7 +137,21 @@ header {
     color: $cyan;
 }
 
-#openModal input {
+#openModal input[type=submit],
+#openModal input[type=password],
+#openModal input[type=text], {
   width: 100%;
+}
+
+#openModal input,
+#forgot-password {
   margin-bottom: 20px;
+}
+
+#forgot-password a {
+  color: $cyan;
+}
+
+#forgot-password a:hover {
+  color: $black;
 }
