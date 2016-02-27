@@ -47,9 +47,6 @@
 
 	  	<div id="username-logout">
 	  	{% if request.user.is_anonymous %}
-			<!--<p>
-				<a href="{% url 'userena_signin' %}?next={{request.path}}" id="login-link">Login</a>
-			</p>-->
 			<p><a href="#openModal" id="login-link">Login</a></p>
 			{% else %}
 			<p>
@@ -91,14 +88,17 @@
     	<a href="#close" title="Close" class="close"><i class="mdi mdi-close"></i></a>
 
         <h2>LOGIN</h2>
-
+        <form action="{% url 'userena_signin' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="next" value="{{request.path}}" />
         <p>Membership by invitation only.</p>
-        <input type="text" name="url" placeholder="Username"/>
-        <input type="password" name="url" placeholder="Password"/>
-	    <input type="checkbox" name="checkbox" id="checkbox_id" value="value">
-		<label for="checkbox_id">Remember me for a month</label>
-		<p id="forgot-password"><a href="#">Forgot your password?</a></p>
-		<input type="submit" value="SUBMIT">
+        <input type="text" name="identification" placeholder="Username"/>
+        <input type="password" name="password" placeholder="Password"/>
+		    <input type="submit" value="SUBMIT">
+	      <input type="checkbox" name="checkbox" id="checkbox_id" value="value">
+		    <label for="checkbox_id">Remember me for a month</label>
+		    <p id="forgot-password"><a href="#">Forgot your password?</a></p>
+        </form>
     </div>
 </div>
 
