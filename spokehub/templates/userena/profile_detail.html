@@ -5,32 +5,14 @@
 {% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
 {% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}
 
-{% block navbar %}
-	<ul class="nav nav-justified">
-      <li><button type="button" class="btn hubnav"><a href="/#how">HOW</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#we">WE</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#work">WORK</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#now">NOW</a></button></li>
-
-		</ul>
-{% endblock %}
-
-
 {% block content %}
-<div class="container userena">
-	<div class="row">
-    {% block profile_navigation %}
-      {% comment %}Dirty hack. Will use django-guardian in the future.{% endcomment %}
-      {% if user.username == profile.user.username %}
-          {% block profile_navigation_items %}
-		<div class="btn-group pull-right">
-      <a class="btn btn-primary" href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit details" %}</a>
-      <a class="btn btn-primary" href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
-      <a class="btn btn-primary" href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
-		</div>
-          {% endblock %}
+    {% if user.username == profile.user.username %}
+
+        <a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit details" %}</a>
+        <a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
+        <a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
+
       {% endif %}
-    {% endblock %}
 
     <div id="details">
       {% block profile_details %}
@@ -76,24 +58,7 @@
 							{% endif %}
 							</dd>
 {% endif %}
-{% if profile.twitter %}
-					<dt>Twitter</dt>
-					<dd><a href="https://twitter.com/{{profile.twitter.screen_name}}/"><img src="{{profile.twitter.profile_image_url}}"/>@{{profile.twitter.screen_name}}</a>
-{% if user.username == profile.user.username %}
-(<a href="/link/twitter/unlink/">unlink</a>)
-{% endif %}
-</dd>
-{% endif %}
 
-{% if profile.instagram %}
-					<dt>Instagram</dt>
-					<dd><a href="http://instagram.com/{{profile.instagram.screen_name}}/"><img src="{{profile.instagram.profile_image_url}}"/>{{profile.instagram.screen_name}}</a>
-{% if user.username == profile.user.username %}
-(<a href="/link/instagram/unlink/">unlink</a>)
-{% endif %}
-
-</dd>
-{% endif %}
           {% endblock %}
         </dl>
       {% endblock %}
@@ -102,44 +67,7 @@
      {% if user.username == profile.user.username %}
 {% if user.is_superuser %}
 
-<p><a href="#add-conversation" data-toggle="modal"
-	 data-target="#add-conversation" class="btn btn-primary">Start a
-	 new Conversation</a>
-
-<a href="/conversation/" 
-	 class="btn btn-primary">View Archived Conversations</a></p>
 <p><a href="/invite/" class="btn btn-primary">Invite People to Join</a></p>
-
-
-<form action="/conversation/add/" method="post" enctype="multipart/form-data" role="form">
-<div class="modal fade" id="add-conversation">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Start a New Conversation</h4>
-      </div>
-      <div class="modal-body">
-
-				<div class="form-group">
-					<label for="conversation-title">Title</label>
-					<input type="text" class="form-control" id="conversation-title" placeholder="Title" name="title">
-				</div>
-
-				<div class="form-group">
-					<label for="caption">Body</label>
-					<textarea class="form-control" rows="10" name="body"></textarea>
-				</div>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <input type="submit" class="btn btn-primary" value="Go!"/>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-</form>
 
 {% endif %}
 

@@ -10,9 +10,11 @@
 		        <div class="page-heading clearfix">
 
 				        <ul class="archives-post">
-					          <li><a href=".."><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+					          <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
 					          <!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
-					          <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                    {% if request.user.is_authenticated %}
+					              <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                    {% endif %}
 				        </ul>
 
 		    	      <h2><b>WE</b> ask questions with visual answers</h2>
@@ -28,8 +30,8 @@
       
 			  <div class="conversation">
 				    <div class="grid-item">
-					      <h3><a href="question">{{conversation.body|markdown}}</a></h3>
-					      <p><a href="/accounts/{{conversation.author.username}}/">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
+					      <h3>{{conversation.body|markdown}}</h3>
+					      <p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
 					      <p>{{conversation.author.profile.city}}, {{conversation.author.profile.country}}, {{conversation.added}}</p>
 				    </div>
 
@@ -50,7 +52,7 @@
         {% endif %}
 			</div>
 
-			<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSES</h3>
+			<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
 
 			<div class="grid convo-responses" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
 
@@ -58,7 +60,7 @@
 
         {% for reply in conversation.reply_set.all %}
 				    <div class="grid-item">
-					      <p><a href="#">{{reply.author.username}}</a>, {{reply.author.profile.discipline1}}</p>
+					      <p><a href="{% url 'userena_profile_detail' reply.author.username %}">{{reply.author.username}}</a>, {{reply.author.profile.discipline1}}</p>
 					      <p>{{reply.author.profile.city}}, {{reply.author.profile.country}}, {{reply.added}}</p>
 
                 {% if reply.image %}

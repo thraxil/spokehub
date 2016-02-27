@@ -6,17 +6,6 @@
 
 {% block content_title %}<h2>{% blocktrans with profile.user.username as username %}Account &raquo; {{ username }}{% endblocktrans %}</h2>{% endblock %}
 
-{% block navbar %}
-	<ul class="nav nav-justified">
-      <li><button type="button" class="btn hubnav"><a href="/#how">HOW</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#we">WE</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#work">WORK</a></button></li>
-      <li><button type="button" class="btn hubnav"><a href="/#now">NOW</a></button></li>
-
-		</ul>
-{% endblock %}
-
-
 {% block content %}
 
 <div class="container">

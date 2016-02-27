@@ -11,8 +11,10 @@
 		    <div class="page-heading">
 
 				<ul class="archives-post">
-					<!--<li><a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a></li>-->
-					<li><a href="ask"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+					  <!--<li><a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a></li>-->
+            {% if request.user.is_authenticated %}
+					      <li><a href="ask"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+            {% endif %}
 				</ul>
 
 		    	<h2><b>WE</b> ask questions with visual answers</h2>
@@ -27,7 +29,7 @@
           {% for conversation in conversation_list %}
               <div class="grid-item">
 					        <h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
-					        <p><a href="/accounts/{{conversation.author.username}}">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
+					        <p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
 					        <p>{{conversation.author.profile.city}}, {{conversation.author.profile.country}}, {{conversation.added}}</p>
 				      </div>
           {% endfor %}
