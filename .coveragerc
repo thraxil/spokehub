@@ -4,3 +4,4 @@ omit =
     */wsgi.py
 		*/settings_*.py
 		*gravatar*
+    *migrations*
