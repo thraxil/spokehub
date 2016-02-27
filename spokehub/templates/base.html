@@ -19,9 +19,11 @@
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
 {% endcompress %}
 <link rel="stylesheet" href="{{STATIC_URL}}css/bjqs.css">
+<link rel="stylesheet" href="{{STATIC_URL}}css/responsive-nav.css">
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="{{STATIC_URL}}js/libs/bjqs-1.3.js"></script>
 <script src="{{STATIC_URL}}components/masonry/dist/masonry.pkgd.min.js"></script>
+<script src="{{STATIC_URL}}js/libs/responsive-nav.js"></script>
 
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
@@ -36,7 +38,7 @@
 <header>
 	<div id="header-wrapper" class="content-container">
 		<a href="{% url 'index' %}" id="spokehub-logo"><img src="{{STATIC_URL}}img/spokehub-web-logo.png"></a>
-	  	<nav class="desktop-nav">
+	  	<nav class="desktop">
 	    	<a class="how" href="{% url 'how' %}">HOW</a>
 	    	<a class="we" href="{% url 'we' %}">WE</a>
 	    	<a class="work" href="{% url 'work' %}">WORK</a>
@@ -44,10 +46,26 @@
 	  	</nav>
 
 	  	{% if request.user.is_anonymous %}
-			<p><a href="#" id="login-link">Login</a></p>
-			{% else %}
-			<p><img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/> {{request.user.username}} | <a href="../accounts/signout">Log Out</a></p>
+			<p id="login-link" class="desktop"><a href="#">Login</a></p>
+		{% else %}
+			<p id="username-logout" class="desktop"><img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/> <span class="username-link">{{request.user.username}}</span> <span>| <a href="../accounts/signout" id="logout-link">Log Out</a></span></p>
 		{% endif %}
+
+		<!--<div class="mobile menu"><a href="#" class="hamburger-icon"><i class="mdi mdi-menu"></i></a></div>-->
+
+
+
+		<div class="menu mobile" id="mobile-icon">
+
+			<a href="#" class="hamburger-icon"><i class="mdi mdi-menu"></i></a>
+
+			<nav class="nav-collapse">
+		    	<a class="how" href="{% url 'how' %}">HOW</a>
+		    	<a class="we" href="{% url 'we' %}">WE</a>
+		    	<a class="work" href="{% url 'work' %}">WORK</a>
+		    	<a class="now" href="{% url 'now' %}">NOW</a>
+			</nav>
+		</div>
 
 	</div>
 </header>
@@ -78,6 +96,7 @@
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
 {% block js %}{% endblock %}
+
 <script>
   $(document).ready(function() {
     var currentYear = (new Date).getFullYear();
@@ -119,5 +138,10 @@
 </script>
 
 {% endif %}
+
+<script>
+  	var navigation = responsiveNav(".nav-collapse");
+</script>
+
 </body>
 </html>

@@ -22,7 +22,7 @@ header {
     margin: 0px 10px;
     color: $light-gray;
   }
-  a:hover {
+  nav a:hover {
     color: $black;
   }
   nav .nav_deactivated {
@@ -30,19 +30,59 @@ header {
   }
 
   #login-link,
-  #login-info {
-    width: 180px;
+  #login-info,
+  #username-logout {
+    min-width: 210px;
+    width: auto;
     text-align: right;
     color: $black;
-    /*margin-top: -14px;*/
+    margin-top: 14px;
+    padding-top: 6px;
   }
 
-  #login-link:hover{
+  #spokehub-logo {
+    width: 210px;
+  }
+
+  #login-link a {
+    color: $black;
+  }
+
+  #login-link a:hover,
+  #username-logout a:hover,
+  #logout-link:hover,
+  .mobile.menu .hamburger-icon:hover {
     color: $cyan;
   }
+
+  #username-logout span,
+  #username-logout .logged-in-thumb {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  #logout-link {
+    margin-left: 5px;
+  }
+
+  .logged-in-thumb {
+    width: 17px;
+    height: 17px;
+    border-radius: 15px;
+    margin-right: 5px;
+  }
+
+  .username-link {
+    margin-right: 5px;
+  }
+
+  .mobile.menu .hamburger-icon {
+    font-size: 40px;
+  }
+
 }
 
-#header-wrapper img {
+#spokehub-logo img {
 	width: 180px;
 }
 
@@ -53,17 +93,6 @@ header {
   color: $black;
 }
 
-.desktop-nav {
-  @media only screen and (max-width: 767px) {
-    display: none;
-  }
-}
-
 /*#spokehub-logo {
   margin-top: -7px;
 }*/
-
-.logged-in-thumb {
-  width: 25px;
-  height: 25px;
-}
