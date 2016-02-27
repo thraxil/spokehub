@@ -1,3 +1,56 @@
 ul.errorList {
 	color: $magenta;
 }
+
+.mugshot {
+	border-radius: 115px;
+	border: 5px $white solid;
+	margin-top: -100px;
+}
+
+.profile-details {
+	text-align: center;
+	font-family: $header-font;
+	margin: 0 auto;
+	width: 960px;
+	padding: 0 0 40px 0;
+	@media only screen and (min-width: 1600px) {
+		width: 1520px;
+	}
+	@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+		width: 1120px;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 1023px) {
+		width: 708px;
+	}
+	@media only screen and (min-width: 500px) and (max-width: 767px) {
+		width: 450px;
+	}
+	@media only screen and (max-width: 499px) {
+		width: 300px;
+	}
+}
+
+.profile-details a {
+	color: $cyan;
+}
+
+.profile-details a:hover {
+	color: $black;
+}
+
+.profile-details dd {
+	-webkit-margin-start: 0;
+	margin-left: 0;
+}
+
+.profile-details .page-heading {
+	border-bottom: 0;
+	margin-bottom: 0;
+}
+
+.cover-photo {
+	height: 300px;
+	width: 100%;
+	background: $light-gray;
+}
