@@ -9,47 +9,47 @@
 
 		        <div class="page-heading clearfix">
 
-				        <ul class="archives-post">
-					          <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
-					          <!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
-                    {% if request.user.is_authenticated %}
-					              <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
-                    {% endif %}
-				        </ul>
+			        <ul class="archives-post">
+				        <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+				        <!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
+                    	{% if request.user.is_authenticated %}
+					        <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                    	{% endif %}
+			        </ul>
 
-		    	      <h2><b>WE</b> ask questions with visual answers</h2>
+	    	      	<h2><b>WE</b> ask questions with visual answers</h2>
 
-			      </div>
+		      	</div>
+  
+	            <!--{% if request.user.is_superuser %}
+	                <a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a>
+	            {% endif %}
+
+    		<!--</div>-->
+
       
-            {% if request.user.is_superuser %}
-                <a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a>
-            {% endif %}
+			<div class="conversation">
+				<div class="grid-item">
+					<h3>{{conversation.body|markdown}}</h3>
+					<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
+					<p>{{conversation.author.profile.city}}, {{conversation.author.profile.country}}, {{conversation.added}}</p>
+				</div>
 
-        </div>
+            	{% if not request.user.is_anonymous %}
+	                <h2>Add a visual to the conversation</h2>
+	                
+	                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
+					    <div class="upload-enter">
+	                        <input type="file" name="image" id="comment-image" />
+	                        <input type="text" name="url" id="comment-url" placeholder="Video URL"/>
+					    </div>                    
+					    <div class="clearfix"></div>
+					    <textarea name="body" class="convo-question" placeholder="Got anything to say about it?"></textarea>      
+					    <p id="chars-left">140 characters left</p>
+					    <input type="submit" value="SUBMIT" class="convo-submit">
+	            	</form>
 
-      
-			  <div class="conversation">
-				    <div class="grid-item">
-					      <h3>{{conversation.body|markdown}}</h3>
-					      <p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.discipline1}}</p>
-					      <p>{{conversation.author.profile.city}}, {{conversation.author.profile.country}}, {{conversation.added}}</p>
-				    </div>
-
-            {% if not request.user.is_anonymous %}
-                <h2>Add a visual to the conversation</h2>
-                
-                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
-				            <div class="upload-enter">
-                        <input type="file" name="image" id="comment-image" />
-                        <input type="text" name="url" id="comment-url" placeholder="Video URL"/>
-				            </div>                    
-				            <div class="clearfix"></div>
-				            <textarea name="body" class="convo-question" placeholder="Got anything to say about it?"></textarea>                    
-				            <p id="chars-left">140 characters left</p>
-				            <input type="submit" value="SUBMIT" class="convo-submit">
-            </form>
-
-        {% endif %}
+	        	{% endif %}
 			</div>
 
 			<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
@@ -58,68 +58,68 @@
 
 				<div class="grid-sizer"></div>
 
-        {% for reply in conversation.reply_set.all %}
+        		{% for reply in conversation.reply_set.all %}
 				    <div class="grid-item">
-					      <p><a href="{% url 'userena_profile_detail' reply.author.username %}">{{reply.author.username}}</a>, {{reply.author.profile.discipline1}}</p>
-					      <p>{{reply.author.profile.city}}, {{reply.author.profile.country}}, {{reply.added}}</p>
+					    <p><a href="{% url 'userena_profile_detail' reply.author.username %}">{{reply.author.username}}</a>, {{reply.author.profile.discipline1}}</p>
+					    <p>{{reply.author.profile.city}}, {{reply.author.profile.country}}, {{reply.added}}</p>
 
-                {% if reply.image %}
-					          <div class="media-center"><img src="{% thumbnail reply.image 400x400 %}"></div>
-                {% endif %}
-                {% if reply.url %}
-                    {% if reply.is_video %}
-                        {% if reply.is_vimeo %}
-                            <iframe src="https://player.vimeo.com/video/{{reply.vimeo_id}}?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        {% endif %}
-                        {% if reply.is_youtube %}
-                            <iframe width="420" height="315" src="https://www.youtube.com/embed/{{reply.youtube_id}}" frameborder="0" allowfullscreen></iframe>
-                        {% endif %}
-                    {% else %}
-                        <p><a href="{{reply.url}}">{{reply.title}}</a></p>
-                    {% endif %}
-                {% endif %}
-                {% if reply.body %}
-                    {{reply.body|markdown}}
-                {% endif %}
-				    </div>
-        {% endfor %}
+                		{% if reply.image %}
+					        <div class="media-center"><img src="{% thumbnail reply.image 400x400 %}"></div>
+                		{% endif %}
+                		{% if reply.url %}
+                    		{% if reply.is_video %}
+                        		{% if reply.is_vimeo %}
+                            		<iframe src="https://player.vimeo.com/video/{{reply.vimeo_id}}?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        		{% endif %}
+                        		{% if reply.is_youtube %}
+                            		<iframe width="420" height="315" src="https://www.youtube.com/embed/{{reply.youtube_id}}" frameborder="0" allowfullscreen></iframe>
+                        		{% endif %}
+                    			{% else %}
+                        			<p><a href="{{reply.url}}">{{reply.title}}</a></p>
+                    			{% endif %}
+                			{% endif %}
+			                {% if reply.body %}
+			                    {{reply.body|markdown}}
+			                {% endif %}
+				    	</div>
+        			{% endfor %}
         
-				<div class="grid-item">
-					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					<p>Berlin, Germany, 21/11/15 23:40</p>
-					<div class="media-center"><img src="{{STATIC_URL}}img/dummy/crumb.jpg"></div>
-					<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-				</div>
+					<!--<div class="grid-item">
+						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
+						<p>Berlin, Germany, 21/11/15 23:40</p>
+						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/crumb.jpg"></div>
+						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
+					</div>
 
-				<div class="grid-item">
-					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					<p>Berlin, Germany, 21/11/15 23:40</p>
-					<div class="media-center"><img src="{{STATIC_URL}}img/dummy/munari.jpg"></div>
-					<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-				</div>
+					<div class="grid-item">
+						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
+						<p>Berlin, Germany, 21/11/15 23:40</p>
+						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/munari.jpg"></div>
+						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
+					</div>
 
-				<div class="grid-item">
-					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					<p>Berlin, Germany, 21/11/15 23:40</p>
-					<div class="media-center"><img src="{{STATIC_URL}}img/dummy/ive.jpg"></div>
-					<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-				</div>
+					<div class="grid-item">
+						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
+						<p>Berlin, Germany, 21/11/15 23:40</p>
+						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/ive.jpg"></div>
+						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
+					</div>
 
-				<div class="grid-item">
-					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					<p>Berlin, Germany, 21/11/15 23:40</p>
-					<div class="media-center"><img src="{{STATIC_URL}}img/dummy/dieter.jpg"></div>
-					<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-				</div>
+					<div class="grid-item">
+						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
+						<p>Berlin, Germany, 21/11/15 23:40</p>
+						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/dieter.jpg"></div>
+						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
+					</div>
 
-				<div class="grid-item" id="response-02">
-					<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-					<p>Berlin, Germany, 21/11/15 23:40</p>
-					<div class="media-center"><iframe class="response-vid" src="https://www.youtube.com/embed/sZrtIjfFlKw" frameborder="0" allowfullscreen></iframe></div>
-					<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-				</div>
+					<div class="grid-item" id="response-02">
+						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
+						<p>Berlin, Germany, 21/11/15 23:40</p>
+						<div class="media-center"><iframe class="response-vid" src="https://www.youtube.com/embed/sZrtIjfFlKw" frameborder="0" allowfullscreen></iframe></div>
+						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
+					</div>-->
 
-			</div>
+				</div>
 			
 			</div>
 		</div>
