@@ -9,7 +9,7 @@
 				<h2><b>Welcome, {{email}}!</b></h2>
 			</div>
 			<p>Please create your Spokehub profile. All fields are required.</p>
-      <form action="." method="post">
+      <form action="." method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <input type="hidden" name="email" value="{{email}}" />
 			    <ul class="profile-form">

@@ -1,15 +1,21 @@
+from datetime import datetime
 from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
 from django.http import HttpResponse, HttpResponseRedirect
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.contrib import messages
+from django.template.defaultfilters import slugify
 from .models import Invite
 from userena.forms import SignupForm
 from userena import signals as userena_signals
 from userena.utils import get_user_profile
+from userena.models import upload_to_mugshot
+from easy_thumbnails.files import get_thumbnailer
 import random
 import string
+import os
 
 
 def new_token():
@@ -69,6 +75,17 @@ class SignupView(View):
         p.website_url = request.POST.get('website', '')
         p.website_name = request.POST.get('websitename', '')
         p.profession = request.POST.get('profession', '')
+        # handle profile photo upload
+        if 'profileimage' in request.FILES:
+            filename = upload_profile_image(request.FILES['profileimage'])
+            mugshot_path = upload_to_mugshot(p, filename)
+            thumbnailer = get_thumbnailer(
+                open(filename, 'rb'), relative_name=mugshot_path)
+            thumb = thumbnailer.get_thumbnail(
+                {'size': (settings.USERENA_MUGSHOT_SIZE,
+                          settings.USERENA_MUGSHOT_SIZE)},
+                save=True)
+            p.mugshot = thumb.name
         p.save()
 
         # clear out invite token
@@ -80,3 +97,27 @@ class SignupView(View):
 
         # redirect to profile edit
         return HttpResponseRedirect("/accounts/" + user.username + "/edit/")
+
+
+def upload_profile_image(f):
+    ext = f.name.split(".")[-1].lower()
+    basename = slugify(f.name.split(".")[-2].lower())[:20]
+    if ext not in ['jpg', 'jpeg', 'gif', 'png']:
+        # unsupported image format
+        print("unsupported image format")
+        return None
+    now = datetime.now()
+    path = "profileimages/%04d/%02d/%02d/" % (now.year, now.month,
+                                              now.day)
+    try:
+        os.makedirs(settings.MEDIA_ROOT + "/" + path)
+        print("made dir")
+    except:
+        pass
+    full_filename = path + "%s.%s" % (basename, ext)
+    fd = open(settings.MEDIA_ROOT + "/" + full_filename, 'wb')
+    for chunk in f.chunks():
+        fd.write(chunk)
+    fd.close()
+    print("wrote it")
+    return os.path.join(settings.MEDIA_ROOT, full_filename)

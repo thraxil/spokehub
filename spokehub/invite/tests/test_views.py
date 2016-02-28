@@ -60,6 +60,31 @@ class TestSignupView(TestCase):
         # should redirect to user profile edit page
         self.assertEqual(r.status_code, 302)
 
+    def test_post_with_profileimage(self):
+        i = InviteFactory()
+        with open('media/img/bullet.gif') as img:
+            r = self.c.post(
+                reverse("invite_signup_form", args=[i.token]),
+                data=dict(
+                    password1='pass',
+                    password2='pass',
+                    username='newuser',
+                    firstname='first',
+                    lastname='last',
+                    website='http://example.com/',
+                    websitename='awesome site',
+                    profession='anarchist',
+                    email=i.email,
+                    profileimage=img,
+                ))
+
+            self.assertEqual(r.status_code, 302)
+            # should make a new user with the appropriate fields
+            u = User.objects.filter(username='newuser', email=i.email,
+                                    first_name='first', last_name='last')
+            self.assertEqual(u.count(), 1)
+            self.assertNotEqual(u.first().profile.get_mugshot_url(), '')
+
 
 class TestInviteView(TestCase):
     def setUp(self):
