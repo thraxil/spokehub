@@ -105,7 +105,7 @@ class SignupView(View):
         login(request, user)
 
         # redirect to profile edit
-        return HttpResponseRedirect("/accounts/" + user.username + "/edit/")
+        return HttpResponseRedirect("/accounts/" + user.username + "/")
 
 
 def upload_image(d, f):
