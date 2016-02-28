@@ -47,31 +47,3 @@
     display: none;
   }
 }
-
-
-
-/*
-
-  #nav-container {
-    margin-top: 180px;
-  }
-
-  .js .nav-collapse-0 {
-    margin-top: 15px;
-    text-align: left;
-  }
-
-  .nav-collapse li {
-    border-top: 1px solid #ddd;
-    font-size: 20px;
-    line-height: 50px;
-  }
-
-  .nav-collapse li:first-child {
-    border-top: 0;
-  }
-
-  .js .nav-collapse.opened {
-    width: 100%;
-  }
-*/

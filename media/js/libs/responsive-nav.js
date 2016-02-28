@@ -198,7 +198,7 @@
         this.options = {
           animate: true,                    // Boolean: Use CSS3 transitions, true or false
           transition: 284,                  // Integer: Speed of the transition, in milliseconds
-          label: "",                    // String: Label for the navigation toggle
+          label: "Menu",                    // String: Label for the navigation toggle
           insert: "before",                 // String: Insert the toggle before or after the navigation
           customToggle: "",                 // Selector: Specify the ID of a custom toggle
           closeOnNavClick: false,           // Boolean: Close the navigation when one of the links are clicked
@@ -634,7 +634,7 @@
           savedHeight += nav.inner[i].offsetHeight;
         }
 
-        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
+        var innerStyles = "." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened{max-height:" + savedHeight + "px !important} ." + opts.jsClass + " ." + opts.navClass + "-" + this.index + ".opened.dropdown-active {max-height:9999px !important}";
 
         if (styleElement.styleSheet) {
           styleElement.styleSheet.cssText = innerStyles;

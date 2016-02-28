@@ -38,12 +38,21 @@
 <header>
 	<div id="header-wrapper" class="content-container">
 		<a href="{% url 'index' %}" id="spokehub-logo"><img src="{{STATIC_URL}}img/spokehub-web-logo.png"></a>
-	  	<nav class="desktop">
+	  	<!--<nav class="desktop">
 	    	<a class="how" href="{% url 'how' %}">HOW</a>
 	    	<a class="we" href="{% url 'we' %}">WE</a>
 	    	<a class="work" href="{% url 'work' %}">WORK</a>
 	    	<a class="now" href="{% url 'now' %}">NOW</a>
-	  	</nav>
+	  	</nav>-->
+
+		<nav class="nav-collapse">
+	      <ul>
+	    	<li><a class="how" href="{% url 'how' %}">HOW</a></li>
+	    	<li><a class="we" href="{% url 'we' %}">WE</a></li>
+	    	<li><a class="work" href="{% url 'work' %}">WORK</a></li>
+	    	<li><a class="now" href="{% url 'now' %}">NOW</a></li>
+	      </ul>
+	    </nav>
 
 	  	<div id="username-logout">
 	  	{% if request.user.is_anonymous %}
@@ -65,20 +74,6 @@
 		</div>
 
 		<!--<div class="mobile menu"><a href="#" class="hamburger-icon"><i class="mdi mdi-menu"></i></a></div>-->
-
-
-
-		<div class="menu mobile" id="mobile-icon">
-
-			<a href="#" class="hamburger-icon"><i class="mdi mdi-menu"></i></a>
-
-			<nav class="nav-collapse">
-		    	<a class="how" href="{% url 'how' %}">HOW</a>
-		    	<a class="we" href="{% url 'we' %}">WE</a>
-		    	<a class="work" href="{% url 'work' %}">WORK</a>
-		    	<a class="now" href="{% url 'now' %}">NOW</a>
-			</nav>
-		</div>
 
 	</div>
 </header>
@@ -171,9 +166,9 @@
 
 {% endif %}
 
-<script>
-  	var navigation = responsiveNav(".nav-collapse");
-</script>
+    <script>
+      var navigation = responsiveNav(".nav-collapse");
+    </script>
 
 </body>
 </html>
