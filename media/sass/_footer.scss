@@ -6,12 +6,15 @@ footer {
   span {
    font-family: $base-font;
   }
-  /*position: fixed;*/
   bottom: 0;
   color: #fff;
   @media only screen and (max-width: 767px) {
     height: 76px;
     text-align: center;
+  }
+  @media only screen and (min-width: 768px) {
+    position: fixed;
+    z-index: 10;
   }
   /*@media only screen and (max-width: 499px) {
     height: 98px;

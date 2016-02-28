@@ -19,7 +19,7 @@
 
     <div id="details" class="profile-details">
       {% block profile_details %}
-        <div class="cover-photo"></div>
+        <div class="cover-photo"style="background:{{profile.cover.url}}"></div>
         <img class="mugshot" src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
         <dl>
           {% block profile_definition_list %}
