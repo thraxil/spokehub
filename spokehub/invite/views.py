@@ -67,6 +67,7 @@ class SignupView(View):
         # handle profile fields (location, discipline, website, etc)
         p = get_user_profile(user)
         p.website_url = request.POST.get('website', '')
+        p.website_name = request.POST.get('websitename', '')
         p.profession = request.POST.get('profession', '')
         p.save()
 

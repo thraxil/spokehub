@@ -40,6 +40,7 @@ class TestSignupView(TestCase):
                             firstname='first',
                             lastname='last',
                             website='http://example.com/',
+                            websitename='awesome site',
                             profession='anarchist',
                             email=i.email,
                         ))
@@ -51,6 +52,7 @@ class TestSignupView(TestCase):
         # should make a new profile
         self.assertEqual(u.first().profile.website_url, 'http://example.com/')
         self.assertEqual(u.first().profile.profession, 'anarchist')
+        self.assertEqual(u.first().profile.website_name, 'awesome site')
 
         # should clear out the invite so it can't be reused
         self.assertEqual(Invite.objects.filter(token=i.token).count(), 0)
