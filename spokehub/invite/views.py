@@ -75,9 +75,11 @@ class SignupView(View):
         p.website_url = request.POST.get('website', '')
         p.website_name = request.POST.get('websitename', '')
         p.profession = request.POST.get('profession', '')
+
         # handle profile photo upload
         if 'profileimage' in request.FILES:
-            filename = upload_profile_image(request.FILES['profileimage'])
+            filename = upload_image('profile', request.FILES['profileimage'])
+            filename = os.path.join(settings.MEDIA_ROOT, filename)
             mugshot_path = upload_to_mugshot(p, filename)
             thumbnailer = get_thumbnailer(
                 open(filename, 'rb'), relative_name=mugshot_path)
@@ -86,6 +88,11 @@ class SignupView(View):
                           settings.USERENA_MUGSHOT_SIZE)},
                 save=True)
             p.mugshot = thumb.name
+
+        # handle cover photo upload
+        if 'coverimage' in request.FILES:
+            p.cover = upload_image('cover', request.FILES['coverimage'])
+
         p.save()
 
         # clear out invite token
@@ -99,19 +106,16 @@ class SignupView(View):
         return HttpResponseRedirect("/accounts/" + user.username + "/edit/")
 
 
-def upload_profile_image(f):
+def upload_image(d, f):
     ext = f.name.split(".")[-1].lower()
     basename = slugify(f.name.split(".")[-2].lower())[:20]
     if ext not in ['jpg', 'jpeg', 'gif', 'png']:
         # unsupported image format
-        print("unsupported image format")
         return None
     now = datetime.now()
-    path = "profileimages/%04d/%02d/%02d/" % (now.year, now.month,
-                                              now.day)
+    path = "%simages/%04d/%02d/%02d/" % (d, now.year, now.month, now.day)
     try:
         os.makedirs(settings.MEDIA_ROOT + "/" + path)
-        print("made dir")
     except:
         pass
     full_filename = path + "%s.%s" % (basename, ext)
@@ -119,5 +123,4 @@ def upload_profile_image(f):
     for chunk in f.chunks():
         fd.write(chunk)
     fd.close()
-    print("wrote it")
-    return os.path.join(settings.MEDIA_ROOT, full_filename)
+    return full_filename

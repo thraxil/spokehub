@@ -54,7 +54,7 @@
 
             {% if profile.cover %}
                 <dt>Cover photo path:</dt>
-                <dd>{{STATIC_URL}}{{profile.cover}}</dd>
+                <dd>{{profile.cover.url}}</dd>
             {% endif %}
             
             <!--{% if profile.about_me %}
