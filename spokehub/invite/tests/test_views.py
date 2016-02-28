@@ -32,58 +32,37 @@ class TestSignupView(TestCase):
 
     def test_post(self):
         i = InviteFactory()
-        r = self.c.post(reverse("invite_signup_form", args=[i.token]),
-                        data=dict(
-                            password1='pass',
-                            password2='pass',
-                            username='newuser',
-                            firstname='first',
-                            lastname='last',
-                            website='http://example.com/',
-                            websitename='awesome site',
-                            profession='anarchist',
-                            email=i.email,
-                        ))
-        # should make a new user with the appropriate fields
-        u = User.objects.filter(username='newuser', email=i.email,
-                                first_name='first', last_name='last')
-        self.assertEqual(u.count(), 1)
-
-        # should make a new profile
-        self.assertEqual(u.first().profile.website_url, 'http://example.com/')
-        self.assertEqual(u.first().profile.profession, 'anarchist')
-        self.assertEqual(u.first().profile.website_name, 'awesome site')
-
-        # should clear out the invite so it can't be reused
-        self.assertEqual(Invite.objects.filter(token=i.token).count(), 0)
-
-        # should redirect to user profile edit page
-        self.assertEqual(r.status_code, 302)
-
-    def test_post_with_profileimage(self):
-        i = InviteFactory()
         with open('media/img/bullet.gif') as img:
-            r = self.c.post(
-                reverse("invite_signup_form", args=[i.token]),
-                data=dict(
-                    password1='pass',
-                    password2='pass',
-                    username='newuser2',
-                    firstname='first',
-                    lastname='last',
-                    website='http://example.com/',
-                    websitename='awesome site',
-                    profession='anarchist',
-                    email=i.email,
-                    profileimage=img,
-                ))
-
-            self.assertEqual(r.status_code, 302)
+            r = self.c.post(reverse("invite_signup_form", args=[i.token]),
+                            data=dict(
+                                password1='pass',
+                                password2='pass',
+                                username='newuser',
+                                firstname='first',
+                                lastname='last',
+                                website='http://example.com/',
+                                websitename='awesome site',
+                                profession='anarchist',
+                                email=i.email,
+                                profileimage=img,
+                            ))
             # should make a new user with the appropriate fields
-            u = User.objects.filter(username='newuser2', email=i.email,
+            u = User.objects.filter(username='newuser', email=i.email,
                                     first_name='first', last_name='last')
             self.assertEqual(u.count(), 1)
+
+            # should make a new profile
+            self.assertEqual(u.first().profile.website_url,
+                             'http://example.com/')
+            self.assertEqual(u.first().profile.profession, 'anarchist')
+            self.assertEqual(u.first().profile.website_name, 'awesome site')
             self.assertNotEqual(u.first().profile.get_mugshot_url(), '')
+
+            # should clear out the invite so it can't be reused
+            self.assertEqual(Invite.objects.filter(token=i.token).count(), 0)
+
+            # should redirect to user profile edit page
+            self.assertEqual(r.status_code, 302)
 
 
 class TestInviteView(TestCase):
