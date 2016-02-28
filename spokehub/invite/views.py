@@ -76,6 +76,7 @@ class SignupView(View):
         p.website_name = request.POST.get('websitename', '')
         p.profession = request.POST.get('profession', '')
         p.location = request.POST.get('location', '')
+        p.privacy = 'open'
 
         # handle profile photo upload
         if 'profileimage' in request.FILES:
@@ -104,7 +105,7 @@ class SignupView(View):
         login(request, user)
 
         # redirect to profile edit
-        return HttpResponseRedirect("/accounts/" + user.username + "/edit/")
+        return HttpResponseRedirect("/accounts/" + user.username + "/")
 
 
 def upload_image(d, f):
