@@ -75,6 +75,7 @@ class SignupView(View):
         p.website_url = request.POST.get('website', '')
         p.website_name = request.POST.get('websitename', '')
         p.profession = request.POST.get('profession', '')
+        p.location = request.POST.get('location', '')
 
         # handle profile photo upload
         if 'profileimage' in request.FILES:
