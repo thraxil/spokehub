@@ -11,6 +11,8 @@ site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 urlpatterns = patterns(
     '',
 
+    url(r'^accounts/signout/(?P<next_page>.*)/$',
+        'userena.views.signout', name='userena_signout_next'),
     (r'^accounts/', include('userena.urls')),
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),

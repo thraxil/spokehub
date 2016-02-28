@@ -58,7 +58,7 @@
 				</a> 
 				<span>
 					| 
-					<a href="{% url 'userena_signout' %}" id="logout-link">Log Out</a>
+					<a href="{% url 'userena_signout_next' request.path %}" id="logout-link">Log Out</a>
 				</span>
 			</p>
 		{% endif %}
