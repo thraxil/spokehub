@@ -56,6 +56,7 @@ class TestSignupView(TestCase):
         self.assertEqual(u.first().profile.profession, 'anarchist')
         self.assertEqual(u.first().profile.website_name, 'awesome site')
         self.assertEqual(u.first().profile.location, 'hell')
+        self.assertEqual(u.first().profile.privacy, 'open')
 
         # should clear out the invite so it can't be reused
         self.assertEqual(Invite.objects.filter(token=i.token).count(), 0)
