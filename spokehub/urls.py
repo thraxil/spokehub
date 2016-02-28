@@ -63,9 +63,6 @@ urlpatterns = patterns(
     (r'^convo/$', views.IndexView.as_view(
         template_name='main/conversation.html')),
 
-    (r'^signupform/$', views.IndexView.as_view(
-        template_name='userarena/signup_form.html')),
-
     url(r'^conversation/(?P<pk>\d+)/reply/$',
         views.ReplyToConversationView.as_view(),
         name='reply-to-question'),
