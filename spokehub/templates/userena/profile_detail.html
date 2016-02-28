@@ -2,9 +2,6 @@
 {% load thumbnail %}
 {% load i18n %}
 
-<!--{% block title %}{% blocktrans with profile.user.username as username %}{{ username }}'s profile.{% endblocktrans %}{% endblock %}
-{% block content_title %}<h2>{{ profile.user.username }} {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>{% endblock %}-->
-
 {% block content %}
 
 <div id="site-wrapper">
@@ -28,19 +25,15 @@
               <h2><b>{{ profile.user.username }}</b> {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>
             </div>
             {% if profile.user.email and not hide_email %}
-                <!--<dt>{% trans "Email" %}</dt>-->
                 <dd><a href="mailto:{{profile.user.email}}">{{ profile.user.email }}</a></dd>
             {% endif %}
             {% if profile.location %}
-                <!--<dt>Location</dt>-->
                 <dd>{{ profile.location }}</dd>
             {% endif %}
             {% if profile.profession %}
-                <!--<dt>Profession</dt>-->
                 <dd>{{ profile.profession }}</dd>
             {% endif %}
             {% if profile.website_url %}
-              <!--<dt>{% trans "Website" %}</dt>-->
                 <dd>
                   {% if profile.website_name %}
                   <a href="{{profile.website_url}}">
@@ -57,10 +50,6 @@
                 <dd>{{profile.cover.url}}</dd>
             {% endif %}
             
-            <!--{% if profile.about_me %}
-              <dt>{% trans "About me" %}</dt>
-              <dd>{{ profile.about_me }}</dd>
-            {% endif %}-->
           {% endblock %}
         </dl>
       {% endblock %}
@@ -68,8 +57,6 @@
 </div>
      {% if user.username == profile.user.username %}
 {% if user.is_superuser %}
-
-<!--<p><a href="/invite/" class="btn btn-primary">Invite People to Join</a></p>-->
 
 {% endif %}
 
