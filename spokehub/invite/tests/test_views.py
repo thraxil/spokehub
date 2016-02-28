@@ -68,7 +68,7 @@ class TestSignupView(TestCase):
                 data=dict(
                     password1='pass',
                     password2='pass',
-                    username='newuser',
+                    username='newuser2',
                     firstname='first',
                     lastname='last',
                     website='http://example.com/',
@@ -80,7 +80,7 @@ class TestSignupView(TestCase):
 
             self.assertEqual(r.status_code, 302)
             # should make a new user with the appropriate fields
-            u = User.objects.filter(username='newuser', email=i.email,
+            u = User.objects.filter(username='newuser2', email=i.email,
                                     first_name='first', last_name='last')
             self.assertEqual(u.count(), 1)
             self.assertNotEqual(u.first().profile.get_mugshot_url(), '')
