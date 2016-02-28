@@ -51,6 +51,12 @@
                     {% endif %}
                 </dd>
             {% endif %}
+
+            {% if profile.cover %}
+                <dt>Cover photo path:</dt>
+                <dd>{{STATIC_URL}}{{profile.cover}}</dd>
+            {% endif %}
+            
             <!--{% if profile.about_me %}
               <dt>{% trans "About me" %}</dt>
               <dd>{{ profile.about_me }}</dd>
