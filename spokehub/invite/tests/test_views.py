@@ -1,8 +1,9 @@
 import unittest
 from django.contrib.auth.models import User
+from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from django.test import TestCase, Client
-from spokehub.invite.views import new_token
+from spokehub.invite.views import new_token, upload_image
 from spokehub.invite.models import Invite
 from .factories import InviteFactory
 
@@ -82,3 +83,17 @@ class TestInviteView(TestCase):
         # now if we get the signup page with the token it should be ok
         r = self.c.get(reverse('invite_signup_form', args=[i.token]))
         self.assertTrue("password" in r.content)
+
+
+class TestUploadImage(TestCase):
+    def test_invalid_extension(self):
+        img = SimpleUploadedFile("test.invalid", "contents",
+                                 content_type="image/gif")
+        f = upload_image('test', img)
+        self.assertIsNone(f)
+
+    def test_upload_image(self):
+        img = SimpleUploadedFile("test.gif", "contents",
+                                 content_type="image/gif")
+        f = upload_image('test', img)
+        self.assertIsNotNone(f)
