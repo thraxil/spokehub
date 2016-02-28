@@ -11,7 +11,6 @@
 
 			        <ul class="archives-post">
 				        <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
-				        <!--<a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a>-->
                     	{% if request.user.is_authenticated and request.user.profile.completed %}
 					        <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
                     	{% endif %}
@@ -25,9 +24,6 @@
 	                <a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a>
 	            {% endif %}
 
-    		<!--</div>-->
-
-      
 			<div class="conversation">
 				<div class="grid-item">
 					<h3>{{conversation.body|markdown}}</h3>
@@ -84,41 +80,6 @@
 				    	</div>
         			{% endfor %}
         
-					<!--<div class="grid-item">
-						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-						<p>Berlin, Germany, 21/11/15 23:40</p>
-						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/crumb.jpg"></div>
-						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-					</div>
-
-					<div class="grid-item">
-						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-						<p>Berlin, Germany, 21/11/15 23:40</p>
-						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/munari.jpg"></div>
-						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-					</div>
-
-					<div class="grid-item">
-						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-						<p>Berlin, Germany, 21/11/15 23:40</p>
-						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/ive.jpg"></div>
-						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-					</div>
-
-					<div class="grid-item">
-						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-						<p>Berlin, Germany, 21/11/15 23:40</p>
-						<div class="media-center"><img src="{{STATIC_URL}}img/dummy/dieter.jpg"></div>
-						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-					</div>
-
-					<div class="grid-item" id="response-02">
-						<p><a href="#">Ariel_Cotton</a>, UI/UX Designer</p>
-						<p>Berlin, Germany, 21/11/15 23:40</p>
-						<div class="media-center"><iframe class="response-vid" src="https://www.youtube.com/embed/sZrtIjfFlKw" frameborder="0" allowfullscreen></iframe></div>
-						<p>Etiam gravida commodo arcu, vitae tristique nibh ultricies et. Nunc dolor nulla, rutrum vel dictum id, mollis non purus.</p>
-					</div>-->
-
 				</div>
 			
 			</div>
