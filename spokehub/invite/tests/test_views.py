@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from django.test import TestCase, Client
+from django.test.utils import override_settings
 from spokehub.invite.views import new_token, upload_image
 from spokehub.invite.models import Invite
 from .factories import InviteFactory
@@ -92,6 +93,7 @@ class TestUploadImage(TestCase):
         f = upload_image('test', img)
         self.assertIsNone(f)
 
+    @override_settings(MEDIA_ROOT="/tmp/")
     def test_upload_image(self):
         img = SimpleUploadedFile("test.gif", "contents",
                                  content_type="image/gif")
