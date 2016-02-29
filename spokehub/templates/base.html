@@ -47,10 +47,32 @@
 
 		<nav class="nav-collapse">
 	      <ul>
-	    	<li><a class="how" href="{% url 'how' %}">HOW</a></li>
-	    	<li><a class="we" href="{% url 'we' %}">WE</a></li>
-	    	<li><a class="work" href="{% url 'work' %}">WORK</a></li>
-	    	<li><a class="now" href="{% url 'now' %}">NOW</a></li>
+	    	<a class="how" href="{% url 'how' %}"><li>HOW</li></a>
+	    	<a class="we" href="{% url 'we' %}"><li>WE</li></a>
+	    	<a class="work" href="{% url 'work' %}"><li>WORK</li></a>
+	    	<a class="now" href="{% url 'now' %}"><li>NOW</li></a>
+
+	    	<!--<li class="mobile">
+			  	<div id="username-logout" class="mobile">
+			  	{% if request.user.is_anonymous %}
+					<p><a href="#openModal" id="login-link">Login</a></p>
+					{% else %}
+					<p>
+						<a href="{% url 'userena_profile_detail' request.user.username %}">
+							<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
+							<span class="username-link">
+								{{request.user.username}}
+							</span>
+						</a> 
+						<span>
+							| 
+							<a href="{% url 'userena_signout_next' request.path %}" id="logout-link">Log Out</a>
+						</span>
+					</p>
+				{% endif %}
+				</div>
+	    	</li>-->
+
 	      </ul>
 	    </nav>
 
@@ -167,7 +189,9 @@
 {% endif %}
 
     <script>
-      var navigation = responsiveNav(".nav-collapse");
+      var navigation = responsiveNav(".nav-collapse", {
+        insert: "before"
+      });
     </script>
 
 </body>

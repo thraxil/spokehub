@@ -36,38 +36,57 @@
   user-select: none;
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .nav-toggle {
-      margin-left: 469px;
-  }
+@media only screen and (max-width: 1023px) {
   #header-wrapper nav {
-      margin-left: -715px;
       width: 100%;
       background: #fff;
-      margin-top: 159px;
-      max-height: 178px;
-  }
-
-  .nav-collapse ul {
-      width: 97%;
-      margin: 20px auto;
+      margin-top: 238px;
+      box-shadow: inset 0 5px 5px -5px rgba(38,34,34,0.25);
   }
 
   .nav-collapse ul li {
-    border-bottom: 1px #dfdfdf solid;
-    margin: 10px 0;
+    border-bottom: 1px #a6a6a6 solid;
+    padding: 12px 0 7px 14px;
   }
 
-  .nav-collapse ul li a {
-    margin: 0;
+  .nav-collapse ul li:hover {
+    background-color: #f0f0f0;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+  }
+}
+
+.nav-toggle {
+    position: absolute;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .nav-toggle {
+      margin-left: 471px;
+  }
+
+  #header-wrapper nav {
+      margin-left: -210px;
   }
 
 }
 @media only screen and (min-width: 500px) and (max-width: 767px) {
+  .nav-toggle {
+      margin-left: 213px;
+  }
+
+  #header-wrapper nav {
+      margin-left: -210px;
+  }
 
 }
 @media only screen and (max-width: 499px) {
+  .nav-toggle {
+      margin-left: 63px;
+  }
 
+  #header-wrapper nav {
+      margin-left: -210px;
+  }
 }
 
 @media screen and (min-width: 1024px) {

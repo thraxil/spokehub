@@ -5,6 +5,7 @@ header {
   background: $white;
   z-index: 9999;
   position: fixed;
+  height: 50px;
 }
 #header-wrapper {
   height: 50px;
@@ -21,6 +22,9 @@ header {
   nav a {
     margin: 0px 10px;
     color: $light-gray;
+    @media only screen and (min-width: 1024px) {
+      display: inline-block;
+    }
   }
   nav a:hover {
     color: $black;
