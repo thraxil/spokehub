@@ -29,18 +29,10 @@
 
     {{ form.non_field_errors }}
     {% for field in form %}
-		{% if field.name == 'first_name' or field.name == 'last_name' %}
-		{% comment %}skip it{% endcomment %}
-		{% else %}
-    {% if field.name == 'privacy' %}
-		<input type="hidden" name="privacy" value="registered" />
-		{% else %}
     {{ field.errors }}
     <p>
     {{ field|bootstrap }}
     </p>
-    {% endif %}
-    {% endif %}
     {% endfor %}
 
 
