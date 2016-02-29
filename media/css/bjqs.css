@@ -53,16 +53,18 @@ pre + h2{
 
 #site-wrapper ul.bjqs-controls.v-centered li a{
 	display: block;
-	padding: 10px;
+	padding: 10px 5px;
 	background: rgba(255,255,255,0.5);
 	color: #000;
 	text-decoration: none;
-	font-size: 30px;
+
+	position: absolute;
+	margin-top: -37px;
+	top: 50% !important;
+	font-size: 25px;
 }
 
 #site-wrapper ul.bjqs-controls.v-centered li a:hover{
-	/*background:#000;
-	color:#fff;*/
 	background: rgba(255,255,255,1);
 }
 
@@ -87,6 +89,11 @@ pre + h2{
 
 p.bjqs-caption{
 	background: rgba(255,255,255,0.5);
+}
+
+.bjqs-prev a,
+.bjqs-next a {
+  	font-family: "MaterialDesignIcons";
 }
 
 @media only screen and (min-width: 1200px) {

@@ -36,7 +36,41 @@
   user-select: none;
 }
 
-@media screen and (min-width: 40em) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .nav-toggle {
+      margin-left: 469px;
+  }
+  #header-wrapper nav {
+      margin-left: -715px;
+      width: 100%;
+      background: #fff;
+      margin-top: 159px;
+      max-height: 178px;
+  }
+
+  .nav-collapse ul {
+      width: 97%;
+      margin: 20px auto;
+  }
+
+  .nav-collapse ul li {
+    border-bottom: 1px #dfdfdf solid;
+    margin: 10px 0;
+  }
+
+  .nav-collapse ul li a {
+    margin: 0;
+  }
+
+}
+@media only screen and (min-width: 500px) and (max-width: 767px) {
+
+}
+@media only screen and (max-width: 499px) {
+
+}
+
+@media screen and (min-width: 1024px) {
   .js .nav-collapse {
     position: relative;
   }

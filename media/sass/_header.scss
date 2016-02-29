@@ -166,3 +166,23 @@ header {
 #forgot-password a:hover {
   color: $black;
 }
+
+a.nav-toggle:before {
+  font-family: "MaterialDesignIcons";
+  content: "\f324";
+  color: $black;
+  font-size: 30px;
+}
+
+a.nav-toggle:hover {
+    color: $cyan;
+}
+
+#username-logout.desktop {
+  @media screen and (min-width: 1024px) {
+    display: block;
+  }
+  @media screen and (max-width: 1023px) {
+    display: none;
+  }
+}
