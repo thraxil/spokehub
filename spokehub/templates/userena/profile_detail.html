@@ -56,11 +56,10 @@
     </div>
 </div>
      {% if user.username == profile.user.username %}
-{% if user.is_superuser %}
-
-{% endif %}
-
-{% endif %}
+         {% if user.is_superuser %}
+             <p><a href="{% url 'invite_form' %}">Invite Users</a></p>
+         {% endif %}
+     {% endif %}
 
 </div>
 
