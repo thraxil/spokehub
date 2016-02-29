@@ -24,14 +24,11 @@
             <div class="page-heading">
               <h2><b>{{ profile.user.username }}</b> {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>
             </div>
-            {% if profile.user.email and not hide_email %}
-                <dd><a href="mailto:{{profile.user.email}}">{{ profile.user.email }}</a></dd>
+            {% if profile.profession %}
+                <dd>{{ profile.profession }}</dd>
             {% endif %}
             {% if profile.location %}
                 <dd>{{ profile.location }}</dd>
-            {% endif %}
-            {% if profile.profession %}
-                <dd>{{ profile.profession }}</dd>
             {% endif %}
             {% if profile.website_url %}
                 <dd>
@@ -43,6 +40,9 @@
                     {{profile.website_url|urlize }}
                     {% endif %}
                 </dd>
+            {% endif %}
+            {% if profile.user.email and not hide_email %}
+                <dd><a href="mailto:{{profile.user.email}}">{{ profile.user.email }}</a></dd>
             {% endif %}
 
             <!--{% if profile.cover %}
