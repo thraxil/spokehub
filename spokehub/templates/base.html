@@ -38,41 +38,12 @@
 <header>
 	<div id="header-wrapper" class="content-container">
 		<a href="{% url 'index' %}" id="spokehub-logo"><img src="{{STATIC_URL}}img/spokehub-web-logo.png"></a>
-	  	<!--<nav class="desktop">
-	    	<a class="how" href="{% url 'how' %}">HOW</a>
-	    	<a class="we" href="{% url 'we' %}">WE</a>
-	    	<a class="work" href="{% url 'work' %}">WORK</a>
-	    	<a class="now" href="{% url 'now' %}">NOW</a>
-	  	</nav>-->
-
 		<nav class="nav-collapse">
 	      <ul>
-	    	<a class="how" href="{% url 'how' %}"><li>HOW</li></a>
-	    	<a class="we" href="{% url 'we' %}"><li>WE</li></a>
-	    	<a class="work" href="{% url 'work' %}"><li>WORK</li></a>
-	    	<a class="now" href="{% url 'now' %}"><li>NOW</li></a>
-
-	    	<!--<li class="mobile">
-			  	<div id="username-logout" class="mobile">
-			  	{% if request.user.is_anonymous %}
-					<p><a href="#openModal" id="login-link">Login</a></p>
-					{% else %}
-					<p>
-						<a href="{% url 'userena_profile_detail' request.user.username %}">
-							<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
-							<span class="username-link">
-								{{request.user.username}}
-							</span>
-						</a> 
-						<span>
-							| 
-							<a href="{% url 'userena_signout_next' request.path %}" id="logout-link">Log Out</a>
-						</span>
-					</p>
-				{% endif %}
-				</div>
-	    	</li>-->
-
+	    	    <a class="how" href="{% url 'how' %}"><li>HOW</li></a>
+	    	    <a class="we" href="{% url 'we' %}"><li>WE</li></a>
+	    	    <a class="work" href="{% url 'work' %}"><li>WORK</li></a>
+	    	    <a class="now" href="{% url 'now' %}"><li>NOW</li></a>
 	      </ul>
 	    </nav>
 
@@ -94,8 +65,6 @@
 			</p>
 		{% endif %}
 		</div>
-
-		<!--<div class="mobile menu"><a href="#" class="hamburger-icon"><i class="mdi mdi-menu"></i></a></div>-->
 
 	</div>
 </header>
