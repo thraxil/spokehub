@@ -173,7 +173,13 @@ header {
 
 a.nav-toggle:before {
   font-family: "MaterialDesignIcons";
-  content: "\f324";
+  /*content: "\f324";*/
+  color: $black;
+  font-size: 30px;
+}
+
+a.nav-toggle {
+  font-family: "MaterialDesignIcons";
   color: $black;
   font-size: 30px;
 }

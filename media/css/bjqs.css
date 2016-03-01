@@ -1,7 +1,7 @@
 /* Basic jQuery Slider essential styles */
 
 ul.bjqs{position:relative; list-style:none;padding:0;margin:0;overflow:hidden; display:none;}
-li.bjqs-slide{position:absolute; display:none;}
+li.bjqs-slide{position:absolute; display:none;background:#464646;}
 ul.bjqs-controls{list-style:none;margin:0;padding:0;z-index:9999;}
 ul.bjqs-controls.v-centered li a{position:absolute;}
 ul.bjqs-controls.v-centered li.bjqs-next a{right:0;}
@@ -96,11 +96,49 @@ p.bjqs-caption{
   	font-family: "MaterialDesignIcons";
 }
 
-@media only screen and (max-width: 768px;) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	#banner-fade,
 	.embedded-vimeo,
 	.youtube-embedded {
-		width: 100%;
+		width: 708px;
+		height: 398px;
 	}
+
+    .embedded-vimeo,
+	.youtube-embedded {
+    	margin-top: 51.5px;
+    }
+
+}
+
+@media only screen and (min-width: 500px) and (max-width: 767px) {
+	#banner-fade,
+	.embedded-vimeo,
+	.youtube-embedded {
+		width: 450px;
+		height: 253px;
+	}
+
+    .embedded-vimeo,
+	.youtube-embedded {
+    	margin-top: 32.5px;
+    }
+
+}
+
+@media only screen and (max-width: 499px) {
+	#banner-fade,
+	.embedded-vimeo,
+	.youtube-embedded {
+		width: 300px;
+		height: 169px;
+	}
+
+    .embedded-vimeo,
+	.youtube-embedded {
+    	margin-top: 21.5px;
+    }
+
 }
 
 @media only screen and (min-width: 1200px) {
@@ -110,6 +148,11 @@ p.bjqs-caption{
         width: 770px;
         height: 434px;
 		display: inline-block;
+    }
+
+    .embedded-vimeo,
+	.youtube-embedded {
+    	margin-top: 55.5px;
     }
 }
 
@@ -122,9 +165,10 @@ p.bjqs-caption{
 		display: inline-block;
     }
 
-    /*.embedded-vimeo {
-    	margin-top: 30px;
-    }*/
+    .embedded-vimeo,
+	.youtube-embedded {
+    	margin-top: 45px;
+    }
 }
 
 @media only screen and (min-width: 1600px) {
@@ -134,4 +178,10 @@ p.bjqs-caption{
 		height: 612px;
     	width: 865px;
 	}
+
+    .embedded-vimeo,
+	.youtube-embedded {
+    	margin-top: 0px;
+    }
+
 }
