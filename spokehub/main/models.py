@@ -10,6 +10,7 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
 import urlparse
+import waffle
 
 
 class ConversationManager(models.Manager):
@@ -94,10 +95,15 @@ def new_conversation_emails(sender, **kwargs):
     if settings.DEBUG:
         # don't do this in dev/staging
         return
+    i = kwargs['instance']
     for u in User.objects.all():
-        if u.is_anonymous() or u.username == 'AnonymousUser':
-            continue
-        i = kwargs['instance']
+        user_new_convo_email(u, i)
+
+
+def user_new_convo_email(u, i):
+    if u.is_anonymous() or u.username == 'AnonymousUser':
+        return
+    if waffle.switch_is_active('send_email') or u.is_staff:
         u.email_user(
             "[spokehub] new conversation: ",
             i.body + "\n\nTo add your response to this " +

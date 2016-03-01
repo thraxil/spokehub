@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.core import mail
 from django.test import TestCase
+from waffle.testutils import override_switch
 from .factories import (
     UserFactory, ConversationFactory, ReplyFactory,
     NowPostFactory)
@@ -37,6 +38,7 @@ class ConversationTest(TestCase):
         i.add_reply(u, 'a body')
         self.assertEqual(i.reply_set.all().count(), 1)
 
+    @override_switch('send_email', True)
     def test_add_reply_with_mention(self):
         u = UserFactory()
         i = ConversationFactory(author=u)
@@ -45,6 +47,7 @@ class ConversationTest(TestCase):
         self.assertEqual(i.reply_set.all().count(), 1)
         self.assertEqual(len(mail.outbox), 2)
 
+    @override_switch('send_email', True)
     def test_add_reply_with_other_participants(self):
         u = UserFactory()
         i = ConversationFactory(author=u)
