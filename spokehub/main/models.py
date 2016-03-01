@@ -100,8 +100,9 @@ def new_conversation_emails(sender, **kwargs):
         i = kwargs['instance']
         u.email_user(
             "[spokehub] new conversation: ",
-            i.body + "\n\n---\nhttp://spokehub.org/\n",
-            'hello@spokehub.org')
+            i.body + "\n\nTo add your response to this " +
+            "conversation please click here: %s" % i.get_absolute_url(),
+            'Hub Conversation <hello@spokehub.org>')
 
 
 class ReplyManager(models.Manager):
