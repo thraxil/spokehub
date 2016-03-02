@@ -107,7 +107,8 @@ def user_new_convo_email(u, i):
         u.email_user(
             "[spokehub] new conversation: ",
             i.body + "\n\nTo add your response to this " +
-            "conversation please click here: %s" % i.get_absolute_url(),
+            "conversation please click here: " +
+            "http://spokehub.org%s" % i.get_absolute_url(),
             'Hub Conversation <hello@spokehub.org>')
 
 
