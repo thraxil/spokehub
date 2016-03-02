@@ -50,6 +50,7 @@
 {% block bodytag %}
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
+{% flag "main" %}
 <header>
 	<div id="header-wrapper" class="content-container">
 		<a href="{% url 'index' %}" id="spokehub-logo"><img src="{{STATIC_URL}}img/spokehub-web-logo.png"></a>
@@ -60,28 +61,24 @@
 		    	<a class="we" href="{% url 'we' %}"><li>WE</li></a>
 		    	<a class="work" href="{% url 'work' %}"><li>WORK</li></a>
 		    	<a class="now" href="{% url 'now' %}"><li>NOW</li></a>
-
-
-	  	<div id="username-logout" class="mobile">
-	  	{% if request.user.is_anonymous %}
-			<p><a href="#openModal" id="login-link">Login</a></p>
-			{% else %}
-			<p>
-				<a href="{% url 'userena_profile_detail' request.user.username %}">
-					<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
-					<span class="username-link">
-						{{request.user.username}}
-					</span>
-				</a> 
-				<span>
-					| 
-					<a href="{% url 'userena_signout_next' request.path %}" id="logout-link">Log Out</a>
-				</span>
-			</p>
-		{% endif %}
-		</div>
-
-
+			  	<div id="username-logout" class="mobile">
+			  	{% if request.user.is_anonymous %}
+					<p><a href="#openModal" id="login-link">Login</a></p>
+					{% else %}
+					<p>
+						<a href="{% url 'userena_profile_detail' request.user.username %}">
+							<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
+							<span class="username-link">
+								{{request.user.username}}
+							</span>
+						</a> 
+						<span>
+							| 
+							<a href="{% url 'userena_signout_next' request.path %}" id="logout-link">Log Out</a>
+						</span>
+					</p>
+				{% endif %}
+				</div>
 			</ul>
 		</nav>
 	  	<div id="username-logout" class="desktop">
@@ -122,16 +119,25 @@
         </form>
     </div>
 </div>
-
-{% flag "main" %}
-{% else %}
-{% comment %} placeholder mode {% endcomment %}
 {% endflag %}
 
+
 {% block pagetitle %}{% endblock %}
+
+
+{% flag "main" %}
 {% block content %}{% endblock %}
+{% else %}
+{% comment %} placeholder mode {% endcomment %}
+<div id="site-wrapper"> 
+		<div class="content-wrapper content-container">
+        <h1>The site is not active yet. Please stand by.</h1>
+    </div>
+</div>
+{% endflag %}
 
 {% block footer %}
+    {% flag "main" %}
 <footer>
 	<div class="footer-wrapper content-container">
 		<ul>
@@ -144,12 +150,13 @@
 		<span class="copyright">&copy; copyright Spokehub <span id="copyright-year"></span> <span class="all-rights">all rights reserved</span></span>
 	</div>
 </footer>
+{% endflag %}
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 
 {% block js %}{% endblock %}
-
+{% flag "main" %}
 <script>
   $(document).ready(function() {
     var currentYear = (new Date).getFullYear();
@@ -197,6 +204,6 @@
         insert: "before"
       });
     </script>
-
+{% endflag %}
 </body>
 </html>

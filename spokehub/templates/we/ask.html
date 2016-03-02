@@ -1,6 +1,7 @@
-<div class="we">
-
 {% extends 'base.html' %}
+{% load waffle_tags %}
+
+<div class="we">
 
 {% block content %}
 
@@ -11,9 +12,8 @@
 
 				<ul class="archives-post">
 					<li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
-					<!--<li><a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a></li>-->
 				</ul>
-		    	<h2><b>ASK A QUESTION</b></h2>
+		    <h2><b>ASK A QUESTION</b></h2>
 		    </div>
 			<div class="conversation">
           <form action="." method="post" role="form">
@@ -22,6 +22,12 @@
 				      <p id="textarea_feedback"></p>
 
 				      <input type="submit" value="SUBMIT" class="convo-submit">
+              {% switch "send_email" %}
+              {% else %}
+              {% if request.user.is_staff %}<p>'send_email' switch is off. Only Staff will be sent email.
+                  Enable the switch if you want all users to get email for a new question.
+              </p>{% endif %}
+        {% endswitch %}
           </form>
 			</div>
 			

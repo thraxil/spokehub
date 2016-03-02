@@ -4,6 +4,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from django.test import TestCase, Client
 from django.test.utils import override_settings
+from waffle.testutils import override_flag
 from spokehub.invite.views import new_token, upload_image
 from spokehub.invite.models import Invite
 from .factories import InviteFactory
@@ -27,6 +28,7 @@ class TestSignupView(TestCase):
         r = self.c.post(reverse('invite_signup_form', args=['asdfasdf']))
         self.assertTrue("sorry" in r.content)
 
+    @override_flag("main", True)
     def test_get_valid_token(self):
         i = InviteFactory()
         r = self.c.get(reverse("invite_signup_form", args=[i.token]))
@@ -81,6 +83,7 @@ class TestInviteView(TestCase):
         r = self.c.get("/invite/")
         self.assertEqual(r.status_code, 200)
 
+    @override_flag("main", True)
     def test_post(self):
         r = self.c.post("/invite/", data=dict(email='foo@example.com'))
         self.assertEqual(r.status_code, 302)
