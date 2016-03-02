@@ -237,7 +237,7 @@ class Reply(models.Model):
 
 %s
 """ % (self.author.username, self.body),
-                'hello@spokehub.org',
+                'Hub Conversation <hello@spokehub.org>',
                 )
         for user in unmentioned:
             user.email_user(
