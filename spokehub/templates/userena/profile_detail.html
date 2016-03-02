@@ -53,13 +53,15 @@
           {% endblock %}
         </dl>
       {% endblock %}
+      <div class="invite-users">
+        {% if user.username == profile.user.username %}
+           {% if user.is_superuser %}
+               <p><a href="{% url 'invite_form' %}">Invite Users</a></p>
+           {% endif %}
+        {% endif %}
+      </div>
     </div>
 </div>
-     {% if user.username == profile.user.username %}
-         {% if user.is_superuser %}
-             <p><a href="{% url 'invite_form' %}">Invite Users</a></p>
-         {% endif %}
-     {% endif %}
 
 </div>
 

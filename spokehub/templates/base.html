@@ -19,64 +19,50 @@
     <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
 {% endcompress %}
 <link rel="stylesheet" href="{{STATIC_URL}}css/bjqs.css">
-<link rel="stylesheet" href="{{STATIC_URL}}css/responsive-nav.css">
+<link rel="stylesheet" href="{{STATIC_URL}}css/responsive-nav-2.css">
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="{{STATIC_URL}}js/libs/bjqs-1.3.js"></script>
 <script src="{{STATIC_URL}}js/libs/masonry/dist/masonry.pkgd.min.js"></script>
-<script src="{{STATIC_URL}}js/libs/responsive_nav.js"></script>
 
+<script>
+	$(function() {
+		var pull 		= $('#pull');
+			menu 		= $('nav ul');
+			menuHeight	= menu.height();
+
+		$(pull).on('click', function(e) {
+			e.preventDefault();
+			menu.slideToggle();
+		});
+
+		$(window).resize(function(){
+    		var w = $(window).width();
+    		if(w > 320 && menu.is(':hidden')) {
+    			menu.removeAttr('style');
+    		}
+		});
+	});
+</script>
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
-
-
 	{% block feeds %}{% endblock %}
 </head>
 {% block bodytag %}
 <body class="{% block bodyclass %}{% endblock %}" id="{% block bodyid %}{% endblock %}">
 {% endblock %}
-
 <header>
 	<div id="header-wrapper" class="content-container">
 		<a href="{% url 'index' %}" id="spokehub-logo"><img src="{{STATIC_URL}}img/spokehub-web-logo.png"></a>
-	  	<!--<nav class="desktop">
-	    	<a class="how" href="{% url 'how' %}">HOW</a>
-	    	<a class="we" href="{% url 'we' %}">WE</a>
-	    	<a class="work" href="{% url 'work' %}">WORK</a>
-	    	<a class="now" href="{% url 'now' %}">NOW</a>
-	  	</nav>-->
+		<nav>
+			<a href="#" id="pull"><i class="mdi mdi-menu"></i></a>
+			<ul>
+				<a class="how" href="{% url 'how' %}"><li>HOW</li></a>
+		    	<a class="we" href="{% url 'we' %}"><li>WE</li></a>
+		    	<a class="work" href="{% url 'work' %}"><li>WORK</li></a>
+		    	<a class="now" href="{% url 'now' %}"><li>NOW</li></a>
 
-		<nav class="nav-collapse">
-	      <ul>
-	    	<a class="how" href="{% url 'how' %}"><li>HOW</li></a>
-	    	<a class="we" href="{% url 'we' %}"><li>WE</li></a>
-	    	<a class="work" href="{% url 'work' %}"><li>WORK</li></a>
-	    	<a class="now" href="{% url 'now' %}"><li>NOW</li></a>
 
-	    	<!--<li class="mobile">
-			  	<div id="username-logout" class="mobile">
-			  	{% if request.user.is_anonymous %}
-					<p><a href="#openModal" id="login-link">Login</a></p>
-					{% else %}
-					<p>
-						<a href="{% url 'userena_profile_detail' request.user.username %}">
-							<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
-							<span class="username-link">
-								{{request.user.username}}
-							</span>
-						</a> 
-						<span>
-							| 
-							<a href="{% url 'userena_signout_next' request.path %}" id="logout-link">Log Out</a>
-						</span>
-					</p>
-				{% endif %}
-				</div>
-	    	</li>-->
-
-	      </ul>
-	    </nav>
-
-	  	<div id="username-logout" class="desktop">
+	  	<div id="username-logout" class="mobile">
 	  	{% if request.user.is_anonymous %}
 			<p><a href="#openModal" id="login-link">Login</a></p>
 			{% else %}
@@ -95,15 +81,33 @@
 		{% endif %}
 		</div>
 
-		<!--<div class="mobile menu"><a href="#" class="hamburger-icon"><i class="mdi mdi-menu"></i></a></div>-->
 
+			</ul>
+		</nav>
+	  	<div id="username-logout" class="desktop">
+	  	{% if request.user.is_anonymous %}
+			<p><a href="#openModal" id="login-link">Login</a></p>
+			{% else %}
+			<p>
+				<a href="{% url 'userena_profile_detail' request.user.username %}">
+					<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
+					<span class="username-link">
+						{{request.user.username}}
+					</span>
+				</a> 
+				<span>
+					| 
+					<a href="{% url 'userena_signout_next' request.path %}" id="logout-link">Log Out</a>
+				</span>
+			</p>
+		{% endif %}
+		</div>
 	</div>
 </header>
 
 <div id="openModal" class="modalDialog">
     <div>	
     	<a href="#close" title="Close" class="close"><i class="mdi mdi-close"></i></a>
-
         <h2>LOGIN</h2>
         <form action="{% url 'userena_signin' %}" method="post">
             {% csrf_token %}

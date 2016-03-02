@@ -1,3 +1,13 @@
+nav ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+nav ul li {
+  list-style-type: none;
+}
+
 header {
   width: 100%;
   @include box-shadow(0px, 0px, 5px, 0px, 38, 34, 34, 0.25);
@@ -15,6 +25,14 @@ header {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+
+  nav ul #username-logout.mobile {
+    display: none;
+  }
+
+  #pull {
+    display: none;
+  }
 
   nav {
     font-size: 18px;
@@ -46,6 +64,7 @@ header {
 
   #spokehub-logo {
     width: 210px;
+    z-index: 1;
   }
 
   #spokehub-logo img {
@@ -171,10 +190,12 @@ header {
   color: $black;
 }
 
-a.nav-toggle:before {
-  font-family: "MaterialDesignIcons";
+/* RESPONSIVE NAV */
+
+/*a.nav-toggle:before {
+  font-family: "MaterialDesignIcons";*/
   /*content: "\f324";*/
-  color: $black;
+  /*color: $black;
   font-size: 30px;
 }
 
@@ -188,7 +209,7 @@ a.nav-toggle:hover {
     color: $cyan;
 }
 
-#username-logout.desktop {
+#header-wrapper nav #username-logout.desktop {
   @media screen and (min-width: 1024px) {
     display: block;
   }
@@ -196,3 +217,25 @@ a.nav-toggle:hover {
     display: none;
   }
 }
+
+@media screen and (max-width: 1023px) {
+  #header-wrapper nav #username-logout,
+  #header-wrapper nav #login-link {
+    text-align: left;
+    font-size: 14px;
+    margin-top: 0;
+    a {
+      color: $black;
+      margin: 0;
+    }
+    nav li.mobile a {
+      margin: 0;
+    }
+    p {
+      margin-bottom: 0.4rem;
+    }
+    #logout-link {
+      margin-left: 5px;
+    }
+  }
+}*/
