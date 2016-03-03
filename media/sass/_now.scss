@@ -1,10 +1,15 @@
 .now-post img {
 	width: 100%;
 	height: auto;
+    margin-bottom: 8px;
+}
+
+.now-post p.now-timestamp {
+    margin-bottom: 1px;
 }
 
 .now-post p {
-	margin-bottom: 0.5em;
+	margin-bottom: 3px;
 }
 
 .now-post {
@@ -31,19 +36,4 @@ ul.now-posts {
     @media only screen and (max-width: 499px) {
         @include columns(1, 0px);
     }
-}
-
-/*ul.now-posts li {
-    display: inline-block;
-    vertical-align: top;
-    margin-right: 33px;
-    width: 250px;
-}
-
-ul.now-posts li:nth-child(4n+0) {
-    margin-right: 0;
-}*/
-
-.now footer {
-    position: fixed;
 }
