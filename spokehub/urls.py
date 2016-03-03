@@ -24,9 +24,6 @@ urlpatterns = patterns(
     url(r'^how/$', views.IndexView.as_view(
         template_name='how/index.html'), name='how'),
 
-    url(r'^salvattore/$', views.IndexView.as_view(
-        template_name='salvattore/salvattore.html'), name='how'),
-
     url(r'^we/$', views.ConversationIndexView.as_view(
         template_name='we/index.html'), name='we'),
     url(r'^we/question/(?P<year>\d+)/'
