@@ -11,28 +11,23 @@ class Invite(models.Model):
 
     def send_invite(self):
         send_mail(
-            'You are invited to join Spokehub',
-            """Dear Awesome Person,
-
-This is an invitation to join the thinkers, makers and code-breakers at
-spokehub.org
-
-Here is your unique sign up link:
+            'Invitation to SPOKEHUB',
+            """Here's your unique invitation link to join the hub online:
 
 http://spokehub.org/invite/signup/%s/
 
-There are only 3 rules:
-1. Shoot any feedback to hello@spokehub.org (that's why you've been invited
-first!).
-2. Share dreams not creds. We like how you think (that's why you're
-invited).
-3. Connect don't compete. This is a unicorn party (that's why you're
-invited).
+As a logged in member you can make and respond to requests for visual
+exploration (on the WE page)  with all activity hyperlinked to your own
+professional website.
 
-We look forward to seeing you in the hub.
+You can also share news and works in progress (on the NOW page) by
+hash-tagging #spokehubnow on your social media posts.
 
+Please shoot a message to hello@spokehub.org if you find any glitches!
+
+Thanks & see you in the hub.
             """ % self.token,
-            'hello@spokehub.org',
+            'Hub Conversation <hello@spokehub.org>',
             [self.email],
             fail_silently=False
             )
