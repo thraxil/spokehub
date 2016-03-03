@@ -12,28 +12,35 @@
 
 				<ul class="archives-post">
 					  <!--<li><a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a></li>-->
-            {% if request.user.is_authenticated and request.user.profile.completed %}
+            		{% if request.user.is_authenticated and request.user.profile.completed %}
 					      <li><a href="ask"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
-            {% endif %}
+            		{% endif %}
 				</ul>
 
 		    	<h2><b>WE</b> ask questions with visual answers</h2>
 
 		    </div>
 
-			<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
-  				<div class="grid-sizer"></div>
-				<!--<div class="grid-item ask-box">
-					<h3><a href="ask">Ask a question!</a></h3>
-				</div>-->
-          {% for conversation in conversation_list %}
-              <div class="grid-item">
-					        <h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
-					        <p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
-					        <p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
-				      </div>
-          {% endfor %}
+			<div id="grid" class="clearfix" data-columns>
+          		{% for conversation in conversation_list %}
+					<div class="question">
+						<h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
+						<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+						<p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
+					</div>
+          		{% endfor %}
 			</div>
+
+			<!--<div class="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
+  				<div class="grid-sizer"></div>
+          		{% for conversation in conversation_list %}
+              		<div class="grid-item">
+					    <h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
+					    <p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+					    <p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
+				    </div>
+          		{% endfor %}
+			</div>-->
 		</div>
 	</div>
 

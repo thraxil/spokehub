@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load markup %}
+
+{% block content %}
+	<div id="site-wrapper"> 
+		<div class="content-wrapper content-container">
+			<div id="grid" class="clearfix" data-columns>
+				<div class="question">
+					<h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
+					<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+					<p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
+				</div>
+				<!--<div class="question">Donec auctor mauris nec quam gravida, non euismod nulla malesuada. Donec at lectus euismod, lobortis urna elementum, facilisis magna. Vivamus consectetur ullamcorper diam quis dictum. Duis condimentum lorem et lectus blandit varius. Nullam euismod, nisl a egestas maximus, ex ante molestie augue, in pulvinar nunc metus congue nisl. Phasellus tortor mi, dignissim vitae odio eget, tincidunt convallis nulla. Vestibulum nec enim purus. Suspendisse vitae mollis augue. Praesent eget dictum nisi. Nam vitae accumsan enim. Donec condimentum pretium mauris, maximus egestas tellus porttitor sit amet. Ut suscipit dolor at nunc congue, nec porttitor enim tristique. Donec scelerisque euismod risus sit amet mollis. Morbi erat augue, consectetur vel ante vel, egestas scelerisque metus.</div>
+				<div class="question">Vestibulum nec enim purus. Suspendisse vitae mollis augue. Praesent eget dictum nisi. Nam vitae accumsan enim. Donec condimentum pretium mauris, maximus egestas tellus porttitor sit amet. Ut suscipit dolor at nunc congue, nec porttitor enim tristique. Donec scelerisque euismod risus sit amet mollis. Morbi erat augue, consectetur vel ante vel, egestas scelerisque metus.</div>
+				<div class="question">Vestibulum nec enim purus.</div>
+				<div class="question">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus, quos aperiam minus similique sunt ducimus nemo earum perferendis fugiat doloribus.</div>
+				<div class="question">Vivamus consectetur ullamcorper diam quis dictum. Duis condimentum lorem et lectus blandit varius. Nullam euismod, nisl a egestas maximus, ex ante molestie augue, in pulvinar nunc metus congue nisl. Phasellus tortor mi, dignissim vitae odio eget, tincidunt convallis nulla. Vestibulum nec enim purus. Suspendisse vitae mollis augue. Praesent eget dictum nisi. Nam vitae accumsan enim. Donec condimentum pretium mauris, maximus egestas tellus porttitor sit amet. Ut suscipit dolor at nunc congue, nec porttitor enim tristique.</div>
+				<div class="question">EXPELLIARMUS! Dissendium! Lumos! Wingardium Leviosa!</div>-->
+			</div>
+		</div>
+	</div>
+	<script src="salvattore.js"></script>
+{% endblock %}
