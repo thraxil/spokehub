@@ -1,3 +1,5 @@
+<div class="we we-question">
+
 {% extends 'base.html' %}
 {% load markup %}
 {% load thumbnail %}
@@ -19,13 +21,15 @@
 	    	      	<h2><b>WE</b> ask questions with visual answers</h2>
 
 		      	</div>
-  
-	            {% if request.user.is_superuser or request.user == conversation.author %}
-	                <a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a>
-	            {% endif %}
 
 			<div class="conversation">
-				<div class="grid-item">
+
+				<div class="question">
+  
+		            {% if request.user.is_superuser or request.user == conversation.author %}
+		                <p><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
+		            {% endif %}
+
 					<h3>{{conversation.body|markdown}}</h3>
 					<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
 					<p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
@@ -37,7 +41,7 @@
 	                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
 					    <div class="upload-enter">
 	                        <input type="file" name="image" id="comment-image" />
-	                        <input type="text" name="url" id="comment-url" placeholder="Video URL"/>
+	                        <input type="text" name="url" id="comment-url" placeholder="Enter image or video URL"/>
 					    </div>                    
 					    <div class="clearfix"></div>
 					    <textarea name="body" class="convo-question" placeholder="Got anything to say about it?"></textarea>      
