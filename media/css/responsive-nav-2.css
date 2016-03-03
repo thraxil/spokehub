@@ -58,10 +58,6 @@
 		border-bottom: 0;
 	}
 
-	#header-wrapper nav a#pull:hover {
-		color: cyan;
-	}
-
 	#header-wrapper nav a#pull:after {
 		content:"";
 		width: 30px;
@@ -94,7 +90,6 @@
 	#header-wrapper nav ul #username-logout.mobile p,
 	#header-wrapper nav ul #username-logout.mobile span {
 		height: 10px;
-		/*margin-top: -8px;*/
 	}
 
 	#header-wrapper #login-info,
