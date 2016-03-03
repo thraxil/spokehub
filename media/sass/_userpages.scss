@@ -14,20 +14,11 @@ ul.errorList {
 	margin: 0 auto;
 	width: 960px;
 	padding: 0 0 40px 0;
-	@media only screen and (min-width: 1600px) {
-		width: 1520px;
+	@media only screen and (min-width: 1501px) {
+		width: 1421px;
 	}
-	@media only screen and (min-width: 1200px) and (max-width: 1599px) {
-		width: 1120px;
-	}
-	@media only screen and (min-width: 768px) and (max-width: 1023px) {
-		width: 708px;
-	}
-	@media only screen and (min-width: 500px) and (max-width: 767px) {
-		width: 450px;
-	}
-	@media only screen and (max-width: 499px) {
-		width: 300px;
+	@media only screen and (max-width: 1500px) {
+		width: 100%;
 	}
 }
 
@@ -55,6 +46,12 @@ ul.errorList {
 	background: $light-gray;
 	background-position: center;
 	background-size: cover;
+	@media only screen and (min-width: 500px) and (max-width: 767px) {
+		height: 225px;
+	}
+	@media only screen and (max-width: 499px) {
+		height: 175px;
+	}
 }
 
 .invite-users {
