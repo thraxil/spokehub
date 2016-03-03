@@ -59,11 +59,18 @@ def image_image_url(media, media_url):
 
 
 def hashtag_search():
-    api = InstagramAPI(access_token=settings.INSTAGRAM_ACCESS_TOKEN)
+    api = InstagramAPI(access_token=settings.TH_INSTAGRAM_ACCESS_TOKEN)
 
     # instagram wants it without the hashtag
     tag_name = settings.HASHTAG.strip('#')
 
     recent_media, n = api.tag_recent_media(tag_name=tag_name)
+    for media in recent_media:
+        add_post(media)
+
+
+def my_posts():
+    api = InstagramAPI(access_token=settings.SH_INSTAGRAM_ACCESS_TOKEN)
+    recent_media, _ = api.user_recent_media()
     for media in recent_media:
         add_post(media)
