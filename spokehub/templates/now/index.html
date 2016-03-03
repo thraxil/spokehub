@@ -11,33 +11,6 @@
 	    	<h2><b>NOW</b> on social media {#spokehubnow}</h2>
 	    </div>
 
-			<!--<ul class="now-posts">
-
-				{% for nowpost in now_posts %}
-
-				<li class="now-post">
-
-					{% if nowpost.image_url %}
-					<img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
-							 height="{{nowpost.image_height}}" />
-					{% endif %}
-
-					{% if nowpost.video_url %}
-					<video controls width="100%"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
-					{% endif %}
-
-					<p>{{nowpost.screen_name}}</p>
-
-					<p><a href="{{nowpost.external_link}}"target="_blank">{{nowpost.created}}</a></p>
-
-					<p class="now-post-text">{{nowpost.text}}</p>
-
-				</li>
-
-				{% endfor %}
-
-			</ul>-->
-
 			<div id="grid" class="clearfix" data-columns>
 				{% for nowpost in now_posts %}
 					<div class="now-post">
