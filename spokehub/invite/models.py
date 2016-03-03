@@ -27,7 +27,7 @@ Please shoot a message to hello@spokehub.org if you find any glitches!
 
 Thanks & see you in the hub.
             """ % self.token,
-            'hello@spokehub.org',
+            'Hub Conversation <hello@spokehub.org>',
             [self.email],
             fail_silently=False
             )
