@@ -1,41 +1,68 @@
-@media screen and (max-width: 767px){
-	#grid[data-columns]::before {
-		content: '1 .column.size-1of1';
-	}
-}
-
-@media screen and (min-width: 768px) and (max-width: 1599px) {
-	#grid[data-columns]::before {
-		content: '2 .column.size-1of2';
-	}
-}
 @media screen and (min-width: 1600px) {
-	#grid[data-columns]::before {
-		content: '3 .column.size-1of3';
+	.we #grid[data-columns]::before {
+		content: '3 .column.size-1600';
 	}
 }
 
-/* Again, you’re free to use and define the classes: */
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+	.we #grid[data-columns]::before {
+		content: '2 .column.size-1599-1200';
+	}
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+	.we #grid[data-columns]::before {
+		content: '2 .column.size-1199-1024';
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.we #grid[data-columns]::before {
+		content: '2 .column.size-1023-768';
+	}
+}
+
+@media screen and (max-width: 767px){
+	.we #grid[data-columns]::before {
+		content: '1 .column.size-767';
+	}
+
+	.column {
+		margin-left: 0;
+	}
+}
+
 .column { 
 	float: left; 
-	/*margin-left: 10px;*/
+	margin-left: 30px;
 }
+
 .question {
 	border: 1px #a6a6a6 solid; 
 	margin-bottom: 30px;
 	padding: 2px 20px 15px 20px;
 }
+
 .column:first-child {
 	margin-left: 0;
 }
-.size-1of1 { 
-	width: 100%; 
+
+.we .size-1600 {
+	width: 486px;
 }
 
-.size-1of2 { 
-	width: 50%; 
+.we .size-1599-1200 {
+	width: 545px;
 }
 
-.size-1of3 { 
-	width: 32.5%; 
+.we .size-1199-1024 {
+	width: 465px;
+}
+
+.we .size-1023-768 {
+	width: 339px;
+}
+
+.we .size-767 {
+	width: 100%;
 }

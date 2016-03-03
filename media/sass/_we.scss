@@ -112,7 +112,7 @@
 	}
 }
 
-.we #site-wrapper .grid-item h3 {
+/*.we #site-wrapper .grid-item h3 {
 	margin-bottom: 15px;
 }
 
@@ -124,7 +124,28 @@
 	color: $cyan;
 }
 
-.we .grid-item p,
+.we .grid-item p {
+	margin-bottom: 0px;
+}*/
+
+.we #site-wrapper .question h3 {
+	margin-bottom: 15px;
+}
+
+.we #site-wrapper .question h3 a {
+	color: $black;
+}
+
+.we #site-wrapper .question h3 a:hover {
+	color: $cyan;
+}
+
+.we #site-wrapper .question p {
+	margin-bottom: 0px;
+}
+
+
+
 .convo-response p {
 	margin-bottom: 0px;
 }
