@@ -1,4 +1,4 @@
-{{reply.author.username}} replied to a spokehub conversation that you
-are participating in:
+Author: {{reply.author.username}}
+{{reply.added}}
 
-{{reply.body}}
+Reply: {{reply.body}}
