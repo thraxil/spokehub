@@ -25,3 +25,17 @@ class Profile(UserenaBaseProfile):
             self.user.first_name != "" and
             self.user.last_name != ""
         )
+
+    def questions(self):
+        return self.user.conversation_set.all()
+
+    def replies(self):
+        return self.user.reply_set.all()
+
+    def replied_to(self):
+        """ questions the user has replied to (other than ones they asked) """
+        asked = set(self.questions())
+        replies = set([r.item for r in self.replies()])
+        replied_to = reversed(sorted(list(replies - asked),
+                                     key=lambda x: x.added))
+        return replied_to
