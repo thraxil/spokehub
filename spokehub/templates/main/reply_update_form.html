@@ -5,7 +5,7 @@
     <div class="container">
         {% if request.user.is_superuser  or request.user == object.author %}
 
-            <a class="btn btn-danger pull-right" href="{{object.get_delete_url}}">Delete</a>
+            <a class="btn btn-danger pull-right" href="{% url 'delete-reply' object.id }">Delete</a>
 
             <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
                 <fieldset><legend>Edit Reply</legend>

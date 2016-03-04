@@ -40,6 +40,8 @@ urlpatterns = patterns(
         template_name='we/ask.html'), name='ask-question'),
     url(r'^reply/(?P<pk>\d+)/edit/$',
         views.ReplyUpdateView.as_view(), name='edit-reply'),
+    url(r'^reply/(?P<pk>\d+)/delete/$',
+        views.ReplyDeleteView.as_view(), name='delete-reply'),
 
     url(r'^work/$', views.TemplateView.as_view(
         template_name='work/index.html'), name='work'),

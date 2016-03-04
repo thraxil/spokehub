@@ -75,6 +75,13 @@ class ReplyUpdateView(UpdateView):
         return self.object.item.get_absolute_url()
 
 
+class ReplyDeleteView(DeleteView):
+    model = Reply
+
+    def get_success_url(self):
+        return self.object.item.get_absolute_url()
+
+
 class ReplyToConversationView(View):
     def post(self, request, pk):
         conversation = get_object_or_404(Conversation, pk=pk)
