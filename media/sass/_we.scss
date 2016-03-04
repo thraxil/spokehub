@@ -6,79 +6,6 @@
   }
 }
 
-.we-question .grid-item {
-	width: 31%;
-}
-
-.we-question .grid-sizer {
-	width: 33.3%;
-}
-
-.grid-item {  
-	width: 48.75%;
-	padding: 2px 20px 15px 20px;
-	border: 1px $light-gray solid;
-	margin-bottom: 30px;
-	@media only screen and (min-width: 1600px) {
-		width: 49%;
-	}
-	@media only screen and (min-width: 1024px) and (max-width: 1199px) {
-		width: 48.5%;
-	}
-	@media only screen and (min-width: 768px) and (max-width: 1023px) {
-		width: 48%;
-	}
-	@media only screen and (max-width: 767px) {
-		width: 100%;
-	}
-}
-
-.grid-item:nth-child(odd) {
-	margin-left: 1.25%;
-	@media only screen and (min-width: 1600px) {
-		margin-left: 1%;
-	}
-	@media only screen and (min-width: 1024px) and (max-width: 1199px) {
-		margin-left: 1.5%;
-	}
-	@media only screen and (min-width: 768px) and (max-width: 1023px) {
-		margin-left: 2%;
-	}
-	@media only screen and (max-width: 767px) {
-		margin-left: 0%;
-	}
-}
-
-.we #site-wrapper .grid-item.ask-box {
-	background: $black;
-	color: $white;
-	text-align: center;
-}
-
-.we #site-wrapper .grid-item.ask-box h3 a {
-	color: $white;
-}
-
-.we .grid-item p,
-.we .grid-item span {
-	font-family: $header-font;
-}
-
-.we .grid-item span {
-	margin-right: 20px;
-}
-
-.grid-item img {
-	width: 100%;
-}
-
-.grid-sizer {
-	width: 50%;
-	@media only screen and (max-width: 767px) {
-		width: 100%;
-	}
-}
-
 /* clearfix */
 .grid:after {
   content: '';
@@ -144,11 +71,6 @@
 .conversation {
 	width: 768px;
 	margin: 0 auto;
-	.grid-item {
-		width: 100%;
-		margin-bottom: 30px;
-		margin-left: 0;
-	}
 	#counter {
 		border: 0;
 	}
@@ -182,7 +104,7 @@ textarea.convo-question {
 }
 
 .we.we-question #site-wrapper .question h3 {
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 
 input.convo-submit {
@@ -194,14 +116,14 @@ input.convo-submit {
 	margin-bottom: 0;
 }
 
+.we-question .question iframe {
+	margin-bottom: 10px;
+}
+
 .responses-heading {
 	border-bottom: 1px $black solid;
 	padding-bottom: 10px;
 	margin-bottom: 30px;
-}
-
-.convo-responses .grid-item {
-	padding: 20px;
 }
 
 .convo-response {
@@ -221,9 +143,50 @@ input.convo-submit {
 	width: 100%;
 }
 
-.response-vid {
-	margin: 20px auto;
-	width: 100%;
+.vimeo {
+	@media only screen and (min-width: 1600px) {
+		width: 314px;
+		height: 177px;
+	}
+	@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+		width: 258px;
+		height: 145px;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 1023px) {
+		width: 297px;
+		height: 167px;
+	}
+	@media only screen and (min-width: 500px) and (max-width: 767px) {
+		width: 408px;
+		height: 230px;
+	}
+	@media only screen and (max-width: 499px) {
+		width: 258px;
+		height: 145px;
+	}
+}
+
+.youtube {
+	@media only screen and (min-width: 1600px) {
+		width: 314px;
+		height: 235.5px;
+	}
+	@media only screen and (min-width: 1200px) and (max-width: 1599px) {
+		width: 258px;
+		height: 193.5px;
+	}
+	@media only screen and (min-width: 768px) and (max-width: 1023px) {
+		width: 297px;
+		height: 223px;
+	}
+	@media only screen and (min-width: 500px) and (max-width: 767px) {
+		width: 408px;
+		height: 306px;
+	}
+	@media only screen and (max-width: 499px) {
+		width: 258px;
+		height: 193px;
+	}
 }
 
 .media-center {
