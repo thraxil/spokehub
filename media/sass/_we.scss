@@ -85,12 +85,16 @@
 	margin-bottom: 20px;
 }
 
+
 textarea.convo-question {
 	width: 100%;
 	height: 120px;
 	margin-bottom: 25px;
 	font-size: 18px;
 	text-transform: uppercase;
+	@media only screen and (max-width: 767px) {
+		height: 180px;
+	}
 }
 
 .we-question textarea.convo-question {
