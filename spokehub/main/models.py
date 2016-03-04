@@ -236,23 +236,24 @@ class Reply(models.Model):
         conv_users = self.conversation_users()
         mentioned = self.mentioned_users()
         unmentioned = set(conv_users) - set(mentioned)
+        d = Context({'reply': self})
+
         for user in mentioned:
+            plaintext = get_template('email/mentioned.txt')
+            text_content = plaintext.render(d)
             user.email_user(
                 "[spokehub] someone mentioned you on spokehub",
-                """%s mentioned you in a reply:
-
-%s
-""" % (self.author.username, self.body),
+                text_content,
                 'Hub Conversation <hello@spokehub.org>',
                 )
         for user in unmentioned:
+            plaintext = get_template('email/reply.txt')
+            text_content = plaintext.render(d)
             user.email_user(
                 "[spokehub] conversation reply",
-                """%s replied to a spokehub conversation that you
-are participating in:
-
-%s
-""" % (self.author.username, self.body))
+                text_content,
+                'Hub Conversation <hello@spokehub.org>',
+            )
 
     def is_video(self):
         if self.url == "":
