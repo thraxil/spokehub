@@ -71,6 +71,9 @@ class ReplyUpdateView(UpdateView):
     form_class = ReplyUpdateForm
     template_name_suffix = '_update_form'
 
+    def get_success_url(self):
+        return self.object.item.get_absolute_url()
+
 
 class ReplyToConversationView(View):
     def post(self, request, pk):

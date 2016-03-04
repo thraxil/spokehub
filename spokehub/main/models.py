@@ -119,13 +119,7 @@ class ReplyManager(models.Manager):
             author=author,
             body=body,
             url=url.strip())
-        if 'youtube.com' in url:
-            url_data = urlparse.urlparse(r.url)
-            query = urlparse.parse_qs(url_data.query)
-            r.youtube_id = query["v"][0]
-        if 'vimeo.com' in url:
-            url_data = urlparse.urlparse(r.url)
-            r.vimeo_id = url_data.path[1:]
+        r.set_video_ids()
         r.save()
         return r
 
@@ -157,6 +151,15 @@ class Reply(models.Model):
             str(self.item),
             self.author.username,
             self.added.isoformat())
+
+    def set_video_ids(self):
+        if 'youtube.com' in self.url:
+            url_data = urlparse.urlparse(self.url)
+            query = urlparse.parse_qs(url_data.query)
+            self.youtube_id = query["v"][0]
+        if 'vimeo.com' in self.url:
+            url_data = urlparse.urlparse(self.url)
+            self.vimeo_id = url_data.path[1:]
 
     def save_image(self, f):
         ext = f.name.split(".")[-1].lower()
