@@ -8,6 +8,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Conversation, NowPost, Reply
+from .forms import ReplyUpdateForm
 
 
 class IndexView(TemplateView):
@@ -67,7 +68,7 @@ class ConversationDeleteView(DeleteView):
 
 class ReplyUpdateView(UpdateView):
     model = Reply
-    fields = ['body', 'image', 'url', 'youtube_id', 'vimeo_id']
+    form_class = ReplyUpdateForm
     template_name_suffix = '_update_form'
 
 
