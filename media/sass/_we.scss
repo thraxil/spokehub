@@ -112,24 +112,13 @@
 	}
 }
 
-/*.we #site-wrapper .grid-item h3 {
-	margin-bottom: 15px;
+.we #site-wrapper .question p#we-question-edit {
+	margin-bottom: 10px;
 }
-
-.we #site-wrapper .grid-item h3 a {
-	color: $black;
-}
-
-.we #site-wrapper .grid-item h3 a:hover {
-	color: $cyan;
-}
-
-.we .grid-item p {
-	margin-bottom: 0px;
-}*/
 
 .we #site-wrapper .question h3 {
-	margin-bottom: 15px;
+	margin-bottom: 10px;
+	margin-top: 0px;
 }
 
 .we #site-wrapper .question h3 a {
@@ -143,8 +132,6 @@
 .we #site-wrapper .question p {
 	margin-bottom: 0px;
 }
-
-
 
 .convo-response p {
 	margin-bottom: 0px;
@@ -182,6 +169,11 @@ textarea.convo-question {
 	margin-bottom: 25px;
 	font-size: 18px;
 	text-transform: uppercase;
+}
+
+.we-question textarea.convo-question {
+	text-transform: none;
+	font-size: 14px;
 }
 
 input.convo-submit {

@@ -22,37 +22,36 @@
 
 		      	</div>
 
-			<div class="conversation">
+				<div class="conversation">
 
-				<div class="question">
-  
-		            {% if request.user.is_superuser or request.user == conversation.author %}
-		                <p><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
-		            {% endif %}
+					<div class="question">
+	  
+			            {% if request.user.is_superuser or request.user == conversation.author %}
+			                <p id="we-question-edit"><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
+			            {% endif %}
 
-					<h3>{{conversation.body|markdown}}</h3>
-					<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
-					<p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
+						<h3>{{conversation.body|markdown}}</h3>
+						<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+						<p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
+					</div>
+
+	            	{% if not request.user.is_anonymous %}
+		                <h2>Add a visual to the conversation</h2>
+		                
+		                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
+						    <div class="upload-enter">
+		                        <input type="file" name="image" id="comment-image" />
+		                        <input type="text" name="url" id="comment-url" placeholder="Enter image or video URL"/>
+						    </div>                    
+						    <div class="clearfix"></div>
+						    <textarea name="body" id="textarea" class="convo-question" placeholder="Got anything to say about it?" maxlength="140"></textarea>
+						    <p id="textarea_feedback"></p>
+						    <input type="submit" value="SUBMIT" class="convo-submit">
+		            	</form>
+		        	{% endif %}
 				</div>
 
-            	{% if not request.user.is_anonymous %}
-	                <h2>Add a visual to the conversation</h2>
-	                
-	                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
-					    <div class="upload-enter">
-	                        <input type="file" name="image" id="comment-image" />
-	                        <input type="text" name="url" id="comment-url" placeholder="Enter image or video URL"/>
-					    </div>                    
-					    <div class="clearfix"></div>
-					    <textarea name="body" class="convo-question" placeholder="Got anything to say about it?"></textarea>      
-					    <p id="chars-left">140 characters left</p>
-					    <input type="submit" value="SUBMIT" class="convo-submit">
-	            	</form>
-
-	        	{% endif %}
-			</div>
-
-			<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
+				<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
 
 			<div class="grid convo-responses" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": ".grid-sizer", "percentPosition": true }'>
 
@@ -78,9 +77,7 @@
                         			<p><a href="{{reply.url}}">{{reply.title}}</a></p>
                     			{% endif %}
                 			{% endif %}
-			                {% if reply.body %}
-			                    {{reply.body|markdown}}
-			                {% endif %}
+			                {% if reply.body %}{{reply.body|markdown}}{% endif %}
 				    	</div>
         			{% endfor %}
         
