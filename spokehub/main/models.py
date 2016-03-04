@@ -107,12 +107,16 @@ def user_new_convo_email(u, i):
         return
     if waffle.switch_is_active('send_email') or u.is_staff:
         plaintext = get_template('email/new_question.txt')
+        htmltext = get_template('email/new_question.html')
         d = Context({'question': i})
         text_content = plaintext.render(d)
+        html_content = htmltext.render(d)
         u.email_user(
             "[spokehub] new conversation: ",
             text_content,
-            'Hub Conversation <hello@spokehub.org>')
+            'Hub Conversation <hello@spokehub.org>',
+            html_message=html_content,
+        )
 
 
 class ReplyManager(models.Manager):
@@ -240,19 +244,25 @@ class Reply(models.Model):
 
         for user in mentioned:
             plaintext = get_template('email/mentioned.txt')
+            htmltext = get_template('email/mentioned.html')
             text_content = plaintext.render(d)
+            html_content = htmltext.render(d)
             user.email_user(
                 "[spokehub] someone mentioned you on spokehub",
                 text_content,
                 'Hub Conversation <hello@spokehub.org>',
+                html_message=html_content,
                 )
         for user in unmentioned:
             plaintext = get_template('email/reply.txt')
+            htmltext = get_template('email/reply.html')
             text_content = plaintext.render(d)
+            html_content = plaintext.render(d)
             user.email_user(
                 "[spokehub] conversation reply",
                 text_content,
                 'Hub Conversation <hello@spokehub.org>',
+                html_message=html_content,
             )
 
     def is_video(self):
