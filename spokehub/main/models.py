@@ -9,6 +9,8 @@ from django.template.defaultfilters import slugify
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
+from django.template.loader import get_template
+from django.template import Context
 import urlparse
 import waffle
 
@@ -104,11 +106,12 @@ def user_new_convo_email(u, i):
     if u.is_anonymous() or u.username == 'AnonymousUser':
         return
     if waffle.switch_is_active('send_email') or u.is_staff:
+        plaintext = get_template('email/new_question.txt')
+        d = Context({'question': i})
+        text_content = plaintext.render(d)
         u.email_user(
             "[spokehub] new conversation: ",
-            i.body + "\n\nTo add your response to this " +
-            "conversation please click here: " +
-            "http://spokehub.org%s" % i.get_absolute_url(),
+            text_content,
             'Hub Conversation <hello@spokehub.org>')
 
 

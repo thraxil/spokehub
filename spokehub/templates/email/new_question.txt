@@ -1,0 +1,3 @@
+{{question.body}}
+
+To add your response to this conversation please click here: http://spokehub.org{{question.get_absolute_url}}
