@@ -1,0 +1,4 @@
+Author: {{reply.author.username}}
+{{reply.added}}
+
+Reply: {{reply.body}}

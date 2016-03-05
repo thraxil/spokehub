@@ -9,6 +9,8 @@ from django.template.defaultfilters import slugify
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
+from django.template.loader import get_template
+from django.template import Context
 import urlparse
 import waffle
 
@@ -104,12 +106,17 @@ def user_new_convo_email(u, i):
     if u.is_anonymous() or u.username == 'AnonymousUser':
         return
     if waffle.switch_is_active('send_email') or u.is_staff:
+        plaintext = get_template('email/new_question.txt')
+        htmltext = get_template('email/new_question.html')
+        d = Context({'question': i})
+        text_content = plaintext.render(d)
+        html_content = htmltext.render(d)
         u.email_user(
             "[spokehub] new conversation: ",
-            i.body + "\n\nTo add your response to this " +
-            "conversation please click here: " +
-            "http://spokehub.org%s" % i.get_absolute_url(),
-            'Hub Conversation <hello@spokehub.org>')
+            text_content,
+            'Hub Conversation <hello@spokehub.org>',
+            html_message=html_content,
+        )
 
 
 class ReplyManager(models.Manager):
@@ -119,13 +126,7 @@ class ReplyManager(models.Manager):
             author=author,
             body=body,
             url=url.strip())
-        if 'youtube.com' in url:
-            url_data = urlparse.urlparse(r.url)
-            query = urlparse.parse_qs(url_data.query)
-            r.youtube_id = query["v"][0]
-        if 'vimeo.com' in url:
-            url_data = urlparse.urlparse(r.url)
-            r.vimeo_id = url_data.path[1:]
+        r.set_video_ids()
         r.save()
         return r
 
@@ -157,6 +158,15 @@ class Reply(models.Model):
             str(self.item),
             self.author.username,
             self.added.isoformat())
+
+    def set_video_ids(self):
+        if 'youtube.com' in self.url:
+            url_data = urlparse.urlparse(self.url)
+            query = urlparse.parse_qs(url_data.query)
+            self.youtube_id = query["v"][0]
+        if 'vimeo.com' in self.url:
+            url_data = urlparse.urlparse(self.url)
+            self.vimeo_id = url_data.path[1:]
 
     def save_image(self, f):
         ext = f.name.split(".")[-1].lower()
@@ -230,23 +240,30 @@ class Reply(models.Model):
         conv_users = self.conversation_users()
         mentioned = self.mentioned_users()
         unmentioned = set(conv_users) - set(mentioned)
+        d = Context({'reply': self})
+
         for user in mentioned:
+            plaintext = get_template('email/mentioned.txt')
+            htmltext = get_template('email/mentioned.html')
+            text_content = plaintext.render(d)
+            html_content = htmltext.render(d)
             user.email_user(
                 "[spokehub] someone mentioned you on spokehub",
-                """%s mentioned you in a reply:
-
-%s
-""" % (self.author.username, self.body),
+                text_content,
                 'Hub Conversation <hello@spokehub.org>',
+                html_message=html_content,
                 )
         for user in unmentioned:
+            plaintext = get_template('email/reply.txt')
+            htmltext = get_template('email/reply.html')
+            text_content = plaintext.render(d)
+            html_content = plaintext.render(d)
             user.email_user(
                 "[spokehub] conversation reply",
-                """%s replied to a spokehub conversation that you
-are participating in:
-
-%s
-""" % (self.author.username, self.body))
+                text_content,
+                'Hub Conversation <hello@spokehub.org>',
+                html_message=html_content,
+            )
 
     def is_video(self):
         if self.url == "":

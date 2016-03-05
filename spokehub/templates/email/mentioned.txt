@@ -1,0 +1,3 @@
+{{reply.author.username}} mentioned you in a reply:
+
+{{reply.body}}

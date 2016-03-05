@@ -1,8 +1,9 @@
+from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client
 from django.test.utils import override_settings
 from waffle.testutils import override_flag
-from .factories import (UserFactory, ConversationFactory)
+from .factories import (UserFactory, ConversationFactory, ReplyFactory)
 
 
 class BasicTest(TestCase):
@@ -80,6 +81,12 @@ class LoggedInTest(TestCase):
                 ),
             )
             self.assertEqual(r.status_code, 302)
+
+    def test_edit_reply(self):
+        u = UserFactory()
+        reply = ReplyFactory(author=u)
+        r = self.c.get(reverse('edit-reply', args=[reply.id]))
+        self.assertEqual(r.status_code, 200)
 
 
 class TestUserProfiles(TestCase):

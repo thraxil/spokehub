@@ -7,7 +7,8 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Conversation, NowPost
+from .models import Conversation, NowPost, Reply
+from .forms import ReplyUpdateForm
 
 
 class IndexView(TemplateView):
@@ -63,6 +64,22 @@ class ConversationUpdateView(UpdateView):
 class ConversationDeleteView(DeleteView):
     model = Conversation
     success_url = "/"
+
+
+class ReplyUpdateView(UpdateView):
+    model = Reply
+    form_class = ReplyUpdateForm
+    template_name_suffix = '_update_form'
+
+    def get_success_url(self):
+        return self.object.item.get_absolute_url()
+
+
+class ReplyDeleteView(DeleteView):
+    model = Reply
+
+    def get_success_url(self):
+        return self.object.item.get_absolute_url()
 
 
 class ReplyToConversationView(View):

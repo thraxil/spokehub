@@ -69,7 +69,11 @@
                     			{% endif %}
                 			{% endif %}
 			                {% if reply.body %}{{reply.body|markdown}}{% endif %}
-				    	</div>
+			                {% if request.user.is_superuser or request.user == reply.author %}
+			                    <p><a href="{% url 'edit-reply' reply.id %}">Edit</a></p>
+			                {% endif %}
+
+				    </div>
         			{% endfor %}
         
 				</div>
