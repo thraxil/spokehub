@@ -1,5 +1,5 @@
 import unittest
-from spokehub.instagram import image_image_url, add_post
+from spokehub.instagram import image_image_url, add_post, add_media
 
 
 class Dummy(object):
@@ -23,3 +23,10 @@ class TestAddPost(unittest.TestCase):
         d = Dummy()
         d.link = None
         self.assertIsNone(add_post(d))
+
+
+class TestAddPosts(unittest.TestCase):
+    def test_invalid(self):
+        d = Dummy()
+        d.link = None
+        self.assertIsNone(add_media([d]))

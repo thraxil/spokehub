@@ -65,12 +65,15 @@ def hashtag_search():
     tag_name = settings.HASHTAG.strip('#')
 
     recent_media, n = api.tag_recent_media(tag_name=tag_name)
-    for media in recent_media:
-        add_post(media)
+    add_media(recent_media)
 
 
 def my_posts():
     api = InstagramAPI(access_token=settings.SH_INSTAGRAM_ACCESS_TOKEN)
     recent_media, _ = api.user_recent_media()
+    add_media(recent_media)
+
+
+def add_media(recent_media):
     for media in recent_media:
         add_post(media)
