@@ -270,11 +270,24 @@ class Reply(models.Model):
             return False
         return 'youtube.com' in self.url or 'vimeo.com' in self.url
 
+    def get_youtube_id(self):
+        if 'youtube.com' in self.url:
+            url_data = urlparse.urlparse(self.url)
+            query = urlparse.parse_qs(url_data.query)
+            return query["v"][0]
+        return ""
+
     def is_youtube(self):
-        return self.youtube_id != ""
+        return self.get_youtube_id() != ""
+
+    def get_vimeo_id(self):
+        if 'vimeo.com' in self.url:
+            url_data = urlparse.urlparse(self.url)
+            return url_data.path[1:]
+        return ""
 
     def is_vimeo(self):
-        return self.vimeo_id != ""
+        return self.get_vimeo_id() != ""
 
 
 class NowPostManager(models.Manager):
