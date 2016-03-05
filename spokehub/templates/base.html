@@ -5,45 +5,49 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Spokehub: {% block title %}{% endblock %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="spokehub">
-  <meta name="author" content="spokehub">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta name="description" content="spokehub">
+  	<meta name="author" content="spokehub">
 
-<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="../assets/js/html5shiv.js"></script>
-  <script src="../assets/js/respond.min.js"></script>
-<![endif]-->
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+  		<script src="../assets/js/html5shiv.js"></script>
+  		<script src="../assets/js/respond.min.js"></script>
+	<![endif]-->
 
-{% compress css %}
-    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
-{% endcompress %}
-<link rel="stylesheet" href="{{STATIC_URL}}css/bjqs.css">
-<link rel="stylesheet" href="{{STATIC_URL}}css/responsive-nav-2.css">
-<link rel="stylesheet" href="{{STATIC_URL}}css/salvattore.css">
-<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
-<script src="{{STATIC_URL}}js/libs/bjqs-1.3.js"></script>
-<script src="{{STATIC_URL}}js/libs/masonry/dist/masonry.pkgd.min.js"></script>
+	{% compress css %}
+	    <link href="{{STATIC_URL}}css/main.css" rel="stylesheet">
+	{% endcompress %}
+	<link rel="stylesheet" href="{{STATIC_URL}}css/bjqs.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/responsive-nav.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/salvattore.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/inputfile.css">
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="{{STATIC_URL}}js/libs/bjqs-1.3.js"></script>
+	<script src="{{STATIC_URL}}js/libs/masonry/dist/masonry.pkgd.min.js"></script>
 
-<script>
-	$(function() {
-		var pull 		= $('#pull');
-			menu 		= $('nav ul');
-			menuHeight	= menu.height();
+	<script>
+		$(function() {
+			var pull 		= $('#pull');
+				menu 		= $('nav ul');
+				menuHeight	= menu.height();
 
-		$(pull).on('click', function(e) {
-			e.preventDefault();
-			menu.slideToggle();
+			$(pull).on('click', function(e) {
+				e.preventDefault();
+				menu.slideToggle();
+			});
+
+			$(window).resize(function(){
+	    		var w = $(window).width();
+	    		if(w > 320 && menu.is(':hidden')) {
+	    			menu.removeAttr('style');
+	    		}
+			});
 		});
-
-		$(window).resize(function(){
-    		var w = $(window).width();
-    		if(w > 320 && menu.is(':hidden')) {
-    			menu.removeAttr('style');
-    		}
-		});
-	});
-</script>
+	</script>
+	<script>
+		(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);
+	</script>
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
 	{% block css %}{% endblock %}
 	{% block feeds %}{% endblock %}
@@ -116,7 +120,7 @@
 		    <input type="submit" value="SUBMIT">
 	      <input type="checkbox" name="checkbox" id="checkbox_id" value="value">
 		    <label for="checkbox_id">Remember me for a month</label>
-		    <p id="forgot-password"><a href="{% url 'userena_password_reset' %"}">Forgot your password?</a></p>
+		    <p id="forgot-password"><a href="{% url 'userena_password_reset' %}">Forgot your password?</a></p>
         </form>
     </div>
 </div>
@@ -142,6 +146,7 @@
 <footer>
 	<div class="footer-wrapper content-container">
 		<ul>
+			<li><a href="mailto:hello@spokehub.org"><i class="mdi mdi-email"></i></a></li>
 			<li><a href="https://www.linkedin.com/company/spokehub-ltd-"target="_blank"><i class="mdi mdi-linkedin"></i></a></li>
 			<li><a href="https://twitter.com/spokehubnow"target="_blank"><i class="mdi mdi-twitter"></i></a></li>
 			<li><a href="https://www.facebook.com/SpokehubNOW?_rdr"target="_blank"><i class="mdi mdi-facebook-box"></i></a></li>
@@ -160,10 +165,33 @@
 {% block js %}{% endblock %}
 {% flag "main" %}
 <script>
-  $(document).ready(function() {
-    var currentYear = (new Date).getFullYear();
-    $('#copyright-year').text(currentYear);
-  });
+	$(document).ready(function() {
+		var currentYear = (new Date).getFullYear();
+		$('#copyright-year').text(currentYear);
+	});
+</script>
+
+<script>
+	var inputs = document.querySelectorAll( '.inputfile' );
+	Array.prototype.forEach.call( inputs, function( input )
+	{
+		var label	 = input.nextElementSibling,
+			labelVal = label.innerHTML;
+
+		input.addEventListener( 'change', function( e )
+		{
+			var fileName = '';
+			if( this.files && this.files.length > 1 )
+				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+			else
+				fileName = e.target.value.split( '\\' ).pop();
+
+			if( fileName )
+				label.querySelector( 'span' ).innerHTML = fileName;
+			else
+				label.innerHTML = labelVal;
+		});
+	});
 </script>
 
 <script>

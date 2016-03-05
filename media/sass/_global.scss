@@ -131,12 +131,28 @@ p, span {
   font-family: $header-font;
 }
 
+.username,
+.timestamp {
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
 span.intro-text {
   font-family: $base-font;
 }
 
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
 input[type=text],
-input[type=password] {
+input[type=password],
+input[type=file] {
   border: 1px $black solid;
   padding: 10px;
   font-family: $header-font;

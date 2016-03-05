@@ -25,8 +25,8 @@
           		{% for conversation in conversation_list %}
 					<div class="question">
 						<h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
-						<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
-						<p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
+						<p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+						<p class="timestamp">{{conversation.author.profile.location}}, {{conversation.added}}</p>
 					</div>
           		{% endfor %}
 			</div>

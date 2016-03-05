@@ -1,0 +1,117 @@
+.js .inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.inputfile + label {
+    /* 20px */
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 10px;
+    /* 10px 20px */
+}
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 3px solid yellow;
+}
+
+
+/* style 6 */
+
+.inputfile-6 + label {
+    color: #000;
+}
+
+.inputfile-6 + label {
+    border: 1px solid #000;
+    background-color: #fff;
+    padding: 0;
+    height: 36px;
+    width: 100%;
+}
+
+.inputfile-6 + label span,
+.inputfile-6 + label strong {
+    padding: 0.5rem 10px;
+}
+
+.inputfile-6 + label span {
+    min-height: 2em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
+
+@media screen and (min-width: 1600px) {
+    .we .inputfile-6 + label span {
+        width: 195px;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+    .we .inputfile-6 + label span {
+        width: 194px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+    .we .inputfile-6 + label span {
+        width: 140px;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .we .inputfile-6 + label span {
+        width: 180px;
+    }
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+    .we .inputfile-6 + label span {
+        width: 291px;
+    }
+}
+
+@media screen and (max-width: 499px){
+    .we .inputfile-6 + label span {
+        width: 141px;
+    }
+}
+
+.inputfile-6 + label strong {
+    height: 100%;
+    color: #fff;
+    background-color: #000;
+    display: inline-block;
+    text-transform: uppercase;
+    border-left: 1px #000 solid;
+    font-size: 13px;
+    font-family: 'dinlight', Helvetica, sans-serif;
+}
+
+.inputfile-6:focus + label strong,
+.inputfile-6.has-focus + label strong,
+.inputfile-6 + label:hover strong {
+    background-color: #fff;
+    outline-color: yellow;
+    color: #000;
+    font-family: 'dinmed', Helvetica, sans-serif;
+    transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+/*@media screen and (max-width: 50em) {
+	.inputfile-6 + label strong {
+		display: block;
+	}
+}*/

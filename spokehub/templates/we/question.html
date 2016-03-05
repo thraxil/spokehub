@@ -23,8 +23,8 @@
 			                <p id="we-question-edit"><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
 			            {% endif %}
 						<h3>{{conversation.body|markdown}}</h3>
-						<p><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
-						<p>{{conversation.author.profile.location}}, {{conversation.added}}</p>
+						<p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+						<p class="timestamp">{{conversation.author.profile.location}}, {{conversation.added}}</p>
 					</div>
 				</div>
 				<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
@@ -36,7 +36,8 @@
 		                <h3>Add a visual to the conversation</h3>
 		                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
 						    <div class="upload-enter">
-		                        <input type="file" name="image" id="comment-image" />
+								<input type="file" name="image" id="comment-image" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
+								<label for="comment-image"><span></span> <strong>Choose file</strong></label>
 		                        <input type="text" name="url" id="comment-url" placeholder="Enter image or video URL"/>
 						    </div>                    
 						    <div class="clearfix"></div>
@@ -49,8 +50,8 @@
 
         		{% for reply in conversation.reply_set.all %}
 				    <div class="question">
-					    <p><a href="{% url 'userena_profile_detail' reply.author.username %}">{{reply.author.username}}</a>, {{reply.author.profile.profession}}</p>
-					    <p class="response-timestamp">{{reply.author.profile.location}}, {{reply.added}}</p>
+					    <p class="username"><a href="{% url 'userena_profile_detail' reply.author.username %}">{{reply.author.username}}</a>, {{reply.author.profile.profession}}</p>
+					    <p class="response-timestamp timestamp">{{reply.author.profile.location}}, {{reply.added}}</p>
 
                 		{% if reply.image %}
 					        <div class="media-center"><img src="{% thumbnail reply.image 400x400 %}"></div>
