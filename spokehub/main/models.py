@@ -11,6 +11,7 @@ from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
 from django.template.loader import get_template
 from django.template import Context
+from userena.utils import get_user_profile
 import urlparse
 import waffle
 
@@ -103,7 +104,9 @@ def new_conversation_emails(sender, **kwargs):
 
 
 def user_new_convo_email(u, i):
-    if u.is_anonymous() or u.username == 'AnonymousUser':
+    profile = get_user_profile(u)
+    if (u.is_anonymous() or u.username == 'AnonymousUser' or
+            not profile.allow_email):
         return
     if waffle.switch_is_active('send_email') or u.is_staff:
         plaintext = get_template('email/new_question.txt')
@@ -242,7 +245,13 @@ class Reply(models.Model):
         unmentioned = set(conv_users) - set(mentioned)
         d = Context({'reply': self})
 
+        self.email_mentioned(mentioned, d)
+        self.email_unmentioned(unmentioned, d)
+
+    def email_mentioned(self, mentioned, d):
         for user in mentioned:
+            if not get_user_profile(user).allow_email:
+                continue
             plaintext = get_template('email/mentioned.txt')
             htmltext = get_template('email/mentioned.html')
             text_content = plaintext.render(d)
@@ -253,11 +262,15 @@ class Reply(models.Model):
                 'Hub Conversation <hello@spokehub.org>',
                 html_message=html_content,
                 )
+
+    def email_unmentioned(self, unmentioned, d):
         for user in unmentioned:
+            if not get_user_profile(user).allow_email:
+                continue
             plaintext = get_template('email/reply.txt')
             htmltext = get_template('email/reply.html')
             text_content = plaintext.render(d)
-            html_content = plaintext.render(d)
+            html_content = htmltext.render(d)
             user.email_user(
                 "[spokehub] conversation reply",
                 text_content,
