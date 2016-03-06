@@ -1,6 +1,5 @@
-from instagram.client import InstagramAPI
-from django.conf import settings
 from json import dumps
+from django.conf import settings
 
 
 def add_post(media):
@@ -58,19 +57,19 @@ def image_image_url(media, media_url):
     return ""
 
 
-def hashtag_search():
-    api = InstagramAPI(access_token=settings.TH_INSTAGRAM_ACCESS_TOKEN)
-
+def hashtag_search(api):
     # instagram wants it without the hashtag
     tag_name = settings.HASHTAG.strip('#')
 
     recent_media, n = api.tag_recent_media(tag_name=tag_name)
-    for media in recent_media:
-        add_post(media)
+    add_media(recent_media)
 
 
-def my_posts():
-    api = InstagramAPI(access_token=settings.SH_INSTAGRAM_ACCESS_TOKEN)
+def my_posts(api):
     recent_media, _ = api.user_recent_media()
+    add_media(recent_media)
+
+
+def add_media(recent_media):
     for media in recent_media:
         add_post(media)

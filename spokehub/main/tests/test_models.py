@@ -2,6 +2,7 @@ from datetime import datetime
 from django.core import mail
 from django.test import TestCase
 from waffle.testutils import override_switch
+from userena.utils import get_user_profile
 from .factories import (
     UserFactory, ConversationFactory, ReplyFactory,
     NowPostFactory)
@@ -41,8 +42,14 @@ class ConversationTest(TestCase):
     @override_switch('send_email', True)
     def test_add_reply_with_mention(self):
         u = UserFactory()
+        p = get_user_profile(u)
+        p.allow_email = True
+        p.save()
         i = ConversationFactory(author=u)
         u2 = UserFactory()
+        p = get_user_profile(u2)
+        p.allow_email = True
+        p.save()
         i.add_reply(u, "a body that mentions @%s" % u2.username)
         self.assertEqual(i.reply_set.all().count(), 1)
         self.assertEqual(len(mail.outbox), 2)
@@ -50,6 +57,9 @@ class ConversationTest(TestCase):
     @override_switch('send_email', True)
     def test_add_reply_with_other_participants(self):
         u = UserFactory()
+        p = get_user_profile(u)
+        p.allow_email = True
+        p.save()
         i = ConversationFactory(author=u)
         i.add_reply(u, "a body")
         self.assertEqual(i.reply_set.all().count(), 1)
