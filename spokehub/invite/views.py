@@ -41,23 +41,26 @@ class InviteView(View):
             )
 
 
-class SignupView(View):
+class InviteTokenRequiredMixin(object):
+    def dispatch(self, request, token, *args, **kwargs):
+        r = Invite.objects.filter(token=token, status='OPEN')
+        if not r.exists():
+            return HttpResponse("sorry, invalid signup token")
+        self.invite = Invite.objects.filter(token=token, status='OPEN')[0]
+        return super(InviteTokenRequiredMixin,
+                     self).dispatch(request, token, *args, **kwargs)
+
+
+class SignupView(InviteTokenRequiredMixin, View):
     template_name = "invite/signup.html"
 
     def get(self, request, token):
-        r = Invite.objects.filter(token=token, status='OPEN')
-        if not r.exists():
-            return HttpResponse("sorry, invalid signup token")
         return render(
             request,
             self.template_name,
-            dict(email=r[0].email))
+            dict(email=self.invite.email))
 
     def post(self, request, token):
-        r = Invite.objects.filter(token=token, status='OPEN')
-        if not r.exists():
-            return HttpResponse("sorry, invalid signup token")
-
         # do the actual account creation
         form = SignupForm(request.POST, request.FILES)
         if not form.is_valid():
@@ -98,7 +101,7 @@ class SignupView(View):
         p.save()
 
         # clear out invite token
-        r.delete()
+        self.invite.delete()
 
         # log them in
         user = authenticate(identification=user.email, check_password=False)
