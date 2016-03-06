@@ -114,7 +114,7 @@
         <form action="{% url 'userena_signin' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{request.path}}" />
-        <p>Membership by invitation only.</p>
+        <p>Hey there stranger! Only hub members can log into this site. If this irks you feel free to shoot a message to <a href="mailto:hello@spokehub.org">hello@spokehub.org</a>. Thanks!</p>
         <input type="text" name="identification" placeholder="Username"/>
         <input type="password" name="password" placeholder="Password"/>
 		    <input type="submit" value="SUBMIT">

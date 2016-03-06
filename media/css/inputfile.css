@@ -21,7 +21,8 @@
 
 .inputfile:focus + label,
 .inputfile.has-focus + label {
-    outline: 3px solid yellow;
+    /*outline: 3px solid yellow;*/
+    outline-color: yellow;
 }
 
 
@@ -29,14 +30,18 @@
 
 .inputfile-6 + label {
     color: #000;
-}
-
-.inputfile-6 + label {
     border: 1px solid #000;
     background-color: #fff;
     padding: 0;
     height: 36px;
     width: 100%;
+}
+
+.black-bg .inputfile-6 + label {
+    border: 1px solid #fff;
+    background-color: #000;
+    color: #fff;
+    margin-bottom: 20px;
 }
 
 .inputfile-6 + label span,
@@ -57,11 +62,23 @@
     .we .inputfile-6 + label span {
         width: 195px;
     }
+    label[for="profile-image-upload"] span {
+        width: 541px;
+    }
+    label[for="cover-image-upload"] span {
+        width: 568px;
+    }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1599px) {
     .we .inputfile-6 + label span {
         width: 194px;
+    }
+    label[for="profile-image-upload"] span {
+        width: 342px;
+    }
+    label[for="cover-image-upload"] span {
+        width: 369px;
     }
 }
 
@@ -69,11 +86,23 @@
     .we .inputfile-6 + label span {
         width: 140px;
     }
+    label[for="profile-image-upload"] span {
+        width: 262px;
+    }
+    label[for="cover-image-upload"] span {
+        width: 289px;
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
     .we .inputfile-6 + label span {
         width: 180px;
+    }
+    label[for="profile-image-upload"] span {
+        width: 503px;
+    }
+    label[for="cover-image-upload"] span {
+        width: 530px;
     }
 }
 
@@ -81,11 +110,36 @@
     .we .inputfile-6 + label span {
         width: 291px;
     }
+    label[for="profile-image-upload"] span {
+        width: 245px;
+    }
+    label[for="cover-image-upload"] span {
+        width: 272px;
+    }
 }
 
 @media screen and (max-width: 499px){
     .we .inputfile-6 + label span {
         width: 141px;
+    }
+    label[for="profile-image-upload"] span {
+        width: 100%;
+    }
+    .profile.black-bg .inputfile-6 + label strong {
+        text-align: center;
+        width: 100%;
+    }
+    .profile.black-bg .inputfile-6 + label {
+        height: 72px;
+    }
+    .profile.black-bg .inputfile-6 + label span {
+        display: block;
+        min-height: 2.5em;
+    }
+    .profile.black-bg .inputfile-6 + label:hover strong,
+    .profile.black-bg .inputfile-6.has-focus + label strong,
+    .profile.black-bg .inputfile-6:focus + label strong {
+        border-top: 1px #fff solid;
     }
 }
 
@@ -100,6 +154,13 @@
     font-family: 'dinlight', Helvetica, sans-serif;
 }
 
+.black-bg .inputfile-6 + label strong {
+    color: #000;
+    background-color: #fff;
+    border-left: 1px #fff solid;
+    font-family: 'dinmed', Helvetica, sans-serif;
+}
+
 .inputfile-6:focus + label strong,
 .inputfile-6.has-focus + label strong,
 .inputfile-6 + label:hover strong {
@@ -108,6 +169,14 @@
     color: #000;
     font-family: 'dinmed', Helvetica, sans-serif;
     transition: background 0.3s ease 0s, color 0.3s ease 0s;
+}
+
+.black-bg .inputfile-6:focus + label strong,
+.black-bg .inputfile-6.has-focus + label strong,
+.black-bg .inputfile-6 + label:hover strong {
+    background-color: #000;
+    color: #fff;
+    font-family: 'dinlight', Helvetica, sans-serif;
 }
 
 /*@media screen and (max-width: 50em) {

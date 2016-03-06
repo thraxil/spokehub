@@ -50,6 +50,9 @@
 
         		{% for reply in conversation.reply_set.all %}
 				    <div class="question">
+		                {% if request.user.is_superuser or request.user == reply.author %}
+		                    <p class="edit-response"><a href="{% url 'edit-reply' reply.id %}">Edit</a></p>
+		                {% endif %}
 					    <p class="username"><a href="{% url 'userena_profile_detail' reply.author.username %}">{{reply.author.username}}</a>, {{reply.author.profile.profession}}</p>
 					    <p class="response-timestamp timestamp">{{reply.author.profile.location}}, {{reply.added}}</p>
 
@@ -69,9 +72,6 @@
                     			{% endif %}
                 			{% endif %}
 			                {% if reply.body %}{{reply.body|markdown}}{% endif %}
-			                {% if request.user.is_superuser or request.user == reply.author %}
-			                    <p><a href="{% url 'edit-reply' reply.id %}">Edit</a></p>
-			                {% endif %}
 
 				    </div>
         			{% endfor %}
