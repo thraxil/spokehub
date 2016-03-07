@@ -1,40 +1,50 @@
 <div class="profile black-bg">
+    {% extends 'base.html' %}
 
-{% extends 'base.html' %}
+    {% block content %}
+        <div id="site-wrapper">
+            <div class="content-wrapper content-container">
+                <div class="page-heading">
+                    <h2><b>Welcome, {{email}}!</b></h2>
+                </div>
+                <p>Please create your Spokehub profile. All fields are required.</p>
+                <form action="." method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.non_field_errors }}
+                    <input type="hidden" name="email" value="{{email}}" />
+                    <ul class="profile-form">
+                        {{form.username.errors}}
+                        <li>{{form.username}}<sub>Your username is permanent and cannot be changed.</sub></li>
+                        {{form.password1.errors}}
+                        <li>{{form.password1}}</li>
+                        {{form.password2.errors}}
+                        <li>{{form.password2}}</li>
+                        {{form.firstname.errors}}
+                        <li>{{form.firstname}}</li>
+                        {{form.lastname.errors}}
+                        <li>{{form.lastname}}</li>
+                        {{form.location.errors}}
+                        <li>{{form.location}}</li>
+                        {{form.profession.errors}}
+                        <li>{{form.profession}}</li>
+                    </ul>
+                    <ul class="profile-form column2">
+                        {{form.website_url.errors}}
+                        <li>{{form.website_url}}</li>
+                        {{form.website_name.errors}}
+                        <li>{{form.website_name}}</li>
 
-{% block content %}
-	<div id="site-wrapper"> 
-		<div class="content-wrapper content-container">
-			<div class="page-heading">
-				<h2><b>Welcome, {{email}}!</b></h2>
-			</div>
-			<p>Please create your Spokehub profile. All fields are required.</p>
-      <form action="." method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <input type="hidden" name="email" value="{{email}}" />
-			    <ul class="profile-form">
-				    <li><input name="username" type="text" placeholder="Username"><sub>Your username is permanent and cannot be changed.</sub></li>
-				    <li><input name="password1" type="password" placeholder="Password"></li>
-				    <li><input name="password2" type="password" placeholder="Repeat Password"></li>
-				    <li><input name="firstname" type="text" placeholder="First Name"></li> 
-				    <li><input name="lastname" type="text" placeholder="Last Name"></li>              
-				    <li><input name="location" type="text" placeholder="City & country"></li>
-				    <li><input name="profession" type="text" placeholder="Profession"></li>
-			    </ul>
-			    <ul class="profile-form column2">
-				    <li><input name="website" type="text" placeholder="Website"></li>
-				    <li><input name="websitename" type="text" placeholder="Website Name"></li> 
-				    <input type="file" name="profileimage" id="profile-image-upload" accept="image/*" capture="camera" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
-					<label for="profile-image-upload"><span></span><strong>Choose profile picture</strong></label>
-				    <input type="file" name="coverimage" id="cover-image-upload" accept="image/*" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
-					<label for="cover-image-upload"><span></span><strong>Choose cover photo</strong></label>
-				    <!--<input type="file" name="profileimage" id="profile-image-upload" accept="image/*" capture="camera" value="Upload profile picture" />
-				    <input type="file" name="coverimage" id="cover-image-upload" accept="image/*" value="Upload cover photo" /> -->  
-				    <li><input type="submit" value="SUBMIT" class="submit"></li>
-			    </ul>
-      </form>
-		</div>
-	</div>
-{% endblock %}
+                        {{form.profileimage.errors}}
+                        {{form.profileimage}}<label for="profile-image-upload"><span></span><strong>Choose profile picture</strong></label>
+
+                        {{form.cover.errors}}
+                        {{form.coverimage}}<label for="cover-image-upload"><span></span><strong>Choose cover photo</strong></label>
+
+				                <li><input type="submit" value="SUBMIT" class="submit"></li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
 
 </div>

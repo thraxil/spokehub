@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.contrib.auth import authenticate, login
 from django.views.generic.base import View
+from django.views.generic.edit import FormView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -8,8 +9,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from django.template.defaultfilters import slugify
 from .models import Invite
-from userena.forms import SignupForm
-from userena import signals as userena_signals
+from .forms import FullSignupForm
 from userena.utils import get_user_profile
 from userena.models import upload_to_mugshot
 from easy_thumbnails.files import get_thumbnailer
@@ -41,46 +41,38 @@ class InviteView(View):
             )
 
 
-class SignupView(View):
+class InviteTokenRequiredMixin(object):
+    def dispatch(self, request, token, *args, **kwargs):
+        r = Invite.objects.filter(token=token, status='OPEN')
+        if not r.exists():
+            return HttpResponse("sorry, invalid signup token")
+        self.invite = Invite.objects.filter(token=token, status='OPEN')[0]
+        return super(InviteTokenRequiredMixin,
+                     self).dispatch(request, token, *args, **kwargs)
+
+
+class SignupView(InviteTokenRequiredMixin, FormView):
     template_name = "invite/signup.html"
+    form_class = FullSignupForm
 
-    def get(self, request, token):
-        r = Invite.objects.filter(token=token, status='OPEN')
-        if not r.exists():
-            return HttpResponse("sorry, invalid signup token")
-        return render(
-            request,
-            self.template_name,
-            dict(email=r[0].email))
+    def get_success_url(self):
+        return "/accounts/" + self.user.username + "/"
 
-    def post(self, request, token):
-        r = Invite.objects.filter(token=token, status='OPEN')
-        if not r.exists():
-            return HttpResponse("sorry, invalid signup token")
+    def get_context_data(self, **kwargs):
+        context = super(SignupView, self).get_context_data(**kwargs)
+        context['email'] = self.invite.email
+        return context
 
-        # do the actual account creation
-        form = SignupForm(request.POST, request.FILES)
-        if not form.is_valid():
-            # TODO handle this properly
-            return HttpResponse("missing data")
+    def form_valid(self, form):
         user = form.save()
-        userena_signals.signup_complete.send(sender=None, user=user)
+        # clear out invite token
+        self.invite.delete()
 
-        user.first_name = request.POST['firstname']
-        user.last_name = request.POST['lastname']
-        user.save()
-
-        # handle profile fields (location, discipline, website, etc)
         p = get_user_profile(user)
-        p.website_url = request.POST.get('website', '')
-        p.website_name = request.POST.get('websitename', '')
-        p.profession = request.POST.get('profession', '')
-        p.location = request.POST.get('location', '')
-        p.privacy = 'open'
-
         # handle profile photo upload
-        if 'profileimage' in request.FILES:
-            filename = upload_image('profile', request.FILES['profileimage'])
+        if 'profileimage' in self.request.FILES:
+            filename = upload_image('profile',
+                                    self.request.FILES['profileimage'])
             filename = os.path.join(settings.MEDIA_ROOT, filename)
             mugshot_path = upload_to_mugshot(p, filename)
             thumbnailer = get_thumbnailer(
@@ -92,20 +84,16 @@ class SignupView(View):
             p.mugshot = thumb.name
 
         # handle cover photo upload
-        if 'coverimage' in request.FILES:
-            p.cover = upload_image('cover', request.FILES['coverimage'])
+        if 'coverimage' in self.request.FILES:
+            p.cover = upload_image('cover', self.request.FILES['coverimage'])
 
         p.save()
 
-        # clear out invite token
-        r.delete()
-
         # log them in
         user = authenticate(identification=user.email, check_password=False)
-        login(request, user)
-
-        # redirect to profile edit
-        return HttpResponseRedirect("/accounts/" + user.username + "/")
+        login(self.request, user)
+        self.user = user
+        return super(SignupView, self).form_valid(form)
 
 
 def upload_image(d, f):
