@@ -12,7 +12,6 @@ $slider-arrow-thickness: 3px;
 $slider-arrow-width: $slider-button-width/4;
 $slider-arrow-height: $slider-button-height/4;
 
-
 .how-wrapper {
   display:flex;
   align-items: center;
@@ -23,6 +22,10 @@ $slider-arrow-height: $slider-button-height/4;
     align-items: flex-start;
     padding-top: 5vh;
   }
+}
+
+.how .content-container.content-wrapper {
+  text-align: center;
 }
 
 #how-video {

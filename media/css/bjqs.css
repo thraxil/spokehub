@@ -44,8 +44,13 @@ pre + h2{
 	padding-bottom:80px;
 }
 
+.how #banner-fade {
+	margin-top: 0;
+	margin-bottom: 40px;
+}
+
 #banner-fade,
-#banner-slide{
+#banner-slide {
 	margin-bottom: 60px;
 	margin: 0 auto;
 	margin-top: 30px;
@@ -150,6 +155,11 @@ p.bjqs-caption{
 		display: inline-block;
     }
 
+    .how #banner-fade {
+    	height: 551px;
+	    width: 1120px;
+    }
+
     .embedded-vimeo,
 	.youtube-embedded {
     	margin-top: 55.5px;
@@ -168,6 +178,11 @@ p.bjqs-caption{
     .embedded-vimeo,
 	.youtube-embedded {
     	margin-top: 45px;
+    }
+
+    .how #banner-fade {
+    	height: 472px;
+	    width: 960px;
     }
 }
 

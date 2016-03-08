@@ -10,7 +10,35 @@
 		      <h2><b>HOW</b> and why we formed our hub</h2>
 		    </div>
 
-		    <div id="how-video-container"><iframe src="https://player.vimeo.com/video/157138019" id="how-video" width="960" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+		    <!--<div id="how-video-container"><iframe src="https://player.vimeo.com/video/157138019" id="how-video" width="960" height="540" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>-->
+
+	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <div id="banner-fade">
+
+	        <!-- start Basic Jquery Slider -->
+	        <ul class="bjqs">
+	          	<li><img src="{{STATIC_URL}}img/how_slideshow/SPOKEHUB-How-Type-layout-pages-06.jpg"></li>
+	          	<li><img src="{{STATIC_URL}}img/how_slideshow/SPOKEHUB-How-Type-layout-pages-07.jpg"></li>
+	          	<li><img src="{{STATIC_URL}}img/how_slideshow/SPOKEHUB-How-Type-layout-pages-08.jpg"></li>
+	          	<li><img src="{{STATIC_URL}}img/how_slideshow/SPOKEHUB-How-Type-layout-pages-09.jpg"></li>
+	          	<li><img src="{{STATIC_URL}}img/how_slideshow/SPOKEHUB-How-Type-layout-pages-10.jpg"></li>
+	        </ul>
+	        <!-- end Basic jQuery Slider -->
+
+	      </div>
+	      <!-- End outer wrapper -->
+
+	      <script class="secret-source">
+	        jQuery(document).ready(function($) {
+
+	          $('#banner-fade').bjqs({
+	            height      : 551,
+	            width       : 1120,
+	            responsive  : true
+	          });
+
+	        });
+	      </script>
 			
 		</div>
 	</div>

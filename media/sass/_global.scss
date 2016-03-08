@@ -46,11 +46,17 @@ body, #site-wrapper {
 #site-wrapper {
   width: 100%;
   padding-top: 50px;
-  height: 100%;
+  min-height: 100%;
   margin-bottom: -50px;
     @media only screen and (max-width: 767px) {
       margin-bottom: -76px;
     }
+}
+
+#veinticinco,  x:-moz-any-link, x:default {
+  #site-wrapper {
+    height: 100%;
+  }
 }
 
 #site-wrapper:after {
@@ -103,6 +109,7 @@ body, #site-wrapper {
   border-bottom: 1px $black solid;
   margin-bottom: 30px;
   padding-bottom: 10px;
+  text-align: left;
   span {
     font-size: 18px;
     text-transform: uppercase;
