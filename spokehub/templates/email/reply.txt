@@ -1,4 +1,5 @@
-Author: {{reply.author.username}}
-{{reply.added}}
+{{reply.author.username}} has contributed a response to the following hub question:
 
-Reply: {{reply.body}}
+{{reply.item.body}}
+
+View or respond here: http://spokehub.org{{reply.item.get_absolute_url}}

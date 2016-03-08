@@ -1,3 +1,5 @@
-<p>{{reply.author.username}} mentioned you in a reply:</p>
+<p>{{reply.author.username}} has mentioned you in a response to the following hub question:</p>
 
-<p>{{reply.body}}</p>
+<p>{{reply.item.body}}</p>
+
+<p>View or respond here: <a href="http://spokehub.org{{reply.item.get_absolute_url}}">http://spokehub.org{{reply.item.get_absolute_url}}</a></p>

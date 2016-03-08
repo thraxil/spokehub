@@ -1,4 +1,6 @@
-<b>Author:</b> {{reply.author.username}}<br />
-<i>{{reply.added}}</i><br />
+<p>{{reply.author.username}} has contributed a response to the following hub question:</p>
 
-<p>Reply: {{reply.body}}</p>
+<p>{{reply.item.body}}</p>
+
+<p>View or respond here: <a href="http://spokehub.org{{reply.item.get_absolute_url}}">http://spokehub.org{{reply.item.get_absolute_url}}</a></p>
+
