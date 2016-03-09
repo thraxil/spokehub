@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -16,7 +15,6 @@ class IndexView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
-        context['team'] = User.objects.all().exclude(username='AnonymousUser')
         context['conversations'] = Conversation.objects.newest()
 
         now_posts_list = NowPost.objects.newest()
