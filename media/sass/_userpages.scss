@@ -71,17 +71,14 @@ ul.errorlist {
 
 .login-errors input[type=text], 
 .login-errors input[type=password], 
-.login-errors input[type=submit] {
+.login-errors input[type=submit],
+.recover-password input[type=submit],
+.recover-password input#id_email {
 	width: 100%;
 }
 
-.login-errors input[type="submit"],
-.login-errors input[type="text"],
-.login-errors input[type="password"] {
-	width: 100%;
-}
-
-.userena h2 {
+.userena h2,
+.recover-password h2 {
 	margin-top: 0;
 }
 
@@ -94,7 +91,8 @@ ul.errorlist.nonfield {
 }
 
 @media only screen and (min-width: 768px) {
-	.content-wrapper.content-container.login-errors {
+	.content-wrapper.content-container.login-errors,
+	.content-wrapper.content-container.recover-password {
 		width: 768px;
 	}
 }

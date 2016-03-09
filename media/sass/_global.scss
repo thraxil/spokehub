@@ -159,7 +159,8 @@ span.intro-text {
 
 input[type=text],
 input[type=password],
-input[type=file] {
+input[type=file],
+input[type=email] {
   border: 1px $black solid;
   padding: 10px;
   font-family: $header-font;
@@ -177,6 +178,7 @@ input[type=submit] {
   letter-spacing: 1px;
   background: $black;
   color: $white;
+  text-transform: uppercase;
   border: 1px $black solid;
   outline-color: $yellow;
   font-family: $base-font;
