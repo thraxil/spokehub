@@ -182,11 +182,15 @@ header {
   color: $black;
 }
 
-#forgot-password a {
+#openModal a {
   color: $cyan;
 }
 
-#forgot-password a:hover {
+#openModal a:hover {
+  color: $black;
+}
+
+#openModal a.close {
   color: $black;
 }
 

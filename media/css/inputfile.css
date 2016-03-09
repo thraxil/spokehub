@@ -84,7 +84,7 @@
 
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
     .we .inputfile-6 + label span {
-        width: 140px;
+        width: 141px;
     }
     label[for="profile-image-upload"] span {
         width: 262px;

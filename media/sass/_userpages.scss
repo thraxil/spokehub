@@ -38,6 +38,7 @@ ul.errorList {
 .profile-details .page-heading {
 	border-bottom: 0;
 	margin-bottom: 0;
+	text-align: center;
 }
 
 .cover-photo {
@@ -51,5 +52,49 @@ ul.errorList {
 	}
 	@media only screen and (max-width: 499px) {
 		height: 175px;
+	}
+}
+
+ul.errorlist {
+	list-style: none;
+	padding: 0;
+	li {
+		list-style-type: none;
+		color: $magenta;
+		font-family: $header-font;
+	}
+}
+
+.help-block {
+	color: $magenta;
+}
+
+.login-errors input[type=text], 
+.login-errors input[type=password], 
+.login-errors input[type=submit] {
+	width: 100%;
+}
+
+.login-errors input[type="submit"],
+.login-errors input[type="text"],
+.login-errors input[type="password"] {
+	width: 100%;
+}
+
+.userena h2 {
+	margin-top: 0;
+}
+
+ul.errorlist {
+	display: none;
+}
+
+ul.errorlist.nonfield {
+	display: block;
+}
+
+@media only screen and (min-width: 768px) {
+	.content-wrapper.content-container.login-errors {
+		width: 768px;
 	}
 }
