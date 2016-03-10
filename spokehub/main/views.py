@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Conversation, NowPost, Reply
-from .forms import ReplyUpdateForm
+from .forms import ReplyUpdateForm, ConversationUpdateForm
 
 
 class IndexView(TemplateView):
@@ -55,7 +55,7 @@ class ConversationDetailView(DetailView):
 
 class ConversationUpdateView(UpdateView):
     model = Conversation
-    fields = ['body']
+    form_class = ConversationUpdateForm
     template_name_suffix = '_update_form'
 
 
