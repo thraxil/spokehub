@@ -8,44 +8,38 @@
 
 {% block content %}
 
-/*<div class="container">*/
-    <div id="site-wrapper"> 
-        <div class="content-wrapper content-container">
-<section>
-
-
-<form action="" enctype="multipart/form-data" method="post">
-
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Edit Profile" %}</legend>
-          {% block profile_navigation_items %}
-		<div class="btn-group pull-right">
-      <a class="btn btn-primary" href="{% url 'userena_profile_detail' user.username %}">{% trans 'View profile' %}</a>
-      <a class="btn btn-primary" href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
-      <a class="btn btn-primary" href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
-		</div>
-          {% endblock %}
-
-    {{ form.non_field_errors }}
-          {% for field in form %}
-              {% if field.name == 'privacy' %}
-		              <input type="hidden" name="privacy" value="open" />
-		          {% else %}
-                  {{ field.errors }}
-                  <p>
-                      {{ field|bootstrap }}
-                  </p>
-              {% endif %}
-          {% endfor %}
-
-
-  </fieldset>
-  <input type="submit" value="{% trans "Save changes" %}" class="btn
-  btn-primary" />
-</form>
-
-</section>
-</div>
+<div id="site-wrapper"> 
+    <div class="content-wrapper content-container edit-profile">
+        <div class="page-heading"><h2><b>Edit Profile</b></h2></div>
+        <section>
+          <div class="form-container">
+                <form action="" enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    <fieldset>
+                        {% block profile_navigation_items %}
+                        		<div class="btn-group pull-right">
+                                <a class="btn btn-primary" href="{% url 'userena_profile_detail' user.username %}">{% trans 'View profile' %}</a>
+                                <a class="btn btn-primary" href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
+                                <a class="btn btn-primary" href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
+                        		</div>
+                        {% endblock %}
+                        {{ form.non_field_errors }}
+                        {% for field in form %}
+                            {% if field.name == 'privacy' %}
+              		              <input type="hidden" name="privacy" value="open" />
+              		          {% else %}
+                                {{ field.errors }}
+                                <p>
+                                    {{ field|bootstrap }}
+                                </p>
+                            {% endif %}
+                        {% endfor %}
+                    </fieldset>
+                    <input type="submit" value="{% trans "Save changes" %}" class="btn
+                    btn-primary" />
+                </form>
+            </div>
+        </section>
+    </div>
 </div>
 {% endblock %}
