@@ -73,8 +73,29 @@ ul.errorlist {
 .login-errors input[type=password], 
 .login-errors input[type=submit],
 .recover-password input[type=submit],
-.recover-password input#id_email {
+.recover-password input#id_email,
+.edit-convo input[type=submit] {
 	width: 100%;
+}
+
+.edit-convo label.control-label {
+	display: none;
+}
+
+.edit-convo textarea.form-control {
+	width: 100%;
+    height: 120px;
+    margin-bottom: 25px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
+.edit-convo {
+	font-family: $header-font;
+}
+
+.edit-convo .btn.btn-primary {
+	margin-top: 25px;
 }
 
 .userena h2,
@@ -90,9 +111,18 @@ ul.errorlist.nonfield {
 	display: block;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1024px) {
 	.content-wrapper.content-container.login-errors,
-	.content-wrapper.content-container.recover-password {
+	.content-wrapper.content-container.recover-password,
+	.edit-convo .form-container {
 		width: 768px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media only screen and (max-width: 1023px) {
+	.edit-convo .form-container {
+		width: 100%;
 	}
 }

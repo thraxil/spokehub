@@ -2,20 +2,24 @@
 {% load bootstrap %}
 
 {% block content %}
-    <div class="container">
+<div id="site-wrapper"> 
+    <div class="content-wrapper content-container edit-convo">
         {% if request.user.is_superuser  or request.user == object.author %}
+            <div class="page-heading"><h2><b>Edit Response</b></h2></div>
 
-            <a class="btn btn-danger pull-right" href="{% url 'delete-reply' object.id }">Delete</a>
-
-            <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
-                <fieldset><legend>Edit Reply</legend>
-                    {{form|bootstrap}}
-                    <input type="submit" value="Save" class="btn btn-primary"/>
-                </fieldset>
-            </form>
+            <div class="form-container">
+                <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+                    <fieldset>
+                        {{form|bootstrap}}
+                        <a class="btn btn-danger pull-right" href="{% url 'delete-reply' object.id }">Delete Response</a>
+                        <input type="submit" value="Save" class="btn btn-primary"/>
+                    </fieldset>
+                </form>
+            </div>
 
         {% else %}
             <p>Sorry, this is admin only for now.</p>
         {% endif %}
     </div>
+</div>
 {% endblock %}
