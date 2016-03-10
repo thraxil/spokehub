@@ -12,10 +12,10 @@ class Profile(UserenaBaseProfile):
         verbose_name=_('user'),
         related_name='profile')
     about_me = models.TextField(blank=True, default="")
-    profession = models.CharField(max_length=256, blank=True, default="")
-    website_url = models.CharField(max_length=256, blank=True, default="")
-    website_name = models.CharField(max_length=256, blank=True, default="")
-    location = models.CharField(max_length=256, blank=True, default="")
+    profession = models.CharField(max_length=256, blank=False)
+    website_url = models.CharField(max_length=256, blank=False)
+    website_name = models.CharField(max_length=256, blank=False)
+    location = models.CharField(max_length=256, blank=False)
     cover = ThumbnailerImageField('cover', blank=True, upload_to='covers')
     allow_email = models.BooleanField(default=False)
 
