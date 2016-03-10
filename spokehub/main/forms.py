@@ -7,5 +7,5 @@ class ReplyUpdateForm(forms.ModelForm):
         model = Reply
         fields = ['image', 'url', 'body']
         widgets = {
-            'url': forms.TextInput(),
+            'url': forms.TextInput(attrs=dict(maxlength=140)),
         }
