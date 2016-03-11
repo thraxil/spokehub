@@ -87,6 +87,9 @@ class SignupView(InviteTokenRequiredMixin, FormView):
         if 'profileimage' in self.request.FILES:
             filename = upload_image('profile',
                                     self.request.FILES['profileimage'])
+            if filename is None:
+                # they uploaded something that wasn't a photo
+                return
             filename = os.path.join(settings.MEDIA_ROOT, filename)
             mugshot_path = upload_to_mugshot(p, filename)
             thumbnailer = get_thumbnailer(
