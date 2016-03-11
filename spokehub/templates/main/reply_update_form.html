@@ -11,6 +11,7 @@
                 <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
                     <fieldset>
                         {{form|bootstrap}}
+						            <p id="textarea_feedback"></p>                        
                         <a class="btn btn-danger pull-right" href="{% url 'delete-reply' object.id }">Delete Response</a>
                         <input type="submit" value="Save" class="btn btn-primary"/>
                     </fieldset>
