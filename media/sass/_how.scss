@@ -28,6 +28,10 @@ $slider-arrow-height: $slider-button-height/4;
   text-align: center;
 }
 
+.how li.bjqs-prev {
+  display: none;
+}
+
 #how-video {
   @media only screen and (min-width: 1200px) and (max-width: 1599px) {
     width: 1120px;
