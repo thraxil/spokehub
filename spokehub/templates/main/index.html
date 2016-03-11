@@ -9,34 +9,38 @@
 {% block content %}
 
 <div id="site-wrapper">
-	<div class="content-wrapper content-container now">
+	<div class="content-wrapper content-container">
 
       <div class="page-heading">
         <h2><b>NOW</b> on social media {#spokehubnow}</h2>
       </div>
 
-      <div id="grid" class="clearfix" data-columns>
-        {% for nowpost in now_posts %}
-          <div class="now-post">
+    <ul class="now-posts">
 
-            {% if nowpost.image_url %}
-            <img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
-                 height="{{nowpost.image_height}}" />
-            {% endif %}
+      {% for nowpost in now_posts %}
 
-            {% if nowpost.video_url %}
-            <video controls width="100%"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
-            {% endif %}
+      <li class="now-post">
 
-            <p class="username">{{nowpost.screen_name}}</p>
+        {% if nowpost.image_url %}
+        <img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
+             height="{{nowpost.image_height}}" />
+        {% endif %}
 
-            <p class="now-timestamp timestamp"><a href="{{nowpost.external_link}}"target="_blank">{{nowpost.created}}</a></p>
+        {% if nowpost.video_url %}
+        <video controls width height="150"><source type="video/mp4" src="{{nowpost.video_url}}"/></video>
+        {% endif %}
 
-            <p class="now-post-text">{{nowpost.text}}</p>
-            
-          </div>
-              {% endfor %}
-      </div>
+        <p>{{nowpost.screen_name}}</p>
+
+        <p><a href="{{nowpost.external_link}}">{{nowpost.created}}</a></p>
+
+        <p class="now-post-text">{{nowpost.text}}</p>
+
+      </li>
+
+      {% endfor %}
+
+    </ul>
 
 	</div>
 </div>
