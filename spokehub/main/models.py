@@ -146,6 +146,7 @@ class Reply(models.Model):
             'size': (400, 200)
             },
         null=True,
+        blank=True,
         )
     url = models.TextField(blank=True, default=u"")
     youtube_id = models.TextField(default="", blank=True)
