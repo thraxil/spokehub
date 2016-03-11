@@ -97,12 +97,22 @@ ul.errorlist {
     text-transform: uppercase;
 }
 
+.edit-convo.edit-response textarea.form-control {
+	text-transform: none;
+	font-size: 14px;
+}
+
 .edit-convo {
 	font-family: $header-font;
 }
 
 .edit-convo .btn.btn-primary {
 	margin-top: 25px;
+}
+
+.edit-profile #id_about_me,
+.edit-profile label[for=id_about_me] {
+	display: none;
 }
 
 .userena h2,
@@ -116,8 +126,18 @@ ul.errorlist {
 	display: none;
 }
 
-.login-errors fieldset {
+.login-errors fieldset,
+.edit-profile fieldset {
 	margin-top: -1.5rem;
+}
+
+.edit-profile {
+	font-family: $header-font;
+}
+
+.edit-profile label[for=id_mugshot],
+.edit-profile label[for=id_cover] {
+	line-height: 40px;
 }
 
 ul.errorlist {
@@ -130,6 +150,20 @@ ul.errorlist li {
 
 ul.errorlist.nonfield {
 	display: block;
+}
+
+.edit-convo input[type=file],
+.edit-profile input[type=file] {
+	border: 0;
+	outline: 0;
+}
+
+.edit-profile p.help-block {
+	display: none;
+}
+
+.edit-convo input#id_url {
+	margin-bottom: 20px;
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {

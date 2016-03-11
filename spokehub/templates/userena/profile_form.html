@@ -10,19 +10,19 @@
 
 <div id="site-wrapper"> 
     <div class="content-wrapper content-container edit-profile user-page">
-        <div class="page-heading"><h2><b>Edit Profile</b></h2></div>
+        <div class="page-heading">
+            <ul class="archives-post">
+                <li><a href="{% url 'userena_profile_detail' user.username %}"><i class="mdi mdi-account"></i> View Profile</a></li>
+                <li><a href="{% url 'userena_email_change' user.username %}"><i class="mdi mdi-email"></i> Change Email</a></li>
+                <li><a href="{% url 'userena_password_change' user.username %}"><i class="mdi mdi-lock-open"></i> Change Password</a></li>
+            </ul>
+            <h2><b>Edit Profile</b></h2>
+        </div>
         <section>
             <div class="form-container">
                 <form action="" enctype="multipart/form-data" method="post">
                     {% csrf_token %}
                     <fieldset>
-                        {% block profile_navigation_items %}
-                        		<div class="btn-group pull-right">
-                                <a class="btn btn-primary" href="{% url 'userena_profile_detail' user.username %}">{% trans 'View profile' %}</a>
-                                <a class="btn btn-primary" href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a>
-                                <a class="btn btn-primary" href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a>
-                        		</div>
-                        {% endblock %}
                         {{ form.non_field_errors }}
                         {% for field in form %}
                             {% if field.name == 'privacy' %}

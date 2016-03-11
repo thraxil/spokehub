@@ -5,14 +5,20 @@
 <div id="site-wrapper"> 
     <div class="content-wrapper content-container user-page edit-convo">
         {% if request.user.is_superuser  or request.user == object.author %}
-            <div class="page-heading"><h2><b>Edit Question</b></h2></div>
+            <div class="page-heading">
+                <ul class="archives-post">
+                    <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+                    <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                </ul>
+                <h2><b>Edit Question</b></h2>
+            </div>
 
             <div class="form-container">
                 <form action="." method="post">{% csrf_token %}
                     <fieldset>
                         {{form|bootstrap}}
-						            <p id="textarea_feedback"></p>
-                        <a class="btn btn-danger pull-right" href="{{object.get_delete_url}}">Delete Conversation</a>
+						<p id="textarea_feedback"></p>
+                        <a class="btn btn-danger pull-right" href="{{object.get_delete_url}}"><i class="mdi mdi-delete"></i> Delete Conversation</a>
                         <input type="submit" value="Save" class="btn btn-primary"/>
                     </fieldset>
                 </form>

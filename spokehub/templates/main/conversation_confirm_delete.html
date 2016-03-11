@@ -5,7 +5,13 @@
 <div id="site-wrapper"> 
     <div class="content-wrapper content-container user-page edit-convo">
 		{% if request.user.is_superuser %}
-            <div class="page-heading"><h2><b>Delete Question</b></h2></div>
+            <div class="page-heading">
+                <ul class="archives-post">
+                    <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+                    <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                </ul>
+            	<h2><b>Delete Question</b></h2>
+            </div>
             <div class="form-container">
 				<form action="." method="post">{% csrf_token %}
 					<fieldset>

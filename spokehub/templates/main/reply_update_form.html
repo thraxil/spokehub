@@ -3,9 +3,15 @@
 
 {% block content %}
 <div id="site-wrapper"> 
-    <div class="content-wrapper content-container edit-convo user-page">
+    <div class="content-wrapper content-container edit-response edit-convo user-page">
         {% if request.user.is_superuser  or request.user == object.author %}
-            <div class="page-heading"><h2><b>Edit Response</b></h2></div>
+            <div class="page-heading">
+                <ul class="archives-post">
+                    <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+                    <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                </ul>
+                <h2><b>Edit Response</b></h2>
+            </div>
 
             <div class="form-container">
                 <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
@@ -15,7 +21,7 @@
                             {{form.image.errors}}
                             {% if form.image.value %}
                                 <label>Upload new image: </label>
-                                <div><input type="file" name="image" id="id_image" /></div>
+                                <input type="file" name="image" id="id_image" />
                             {% else %}
                                 <label>Upload image: </label>
                                 {{form.image|bootstrap}}
@@ -35,7 +41,7 @@
                         </div>
 
 						            <p id="textarea_feedback"></p>                        
-                        <a class="btn btn-danger pull-right" href="{% url 'delete-reply' object.id }">Delete Response</a>
+                        <a class="btn btn-danger pull-right" href="{% url 'delete-reply' object.id %}"><i class="mdi mdi-delete"></i> Delete Response</a>
                         <input type="submit" value="Save" class="btn btn-primary"/>
                     </fieldset>
                 </form>

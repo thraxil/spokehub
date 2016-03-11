@@ -2,17 +2,28 @@
 {% load bootstrap %}
 
 {% block content %}
-<div class="container">
-    {% if request.user.is_superuser or request.user == object.author %}
-<form action="." method="post">{% csrf_token %}
-<fieldset><legend>Delete Reply</legend>
-<p>Are you sure you want to delete this?</p>
-<a href="/" class="btn btn-default">nevermind</a>
-<input type="submit" value="Yes, delete" class="btn btn-primary"/>
-</fieldset>
-</form>
-{% else %}
-<p>Sorry, this is admin only for now.</p>
-{% endif %}
+<div id="site-wrapper"> 
+    <div class="content-wrapper content-container edit-convo user-page">
+		{% if request.user.is_superuser or request.user == object.author %}
+	        <div class="page-heading">
+	            <ul class="archives-post">
+	                <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+	                <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+	            </ul>
+	            <h2><b>Delete Reply</b></h2>
+	        </div>
+	        <div class="form-container">
+				<form action="." method="post">{% csrf_token %}
+					<fieldset>
+						<p>Are you sure you want to delete this?</p>
+						<a href="/" class="btn btn-default">Never mind...</a>
+						<input type="submit" value="Yes, delete" class="btn btn-primary"/>
+					</fieldset>
+				</form>
+			</div>
+		{% else %}
+			<p>Sorry, this is admin only for now.</p>
+		{% endif %}
+	</div>
 </div>
 {% endblock %}
