@@ -118,6 +118,7 @@ INSTALLED_APPS = [
     'guardian',
     'easy_thumbnails',
     'spokehub.gravatar',
+    'spokehub.broadcast',
 ]
 
 INTERNAL_IPS = ('127.0.0.1', )

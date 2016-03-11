@@ -59,6 +59,7 @@
       {% if user.username == profile.user.username %}
          {% if user.is_superuser %}
              <p><a href="{% url 'invite_form' %}">Invite Users</a></p>
+             <p><a href="{% url 'broadcast' %}">Send Broadcast Email</a></p>
          {% endif %}
       {% endif %}
 

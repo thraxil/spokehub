@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load bootstrap %}
+
+{% block content %}
+<div id="site-wrapper"> 
+    <div class="content-wrapper content-container recover-password user-page">
+        <div class="page-heading"><h2><b>Send Broadcast Email to All Users</b></h2></div>
+        <div class="form-container">
+            {% if request.user.is_superuser %}
+
+            <form action="." method="post">
+                {{form|bootstrap}}
+                <input type="submit" value="send broadcast message" />
+            </form>
+            {% else %}
+            <p>Sorry, superuser only</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
