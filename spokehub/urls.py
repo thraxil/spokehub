@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic import TemplateView
 from spokehub.main import views
+from spokehub.profile.forms import ExtendedEditProfileForm
 import os.path
 admin.autodiscover()
 
@@ -13,6 +14,10 @@ urlpatterns = patterns(
 
     url(r'^accounts/signout/(?P<next_page>.*)/$',
         'userena.views.signout', name='userena_signout_next'),
+    url(r'^accounts/(?P<username>[\@\.\w-]+)/edit/$',
+        'userena.views.profile_edit',
+        {'edit_profile_form': ExtendedEditProfileForm},
+        name='userena_profile_edit'),
     (r'^accounts/', include('userena.urls')),
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),
