@@ -11,6 +11,7 @@
                 <form action="." method="post">{% csrf_token %}
                     <fieldset>
                         {{form|bootstrap}}
+						            <p id="textarea_feedback"></p>
                         <a class="btn btn-danger pull-right" href="{{object.get_delete_url}}">Delete Conversation</a>
                         <input type="submit" value="Save" class="btn btn-primary"/>
                     </fieldset>

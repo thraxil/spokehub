@@ -195,24 +195,33 @@
 </script>
 
 <script>
+ var updateFeedback = function(textarea) {
+     if (textarea.val() === undefined) {
+         return;
+     }
+	   var text_max = 140;
+	   var text_length = textarea.val().length;
+	   var text_remaining = text_max - text_length;
+
+	   $('#textarea_feedback').html(text_remaining + ' characters remaining');
+
+	   if (text_remaining < 10) {
+	       $('#textarea_feedback').css("color", "#ec008c");
+	   }
+	   else {
+	       $('#textarea_feedback').css("color", "#000");	
+	   }
+ };
+
+
 	$(document).ready(function() {
-	    var text_max = 140;
-	    $('#textarea_feedback').html(text_max + ' characters remaining');
+      // register handlers
+	    $('#textarea').keyup(function() { updateFeedback($('#textarea')); });
+      $('#id_body').keyup(function() { updateFeedback($('#id_body')); });
 
-	    $('#textarea').keyup(function() {
-	        var text_length = $('#textarea').val().length;
-	        var text_remaining = text_max - text_length;
-
-	        $('#textarea_feedback').html(text_remaining + ' characters remaining');
-
-	        if (text_remaining < 10) {
-	        	$('#textarea_feedback').css("color", "#ec008c");
-	        }
-	        else {
-	        	$('#textarea_feedback').css("color", "#000");	
-	        }
-
-	    });
+      // initialize feedback (for edit views)
+      updateFeedback($('#textarea'));
+      updateFeedback($('#id_body'));
 	});
 </script>
 
