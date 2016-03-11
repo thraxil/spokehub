@@ -5,18 +5,25 @@
 {% block content_title %}<h2>{% blocktrans with user.username as username %}Account &raquo; {{ username }}{% endblocktrans %}</h2>{% endblock %}
 
 {% block content %}
-<form action="" method="post">
-  <ul id="box-nav">
-    <li class="first"><a href="{% url 'userena_profile_detail' user.username %}"><span>{% trans 'View profile' %}</span></a></li>
-    <li><a href="{% url 'userena_profile_edit' user.username %}">{% trans "Edit profile" %}</a></li>
-    <li><a href="{% url 'userena_password_change' user.username %}">{% trans "Change password" %}</a></li>
-    <li class="last selected"><a href="{% url 'userena_email_change' user.username %}">{% trans "Change email" %}</a></li>
-  </ul>
-  {% csrf_token %}
-  <fieldset>
-    <legend>{% trans "Change email address" %}</legend>
-    {{ form.as_p }}
-  </fieldset>
-  <input type="submit" value="{% trans "Change email" %}" />
-</form>
+<div id="site-wrapper"> 
+    <div class="content-wrapper content-container user-page">
+        <div class="page-heading clearfix">
+            <ul class="archives-post">
+                <li><a href="{% url 'userena_profile_detail' user.username %}"><i class="mdi mdi-account"></i> View Profile</a></li>
+                <li><a href="{% url 'userena_profile_edit' user.username %}"><i class="mdi mdi-pencil"></i> Edit Profile</a></li>
+                <li><a href="{% url 'userena_password_change' user.username %}"><i class="mdi mdi-email"></i> Change Password</a></li>
+            </ul>
+            <h2><b>Change Email Address</b></h2>
+        </div>
+        <div class="form-container">
+            <form action="" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    {{ form.as_p }}
+                </fieldset>
+                <input type="submit" value="{% trans "Change email" %}" />
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
