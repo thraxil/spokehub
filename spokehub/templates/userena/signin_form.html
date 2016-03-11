@@ -6,35 +6,37 @@
 
 {% block content %}
 <div id="site-wrapper"> 
-    <div class="content-wrapper content-container userena login-errors">
+    <div class="content-wrapper content-container userena login-errors user-page">
         <div class="page-heading"><h2><b>LOGIN</b></h2></div>
 		<div class="row">
     		<div class="col-md-4 col-md-offset-4">
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <fieldset>
-                        {{ form.non_field_errors }}
-                        {% for field in form %}
-                        {{ field.errors }}
-                        {% comment %} Displaying checkboxes differently {% endcomment %}
-                        {% if field.name == 'remember_me' %}
-                        <p class="checkbox">
-                        <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
-                        </p>
-                        {% else %}
-                        <p>
-                        {{ field|bootstrap }}
-                        </p>
-                        {% endif %}
-                        {% endfor %}
-                    </fieldset>
-                    <p id="forgot-password"><a href="{% url 'userena_password_reset' %}">Forgot your password?</a></p>
-                    <input type="submit" class="btn btn-primary pull-right" value="{% trans "SUBMIT" %}" />
-                  <!--  <p class="forgot-password"><a href="{% url --
-                  	--  'userena_password_reset' %}" title="{% trans 'Forgot your --
-                  	--  password?' %}">{% trans "Forgot your password?" %}</a></p> -->
-                    {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
-                </form>
+                <div class="form-container">
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            {{ form.non_field_errors }}
+                            {% for field in form %}
+                            {{ field.errors }}
+                            {% comment %} Displaying checkboxes differently {% endcomment %}
+                            {% if field.name == 'remember_me' %}
+                            <p class="checkbox">
+                            <label for="id_{{ field.name }}">{{ field }} {{ field.label }}</label>
+                            </p>
+                            {% else %}
+                            <p>
+                            {{ field|bootstrap }}
+                            </p>
+                            {% endif %}
+                            {% endfor %}
+                        </fieldset>
+                        <p id="forgot-password"><a href="{% url 'userena_password_reset' %}">Forgot your password?</a></p>
+                        <input type="submit" class="btn btn-primary pull-right" value="{% trans "SUBMIT" %}" />
+                      <!--  <p class="forgot-password"><a href="{% url --
+                      	--  'userena_password_reset' %}" title="{% trans 'Forgot your --
+                      	--  password?' %}">{% trans "Forgot your password?" %}</a></p> -->
+                        {% if next %}<input type="hidden" name="next" value="{{ next }}" />{% endif %}
+                    </form>
+                </div>
             </div>
         </div>
     </div>

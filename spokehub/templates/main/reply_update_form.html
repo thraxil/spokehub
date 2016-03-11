@@ -3,7 +3,7 @@
 
 {% block content %}
 <div id="site-wrapper"> 
-    <div class="content-wrapper content-container edit-convo">
+    <div class="content-wrapper content-container edit-convo user-page">
         {% if request.user.is_superuser  or request.user == object.author %}
             <div class="page-heading"><h2><b>Edit Response</b></h2></div>
 

@@ -109,6 +109,10 @@ ul.errorlist {
 	display: none;
 }
 
+.login-errors fieldset {
+	margin-top: -1.5rem;
+}
+
 ul.errorList li {
 	margin-bottom: 5px;
 }
@@ -118,10 +122,7 @@ ul.errorlist.nonfield {
 }
 
 @media only screen and (min-width: 1024px) {
-	.content-wrapper.content-container.login-errors,
-	.content-wrapper.content-container.recover-password,
-	.edit-convo .form-container,
-	.edit-profile .form-container {
+	.user-page .form-container {
 		width: 768px;
 		margin-left: auto;
 		margin-right: auto;
@@ -129,8 +130,7 @@ ul.errorlist.nonfield {
 }
 
 @media only screen and (max-width: 1023px) {
-	.edit-convo .form-container,
-	.edit-profile .form-container {
+	.user-page .form-container {
 		width: 100%;
 	}
 }
