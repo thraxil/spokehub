@@ -120,12 +120,22 @@ ul.errorlist {
 	margin-top: -1.5rem;
 }
 
-ul.errorList li {
+ul.errorlist {
+	margin-bottom: 0;
+}
+
+ul.errorlist li {
 	margin-bottom: 5px;
 }
 
 ul.errorlist.nonfield {
 	display: block;
+}
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+	.user-page .archives-post {
+		margin-bottom: 0;
+	}
 }
 
 @media only screen and (min-width: 1024px) {
