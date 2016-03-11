@@ -69,12 +69,19 @@ ul.errorlist {
 	color: $magenta;
 }
 
-.login-errors input[type=text], 
+/*.login-errors input[type=text], 
 .login-errors input[type=password], 
 .login-errors input[type=submit],
 .recover-password input[type=submit],
 .recover-password input#id_email,
 .edit-convo input[type=submit] {
+	width: 100%;
+}*/
+
+.user-page input[type=text], 
+.user-page input[type=password], 
+.user-page input[type=submit],
+.recover-password input#id_email {
 	width: 100%;
 }
 
