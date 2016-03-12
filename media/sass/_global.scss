@@ -157,9 +157,9 @@ span.intro-text {
   z-index: -1;
 }
 
+/*input[type=file],*/
 input[type=text],
 input[type=password],
-input[type=file],
 input[type=email] {
   border: 1px $black solid;
   padding: 10px;
