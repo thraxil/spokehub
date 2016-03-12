@@ -46,7 +46,7 @@ pre + h2{
 
 .how #banner-fade {
 	margin-top: 0;
-	margin-bottom: 70px;
+	margin-bottom: 40px;
 }
 
 #banner-fade,
@@ -114,6 +114,12 @@ p.bjqs-caption{
     	margin-top: 51.5px;
     }
 
+    .how .embedded-vimeo {
+    	margin-top: 0;
+    	height: 348px;
+    	width: 617px;
+    }
+
 }
 
 @media only screen and (min-width: 500px) and (max-width: 767px) {
@@ -129,6 +135,12 @@ p.bjqs-caption{
     	margin-top: 32.5px;
     }
 
+    .how .embedded-vimeo {
+    	margin-top: 0;
+    	height: 221px;
+    	width: 392px;
+    }
+
 }
 
 @media only screen and (max-width: 499px) {
@@ -142,6 +154,12 @@ p.bjqs-caption{
     .embedded-vimeo,
 	.youtube-embedded {
     	margin-top: 21.5px;
+    }
+
+    .how .embedded-vimeo {
+    	margin-top: 0;
+    	height: 147.5px;
+    	width: 262px;
     }
 
 }
@@ -164,6 +182,13 @@ p.bjqs-caption{
 	.youtube-embedded {
     	margin-top: 55.5px;
     }
+
+    .how .embedded-vimeo {
+    	margin-top: 0;
+    	height: 551px;
+    	width: 977.5px;
+    }
+
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1199px) {
@@ -183,6 +208,12 @@ p.bjqs-caption{
     .how #banner-fade {
     	height: 472px;
 	    width: 960px;
+    }
+
+    .how .embedded-vimeo {
+    	margin-top: 0;
+    	height: 472px;
+    	width: 837px;
     }
 }
 
