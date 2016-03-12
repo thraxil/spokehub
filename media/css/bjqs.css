@@ -49,6 +49,10 @@ pre + h2{
 	margin-bottom: 40px;
 }
 
+.how li.bjqs-slide {
+	background: #000;
+}
+
 #banner-fade,
 #banner-slide {
 	margin-bottom: 60px;
