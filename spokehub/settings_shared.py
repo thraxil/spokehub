@@ -32,6 +32,9 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
             'PASSWORD': '',
         }
     }
+    PASSWORD_HASHERS = (
+        'django.contrib.auth.hashers.MD5PasswordHasher',
+    )
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 TEST_OUTPUT_DIR = 'reports'
