@@ -69,19 +69,7 @@ class SignupView(InviteTokenRequiredMixin, FormView):
         self.invite.delete()
 
         p = get_user_profile(user)
-        # handle profile photo upload
-        if 'profileimage' in self.request.FILES:
-            filename = upload_image('profile',
-                                    self.request.FILES['profileimage'])
-            filename = os.path.join(settings.MEDIA_ROOT, filename)
-            mugshot_path = upload_to_mugshot(p, filename)
-            thumbnailer = get_thumbnailer(
-                open(filename, 'rb'), relative_name=mugshot_path)
-            thumb = thumbnailer.get_thumbnail(
-                {'size': (settings.USERENA_MUGSHOT_SIZE,
-                          settings.USERENA_MUGSHOT_SIZE)},
-                save=True)
-            p.mugshot = thumb.name
+        self.handle_profile_photo_upload(p)
 
         # handle cover photo upload
         if 'coverimage' in self.request.FILES:
@@ -94,6 +82,23 @@ class SignupView(InviteTokenRequiredMixin, FormView):
         login(self.request, user)
         self.user = user
         return super(SignupView, self).form_valid(form)
+
+    def handle_profile_photo_upload(self, p):
+        if 'profileimage' in self.request.FILES:
+            filename = upload_image('profile',
+                                    self.request.FILES['profileimage'])
+            if filename is None:
+                # they uploaded something that wasn't a photo
+                return
+            filename = os.path.join(settings.MEDIA_ROOT, filename)
+            mugshot_path = upload_to_mugshot(p, filename)
+            thumbnailer = get_thumbnailer(
+                open(filename, 'rb'), relative_name=mugshot_path)
+            thumb = thumbnailer.get_thumbnail(
+                {'size': (settings.USERENA_MUGSHOT_SIZE,
+                          settings.USERENA_MUGSHOT_SIZE)},
+                save=True)
+            p.mugshot = thumb.name
 
 
 def upload_image(d, f):

@@ -37,11 +37,6 @@
                 <dd><a href="mailto:{{profile.user.email}}">{{ profile.user.email }}</a></dd>
             {% endif %}
 
-            <!--{% if profile.cover %}
-                <dt>Cover photo path:</dt>
-                <dd>{{profile.cover.url}}</dd>
-            {% endif %}-->
-            
           {% endblock %}
         </dl>
       {% endblock %}
@@ -59,33 +54,11 @@
       {% if user.username == profile.user.username %}
          {% if user.is_superuser %}
              <p><a href="{% url 'invite_form' %}">Invite Users</a></p>
+             <p><a href="{% url 'broadcast' %}">Send Broadcast Email</a></p>
          {% endif %}
       {% endif %}
 
 
-      <!--{% with questions=user.profile.questions %}
-          {% if questions.count %}
-              <h3>Questions Asked</h3>
-
-              <ul>
-                  {% for question in questions %}
-                      <li><a href="{{question.get_absolute_url}}">{{question.added}}: {{question.body}}</a></li>
-                  {% endfor %}
-              </ul>
-          {% endif %}
-      {% endwith %}
-
-      {% with questions=user.profile.replied_to %}
-          {% if questions %}
-              <h3>Questions Replied to</h3>
-
-              <ul>
-                  {% for question in questions %}
-                      <li><a href="{{question.get_absolute_url}}">{{question.added}}: {{question.body}}</a></li>
-                  {% endfor %}
-              </ul>
-          {% endif %}
-      {% endwith %}-->
 </div>
 </div>
 

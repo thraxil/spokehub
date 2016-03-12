@@ -81,6 +81,7 @@ urlpatterns = patterns(
     (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
     (r'^invite/', include('spokehub.invite.urls')),
+    (r'^broadcast/', include('spokehub.broadcast.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     url(r'^stats/$', TemplateView.as_view(template_name="stats.html"),
