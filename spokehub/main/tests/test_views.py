@@ -35,6 +35,7 @@ class LoggedInTest(TestCase):
         r = self.c.get("/")
         self.assertEqual(r.status_code, 200)
 
+    @override_flag("main", True)
     def test_root_with_conversation(self):
         i = ConversationFactory()
         r = self.c.get("/")
