@@ -4,6 +4,7 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from spokehub.main import views
 from spokehub.profile.forms import ExtendedEditProfileForm
+from spokehub.main.forms import CustomAuthenticationForm
 import os.path
 admin.autodiscover()
 
@@ -14,6 +15,10 @@ urlpatterns = patterns(
 
     url(r'^accounts/signout/(?P<next_page>.*)/$',
         'userena.views.signout', name='userena_signout_next'),
+    url(r'^accounts/signin/$',
+        'userena.views.signin',
+        {'auth_form': CustomAuthenticationForm},
+        name='userena_signin'),
     url(r'^accounts/(?P<username>[\@\.\w-]+)/edit/$',
         'userena.views.profile_edit',
         {'edit_profile_form': ExtendedEditProfileForm},

@@ -117,8 +117,7 @@
         <input type="text" name="identification" placeholder="Username"/>
         <input type="password" name="password" placeholder="Password"/>
 		    <input type="submit" value="SUBMIT">
-	      <input type="checkbox" name="checkbox" id="checkbox_id" value="value">
-		    <label for="checkbox_id">Remember me for a month</label>
+	      <input type="hidden" name="remember_me" value="True">
 		    <p id="forgot-password"><a href="{% url 'userena_password_reset' %}">Forgot your password?</a></p>
         </form>
     </div>
