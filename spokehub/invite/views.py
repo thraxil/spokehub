@@ -12,6 +12,7 @@ from .models import Invite
 from .forms import FullSignupForm
 from userena.utils import get_user_profile
 from userena.models import upload_to_mugshot
+from userena import settings as userena_settings
 from easy_thumbnails.files import get_thumbnailer
 import random
 import string
@@ -80,6 +81,8 @@ class SignupView(InviteTokenRequiredMixin, FormView):
         # log them in
         user = authenticate(identification=user.email, check_password=False)
         login(self.request, user)
+        self.request.session.set_expiry(
+            userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
         self.user = user
         return super(SignupView, self).form_valid(form)
 
