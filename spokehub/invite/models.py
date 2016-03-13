@@ -9,6 +9,9 @@ class Invite(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return "Invite to %s [%s]" % (self.email, self.status)
+
     def send_invite(self):
         send_mail(
             'Invitation to SPOKEHUB',
