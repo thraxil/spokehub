@@ -56,7 +56,7 @@ class FullSignupForm(SignupForm):
             'id': "profile-image-upload",
             'accept': "image/*",
             'capture': "camera",
-            'class': "inputfile inputfile-6",
+            'class': "inputfile-6",
             "data-multiple-caption": "{count} files selected",
             "multiple": "multiple"})
     )
@@ -66,7 +66,7 @@ class FullSignupForm(SignupForm):
             'id': "cover-image-upload",
             'accept': "image/*",
             'capture': "camera",
-            'class': "inputfile inputfile-6",
+            'class': "inputfile-6",
             "data-multiple-caption": "{count} files selected",
             "multiple": "multiple"})
     )
