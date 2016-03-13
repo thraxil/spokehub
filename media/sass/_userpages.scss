@@ -167,6 +167,12 @@ ul.errorlist.nonfield {
 	margin-bottom: 20px;
 }
 
+#profile-image-upload,
+#cover-image-upload {
+	margin-bottom: 20px;
+	width: 100%;
+}
+
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
 	.user-page .archives-post {
 		margin-bottom: 0;
