@@ -23,6 +23,13 @@ DATABASES = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'spokehub-snowflake',
+    }
+}
+
 COMPRESS_OFFLINE = True
 COMPRESS_ROOT = os.path.join(os.path.dirname(__file__), "../media")
 DEBUG = False

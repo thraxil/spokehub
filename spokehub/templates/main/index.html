@@ -4,7 +4,8 @@
 {% load compress %}
 {% load thumbnail %}
 {% load waffle_tags %}
-{% load markup %}
+    {% load markup %}
+    {% load cache %}
 
 {% block content %}
 
@@ -16,6 +17,7 @@
       </div>
 
       <div id="grid" class="clearfix" data-columns>
+          {% cache 500 nowposts %}
         {% for nowpost in now_posts %}
           <div class="now-post">
 
@@ -35,7 +37,8 @@
             <p class="now-post-text">{{nowpost.text}}</p>
             
           </div>
-              {% endfor %}
+        {% endfor %}
+        {% endcache %}
       </div>
 
 	</div>
