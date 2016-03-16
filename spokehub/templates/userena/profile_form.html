@@ -27,6 +27,12 @@
                         {% for field in form %}
                             {% if field.name == 'privacy' %}
               		              <input type="hidden" name="privacy" value="open" />
+                            {% elif field.name == 'mugshot' %}
+                                {{ field.errors }}
+                                <div class="form-group">
+                                    <label class="control-label" for="id_mugshot">Your head shot</label>
+                                    <div>{{field}}</div>
+                                </div>
               		          {% else %}
                                 {{ field.errors }}
                                 <p>

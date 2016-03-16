@@ -16,7 +16,8 @@ class Profile(UserenaBaseProfile):
     website_url = models.CharField(max_length=256, blank=False)
     website_name = models.CharField(max_length=256, blank=False)
     location = models.CharField(max_length=256, blank=False)
-    cover = ThumbnailerImageField('cover', blank=True, upload_to='covers')
+    cover = ThumbnailerImageField('Your background image', blank=True,
+                                  upload_to='covers')
     allow_email = models.BooleanField(default=False,
                                       verbose_name='Allow Notifications')
 
