@@ -86,3 +86,11 @@ class FullSignupForm(SignupForm):
         user_profile.privacy = 'open'
         user_profile.save()
         return new_user
+
+    def clean_website_url(self):
+        if self.cleaned_data['website_url'].startswith('https://'):
+            return self.cleaned_data['website_url']
+        elif self.cleaned_data['website_url'].startswith('http://'):
+            return self.cleaned_data['website_url']
+        else:
+            return 'http://' + self.cleaned_data['website_url']
