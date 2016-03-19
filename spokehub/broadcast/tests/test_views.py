@@ -1,20 +1,17 @@
 from django.core import mail
 from django.core.urlresolvers import reverse
-from django.test import TestCase, Client
+from django.test import TestCase
 from spokehub.main.tests.factories import UserFactory
 
 
 class BroadcastViewTest(TestCase):
-    def setUp(self):
-        self.c = Client()
-
     def test_get(self):
-        r = self.c.get(reverse('broadcast', args=[]))
+        r = self.client.get(reverse('broadcast', args=[]))
         self.assertEqual(r.status_code, 200)
 
     def test_post(self):
         UserFactory()
-        r = self.c.post(
+        r = self.client.post(
             reverse('broadcast', args=[]),
             {
                 'subject': 'cat',
