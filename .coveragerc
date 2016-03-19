@@ -5,3 +5,4 @@ omit =
 		*/settings_*.py
 		*gravatar*
     *migrations*
+    *management/commands/*
