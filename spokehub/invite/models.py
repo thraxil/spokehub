@@ -10,7 +10,7 @@ class Invite(models.Model):
     modified = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "Invite to %s [%s]" % (self.email, self.status)
+        return "Invite to %s [%s]" % (self.email, str(self.added))
 
     def send_invite(self):
         send_mail(
