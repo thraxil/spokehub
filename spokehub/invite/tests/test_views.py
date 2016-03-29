@@ -87,7 +87,6 @@ class TestInviteView(TestCase):
         self.assertEqual(r.status_code, 302)
         self.assertEqual(Invite.objects.count(), 1)
         i = Invite.objects.all().first()
-        self.assertEqual(i.status, 'OPEN')
         # now if we get the signup page with the token it should be ok
         r = self.client.get(reverse('invite_signup_form', args=[i.token]))
         self.assertTrue("password" in r.content)

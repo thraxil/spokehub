@@ -5,7 +5,6 @@ from django.core.mail import send_mail
 class Invite(models.Model):
     email = models.TextField()
     token = models.TextField()
-    status = models.TextField(default='OPEN')
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 

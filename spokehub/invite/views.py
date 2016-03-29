@@ -44,10 +44,10 @@ class InviteView(View):
 
 class InviteTokenRequiredMixin(object):
     def dispatch(self, request, token, *args, **kwargs):
-        r = Invite.objects.filter(token=token, status='OPEN')
+        r = Invite.objects.filter(token=token)
         if not r.exists():
             return HttpResponse("sorry, invalid signup token")
-        self.invite = Invite.objects.filter(token=token, status='OPEN')[0]
+        self.invite = Invite.objects.filter(token=token)[0]
         return super(InviteTokenRequiredMixin,
                      self).dispatch(request, token, *args, **kwargs)
 
