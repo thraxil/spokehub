@@ -34,6 +34,7 @@
 	            {% if not request.user.is_anonymous %}
 					<div class="question" id="add-a-response">
 		                <h3>Add a visual to the conversation</h3>
+		                <p class="copyright-message-we">Uploaded images must belong to you, or be in the public domain. Please share all other visuals by linking to an original source.</p>
 		                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
 						    <div class="upload-enter">
 								<!--<input type="file" name="image" id="comment-image" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
@@ -41,10 +42,10 @@
 
                                 <input type="file" name="image" id="comment-image" />
 
-		                        <input type="text" name="url" id="comment-url" placeholder="Enter image or video URL"/>
+		                        <input type="text" name="url" id="comment-url" placeholder="Enter URL to image, gif or video"/>
 						    </div>                    
 						    <div class="clearfix"></div>
-						    <textarea name="body" id="textarea" class="convo-question" placeholder="Got anything to say about it?" maxlength="140"></textarea>
+						    <textarea name="body" id="textarea" class="convo-question" placeholder="Would you like to add some context?" maxlength="140"></textarea>
 						    <p id="textarea_feedback"></p>
 						    <input type="submit" value="SUBMIT" class="convo-submit">
 		            	</form>
