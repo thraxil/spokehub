@@ -29,8 +29,6 @@ urlpatterns = patterns(
         name='about'),
     (r'^network/$', views.IndexView.as_view(
         template_name='network/index.html')),
-    (r'^contact/$', views.IndexView.as_view(
-        template_name='contact/index.html')),
     url(r'^how/$', views.IndexView.as_view(
         template_name='how/index.html'), name='how'),
 
@@ -86,6 +84,7 @@ urlpatterns = patterns(
     (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
     (r'^invite/', include('spokehub.invite.urls')),
+    (r'^contact/', include('spokehub.contact.urls')),
     (r'^broadcast/', include('spokehub.broadcast.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),

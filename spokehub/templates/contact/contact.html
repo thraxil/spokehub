@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="" method="post">{% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div>
+        <label>Your Name</label>
+    {{form.name.errors}}
+        {{form.name}}
+    </div>
+
+    <div>
+        <label>Your Email (so we can get back to you)</label>
+        {{form.email.errors}}
+        {{form.email}}
+    </div>
+
+    <div>
+        {{form.message.errors}}
+        {{form.message}}
+    </div>
+
+    
+    <input type="submit" value="Send message" />
+</form>
+    
+{% endblock %}
