@@ -18,7 +18,7 @@ class IndexView(TemplateView):
         context['conversations'] = Conversation.objects.newest()
 
         now_posts_list = NowPost.objects.newest()
-        paginator = Paginator(now_posts_list, 1500)
+        paginator = Paginator(now_posts_list, 50)
         page = self.request.GET.get('page')
         try:
             now_posts = paginator.page(page)
