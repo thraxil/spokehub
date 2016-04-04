@@ -158,7 +158,15 @@ span.intro-text {
   z-index: -1;
 }
 
-/*input[type=file],*/
+label#fileLabel {
+  word-wrap: break-word;
+}
+
+input[type=file]{
+    width:90px;
+    color:transparent;
+}
+
 input[type=text],
 input[type=password],
 input[type=email] {
