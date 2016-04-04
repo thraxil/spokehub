@@ -152,7 +152,7 @@ header {
       width: 300px;
     }
 }
-.close {
+.modalDialog .close {
     color: $black;
     line-height: 25px;
     position: absolute;
@@ -163,7 +163,7 @@ header {
     width: 24px;
     text-decoration: none;
 }
-.close:hover {
+.modalDialog .close:hover {
     color: $cyan;
 }
 
@@ -178,20 +178,28 @@ header {
   margin-bottom: 20px;
 }
 
-.black-bg #openModal {
+.black-bg .modalDialog {
   color: $black;
 }
 
-#openModal a {
+.modalDialog a {
   color: $cyan;
 }
 
-#openModal a:hover {
+.modalDialog a:hover {
   color: $black;
 }
 
 #openModal a.close {
   color: $black;
+}
+
+#contactModal p {
+  margin: 0;
+}
+
+#contactModal p.contact-email {
+  margin-top: 20px;
 }
 
 /* RESPONSIVE NAV */
