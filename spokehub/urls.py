@@ -78,6 +78,8 @@ urlpatterns = patterns(
         template_name='main/we.html')),
     (r'^convo/$', views.IndexView.as_view(
         template_name='main/conversation.html')),
+    (r'^404-test/$', views.IndexView.as_view(
+        template_name='404.html')),
 
     url(r'^conversation/(?P<pk>\d+)/reply/$',
         views.ReplyToConversationView.as_view(),

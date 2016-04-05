@@ -158,6 +158,23 @@ span.intro-text {
   z-index: -1;
 }
 
+.error-page {
+  text-align: center;
+}
+
+.error-page img {
+  width: 800px;
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    width: 700px;
+  }
+  @media only screen and (min-width: 500px) and (max-width: 767px) {
+    width: 450px;
+  }
+  @media only screen and (max-width: 499px) {
+    width: 300px;
+  }
+}
+
 label#fileLabel {
   word-wrap: break-word;
 }
