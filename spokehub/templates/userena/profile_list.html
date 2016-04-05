@@ -5,11 +5,13 @@
 
 {% block content %}
 <ul id="profile_list">
-  {% for profile in profile_list %}
-  <li>
-  <a href="{% url 'userena_profile_detail' profile.user.username %}"><img src="{{ profile.get_mugshot_url }}" /></a>
-  <a href="{% url 'userena_profile_detail' profile.user.username %}">{{ profile.user.username }}</a>
-  </li>
+    {% for profile in profile_list %}
+        {% if not profile.user.is_anonymous %}
+            <li>
+                <a href="{% url 'userena_profile_detail' profile.user.username %}"><img src="{{ profile.get_mugshot_url }}" /></a>
+                <a href="{% url 'userena_profile_detail' profile.user.username %}">{{ profile.user.username }}</a>
+            </li>
+        {% endif %}
   {% endfor %}
 
 </ul>
