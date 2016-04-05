@@ -66,4 +66,4 @@ django-guardian==1.4.1
 django-userena==2.0.1
 django-picklefield==0.3.2
 
-opbeat==3.2.1
+opbeat==3.3
