@@ -5,7 +5,15 @@
 {% block content %}
 	<div id="site-wrapper"> 
 		<div class="content-wrapper content-container">
-			<img src="{{STATIC_URL}}img/error-message.svg">
+			<!--<img src="{{STATIC_URL}}img/error-message.svg">-->
+			<div id="error-msg">
+				<p class="big-magenta">SORRY.</p>
+				<h2>The page you're looking for
+				can't be found.</h2>
+				<b>Requested page is not found. This may happen due to the following reasons:</b>
+				<p id="error-msg-elaborate">Page or file is outdated, renamed, moved, or does not exist,
+				or you typed the address incorrectly.</p>
+			</div>
 		</div>
 	</div>
 {% endblock %}
