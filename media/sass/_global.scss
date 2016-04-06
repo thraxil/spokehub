@@ -2,7 +2,7 @@
 
 $yellow: #fff200;
 $cyan: #00ffff;
-$magenta: #ec008c;
+$magenta: #FF00FF;
 $black: #000;
 $white: #fff;
 $dark-gray: #464646;
@@ -162,16 +162,42 @@ span.intro-text {
   text-align: center;
 }
 
-.error-page img {
-  width: 800px;
+.error-page img,
+.error-page #error-msg {
+  width: 550px;
+  margin: 0 auto;
+  .big-magenta {
+    font-family: $header-font;
+    color: $magenta;
+    font-size: 65px;
+    line-height: 33px;
+    margin-bottom: 0;
+    margin-top: 30px;
+  }
+  p#error-msg-elaborate {
+    width: 423px;
+    margin: 0 auto;
+  }
+  h2 {
+    font-size: 35px;
+    font-family: $base-font;
+    line-height: 40px;
+    margin-bottom: 60px;
+  }
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    width: 700px;
+    width: 550px;
   }
   @media only screen and (min-width: 500px) and (max-width: 767px) {
-    width: 450px;
+    width: 350px;
+    p#error-msg-elaborate {
+      width: 296px;
+    }
   }
   @media only screen and (max-width: 499px) {
     width: 300px;
+    p#error-msg-elaborate {
+      width: 296px;
+    }
   }
 }
 
