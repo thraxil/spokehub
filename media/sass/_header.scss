@@ -1,7 +1,8 @@
 nav ul {
   list-style: none;
   padding-left: 0;
-  margin-top: 15px;
+  /*margin-top: 15px;*/
+  margin-top: 0;
 }
 
 nav ul li {
@@ -24,7 +25,8 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  padding-top: 13px;
+  /*align-items: center;*/
 
   nav ul #username-logout.mobile {
     display: none;
@@ -58,13 +60,14 @@ header {
     width: auto;
     text-align: right;
     color: $black;
-    margin-top: 14px;
-    padding-top: 6px;
+    /*margin-top: 14px;*/
+    /*padding-top: 6px;*/
   }
 
   #spokehub-logo {
     width: 210px;
     z-index: 1;
+    /*margin-top: 13px;*/
   }
 
   #spokehub-logo img {
