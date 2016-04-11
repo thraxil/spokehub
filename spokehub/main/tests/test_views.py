@@ -90,3 +90,8 @@ class TestUserProfiles(TestCase):
         u = UserFactory()
         r = self.client.get("/accounts/" + u.username + "/")
         self.assertEqual(r.status_code, 200)
+
+    def test_profile_index(self):
+        UserFactory()
+        r = self.client.get("/accounts/")
+        self.assertEqual(r.status_code, 200)
