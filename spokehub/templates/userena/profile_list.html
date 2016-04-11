@@ -1,38 +1,58 @@
+<div class="we we-main">
+
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
 
 {% block content_title %}<h2>{% trans 'Profiles' %}</h2>{% endblock %}
 
-{% block content %}
-<ul id="profile_list">
-    {% for profile in profile_list %}
-        {% if not profile.user.is_anonymous %}
-            <li>
-                <a href="{% url 'userena_profile_detail' profile.user.username %}"><img src="{{ profile.get_mugshot_url }}" /></a>
-                <a href="{% url 'userena_profile_detail' profile.user.username %}">{{ profile.user.username }}</a>
-            </li>
-        {% endif %}
-  {% endfor %}
 
-</ul>
 
-{% if is_paginated %}
-<div class="pagination">
-  <span class="step-links">
-    {% if page_obj.has_previous %}
-    <a href="{% url 'userena_profile_list_paginated' page_obj.previous_page_number %}">{% trans 'previous' %}</a>
-    {% endif %}
+    {% block content %}
+        <div id="site-wrapper">
+            <div class="content-wrapper content-container">
+                <div class="page-heading">
+                    <h2><b>HUB USER INDEX</b></h2>
+                </div>
 
-    <span class="current">
-      {% blocktrans with page_obj.number as page and page_obj.paginator.num_pages as num_pages %}
-      Page {{ page }} of {{ num_pages }}
-      {% endblocktrans %}
-    </span>
+                <div class="hub_user_index">
+                    <div id="grid" class="clearfix" data-columns>
+                        {% for profile in profile_list %}
+                            <div class="question">
+                                <div class="cover-photo" {% if profile.cover %}style="background-image:url('../..{{profile.cover.url}}');"{% endif %}></div>
+                                <img class="mugshot" src="{{ profile.get_mugshot_url }}"/>
+                                <div class="page-heading">
+                                    <h2><b>{{ profile.user.username }}</b> {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>
+                                </div>
+                                {% if profile.profession %}
+                                    <dd>{{ profile.profession }}</dd>
+                                {% endif %}
+                                {% if profile.location %}
+                                    <dd>{{ profile.location }}</dd>
+                                {% endif %}
+                                {% if profile.website_url %}
+                                    <dd>
+                                        {% if profile.website_name %}
+                                            <a href="{{profile.website_url}}">
+                                                {{profile.website_name}}
+                                            </a>
+                                        {% else %}
+                                            {{profile.website_url|urlize }}
+                                        {% endif %}
+                                    </dd>
+                                {% endif %}
+                                {% if profile.user.email and not hide_email %}
+                                    <dd><a href="mailto:{{profile.user.email}}">{{ profile.user.email }}</a></dd>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
 
-    {% if page_obj.has_next %}
-    <a href="{% url 'userena_profile_list_paginated'  page_obj.next_page_number %}">{% trans 'next' %}</a>
-    {% endif %}
-  </span>
-</div>
-{% endif %}
+                    </div>
+
+                </div>
+
+        </div>
+    </div>
+    
+
 {% endblock %}
+</div>
