@@ -173,6 +173,37 @@ ul.errorlist.nonfield {
 	width: 100%;
 }
 
+.hub_user_index {
+	list-style: none;
+}
+
+.hub_user_index .question {
+	text-align: center;
+	padding: 0 0 15px 0;
+}
+
+.hub_user_index .question .page-heading {
+	border: 0;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.hub_user_index .question dd {
+	font-family: $header-font;
+	margin-left: 0;
+}
+
+.hub_user_index .question .cover-photo {
+	height: 200px;
+}
+
+.hub_user_index .question .mugshot {
+	width: 100px;
+	border-width: 3px;
+	margin-top: -50px;
+	margin-bottom: 15px;
+}
+
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
 	.user-page .archives-post {
 		margin-bottom: 0;
