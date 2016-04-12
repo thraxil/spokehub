@@ -2,6 +2,7 @@ from django.conf import settings
 import pytumblr
 import json
 from datetime import datetime
+from django_statsd.clients import statsd
 from ..main.models import NowPost
 
 
@@ -16,8 +17,10 @@ def add_post(i):
         return
     try:
         _add_post(ptype, url, i)
+        statsd.incr('tumblr.add.success')
     except Exception, e:
         print(str(e))
+        statsd.incr('tumblr.add.failed')
 
 
 def _add_post(ptype, url, i):
@@ -73,3 +76,4 @@ def hashtag_search():
     posts = client.tagged(settings.HASHTAG)
     for i in posts:
         add_post(i)
+    statsd.incr('tumblr.hashtag.run')

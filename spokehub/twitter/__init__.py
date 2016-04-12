@@ -1,5 +1,6 @@
 import tweepy
 from django.conf import settings
+from django_statsd.clients import statsd
 
 
 def add_tweet(t):
@@ -10,7 +11,6 @@ def add_tweet(t):
     if r.exists():
         print "existing twitter post"
         return
-
     try:
         np = NowPost.objects.create_twitter(
             screen_name=t.user.screen_name,
@@ -23,8 +23,10 @@ def add_tweet(t):
         print("new twitter post added")
         print(np.id)
         process_extended_attributes(t, np)
+        statsd.incr('tweets.add.success')
     except Exception, e:
         print "failed with exception: " + str(e)
+        statsd.incr('tweets.add.failed')
 
 
 def process_extended_attributes(t, np):
@@ -55,6 +57,7 @@ def my_tweets():
     for t in api.user_timeline(USER):
         print("@" + t.user.screen_name)
         add_tweet(t)
+    statsd.incr('tweets.mytweets.run')
 
 
 def hashtag_search():
@@ -72,3 +75,4 @@ def hashtag_search():
     for t in tweepy.Cursor(api.search, q=search_text).items(max_tweets):
         print("@" + t.user.screen_name)
         add_tweet(t)
+    statsd.incr('tweets.hashtag.run')
