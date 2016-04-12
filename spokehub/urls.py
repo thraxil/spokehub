@@ -1,10 +1,12 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
+from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.views.generic import TemplateView
 from spokehub.main import views
 from spokehub.profile.forms import ExtendedEditProfileForm
 from spokehub.main.forms import CustomAuthenticationForm
+import userena.views
 import os.path
 admin.autodiscover()
 
@@ -23,6 +25,9 @@ urlpatterns = patterns(
         'userena.views.profile_edit',
         {'edit_profile_form': ExtendedEditProfileForm},
         name='userena_profile_edit'),
+    url(r'^accounts/$',
+        login_required(userena.views.ProfileListView.as_view()),
+        name='userena_profile_list'),
     (r'^accounts/', include('userena.urls')),
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),
