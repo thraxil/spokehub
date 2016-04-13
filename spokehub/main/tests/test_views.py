@@ -84,6 +84,11 @@ class LoggedInTest(TestCase):
         r = self.client.get(reverse('edit-reply', args=[reply.id]))
         self.assertEqual(r.status_code, 200)
 
+    def test_profile_index(self):
+        UserFactory()
+        r = self.client.get("/accounts/")
+        self.assertEqual(r.status_code, 200)
+
 
 class TestUserProfiles(TestCase):
     def test_profile_view(self):
@@ -94,4 +99,4 @@ class TestUserProfiles(TestCase):
     def test_profile_index(self):
         UserFactory()
         r = self.client.get("/accounts/")
-        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.status_code, 302)

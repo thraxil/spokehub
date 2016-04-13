@@ -1,5 +1,6 @@
 from json import dumps
 from django.conf import settings
+from django_statsd.clients import statsd
 
 
 def add_post(media):
@@ -13,8 +14,10 @@ def add_post(media):
         return
     try:
         _add_post(media, NowPost)
+        statsd.incr('instagram.add.success')
     except Exception, e:
         print "failed with exception: " + str(e)
+        statsd.incr('instagram.add.failed')
 
 
 def _add_post(media, NowPost):
@@ -63,11 +66,13 @@ def hashtag_search(api):
 
     recent_media, n = api.tag_recent_media(tag_name=tag_name)
     add_media(recent_media)
+    statsd.incr('instagram.hashtag.run')
 
 
 def my_posts(api):
     recent_media, _ = api.user_recent_media()
     add_media(recent_media)
+    statsd.incr('instagram.myposts.run')
 
 
 def add_media(recent_media):
