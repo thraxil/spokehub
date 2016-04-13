@@ -51,6 +51,11 @@
 
       {% endif %}
 
+      {% if request.user.is_anonymous %}
+        {% else %}
+        <p><a href="..">View all Hub users</a></p>
+      {% endif %}
+
       {% if user.username == profile.user.username %}
          {% if user.is_superuser %}
              <p><a href="{% url 'invite_form' %}">Invite Users</a></p>
