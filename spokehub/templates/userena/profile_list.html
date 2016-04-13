@@ -1,4 +1,4 @@
-<div class="we we-question">
+<div class="we we-question hub-index">
 
 {% extends 'userena/base_userena.html' %}
 {% load i18n %}
@@ -18,11 +18,11 @@
                     <div id="grid" class="clearfix" data-columns>
                         {% for profile in profile_list %}
                             <div class="question">
-                                <div class="cover-photo" {% if profile.cover %}style="background-image:url('../..{{profile.cover.url}}');"{% endif %}></div>
+                                <a href="{% url 'userena_profile_detail' profile.user.username %}"><div class="cover-photo" {% if profile.cover %}style="background-image:url('../..{{profile.cover.url}}');"{% endif %}></div>
                                 <img class="mugshot" src="{{ profile.get_mugshot_url }}"/>
                                 <div class="page-heading">
-                                    <h2><b>{{ profile.user.username }}</b> {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>
-                                </div>
+                                    <h2 class="hub-list-username"><b>{{ profile.user.username }}</b> {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>
+                                </div></a>
                                 {% if profile.profession %}
                                     <dd>{{ profile.profession }}</dd>
                                 {% endif %}
