@@ -197,11 +197,44 @@ ul.errorlist.nonfield {
 	height: 200px;
 }
 
-.hub_user_index .question .mugshot {
+.username-hover .cover-photo {
+	height: 100px;
+}
+
+.hub_user_index .question .mugshot,
+.username-hover .mugshot {
 	width: 100px;
 	border-width: 3px;
 	margin-top: -50px;
 	margin-bottom: 15px;
+}
+
+.popover .page-heading {
+	margin-bottom: 0;
+	padding: 0 10px;
+}
+
+.cover-photo#kwame-cover-photo {
+	background-image: url('http://spokehub.org/uploads/covers/070115AZ_chimp00169_9.jpg');
+}
+
+.cover-photo#onika-cover-photo {
+	background-image:url('http://spokehub.org/uploads/covers/image.jpeg');
+}
+
+.username-hover {
+	text-align: center;
+	color: #000;
+}
+
+.username-hover dd {
+	margin: 0;
+	font-family: $header-font;
+}
+
+.username-hover h2 {
+	text-align: center;
+	margin-bottom: 0;
 }
 
 a h2.hub-list-username {
