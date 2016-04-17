@@ -197,6 +197,12 @@ ul.errorlist.nonfield {
 	height: 200px;
 }
 
+.hub_user_index dd,
+.hub_user_index .page-heading {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
 .username-hover .cover-photo {
 	height: 100px;
 }
@@ -216,6 +222,10 @@ ul.errorlist.nonfield {
 }
 
 .popover a:hover {
+	color: $black;
+}
+
+.black-bg #site-wrapper .popover a:hover {
 	color: $black;
 }
 
