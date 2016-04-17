@@ -209,9 +209,14 @@ ul.errorlist.nonfield {
 	margin-bottom: 15px;
 }
 
-.popover .page-heading {
+.popover .page-heading,
+.popover dd {
 	margin-bottom: 0;
 	padding: 0 10px;
+}
+
+.popover a:hover {
+	color: $black;
 }
 
 .cover-photo#kwame-cover-photo {
@@ -220,6 +225,26 @@ ul.errorlist.nonfield {
 
 .cover-photo#onika-cover-photo {
 	background-image:url('http://spokehub.org/uploads/covers/image.jpeg');
+}
+
+.cover-photo#coult-cover-photo {
+	background-image:url('http://spokehub.org/uploads/covers/coverphoto.jpg');
+}
+
+.cover-photo#winst-cover-photo {
+	background-image:url('http://spokehub.org/uploads/coverimages/2016/03/17/_58-1-copy.jpg');
+}
+
+.cover-photo#anders-cover-photo {
+	background-image:url('http://spokehub.org/uploads/covers/869_720.jpg');
+}
+
+.cover-photo#valerie-cover-photo {
+	background-image:url('http://spokehub.org/uploads/coverimages/2016/03/15/finlandice_vs_french.jpg');
+}
+
+.cover-photo#an-cover-photo {
+	background-image:url('http://spokehub.org/uploads/coverimages/2016/03/22/12672053_10153753220.jpg');
 }
 
 .username-hover {
