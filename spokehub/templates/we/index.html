@@ -25,7 +25,20 @@
           		{% for conversation in conversation_list %}
 					<div class="question">
 						<h3><a href="{{conversation.get_absolute_url}}">{{conversation.body|markdown}}</a></h3>
-						<p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+						<p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
+					<div class='username-hover'>
+						<a href='{% url 'userena_profile_detail' conversation.author.username %}'>
+							<div class='cover-photo' {% if profile.cover %}style='background-image:url('../..{{conversation.author.profile.cover.url}}');'{% endif %}></div>
+							<img class='mugshot' src='{{conversation.author.profile.get_mugshot_url}}'/>
+							<div class='page-heading'>
+								<h2 class='hub-list-username'><b>{{conversation.author.username}}</b> ({{conversation.author.profile.user.get_full_name}})</h2>
+							</div>
+						</a>
+						<dd>{{conversation.author.profile.profession}}</dd>
+						<dd>{{conversation.author.profile.location}}</dd>
+						<dd><a href='{{conversation.author.profile.website_url}}'target='blank'>{{conversation.author.profile.website_name}}</a></dd>
+						<dd><a href='mailto:{{conversation.author.profile.user.email}}'>{{conversation.author.profile.user.email}}</a></dd>
+					</div>">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
 						<p class="timestamp">{{conversation.author.profile.location}}, {{conversation.added}}</p>
 					</div>
           		{% endfor %}

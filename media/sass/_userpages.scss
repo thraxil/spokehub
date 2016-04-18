@@ -219,6 +219,7 @@ ul.errorlist.nonfield {
 .popover dd {
 	margin-bottom: 0;
 	padding: 0 10px;
+	border-bottom: 0;
 }
 
 .popover a:hover {
@@ -261,27 +262,34 @@ ul.errorlist.nonfield {
 	background-image:url('http://spokehub.org/uploads/coverimages/2016/03/16/img_5379.jpg');
 }
 
-.username-hover {
+.username-hover,
+.question .username-hover {
 	text-align: center;
 	color: #000;
 }
 
-.username-hover dd {
+.username-hover dd,
+.question .username-hover dd {
 	margin: 0;
 	font-family: $header-font;
+	font-size: 14px;
+	text-transform: none;
 }
 
-.username-hover h2 {
+.username-hover h2,
+.question .username-hover h2 {
 	text-align: center;
 	margin-bottom: 0;
 }
 
-a h2.hub-list-username {
+a h2.hub-list-username,
+.question a h2.hub-list-username {
 	color: $black;
 	transition: background 0.3s ease 0s, color 0.3s ease 0s;
 }
 
-a h2.hub-list-username:hover {
+a h2.hub-list-username:hover,
+.question a h2.hub-list-username:hover {
 	color: $cyan;
 }
 
