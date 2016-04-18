@@ -55,7 +55,14 @@
 
                                 <!--<input type="file" name="image" id="comment-image" />-->
 
-                                <div><input type='file' title="Choose a video or image please" id="aa" onchange="pressed()"><p id="fileLabel">Select a file from your phone or desktop</p></div>
+                                <!--<div><input type='file' title="Choose a video or image please" id="aa" onchange="pressed()"><p id="fileLabel">Select a file from your phone or desktop</p></div>-->
+
+                                <div><input type='file' name="image" title="Choose a video or image please" id="comment-image" class="inputfile inputfile-1" onchange="pressed()">
+                                	<label for="comment-image">Choose a file</label>
+                                	<p id="fileLabel">Select a file from your phone or desktop</p>
+                                </div>
+
+                                <!--<input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} files selected" multiple /><label for="file-1"><span>Choose a file</span></label>-->
 
 		                        <input type="text" name="url" id="comment-url" placeholder="Enter URL to image, gif or video"/>
 						    </div>                    

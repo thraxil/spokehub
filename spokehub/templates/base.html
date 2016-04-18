@@ -22,6 +22,7 @@
 	<link rel="stylesheet" href="{{STATIC_URL}}css/responsive-nav.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/salvattore.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/popover.css">
+	<link rel="stylesheet" href="{{STATIC_URL}}css/inputfile.css">
 
 	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="{{STATIC_URL}}js/libs/bjqs-1.3.js"></script>
@@ -53,7 +54,7 @@
 	</script>
 	<script>
 		window.pressed = function(){
-		    var a = document.getElementById('aa');
+		    var a = document.getElementById('comment-image');
 		    if(a.value == "")
 		    {
 		        fileLabel.innerHTML = "Select a file from your phone or desktop";
@@ -204,26 +205,35 @@
 </script>
 
 <script>
-	var inputs = document.querySelectorAll( '.inputfile' );
-	Array.prototype.forEach.call( inputs, function( input )
+	'use strict';
+
+	;( function ( document, window, index )
 	{
-		var label	 = input.nextElementSibling,
-			labelVal = label.innerHTML;
-
-		input.addEventListener( 'change', function( e )
+		var inputs = document.querySelectorAll( '.inputfile' );
+		Array.prototype.forEach.call( inputs, function( input )
 		{
-			var fileName = '';
-			if( this.files && this.files.length > 1 )
-				fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
-			else
-				fileName = e.target.value.split( '\\' ).pop();
+			var label	 = input.nextElementSibling,
+				labelVal = label.innerHTML;
 
-			if( fileName )
-				label.querySelector( 'span' ).innerHTML = fileName;
-			else
-				label.innerHTML = labelVal;
+			input.addEventListener( 'change', function( e )
+			{
+				var fileName = '';
+				if( this.files && this.files.length > 1 )
+					fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+				else
+					fileName = e.target.value.split( '\\' ).pop();
+
+				if( fileName )
+					label.querySelector( 'span' ).innerHTML = fileName;
+				else
+					label.innerHTML = labelVal;
+			});
+
+			// Firefox bug fix
+			input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+			input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
 		});
-	});
+	}( document, window, 0 ));
 </script>
 
 <script>
