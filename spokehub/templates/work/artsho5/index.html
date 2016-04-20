@@ -11,10 +11,9 @@
 				<a href="../maddie">Next <i class="mdi mdi-arrow-right"></i></a>
 			</div>
 
-	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+	      <!--  
 	      <div id="banner-fade">
 
-	        <!-- start Basic Jquery Slider -->
 	        <ul class="bjqs">
 	        	<li><iframe class="youtube-embedded" src="https://www.youtube.com/embed/079dc339J2o" frameborder="0" allowfullscreen></iframe></li>
 	          	<li><img src="{{STATIC_URL}}img/artsho5/01_ARTSHO5_EXPERIMENT.jpg"></li>
@@ -26,10 +25,8 @@
 	          	<li><img src="{{STATIC_URL}}img/artsho5/07_ARTSHO5_EXPERIMENT.jpg"></li>
 	          	<li><img src="{{STATIC_URL}}img/artsho5/08_ARTSHO5_EXPERIMENT.jpg"></li>
 	        </ul>
-	        <!-- end Basic jQuery Slider -->
 
 	      </div>
-	      <!-- End outer wrapper -->
 
 	      <script class="secret-source">
 	        jQuery(document).ready(function($) {
@@ -42,6 +39,27 @@
 
 	        });
 	      </script>
+	      -->
+
+		<div class='swipe-container'>
+		    <div class='image-swipe-controls' style='text-align:center;'>
+		      <a href="#" class='left-img-control' onclick='mySwipe.prev()'><i class="mdi mdi-arrow-left"></i></a> 
+		      <a href="#" class='right-img-control' onclick='mySwipe.next()'><i class="mdi mdi-arrow-right"></i></a>
+		    </div>
+		    <div id='mySwipe' style='max-width:865px;width:100%;margin:0 auto' class='swipe'>
+		      <div class='swipe-wrap'>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/01_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/02_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/03_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/04_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/05_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/06_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/07_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><img src="{{STATIC_URL}}img/artsho5/08_ARTSHO5_EXPERIMENT.jpg"></div>
+		        <div class="slide"><iframe class="youtube-embedded" src="https://www.youtube.com/embed/079dc339J2o" frameborder="0" allowfullscreen></iframe></div>
+		      </div>
+		    </div>
+		</div>
 
       	<div class="project-writeup">
 			<h2>ARTSHO5</h2>

@@ -11,10 +11,32 @@
 				<a href="../fightclub">Next <i class="mdi mdi-arrow-right"></i></a>
 			</div>
 
-	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+			<div class='swipe-container'>
+			    <div class='image-swipe-controls' style='text-align:center;'>
+			      <a href="#" class='left-img-control' onclick='mySwipe.prev()'><i class="mdi mdi-arrow-left"></i></a> 
+			      <a href="#" class='right-img-control' onclick='mySwipe.next()'><i class="mdi mdi-arrow-right"></i></a>
+			    </div>
+			    <div id='mySwipe' style='max-width:865px;width:100%;margin:0 auto' class='swipe'>
+			      <div class='swipe-wrap'>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/01-BCA-Enterance-Logo.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/02-BCA-Photoshoot_Courtyard.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/03-BCA-Cafe-and-Stationary.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/04-BCA-Ground-Floor-Signage.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/05-BCA-Reception-Mural.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/06-BCA-Reception.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/07-Spokehub-BCA-Logo-Deconstucted.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/08-Final_BCA_Underground.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/09-Final_BCA_Strategy.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/10-Colour-Variants.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/11-Final_BCA_Pattern_Intro.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/bca/12-Stationary_and_Brochure.jpg"></div>
+			      </div>
+			    </div>
+			</div>
+
+	      <!--  
 	      <div id="banner-fade">
 
-	        <!-- start Basic Jquery Slider -->
 	        <ul class="bjqs">
 	          <li><img src="{{STATIC_URL}}img/bca/01-BCA-Enterance-Logo.jpg"></li>
 	          <li><img src="{{STATIC_URL}}img/bca/02-BCA-Photoshoot_Courtyard.jpg"></li>
@@ -29,10 +51,8 @@
 	          <li><img src="{{STATIC_URL}}img/bca/11-Final_BCA_Pattern_Intro.jpg"></li>
 	          <li><img src="{{STATIC_URL}}img/bca/12-Stationary_and_Brochure.jpg"></li>
 	        </ul>
-	        <!-- end Basic jQuery Slider -->
 
 	      </div>
-	      <!-- End outer wrapper -->
 
 	      <script class="secret-source">
 	        jQuery(document).ready(function($) {
@@ -45,6 +65,7 @@
 
 	        });
 	      </script>
+	      -->
 
       	<div class="project-writeup">
 			<h2>Black Cultural Archives</h2>

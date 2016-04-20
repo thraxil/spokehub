@@ -11,10 +11,28 @@
 				<a href="../supper">Next <i class="mdi mdi-arrow-right"></i></a>
 			</div>
 
-	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+			<div class='swipe-container'>
+			    <div class='image-swipe-controls' style='text-align:center;'>
+			      <a href="#" class='left-img-control' onclick='mySwipe.prev()'><i class="mdi mdi-arrow-left"></i></a> 
+			      <a href="#" class='right-img-control' onclick='mySwipe.next()'><i class="mdi mdi-arrow-right"></i></a>
+			    </div>
+			    <div id='mySwipe' style='max-width:865px;width:100%;margin:0 auto' class='swipe'>
+			      <div class='swipe-wrap'>
+			        <div class="slide"><img src="{{STATIC_URL}}img/sperry/01_SPERRY_IMG_7708.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/sperry/02_SPERRY_IMG_2200.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/sperry/03_SPERRY_IMG_8001.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/sperry/04_SPERRY_IMG_8048.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/sperry/05_SPERRY_IMG_2286.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/sperry/06_SPERRY_IMG_2293.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/sperry/07_SPERRY_IMG_0506.jpg"></div>
+			        <div class="slide"><iframe class="youtube-embedded" src="https://www.youtube.com/embed/R_Annn9eXzQ" frameborder="0" allowfullscreen></iframe></div>
+			      </div>
+			    </div>
+			</div>
+
+	      <!--  
 	      <div id="banner-fade">
 
-	        <!-- start Basic Jquery Slider -->
 	        <ul class="bjqs">
 	        	<li><iframe class="youtube-embedded" src="https://www.youtube.com/embed/R_Annn9eXzQ" frameborder="0" allowfullscreen></iframe></li>
 	          	<li><img src="{{STATIC_URL}}img/sperry/01_SPERRY_IMG_7708.jpg"></li>
@@ -25,10 +43,8 @@
 	          	<li><img src="{{STATIC_URL}}img/sperry/06_SPERRY_IMG_2293.jpg"></li>
 	          	<li><img src="{{STATIC_URL}}img/sperry/07_SPERRY_IMG_0506.jpg"></li>
 	        </ul>
-	        <!-- end Basic jQuery Slider -->
 
 	      </div>
-	      <!-- End outer wrapper -->
 
 	      <script class="secret-source">
 	        jQuery(document).ready(function($) {
@@ -41,6 +57,7 @@
 
 	        });
 	      </script>
+	      -->
 
       	<div class="project-writeup">
 			<h2>Sperry Odyssey</h2>

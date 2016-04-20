@@ -11,10 +11,8 @@
 				<a href="../sperry">Next <i class="mdi mdi-arrow-right"></i></a>
 			</div>
 
-			<!--  Outer wrapper for presentation only, this can be anything you like -->
+			<!--  
 			<div id="banner-fade">
-
-				<!-- start Basic Jquery Slider -->
 				<ul class="bjqs">
 					<li><iframe src="https://player.vimeo.com/video/157022427" class="embedded-vimeo" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></li>
 					<li><img src="{{STATIC_URL}}img/fightclub/01_FIGHTCLUB_SADWICH.jpg"></li>
@@ -25,10 +23,8 @@
 					<li><img src="{{STATIC_URL}}img/fightclub/07_FIGHTCLUB_SADWICH.jpg"></li>
 					<li><img src="{{STATIC_URL}}img/fightclub/08_FIGHTCLUB_SADWICH.jpg"></li>
 				</ul>
-				<!-- end Basic jQuery Slider -->
-
 			</div>
-			<!-- End outer wrapper -->
+			
 
 			<script class="secret-source">
 				jQuery(document).ready(function($) {
@@ -41,6 +37,26 @@
 
 				});
 			</script>
+			-->
+
+			<div class='swipe-container'>
+			    <div class='image-swipe-controls' style='text-align:center;'>
+			      <a href="#" class='left-img-control' onclick='mySwipe.prev()'><i class="mdi mdi-arrow-left"></i></a> 
+			      <a href="#" class='right-img-control' onclick='mySwipe.next()'><i class="mdi mdi-arrow-right"></i></a>
+			    </div>
+			    <div id='mySwipe' style='max-width:865px;width:100%;margin:0 auto' class='swipe'>
+			      <div class='swipe-wrap'>
+			        <div class="slide"><img src="{{STATIC_URL}}img/fightclub/01_FIGHTCLUB_SADWICH.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/fightclub/02_FIGHTCLUB_SADWICH.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/fightclub/03_FIGHTCLUB_SADWICH.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/fightclub/04_FIGHTCLUB_SADWICH.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/fightclub/06_FIGHTCLUB_SADWICH.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/fightclub/07_FIGHTCLUB_SADWICH.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/fightclub/08_FIGHTCLUB_SADWICH.jpg"></div>
+			        <div class="slide"><iframe src="https://player.vimeo.com/video/157022427" class="embedded-vimeo" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>
+			      </div>
+			    </div>
+			</div>
 
 	      	<div class="project-writeup">
 				<h2>Fight Club Sandwich</h2>

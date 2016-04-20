@@ -11,20 +11,32 @@
 				<a href="../sorry">Next <i class="mdi mdi-arrow-right"></i></a>
 			</div>
 
-	      <!--  Outer wrapper for presentation only, this can be anything you like -->
+			<div class='swipe-container'>
+			    <div class='image-swipe-controls' style='text-align:center;'>
+			      <a href="#" class='left-img-control' onclick='mySwipe.prev()'><i class="mdi mdi-arrow-left"></i></a> 
+			      <a href="#" class='right-img-control' onclick='mySwipe.next()'><i class="mdi mdi-arrow-right"></i></a>
+			    </div>
+			    <div id='mySwipe' style='max-width:865px;width:100%;margin:0 auto' class='swipe'>
+			      <div class='swipe-wrap'>
+			        <div class="slide"><img src="{{STATIC_URL}}img/maddie/1866-photography_graphic-assets.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/maddie/1866-brand-dimensions.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/maddie/1866-graphic-toolkit.jpg"></div>
+			        <div class="slide"><img src="{{STATIC_URL}}img/maddie/1866-photography.jpg"></div>
+			      </div>
+			    </div>
+			</div>
+
+	      <!--  
 	      <div id="banner-fade">
 
-	        <!-- start Basic Jquery Slider -->
 	        <ul class="bjqs">
 	          <li><img src="{{STATIC_URL}}img/maddie/1866-photography_graphic-assets.jpg"></li>
 	          <li><img src="{{STATIC_URL}}img/maddie/1866-brand-dimensions.jpg"></li>
 	          <li><img src="{{STATIC_URL}}img/maddie/1866-graphic-toolkit.jpg"></li>
 	          <li><img src="{{STATIC_URL}}img/maddie/1866-photography.jpg"></li>
 	        </ul>
-	        <!-- end Basic jQuery Slider -->
 
 	      </div>
-	      <!-- End outer wrapper -->
 
 	      <script class="secret-source">
 	        jQuery(document).ready(function($) {
@@ -37,6 +49,7 @@
 
 	        });
 	      </script>
+	      -->
 
       	<div class="project-writeup">
 			<h2>Maddie Peterson</h2>

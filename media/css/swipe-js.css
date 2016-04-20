@@ -1,0 +1,105 @@
+.swipe {
+  overflow: hidden;
+  visibility: hidden;
+  position: relative;
+}
+
+.swipe-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.swipe-wrap > div {
+  float: left;
+  width: 20px;
+  position: relative;
+}
+
+.slide {
+  height: 544px;
+  width: 865px;
+}
+
+.slide img {
+  width: 100%;
+}
+
+.swipe-container {
+  margin-top: 20px;
+}
+
+.image-swipe-controls {
+  width: 100%;
+  text-transform: uppercase;
+  padding-bottom: 20px;
+}
+
+.left-img-control {
+  float: left;
+}
+
+.right-img-control {
+  float: right;
+}
+
+@media only screen and (min-width: 1600px) {
+  .swipe-container,
+  .embedded-vimeo,
+  .youtube-embedded {
+    height: 612px;
+      width: 865px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+    .swipe-container,
+    .embedded-vimeo,
+    .youtube-embedded {
+        width: 770px;
+        height: 434px;
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1199px) {
+  .swipe-container,
+  .embedded-vimeo,
+  .youtube-embedded {
+      width: 630px;
+      height: 355px;
+      display: inline-block;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .embedded-vimeo,
+  .youtube-embedded {
+    width: 708px;
+    height: 398px;
+  }
+  .slide {
+    height: 531px;
+  }
+}
+
+@media only screen and (min-width: 500px) and (max-width: 767px) {
+  .embedded-vimeo,
+  .youtube-embedded {
+    width: 450px;
+    height: 253px;
+  }
+  .slide {
+    height: 337px;
+  }
+}
+
+@media only screen and (max-width: 499px) {
+  .embedded-vimeo,
+  .youtube-embedded {
+    width: 300px;
+    height: 169px;
+  }
+  .slide {
+    height: 235px;
+  }
+}
