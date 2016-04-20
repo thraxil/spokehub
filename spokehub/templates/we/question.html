@@ -22,7 +22,7 @@
 			            {% if request.user.is_superuser or request.user == conversation.author %}
 			                <p id="we-question-edit"><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
 			            {% endif %}
-						<h3>{{conversation.body|markdown}}</h3>
+						<h3>{{conversation.body|markdown|urlize}}</h3>
 						<p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
 					<div class='username-hover'>
 						<a href='{% url 'userena_profile_detail' conversation.author.username %}'>
@@ -110,7 +110,7 @@
                         			<p><a href="{{reply.url}}">{{reply.title}}</a></p>
                     			{% endif %}
                 			{% endif %}
-			                {% if reply.body %}{{reply.body|markdown}}{% endif %}
+			                {% if reply.body %}{{reply.body|markdown|urlize}}{% endif %}
 
 				    </div>
         			{% endfor %}
