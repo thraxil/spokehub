@@ -28,7 +28,7 @@
 						<p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
 					<div class='username-hover'>
 						<a href='{% url 'userena_profile_detail' conversation.author.username %}'>
-							<div class='cover-photo' {% if conversation.author.profile.cover %}style='background-image:url('../..{{conversation.author.profile.cover.url}}');'{% endif %}></div>
+							<div class='cover-photo' {% if conversation.author.profile.cover %}style='background-image:url({{conversation.author.profile.cover.url}});'{% endif %}></div>
 							<img class='mugshot' src='{{conversation.author.profile.get_mugshot_url}}'/>
 							<div class='page-heading'>
 								<h2 class='hub-list-username'><b>{{conversation.author.username}}</b> ({{conversation.author.profile.user.get_full_name}})</h2>
