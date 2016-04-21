@@ -180,6 +180,7 @@ ul.errorlist.nonfield {
 .hub_user_index .question {
 	text-align: center;
 	padding: 0 0 15px 0;
+	height: 450px;
 }
 
 .hub_user_index .question .page-heading {
@@ -213,6 +214,19 @@ ul.errorlist.nonfield {
 	border-width: 3px;
 	margin-top: -50px;
 	margin-bottom: 15px;
+}
+
+.hub_user_index .profile-img-thumb {
+	width: 100px;
+	height: 100px;
+	background-size: cover;
+	display: block;
+	border-width: 3px;
+	margin-top: -50px;
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 50%;
 }
 
 .popover .page-heading,
