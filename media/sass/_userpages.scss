@@ -8,6 +8,18 @@ ul.errorList {
 	margin-top: -100px;
 }
 
+.profile-img-thumb {
+	border-radius: 50%;
+	border: 5px $white solid;
+	margin-top: -100px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+	height: 200px;
+	background-size: cover;
+	display: block;
+}
+
 .profile-details {
 	text-align: center;
 	font-family: $header-font;
@@ -216,7 +228,8 @@ ul.errorlist.nonfield {
 	margin-bottom: 15px;
 }
 
-.hub_user_index .profile-img-thumb {
+.hub_user_index .profile-img-thumb,
+.username-hover .profile-img-thumb {
 	width: 100px;
 	height: 100px;
 	background-size: cover;

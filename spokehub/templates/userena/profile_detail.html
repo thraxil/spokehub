@@ -9,7 +9,7 @@
     <div id="details" class="profile-details">
       {% block profile_details %}
           <div class="cover-photo" {% if profile.cover %}style="background-image:url('../..{{profile.cover.url}}');"{% endif %}></div>
-        <img class="mugshot" src="{{ profile.get_mugshot_url }}" alt="{% trans "Your mugshot" %}" />
+        <div class='profile-img-thumb' style='background-image:url("{{ profile.get_mugshot_url }}");'></div>
         <dl>
           {% block profile_definition_list %}
 
