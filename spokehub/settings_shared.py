@@ -70,6 +70,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'gacontext.ga_processor',
     'django.core.context_processors.static',
     'django.contrib.messages.context_processors.messages',
+    'spokehub.contact.context.add_contact_form',
 )
 
 MIDDLEWARE_CLASSES = [

@@ -16,7 +16,6 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['conversations'] = Conversation.objects.newest()
-
         now_posts_list = NowPost.objects.newest()
         paginator = Paginator(now_posts_list, 50)
         page = self.request.GET.get('page')
