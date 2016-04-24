@@ -1,5 +1,4 @@
 from django.conf import settings
-import pytumblr
 import json
 from datetime import datetime
 from django_statsd.clients import statsd
@@ -66,13 +65,7 @@ def audio_text(ptype, i, text):
     return text
 
 
-def hashtag_search():
-    client = pytumblr.TumblrRestClient(
-        settings.TUMBLR_CONSUMER_KEY,
-        settings.TUMBLR_CONSUMER_SECRET,
-        settings.TUMBLR_OAUTH_TOKEN,
-        settings.TUMBLR_OAUTH_SECRET,
-    )
+def hashtag_search(client):
     posts = client.tagged(settings.HASHTAG)
     for i in posts:
         add_post(i)
