@@ -1,5 +1,4 @@
 import tweepy
-from django.conf import settings
 from django_statsd.clients import statsd
 
 
@@ -43,33 +42,15 @@ def process_extended_attributes(t, np):
         print "added an image"
 
 
-def my_tweets():
-    CONSUMER_KEY = settings.TWITTER_API_KEY
-    CONSUMER_SECRET = settings.TWITTER_API_SECRET
-    ACCESS_KEY = settings.TWITTER_OAUTH_TOKEN
-    ACCESS_SECRET = settings.TWITTER_OAUTH_VERIFIER
-    USER = settings.TWITTER_USER
-
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-    api = tweepy.API(auth)
-
-    for t in api.user_timeline(USER):
+def my_tweets(api, user):
+    for t in api.user_timeline(user):
         print("@" + t.user.screen_name)
         add_tweet(t)
     statsd.incr('tweets.mytweets.run')
 
 
-def hashtag_search():
-    CONSUMER_KEY = settings.TWITTER_API_KEY
-    CONSUMER_SECRET = settings.TWITTER_API_SECRET
-    ACCESS_KEY = settings.TWITTER_OAUTH_TOKEN
-    ACCESS_SECRET = settings.TWITTER_OAUTH_VERIFIER
-
-    auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-    auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-    api = tweepy.API(auth)
-    search_text = settings.HASHTAG
+def hashtag_search(api, hashtag):
+    search_text = hashtag
 
     max_tweets = 20
     for t in tweepy.Cursor(api.search, q=search_text).items(max_tweets):

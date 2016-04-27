@@ -1,5 +1,4 @@
 from django.conf import settings
-import pytumblr
 import json
 from datetime import datetime
 from django_statsd.clients import statsd
@@ -26,19 +25,8 @@ def add_post(i):
 def _add_post(ptype, url, i):
     original = json.dumps(i)
     screen_name = i['blog_name']
-    text = ""
     created = datetime.strptime(i['date'], '%Y-%m-%d %H:%M:%S %Z')
-    image_url = ""
-    image_width = 0
-    image_height = 0
-    if i['type'] == 'photo':
-        if len(i['photos']) < 1:
-            return
-        p = i['photos'][0]
-        image_url = p['original_size']['url']
-        image_width = p['original_size']['width']
-        image_height = p['original_size']['height']
-        text = i['caption']
+    (text, image_url, image_width, image_height) = photo_params(i)
     text = video_text(ptype, i, text)
     text = audio_text(ptype, i, text)
     NowPost.objects.create_tumblr(
@@ -54,6 +42,20 @@ def _add_post(ptype, url, i):
     print("new tumblr post added")
 
 
+def photo_params(i):
+    text = ""
+    image_url = ""
+    image_width = 0
+    image_height = 0
+    if i['type'] == 'photo':
+        p = i['photos'][0]
+        image_url = p['original_size']['url']
+        image_width = p['original_size']['width']
+        image_height = p['original_size']['height']
+        text = i['caption']
+    return (text, image_url, image_width, image_height)
+
+
 def video_text(ptype, i, text):
     if ptype == 'video':
         return i['player'][-1]['embed_code']
@@ -66,13 +68,7 @@ def audio_text(ptype, i, text):
     return text
 
 
-def hashtag_search():
-    client = pytumblr.TumblrRestClient(
-        settings.TUMBLR_CONSUMER_KEY,
-        settings.TUMBLR_CONSUMER_SECRET,
-        settings.TUMBLR_OAUTH_TOKEN,
-        settings.TUMBLR_OAUTH_SECRET,
-    )
+def hashtag_search(client):
     posts = client.tagged(settings.HASHTAG)
     for i in posts:
         add_post(i)
