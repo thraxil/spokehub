@@ -310,6 +310,9 @@ class Comment(models.Model):
     author = models.ForeignKey(User)
     body = models.TextField(blank=True, default=u"")
 
+    class Meta:
+        ordering = ["added"]
+
 
 class NowPostManager(models.Manager):
     def newest(self):
