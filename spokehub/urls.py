@@ -39,6 +39,8 @@ urlpatterns = patterns(
 
     url(r'^we/$', views.ConversationIndexView.as_view(
         template_name='we/index.html'), name='we'),
+    url(r'^we/archive/$', views.ConversationIndexView.as_view(
+        template_name='we/archive.html'), name='we-archive'),
     url(r'^we/question/(?P<year>\d+)/'
         '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
         views.ConversationDetailView.as_view(

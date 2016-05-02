@@ -50,6 +50,13 @@ class LoggedInTest(TestCase):
         self.assertTrue('foo' in r.content)
 
     @override_flag("main", True)
+    def test_conversation_archive(self):
+        c = ConversationFactory()
+        r = self.client.get(reverse('we-archive'))
+        self.assertEqual(r.status_code, 200)
+        self.assertTrue(c.body in r.content)
+
+    @override_flag("main", True)
     def test_reploy_to_conversation(self):
         i = ConversationFactory()
         r = self.client.post(
