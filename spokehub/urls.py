@@ -55,6 +55,8 @@ urlpatterns = patterns(
         views.ReplyUpdateView.as_view(), name='edit-reply'),
     url(r'^reply/(?P<pk>\d+)/delete/$',
         views.ReplyDeleteView.as_view(), name='delete-reply'),
+    url(r'^reply/(?P<pk>\d+)/add_comment/$',
+        views.AddCommentView.as_view(), name='add-comment'),
 
     url(r'^work/$', views.TemplateView.as_view(
         template_name='work/index.html'), name='work'),

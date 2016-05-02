@@ -6,7 +6,7 @@ from userena.utils import get_user_profile
 from .factories import (
     UserFactory, ConversationFactory, ReplyFactory,
     NowPostFactory)
-from spokehub.main.models import Conversation, NowPost
+from spokehub.main.models import Conversation, NowPost, Comment
 
 
 class ConversationTest(TestCase):
@@ -162,6 +162,14 @@ class ReplyTest(TestCase):
         d = DummyFile()
         d.name = "invalid.extension"
         self.assertIsNone(r.save_image(d))
+
+
+class CommentTests(TestCase):
+    def test_create(self):
+        r = ReplyFactory()
+        u = UserFactory()
+        c = Comment.objects.create(reply=r, author=u, body="some text")
+        self.assertIsNotNone(c)
 
 
 class NowPostTest(TestCase):

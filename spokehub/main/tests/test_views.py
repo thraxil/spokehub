@@ -63,6 +63,17 @@ class LoggedInTest(TestCase):
         self.assertTrue('reply body' in r.content)
         self.assertTrue('http://foo.example.com/' in r.content)
 
+    @override_flag("main", True)
+    @override_flag("comments", True)
+    def test_add_comment(self):
+        reply = ReplyFactory()
+        r = self.client.post(
+            reverse('add-comment', args=[reply.id]),
+            dict(body="a new comment"))
+        self.assertEqual(r.status_code, 302)
+        r = self.client.get(reply.item.get_absolute_url())
+        self.assertTrue('a new comment' in r.content)
+
     @override_settings(MEDIA_ROOT="/tmp/")
     @override_flag("main", True)
     def test_reply_to_conversaion_with_image(self):

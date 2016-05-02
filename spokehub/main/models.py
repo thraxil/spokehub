@@ -303,12 +303,29 @@ class Reply(models.Model):
     def is_vimeo(self):
         return self.get_vimeo_id() != ""
 
+    def add_comment(self, author, body):
+        return Comment.objects.create(
+            self, author, body)
+
+
+class CommentManager(models.Manager):
+    def create(self, reply, author, body):
+        c = Comment(
+            reply=reply,
+            author=author,
+            body=body,
+        )
+        c.save()
+        return c
+
 
 class Comment(models.Model):
     reply = models.ForeignKey(Reply)
     added = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User)
     body = models.TextField(blank=True, default=u"")
+
+    objects = CommentManager()
 
     class Meta:
         ordering = ["added"]

@@ -92,3 +92,12 @@ class ReplyToConversationView(View):
             image,
         )
         return HttpResponseRedirect(conversation.get_absolute_url())
+
+
+class AddCommentView(View):
+    def post(self, request, pk):
+        reply = get_object_or_404(Reply, pk=pk)
+        author = request.user
+        body = request.POST.get('body', '')
+        reply.add_comment(author, body)
+        return HttpResponseRedirect(reply.item.get_absolute_url())

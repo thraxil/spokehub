@@ -2,7 +2,8 @@
 
 {% extends 'base.html' %}
 {% load markup %}
-{% load thumbnail %}
+    {% load thumbnail %}
+    {% load waffle_tags %}
 
 {% block content %}
 
@@ -112,6 +113,20 @@
                 			{% endif %}
 			                {% if reply.body %}{{reply.body|markdown|urlize}}{% endif %}
 
+                      {% flag comments %}
+                      {% if reply.comment_set.count %}
+                          <h3>comments</h3>
+                          {% for comment in reply.comment_set.all %}
+                              <p>from {{comment.author.username}} @ {{reply.added}}</p>
+                              <div>{{comment.body|markdown|urlize}}</div>
+                          {% endfor %}
+                      {% endif %}
+                      <form action="{% url 'add-comment' reply.id %}" method="post">
+                          {% csrf_token %}
+                          <textarea name="body" placeholder="add a comment"></textarea>
+                          <input type="submit" value="add comment" />
+                      </form>
+                      {% endflag comments %}
 				    </div>
         			{% endfor %}
         
