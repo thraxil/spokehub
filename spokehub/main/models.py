@@ -304,6 +304,13 @@ class Reply(models.Model):
         return self.get_vimeo_id() != ""
 
 
+class Comment(models.Model):
+    reply = models.ForeignKey(Reply)
+    added = models.DateTimeField(auto_now_add=True)
+    author = models.ForeignKey(User)
+    body = models.TextField(blank=True, default=u"")
+
+
 class NowPostManager(models.Manager):
     def newest(self):
         return NowPost.objects.all().order_by("-created")
