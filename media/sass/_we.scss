@@ -164,6 +164,15 @@ input.convo-submit {
 	width: 100%;
 }
 
+.we-question .question form textarea {
+	width: 100%;
+	margin: 15px 0;
+}
+
+.we-question .question form input[type=submit] {
+	width: 100%;
+}
+
 .vimeo {
 	@media only screen and (min-width: 1600px) {
 		width: 314px;
