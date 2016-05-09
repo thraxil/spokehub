@@ -86,6 +86,9 @@ urlpatterns = patterns(
     url(r'^user_index/$', views.TemplateView.as_view(
         template_name='userena/user_index.html')),
 
+    url(r'^scroll/$', views.TemplateView.as_view(
+        template_name='infinite-scroll-master/test/index.html'), name='scroll'),
+
     url(r'^conversation/(?P<pk>\d+)/reply/$',
         views.ReplyToConversationView.as_view(),
         name='reply-to-question'),
