@@ -16,7 +16,6 @@ class IndexView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['conversations'] = Conversation.objects.newest()
-
         now_posts_list = NowPost.objects.newest()
         paginator = Paginator(now_posts_list, 50)
         page = self.request.GET.get('page')
@@ -93,3 +92,12 @@ class ReplyToConversationView(View):
             image,
         )
         return HttpResponseRedirect(conversation.get_absolute_url())
+
+
+class AddCommentView(View):
+    def post(self, request, pk):
+        reply = get_object_or_404(Reply, pk=pk)
+        author = request.user
+        body = request.POST.get('body', '')
+        reply.add_comment(author, body)
+        return HttpResponseRedirect(reply.item.get_absolute_url())

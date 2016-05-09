@@ -39,6 +39,9 @@ urlpatterns = patterns(
 
     url(r'^we/$', views.ConversationIndexView.as_view(
         template_name='we/index.html'), name='we'),
+    url(r'^we/archive/$', views.ConversationIndexView.as_view(
+        paginate_by=10, template_name='we/archive.html'),
+        name='we-archive'),
     url(r'^we/question/(?P<year>\d+)/'
         '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
         views.ConversationDetailView.as_view(
@@ -55,6 +58,8 @@ urlpatterns = patterns(
         views.ReplyUpdateView.as_view(), name='edit-reply'),
     url(r'^reply/(?P<pk>\d+)/delete/$',
         views.ReplyDeleteView.as_view(), name='delete-reply'),
+    url(r'^reply/(?P<pk>\d+)/add_comment/$',
+        views.AddCommentView.as_view(), name='add-comment'),
 
     url(r'^work/$', views.TemplateView.as_view(
         template_name='work/index.html'), name='work'),

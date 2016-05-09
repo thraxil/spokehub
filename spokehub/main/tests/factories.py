@@ -1,7 +1,7 @@
 import factory
 from datetime import datetime
 from django.contrib.auth.models import User
-from spokehub.main.models import Conversation, Reply, NowPost
+from spokehub.main.models import Conversation, Reply, NowPost, Comment
 
 
 class UserFactory(factory.DjangoModelFactory):
@@ -24,6 +24,14 @@ class ReplyFactory(factory.DjangoModelFactory):
     item = factory.SubFactory(ConversationFactory)
     author = factory.SubFactory(UserFactory)
     body = "reply body"
+
+
+class CommentFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Comment
+    reply = factory.SubFactory(ReplyFactory)
+    author = factory.SubFactory(UserFactory)
+    body = "comment body"
 
 
 class NowPostFactory(factory.DjangoModelFactory):
