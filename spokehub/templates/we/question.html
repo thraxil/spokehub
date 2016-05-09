@@ -108,8 +108,8 @@
                       {% if reply.comment_set.count %}
                           <h3>comments</h3>
                           {% for comment in reply.comment_set.all %}
-                              <p>from {{comment.author.username}} @ {{reply.added}}</p>
-                              <div>{{comment.body|markdown|urlize}}</div>
+                              <p class="username">from {{comment.author.username}} @ {{reply.added}}</p>
+                              <div class="comment-body">{{comment.body|markdown|urlize}}</div>
                           {% endfor %}
                       {% endif %}
                       <form action="{% url 'add-comment' reply.id %}" method="post">
