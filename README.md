@@ -29,7 +29,8 @@ which will create the initial database schema.
 If you need a different database setup, create a
 `spokehub/local_settings.py` file and drop in a standard Django
 database config stanza there to point to the DB you want to use (that
-file is ignored by git).
+file is ignored by git). Then you can create the database and run
+`make migrate` to set it up.
 
 After that, you'll probably want a superuser so you can login:
 
