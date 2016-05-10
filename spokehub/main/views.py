@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -17,7 +18,7 @@ class IndexView(TemplateView):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['conversations'] = Conversation.objects.newest()
         now_posts_list = NowPost.objects.newest()
-        paginator = Paginator(now_posts_list, 50)
+        paginator = Paginator(now_posts_list, settings.NOW_POSTS_PER_PAGE)
         page = self.request.GET.get('page')
         try:
             now_posts = paginator.page(page)
