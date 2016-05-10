@@ -13,12 +13,13 @@ from .forms import ReplyUpdateForm, ConversationUpdateForm
 
 class IndexView(TemplateView):
     template_name = "main/index.html"
+    paginate_by = settings.NOW_POSTS_PER_PAGE
 
     def get_context_data(self, **kwargs):
         context = super(IndexView, self).get_context_data(**kwargs)
         context['conversations'] = Conversation.objects.newest()
         now_posts_list = NowPost.objects.newest()
-        paginator = Paginator(now_posts_list, settings.NOW_POSTS_PER_PAGE)
+        paginator = Paginator(now_posts_list, self.paginate_by)
         page = self.request.GET.get('page')
         try:
             now_posts = paginator.page(page)
