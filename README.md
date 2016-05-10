@@ -3,22 +3,67 @@
 
 # Spokehub Website
 
-### Grunt, Bower, and Bourbon
+## Installation/setup
 
-Installing for the first time on a new machine make sure you have [node](http://nodejs.org/) and [bourbon](http://bourbon.io/) installed.
+If you have Python and a basic build environment, you can check out
+the code and run the unit tests by running
 
-run
-    npm install
-    bower install
-    bourbon install
+```
+$ make
+```
 
-once installed, use grunt in the root directory to run tasks for sass compile.
+That will install all the python requirements into a local virtualenv
+and then run the test suite.
 
-    grunt
+To run a development server, the only other thing you need is a
+database. If you have postgres running and your current user has
+password-less access to it, you can do:
 
-will run a compile and listen for saves of scss files.
+```
+$ createdb spokehub
+$ make migrate
+```
 
+which will create the initial database schema.
 
+If you need a different database setup, create a
+`spokehub/local_settings.py` file and drop in a standard Django
+database config stanza there to point to the DB you want to use (that
+file is ignored by git).
 
+After that, you'll probably want a superuser so you can login:
 
+```
+$ ./manage.py createsuperuser
+```
 
+Then you can start up a dev server on port 8000 with:
+
+```
+$ make runserver
+```
+
+## Contributing
+
+* the unit tests must all pass
+* code must pass `flake8` (automatically run by `make`)
+
+Spokehub is
+[continuously deployed](https://www.thoughtworks.com/continuous-delivery),
+so if those checks pass, the code will be automatically deployed to
+the production server. This means:
+
+* Make sure you are ready. Don't check code into `master` if you
+  aren't sure. Make a PR and ask for a code review if in doubt.
+* Use feature flags liberally (spokehub uses
+  [waffle](http://waffle.readthedocs.io/)) to deploy code without
+  releasing.
+  
+## SASS/client-side asset pipeline
+
+TODO
+
+## Docker
+
+There's a Docker and Docker Compose setup, but it isn't very polished
+and needs to be documented.
