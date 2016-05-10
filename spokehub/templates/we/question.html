@@ -12,7 +12,7 @@
 		        <div class="page-heading clearfix">
 			        <ul class="archives-post">
 				        <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
-				        <li><a href="archive"><i class="mdi mdi-folder"></i> Browse Archives</a></li>
+				        <li><a href="{% url 'we-archive' %}"><i class="mdi mdi-folder"></i> Browse Archives</a></li>
                     	{% if request.user.is_authenticated and request.user.profile.completed %}
 					        <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
                     	{% endif %}
