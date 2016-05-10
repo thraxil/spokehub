@@ -204,6 +204,23 @@ input.convo-submit {
 	margin-bottom: 20px;
 }
 
+.archive-pagination {
+	text-transform: uppercase;
+	width: 100%;
+}
+
+.archive-pagination span {
+	margin: 0 auto;
+}
+
+.archive-pagination .previous-archives {
+	float: left;
+}
+
+.archive-pagination .next-archives {
+	float: right;
+}
+
 .vimeo {
 	@media only screen and (min-width: 1600px) {
 		width: 314px;

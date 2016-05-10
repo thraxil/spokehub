@@ -11,21 +11,21 @@
 		    <div class="page-heading">
 
 				<ul class="archives-post">
-					  <!--<li><a href="#"><i class="mdi mdi-folder"></i> Browse Archives</a></li>-->
+					<li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
             		{% if request.user.is_authenticated and request.user.profile.completed %}
-					      <li><a href="ask"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+					      <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
             		{% endif %}
 				</ul>
 
-		    	<h2><b>WE</b> ask questions with visual answers</h2>
+		    	<h2><b>ARCHIVE: PAGE {{page_obj.number}}</b></h2>
 
 		    </div>
 
         {% if page_obj and is_paginated %}
-            <p>
-                {% if page_obj.has_previous %}<a href="?page={{page_obj.previous_page_number}}">&lt; previous</a> - {% endif %}
-                [page {{page_obj.number}}]
-                {% if page_obj.has_next %} - <a href="?page={{page_obj.next_page_number}}">next &gt;</a>{% endif %}
+            <p class="archive-pagination clearfix">
+                {% if page_obj.has_previous %}<a class="previous-archives" href="?page={{page_obj.previous_page_number}}"><i class="mdi mdi-arrow-left"></i> Page {{page_obj.previous_page_number}}</a> {% endif %}
+                
+                {% if page_obj.has_next %} <a class="next-archives" href="?page={{page_obj.next_page_number}}">Page {{page_obj.next_page_number}} <i class="mdi mdi-arrow-right"></i></a>{% endif %}
             </p>
         {% endif %}
 
