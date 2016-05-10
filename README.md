@@ -44,6 +44,12 @@ Then you can start up a dev server on port 8000 with:
 $ make runserver
 ```
 
+`make` is smart enough to detect changes to `requirements.txt` and
+`package.json` and automatically re-build/re-install whatever is
+necessary to keep things up to date. (sometimes when you run `make
+runserver` it will do a bunch of stuff before actually starting up the
+dev server; this is why).
+
 ## Contributing
 
 * the unit tests must all pass
@@ -66,5 +72,45 @@ TODO
 
 ## Docker
 
-There's a Docker and Docker Compose setup, but it isn't very polished
-and needs to be documented.
+If you have [Docker](https://www.docker.com/) and
+[Docker Compose](https://docs.docker.com/compose/) installed on your
+system, you can use that for a very easy dev setup.
+
+(Note: if you're running on OS X or in a virtual machine, there might
+be some extra complexity as far as setting up port mapping for the
+VM. The rest of this is written assuming that you're either running on
+Linux, or that you are familiar enough with your docker setup to make
+the necessary adjustments)
+
+```
+$ make build
+$ make compose-migrate
+$ make compose-createsuperuser
+$ make compose-run
+```
+
+The first step will take a while since it's building the image from scratch
+
+From then on, you'll mostly just need to run `make compose-run` to
+start up the dev server.
+
+Some caveats:
+
+Unlike the "plain" non-docker setup above, the Makefile isn't clever
+enough to rebuild things when `requirements.txt` or `package.json`
+changes. You'll want to watch those yourself and just re-run `make
+build` anytime there are changes to either of those files.
+  
+Similarly, if you see any new migrations (any files with `migrations/`
+in the filename) come across, you'll need to run `make
+compose-migrate` to apply those migrations to the database.
+
+You can run arbitrary Django "manage.py" commands within the docker
+environment like:
+
+```
+$ docker-compose run web manage help
+$ docker-compose run web manage shell
+```
+
+etc. Note that it is `manage` there, not `manage.py`
