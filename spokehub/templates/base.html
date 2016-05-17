@@ -154,25 +154,35 @@
 
 <div id="contactModal" class="modalDialog">
 	<div>
-		<a href="#close" title="Close" class="close"><i class="mdi mdi-close"></i></a>
+		<!--<a href="#close" title="Close" class="close"><i class="mdi mdi-close"></i></a>
 		<h2>CONTACT</h2>
-    <form action="{% url 'contact_form' %}" method="post">{% csrf_token %}
-        <div>
-            <label>Your Name</label>
-            {{contact_form.name}}
-        </div>
+    	<form action="{% url 'contact_form' %}" method="post">{% csrf_token %}
+	        <div>
+	            <label>Your Name</label>
+	            {{contact_form.name}}
+	        </div>
 
-        <div>
-            <label>Your Email (so we can get back to you)</label>
-            {{contact_form.email}}
-        </div>
+	        <div>
+	            <label>Your Email (so we can get back to you)</label>
+	            {{contact_form.email}}
+	        </div>
 
-        <div>
-            {{contact_form.message}}
-        </div>
-        
-        <input type="submit" value="Send message" />
-    </form>
+	        <div>
+	            {{contact_form.message}}
+	        </div>
+	        
+	        <input type="submit" value="Send message" />
+    	</form>-->
+    	<a href="#close" title="Close" class="close"><i class="mdi mdi-close"></i></a>
+		<h2>CONTACT</h2>
+		<p>SPOKEHUB LTD.</p>
+		<p>7-8 HENRIETTA STREET</p>
+		<p>LONDON</p>
+		<p>WC2E 8PS</p>
+		<p>UNITED KINGDOM</p>
+		<p>COMPANY NO. 088841647</p>
+
+		<p class="contact-email">Or drop us an email: <a href="mailto:hello@spokehub.org"subject="Hello!">hello@spokehub.org</a></p>
     
 	</div>
 </div>
