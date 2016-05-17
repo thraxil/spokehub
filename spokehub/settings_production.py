@@ -39,6 +39,8 @@ STATSD_PATCHES = ['django_statsd.patches.db', ]
 
 TWITTER_USER = 'spokehubNOW'
 
+NOW_POSTS_PER_PAGE = 500
+
 INSTALLED_APPS += [
     'opbeat.contrib.django',
 ]

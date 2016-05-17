@@ -1,19 +1,11 @@
 {
   "name": "spokehub",
   "version": "0.1.0",
-  "author": "Patrick Krawczykowksi",
+  "author": "Anders Pearson",
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-autoprefixer": "^2.2.0",
-    "grunt-contrib-compass": "~0.6.0",
-    "grunt-contrib-jshint": "~0.6.3",
-    "grunt-contrib-sass": "^0.8.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-contrib-concat": "^0.5.0",
     "jshint": "~2.9.1",
     "jscs": "~2.9.0"
   },
   "dependencies": {
-    "grunt-contrib-concat": "^0.5.0"
   }
 }

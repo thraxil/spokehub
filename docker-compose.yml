@@ -1,7 +1,7 @@
 db:
   image: postgres
 web:
-  image: thraxil/spokehub
+  build: .
   command: manage runserver 0.0.0.0:8000
   environment:
     - SETTINGS=settings_compose

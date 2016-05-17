@@ -1,6 +1,6 @@
 ROOT_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 
-wheelhouse/requirements.txt: $(REQUIREMENTS)
+wheelhouse/requirements.txt: $(REQUIREMENTS) Dockerfile
 	mkdir -p $(WHEELHOUSE)
 	docker run --rm \
 	-v $(ROOT_DIR):/app \
@@ -12,4 +12,13 @@ wheelhouse/requirements.txt: $(REQUIREMENTS)
 build: $(WHEELHOUSE)/requirements.txt
 	docker build -t $(IMAGE) .
 
-.PHONY: build
+compose-run:
+	docker-compose up
+
+compose-migrate:
+	docker-compose run web migrate
+
+compose-createsuperuser:
+	docker-compose run web manage createsuperuser
+
+.PHONY: build compose-run compose-migrate compose-superuser
