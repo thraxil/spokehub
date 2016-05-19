@@ -27,7 +27,7 @@ pickleshare==0.7.2
 simplegeneric==0.8.1
 backports.shutil_get_terminal_size==1.0.0
 decorator==4.0.9
-setuptools==21.0.0
+setuptools==21.1.0
 ipython==4.2.0
 ipdb==0.10.0
 coverage==4.0.3
