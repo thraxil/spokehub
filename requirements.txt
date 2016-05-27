@@ -41,7 +41,7 @@ ipaddress==1.0.16
 python-dateutil==2.5.3
 fake-factory==0.5.7
 factory_boy==2.7.0
-gunicorn==19.5.0
+gunicorn==19.6.0
 pycrypto==2.6.1
 ecdsa==0.13
 paramiko==2.0.0
