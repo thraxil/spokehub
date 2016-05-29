@@ -50,7 +50,7 @@ Fabric==1.11.1
 funcsigs==1.0.2
 mock==2.0.0
 sqlparse==0.1.19
-html2text==2016.4.2
+html2text==2016.5.29
 oauthlib==1.1.1
 requests-oauthlib==0.6.1
 tweepy==3.5.0
