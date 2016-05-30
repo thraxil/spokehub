@@ -17,18 +17,21 @@
 
 	{% compress css %}
 	  <link href="{{STATIC_URL}}sass/spokehub.scss" rel="stylesheet" type="text/x-scss">    
-	{% endcompress %}
 	<link rel="stylesheet" href="{{STATIC_URL}}css/responsive-nav.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/salvattore.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/popover.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/inputfile.css">
 	<link rel="stylesheet" href="{{STATIC_URL}}css/swipe-js.css">
+	{% endcompress %}
 
-	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.7.1.min.js"></script>
+  {% compress js %}
 	<script src="{{STATIC_URL}}js/libs/jquery-ias.min.js"></script>
 	<script src="{{STATIC_URL}}js/libs/bootstrap.min.js"></script>
 	<script src="{{STATIC_URL}}js/libs/popover.js"></script>
+  {% endcompress %}
 
+  {% compress js %}
 	<script>
 		$(function() {
 			var pull 		= $('#pull');
@@ -76,6 +79,7 @@
 	                   // selector for all items you'll retrieve
 	  });
 	</script>
+  {% endcompress %}
 	<link rel="shortcut icon" href="{{STATIC_URL}}img/favicon2.ico?" type="image/x-icon" />
 	{% block css %}{% endblock %}
 	{% block feeds %}{% endblock %}
@@ -222,9 +226,11 @@
 {% endblock %}
 
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/swipe/2.0/swipe.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/swipe/2.0/swipe.min.js'></script>
+{% compress js %}
 <script src="{{STATIC_URL}}js/libs/salvattore.js"></script>
 <script src="{{STATIC_URL}}js/libs/swipe-js.js"></script>
+{% endcompress %}
 
 {% block js %}{% endblock %}
 {% flag "main" %}
