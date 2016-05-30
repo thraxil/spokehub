@@ -159,6 +159,9 @@ STATICFILES_FINDERS = (
 
 COMPRESS_URL = "/media/"
 COMPRESS_ROOT = "media/"
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_HTTPONLY = True

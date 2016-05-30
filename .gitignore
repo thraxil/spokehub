@@ -7,7 +7,6 @@ local_settings.py
 .coverage
 node_modules
 .sass-cache
-media/components
 .DS_Store
 wheelhouse
 spokehub/lib
