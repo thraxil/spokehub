@@ -5,6 +5,7 @@
 {% load thumbnail %}
 {% load waffle_tags %}
     {% load markup %}
+    {% load target_blank %}
     {% load cache %}
 
 {% block content %}
@@ -32,9 +33,9 @@
 
             <p class="username">{{nowpost.screen_name}}</p>
 
-            <p class="now-timestamp timestamp"><a href="{{nowpost.external_link}}"target="_blank">{{nowpost.created}}</a></p>
+            <p class="now-timestamp timestamp"><a href="{{nowpost.external_link}}" target="_blank">{{nowpost.created}}</a></p>
 
-            <p class="now-post-text">{{nowpost.text|urlize}}</p>
+            <p class="now-post-text">{{nowpost.text|urlize|url_target_blank}}</p>
             
           </div>
         {% endfor %}
