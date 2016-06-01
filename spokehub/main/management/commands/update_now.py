@@ -37,5 +37,9 @@ class Command(BaseCommand):
         tumblr_hashtag_search(tumblr_client)
 
         my_posts(InstagramAPI(access_token=settings.SH_INSTAGRAM_ACCESS_TOKEN))
-        instagram_hashtag_search(
-            InstagramAPI(access_token=settings.TH_INSTAGRAM_ACCESS_TOKEN))
+        try:
+            instagram_hashtag_search(
+                InstagramAPI(access_token=settings.TH_INSTAGRAM_ACCESS_TOKEN))
+        except:
+            # instagram hashtag api is currently blocked
+            pass
