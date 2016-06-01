@@ -79,6 +79,16 @@ urlpatterns = patterns(
         template_name='work/sorry/index.html'), name='work-sorry'),
     url(r'^work/bca/$', views.TemplateView.as_view(
         template_name='work/bca/index.html'), name='work-bca'),
+    url(r'^work/endemol/$', views.TemplateView.as_view(
+        template_name='work/endemol/index.html'), name='work-endemol'),
+    url(r'^work/irrelationship/$', views.TemplateView.as_view(
+        template_name='work/irrelationship/index.html'), name='work-irrelationship'),
+    url(r'^work/redbull/$', views.TemplateView.as_view(
+        template_name='work/redbull/index.html'), name='work-redbull'),
+    url(r'^work/cisco/$', views.TemplateView.as_view(
+        template_name='work/cisco/index.html'), name='work-cisco'),
+    url(r'^work/cfg/$', views.TemplateView.as_view(
+        template_name='work/cfg/index.html'), name='work-cfg'),
 
     url(r'^now/$', views.IndexView.as_view(
         template_name='now/index.html'), name='now'),
