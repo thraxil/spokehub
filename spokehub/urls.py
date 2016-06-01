@@ -82,7 +82,8 @@ urlpatterns = patterns(
     url(r'^work/endemol/$', views.TemplateView.as_view(
         template_name='work/endemol/index.html'), name='work-endemol'),
     url(r'^work/irrelationship/$', views.TemplateView.as_view(
-        template_name='work/irrelationship/index.html'), name='work-irrelationship'),
+        template_name='work/irrelationship/index.html'), 
+        name='work-irrelationship'),
     url(r'^work/redbull/$', views.TemplateView.as_view(
         template_name='work/redbull/index.html'), name='work-redbull'),
     url(r'^work/cisco/$', views.TemplateView.as_view(
