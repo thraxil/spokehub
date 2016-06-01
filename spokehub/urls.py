@@ -90,6 +90,8 @@ urlpatterns = patterns(
         template_name='404.html')),
     url(r'^user_index/$', views.TemplateView.as_view(
         template_name='userena/user_index.html')),
+    url(r'^privacy/$', views.TemplateView.as_view(
+        template_name='main/privacy.html')),
 
     url(r'^scroll/$', views.TemplateView.as_view(
         template_name='infinite-scroll-master/test/index.html'),
