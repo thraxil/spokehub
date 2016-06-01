@@ -1,5 +1,7 @@
-from django.db import models
 from django.core.mail import send_mail
+from django.db import models
+from django.template import Context
+from django.template.loader import get_template
 
 
 class Invite(models.Model):
@@ -12,23 +14,12 @@ class Invite(models.Model):
         return "Invite to %s [%s]" % (self.email, str(self.added))
 
     def send_invite(self):
+        plaintext = get_template('email/invite.txt')
+        d = Context({'token': self.token})
+        text_content = plaintext.render(d)
         send_mail(
             'Your invitation to join SPOKEHUB.',
-            """"How We Work Now" is more than a tagline.
-
-We are thinkers and makers - experts across disciplines - individual
-but connected.
-
-We are a disruptive design network - bringing independent experts
-together for projects driving progress.
-
-SPOKEHUB members share inspiration, dialogue, partnership,
-opportunities and briefs from around the world.
-
-We like how you work. Won't you join us?
-
-http://spokehub.org/invite/signup/%s/
-            """ % self.token,
+            text_content,
             'Hub Conversation <hello@spokehub.org>',
             [self.email],
             fail_silently=False
