@@ -1,7 +1,12 @@
 import unittest
+from datetime import datetime
 from spokehub.instagram import (
-    image_image_url, add_post, add_media, hashtag_search,
+    image_image_url, add_post, add_media,
     my_posts,
+)
+from spokehub.instagram.scrape import (
+    get_script, parse_json, entries, owner, clean_url,
+    Entry,
 )
 
 
@@ -43,13 +48,85 @@ class TestAddPosts(unittest.TestCase):
         self.assertIsNone(add_media([d]))
 
 
-class TestHashTagSearch(unittest.TestCase):
-    def test_hashtag_search(self):
-        api = DummyAPI()
-        self.assertIsNone(hashtag_search(api))
-
-
 class TestMyPosts(unittest.TestCase):
     def test_my_posts(self):
         api = DummyAPI()
         self.assertIsNone(my_posts(api))
+
+
+sample_entry = {
+    'caption': 'caption',
+    'code': 'code',
+    'comments': 'comments',
+    'date': 1460935243,
+    'dimensions': 'dimensions',
+    'display_src': 'display_src',
+    'id': 'id',
+    'is_video': False,
+    'likes': 0,
+    'owner': {'id': '123'},
+    'thumbnail_src': 'thumbnail_src',
+}
+
+
+class TestScraper(unittest.TestCase):
+    def test_get_script(self):
+        html = ""
+        r = get_script(html)
+        self.assertIsNone(r)
+
+        html = "<script>not me</script>"
+        r = get_script(html)
+        self.assertIsNone(r)
+
+        html = "<script>window._sharedData = foo;</script>"
+        r = get_script(html)
+        self.assertEqual(r, "window._sharedData = foo;")
+
+    def test_parse_json(self):
+        s = """window._sharedData = {};"""
+        d = parse_json(s)
+        self.assertEqual(d, dict())
+
+    def test_entries(self):
+        d = {'entry_data': {'TagPage': [{'tag': {'media': {'nodes': 'foo'}}}]}}
+        self.assertEqual(entries(d), 'foo')
+
+    def test_owner(self):
+        d = {'entry_data': {'PostPage': [{'media': {'owner': 'foo'}}]}}
+        self.assertEqual(owner(d), 'foo')
+
+    def test_clean_url(self):
+        u = "http://foo.com/path?query=blah"
+        self.assertEqual(clean_url(u), "http://foo.com/path")
+
+    def test_entry_init(self):
+        e = Entry(sample_entry)
+        self.assertEqual(e.code, 'code')
+
+    def test_entry_url(self):
+        e = Entry(sample_entry)
+        self.assertEqual(e.url(), "https://www.instagram.com/p/code/")
+
+    def test_entry_date(self):
+        e = Entry(sample_entry)
+        self.assertEqual(e.date, datetime.fromtimestamp(1460935243))
+
+    def test_entry_clean_display_src(self):
+        pass
+
+    def test_entry_clean_thumbnail_src(self):
+        pass
+
+    def test_entry_populate_owner(self):
+        pass
+
+    def test_entry_username(self):
+        e = Entry(sample_entry)
+        e._username = "username"
+        self.assertEqual(e.username(), "username")
+
+    def test_entry_fullname(self):
+        e = Entry(sample_entry)
+        e._fullname = "fullname"
+        self.assertEqual(e.fullname(), "fullname")

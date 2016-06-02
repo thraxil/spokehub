@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand
 from spokehub.twitter import hashtag_search as twitter_hashtag_search
 from spokehub.twitter import my_tweets
-from spokehub.instagram import hashtag_search as instagram_hashtag_search
+from spokehub.instagram import hashtag_scrape as instagram_hashtag_scrape
 from spokehub.instagram import my_posts
 from spokehub.tumblr import hashtag_search as tumblr_hashtag_search
 from instagram.client import InstagramAPI
@@ -37,9 +37,4 @@ class Command(BaseCommand):
         tumblr_hashtag_search(tumblr_client)
 
         my_posts(InstagramAPI(access_token=settings.SH_INSTAGRAM_ACCESS_TOKEN))
-        try:
-            instagram_hashtag_search(
-                InstagramAPI(access_token=settings.TH_INSTAGRAM_ACCESS_TOKEN))
-        except:
-            # instagram hashtag api is currently blocked
-            pass
+        instagram_hashtag_scrape()
