@@ -110,17 +110,22 @@ def image_image_url(media, media_url):
 
 
 def hashtag_scrape():
+    print("hashtag scrape")
     tag_name = settings.HASHTAG.strip('#')
 
     url = "https://www.instagram.com/explore/tags/{}/".format(tag_name)
     r = requests.get(url)
+    print("fetched")
     script = get_script(r.text)
     d = parse_json(script)
+    print("parsed")
     entry_data = entries(d)
     for entry in entry_data:
+        print("- entry")
         e = Entry(entry)
         if e.is_video:
             # can't handle video yet
+            print("skip video")
             continue
         add_scraped_post(e)
     statsd.incr('instagram.hashtag.run')
