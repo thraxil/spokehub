@@ -121,7 +121,7 @@ def hashtag_scrape():
     print("parsed")
     entry_data = entries(d)
     for entry in entry_data:
-        print("- entry")
+        print("- entry {}".format(entry['code']))
         e = Entry(entry)
         if e.is_video:
             # can't handle video yet
