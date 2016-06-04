@@ -68,6 +68,24 @@ sample_entry = {
     'thumbnail_src': 'thumbnail_src',
 }
 
+emoji_json_entry = """{"code": "BGOkQ8oCKmG", "date": 1465032652,
+ "dimensions": {"width": 1080, "height": 1080},
+ "comments": {"count": 0},
+ "caption": "#German #advertising is rarely notable,
+ let alone perfect \ud83c\udf1f\ud83d\udc4f\ud83c\udffe. #spokehubnow",
+ "likes": {"count": 8},
+ "owner": {"id": "1456410553"},
+ "thumbnail_src": "https://scontent-lhr3-1.cdninstagram.com/n.jpg",
+ "is_video": false,
+ "id": "1265108039619881350",
+ "display_src": "https://scontent-lhr3-1.cdninstagram.com/n.jpg"}
+"""
+
+emoji_json = (
+    """{"entry_data": {"TagPage": """
+    """[{"tag": {"media": {"nodes": [%s]}}}]}}""" % emoji_json_entry
+).replace('\n', '').replace('\r', '')
+
 
 class TestScraper(unittest.TestCase):
     def test_get_script(self):
@@ -99,6 +117,14 @@ class TestScraper(unittest.TestCase):
     def test_clean_url(self):
         u = "http://foo.com/path?query=blah"
         self.assertEqual(clean_url(u), "http://foo.com/path")
+
+    def test_emoji_parse(self):
+        s = "window._sharedData = {};".format(emoji_json)
+        d = parse_json(s)
+        e = entries(d)
+        self.assertEqual(len(e), 1)
+        entry = Entry(e[0])
+        self.assertEqual(entry.code, "BGOkQ8oCKmG")
 
     def test_entry_init(self):
         e = Entry(sample_entry)

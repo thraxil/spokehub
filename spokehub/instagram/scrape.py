@@ -4,6 +4,7 @@ import requests
 from BeautifulSoup import BeautifulSoup
 from urlparse import urlsplit
 from datetime import datetime
+from django.utils.encoding import smart_str
 
 
 def get_script(text):
@@ -20,7 +21,7 @@ def get_script(text):
 def parse_json(script):
     # there's an assignment and a semicolon to get rid of
     blob = script[len('window._sharedData = '):-1]
-    return json.loads(blob)
+    return json.loads(smart_str(blob))
 
 
 def entries(d):
