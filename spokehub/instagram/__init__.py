@@ -43,7 +43,7 @@ class Adder(object):
             video_url = sru
 
         self.model.objects.create_instagram(
-            media.user.username, self.link(media), text,
+            self.username(media), self.link(media), text,
             self.created_time(media),
             image_url, video_url, dumps(
                 dict(
@@ -51,7 +51,7 @@ class Adder(object):
                     thumbnail_url=self.thumbnail_url(),
                     id=media.id,
                     link=self.link(media),
-                    filter=media.filter,
+                    filter=self.filter(media),
                     user_id=self.user_id(media),
                     user_full_name=self.user_full_name(media),
                     user_username=self.username(media),
@@ -89,6 +89,9 @@ class MyPostsAdder(Adder):
     def username(self, media):
         return media.user.username
 
+    def filter(self, media):
+        return media.filter
+
 
 class ScrapeAdder(Adder):
     def link(self, media):
@@ -117,6 +120,9 @@ class ScrapeAdder(Adder):
 
     def username(self, media):
         return media.username()
+
+    def filter(self, media):
+        return ""
 
 
 def image_image_url(media, media_url):
