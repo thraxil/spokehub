@@ -30,12 +30,15 @@ class Adder(object):
             print "failed with exception: " + str(e)
             statsd.incr('instagram.add.failed')
 
+    def text(self, media):
+        try:
+            return self.caption_text(media)
+        except:
+            return ""
+
     def _add(self, media):
         sru = self.sru(media)
-        try:
-            text = self.caption_text(media)
-        except:
-            text = ""
+        text = self.text(media)
 
         video_url = ""
 
