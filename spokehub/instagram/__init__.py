@@ -43,6 +43,9 @@ class MyPostsAdder(Adder):
     def created_time(self, media):
         return media.created_time.isoformat()
 
+    def image_url(self, media, media_url):
+        return image_image_url(media, media_url)
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -50,12 +53,11 @@ class MyPostsAdder(Adder):
         except:
             text = ""
 
-        media_url = sru
         video_url = ""
 
-        image_url = image_image_url(media, media_url)
+        image_url = self.image_url(media, sru)
         if media.type == 'video':
-            video_url = media_url
+            video_url = sru
 
         self.model.objects.create_instagram(
             media.user.username, self.link(media), text,
@@ -89,6 +91,9 @@ class ScrapeAdder(Adder):
     def created_time(self, media):
         return media.date.isoformat()
 
+    def image_url(self, media, media_url):
+        return media_url
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -97,7 +102,7 @@ class ScrapeAdder(Adder):
             text = ""
 
         video_url = ""
-        image_url = sru
+        image_url = self.image_url(media, sru)
 
         self.model.objects.create_instagram(
             media.username(), self.link(media), text,
