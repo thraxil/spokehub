@@ -79,7 +79,10 @@ class MyPostsAdder(Adder):
         return media.created_time.isoformat()
 
     def image_url(self, media, media_url):
-        return image_image_url(media, media_url)
+        if media.type == 'image':
+            # all we can handle right now
+            return media_url
+        return ""
 
     def thumbnail_url(self, media):
         return media.get_thumbnail_url()
@@ -127,13 +130,6 @@ class ScrapeAdder(Adder):
 
     def filter(self, media):
         return ""
-
-
-def image_image_url(media, media_url):
-    if media.type == 'image':
-        # all we can handle right now
-        return media_url
-    return ""
 
 
 def hashtag_scrape():

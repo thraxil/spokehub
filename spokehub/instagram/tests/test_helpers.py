@@ -1,13 +1,14 @@
 import unittest
 from datetime import datetime
 from spokehub.instagram import (
-    image_image_url, MyPostsAdder, add_media,
+    MyPostsAdder, add_media,
     my_posts,
 )
 from spokehub.instagram.scrape import (
     get_script, parse_json, entries, owner, clean_url,
     Entry,
 )
+from spokehub.main.tests.factories import NowPostFactory
 
 
 class Dummy(object):
@@ -26,18 +27,27 @@ class TestImageURL(unittest.TestCase):
     def test_image(self):
         d = Dummy()
         d.type = "image"
-        self.assertEqual(image_image_url(d, "foo"), "foo")
+        a = MyPostsAdder()
+        self.assertEqual(a.image_url(d, "foo"), "foo")
 
     def test_not_image(self):
         d = Dummy()
         d.type = "not image"
-        self.assertEqual(image_image_url(d, "foo"), "")
+        a = MyPostsAdder()
+        self.assertEqual(a.image_url(d, "foo"), "")
 
 
 class TestAddPost(unittest.TestCase):
     def test_invalid(self):
         d = Dummy()
         d.link = None
+        a = MyPostsAdder()
+        self.assertIsNone(a.add(d))
+
+    def test_existing(self):
+        np = NowPostFactory()
+        d = Dummy()
+        d.link = np.service_id
         a = MyPostsAdder()
         self.assertIsNone(a.add(d))
 
