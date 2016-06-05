@@ -52,6 +52,12 @@ class MyPostsAdder(Adder):
     def user_id(self, media):
         return media.user.id
 
+    def user_full_name(self, media):
+        return media.user.full_name
+
+    def username(self, media):
+        return media.user.username
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -76,8 +82,8 @@ class MyPostsAdder(Adder):
                     link=self.link(media),
                     filter=media.filter,
                     user_id=self.user_id(media),
-                    user_full_name=media.user.full_name,
-                    user_username=media.user.username,
+                    user_full_name=self.user_full_name(media),
+                    user_username=self.username(media),
                     )
                 )
         )
@@ -106,6 +112,12 @@ class ScrapeAdder(Adder):
     def user_id(self, media):
         return media.owner
 
+    def user_full_name(self, media):
+        return media.fullname()
+
+    def username(self, media):
+        return media.username()
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -126,8 +138,8 @@ class ScrapeAdder(Adder):
                     id=media.id,
                     link=self.link(media),
                     user_id=self.user_id(media),
-                    user_full_name=media.fullname(),
-                    user_username=media.username(),
+                    user_full_name=self.user_full_name(media),
+                    user_username=self.username(media),
                     )
                 )
         )
