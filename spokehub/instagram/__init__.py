@@ -7,100 +7,101 @@ from .scrape import (
 import requests
 
 
-def now_post_exists(service_id, NowPost):
-    r = NowPost.objects.filter(
-        service='instagram',
-        service_id=service_id)
-    return r.exists()
+class Adder(object):
+    def __init__(self):
+        from ..main.models import NowPost
+        self.model = NowPost
+
+    def now_post_exists(self, service_id):
+        r = self.model.objects.filter(
+            service='instagram',
+            service_id=service_id)
+        return r.exists()
 
 
-def add_post(media):
-    from ..main.models import NowPost
+class MyPostsAdder(Adder):
+    def add(self, media):
+        if self.now_post_exists(media.link):
+            print("existing instagram post")
+            return
+        try:
+            self._add(media)
+            statsd.incr('instagram.add.success')
+        except Exception, e:
+            print "failed with exception: " + str(e)
+            statsd.incr('instagram.add.failed')
 
-    if now_post_exists(media.link, NowPost):
-        print("existing instagram post")
-        return
-    try:
-        _add_post(media, NowPost)
-        statsd.incr('instagram.add.success')
-    except Exception, e:
-        print "failed with exception: " + str(e)
-        statsd.incr('instagram.add.failed')
+    def _add(self, media):
+        sru = media.get_standard_resolution_url()
+        try:
+            text = media.caption.text
+        except:
+            text = ""
 
+        media_url = media.get_standard_resolution_url()
+        video_url = ""
 
-def add_scraped_post(media):
-    from ..main.models import NowPost
+        image_url = image_image_url(media, media_url)
+        if media.type == 'video':
+            video_url = media_url
 
-    if now_post_exists(media.url(), NowPost):
-        print("existing instagram post")
-        return
-    try:
-        _add_scraped_post(media, NowPost)
-        statsd.incr('instagram.add.success')
-    except Exception, e:
-        print "failed with exception: " + str(e)
-        statsd.incr('instagram.add.failed')
-
-
-def _add_scraped_post(media, NowPost):
-    sru = media.clean_display_src()
-    try:
-        text = media.caption
-    except:
-        text = ""
-
-    video_url = ""
-    image_url = sru
-
-    NowPost.objects.create_instagram(
-        media.username(), media.url(), text,
-        media.date.isoformat(),
-        image_url, video_url, dumps(
-            dict(
-                standard_resolution_url=sru,
-                thumbnail_url=media.clean_thumbnail_src(),
-                id=media.id,
-                link=media.url(),
-                user_id=media.owner,
-                user_full_name=media.fullname(),
-                user_username=media.username(),
+        self.model.objects.create_instagram(
+            media.user.username, media.link, text,
+            media.created_time.isoformat(),
+            image_url, video_url, dumps(
+                dict(
+                    standard_resolution_url=sru,
+                    thumbnail_url=media.get_thumbnail_url(),
+                    id=media.id,
+                    link=media.link,
+                    filter=media.filter,
+                    user_id=media.user.id,
+                    user_full_name=media.user.full_name,
+                    user_username=media.user.username,
+                    )
                 )
-            )
-    )
-    print "new instagram post added"
+        )
+        print "new instagram post added"
 
 
-def _add_post(media, NowPost):
-    sru = media.get_standard_resolution_url()
-    try:
-        text = media.caption.text
-    except:
-        text = ""
+class ScrapeAdder(Adder):
+    def add(self, media):
+        if self.now_post_exists(media.url()):
+            print("existing instagram post")
+            return
+        try:
+            self._add(media)
+            statsd.incr('instagram.add.success')
+        except Exception, e:
+            print "failed with exception: " + str(e)
+            statsd.incr('instagram.add.failed')
 
-    media_url = media.get_standard_resolution_url()
-    video_url = ""
+    def _add(self, media):
+        sru = media.clean_display_src()
+        try:
+            text = media.caption
+        except:
+            text = ""
 
-    image_url = image_image_url(media, media_url)
-    if media.type == 'video':
-        video_url = media_url
+        video_url = ""
+        image_url = sru
 
-    NowPost.objects.create_instagram(
-        media.user.username, media.link, text,
-        media.created_time.isoformat(),
-        image_url, video_url, dumps(
-            dict(
-                standard_resolution_url=sru,
-                thumbnail_url=media.get_thumbnail_url(),
-                id=media.id,
-                link=media.link,
-                filter=media.filter,
-                user_id=media.user.id,
-                user_full_name=media.user.full_name,
-                user_username=media.user.username,
+        self.model.objects.create_instagram(
+            media.username(), media.url(), text,
+            media.date.isoformat(),
+            image_url, video_url, dumps(
+                dict(
+                    standard_resolution_url=sru,
+                    thumbnail_url=media.clean_thumbnail_src(),
+                    id=media.id,
+                    link=media.url(),
+                    user_id=media.owner,
+                    user_full_name=media.fullname(),
+                    user_username=media.username(),
+                    )
                 )
-            )
-    )
-    print "new instagram post added"
+        )
+        print "new instagram post added"
 
 
 def image_image_url(media, media_url):
@@ -121,6 +122,7 @@ def hashtag_scrape():
     d = parse_json(script)
     print("parsed")
     entry_data = entries(d)
+    a = ScrapeAdder()
     for entry in entry_data:
         print("- entry {}".format(entry['code']))
         e = Entry(entry)
@@ -128,7 +130,7 @@ def hashtag_scrape():
             # can't handle video yet
             print("skip video")
             continue
-        add_scraped_post(e)
+        a.add(e)
     statsd.incr('instagram.hashtag.run')
 
 
@@ -139,5 +141,6 @@ def my_posts(api):
 
 
 def add_media(recent_media):
+    a = MyPostsAdder()
     for media in recent_media:
-        add_post(media)
+        a.add(media)

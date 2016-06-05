@@ -1,7 +1,7 @@
 import unittest
 from datetime import datetime
 from spokehub.instagram import (
-    image_image_url, add_post, add_media,
+    image_image_url, MyPostsAdder, add_media,
     my_posts,
 )
 from spokehub.instagram.scrape import (
@@ -38,7 +38,8 @@ class TestAddPost(unittest.TestCase):
     def test_invalid(self):
         d = Dummy()
         d.link = None
-        self.assertIsNone(add_post(d))
+        a = MyPostsAdder()
+        self.assertIsNone(a.add(d))
 
 
 class TestAddPosts(unittest.TestCase):
