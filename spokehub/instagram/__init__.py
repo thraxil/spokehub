@@ -20,8 +20,11 @@ class Adder(object):
 
 
 class MyPostsAdder(Adder):
+    def link(self, media):
+        return media.link
+
     def add(self, media):
-        if self.now_post_exists(media.link):
+        if self.now_post_exists(self.link(media)):
             print("existing instagram post")
             return
         try:
@@ -46,7 +49,7 @@ class MyPostsAdder(Adder):
             video_url = media_url
 
         self.model.objects.create_instagram(
-            media.user.username, media.link, text,
+            media.user.username, self.link(media), text,
             media.created_time.isoformat(),
             image_url, video_url, dumps(
                 dict(
@@ -65,8 +68,11 @@ class MyPostsAdder(Adder):
 
 
 class ScrapeAdder(Adder):
+    def link(self, media):
+        return media.url()
+
     def add(self, media):
-        if self.now_post_exists(media.url()):
+        if self.now_post_exists(self.link(media)):
             print("existing instagram post")
             return
         try:
@@ -87,7 +93,7 @@ class ScrapeAdder(Adder):
         image_url = sru
 
         self.model.objects.create_instagram(
-            media.username(), media.url(), text,
+            media.username(), self.link(media), text,
             media.date.isoformat(),
             image_url, video_url, dumps(
                 dict(
