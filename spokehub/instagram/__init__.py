@@ -46,6 +46,9 @@ class MyPostsAdder(Adder):
     def image_url(self, media, media_url):
         return image_image_url(media, media_url)
 
+    def thumbnail_url(self, media):
+        return media.get_thumbnail_url()
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -65,7 +68,7 @@ class MyPostsAdder(Adder):
             image_url, video_url, dumps(
                 dict(
                     standard_resolution_url=sru,
-                    thumbnail_url=media.get_thumbnail_url(),
+                    thumbnail_url=self.thumbnail_url(),
                     id=media.id,
                     link=media.link,
                     filter=media.filter,
@@ -94,6 +97,9 @@ class ScrapeAdder(Adder):
     def image_url(self, media, media_url):
         return media_url
 
+    def thumbnail_url(self, media):
+        return media.clean_thumbnail_src()
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -110,7 +116,7 @@ class ScrapeAdder(Adder):
             image_url, video_url, dumps(
                 dict(
                     standard_resolution_url=sru,
-                    thumbnail_url=media.clean_thumbnail_src(),
+                    thumbnail_url=self.thumbnail_url(),
                     id=media.id,
                     link=media.url(),
                     user_id=media.owner,
