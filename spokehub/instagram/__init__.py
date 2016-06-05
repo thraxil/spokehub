@@ -34,14 +34,17 @@ class MyPostsAdder(Adder):
     def link(self, media):
         return media.link
 
+    def sru(self, media):
+        return media.get_standard_resolution_url()
+
     def _add(self, media):
-        sru = media.get_standard_resolution_url()
+        sru = self.sru(media)
         try:
             text = media.caption.text
         except:
             text = ""
 
-        media_url = media.get_standard_resolution_url()
+        media_url = sru
         video_url = ""
 
         image_url = image_image_url(media, media_url)
@@ -71,8 +74,11 @@ class ScrapeAdder(Adder):
     def link(self, media):
         return media.url()
 
+    def sru(self, media):
+        return media.clean_display_src()
+
     def _add(self, media):
-        sru = media.clean_display_src()
+        sru = self.sru(media)
         try:
             text = media.caption
         except:
