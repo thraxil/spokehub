@@ -18,11 +18,6 @@ class Adder(object):
             service_id=service_id)
         return r.exists()
 
-
-class MyPostsAdder(Adder):
-    def link(self, media):
-        return media.link
-
     def add(self, media):
         if self.now_post_exists(self.link(media)):
             print("existing instagram post")
@@ -33,6 +28,11 @@ class MyPostsAdder(Adder):
         except Exception, e:
             print "failed with exception: " + str(e)
             statsd.incr('instagram.add.failed')
+
+
+class MyPostsAdder(Adder):
+    def link(self, media):
+        return media.link
 
     def _add(self, media):
         sru = media.get_standard_resolution_url()
@@ -70,17 +70,6 @@ class MyPostsAdder(Adder):
 class ScrapeAdder(Adder):
     def link(self, media):
         return media.url()
-
-    def add(self, media):
-        if self.now_post_exists(self.link(media)):
-            print("existing instagram post")
-            return
-        try:
-            self._add(media)
-            statsd.incr('instagram.add.success')
-        except Exception, e:
-            print "failed with exception: " + str(e)
-            statsd.incr('instagram.add.failed')
 
     def _add(self, media):
         sru = media.clean_display_src()
