@@ -7,13 +7,17 @@ from .scrape import (
 import requests
 
 
+def now_post_exists(service_id, NowPost):
+    r = NowPost.objects.filter(
+        service='instagram',
+        service_id=service_id)
+    return r.exists()
+
+
 def add_post(media):
     from ..main.models import NowPost
 
-    r = NowPost.objects.filter(
-        service='instagram',
-        service_id=media.link)
-    if r.exists():
+    if now_post_exists(media.link, NowPost):
         print("existing instagram post")
         return
     try:
@@ -27,10 +31,7 @@ def add_post(media):
 def add_scraped_post(media):
     from ..main.models import NowPost
 
-    r = NowPost.objects.filter(
-        service='instagram',
-        service_id=media.url())
-    if r.exists():
+    if now_post_exists(media.url(), NowPost):
         print("existing instagram post")
         return
     try:
