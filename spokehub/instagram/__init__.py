@@ -37,10 +37,13 @@ class MyPostsAdder(Adder):
     def sru(self, media):
         return media.get_standard_resolution_url()
 
+    def caption_text(self, media):
+        return media.caption.text
+
     def _add(self, media):
         sru = self.sru(media)
         try:
-            text = media.caption.text
+            text = self.caption_text(media)
         except:
             text = ""
 
@@ -77,10 +80,13 @@ class ScrapeAdder(Adder):
     def sru(self, media):
         return media.clean_display_src()
 
+    def caption_text(self, media):
+        return media.caption
+
     def _add(self, media):
         sru = self.sru(media)
         try:
-            text = media.caption
+            text = self.caption_text(media)
         except:
             text = ""
 
