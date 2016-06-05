@@ -46,10 +46,28 @@ class TestAddPost(unittest.TestCase):
 
     def test_existing(self):
         np = NowPostFactory()
+        np.save()
         d = Dummy()
         d.link = np.service_id
         a = MyPostsAdder()
         self.assertIsNone(a.add(d))
+
+    def test_text(self):
+        a = MyPostsAdder()
+        d = Dummy()
+        a = MyPostsAdder()
+        self.assertEqual(a.text(d), "")
+        d.caption = Dummy()
+        d.caption.text = "some text"
+        self.assertEqual(a.text(d), "some text")
+
+    def test_video_url(self):
+        a = MyPostsAdder()
+        d = Dummy()
+        d.type = 'video'
+        self.assertEqual(a.video_url(d, "foo"), "foo")
+        d.type = "image"
+        self.assertEqual(a.video_url(d, "foo"), "")
 
 
 class TestAddPosts(unittest.TestCase):
