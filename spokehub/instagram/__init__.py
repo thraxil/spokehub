@@ -29,35 +29,6 @@ class Adder(object):
             print "failed with exception: " + str(e)
             statsd.incr('instagram.add.failed')
 
-
-class MyPostsAdder(Adder):
-    def link(self, media):
-        return media.link
-
-    def sru(self, media):
-        return media.get_standard_resolution_url()
-
-    def caption_text(self, media):
-        return media.caption.text
-
-    def created_time(self, media):
-        return media.created_time.isoformat()
-
-    def image_url(self, media, media_url):
-        return image_image_url(media, media_url)
-
-    def thumbnail_url(self, media):
-        return media.get_thumbnail_url()
-
-    def user_id(self, media):
-        return media.user.id
-
-    def user_full_name(self, media):
-        return media.user.full_name
-
-    def username(self, media):
-        return media.user.username
-
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -90,6 +61,35 @@ class MyPostsAdder(Adder):
         print "new instagram post added"
 
 
+class MyPostsAdder(Adder):
+    def link(self, media):
+        return media.link
+
+    def sru(self, media):
+        return media.get_standard_resolution_url()
+
+    def caption_text(self, media):
+        return media.caption.text
+
+    def created_time(self, media):
+        return media.created_time.isoformat()
+
+    def image_url(self, media, media_url):
+        return image_image_url(media, media_url)
+
+    def thumbnail_url(self, media):
+        return media.get_thumbnail_url()
+
+    def user_id(self, media):
+        return media.user.id
+
+    def user_full_name(self, media):
+        return media.user.full_name
+
+    def username(self, media):
+        return media.user.username
+
+
 class ScrapeAdder(Adder):
     def link(self, media):
         return media.url()
@@ -117,33 +117,6 @@ class ScrapeAdder(Adder):
 
     def username(self, media):
         return media.username()
-
-    def _add(self, media):
-        sru = self.sru(media)
-        try:
-            text = self.caption_text(media)
-        except:
-            text = ""
-
-        video_url = ""
-        image_url = self.image_url(media, sru)
-
-        self.model.objects.create_instagram(
-            media.username(), self.link(media), text,
-            self.created_time(media),
-            image_url, video_url, dumps(
-                dict(
-                    standard_resolution_url=sru,
-                    thumbnail_url=self.thumbnail_url(),
-                    id=media.id,
-                    link=self.link(media),
-                    user_id=self.user_id(media),
-                    user_full_name=self.user_full_name(media),
-                    user_username=self.username(media),
-                    )
-                )
-        )
-        print "new instagram post added"
 
 
 def image_image_url(media, media_url):
