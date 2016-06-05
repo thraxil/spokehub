@@ -24,6 +24,7 @@ class Adder(object):
             return
         try:
             self._add(media)
+            print "new instagram post added"
             statsd.incr('instagram.add.success')
         except Exception, e:
             print "failed with exception: " + str(e)
@@ -58,7 +59,6 @@ class Adder(object):
                     )
                 )
         )
-        print "new instagram post added"
 
 
 class MyPostsAdder(Adder):
