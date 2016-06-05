@@ -36,15 +36,16 @@ class Adder(object):
         except:
             return ""
 
+    def video_url(self, media, sru):
+        if media.type == 'video':
+            return sru
+        return ""
+
     def _add(self, media):
         sru = self.sru(media)
         text = self.text(media)
-
-        video_url = ""
-
+        video_url = self.video_url(media, sru)
         image_url = self.image_url(media, sru)
-        if media.type == 'video':
-            video_url = sru
 
         self.model.objects.create_instagram(
             self.username(media), self.link(media), text,

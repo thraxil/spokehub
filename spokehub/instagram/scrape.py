@@ -55,6 +55,7 @@ class Entry(object):
         self.thumbnail_src = d['thumbnail_src']
         self._username = None
         self._fullname = None
+        self.type = "image"
 
     def url(self):
         return "https://www.instagram.com/p/{}/".format(self.code)
