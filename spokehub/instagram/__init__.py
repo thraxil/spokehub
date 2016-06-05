@@ -40,6 +40,9 @@ class MyPostsAdder(Adder):
     def caption_text(self, media):
         return media.caption.text
 
+    def created_time(self, media):
+        return media.created_time.isoformat()
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -56,7 +59,7 @@ class MyPostsAdder(Adder):
 
         self.model.objects.create_instagram(
             media.user.username, self.link(media), text,
-            media.created_time.isoformat(),
+            self.created_time(media),
             image_url, video_url, dumps(
                 dict(
                     standard_resolution_url=sru,
@@ -83,6 +86,9 @@ class ScrapeAdder(Adder):
     def caption_text(self, media):
         return media.caption
 
+    def created_time(self, media):
+        return media.date.isoformat()
+
     def _add(self, media):
         sru = self.sru(media)
         try:
@@ -95,7 +101,7 @@ class ScrapeAdder(Adder):
 
         self.model.objects.create_instagram(
             media.username(), self.link(media), text,
-            media.date.isoformat(),
+            self.created_time(media),
             image_url, video_url, dumps(
                 dict(
                     standard_resolution_url=sru,
