@@ -53,7 +53,7 @@ class Adder(object):
             image_url, video_url, dumps(
                 dict(
                     standard_resolution_url=sru,
-                    thumbnail_url=self.thumbnail_url(),
+                    thumbnail_url=self.thumbnail_url(media),
                     id=media.id,
                     link=self.link(media),
                     filter=self.filter(media),
