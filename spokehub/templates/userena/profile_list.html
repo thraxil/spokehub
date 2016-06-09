@@ -21,7 +21,7 @@
                                 <a href="{% url 'userena_profile_detail' profile.user.username %}"><div class="cover-photo" {% if profile.cover %}style="background-image:url('../..{{profile.cover.url}}');"{% endif %}></div>
                                 <div class="profile-img-thumb" style="background-image:url('{{ profile.get_mugshot_url }}');"></div>
                                 <div class="page-heading">
-                                    <h2 class="hub-list-username"><b>{{ profile.user.username }}</b> {% if profile.user.get_full_name %}({{ profile.user.get_full_name }}){% endif %}</h2>
+                                    <h2 class="hub-list-username"><b>{{ profile.user.username }}</b> </h2>
                                 </div></a>
                                 {% if profile.profession %}
                                     <dd>{{ profile.profession }}</dd>

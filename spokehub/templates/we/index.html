@@ -32,7 +32,7 @@
 							<div class='cover-photo' {% if conversation.author.profile.cover %}style='background-image:url({{conversation.author.profile.cover.url}});'{% endif %}></div>
 							<div class='profile-img-thumb' style='background-image:url({{conversation.author.profile.get_mugshot_url}});'></div>
 							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>{{conversation.author.username}}</b> ({{conversation.author.profile.user.get_full_name}})</h2>
+								<h2 class='hub-list-username'><b>{{conversation.author.username}}</b></h2>
 							</div>
 						</a>
 						<dd>{{conversation.author.profile.profession}}</dd>
