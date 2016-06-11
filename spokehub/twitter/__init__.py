@@ -35,11 +35,15 @@ def process_extended_attributes(t, np):
             return
         if len(ee['media']) < 1:
             return
-        np.image_url = ee['media'][0]['media_url']
+        np.image_url = ensure_https(ee['media'][0]['media_url'])
         np.image_width = ee['media'][0]['sizes']['large']['w']
         np.image_height = ee['media'][0]['sizes']['large']['h']
         np.save()
         print "added an image"
+
+
+def ensure_https(url):
+    return url.replace("http://", "https://")
 
 
 def my_tweets(api, user):

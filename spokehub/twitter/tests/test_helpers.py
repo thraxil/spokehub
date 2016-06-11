@@ -1,5 +1,6 @@
 import unittest
-from spokehub.twitter import process_extended_attributes, add_tweet
+from spokehub.twitter import (
+    process_extended_attributes, add_tweet, ensure_https)
 
 
 class Dummy(object):
@@ -56,3 +57,13 @@ class TestAddTweet(unittest.TestCase):
         d.link = None
         d.id_str = "foo"
         self.assertIsNone(add_tweet(d))
+
+
+class TestEnsureHttps(unittest.TestCase):
+    def test_http(self):
+        url = "http://www.google.com/"
+        self.assertEqual(ensure_https(url), "https://www.google.com/")
+
+    def test_https(self):
+        url = "https://i.dont.need.to.change.com/"
+        self.assertEqual(ensure_https(url), url)
