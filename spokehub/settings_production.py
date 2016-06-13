@@ -31,6 +31,7 @@ CACHES = {
 }
 
 COMPRESS_OFFLINE = True
+COMPRESS_ENABLED = True
 COMPRESS_ROOT = os.path.join(os.path.dirname(__file__), "../media")
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
