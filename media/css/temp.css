@@ -1,0 +1,13 @@
+.hub_user_index .question .page-heading {
+	padding-bottom: 0;
+}
+
+.hub_user_index .question {
+	height: 400px;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1199px) {
+	.hub_user_index .question {
+		height: 430px;
+	}
+}

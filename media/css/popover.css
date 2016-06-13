@@ -14,8 +14,9 @@
 	left:0;
 	z-index:1010;
 	display:none;
-	width:375px;
+	width:310px;
 	padding:1px;
+	padding-bottom:10px;
 	text-align:left;
 	white-space:normal;
 	background-color:#fff;
