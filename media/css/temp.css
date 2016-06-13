@@ -6,6 +6,35 @@
 	height: 400px;
 }
 
+.hub_user_index .question ul li {
+	font-family: 'dinmed', Helvetica, sans-serif;
+	margin-left: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	list-style-type: none;
+}
+
+.hub_user_index .question ul,
+.popover ul {
+	padding-left: 0;
+	margin-top: 0;
+}
+
+.popover ul li {
+	margin-bottom: 0;
+	padding: 0 10px;
+	border-bottom: 0;
+	list-style-type: none;
+}
+
+.username-hover ul li,
+.question .username-hover ul li {
+	margin: 0;
+	font-family: 'dinmed', Helvetica, sans-serif;
+	font-size: 14px;
+	text-transform: none;
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1199px) {
 	.hub_user_index .question {
 		height: 430px;

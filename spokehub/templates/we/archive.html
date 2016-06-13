@@ -42,10 +42,12 @@
 								<h2 class='hub-list-username'><b>{{conversation.author.username}}</b></h2>
 							</div>
 						</a>
-						<dd>{{conversation.author.profile.profession}}</dd>
-						<dd>{{conversation.author.profile.location}}</dd>
-						<dd><a href='{{conversation.author.profile.website_url}}'target='blank'>{{conversation.author.profile.website_name}}</a></dd>
-						<dd><a href='mailto:{{conversation.author.profile.user.email}}'>{{conversation.author.profile.user.email}}</a></dd>
+						<ul>
+							<li>{{conversation.author.profile.profession}}</li>
+							<li>{{conversation.author.profile.location}}</li>
+							<li><a href='{{conversation.author.profile.website_url}}'target='blank'>{{conversation.author.profile.website_name}}</a></li>
+							<li><a href='mailto:{{conversation.author.profile.user.email}}'>{{conversation.author.profile.user.email}}</a></li>
+						</ul>
 					</div>">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
 						<p class="timestamp">{{conversation.author.profile.location}}, {{conversation.added}}</p>
 					</div>

@@ -23,14 +23,14 @@
                                 <div class="page-heading">
                                     <h2 class="hub-list-username"><b>{{ profile.user.username }}</b> </h2>
                                 </div></a>
-                                {% if profile.profession %}
-                                    <dd>{{ profile.profession }}</dd>
+                                <ul>{% if profile.profession %}
+                                    <li>{{ profile.profession }}</li>
                                 {% endif %}
                                 {% if profile.location %}
-                                    <dd>{{ profile.location }}</dd>
+                                    <li>{{ profile.location }}</li>
                                 {% endif %}
                                 {% if profile.website_url %}
-                                    <dd>
+                                    <li>
                                         {% if profile.website_name %}
                                             <a href="{{profile.website_url}}">
                                                 {{profile.website_name}}
@@ -38,11 +38,11 @@
                                         {% else %}
                                             {{profile.website_url|urlize }}
                                         {% endif %}
-                                    </dd>
+                                    </li>
                                 {% endif %}
                                 {% if profile.user.email and not hide_email %}
-                                    <dd><a href="mailto:{{profile.user.email}}">{{ profile.user.email }}</a></dd>
-                                {% endif %}
+                                    <li><a href="mailto:{{profile.user.email}}">{{ profile.user.email }}</a></li>
+                                {% endif %}</ul>
                             </div>
                         {% endfor %}
 
