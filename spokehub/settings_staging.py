@@ -23,7 +23,7 @@ DATABASES = {
 }
 
 COMPRESS_ROOT = "/var/www/spokehub/spokehub/media/"
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 STAGING_ENV = True
 
