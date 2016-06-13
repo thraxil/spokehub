@@ -32,7 +32,7 @@ CACHES = {
 
 COMPRESS_OFFLINE = True
 COMPRESS_ROOT = os.path.join(os.path.dirname(__file__), "../media")
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 STATSD_PATCHES = ['django_statsd.patches.db', ]
