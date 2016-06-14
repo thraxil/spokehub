@@ -29,7 +29,7 @@ backports.shutil_get_terminal_size==1.0.0
 decorator==4.0.10
 setuptools==22.0.5
 ipython==4.2.0
-ipdb==0.10.0
+ipdb==0.10.1
 coverage==4.1
 requests==2.10.0
 logilab-common==1.2.1
