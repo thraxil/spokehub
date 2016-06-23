@@ -22,9 +22,10 @@
         {% for nowpost in now_posts %}
           <div class="now-post">
 
-            {% if nowpost.image_url %}
+              {% if nowpost.image_url %}
+                  <a href="{{nowpost.external_link}}" data-featherlight="{{nowpost.image_url}}">
             <img src="{{nowpost.image_url}}" width="{{nowpost.image_width}}"
-                 height="{{nowpost.image_height}}" />
+                 height="{{nowpost.image_height}}" /></a>
             {% endif %}
 
             {% if nowpost.video_url %}
@@ -44,7 +45,7 @@
 
 	</div>
 </div>
-
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.4.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
 </div>
