@@ -5,7 +5,7 @@
 <p><i>{{conversation.added}}</i></p>
 
 {% if conversation.image %}
-<img src="{% thumbnail conversation.image 400x400 %}" />
+    <a href="#image-{{conversation.id}}" data-featherlight="{% thumbnail conversation.image 1000x1000 %}"><img src="{% thumbnail conversation.image 400x400 %}" /></a>
 {% endif %}
 {{conversation.body|markdown}}
 
@@ -19,7 +19,7 @@
 
 {% if reply.image %}
 {% comment %}Image Reply{% endcomment %}
-<img src="{% thumbnail reply.image 400x400 %}" />
+    <a href="#image-{{reply.id}}" data-featherlight="{% thumbnail reply.image 1000x1000 %}"><img src="{% thumbnail reply.image 400x400 %}" /></a>
 <p class="caption">{{reply.body|markdown}}</p>
 {% endif %}
 

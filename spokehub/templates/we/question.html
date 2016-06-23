@@ -93,7 +93,7 @@
 					    <p class="response-timestamp timestamp">{{reply.author.profile.location}}, {{reply.added}}</p>
 
                 		{% if reply.image %}
-					        <div class="media-center"><img src="{% thumbnail reply.image 400x400 %}"></div>
+					              <div class="media-center"><a href="#image-{{reply.id}}" data-featherlight="{% thumbnail reply.image 1000x1000 %}"><img src="{% thumbnail reply.image 400x400 %}"></a></div>
                 		{% endif %}
                 		{% if reply.url %}
                     		{% if reply.is_video %}
@@ -144,7 +144,7 @@
 			</div>
 		</div>
 	</div>
-
+<script src="//cdn.rawgit.com/noelboss/featherlight/1.4.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 {% endblock %}
 
 </div>
