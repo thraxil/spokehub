@@ -88,4 +88,4 @@ django-userena==2.0.1
 django-picklefield==0.3.2
 django-libsass==0.7
 
-opbeat==3.3.2
+opbeat==3.3.4
