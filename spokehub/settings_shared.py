@@ -1,6 +1,7 @@
 # Django settings for spokehub project.
 import os.path
 import sys
+import requests
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -21,6 +22,18 @@ DATABASES = {
     }
 }
 
+RETICULUM_UPLOAD = "https://reticulum.thraxil.org"
+RETICULUM_PUBLIC = "https://d2f33fmhbh7cs9.cloudfront.net"
+
+
+class ReticulumUploader(object):
+    def upload(self, f):
+        files = {'image': (f.name, f)}
+        r = requests.post(RETICULUM_UPLOAD + "/", files=files, verify=False)
+        return r.json()["hash"]
+
+UPLOADER = ReticulumUploader()
+
 if 'test' in sys.argv or 'jenkins' in sys.argv:
     DATABASES = {
         'default': {
@@ -35,6 +48,13 @@ if 'test' in sys.argv or 'jenkins' in sys.argv:
     PASSWORD_HASHERS = (
         'django.contrib.auth.hashers.MD5PasswordHasher',
     )
+
+    class DummyUploader(object):
+        def upload(self, f):
+            return "fakehash"
+
+    UPLOADER = DummyUploader()
+
 
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 TEST_OUTPUT_DIR = 'reports'

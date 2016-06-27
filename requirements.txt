@@ -32,6 +32,9 @@ setuptools==23.1.0
 ipython==4.2.0
 ipdb==0.10.1
 coverage==4.1
+pyOpenSSL==16.0.0
+pyasn1==0.1.9
+ndg-httpsclient==0.4.1
 requests==2.10.0
 logilab-common==1.2.2
 logilab-astng==0.24.3

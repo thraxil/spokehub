@@ -5,7 +5,6 @@ from django.db import models
 from sorl.thumbnail.fields import ImageWithThumbnailsField
 import re
 import os.path
-from django.template.defaultfilters import slugify
 from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
@@ -167,23 +166,11 @@ class Reply(models.Model):
             self.vimeo_id = url_data.path[1:]
 
     def save_image(self, f):
-        ext = f.name.split(".")[-1].lower()
-        basename = slugify(f.name.split(".")[-2].lower())[:20]
-        if ext not in ['jpg', 'jpeg', 'gif', 'png']:
+        ext = os.path.splitext(f.name)[1].lower()
+        if ext not in ['.jpg', '.jpeg', '.gif', '.png']:
             # unsupported image format
             return None
-        now = datetime.now()
-        path = "replyimages/%04d/%02d/%02d/" % (now.year, now.month, now.day)
-        try:
-            os.makedirs(settings.MEDIA_ROOT + "/" + path)
-        except:
-            pass
-        full_filename = path + "%s.%s" % (basename, ext)
-        fd = open(settings.MEDIA_ROOT + "/" + full_filename, 'wb')
-        for chunk in f.chunks():
-            fd.write(chunk)
-        fd.close()
-        self.image = full_filename
+        self.rhash = settings.UPLOADER.upload(f)
         self.save()
 
     def mentioned_users(self):
