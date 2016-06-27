@@ -34,6 +34,7 @@ class Conversation(models.Model):
         blank=True,
         )
     author = models.ForeignKey(User)
+    rhash = models.TextField(blank=True, null=True)
 
     objects = ConversationManager()
 
@@ -151,6 +152,7 @@ class Reply(models.Model):
     url = models.TextField(blank=True, default=u"")
     youtube_id = models.TextField(default="", blank=True)
     vimeo_id = models.TextField(default="", blank=True)
+    rhash = models.TextField(blank=True, null=True)
 
     objects = ReplyManager()
 
