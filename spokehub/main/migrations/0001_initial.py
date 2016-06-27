@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-import sorl.thumbnail.fields
 from django.conf import settings
 
 
@@ -22,7 +21,7 @@ class Migration(migrations.Migration):
                 ('body', models.TextField(default='', blank=True)),
                 ('added', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
-                ('image', sorl.thumbnail.fields.ImageWithThumbnailsField(null=True, upload_to=b'convoimages/%Y/%m/%d')),
+                ('image', models.TextField(null=True, blank=True)),
             ],
             options={
                 'ordering': ['-added'],
@@ -54,7 +53,7 @@ class Migration(migrations.Migration):
                 ('body', models.TextField(default='', blank=True)),
                 ('added', models.DateTimeField(auto_now_add=True)),
                 ('modified', models.DateTimeField(auto_now=True)),
-                ('image', sorl.thumbnail.fields.ImageWithThumbnailsField(null=True, upload_to=b'replyimages/%Y/%m/%d')),
+                ('image', models.TextField(null=True)),
                 ('url', models.TextField(default='', blank=True)),
                 ('title', models.TextField(default='', blank=True)),
                 ('youtube_id', models.TextField(default=b'', blank=True)),
@@ -70,7 +69,7 @@ class Migration(migrations.Migration):
             name='WorkSample',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('image', sorl.thumbnail.fields.ImageWithThumbnailsField(upload_to=b'images/%Y/%m/%d')),
+                ('image', models.TextField()),
                 ('title', models.TextField(default=b'', blank=True)),
                 ('youtube_id', models.TextField(default=b'', blank=True)),
                 ('vimeo_id', models.TextField(default=b'', blank=True)),

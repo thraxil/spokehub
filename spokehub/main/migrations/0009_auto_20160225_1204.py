@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 from django.db import migrations, models
-import sorl.thumbnail.fields
 
 
 class Migration(migrations.Migration):
@@ -16,6 +15,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='conversation',
             name='image',
-            field=sorl.thumbnail.fields.ImageWithThumbnailsField(null=True, upload_to=b'convoimages/%Y/%m/%d', blank=True),
+            field=models.TextField(null=True, blank=True),
         ),
     ]
