@@ -2,7 +2,6 @@
 
 {% extends 'base.html' %}
 {% load markup %}
-    {% load thumbnail %}
     {% load waffle_tags %}
     {% load target_blank %}
 
@@ -93,7 +92,7 @@
 					    <p class="response-timestamp timestamp">{{reply.author.profile.location}}, {{reply.added}}</p>
 
                 		{% if reply.image %}
-					              <div class="media-center"><a href="#image-{{reply.id}}" data-featherlight="{% thumbnail reply.image 1000x1000 %}"><img src="{% thumbnail reply.image 400x400 %}"></a></div>
+					              <div class="media-center"><a href="#image-{{reply.id}}" data-featherlight="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/1000w1000h/image{{reply.extension}}"><img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/400w400h/image{{reply.extension}}"></a></div>
                 		{% endif %}
                 		{% if reply.url %}
                     		{% if reply.is_video %}
