@@ -34,6 +34,7 @@ class Conversation(models.Model):
         )
     author = models.ForeignKey(User)
     rhash = models.TextField(blank=True, null=True)
+    extension = models.TextField(blank=True, null=True)
 
     objects = ConversationManager()
 
@@ -144,6 +145,7 @@ class Reply(models.Model):
     youtube_id = models.TextField(default="", blank=True)
     vimeo_id = models.TextField(default="", blank=True)
     rhash = models.TextField(blank=True, null=True)
+    extension = models.TextField(blank=True, null=True)
 
     objects = ReplyManager()
 
@@ -171,6 +173,7 @@ class Reply(models.Model):
             # unsupported image format
             return None
         self.rhash = settings.UPLOADER.upload(f)
+        self.extension = ext
         self.save()
 
     def mentioned_users(self):
