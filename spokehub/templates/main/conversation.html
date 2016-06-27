@@ -3,7 +3,7 @@
 <h2>{{conversation.title}}</h2>
 <p><i>{{conversation.added}}</i></p>
 
-{% if conversation.image %}
+{% if conversation.rhash %}
     <a href="#image-{{conversation.id}}" data-featherlight="https://d2f33fmhbh7cs9.cloudfront.net/image/{{conversation.rhash}}/1000w1000h/image{{conversation.extension}}"><img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{conversation.rhash}}/400w400h/image{{conversation.extension}}" /></a>
 {% endif %}
 {{conversation.body|markdown}}
@@ -16,7 +16,7 @@
 
 
 
-{% if reply.image %}
+{% if reply.rhash %}
 {% comment %}Image Reply{% endcomment %}
     <a href="#image-{{reply.id}}" data-featherlight="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/1000w1000h/image{{reply.extension}}""><img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/400w400h/image{{reply.extension}}" /></a>
 <p class="caption">{{reply.body|markdown}}</p>
