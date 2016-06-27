@@ -2,7 +2,6 @@ from datetime import datetime
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
-from sorl.thumbnail.fields import ImageWithThumbnailsField
 import re
 import os.path
 from django.dispatch import receiver
@@ -24,14 +23,6 @@ class Conversation(models.Model):
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    image = ImageWithThumbnailsField(
-        upload_to="convoimages/%Y/%m/%d",
-        thumbnail={
-            'size': (400, 200)
-            },
-        null=True,
-        blank=True,
-        )
     author = models.ForeignKey(User)
     rhash = models.TextField(blank=True, null=True)
     extension = models.TextField(blank=True, null=True)
@@ -133,14 +124,6 @@ class Reply(models.Model):
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    image = ImageWithThumbnailsField(
-        upload_to="replyimages/%Y/%m/%d",
-        thumbnail={
-            'size': (400, 200)
-            },
-        null=True,
-        blank=True,
-        )
     url = models.TextField(blank=True, default=u"")
     youtube_id = models.TextField(default="", blank=True)
     vimeo_id = models.TextField(default="", blank=True)

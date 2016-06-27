@@ -6,7 +6,7 @@ from .models import Reply, Conversation
 class ReplyUpdateForm(forms.ModelForm):
     class Meta:
         model = Reply
-        fields = ['image', 'url', 'body']
+        fields = ['url', 'body']
         widgets = {
             'url': forms.TextInput(attrs=dict(maxlength=140)),
             'body': forms.Textarea(attrs=dict(maxlength=140)),
