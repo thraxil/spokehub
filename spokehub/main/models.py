@@ -44,29 +44,21 @@ class Conversation(models.Model):
     def __unicode__(self):
         return self.body[:140]
 
+    def url_args(self):
+        return [
+            "%04d" % self.added.year,
+            "%02d" % self.added.month,
+            "%02d" % self.added.day,
+            str(self.id)]
+
     def get_absolute_url(self):
-        return reverse(
-            'question', args=[
-                "%04d" % self.added.year,
-                "%02d" % self.added.month,
-                "%02d" % self.added.day,
-                str(self.id)])
+        return reverse('question', args=self.url_args())
 
     def get_edit_url(self):
-        return reverse(
-            'edit-question', args=[
-                "%04d" % self.added.year,
-                "%02d" % self.added.month,
-                "%02d" % self.added.day,
-                str(self.id)])
+        return reverse('edit-question', args=self.url_args())
 
     def get_delete_url(self):
-        return reverse(
-            'delete-question', args=[
-                "%04d" % self.added.year,
-                "%02d" % self.added.month,
-                "%02d" % self.added.day,
-                str(self.id)])
+        return reverse('delete-question', args=self.url_args())
 
     def touch(self):
         self.modified = datetime.now()
