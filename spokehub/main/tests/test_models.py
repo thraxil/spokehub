@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from datetime import datetime
 from django.core import mail
 from django.test import TestCase
@@ -16,7 +17,12 @@ class ConversationTest(TestCase):
 
     def test_unicode(self):
         i = ConversationFactory()
-        self.assertTrue(str(i), "foo")
+        self.assertEqual(str(i), "foo")
+
+    def test_unicode_nonascii(self):
+        i = ConversationFactory()
+        i.body = u"DERRIÈRE"
+        self.assertEqual(str(i), "DERRI?RE")
 
     def test_edit_url(self):
         i = ConversationFactory()

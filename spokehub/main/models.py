@@ -33,7 +33,7 @@ class Conversation(models.Model):
         ordering = ['-added', ]
 
     def __unicode__(self):
-        return self.body[:140]
+        return self.body[:140].encode('ascii', 'replace')
 
     def url_args(self):
         return [
