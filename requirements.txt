@@ -1,4 +1,4 @@
----index-url https://pypi.ccnmtl.columbia.edu/
+--index-url https://pypi.ccnmtl.columbia.edu/
 Django==1.9.7
 httplib2==0.9.2
 Markdown==2.6.6
