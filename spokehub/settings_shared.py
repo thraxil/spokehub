@@ -2,6 +2,8 @@
 import os.path
 import sys
 import requests
+import mimetypes
+
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -28,7 +30,8 @@ RETICULUM_PUBLIC = "https://d2f33fmhbh7cs9.cloudfront.net"
 
 class ReticulumUploader(object):
     def upload(self, f):
-        files = {'image': (f.name, f)}
+        content_type = mimetypes.guess_type(f.name)[0]
+        files = {'image': (f.name, f, content_type)}
         r = requests.post(RETICULUM_UPLOAD + "/", files=files, verify=False)
         return r.json()["hash"]
 
