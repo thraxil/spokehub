@@ -270,6 +270,16 @@ class Reply(models.Model):
     def is_vimeo(self):
         return self.get_vimeo_id() != ""
 
+    def is_image(self):
+        """ guessing based on the extension of the url is about the
+        best we can do """
+        normalized = self.url.lower()
+        exts = ['.jpg', '.gif', '.jpeg', '.png', '.svg']
+        for e in exts:
+            if normalized.endswith(e):
+                return True
+        return False
+
     def add_comment(self, author, body):
         return Comment.objects.create(
             self, author, body)
