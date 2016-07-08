@@ -16,4 +16,4 @@ after_success:
   - coveralls
   - chmod 600 spokehub_rsa
   - ssh-add spokehub_rsa
-  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && make travis_deploy
+  - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && fab deploy -i spokehub_rsa
