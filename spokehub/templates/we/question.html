@@ -77,7 +77,7 @@
 					<div class='username-hover'>
 						<a href='{% url 'userena_profile_detail' reply.author.username %}'>
 							<div class='cover-photo' {% if reply.author.profile.cover %}style='background-image:url({{reply.author.profile.cover.url}});'{% endif %}></div>
-							<div class='profile-img-thumb' style='background-image:url({{conversation.author.profile.get_mugshot_url}});'></div>
+							<div class='profile-img-thumb' style='background-image:url({{reply.author.profile.get_mugshot_url}});'></div>
 							<div class='page-heading'>
 								<h2 class='hub-list-username'><b>{{reply.author.username}}</b></h2>
 							</div>
@@ -120,7 +120,7 @@
 					<div class='username-hover'>
 						<a href='{% url 'userena_profile_detail' comment.author.username %}'>
 							<div class='cover-photo' {% if comment.author.profile.cover %}style='background-image:url({{comment.author.profile.cover.url}});'{% endif %}></div>
-							<div class='profile-img-thumb' style='background-image:url({{conversation.author.profile.get_mugshot_url}});'></div>
+							<div class='profile-img-thumb' style='background-image:url({{comment.author.profile.get_mugshot_url}});'></div>
 							<div class='page-heading'>
 								<h2 class='hub-list-username'><b>{{comment.author.username}}</b></h2>
 							</div>
