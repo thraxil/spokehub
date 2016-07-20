@@ -106,6 +106,7 @@ class LoggedInTest(TestCase):
         UserFactory()
         r = self.client.get("/accounts/")
         self.assertEqual(r.status_code, 200)
+        self.assertTrue("AnonymousUser" not in r.content)
 
 
 class TestUserProfiles(TestCase):
