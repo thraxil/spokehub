@@ -68,7 +68,10 @@ the production server. This means:
   
 ## SASS/client-side asset pipeline
 
-TODO
+Do not edit the `.css` files in `media/css` directly unless you know
+exactly what you are doing. They are generated on the fly from
+SASS. You almost certainly want to edit `.scss` files in `media/sass`
+instead. 
 
 ## Docker
 
