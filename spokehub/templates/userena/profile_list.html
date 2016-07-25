@@ -17,7 +17,7 @@
                 <div class="hub_user_index">
                     <div id="grid" class="clearfix" data-columns>
                         {% for profile in profile_list %}
-                            {% if not profile.user.is_anonymous %}
+                            {% if not profile.user.username == 'AnonymousUser' %}
                                 <div class="question">
                                     <a href="{% url 'userena_profile_detail' profile.user.username %}"><div class="cover-photo" {% if profile.cover %}style="background-image:url('../..{{profile.cover.url}}');"{% endif %}></div>
                                         <div class="profile-img-thumb" style="background-image:url('{{ profile.get_mugshot_url }}');"></div>
