@@ -52,7 +52,7 @@ factory_boy==2.7.0
 gunicorn==19.6.0
 pycrypto==2.6.1
 ecdsa==0.13
-paramiko==1.16.0
+paramiko==2.0.2
 BeautifulSoup==3.2.1
 Fabric==1.11.1
 funcsigs==1.0.2
