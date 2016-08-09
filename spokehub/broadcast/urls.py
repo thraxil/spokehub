@@ -1,8 +1,7 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from .views import BroadcastView
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', BroadcastView.as_view(), name='broadcast'),
-)
+]

@@ -1,4 +1,7 @@
-from django.conf.urls import patterns, include, url
+import os.path
+import userena.views
+
+from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -7,32 +10,29 @@ from spokehub.main import views
 from spokehub.main.forms import CustomAuthenticationForm
 from spokehub.profile.forms import ExtendedEditProfileForm
 from spokehub.profile.views import ProfileListView
-import os.path
 admin.autodiscover()
 
 site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 
-urlpatterns = patterns(
-    '',
-
+urlpatterns = [
     url(r'^accounts/signout/(?P<next_page>.*)/$',
-        'userena.views.signout', name='userena_signout_next'),
+        userena.views.signout, name='userena_signout_next'),
     url(r'^accounts/signin/$',
-        'userena.views.signin',
+        userena.views.signin,
         {'auth_form': CustomAuthenticationForm},
         name='userena_signin'),
     url(r'^accounts/(?P<username>[\@\.\w-]+)/edit/$',
-        'userena.views.profile_edit',
+        userena.views.profile_edit,
         {'edit_profile_form': ExtendedEditProfileForm},
         name='userena_profile_edit'),
     url(r'^accounts/$',
         login_required(ProfileListView.as_view()),
         name='userena_profile_list'),
-    (r'^accounts/', include('userena.urls')),
+    url(r'^accounts/', include('userena.urls')),
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),
         name='about'),
-    (r'^network/$', views.IndexView.as_view(
+    url(r'^network/$', views.IndexView.as_view(
         template_name='network/index.html')),
     url(r'^how/$', views.IndexView.as_view(
         template_name='how/index.html'), name='how'),
@@ -93,11 +93,11 @@ urlpatterns = patterns(
 
     url(r'^now/$', views.IndexView.as_view(
         template_name='now/index.html'), name='now'),
-    (r'^weold/$', views.IndexView.as_view(
+    url(r'^weold/$', views.IndexView.as_view(
         template_name='main/we.html')),
-    (r'^convo/$', views.IndexView.as_view(
+    url(r'^convo/$', views.IndexView.as_view(
         template_name='main/conversation.html')),
-    (r'^404-test/$', views.IndexView.as_view(
+    url(r'^404-test/$', views.IndexView.as_view(
         template_name='404.html')),
     url(r'^user_index/$', views.TemplateView.as_view(
         template_name='userena/user_index.html')),
@@ -112,16 +112,16 @@ urlpatterns = patterns(
         views.ReplyToConversationView.as_view(),
         name='reply-to-question'),
 
-    (r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
+    url(r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
-    (r'^invite/', include('spokehub.invite.urls')),
-    (r'^contact/', include('spokehub.contact.urls')),
-    (r'^broadcast/', include('spokehub.broadcast.urls')),
-    (r'^admin/', include(admin.site.urls)),
+    url(r'^invite/', include('spokehub.invite.urls')),
+    url(r'^contact/', include('spokehub.contact.urls')),
+    url(r'^broadcast/', include('spokehub.broadcast.urls')),
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^_impersonate/', include('impersonate.urls')),
     url(r'^stats/$', TemplateView.as_view(template_name="stats.html"),
         name='stats'),
-    (r'^smoketest/', include('smoketest.urls')),
-    (r'^uploads/(?P<path>.*)$', 'django.views.static.serve',
-     {'document_root': settings.MEDIA_ROOT}),
-)
+    url(r'^smoketest/', include('smoketest.urls')),
+    url(r'^uploads/(?P<path>.*)$', 'django.views.static.serve',
+        {'document_root': settings.MEDIA_ROOT}),
+]
