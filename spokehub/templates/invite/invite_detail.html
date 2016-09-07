@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.user.is_superuser %}
+	      <div id="site-wrapper"> 
+		        <div class="content-wrapper content-container">
+
+                <p><a href="{% url 'invite-list' %}">Back to list of pending invites</a></p>
+                <h2>Pending Invite for {{object.email}}</h2>
+                <dl>
+                    <dt>Added:</dt>
+                    <dd>{{object.added}}</dd>
+                    <dt>Last Modified:</dt>
+                    <dd>{{object.modified}}</dd>
+                    <dt>Activation Link:</dt>
+                    <dd>
+                        <pre>https://spokehub.org/invite/signup/{{object.token}}/</pre>
+                    </dd>
+                </dl>
+                <p><a href="/admin/invite/invite/{{object.pk}}/change/">Edit/Delete Invite</a></p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

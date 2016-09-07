@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if request.user.is_superuser %}
+	      <div id="site-wrapper"> 
+		        <div class="content-wrapper content-container">
+                <p><a href="{% url 'invite_form' %}">invite form</a></p>
+                <h2>Pending Invites</h2>
+                <ul>
+                {% for invite in object_list %}
+                    <li><a href="{% url 'invite-detail' invite.pk %}">{{invite.email}}</a> ({{invite.added}})</li>
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

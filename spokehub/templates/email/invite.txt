@@ -8,4 +8,4 @@ SPOKEHUB members share inspiration, dialogue, partnership, opportunities and bri
 
 We like how you work. Won't you join us?
 
-http://spokehub.org/invite/signup/{{token}}/            
+https://spokehub.org/invite/signup/{{token}}/            

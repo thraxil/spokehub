@@ -2,14 +2,17 @@
 
 {% block content %}
 {% if request.user.is_superuser %}
-<div class="container">
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+	  <div id="site-wrapper"> 
+		    <div class="content-wrapper content-container">
+
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>
 {% endif %}
+
 <form action="." method="post" class="form-horizontal">
 <fieldset><legend>Invite Someone</legend>
 	<div class="row">
@@ -25,13 +28,13 @@
 		</div>
 </fieldset>
 </form>
-
 <p></p>
 <p></p>
 <p></p>
+<p><a href="{% url 'invite-list' %}">View Pending Invites</a></p>
 
-
-</div>
+  </div>
+        </div>
 {% else %}
 <p>Sorry, superuser only</p>
 {% endif %}
