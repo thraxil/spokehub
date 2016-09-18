@@ -47,7 +47,7 @@ pylint==1.6.4
 six==1.10.0
 ipaddress==1.0.17
 python-dateutil==2.5.3
-fake-factory==0.6.0
+fake-factory==0.7.2
 factory_boy==2.7.0
 gunicorn==19.6.0
 pycrypto==2.6.1
