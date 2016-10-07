@@ -26,7 +26,7 @@ urlpatterns = [
         {'edit_profile_form': ExtendedEditProfileForm},
         name='userena_profile_edit'),
     url(r'^accounts/$',
-        login_required(ProfileListView.as_view()),
+        login_required(ProfileListView.as_view(paginate_by=100)),
         name='userena_profile_list'),
     url(r'^accounts/', include('userena.urls')),
     url(r'^$', views.IndexView.as_view(), name='index'),
