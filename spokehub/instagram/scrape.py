@@ -42,7 +42,7 @@ def clean_url(url):
 
 class Entry(object):
     def __init__(self, d):
-        self.caption = d['caption']
+        self.caption = d.get('caption', '')
         self.code = d['code']
         self.comments = d['comments']
         self.date = datetime.fromtimestamp(int(d['date']))
