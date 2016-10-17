@@ -84,8 +84,6 @@ urlpatterns = [
     url(r'^work/irrelationship/$', views.TemplateView.as_view(
         template_name='work/irrelationship/index.html'),
         name='work-irrelationship'),
-    url(r'^work/redbull/$', views.TemplateView.as_view(
-        template_name='work/redbull/index.html'), name='work-redbull'),
     url(r'^work/cisco/$', views.TemplateView.as_view(
         template_name='work/cisco/index.html'), name='work-cisco'),
     url(r'^work/cfg/$', views.TemplateView.as_view(
