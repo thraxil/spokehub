@@ -1,0 +1,21 @@
+{% if profile %}
+<div class='username-hover'>
+		<a href='{% url 'userena_profile_detail' profile.user.username %}'>
+				<div class='cover-photo' id='{{profile.user.username}}-cover-photo'></div>
+				<div class='profile-img-thumb' style='background-image:url({{ profile.get_mugshot_url }});'></div>
+				<div class='page-heading'>
+						<h2 class='hub-list-username'><b>{{profile.user.username}}</b></h2>
+				</div>
+		</a>
+		<ul>
+        {% if profile.profession %}
+				    <li>{{profile.profession}}</li>
+        {% endif %}
+				<li>{{profile.location}}</li>
+				<li><a href='{{profile.website_url}}' target='blank'>{{profile.website_name}}</a></li>
+        {% if profile.user.email %}
+            <li><a href='mailto:{{profile.user.email}}'>{{ profile.user.email }}</a></li>
+        {% endif %}
+		</ul>
+</div>
+{% endif %}

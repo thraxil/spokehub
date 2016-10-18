@@ -90,6 +90,8 @@ urlpatterns = [
         template_name='work/cisco/index.html'), name='work-cisco'),
     url(r'^work/cfg/$', views.TemplateView.as_view(
         template_name='work/cfg/index.html'), name='work-cfg'),
+    url(r'^work/utest/$', views.TemplateView.as_view(
+        template_name='work/utest.html'), name='work-utest'),
 
     url(r'^now/$', views.IndexView.as_view(
         template_name='now/index.html'), name='now'),
