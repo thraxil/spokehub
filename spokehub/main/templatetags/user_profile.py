@@ -12,7 +12,6 @@ class DummyUser(object):
 @register.simple_tag
 def user_profile(username):
     try:
-        print(username)
         u = User.objects.get(username=username)
         return u
     except User.DoesNotExist:
