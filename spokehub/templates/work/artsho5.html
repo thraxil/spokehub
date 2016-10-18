@@ -1,7 +1,7 @@
 <div class="work black-bg">
 
 {% extends 'base.html' %}
-
+{% load user_profile %}
 {% block content %}
 	<div id="site-wrapper"> 
 		<div class="content-wrapper content-container">
@@ -35,137 +35,23 @@
 			<h2>ARTSHO5</h2>
 			<h2 class="project-medium">Event Design</h2>
 			<p class="project-date">November 2014</p>
-			<p>Gaspar Bonta / Tim Boyce 
-				/ <a href="http://spokehub.org/accounts/kwamec" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/kwamec'>
-							<div class='cover-photo' id='kwame-cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/a0f386c9ca.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>kwamec</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>GRAPHIC DESIGNER</li>
-							<li>Berlin, Germany</li>
-							<li><a href='http://www.instagram.com/kwamecharles/'target='blank'>instagram.com/kwamecharles/</a></li>
-							<li><a href='mailto:kwame@spokehub.org'>kwame@spokehub.org</a></li>
-						</ul>
-					</div>">Kwame Charles</a> 
-				/ <a href= "http://spokehub.org/accounts/Winst" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/winst'>
-							<div class='cover-photo' id='winst-cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/thumbs/a062873515.jpg.200x200_q85.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>winst</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>Artist</li>
-							<li>Berlin Germany</li>
-							<li><a href='http://www.wi-ch.com/'target='blank'>Winston Chmielinski</a></li>
-							<li><a href='mailto:winst@wi-ch.com'>winst@wi-ch.com</a></li>
-						</ul>
-					</div>">Winston Chmielinski</a> 
-				/ <a href= "http://spokehub.org/accounts/coultc" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/coultc'>
-							<div class='cover-photo' id='coult-cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/5de5d0e53a.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>coultc</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>Spokehub Studio Manager</li>
-							<li>Berlin, Germany</li>
-							<li><a href='http://kn-context.com/'target='blank'>KN - Raum für Kunst im Kontext</a></li>
-							<li><a href='mailto:carleen@spokehub.org'>carleen@spokehub.org</a></li>
-						</ul>
-					</div>">Carleen Coulter</a> 
-				/ Dolly Demoratti / Catherine Greig / Tom Horak / Valencia James / Seyhan Musaoglu 
-				/ <a href= "http://spokehub.org/accounts/anders" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/anders'>
-							<div class='cover-photo' id='anders-cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/bc9afb5467.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>anders</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>Cat Slave</li>
-							<li>London, U(c)K</li>
-							<li><a href='https://thraxil.org/'target='blank'>thraxil.org</a></li>
-							<li><a href='mailto:anders@columbia.edu'>anders@columbia.edu</a></li>
-						</ul>
-					</div>">Anders Pearson</a> 
-				/ James Pendergrast 
-				/ <a href= "http://spokehub.org/accounts/valerie" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/valerie'>
-							<div class='cover-photo' id='valerie-cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/thumbs/eb331f4fce.jpg.200x200_q85.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>valerie</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>photographer</li>
-							<li>Berlin, Germany</li>
-							<li><a href='http://editorial.valerieschmidt.de/'target='blank'>editorial works</a></li>
-							<li><a href='mailto:mail@valerieschmidt.de'>mail@valerieschmidt.de</a></li>
-						</ul>
-					</div>">Valerie Schmidt</a> 
-				/ <a href= "http://spokehub.org/accounts/onikasi" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/onikasi'>
-							<div class='cover-photo' id='onika-cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/b3ae9b4f09.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>onikasi</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>Innovation Strategist</li>
-							<li>BERLIN, Germany</li>
-							<li><a href='http://spokehub.tumblr.com/'target='blank'>Spoke The Hubbub</a></li>
-							<li><a href='mailto:onika@spokehub.org'>onika@spokehub.org</a></li>
-						</ul>
-					</div>">Onika Simon</a> 
-				/ <a href= "http://spokehub.org/accounts/an" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/an'>
-							<div class='cover-photo' id='an-cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/thumbs/3b94493ad3.jpg.200x200_q85.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>an</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>art critic, curator, art educator</li>
-							<li>Berlin, Germany</li>
-							<li><a href='http://www.anpaenhuysen.com%2C%20anpaenhuysen.blogspot.com/'target='blank'>An Paenhuysen</a></li>
-							<li><a href='mailto:paenhuysenan@gmail.com'>paenhuysenan@gmail.com</a></li>
-						</ul>
-					</div>">An Paenhuysen</a> 
-				/ <a href= "http://spokehub.org/accounts/kidethnic" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='http://spokehub.org/accounts/kidethnic'>
-							<div class='cover-photo'></div>
-							<div class='profile-img-thumb' style='background-image:url(http://spokehub.org/uploads/mugshots/thumbs/8304521653.jpg.200x200_q85.jpg);'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>kidethnic</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>Filmmaker/Storyteller</li>
-							<li>Durham, NC USA</li>
-							<li><a href='http://kidethnic.com/'target='blank'>KidEthnic</a></li>
-							<li><a href='mailto:saleem@kidethnic.com'>saleem@kidethnic.com</a></li>
-						</ul>
-					</div>"> Saleem Reshamwala</a> / Richard Watkins</p>
+			<p>Gaspar Bonta
+          / Tim Boyce 
+				  / {% hover_link 'kwamec' 'Kwame Charles' %} 
+				  / {% hover_link 'Winst' 'Winston Chmielski' %}
+				  / {% hover_link 'coultc' 'Carleen Coulter' %} 
+				  / Dolly Demoratti
+          / Catherine Greig
+          / Tom Horak
+          / Valencia James
+          / Seyhan Musaoglu 
+				  / {% hover_link 'anders' 'Anders Pearson' %} 
+				  / James Pendergrast 
+				  / {% hover_link 'valerie' 'Valerie Schmidt' %}
+				  / {% hover_link 'onikasi' 'Onika Simon' %}
+				  / {% hover_link 'an' 'An Paenhuysen' %} 
+				  / {% hover_link 'kidethnic' 'Saleem Reshemwala' %}
+          / Richard Watkins</p>
 			<p class="project-desc">The 5th annual ARTSHO exhibition on the subject of experimentation, a process both artists and scientists share. The team included 8 international artists and an architect, who worked together to convert a derelict space into a makeshift art lab, in under 3 days. The aim of the event itself was to produce 8 interactive artworks with the public in real time. Social media posts with the hashtag #ARTSHO5 were streamed into the lab 24/7 and a 9th project involved transatlantic collaboration between Istanbul, Turkey and Durham, USA.</p>
 		</div>
 
