@@ -86,13 +86,15 @@ Linux, or that you are familiar enough with your docker setup to make
 the necessary adjustments)
 
 ```
-$ make build
 $ make compose-migrate
 $ make compose-createsuperuser
+$ make compose-waffle-flags
 $ make compose-run
 ```
 
-The first step will take a while since it's building the image from scratch
+The first step will take a while since it's building the image from
+scratch. The `create-superuser` step will ask you to create a user,
+which you can later log in to the site with as an admin.
 
 From then on, you'll mostly just need to run `make compose-run` to
 start up the dev server.

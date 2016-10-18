@@ -12,4 +12,7 @@ compose-migrate:
 compose-createsuperuser:
 	docker-compose run web manage createsuperuser
 
+compose-waffle-flags:
+	docker-compose run web manage waffle_flag main --everyone --create
+
 .PHONY: build compose-run compose-migrate compose-superuser
