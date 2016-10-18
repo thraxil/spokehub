@@ -20,32 +20,9 @@
 			          </div>
 
       	        <div class="project-writeup">
-			              <p> {% user_profile 'kwamec' as u %}
-                        {% if u and u.profile %}
-                            <a href="{% url 'userena_profile_detail' u.username %}"
-                               class='btn btn-primary btn-large' data-popover="true" data-html="true"
-                               data-content="{{u.profile.hover_div}}">Kwame Charles</a>
-                        {% else %}
-                            Kwame Charles
-                        {% endif %} /
-                        {% user_profile 'Onika' as u %}
-                        {% if u and u.profile %}
-                        <a href="{% url 'userena_profile_detail' u.username %}"
-                           class='btn btn-primary btn-large' data-popover="true" data-html="true"
-                           data-content="{{u.profile.hover_div}}">Onika Simon</a>
-                        {% else %}
-                        Onika Simon
-                        {% endif %}
-                        /
-                        {% user_profile 'JQ' as u %}
-                        {% if u and u.profile %}
-                        <a href="{% url 'userena_profile_detail' u.username %}"
-                           class='btn btn-primary btn-large' data-popover="true" data-html="true"
-                           data-content="{{u.profile.hover_div}}">Julien Queyrane</a>
-                        {% else %}
-                        Julien Queyrane
-                        {% endif %}
-
+			              <p> {% hover_link 'kwamec' 'Kwame Charles' %} /
+                        {% hover_link 'Onika' 'Onika Simon' %} /
+                        {% hover_link 'JQ' 'Julien Queyrane' %}
 		            </div>
 
 		        </div>
