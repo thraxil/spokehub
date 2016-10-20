@@ -63,11 +63,11 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 TEST_OUTPUT_DIR = 'reports'
 
 PROJECT_APPS = [
-    'spokehub.main',
+    'spokehub.main', 'spokehub.work',
 ]
 
 TEST_PROJECT_APPS = [
-    'spokehub.main',
+    'spokehub.main', 'spokehub.work',
 ]
 
 ALLOWED_HOSTS = ['localhost', 'spokehub.com', 'spokehub.org']
