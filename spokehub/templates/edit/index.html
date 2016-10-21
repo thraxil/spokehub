@@ -1,6 +1,18 @@
 {% extends 'edit/base.html' %}
 
 {% block content %}
+<ol class="breadcrumb">
+  <li class="active">Edit Site</li>
+</ol>
+    
     <h1>Edit Interface</h1>
 
+    <h2>Project Samples</h2>
+
+<div class="list-group">
+        <a class="list-group-item" href="{% url 'add-project' %}"><span class="glyphicon
+        glyphicon-plus"></span> Add New One</a>
+</div>
+
+    
 {% endblock %}
