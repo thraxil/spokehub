@@ -85,7 +85,6 @@ django-discover-jenkins==0.1.4
 django-smoketest==1.0.0
 django-extensions==1.7.4
 django-ga-context==0.1.0
-django-impersonate==1.0.1
 django-registration-redux==1.4
 django-markwhat==1.5
 easy-thumbnails==2.3

@@ -104,7 +104,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'impersonate.middleware.ImpersonateMiddleware',
     'waffle.middleware.WaffleMiddleware',
 ]
 
@@ -132,7 +131,6 @@ INSTALLED_APPS = [
     'discover_jenkins',
     'smoketest',
     'django_extensions',
-    'impersonate',
     'registration',
     'spokehub.main',
     'spokehub.profile',
