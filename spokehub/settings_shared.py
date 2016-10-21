@@ -63,11 +63,11 @@ TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 TEST_OUTPUT_DIR = 'reports'
 
 PROJECT_APPS = [
-    'spokehub.main', 'spokehub.work',
+    'spokehub.main', 'spokehub.work', 'spokehub.edit',
 ]
 
 TEST_PROJECT_APPS = [
-    'spokehub.main', 'spokehub.work',
+    'spokehub.main', 'spokehub.work', 'spokehub.edit',
 ]
 
 ALLOWED_HOSTS = ['localhost', 'spokehub.com', 'spokehub.org']
@@ -126,6 +126,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'compressor',
     'django_statsd',
+    'bootstrap3',
     'bootstrapform',
     'waffle',
     'discover_jenkins',
@@ -138,6 +139,7 @@ INSTALLED_APPS = [
     'spokehub.instagram',
     'spokehub.invite',
     'spokehub.work',
+    'spokehub.edit',
     'gunicorn',
     'userena',
     'guardian',

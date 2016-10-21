@@ -115,7 +115,7 @@ urlpatterns = [
         name='reply-to-question'),
 
     url(r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
-
+    url(r'^edit/', include('spokehub.edit.urls')),
     url(r'^invite/', include('spokehub.invite.urls')),
     url(r'^contact/', include('spokehub.contact.urls')),
     url(r'^broadcast/', include('spokehub.broadcast.urls')),
