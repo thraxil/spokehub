@@ -1,13 +1,14 @@
 <div class="how black-bg">
 
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
+    {% load flatblocks %}
 
 {% block content %}
 	<div id="site-wrapper"> 
 		<div class="content-wrapper content-container">
 
 		    <div class="page-heading">
-		      <h2><b>HOW</b> and why we formed our hub</h2>
+		        <h2>{% flatblock "how-subhead" %}</h2>
 		    </div>
 
 	      <!--  Outer wrapper for presentation only, this can be anything you like -->

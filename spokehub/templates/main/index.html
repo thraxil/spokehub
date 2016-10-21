@@ -5,6 +5,7 @@
 {% load waffle_tags %}
     {% load markup %}
     {% load target_blank %}
+    {% load flatblocks %}
     {% load cache %}
 
 {% block content %}
@@ -13,7 +14,7 @@
 	<div class="content-wrapper content-container now">
 
       <div class="page-heading">
-        <h2><b>NOW</b> on social media {#spokehubnow}</h2>
+          <h2>{% flatblock "now-subhead" %}</h2>
       </div>
 
       <div id="grid" class="clearfix" data-columns>

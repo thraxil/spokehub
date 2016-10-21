@@ -3,6 +3,7 @@
 {% extends 'base.html' %}
     {% load markup %}
     {% load target_blank %}
+    {% load flatblocks %}
 
 {% block content %}
 
@@ -18,7 +19,7 @@
             		{% endif %}
 				</ul>
 
-		    	<h2><b>WE</b> ask questions with visual answers</h2>
+		    <h2>{% flatblock "we-subhead" %}</h2>
 
 		    </div>
 

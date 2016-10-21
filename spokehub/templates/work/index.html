@@ -1,13 +1,14 @@
 <div class="work black-bg">
 
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
+    {% load flatblocks %}
 
 {% block content %}
 	<div id="site-wrapper"> 
 		<div class="content-wrapper content-container">
 
 		    <div class="page-heading">
-		      <h2><b>WORK</b> WE CAN SHOW ONLINE</h2>
+		      <h2>{% flatblock "work-subhead" %}</h2>
 		    </div>
 
 			<div class="projects-section-container">

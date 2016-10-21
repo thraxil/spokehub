@@ -2,15 +2,16 @@
 
 <div class="now">
 
-{% extends 'base.html' %}
+    {% extends 'base.html' %}
+    {% load flatblocks %}
 
 {% block content %}
 
 	<div id="site-wrapper"> 
 		<div class="content-wrapper content-container">
 
-			    <div class="page-heading">
-			    	<h2><b>NOW</b> on social media {#spokehubnow}</h2>
+			  <div class="page-heading">
+		        <h2>{% flatblock "now-subhead" %}</h2>            
 			    </div>
 
 				<div id="grid" class="clearfix" data-columns>
