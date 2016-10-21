@@ -146,6 +146,7 @@ INSTALLED_APPS = [
     'easy_thumbnails',
     'spokehub.gravatar',
     'spokehub.broadcast',
+    'flatblocks',
 ]
 
 INTERNAL_IPS = ('127.0.0.1', )

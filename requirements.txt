@@ -93,5 +93,6 @@ django-guardian==1.4.6
 django-userena==2.0.1
 django-picklefield==0.3.2
 django-libsass==0.7
+django-flatblocks==0.9.3
 
 opbeat==3.3.2
