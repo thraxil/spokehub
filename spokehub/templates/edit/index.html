@@ -4,8 +4,14 @@
 <ol class="breadcrumb">
   <li class="active">Edit Site</li>
 </ol>
-    
-    <h1>Edit Interface</h1>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+    <h1>Edit Site</h1>
 
     <h2>Project Samples</h2>
 

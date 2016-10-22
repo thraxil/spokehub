@@ -11,6 +11,12 @@
         <div class="col-md-10">
             <h1>Edit Project</h1>
 
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            
             <form action="." method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{form|bootstrap}}

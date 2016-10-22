@@ -1,3 +1,5 @@
+from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -15,11 +17,12 @@ class IndexView(TemplateView):
         return context
 
 
-class AddProjectView(CreateView):
+class AddProjectView(SuccessMessageMixin, CreateView):
     template_name = "edit/add_project.html"
     model = Project
     form_class = CreateProjectForm
     success_url = reverse_lazy('edit-index')
+    success_message = "%(title)s was created successfully"
 
     def form_valid(self, form):
         if 'thumbnail' in self.request.FILES:
@@ -28,10 +31,11 @@ class AddProjectView(CreateView):
         return super(AddProjectView, self).form_valid(form)
 
 
-class ProjectUpdate(UpdateView):
+class ProjectUpdate(SuccessMessageMixin, UpdateView):
     model = Project
     form_class = EditProjectForm
     success_url = reverse_lazy('edit-index')
+    success_message = "%(title)s updated"
 
     def form_valid(self, form):
         if 'thumbnail' in self.request.FILES:
@@ -43,3 +47,8 @@ class ProjectUpdate(UpdateView):
 class ProjectDelete(DeleteView):
     model = Project
     success_url = reverse_lazy('edit-index')
+    success_message = "Project Deleted"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(ProjectDelete, self).delete(request, *args, **kwargs)
