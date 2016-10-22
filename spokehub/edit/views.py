@@ -9,6 +9,11 @@ from spokehub.work.models import Project
 class IndexView(TemplateView):
     template_name = "edit/index.html"
 
+    def get_context_data(self, **kwargs):
+        context = super(IndexView, self).get_context_data(**kwargs)
+        context['projects'] = Project.objects.all()
+        return context
+
 
 class AddProjectView(View):
     template_name = "edit/add_project.html"

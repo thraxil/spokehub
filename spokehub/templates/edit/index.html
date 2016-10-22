@@ -10,8 +10,14 @@
     <h2>Project Samples</h2>
 
 <div class="list-group">
-        <a class="list-group-item" href="{% url 'add-project' %}"><span class="glyphicon
-        glyphicon-plus"></span> Add New One</a>
+    <a class="list-group-item" href="{% url 'add-project' %}">
+        <span class="glyphicon glyphicon-plus"></span> Add New One
+    </a>
+
+    {% for project in projects %}
+        <a class="list-group-item">{{project.title}}</a>
+    {% endfor %}
+
 </div>
 
     
