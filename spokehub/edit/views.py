@@ -6,7 +6,7 @@ from django.views.generic import View, TemplateView
 from django.views.generic.edit import UpdateView
 
 from spokehub.work.models import Project
-from spokehub.work.forms import ProjectForm
+from spokehub.work.forms import EditProjectForm
 
 
 class IndexView(TemplateView):
@@ -38,5 +38,5 @@ class AddProjectView(View):
 
 class ProjectUpdate(UpdateView):
     model = Project
-    form_class = ProjectForm
+    form_class = EditProjectForm
     success_url = reverse_lazy('edit-index')
