@@ -9,11 +9,16 @@
     
     <h1>Add Project</h1>
 
-    <form action="." method="post">
+    <form action="." method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
         {{ form|bootstrap }}
-        
+        <div class="form-group">
+            <label for="thumbnail">Thumbnail</label>
+            <input type="file" name="thumbnail" id="thumbnail" />
+            <p class="help-text">Image will automatically be cropped to square and resized.</p>
+        </div>
+            
         <input type="submit" class="btn btn-primary" value="add project" />
 
     </form>

@@ -1,3 +1,6 @@
+import os.path
+
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -23,6 +26,15 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['-cardinality']
+
+    def save_thumbnail(self, f):
+        ext = os.path.splitext(f.name)[1].lower()
+        if ext not in ['.jpg', '.jpeg', '.gif', '.png']:
+            # unsupported image format
+            return None
+        self.thumb_hash = settings.UPLOADER.upload(f)
+        self.thumb_extension = ext
+        self.save()
 
 
 class ProjectContributor(models.Model):

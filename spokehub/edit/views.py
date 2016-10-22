@@ -21,11 +21,23 @@ class AddProjectView(CreateView):
     form_class = CreateProjectForm
     success_url = reverse_lazy('edit-index')
 
+    def form_valid(self, form):
+        if 'thumbnail' in self.request.FILES:
+            image = self.request.FILES['thumbnail']
+            form.instance.save_thumbnail(image)
+        return super(AddProjectView, self).form_valid(form)
+
 
 class ProjectUpdate(UpdateView):
     model = Project
     form_class = EditProjectForm
     success_url = reverse_lazy('edit-index')
+
+    def form_valid(self, form):
+        if 'thumbnail' in self.request.FILES:
+            image = self.request.FILES['thumbnail']
+            form.instance.save_thumbnail(image)
+        return super(ProjectUpdate, self).form_valid(form)
 
 
 class ProjectDelete(DeleteView):

@@ -11,10 +11,31 @@
         <div class="col-md-10">
             <h1>Edit Project</h1>
 
-            <form action="." method="post">
+            <form action="." method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{form|bootstrap}}
 
+                <div class="form-group">
+                    {% if object.thumb_hash %}
+                        <label for="thumbnail">Replace Thumbnail</label>
+                    {% else %}
+                        <label for="thumbnail">Add Thumbnail</label>
+                    {% endif %}
+
+                    {% if object.thumb_hash %}
+                        <div class="media">
+                            <div class="media-left">
+                                <img class="media-object" width="140"  height="140" src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{object.thumb_hash}}/140s/image{{object.thumb_extension}}" />
+                            </div>
+                            <div class="media-body">
+                                <input type="file" name="thumbnail" id="thumbnail" />
+                                <p class="help-text">Image will automatically be cropped to square and resized.</p>
+                            </div>
+                        </div>
+                    {% else %}
+                        <input type="file" name="thumbnail" id="thumbnail" />
+                    {% endif %}
+                </div>
                 <input type="submit" value="save" class="btn btn-primary"/>
             </form>
         </div>
