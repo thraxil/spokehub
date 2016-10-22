@@ -1,5 +1,6 @@
 {% extends 'edit/base.html' %}
 {% load bootstrap %}
+{% load bootstrap3 %}
 
 {% block content %}
     <ol class="breadcrumb">
@@ -11,11 +12,7 @@
         <div class="col-md-10">
             <h1>Edit Project</h1>
 
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}</div>
-                {% endfor %}
-            {% endif %}
+            {% bootstrap_messages %}
             
             <form action="." method="post" enctype="multipart/form-data">
                 {% csrf_token %}
