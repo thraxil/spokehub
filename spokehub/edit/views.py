@@ -1,9 +1,12 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from django.core.urlresolvers import reverse_lazy
 from django.views.generic import View, TemplateView
+from django.views.generic.edit import UpdateView
 
 from spokehub.work.models import Project
+from spokehub.work.forms import ProjectForm
 
 
 class IndexView(TemplateView):
@@ -31,3 +34,9 @@ class AddProjectView(View):
             slug=slug, title=title, subhead=subhead,
             date=date, description=description)
         return HttpResponseRedirect(reverse('edit-index', args=[]))
+
+
+class ProjectUpdate(UpdateView):
+    model = Project
+    form_class = ProjectForm
+    success_url = reverse_lazy('edit-index')

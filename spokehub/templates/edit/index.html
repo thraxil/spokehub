@@ -15,7 +15,7 @@
     </a>
 
     {% for project in projects %}
-        <a class="list-group-item">{{project.title}}</a>
+        <a class="list-group-item" href="{% url 'edit-project' project.pk %}">{{project.title}}</a>
     {% endfor %}
 
 </div>
