@@ -1,6 +1,6 @@
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from spokehub.work.models import Project
 from spokehub.work.forms import EditProjectForm, CreateProjectForm
@@ -25,4 +25,9 @@ class AddProjectView(CreateView):
 class ProjectUpdate(UpdateView):
     model = Project
     form_class = EditProjectForm
+    success_url = reverse_lazy('edit-index')
+
+
+class ProjectDelete(DeleteView):
+    model = Project
     success_url = reverse_lazy('edit-index')
