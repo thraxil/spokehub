@@ -18,6 +18,13 @@
     <link href="{% bootstrap_css_url %}" rel="stylesheet">
         <link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
         {% block css %}{% endblock %}
+        <style type="text/css">
+            .show-thumb {
+		        width: 218px;
+		        height: 218px;
+		        float: left;
+            }
+        </style>
   <script src="{% bootstrap_jquery_url %}"></script>
   <script src="{% bootstrap_javascript_url %}"></script>
 </head>

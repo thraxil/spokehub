@@ -36,6 +36,17 @@ class Project(models.Model):
         self.thumb_extension = ext
         self.save()
 
+    def add_image(self, f):
+        ext = os.path.splitext(f.name)[1].lower()
+        if ext not in ['.jpg', '.jpeg', '.gif', '.png']:
+            # unsupported image format
+            return None
+        rhash = settings.UPLOADER.upload(f)
+        self.projectmedia_set.create(
+            image_hash=rhash,
+            image_extension=ext,
+        )
+
     def publish(self):
         self.published = True
         self.save()

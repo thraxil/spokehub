@@ -4,7 +4,7 @@ from django.contrib.admin.views.decorators import (
 from .views import (
     IndexView, AddProjectView, ProjectUpdate, ProjectDelete,
     ProjectAddContributor, ProjectContributorDelete,
-    ProjectPublish, ProjectDraft,
+    ProjectPublish, ProjectDraft, ProjectAddMedia,
 )
 
 
@@ -17,6 +17,8 @@ urlpatterns = [
         name='delete-project'),
     url(r'work/(?P<pk>\d+)/add_contributor/$',
         staff(ProjectAddContributor.as_view()), name='add-contributor'),
+    url(r'work/(?P<pk>\d+)/add_media/$',
+        staff(ProjectAddMedia.as_view()), name='add-media'),
     url(r'work/(?P<pk>\d+)/publish/$', staff(ProjectPublish.as_view()),
         name='publish-project'),
     url(r'work/(?P<pk>\d+)/draft/$', staff(ProjectDraft.as_view()),

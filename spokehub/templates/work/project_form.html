@@ -106,7 +106,30 @@
                 </div>
 
                 <div class="tab-pane" id="media">
-                    <p>nothing here yet</p>
+                    <form action="{% url 'add-media' object.pk %}" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <input type="file" name="image" />
+                                </div>
+                                {% buttons submit="Add Image" %}{% endbuttons %}
+                            </div>
+                        </div>
+                    </form>
+
+                    {% if object.projectmedia_set.count %}
+                        <h3>Media</h3>
+                        {% for media in object.projectmedia_set.all %}
+                        <div class="thumbnail show-thumb">
+                            {% if media.image_hash %}
+                                <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/200w150h/image{{media.image_extension}}" class="img-responsive" />
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    
                 </div>
             </div>
         </div>

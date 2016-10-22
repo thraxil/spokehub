@@ -75,6 +75,16 @@ class ProjectAddContributor(View):
         return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
 
 
+class ProjectAddMedia(View):
+    def post(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        if 'image' in request.FILES:
+            image = self.request.FILES['image']
+            project.add_image(image)
+            messages.success(self.request, "image added")
+        return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
+
+
 class ProjectPublish(View):
     def post(self, request, pk):
         project = get_object_or_404(Project, pk=pk)
