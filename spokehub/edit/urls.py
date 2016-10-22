@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from .views import (
-    IndexView, AddProjectView, ProjectUpdate, ProjectDelete)
+    IndexView, AddProjectView, ProjectUpdate, ProjectDelete,
+    ProjectAddContributor,
+)
 
 
 urlpatterns = [
@@ -9,4 +11,6 @@ urlpatterns = [
     url(r'work/(?P<pk>\d+)/$', ProjectUpdate.as_view(), name='edit-project'),
     url(r'work/(?P<pk>\d+)/delete/$', ProjectDelete.as_view(),
         name='delete-project'),
+    url(r'work/(?P<pk>\d+)/add_contributor/$', ProjectAddContributor.as_view(),
+        name='add-contributor'),
 ]

@@ -2,4 +2,19 @@
 <h2>{{object.subhead}}</h2>
 <h3>{{object.date}}</h3>
 
+{% if object.projectcontributor_set.count %}
+    <ul>
+        {% for c in object.projectcontributor_set.all %}
+            <li>
+                {% if c.user %}
+                    <a href="{% url 'userena_profile_detail' c.user.username %}">
+                        {% if c.fullname %}{{c.fullname}}{% else %}{{c.user.first_name}} {{c.user.last_name}}{% endif %}</a>
+                {% else %}
+                    {{c.fullname}}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
 {{object.description}}

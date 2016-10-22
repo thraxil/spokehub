@@ -1,7 +1,10 @@
 from django.contrib import messages
+from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.urlresolvers import reverse_lazy
-from django.views.generic import TemplateView
+from django.core.urlresolvers import reverse_lazy, reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
+from django.views.generic import TemplateView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from spokehub.work.models import Project
@@ -37,6 +40,11 @@ class ProjectUpdate(SuccessMessageMixin, UpdateView):
     success_url = reverse_lazy('edit-index')
     success_message = "%(title)s updated"
 
+    def get_context_data(self, **kwargs):
+        context = super(ProjectUpdate, self).get_context_data(**kwargs)
+        context['users'] = User.objects.all()
+        return context
+
     def form_valid(self, form):
         if 'thumbnail' in self.request.FILES:
             image = self.request.FILES['thumbnail']
@@ -52,3 +60,16 @@ class ProjectDelete(DeleteView):
     def delete(self, request, *args, **kwargs):
         messages.success(self.request, self.success_message)
         return super(ProjectDelete, self).delete(request, *args, **kwargs)
+
+
+class ProjectAddContributor(View):
+    def post(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        user = request.POST.get('user')
+        fullname = request.POST.get('fullname')
+        project.projectcontributor_set.create(
+            user_id=user,
+            fullname=fullname,
+        )
+        messages.success(self.request, "contributor added")
+        return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
