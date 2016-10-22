@@ -1,4 +1,5 @@
 {% extends 'edit/base.html' %}
+{% load bootstrap %}
 
 {% block content %}
     <ol class="breadcrumb">
@@ -11,45 +12,7 @@
     <form action="." method="post">
         {% csrf_token %}
 
-        <div class="form-group">
-            <label for="slug">
-                Slug
-            </label>
-            <input type="text" name="slug" id="slug" value="" class="form-control" /></input>
-            <p class="help-block">The slug is the bit that goes in the URL. So, <tt>https://spokehub.org/work/<b>this-is-the-slug</b>/</tt>. Keep it short, lowercase, no spaces or punctuation other than dashes, and slugs must all be unique.</p>
-        </div>
-
-        <div class="form-group">
-            <label for="title">
-                Title
-            </label>
-            <input type="text" name="title" id="title" value="" class="form-control" /></input>
-        </div>
-
-        <div class="form-group">
-            <label for="subhead">
-                Subhead
-            </label>
-            <input type="text" name="subhead" id="subhead" value="" class="form-control" /></input>
-        </div>
-
-        <div class="form-group">
-            <label for="date">
-                Date
-            </label>
-            <input type="text" name="date" id="date" value="" class="form-control" /></input>
-        </div>
-
-        <div class="form-group">
-            <label for="description">
-                Description
-            </label>
-            <textarea name="description" id="description" rows="10" class="form-control"></textarea>
-            <p class="help-block">
-                <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> and simple HTML may be used here.
-            </p>
-        </div>
-
+        {{ form|bootstrap }}
         
         <input type="submit" class="btn btn-primary" value="add project" />
 

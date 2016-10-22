@@ -1,12 +1,9 @@
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import render
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import View, TemplateView
-from django.views.generic.edit import UpdateView
+from django.views.generic import TemplateView
+from django.views.generic.edit import CreateView, UpdateView
 
 from spokehub.work.models import Project
-from spokehub.work.forms import EditProjectForm
+from spokehub.work.forms import EditProjectForm, CreateProjectForm
 
 
 class IndexView(TemplateView):
@@ -18,22 +15,11 @@ class IndexView(TemplateView):
         return context
 
 
-class AddProjectView(View):
+class AddProjectView(CreateView):
     template_name = "edit/add_project.html"
-
-    def get(self, request):
-        return render(request, self.template_name, dict())
-
-    def post(self, request):
-        slug = request.POST.get('slug')
-        title = request.POST.get('title')
-        subhead = request.POST.get('subhead')
-        date = request.POST.get('date')
-        description = request.POST.get('description')
-        Project.objects.create(
-            slug=slug, title=title, subhead=subhead,
-            date=date, description=description)
-        return HttpResponseRedirect(reverse('edit-index', args=[]))
+    model = Project
+    form_class = CreateProjectForm
+    success_url = reverse_lazy('edit-index')
 
 
 class ProjectUpdate(UpdateView):

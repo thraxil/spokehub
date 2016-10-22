@@ -4,10 +4,18 @@ from django.db import models
 
 class Project(models.Model):
     title = models.TextField(blank=True, default="")
-    slug = models.SlugField()
+    slug = models.SlugField(
+        help_text="""The slug is the bit that goes in the URL. """
+        """So, <tt>https://spokehub.org/work/<b>this-is-the-slug</b>/</tt>. """
+        """Keep it short, lowercase, no spaces or punctuation other """
+        """than dashes, and slugs must all be unique.""")
     subhead = models.TextField(blank=True, default="")
     date = models.TextField(blank=True, default="")
-    description = models.TextField(blank=True, default="")
+    description = models.TextField(
+        blank=True, default="",
+        help_text="""<a href="https://github.com/adam-p/"""
+        """markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> """
+        """and simple HTML may be used here.""")
     published = models.BooleanField(default=False)
     thumb_hash = models.TextField(blank=True, null=True)
     thumb_extension = models.TextField(blank=True, null=True)

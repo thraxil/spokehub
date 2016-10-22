@@ -13,3 +13,16 @@ class EditProjectForm(ModelForm):
             'subhead': TextInput(),
             'date': TextInput(),
         }
+
+
+class CreateProjectForm(ModelForm):
+    class Meta:
+        model = Project
+        fields = ['slug', 'title', 'subhead', 'date', 'description']
+
+        widgets = {
+            'slug': TextInput(),
+            'title': TextInput(),
+            'subhead': TextInput(),
+            'date': TextInput(),
+        }
