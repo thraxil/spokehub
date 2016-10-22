@@ -18,8 +18,8 @@
     <link href="{% bootstrap_css_url %}" rel="stylesheet">
         <link rel="shortcut icon" href="{{STATIC_URL}}img/favicon.ico" type="image/x-icon" />
         {% block css %}{% endblock %}
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="{{STATIC_URL}}js/bootstrap.min.js"></script>
+  <script src="{% bootstrap_jquery_url %}"></script>
+  <script src="{% bootstrap_javascript_url %}"></script>
 </head>
 <body id="{% block pageid %}{% endblock %}">
 <div class="container">
