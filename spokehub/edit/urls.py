@@ -1,7 +1,7 @@
 from django.conf.urls import url
 from .views import (
     IndexView, AddProjectView, ProjectUpdate, ProjectDelete,
-    ProjectAddContributor,
+    ProjectAddContributor, ProjectContributorDelete,
 )
 
 
@@ -13,4 +13,6 @@ urlpatterns = [
         name='delete-project'),
     url(r'work/(?P<pk>\d+)/add_contributor/$', ProjectAddContributor.as_view(),
         name='add-contributor'),
+    url(r'contributor/(?P<pk>\d+)/delete/$',
+        ProjectContributorDelete.as_view(), name='remove-contributor'),
 ]

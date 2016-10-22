@@ -7,7 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-from spokehub.work.models import Project
+from spokehub.work.models import Project, ProjectContributor
 from spokehub.work.forms import EditProjectForm, CreateProjectForm
 
 
@@ -73,3 +73,16 @@ class ProjectAddContributor(View):
         )
         messages.success(self.request, "contributor added")
         return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
+
+
+class ProjectContributorDelete(DeleteView):
+    model = ProjectContributor
+    success_message = "Contributor Removed"
+
+    def delete(self, request, *args, **kwargs):
+        messages.success(self.request, self.success_message)
+        return super(ProjectContributorDelete, self).delete(
+            request, *args, **kwargs)
+
+    def get_success_url(self):
+        return reverse('edit-project', args=[self.object.project.pk])

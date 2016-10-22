@@ -72,6 +72,7 @@
                                 {% else %}
                                     {{c.fullname}}
                                 {% endif %}
+                                    <a href="{% url 'remove-contributor' c.pk %}" class="btn pull-right btn-danger btn-xs">Remove</a>
                             </div>
                         {% endfor %}
                     </div>
