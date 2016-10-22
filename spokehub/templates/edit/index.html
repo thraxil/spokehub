@@ -18,7 +18,10 @@
     </a>
 
     {% for project in projects %}
-        <a class="list-group-item" href="{% url 'edit-project' project.pk %}">{{project.title}}</a>
+        <a class="list-group-item" href="{% url 'edit-project' project.pk %}">
+            {% if not project.published %}<span class="label label-info">Draft</span>{% endif %}
+            {{project.title}}
+        </a>
     {% endfor %}
 
 </div>

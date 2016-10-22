@@ -1,3 +1,11 @@
+{% load markup %}
+{% if not object.published %}
+    <h3>!!! Draft. This project has not been published !!!</h3>
+    <p><a href="{% url 'edit-project' object.pk %}">Go back to edit view</a></p>
+    <hr />
+{% endif %}
+
+{% if object.published or request.user.is_staff %}
 <h1>{{object.title}}</h1>
 <h2>{{object.subhead}}</h2>
 <h3>{{object.date}}</h3>
@@ -17,4 +25,7 @@
     </ul>
 {% endif %}
 
-{{object.description}}
+{{object.description|markdown}}
+{% else %}
+<p>you must be a staff member to view drafts</p>
+{% endif %}

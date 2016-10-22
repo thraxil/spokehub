@@ -111,6 +111,30 @@
             </div>
         </div>
         <div class="col-md-2">
+            {% if object.published %}
+                <div class="alert alert-info">
+                    <a href="{% url 'project-detail' object.slug %}" target="_blank" class="btn btn-info">View</a>
+                </div>
+
+                <div class="alert alert-info">
+                    This project is published.
+                    <form action="{% url 'draft-project' object.pk %}" method="post">{% csrf_token %}
+                        {% buttons submit="Revert to Draft" %}{% endbuttons %}
+                    </form>
+                </div>
+            {% else %}
+                <div class="alert alert-info">
+                    <a href="{% url 'project-detail' object.slug %}" class="btn btn-info">Preview</a>
+                </div>
+
+                <div class="alert alert-warning">
+                    This project is only a draft.
+                    <form action="{% url 'publish-project' object.pk %}" method="post">{% csrf_token %}
+                        <input type="submit" value="Publish" class="btn btn-warning">
+                    </form>
+                </div>
+            {% endif %}
+            
             <div class="alert alert-danger">
                 <a class="btn btn-danger" href="{% url 'delete-project' object.pk %}">Delete</a>
             </div>

@@ -36,6 +36,14 @@ class Project(models.Model):
         self.thumb_extension = ext
         self.save()
 
+    def publish(self):
+        self.published = True
+        self.save()
+
+    def draft(self):
+        self.published = False
+        self.save()
+
 
 class ProjectContributor(models.Model):
     project = models.ForeignKey(Project)

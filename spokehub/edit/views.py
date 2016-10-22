@@ -75,6 +75,22 @@ class ProjectAddContributor(View):
         return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
 
 
+class ProjectPublish(View):
+    def post(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        project.publish()
+        messages.success(self.request, "project published")
+        return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
+
+
+class ProjectDraft(View):
+    def post(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        project.draft()
+        messages.success(self.request, "project reverted to draft")
+        return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
+
+
 class ProjectContributorDelete(DeleteView):
     model = ProjectContributor
     success_message = "Contributor Removed"
