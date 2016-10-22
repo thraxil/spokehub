@@ -1,9 +1,13 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.views.generic import View
+from django.views.generic import View, TemplateView
 
 from spokehub.work.models import Project
+
+
+class IndexView(TemplateView):
+    template_name = "edit/index.html"
 
 
 class AddProjectView(View):
