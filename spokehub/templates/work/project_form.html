@@ -63,7 +63,7 @@
                         <h3>Contributors</h3>
                         <div class="list-group">
                         {% for c in object.projectcontributor_set.all %}
-                            <div class="list-group-item">
+                            <div class="list-group-item contributor" id="{{c.pk}}">
                                 {% if c.user %}
                                     <a href="{% url 'userena_profile_detail' c.user.username %}">{{c.user.first_name}} {{c.user.last_name}}</a>
                                     {% if c.fullname %}
@@ -229,6 +229,24 @@
          }
      };
 
+     var saveOrderOfContributors = function() {
+         var url = "{% url 'reorder-project-contributors' object.pk %}";
+         var worktodo = 0;
+         var data = {};
+         jQuery(".contributor").each(function(index, element) {
+             worktodo = 1;
+             var id = jQuery(element).attr('id');
+             data["contributor_" + index] = id;
+         });
+         if (worktodo == 1) {
+             $.ajax({
+                 url: url,
+                 type: 'POST',
+                 data: data
+             })
+         }
+     };
+     
      $(function() {
          $( "#media" ).sortable({
              items : 'div.show-thumb'
@@ -236,6 +254,15 @@
          });
          $( "#media" ).disableSelection();
      });
-    </script>
+
+     $(function() {
+         $( "#contributors" ).sortable({
+             items : 'div.contributor'
+             , axis: "y"
+             , stop: function (event,ui) { saveOrderOfContributors(); }
+         });
+         $( "#contributors" ).disableSelection();
+     });
+</script>
 
 {% endblock %}

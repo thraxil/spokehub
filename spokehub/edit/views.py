@@ -143,3 +143,13 @@ class ReorderProjectMedia(View):
         sis = [int(request.POST["media_%d" % k]) for k in keys]
         project.set_projectmedia_order(sis)
         return HttpResponse(status=200)
+
+
+class ReorderProjectContributors(View):
+    def post(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        keys = [int(k[len('contributor_'):]) for k in request.POST.keys()]
+        keys.sort()
+        sis = [int(request.POST["contributor_%d" % k]) for k in keys]
+        project.set_projectcontributor_order(sis)
+        return HttpResponse(status=200)

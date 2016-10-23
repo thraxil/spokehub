@@ -5,7 +5,7 @@ from .views import (
     IndexView, AddProjectView, ProjectUpdate, ProjectDelete,
     ProjectAddContributor, ProjectContributorDelete,
     ProjectPublish, ProjectDraft, ProjectAddMedia,
-    ProjectMediaDelete, ReorderProjectMedia,
+    ProjectMediaDelete, ReorderProjectMedia, ReorderProjectContributors,
 )
 
 
@@ -26,6 +26,9 @@ urlpatterns = [
         name='draft-project'),
     url(r'work/(?P<pk>\d+)/reorder_media/$',
         staff(ReorderProjectMedia.as_view()), name='reorder-project-media'),
+    url(r'work/(?P<pk>\d+)/reorder_contributors/$',
+        staff(ReorderProjectContributors.as_view()),
+        name='reorder-project-contributors'),
     url(r'contributor/(?P<pk>\d+)/delete/$',
         staff(ProjectContributorDelete.as_view()), name='remove-contributor'),
     url(r'media/(?P<pk>\d+)/delete/$', staff(ProjectMediaDelete.as_view()),
