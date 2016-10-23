@@ -126,10 +126,12 @@
                             {% if media.image_hash %}
                                 <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/200w150h/image{{media.image_extension}}" class="img-responsive" />
                             {% endif %}
+                            <div class="caption">
+                                <a href="{% url 'remove-media' media.pk %}" class="btn btn-danger">Delete</a>
+                            </div>
                         </div>
                         {% endfor %}
                     {% endif %}
-                    
                 </div>
             </div>
         </div>

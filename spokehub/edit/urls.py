@@ -5,6 +5,7 @@ from .views import (
     IndexView, AddProjectView, ProjectUpdate, ProjectDelete,
     ProjectAddContributor, ProjectContributorDelete,
     ProjectPublish, ProjectDraft, ProjectAddMedia,
+    ProjectMediaDelete,
 )
 
 
@@ -25,4 +26,6 @@ urlpatterns = [
         name='draft-project'),
     url(r'contributor/(?P<pk>\d+)/delete/$',
         staff(ProjectContributorDelete.as_view()), name='remove-contributor'),
+    url(r'media/(?P<pk>\d+)/delete/$', staff(ProjectMediaDelete.as_view()),
+        name='remove-media'),
 ]
