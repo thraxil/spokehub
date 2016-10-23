@@ -142,34 +142,32 @@
 
                     {% if object.projectmedia_set.count %}
                         <h3>Media</h3>
-                        <div id="media">
-                            {% for media in object.projectmedia_set.all %}
-                                <div class="thumbnail show-thumb" id="{{media.pk}}">
-                                    {% if media.image_hash %}
-                                        <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/200w150h/image{{media.image_extension}}" class="img-responsive" />
-                                    {% endif %}
-                                    {% if media.youtube_id %}
-                                        <div class="embed video-player">
-                                            <iframe class="youtube-player" type="text/html"
-                                                    width="320" 
-                                                    src="https://www.youtube.com/embed/{{media.youtube_id}}"
-                                                    allowfullscreen frameborder="0">
-                                            </iframe>
-                                        </div>
-                                    {% endif %}
-                                    {% if media.vimeo_id %}
-                                        <div class="embed video-player">
-                                            <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
-                                                    class="embedded-vimeo" frameborder="0"
-                                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                        </div>
-                                    {% endif %}
-                                    <div class="caption">
-                                        <a href="{% url 'remove-media' media.pk %}" class="btn btn-danger">Delete</a>
+                        {% for media in object.projectmedia_set.all %}
+                            <div class="thumbnail show-thumb" id="{{media.pk}}">
+                                {% if media.image_hash %}
+                                    <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/200w150h/image{{media.image_extension}}" class="img-responsive" />
+                                {% endif %}
+                                {% if media.youtube_id %}
+                                    <div class="embed video-player">
+                                        <iframe class="youtube-player" type="text/html"
+                                                width="320" 
+                                                src="https://www.youtube.com/embed/{{media.youtube_id}}"
+                                                allowfullscreen frameborder="0">
+                                        </iframe>
                                     </div>
+                                {% endif %}
+                                {% if media.vimeo_id %}
+                                    <div class="embed video-player">
+                                        <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
+                                                class="embedded-vimeo" frameborder="0"
+                                                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                    </div>
+                                {% endif %}
+                                <div class="caption">
+                                    <a href="{% url 'remove-media' media.pk %}" class="btn btn-danger">Delete</a>
                                 </div>
-                            {% endfor %}
-                        </div>
+                            </div>
+                        {% endfor %}
                     {% endif %}
                 </div>
             </div>
