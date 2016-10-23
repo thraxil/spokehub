@@ -12,19 +12,56 @@
 
     <h2>Project Samples</h2>
 
-<div class="list-group">
+<div class="list-group" id="projects">
     <a class="list-group-item" href="{% url 'add-project' %}">
         <span class="glyphicon glyphicon-plus"></span> Add New One
     </a>
-
     {% for project in projects %}
-        <a class="list-group-item" href="{% url 'edit-project' project.pk %}">
-            {% if not project.published %}<span class="label label-info">Draft</span>{% endif %}
-            {{project.title}}
-        </a>
+        <div class="project list-group-item" id="{{project.pk}}">
+            <span class="handle glyphicon glyphicon-resize-vertical"></span>
+            <a href="{% url 'edit-project' project.pk %}">
+                {% if not project.published %}<span class="label label-info">Draft</span>{% endif %}
+                {{project.title}}
+            </a>
+        </div>
     {% endfor %}
-
 </div>
 
     
+{% endblock %}
+
+{% block js %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <script>
+     var saveOrderOfProjects = function() {
+         var url = "{% url 'reorder-projects' %}";
+         var worktodo = 0;
+         var data = {};
+         jQuery(".project").each(function(index, element) {
+             worktodo = 1;
+             var id = jQuery(element).attr('id');
+             data["project_" + index] = id;
+         });
+         if (worktodo == 1) {
+             $.ajax({
+                 url: url,
+                 type: 'POST',
+                 data: data
+             })
+         }
+     };
+
+     $(function() {
+         $( "#projects" ).sortable({
+             items : 'div.project'
+             , axis: "y"
+             , handle: ".handle"
+             , stop: function (event,ui) { saveOrderOfProjects(); }
+         });
+         $( "#projects" ).disableSelection();
+     });
+    </script>
+
 {% endblock %}

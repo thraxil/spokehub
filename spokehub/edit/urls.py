@@ -6,12 +6,15 @@ from .views import (
     ProjectAddContributor, ProjectContributorDelete,
     ProjectPublish, ProjectDraft, ProjectAddMedia,
     ProjectMediaDelete, ReorderProjectMedia, ReorderProjectContributors,
+    ReorderProjects,
 )
 
 
 urlpatterns = [
     url(r'^$', staff(IndexView.as_view()), name='edit-index'),
     url(r'work/add/$', staff(AddProjectView.as_view()), name='add-project'),
+    url(r'work/reorder_projects/$',
+        staff(ReorderProjects.as_view()), name='reorder-projects'),
     url(r'work/(?P<pk>\d+)/$', staff(ProjectUpdate.as_view()),
         name='edit-project'),
     url(r'work/(?P<pk>\d+)/delete/$', staff(ProjectDelete.as_view()),

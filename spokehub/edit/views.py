@@ -31,6 +31,7 @@ class AddProjectView(SuccessMessageMixin, CreateView):
         if 'thumbnail' in self.request.FILES:
             image = self.request.FILES['thumbnail']
             form.instance.save_thumbnail(image)
+        form.instance.cardinality = Project.objects.all().count() + 1
         return super(AddProjectView, self).form_valid(form)
 
 
@@ -152,4 +153,17 @@ class ReorderProjectContributors(View):
         keys.sort()
         sis = [int(request.POST["contributor_%d" % k]) for k in keys]
         project.set_projectcontributor_order(sis)
+        return HttpResponse(status=200)
+
+
+class ReorderProjects(View):
+    def post(self, request):
+        keys = [int(k[len('project_'):]) for k in request.POST.keys()]
+        keys.sort()
+        sis = [int(request.POST["project_%d" % k]) for k in keys]
+        cnt = Project.objects.all().count()
+        for idx, project_id in enumerate(sis):
+            project = get_object_or_404(Project, pk=project_id)
+            project.cardinality = cnt - idx
+            project.save()
         return HttpResponse(status=200)
