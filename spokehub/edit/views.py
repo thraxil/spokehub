@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse_lazy, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
@@ -133,3 +133,13 @@ class ProjectMediaDelete(DeleteView):
 
     def get_success_url(self):
         return reverse('edit-project', args=[self.object.project.pk])
+
+
+class ReorderProjectMedia(View):
+    def post(self, request, pk):
+        project = get_object_or_404(Project, pk=pk)
+        keys = [int(k[len('media_'):]) for k in request.POST.keys()]
+        keys.sort()
+        sis = [int(request.POST["media_%d" % k]) for k in keys]
+        project.set_projectmedia_order(sis)
+        return HttpResponse(status=200)

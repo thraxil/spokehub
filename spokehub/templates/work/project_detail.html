@@ -29,8 +29,9 @@
 
 {% if object.projectmedia_set.count %}
     <h3>Media</h3>
+    <div id="media">
     {% for media in object.projectmedia_set.all %}
-        <div class="thumbnail show-thumb">
+        <div class="thumbnail show-thumb" id="{{media.pk}}">
             {% if media.image_hash %}
                 <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/600w/image{{media.image_extension}}" class="img-responsive" />
             {% endif %}
@@ -47,6 +48,7 @@
             {% endif %}
         </div>
     {% endfor %}
+    </div>
 {% endif %}
 
 {% else %}

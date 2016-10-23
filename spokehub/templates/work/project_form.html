@@ -142,32 +142,34 @@
 
                     {% if object.projectmedia_set.count %}
                         <h3>Media</h3>
-                        {% for media in object.projectmedia_set.all %}
-                        <div class="thumbnail show-thumb">
-                            {% if media.image_hash %}
-                                <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/200w150h/image{{media.image_extension}}" class="img-responsive" />
-                            {% endif %}
-                            {% if media.youtube_id %}
-                                <div class="embed video-player">
-                                    <iframe class="youtube-player" type="text/html"
-                                            width="320" 
-                                            src="https://www.youtube.com/embed/{{media.youtube_id}}"
-                                            allowfullscreen frameborder="0">
-                                    </iframe>
+                        <div id="media">
+                            {% for media in object.projectmedia_set.all %}
+                                <div class="thumbnail show-thumb" id="{{media.pk}}">
+                                    {% if media.image_hash %}
+                                        <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/200w150h/image{{media.image_extension}}" class="img-responsive" />
+                                    {% endif %}
+                                    {% if media.youtube_id %}
+                                        <div class="embed video-player">
+                                            <iframe class="youtube-player" type="text/html"
+                                                    width="320" 
+                                                    src="https://www.youtube.com/embed/{{media.youtube_id}}"
+                                                    allowfullscreen frameborder="0">
+                                            </iframe>
+                                        </div>
+                                    {% endif %}
+                                    {% if media.vimeo_id %}
+                                        <div class="embed video-player">
+                                            <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
+                                                    class="embedded-vimeo" frameborder="0"
+                                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                        </div>
+                                    {% endif %}
+                                    <div class="caption">
+                                        <a href="{% url 'remove-media' media.pk %}" class="btn btn-danger">Delete</a>
+                                    </div>
                                 </div>
-                            {% endif %}
-                            {% if media.vimeo_id %}
-                                <div class="embed video-player">
-                                    <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
-                                            class="embedded-vimeo" frameborder="0"
-                                            webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                </div>
-                            {% endif %}
-                            <div class="caption">
-                                <a href="{% url 'remove-media' media.pk %}" class="btn btn-danger">Delete</a>
-                            </div>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     {% endif %}
                 </div>
             </div>
@@ -203,5 +205,39 @@
         </div>
 
     </div>
+
+{% endblock %}
+
+{% block js %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+
+    <script>
+     var saveOrderOfMedia = function() {
+         var url = "{% url 'reorder-project-media' object.pk %}";
+         var worktodo = 0;
+         var data = {};
+         jQuery(".show-thumb").each(function(index, element) {
+             worktodo = 1;
+             var id = jQuery(element).attr('id');
+             data["media_" + index] = id;
+         });
+         if (worktodo == 1) {
+             $.ajax({
+                 url: url,
+                 type: 'POST',
+                 data: data
+             })
+         }
+     };
+
+     $(function() {
+         $( "#media" ).sortable({
+             items : 'div.show-thumb'
+             , stop: function (event,ui) { saveOrderOfMedia(); }
+         });
+         $( "#media" ).disableSelection();
+     });
+    </script>
 
 {% endblock %}
