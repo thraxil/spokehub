@@ -1,11 +1,33 @@
-<h2>Projects</h2>
+<div class="work black-bg">
 
-<ul>
-{% for project in object_list %}
-    <li><a href="{% url 'project-detail' project.slug %}">
-        {% if project.thumb_hash %}
-            <img class="media-object" width="400"  height="400"
-                 src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{project.thumb_hash}}/400s/image{{project.thumb_extension}}"
-            />{% endif %} {{project.title}}</a></li>
-{% endfor %}
-    </li>
+    {% extends 'base.html' %}
+    {% load flatblocks %}
+
+    {% block content %}
+	      <div id="site-wrapper"> 
+		        <div class="content-wrapper content-container">
+
+		            <div class="page-heading">
+		                <h2>{% flatblock "work-subhead" %}</h2>
+		            </div>
+
+			          <div class="projects-section-container">
+
+                    {% for project in object_list %}
+				                <a href="{% url 'project-detail' project.slug %}" class="thumb-container-margin">
+					                  <div class="thumb-container">
+						                    <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{project.thumb_hash}}/400s/image{{project.thumb_extension}}" class="thumb">
+						                    <div class="thumb-overlay">
+							                      <h3>{{project.title}}</h3>
+							                      <p>{{project.subhead}}</p>
+						                    </div>
+					                  </div>
+				                </a>
+                    {% endfor %}
+                    <div class="clearfix"></div>
+			          </div>
+		        </div>
+	      </div>
+    {% endblock %}
+
+</div>
