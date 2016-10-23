@@ -34,7 +34,17 @@
             {% if media.image_hash %}
                 <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/600w/image{{media.image_extension}}" class="img-responsive" />
             {% endif %}
-            
+            {% if media.youtube_id %}
+                <iframe class="youtube-player" type="text/html"
+                        src="https://www.youtube.com/embed/{{media.youtube_id}}"
+                        allowfullscreen frameborder="0">
+                </iframe>
+            {% endif %}
+            {% if media.vimeo_id %}
+                <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
+                        class="embedded-vimeo" frameborder="0"
+                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            {% endif %}
         </div>
     {% endfor %}
 {% endif %}

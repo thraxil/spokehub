@@ -1,4 +1,5 @@
 import os.path
+import urlparse
 
 from django.conf import settings
 from django.contrib.auth.models import User
@@ -54,6 +55,19 @@ class Project(models.Model):
     def draft(self):
         self.published = False
         self.save()
+
+    def add_youtube(self, url):
+        if 'youtube.com' in url:
+            url_data = urlparse.urlparse(url)
+            query = urlparse.parse_qs(url_data.query)
+            youtube_id = query["v"][0]
+            self.projectmedia_set.create(youtube_id=youtube_id)
+
+    def add_vimeo(self, url):
+        if 'vimeo.com' in url:
+            url_data = urlparse.urlparse(url)
+            vimeo_id = url_data.path[1:]
+            self.projectmedia_set.create(vimeo_id=vimeo_id)
 
 
 class ProjectContributor(models.Model):

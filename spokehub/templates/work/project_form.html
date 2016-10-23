@@ -112,9 +112,30 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="image">Image</label>
-                                    <input type="file" name="image" />
+                                    <input type="file" name="image" class="form-control" id="image" />
                                 </div>
                                 {% buttons submit="Add Image" %}{% endbuttons %}
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="youtube">Youtube</label>
+                                    <input type="text" name="youtube_url" id="youtube"
+                                           class="form-control"
+                                           placeholder="https://www.youtube.com/watch?v=-kjyltrKZSY"
+                                    />
+                                </div>
+                                {% buttons submit="Add Youtube Video" %}{% endbuttons %}
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="vimeo">Vimeo</label>
+                                    <input type="text" name="vimeo_url" id="vimeo"
+                                           placeholder="https://vimeo.com/188063203"
+                                           class="form-control" />
+                                </div>
+                                {% buttons submit="Add Vimeo Video" %}{% endbuttons %}
                             </div>
                         </div>
                     </form>
@@ -125,6 +146,22 @@
                         <div class="thumbnail show-thumb">
                             {% if media.image_hash %}
                                 <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/200w150h/image{{media.image_extension}}" class="img-responsive" />
+                            {% endif %}
+                            {% if media.youtube_id %}
+                                <div class="embed video-player">
+                                    <iframe class="youtube-player" type="text/html"
+                                            width="320" 
+                                            src="https://www.youtube.com/embed/{{media.youtube_id}}"
+                                            allowfullscreen frameborder="0">
+                                    </iframe>
+                                </div>
+                            {% endif %}
+                            {% if media.vimeo_id %}
+                                <div class="embed video-player">
+                                    <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
+                                            class="embedded-vimeo" frameborder="0"
+                                            webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>
                             {% endif %}
                             <div class="caption">
                                 <a href="{% url 'remove-media' media.pk %}" class="btn btn-danger">Delete</a>

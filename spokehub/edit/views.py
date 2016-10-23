@@ -79,9 +79,17 @@ class ProjectAddMedia(View):
     def post(self, request, pk):
         project = get_object_or_404(Project, pk=pk)
         if 'image' in request.FILES:
-            image = self.request.FILES['image']
+            image = request.FILES['image']
             project.add_image(image)
-            messages.success(self.request, "image added")
+            messages.success(request, "image added")
+        youtube_url = request.POST.get('youtube_url', "")
+        if youtube_url != "":
+            project.add_youtube(youtube_url)
+            messages.success(self.request, "youtube video added")
+        vimeo_url = request.POST.get('vimeo_url', "")
+        if vimeo_url != "":
+            project.add_vimeo(vimeo_url)
+            messages.success(self.request, "vimeo video added")
         return HttpResponseRedirect(reverse('edit-project', args=[pk, ]))
 
 
