@@ -11,18 +11,17 @@
 <h3>{{object.date}}</h3>
 
 {% if object.projectcontributor_set.count %}
-    <ul>
+    <p>
         {% for c in object.projectcontributor_set.all %}
-            <li>
-                {% if c.user %}
-                    <a href="{% url 'userena_profile_detail' c.user.username %}">
-                        {% if c.fullname %}{{c.fullname}}{% else %}{{c.user.first_name}} {{c.user.last_name}}{% endif %}</a>
-                {% else %}
+            {% if c.user %}
+                <a href="{% url 'userena_profile_detail' c.user.username %}">
+                    {% if c.fullname %}{{c.fullname}}{% else %}{{c.user.first_name}} {{c.user.last_name}}{% endif %}</a>
+            {% else %}
                     {{c.fullname}}
-                {% endif %}
-            </li>
+            {% endif %}
+            {% if not forloop.last %}/{% endif %}
         {% endfor %}
-    </ul>
+    </p>
 {% endif %}
 
 {{object.description|markdown}}
