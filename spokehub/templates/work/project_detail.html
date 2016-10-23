@@ -1,55 +1,90 @@
-{% load markup %}
-{% if not object.published %}
-    <h3>!!! Draft. This project has not been published !!!</h3>
-    <p><a href="{% url 'edit-project' object.pk %}">Go back to edit view</a></p>
-    <hr />
-{% endif %}
+<div class="work black-bg">
 
-{% if object.published or request.user.is_staff %}
-<h1>{{object.title}}</h1>
-<h2>{{object.subhead}}</h2>
-<h3>{{object.date}}</h3>
+    {% extends 'base.html' %}
+    {% load user_profile %}
+    {% load markup %}
+    {% block content %}
+	      <div id="site-wrapper"> 
+            <div class="content-wrapper content-container">
+                {% if not object.published %}
+                    <div class="content-wrapper content-container">
+                        <h3>!!! Draft. This project has not been published !!!</h3>
+                        <p><a href="{% url 'edit-project' object.pk %}">Go back to edit view</a></p>
+                    </div>
+                {% endif %}
+                {% if object.published or request.user.is_staff %}
 
-{% if object.projectcontributor_set.count %}
-    <p>
-        {% for c in object.projectcontributor_set.all %}
-            {% if c.user %}
-                <a href="{% url 'userena_profile_detail' c.user.username %}">
-                    {% if c.fullname %}{{c.fullname}}{% else %}{{c.user.first_name}} {{c.user.last_name}}{% endif %}</a>
-            {% else %}
-                    {{c.fullname}}
+                    <div id="work-nav">
+                        {% with previous=object.previous %}
+                            {% if previous %}
+				                        <a href="{% url 'project-detail' previous.slug %}"><i class="mdi mdi-arrow-left"></i> Previous</a>
+                            {% endif %}
+                        {% endwith %}
+				                <a href="{% url 'project-list' %}"><i class="mdi mdi-border-all"></i> View All</a>
+                        {% with next=object.next %}
+                            {% if next %}
+				                        <a href="{% url 'project-detail' next.slug %}">Next <i class="mdi mdi-arrow-right"></i></a>
+                            {% endif %}
+                        {% endwith %}
+		                </div>
+
+		                <div class='swipe-container'>
+		                    <div class='image-swipe-controls' style='text-align:center;'>
+		                        <a href="#" class='left-img-control' onclick='mySwipe.prev()'><i class="mdi mdi-arrow-left"></i></a> 
+		                        <a href="#" class='right-img-control' onclick='mySwipe.next()'><i class="mdi mdi-arrow-right"></i></a>
+		                    </div>
+		                    <div id='mySwipe' style='max-width:865px;width:100%;margin:0 auto' class='swipe'>
+		                        <div class='swipe-wrap'>
+                                {% for media in object.projectmedia_set.all %}
+		                                <div class="slide">
+                                        {% if media.image_hash %}
+                                            <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/full/image{{media.image_extension}}" class="img-responsive" />
+                                        {% endif %}
+                                        {% if media.youtube_id %}
+                                            <iframe class="youtube-embedded" src="https://www.youtube.com/embed/{{media.youtube_id}}" frameborder="0" allowfullscreen></iframe>
+                                        {% endif %}
+                                        {% if media.vimeo_id %}
+                                            <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
+                                                    class="embedded-vimeo" frameborder="0"
+                                                    webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+		                        </div>
+		                    </div>
+		                </div>
+
+    <div class="project-writeup">
+			  <h2>{{object.title}}</h2>
+			  <h2 class="project-medium">{{object.subhead}}</h2>
+			  <p class="project-date">{{object.date}}</p>
+
+            {% if object.projectcontributor_set.count %}
+                <p>
+                    {% for c in object.projectcontributor_set.all %}
+                        {% if c.user and c.user.profile %}
+                            <a href="{% url 'userena_profile_detail' c.user.username %}"
+                               class='btn btn-primary btn-large' data-popover="true" data-html="true"
+                               data-content="{{c.user.profile.hover_div|escape}}">
+                                {% if c.fullname %}{{c.fullname}}{% else %}{{c.user.first_name}} {{c.user.last_name}}{% endif %}
+                            </a>
+                        {% else %}
+                                {{c.fullname}}
+                        {% endif %}
+                        {% if not forloop.last %}/{% endif %}
+                    {% endfor %}
+                </p>
             {% endif %}
-            {% if not forloop.last %}/{% endif %}
-        {% endfor %}
-    </p>
-{% endif %}
 
-{{object.description|markdown}}
+            <p class="project-desc">{{object.description|markdown}}</p>
+    {% else %}
+            <p>you must be a staff member to view drafts</p>
+    {% endif %}
 
-{% if object.projectmedia_set.count %}
-    <h3>Media</h3>
-    <div id="media">
-    {% for media in object.projectmedia_set.all %}
-        <div class="thumbnail show-thumb" id="{{media.pk}}">
-            {% if media.image_hash %}
-                <img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{media.image_hash}}/600w/image{{media.image_extension}}" class="img-responsive" />
-            {% endif %}
-            {% if media.youtube_id %}
-                <iframe class="youtube-player" type="text/html"
-                        src="https://www.youtube.com/embed/{{media.youtube_id}}"
-                        allowfullscreen frameborder="0">
-                </iframe>
-            {% endif %}
-            {% if media.vimeo_id %}
-                <iframe src="https://player.vimeo.com/video/{{media.vimeo_id}}"
-                        class="embedded-vimeo" frameborder="0"
-                        webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            {% endif %}
-        </div>
-    {% endfor %}
-    </div>
-{% endif %}
+		</div>
 
-{% else %}
-<p>you must be a staff member to view drafts</p>
-{% endif %}
+</div>
+	      </div>
+    {% endblock %}
+
+</div>
