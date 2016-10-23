@@ -70,19 +70,23 @@ class Project(models.Model):
             self.projectmedia_set.create(vimeo_id=vimeo_id)
 
     def next(self):
-        next = Project.objects.filter(cardinality__lt=self.cardinality).first()
+        next = Project.objects.filter(
+            cardinality__lt=self.cardinality,
+            published=True).first()
         if next:
             return next
         else:
-            return Project.objects.all().order_by("-cardinality").first()
+            return Project.objects.filter(
+                published=True).order_by("-cardinality").first()
 
     def previous(self):
         previous = Project.objects.filter(
-            cardinality__gt=self.cardinality).first()
+            cardinality__gt=self.cardinality,
+            published=True).first()
         if previous:
             return previous
         else:
-            return Project.objects.all().order_by("cardinality").first()
+            return Project.objects.filter(published=True).order_by("cardinality").first()
 
 
 class ProjectContributor(models.Model):
