@@ -29,10 +29,12 @@
 		                </div>
 
 		                <div class='swipe-container'>
+                        {% if object.projectmedia_set.count > 1 %}
 		                    <div class='image-swipe-controls' style='text-align:center;'>
 		                        <a href="#" class='left-img-control' onclick='mySwipe.prev()'><i class="mdi mdi-arrow-left"></i></a> 
 		                        <a href="#" class='right-img-control' onclick='mySwipe.next()'><i class="mdi mdi-arrow-right"></i></a>
 		                    </div>
+                        {% endif %}
 		                    <div id='mySwipe' style='max-width:865px;width:100%;margin:0 auto' class='swipe'>
 		                        <div class='swipe-wrap'>
                                 {% for media in object.projectmedia_set.all %}
