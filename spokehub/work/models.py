@@ -86,7 +86,8 @@ class Project(models.Model):
         if previous:
             return previous
         else:
-            return Project.objects.filter(published=True).order_by("cardinality").first()
+            return Project.objects.filter(
+                published=True).order_by("cardinality").first()
 
 
 class ProjectContributor(models.Model):
