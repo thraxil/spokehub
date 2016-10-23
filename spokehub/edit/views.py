@@ -43,7 +43,8 @@ class ProjectUpdate(SuccessMessageMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(ProjectUpdate, self).get_context_data(**kwargs)
-        context['users'] = User.objects.all()
+        context['users'] = User.objects.all().order_by(
+            'first_name', 'last_name', 'username')
         return context
 
     def form_valid(self, form):
