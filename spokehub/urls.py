@@ -61,37 +61,7 @@ urlpatterns = [
     url(r'^reply/(?P<pk>\d+)/add_comment/$',
         views.AddCommentView.as_view(), name='add-comment'),
 
-    url(r'^work/$', views.TemplateView.as_view(
-        template_name='work/index.html'), name='work'),
-    url(r'^work/maddie/$', views.TemplateView.as_view(
-        template_name='work/maddie.html'), name='work-maddie'),
-    url(r'^work/havana/$', views.TemplateView.as_view(
-        template_name='work/havana.html'), name='work-havana'),
-    url(r'^work/fightclub/$', views.TemplateView.as_view(
-        template_name='work/fightclub.html'), name='work-fightclub'),
-    url(r'^work/sperry/$', views.TemplateView.as_view(
-        template_name='work/sperry.html'), name='work-sperry'),
-    url(r'^work/supper/$', views.TemplateView.as_view(
-        template_name='work/supper.html'), name='work-supper'),
-    url(r'^work/artsho5/$', views.TemplateView.as_view(
-        template_name='work/artsho5.html'), name='work-artsho5'),
-    url(r'^work/sorry/$', views.TemplateView.as_view(
-        template_name='work/sorry.html'), name='work-sorry'),
-    url(r'^work/bca/$', views.TemplateView.as_view(
-        template_name='work/bca.html'), name='work-bca'),
-    url(r'^work/endemol/$', views.TemplateView.as_view(
-        template_name='work/endemol.html'), name='work-endemol'),
-    url(r'^work/irrelationship/$', views.TemplateView.as_view(
-        template_name='work/irrelationship.html'),
-        name='work-irrelationship'),
-    url(r'^work/redbull/$', views.TemplateView.as_view(
-        template_name='work/redbull.html'), name='work-redbull'),
-    url(r'^work/cisco/$', views.TemplateView.as_view(
-        template_name='work/cisco.html'), name='work-cisco'),
-    url(r'^work/cfg/$', views.TemplateView.as_view(
-        template_name='work/cfg.html'), name='work-cfg'),
-    url(r'^work/utest/$', views.TemplateView.as_view(
-        template_name='work/utest.html'), name='work-utest'),
+    url(r'^work/', include('spokehub.work.urls')),
 
     url(r'^now/$', views.IndexView.as_view(
         template_name='now/index.html'), name='now'),
@@ -116,7 +86,6 @@ urlpatterns = [
 
     url(r'^test/$', TemplateView.as_view(template_name='layout_test.html')),
 
-    url(r'^twerk/', include('spokehub.work.urls')),
     url(r'^edit/', include('spokehub.edit.urls')),
     url(r'^invite/', include('spokehub.invite.urls')),
     url(r'^contact/', include('spokehub.contact.urls')),
