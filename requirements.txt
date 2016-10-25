@@ -95,4 +95,4 @@ django-picklefield==0.3.2
 django-libsass==0.7
 django-flatblocks==0.9.3
 
-opbeat==3.3.2
+opbeat==3.5.0
