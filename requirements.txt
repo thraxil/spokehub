@@ -33,7 +33,7 @@ decorator==4.0.10
 wcwidth==0.1.7
 prompt-toolkit==1.0.8
 ipython==5.1.0
-setuptools==28.7.1
+setuptools==28.8.0
 ipdb==0.10.1
 coverage==4.2
 pyOpenSSL==16.2.0
