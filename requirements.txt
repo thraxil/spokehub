@@ -20,7 +20,7 @@ backports_abc==0.4
 tornado==4.4.2
 cssselect==1.0.0
 lxml==3.6.4
-fuzzywuzzy==0.13.0
+fuzzywuzzy==0.14.0
 sure==1.4.0
 ptyprocess==0.5.1
 pathlib2==2.1.0
