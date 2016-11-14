@@ -12,7 +12,7 @@ mccabe==0.5.2
 pycodestyle==2.0.0
 enum34==1.1.6
 configparser==3.5.0
-flake8==3.1.0
+flake8==3.1.1
 singledispatch==3.4.0.3
 backports.ssl_match_hostname==3.5.0.1
 certifi==2016.9.26
