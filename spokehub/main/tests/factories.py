@@ -1,6 +1,6 @@
 import factory
-from datetime import datetime
 from django.contrib.auth.models import User
+from django.utils import timezone
 from spokehub.main.models import Conversation, Reply, NowPost, Comment
 
 
@@ -38,7 +38,7 @@ class NowPostFactory(factory.DjangoModelFactory):
     class Meta:
         model = NowPost
     screen_name = factory.Sequence(lambda n: 'user{0}'.format(n))
-    created = datetime.now()
+    created = timezone.now()
     service = "twitter"
     service_id = factory.Sequence(lambda n: 'id{0}'.format(n))
     text = "something that would be in a tweet"

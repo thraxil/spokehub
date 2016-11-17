@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
 from django.core import mail
 from django.test import TestCase
+from django.utils import timezone
 from waffle.testutils import override_switch
 from userena.utils import get_user_profile
 from .factories import (
@@ -197,7 +197,7 @@ class NowPostTest(TestCase):
 
     def test_create_instagram(self):
         np = NowPost.objects.create_instagram(
-            "foo", "bar", "text", datetime.now(),
+            "foo", "bar", "text", timezone.now(),
             "http://example.com/image", "http://example.com/video",
             "{}")
         self.assertEqual(np.image_width, 640)
@@ -205,13 +205,13 @@ class NowPostTest(TestCase):
 
     def test_create_twitter(self):
         np = NowPost.objects.create_twitter(
-            "foo", "bar", "text", datetime.now(),
+            "foo", "bar", "text", timezone.now(),
             "{}")
         self.assertEqual(np.service, "twitter")
 
     def test_create_tumblr(self):
         np = NowPost.objects.create_tumblr(
-            "foo", "bar", "text", datetime.now(),
+            "foo", "bar", "text", timezone.now(),
             "http://example.com/image", 640, 480,
             "{}")
         self.assertEqual(np.service, "tumblr")
