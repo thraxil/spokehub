@@ -47,7 +47,7 @@ ipdb==0.10.1
 ipython==5.1.0
 ipython-genutils==0.1.0
 lazy-object-proxy==1.2.2
-libsass==0.11.1
+libsass==0.11.2
 logilab-astng==0.24.3
 logilab-common==1.2.2
 lxml==3.6.4
