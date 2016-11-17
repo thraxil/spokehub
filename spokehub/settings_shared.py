@@ -6,7 +6,6 @@ import mimetypes
 
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = ()
 
@@ -81,20 +80,29 @@ MEDIA_ROOT = "/var/www/spokehub/uploads/"
 MEDIA_URL = '/uploads/'
 STATIC_URL = '/media/'
 SECRET_KEY = 'J#m2{>xXxByAK:RDvyEtJQiH_{fF@<WIJNHd7!Q`q*G:@i'
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
 
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.debug',
-    'django.core.context_processors.request',
-    'gacontext.ga_processor',
-    'django.core.context_processors.static',
-    'django.contrib.messages.context_processors.messages',
-    'spokehub.contact.context.add_contact_form',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS':  [
+            "/var/www/spokehub/templates/",
+            os.path.join(os.path.dirname(__file__), "templates"),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'gacontext.ga_processor',
+                'django.contrib.messages.context_processors.messages',
+                'spokehub.contact.context.add_contact_form',
+            ],
+        },
+    },
+]
 
 MIDDLEWARE_CLASSES = [
     'django_statsd.middleware.GraphiteRequestTimingMiddleware',
@@ -108,11 +116,6 @@ MIDDLEWARE_CLASSES = [
 ]
 
 ROOT_URLCONF = 'spokehub.urls'
-
-TEMPLATE_DIRS = (
-    "/var/www/spokehub/templates/",
-    os.path.join(os.path.dirname(__file__), "templates"),
-)
 
 INSTALLED_APPS = [
     'django.contrib.auth',

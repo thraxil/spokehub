@@ -1,5 +1,6 @@
 import os.path
 import userena.views
+import django.views.static
 
 from django.conf.urls import include, url
 from django.contrib import admin
@@ -94,6 +95,6 @@ urlpatterns = [
     url(r'^stats/$', TemplateView.as_view(template_name="stats.html"),
         name='stats'),
     url(r'^smoketest/', include('smoketest.urls')),
-    url(r'^uploads/(?P<path>.*)$', 'django.views.static.serve',
+    url(r'^uploads/(?P<path>.*)$', django.views.static.serve,
         {'document_root': settings.MEDIA_ROOT}),
 ]
