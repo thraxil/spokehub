@@ -28,7 +28,7 @@ django-registration-redux==1.4
 django-smoketest==1.0.0
 django-statsd-mozilla==0.3.16
 django-userena==2.0.1
-django-waffle==0.11
+django-waffle==0.11.1
 easy-thumbnails==2.3
 ecdsa==0.13
 enum34==1.1.6
@@ -57,7 +57,7 @@ mock==2.0.0
 ndg-httpsclient==0.4.2
 oauth2==1.9.0.post1
 oauthlib==2.0.0
-opbeat==3.3.2
+opbeat==3.5.1
 paramiko==1.16.0
 pathlib2==2.1.0
 pep8==1.7.0
@@ -81,13 +81,13 @@ requests-oauthlib==0.7.0
 rjsmin==1.0.12
 setuptools-scm==1.15.0
 simplegeneric==0.8.1
-simplejson==3.9.0
+simplejson==3.10.0
 singledispatch==3.4.0.3
 six==1.10.0
 sqlparse==0.2.2
 statsd==3.2.1
 sure==1.4.0
-tornado==4.4
+tornado==4.4.2
 traitlets==4.3.1
 tweepy==3.5.0
 versiontools==1.9.1
