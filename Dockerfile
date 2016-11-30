@@ -30,7 +30,7 @@ RUN apt-get update \
 COPY package.json /node/
 RUN cd /node && npm install && touch /node/node_modules/sentinal
 COPY requirements.txt /app/requirements.txt
-RUN /ve/bin/pip install --use-wheel --no-deps --index-url=https://pypi.ccnmtl.columbia.edu/ -r /app/requirements.txt && touch /ve/sentinal
+RUN /ve/bin/pip install --use-wheel --no-deps --extra-index-url=https://pypi.ccnmtl.columbia.edu/ -r /app/requirements.txt && touch /ve/sentinal
 WORKDIR /app
 COPY . /app/
 RUN VE=/ve/ MANAGE="/ve/bin/python manage.py" NODE_MODULES=/node/node_modules make all
