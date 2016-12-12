@@ -8,6 +8,7 @@ colorama==0.3.7
 configparser==3.5.0
 contextlib2==0.5.4
 coverage==4.2
+cryptography==1.7
 cssselect==1.0.0
 decorator==4.0.10
 Django==1.10.4
