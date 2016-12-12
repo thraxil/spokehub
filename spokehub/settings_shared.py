@@ -34,6 +34,7 @@ class ReticulumUploader(object):
         r = requests.post(RETICULUM_UPLOAD + "/", files=files, verify=False)
         return r.json()["hash"]
 
+
 UPLOADER = ReticulumUploader()
 
 if 'test' in sys.argv or 'jenkins' in sys.argv:
