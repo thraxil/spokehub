@@ -55,7 +55,7 @@ logilab-astng==0.24.3
 logilab-common==1.3.0
 lxml==3.7.0
 Markdown==2.6.7
-mccabe==0.5.2
+mccabe==0.5.3
 mock==2.0.0
 ndg-httpsclient==0.4.2
 oauth2==1.9.0.post1
