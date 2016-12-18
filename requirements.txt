@@ -35,8 +35,11 @@ easy-thumbnails==2.3
 ecdsa==0.13
 enum34==1.1.6
 Fabric==1.13.1
-factory-boy==2.7.0
+
 Faker==0.7.5
+
+factory-boy==2.8.1
+
 flake8==3.2.1
 funcsigs==1.0.2
 fuzzywuzzy==0.14.0
