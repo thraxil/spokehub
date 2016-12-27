@@ -66,41 +66,6 @@ class Adder(object):
         )
 
 
-class MyPostsAdder(Adder):
-    def link(self, media):
-        return media.link
-
-    def sru(self, media):
-        return media.get_standard_resolution_url()
-
-    def caption_text(self, media):
-        return media.caption.text
-
-    def created_time(self, media):
-        return media.created_time.isoformat()
-
-    def image_url(self, media, media_url):
-        if media.type == 'image':
-            # all we can handle right now
-            return media_url
-        return ""
-
-    def thumbnail_url(self, media):
-        return media.get_thumbnail_url()
-
-    def user_id(self, media):
-        return media.user.id
-
-    def user_full_name(self, media):
-        return media.user.full_name
-
-    def username(self, media):
-        return media.user.username
-
-    def filter(self, media):
-        return media.filter
-
-
 class ScrapeAdder(Adder):
     def link(self, media):
         return media.url()
@@ -174,17 +139,3 @@ def my_posts_scrape():
     entry_data = user_page_entries(d)
     scrape_entries(entry_data)
     statsd.incr('instagram.myposts.run')
-
-
-def my_posts(api):
-    # instagram API is currently broken
-    return
-    recent_media, _ = api.user_recent_media()
-    add_media(recent_media)
-    statsd.incr('instagram.myposts.run')
-
-
-def add_media(recent_media):
-    a = MyPostsAdder()
-    for media in recent_media:
-        a.add(media)

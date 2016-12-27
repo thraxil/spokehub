@@ -1,14 +1,9 @@
 import unittest
 from datetime import datetime
-from spokehub.instagram import (
-    MyPostsAdder, add_media,
-    my_posts,
-)
 from spokehub.instagram.scrape import (
     get_script, parse_json, entries, owner, clean_url,
     Entry,
 )
-from spokehub.main.tests.factories import NowPostFactory
 
 
 class Dummy(object):
@@ -21,66 +16,6 @@ class DummyAPI(object):
 
     def tag_recent_media(self, **kwargs):
         return ([], None)
-
-
-class TestImageURL(unittest.TestCase):
-    def test_image(self):
-        d = Dummy()
-        d.type = "image"
-        a = MyPostsAdder()
-        self.assertEqual(a.image_url(d, "foo"), "foo")
-
-    def test_not_image(self):
-        d = Dummy()
-        d.type = "not image"
-        a = MyPostsAdder()
-        self.assertEqual(a.image_url(d, "foo"), "")
-
-
-class TestAddPost(unittest.TestCase):
-    def test_invalid(self):
-        d = Dummy()
-        d.link = None
-        a = MyPostsAdder()
-        self.assertIsNone(a.add(d))
-
-    def test_existing(self):
-        np = NowPostFactory()
-        np.save()
-        d = Dummy()
-        d.link = np.service_id
-        a = MyPostsAdder()
-        self.assertIsNone(a.add(d))
-
-    def test_text(self):
-        a = MyPostsAdder()
-        d = Dummy()
-        a = MyPostsAdder()
-        self.assertEqual(a.text(d), "")
-        d.caption = Dummy()
-        d.caption.text = "some text"
-        self.assertEqual(a.text(d), "some text")
-
-    def test_video_url(self):
-        a = MyPostsAdder()
-        d = Dummy()
-        d.type = 'video'
-        self.assertEqual(a.video_url(d, "foo"), "foo")
-        d.type = "image"
-        self.assertEqual(a.video_url(d, "foo"), "")
-
-
-class TestAddPosts(unittest.TestCase):
-    def test_invalid(self):
-        d = Dummy()
-        d.link = None
-        self.assertIsNone(add_media([d]))
-
-
-class TestMyPosts(unittest.TestCase):
-    def test_my_posts(self):
-        api = DummyAPI()
-        self.assertIsNone(my_posts(api))
 
 
 sample_entry = {

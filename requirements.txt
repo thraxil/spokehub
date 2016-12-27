@@ -79,7 +79,6 @@ pyflakes==1.3.0
 pylint==1.6.4
 pyOpenSSL==16.2.0
 python-dateutil==2.6.0
-python-instagram==1.3.2-thraxilfix
 PyTumblr==0.0.6
 rcssmin==1.0.6
 requests==2.12.4
