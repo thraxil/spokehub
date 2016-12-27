@@ -135,7 +135,6 @@ def my_posts_scrape():
     script = get_script(r.text)
     d = parse_json(script)
     print("parsed")
-    scrape_entries(d)
     entry_data = user_page_entries(d)
     scrape_entries(entry_data)
     statsd.incr('instagram.myposts.run')
