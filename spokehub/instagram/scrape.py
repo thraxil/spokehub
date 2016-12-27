@@ -28,6 +28,10 @@ def entries(d):
     return d['entry_data']['TagPage'][0]['tag']['media']['nodes']
 
 
+def user_page_entries(d):
+    return d['entry_data']['ProfilePage'][0]['user']['media']['nodes']
+
+
 def owner(d):
     return d['entry_data']['PostPage'][0]['media']['owner']
 

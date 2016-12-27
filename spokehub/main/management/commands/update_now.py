@@ -2,9 +2,8 @@ from django.core.management.base import BaseCommand
 from spokehub.twitter import hashtag_search as twitter_hashtag_search
 from spokehub.twitter import my_tweets
 from spokehub.instagram import hashtag_scrape as instagram_hashtag_scrape
-from spokehub.instagram import my_posts
+from spokehub.instagram import my_posts_scrape
 from spokehub.tumblr import hashtag_search as tumblr_hashtag_search
-from instagram.client import InstagramAPI
 from django.conf import settings
 import pytumblr
 import tweepy
@@ -36,5 +35,5 @@ class Command(BaseCommand):
         )
         tumblr_hashtag_search(tumblr_client)
 
-        my_posts(InstagramAPI(access_token=settings.SH_INSTAGRAM_ACCESS_TOKEN))
+        my_posts_scrape()
         instagram_hashtag_scrape()

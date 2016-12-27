@@ -2,7 +2,8 @@ from json import dumps
 from django.conf import settings
 from django_statsd.clients import statsd
 from .scrape import (
-    get_script, parse_json, entries, Entry
+    get_script, parse_json, entries, Entry,
+    user_page_entries
 )
 import requests
 
@@ -132,6 +133,18 @@ class ScrapeAdder(Adder):
         return ""
 
 
+def scrape_entries(entry_data):
+    a = ScrapeAdder()
+    for entry in entry_data:
+        print("- entry {}".format(entry['code']))
+        e = Entry(entry)
+        if e.is_video:
+            # can't handle video yet
+            print("skip video")
+            continue
+        a.add(e)
+
+
 def hashtag_scrape():
     print("hashtag scrape")
     tag_name = settings.HASHTAG.strip('#')
@@ -143,16 +156,24 @@ def hashtag_scrape():
     d = parse_json(script)
     print("parsed")
     entry_data = entries(d)
-    a = ScrapeAdder()
-    for entry in entry_data:
-        print("- entry {}".format(entry['code']))
-        e = Entry(entry)
-        if e.is_video:
-            # can't handle video yet
-            print("skip video")
-            continue
-        a.add(e)
+    scrape_entries(entry_data)
     statsd.incr('instagram.hashtag.run')
+
+
+def my_posts_scrape():
+    print("my posts scrape")
+    username = settings.INSTAGRAM_USER
+
+    url = "https://www.instagram.com/{}/".format(username)
+    r = requests.get(url)
+    print("fetched")
+    script = get_script(r.text)
+    d = parse_json(script)
+    print("parsed")
+    scrape_entries(d)
+    entry_data = user_page_entries(d)
+    scrape_entries(entry_data)
+    statsd.incr('instagram.myposts.run')
 
 
 def my_posts(api):
