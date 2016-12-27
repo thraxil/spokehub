@@ -156,6 +156,8 @@ def hashtag_scrape():
 
 
 def my_posts(api):
+    # instagram API is currently broken
+    return
     recent_media, _ = api.user_recent_media()
     add_media(recent_media)
     statsd.incr('instagram.myposts.run')
