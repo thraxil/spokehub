@@ -40,7 +40,7 @@ Faker==0.7.7
 
 factory-boy==2.8.1
 
-flake8==3.2.1
+flake8==3.3.0
 funcsigs==1.0.2
 fuzzywuzzy==0.14.0
 gunicorn==19.6.0
