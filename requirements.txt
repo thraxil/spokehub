@@ -85,7 +85,7 @@ python-dateutil==2.6.0
 PyTumblr==0.0.6
 rcssmin==1.0.6
 requests==2.13.0
-requests-oauthlib==0.7.0
+requests-oauthlib==0.8.0
 rjsmin==1.0.12
 setuptools-scm==1.15.0
 simplegeneric==0.8.1
