@@ -96,7 +96,7 @@ sqlparse==0.2.2
 statsd==3.2.1
 sure==1.4.1
 tornado==4.4.2
-traitlets==4.3.1
+traitlets==4.3.2
 tweepy==3.5.0
 versiontools==1.9.1
 wcwidth==0.1.7
