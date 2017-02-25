@@ -4,7 +4,7 @@
   "author": "Anders Pearson",
   "devDependencies": {
     "jshint": "~2.9.1",
-    "jscs": "~2.9.0"
+    "jscs": "~3.0.7"
   },
   "dependencies": {
   }
