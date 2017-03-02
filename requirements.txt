@@ -92,7 +92,7 @@ simplegeneric==0.8.1
 simplejson==3.10.0
 singledispatch==3.4.0.3
 six==1.10.0
-sqlparse==0.2.2
+sqlparse==0.2.3
 statsd==3.2.1
 sure==1.4.1
 tornado==4.4.2
