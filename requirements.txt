@@ -43,7 +43,7 @@ factory-boy==2.8.1
 flake8==3.3.0
 funcsigs==1.0.2
 fuzzywuzzy==0.15.0
-gunicorn==19.7.0
+gunicorn==19.7.1
 html2text==2016.9.19
 httplib2==0.10.3
 httpretty==0.8.14
