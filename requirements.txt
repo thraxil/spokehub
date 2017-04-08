@@ -87,7 +87,7 @@ rcssmin==1.0.6
 requests==2.13.0
 requests-oauthlib==0.8.0
 rjsmin==1.0.12
-setuptools-scm==1.15.4
+setuptools-scm==1.15.5
 simplegeneric==0.8.1
 simplejson==3.10.0
 singledispatch==3.4.0.3
