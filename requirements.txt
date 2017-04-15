@@ -35,6 +35,7 @@ easy-thumbnails==2.4.1
 ecdsa==0.13
 enum34==1.1.6
 Fabric==1.13.1
+pytz==2017.2
 
 Faker==0.7.11
 
