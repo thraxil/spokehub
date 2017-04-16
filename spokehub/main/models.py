@@ -8,7 +8,6 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
 from django.template.loader import get_template
-from django.template import Context
 from userena.utils import get_user_profile
 import urlparse
 import waffle
@@ -95,7 +94,7 @@ def user_new_convo_email(u, i):
     if waffle.switch_is_active('send_email') or u.is_staff:
         plaintext = get_template('email/new_question.txt')
         htmltext = get_template('email/new_question.html')
-        d = Context({'question': i})
+        d = {'question': i}
         text_content = plaintext.render(d)
         html_content = htmltext.render(d)
         u.email_user(
@@ -211,7 +210,7 @@ class Reply(models.Model):
         conv_users = self.conversation_users()
         mentioned = self.mentioned_users()
         unmentioned = set(conv_users) - set(mentioned)
-        d = Context({'reply': self})
+        d = {'reply': self}
 
         self.email_mentioned(mentioned, d)
         self.email_unmentioned(unmentioned, d)
