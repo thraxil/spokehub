@@ -3,7 +3,7 @@ backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
 backports.ssl-match-hostname==3.5.0.1
 BeautifulSoup==3.2.1
-certifi==2017.1.23
+certifi==2017.4.17
 cffi==1.10.0
 colorama==0.3.7
 configparser==3.5.0
