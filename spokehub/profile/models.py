@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.template import Context
 from django.template.loader import get_template
 from django.utils.translation import ugettext as _
 from userena.models import UserenaBaseProfile
@@ -47,5 +46,5 @@ class Profile(UserenaBaseProfile):
 
     def hover_div(self):
         t = get_template('userena/hover_div.html')
-        d = Context({'profile': self})
+        d = {'profile': self}
         return t.render(d)
