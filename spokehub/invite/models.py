@@ -1,6 +1,5 @@
 from django.core.mail import send_mail
 from django.db import models
-from django.template import Context
 from django.template.loader import get_template
 
 
@@ -15,7 +14,7 @@ class Invite(models.Model):
 
     def send_invite(self):
         plaintext = get_template('email/invite.txt')
-        d = Context({'token': self.token})
+        d = {'token': self.token}
         text_content = plaintext.render(d)
         send_mail(
             'Your invitation to join SPOKEHUB.',
