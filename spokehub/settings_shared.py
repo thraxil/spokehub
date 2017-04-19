@@ -192,7 +192,6 @@ COMPRESS_PRECOMPILERS = (
 )
 if 'test' in sys.argv or 'jenkins' in sys.argv:
     COMPRESS_PRECOMPILERS = []
-    
 
 SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 SESSION_COOKIE_HTTPONLY = True
