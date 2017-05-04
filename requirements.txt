@@ -74,7 +74,7 @@ paramiko==2.1.2
 pathlib2==2.2.1
 pep8==1.7.0
 pickleshare==0.7.4
-Pillow==4.1.0
+Pillow==4.1.1
 prompt-toolkit==1.0.14
 psycopg2==2.7.1
 ptyprocess==0.5.1
