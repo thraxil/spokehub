@@ -38,7 +38,7 @@ TEMPLATE_DEBUG = DEBUG
 
 STATSD_PATCHES = ['django_statsd.patches.db', ]
 
-TWITTER_USER = 'spokehubNOW'
+TWITTER_USER = 'osimonsays1'
 INSTAGRAM_USER = 'spokehubnow'
 
 NOW_POSTS_PER_PAGE = 500

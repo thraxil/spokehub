@@ -47,9 +47,9 @@ def ensure_https(url):
 
 
 def my_tweets(api, user):
-    # for t in api.user_timeline(user):
-    #     print("@" + t.user.screen_name)
-    #     add_tweet(t)
+    for t in api.user_timeline(user):
+        print("@" + t.user.screen_name)
+        add_tweet(t)
     statsd.incr('tweets.mytweets.run')
 
 
