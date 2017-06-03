@@ -1,6 +1,6 @@
 Django==1.10.7
 
-astroid==1.5.1
+astroid==1.5.3
 backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
 backports.ssl-match-hostname==3.5.0.1
