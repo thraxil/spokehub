@@ -88,6 +88,10 @@ pyOpenSSL==17.0.0
 python-dateutil==2.6.0
 PyTumblr==0.0.6
 rcssmin==1.0.6
+
+chardet==3.0.4
+urllib3==1.21.1
+
 requests==2.17.3
 requests-oauthlib==0.8.0
 rjsmin==1.0.12
