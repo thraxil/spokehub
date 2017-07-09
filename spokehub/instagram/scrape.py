@@ -33,7 +33,8 @@ def user_page_entries(d):
 
 
 def owner(d):
-    return d['entry_data']['PostPage'][0]['graphql']['shortcode_media']['owner']
+    return d['entry_data']['PostPage'][0]['graphql'][
+        'shortcode_media']['owner']
 
 
 def clean_url(url):

@@ -75,7 +75,9 @@ class TestScraper(unittest.TestCase):
         self.assertEqual(entries(d), 'foo')
 
     def test_owner(self):
-        d = {'entry_data': {'PostPage': [{'graphql': {'shortcode_media': {'owner': 'foo'}}}]}}
+        d = {'entry_data':
+             {'PostPage': [{'graphql': {'shortcode_media':
+                                        {'owner': 'foo'}}}]}}
         self.assertEqual(owner(d), 'foo')
 
     def test_clean_url(self):
