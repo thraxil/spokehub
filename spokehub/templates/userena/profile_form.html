@@ -1,5 +1,5 @@
 {% extends 'userena/base_userena.html' %}
-{% load bootstrap %}
+{% load bootstrap3 %}
 {% load i18n %}
 
 {% block title %}{% trans "Account setup" %}{% endblock %}
@@ -8,44 +8,44 @@
 
 {% block content %}
 
-<div id="site-wrapper"> 
-    <div class="content-wrapper content-container edit-profile user-page">
-        <div class="page-heading">
-            <ul class="archives-post">
-                <li><a href="{% url 'userena_profile_detail' user.username %}"><i class="mdi mdi-account"></i> View Profile</a></li>
-                <li><a href="{% url 'userena_email_change' user.username %}"><i class="mdi mdi-email"></i> Change Email</a></li>
-                <li><a href="{% url 'userena_password_change' user.username %}"><i class="mdi mdi-lock-open"></i> Change Password</a></li>
-            </ul>
-            <h2><b>Edit Profile</b></h2>
-        </div>
-        <section>
-            <div class="form-container">
-                <form action="" enctype="multipart/form-data" method="post">
-                    {% csrf_token %}
-                    <fieldset>
-                        {{ form.non_field_errors }}
-                        {% for field in form %}
-                            {% if field.name == 'privacy' %}
-              		              <input type="hidden" name="privacy" value="open" />
-                            {% elif field.name == 'mugshot' %}
-                                {{ field.errors }}
-                                <div class="form-group">
-                                    <label class="control-label" for="id_mugshot">Your head shot</label>
-                                    <div>{{field}}</div>
-                                </div>
-              		          {% else %}
-                                {{ field.errors }}
-                                <p>
-                                    {{ field|bootstrap }}
-                                </p>
-                            {% endif %}
-                        {% endfor %}
-                    </fieldset>
-                    <input type="submit" value="{% trans "Save changes" %}" class="btn
-                    btn-primary" />
-                </form>
+    <div id="site-wrapper"> 
+        <div class="content-wrapper content-container edit-profile user-page">
+            <div class="page-heading">
+                <ul class="archives-post">
+                    <li><a href="{% url 'userena_profile_detail' user.username %}"><i class="mdi mdi-account"></i> View Profile</a></li>
+                    <li><a href="{% url 'userena_email_change' user.username %}"><i class="mdi mdi-email"></i> Change Email</a></li>
+                    <li><a href="{% url 'userena_password_change' user.username %}"><i class="mdi mdi-lock-open"></i> Change Password</a></li>
+                </ul>
+                <h2><b>Edit Profile</b></h2>
             </div>
-        </section>
+            <section>
+                <div class="form-container">
+                    <form action="" enctype="multipart/form-data" method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            {{ form.non_field_errors }}
+                            {% for field in form %}
+                                {% if field.name == 'privacy' %}
+              		                  <input type="hidden" name="privacy" value="open" />
+                                {% elif field.name == 'mugshot' %}
+                                    {{ field.errors }}
+                                    <div class="form-group">
+                                        <label class="control-label" for="id_mugshot">Your head shot</label>
+                                        <div>{{field}}</div>
+                                    </div>
+              		              {% else %}
+                                    {{ field.errors }}
+                                    <p>
+                                        {% bootstrap_field field %}
+                                    </p>
+                                {% endif %}
+                            {% endfor %}
+                        </fieldset>
+                        <input type="submit" value="{% trans "Save changes" %}" class="btn
+                                                                                       btn-primary" />
+                    </form>
+                </div>
+            </section>
+        </div>
     </div>
-</div>
 {% endblock %}
