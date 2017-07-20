@@ -92,7 +92,7 @@ PyTumblr==0.0.6
 rcssmin==1.0.6
 
 chardet==3.0.4
-urllib3==1.21.1
+urllib3==1.22
 
 requests==2.18.1
 requests-oauthlib==0.8.0
