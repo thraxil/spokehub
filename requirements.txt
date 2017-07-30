@@ -42,7 +42,7 @@ pytz==2017.2
 
 Faker==0.7.18
 
-factory-boy==2.8.1
+factory-boy==2.9.0
 
 flake8==3.4.1
 funcsigs==1.0.2
