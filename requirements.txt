@@ -22,7 +22,7 @@ django-bootstrap3==9.0.0
 django-compressor==2.1.1
 django-debug-toolbar==1.8
 django-discover-jenkins==0.1.4
-django-extensions==1.9.0
+django-extensions==1.9.1
 django-flatblocks==0.9.4
 django-ga-context==0.1.0
 django-guardian==1.4.9
