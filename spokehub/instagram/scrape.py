@@ -1,14 +1,14 @@
 # utility functions for scraping instagram hashtag page
 import json
 import requests
-from BeautifulSoup import BeautifulSoup
-from urlparse import urlsplit
+from bs4 import BeautifulSoup
+from urllib.parse import urlsplit
 from datetime import datetime
 from django.utils.encoding import smart_str
 
 
 def get_script(text):
-    soup = BeautifulSoup(text)
+    soup = BeautifulSoup(text, "lxml")
     for s in soup('script'):
         contents = s.string
         if not contents:

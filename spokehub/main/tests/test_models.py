@@ -22,7 +22,7 @@ class ConversationTest(TestCase):
     def test_unicode_nonascii(self):
         i = ConversationFactory()
         i.body = u"DERRIÈRE"
-        self.assertEqual(str(i), "DERRI?RE")
+        self.assertEqual(str(i), i.body)
 
     def test_edit_url(self):
         i = ConversationFactory()

@@ -25,10 +25,10 @@ class Adder(object):
             return
         try:
             self._add(media)
-            print "new instagram post added"
+            print("new instagram post added")
             statsd.incr('instagram.add.success')
-        except Exception, e:
-            print "failed with exception: " + str(e)
+        except Exception as e:
+            print("failed with exception: " + str(e))
             statsd.incr('instagram.add.failed')
 
     def text(self, media):

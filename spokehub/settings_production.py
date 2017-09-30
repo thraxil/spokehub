@@ -1,5 +1,5 @@
 # flake8: noqa
-from settings_shared import *
+from .settings_shared import *
 import os.path
 
 TEMPLATE_DIRS = (
@@ -49,6 +49,6 @@ INSTALLED_APPS += [
 MIDDLEWARE_CLASSES.insert(0, 'opbeat.contrib.django.middleware.OpbeatAPMMiddleware')
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass

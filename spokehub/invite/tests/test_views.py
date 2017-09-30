@@ -4,6 +4,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.utils import override_settings
+from django.utils.encoding import force_bytes, force_text
 from waffle.testutils import override_flag
 from spokehub.invite.views import new_token, upload_image
 from spokehub.invite.models import Invite
@@ -19,23 +20,23 @@ class TestNewToken(unittest.TestCase):
 class TestSignupView(TestCase):
     def test_no_token(self):
         r = self.client.get(reverse('invite_signup_form', args=['asdfasdf']))
-        self.assertTrue("sorry" in r.content)
+        self.assertTrue("sorry" in force_text(r.content))
 
     def test_post_no_token(self):
         r = self.client.post(reverse('invite_signup_form', args=['asdfasdf']))
-        self.assertTrue("sorry" in r.content)
+        self.assertTrue("sorry" in force_text(r.content))
 
     @override_flag("main", True)
     def test_get_valid_token(self):
         i = InviteFactory()
         r = self.client.get(reverse("invite_signup_form", args=[i.token]))
-        self.assertTrue("password" in r.content)
+        self.assertTrue("password" in force_text(r.content))
 
     @override_settings(MEDIA_ROOT="/tmp/")
     def test_post(self):
         i = InviteFactory()
-        with open('media/img/bullet.gif') as img:
-            with open('media/img/bullet.gif') as img2:
+        with open('media/img/bullet.gif', 'rb') as img:
+            with open('media/img/bullet.gif', 'rb') as img2:
                 r = self.client.post(
                     reverse("invite_signup_form", args=[i.token]),
                     data=dict(
@@ -89,19 +90,19 @@ class TestInviteView(TestCase):
         i = Invite.objects.all().first()
         # now if we get the signup page with the token it should be ok
         r = self.client.get(reverse('invite_signup_form', args=[i.token]))
-        self.assertTrue("password" in r.content)
+        self.assertTrue("password" in force_text(r.content))
 
 
 class TestUploadImage(TestCase):
     def test_invalid_extension(self):
-        img = SimpleUploadedFile("test.invalid", "contents",
+        img = SimpleUploadedFile("test.invalid", force_bytes("contents"),
                                  content_type="image/gif")
         f = upload_image('test', img)
         self.assertIsNone(f)
 
     @override_settings(MEDIA_ROOT="/tmp/")
     def test_upload_image(self):
-        img = SimpleUploadedFile("test.gif", "contents",
+        img = SimpleUploadedFile("test.gif", force_bytes("contents"),
                                  content_type="image/gif")
         f = upload_image('test', img)
         self.assertIsNotNone(f)

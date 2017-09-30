@@ -8,8 +8,9 @@ from django.dispatch import receiver
 from django.db.models.signals import post_save
 from django.core.urlresolvers import reverse
 from django.template.loader import get_template
+
 from userena.utils import get_user_profile
-import urlparse
+import urllib.parse as urlparse
 import waffle
 
 
@@ -31,8 +32,8 @@ class Conversation(models.Model):
     class Meta:
         ordering = ['-added', ]
 
-    def __unicode__(self):
-        return self.body[:140].encode('ascii', 'replace')
+    def __str__(self):
+        return self.body[:140]
 
     def url_args(self):
         return [
@@ -134,9 +135,9 @@ class Reply(models.Model):
     class Meta:
         order_with_respect_to = 'item'
 
-    def __unicode__(self):
+    def __str__(self):
         return "Reply to [%s] by %s at %s" % (
-            str(self.item),
+            self.item,
             self.author.username,
             self.added.isoformat())
 
@@ -375,7 +376,7 @@ class NowPost(models.Model):
 
     objects = NowPostManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return "[%s] by %s at %s" % (self.service, self.screen_name,
                                      self.created.isoformat())
 

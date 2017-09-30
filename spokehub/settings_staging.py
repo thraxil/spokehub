@@ -1,5 +1,5 @@
 # flake8: noqa
-from settings_shared import *
+from .settings_shared import *
 
 TEMPLATE_DIRS = (
     "/var/www/spokehub/spokehub/spokehub/templates",
@@ -28,6 +28,6 @@ TEMPLATE_DEBUG = DEBUG
 STAGING_ENV = True
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass

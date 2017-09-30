@@ -2,6 +2,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.utils import override_settings
 from waffle.testutils import override_flag
+from django.utils.encoding import force_text
 from .factories import (UserFactory, ConversationFactory, ReplyFactory)
 
 
@@ -35,7 +36,7 @@ class LoggedInTest(TestCase):
         i = ConversationFactory()
         r = self.client.get("/")
         self.assertEqual(r.status_code, 200)
-        self.assertTrue(i.body in r.content)
+        self.assertTrue(i.body in force_text(r.content))
 
     def test_userpage(self):
         r = self.client.get("/accounts/" + self.u.username + "/")
@@ -47,14 +48,14 @@ class LoggedInTest(TestCase):
         self.assertEqual(r.status_code, 302)
         r = self.client.get("/we/")
         self.assertEqual(r.status_code, 200)
-        self.assertTrue('foo' in r.content)
+        self.assertTrue('foo' in force_text(r.content))
 
     @override_flag("main", True)
     def test_conversation_archive(self):
         c = ConversationFactory()
         r = self.client.get(reverse('we-archive'))
         self.assertEqual(r.status_code, 200)
-        self.assertTrue(c.body in r.content)
+        self.assertTrue(c.body in force_text(r.content))
 
     @override_flag("main", True)
     def test_reploy_to_conversation(self):
@@ -67,8 +68,8 @@ class LoggedInTest(TestCase):
         )
         self.assertEqual(r.status_code, 302)
         r = self.client.get(i.get_absolute_url())
-        self.assertTrue('reply body' in r.content)
-        self.assertTrue('http://foo.example.com/' in r.content)
+        self.assertTrue('reply body' in force_text(r.content))
+        self.assertTrue('http://foo.example.com/' in force_text(r.content))
 
     @override_flag("main", True)
     @override_flag("comments", True)
@@ -79,13 +80,13 @@ class LoggedInTest(TestCase):
             dict(body="a new comment"))
         self.assertEqual(r.status_code, 302)
         r = self.client.get(reply.item.get_absolute_url())
-        self.assertTrue('a new comment' in r.content)
+        self.assertTrue('a new comment' in force_text(r.content))
 
     @override_settings(MEDIA_ROOT="/tmp/")
     @override_flag("main", True)
     def test_reply_to_conversaion_with_image(self):
         c = ConversationFactory()
-        with open('media/img/bullet.gif') as img:
+        with open('media/img/bullet.gif', 'rb') as img:
             r = self.client.post(
                 "/conversation/%d/reply/" % c.id,
                 dict(
@@ -106,7 +107,7 @@ class LoggedInTest(TestCase):
         UserFactory()
         r = self.client.get("/accounts/")
         self.assertEqual(r.status_code, 200)
-        self.assertTrue("AnonymousUser" not in r.content)
+        self.assertTrue("AnonymousUser" not in force_text(r.content))
 
 
 class TestUserProfiles(TestCase):

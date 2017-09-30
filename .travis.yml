@@ -1,7 +1,7 @@
 language: python
 sudo: false
 python:
-  - "2.7"
+  - "3.4.1"
 before_install:
   - openssl aes-256-cbc -K $encrypted_42099b4af021_key -iv $encrypted_42099b4af021_iv -in spokehub_rsa.enc -out spokehub_rsa -d
 install:

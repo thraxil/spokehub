@@ -12,12 +12,12 @@ def add_post(i):
     if ptype not in ['photo', 'video', 'audio']:
         return
     if r.exists():
-        print "existing tumblr post"
+        print("existing tumblr post")
         return
     try:
         _add_post(ptype, url, i)
         statsd.incr('tumblr.add.success')
-    except Exception, e:
+    except Exception as e:
         print(str(e))
         statsd.incr('tumblr.add.failed')
 

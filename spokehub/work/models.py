@@ -1,5 +1,5 @@
 import os.path
-import urlparse
+import urllib.parse as urlparse
 
 from django.conf import settings
 from django.contrib.auth.models import User

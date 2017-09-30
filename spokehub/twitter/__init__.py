@@ -8,7 +8,7 @@ def add_tweet(t):
         service='twitter',
         service_id=t.id_str)
     if r.exists():
-        print "existing twitter post"
+        print("existing twitter post")
         return
     try:
         np = NowPost.objects.create_twitter(
@@ -23,8 +23,8 @@ def add_tweet(t):
         print(np.id)
         process_extended_attributes(t, np)
         statsd.incr('tweets.add.success')
-    except Exception, e:
-        print "failed with exception: " + str(e)
+    except Exception as e:
+        print("failed with exception: " + str(e))
         statsd.incr('tweets.add.failed')
 
 
@@ -39,7 +39,7 @@ def process_extended_attributes(t, np):
         np.image_width = ee['media'][0]['sizes']['large']['w']
         np.image_height = ee['media'][0]['sizes']['large']['h']
         np.save()
-        print "added an image"
+        print("added an image")
 
 
 def ensure_https(url):

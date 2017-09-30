@@ -4,7 +4,7 @@ astroid==1.5.3
 backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
 backports.ssl-match-hostname==3.5.0.1
-BeautifulSoup==3.2.1
+beautifulsoup4==4.6.0
 certifi==2017.7.27.1
 
 colorama==0.3.9
@@ -37,7 +37,7 @@ django-waffle==0.12.0
 easy-thumbnails==2.4.2
 ecdsa==0.13
 enum34==1.1.6
-Fabric==1.14.0
+Fabric3==1.13.1.post1
 pytz==2017.2
 
 Faker==0.8.4
