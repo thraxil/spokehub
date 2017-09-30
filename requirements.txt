@@ -88,9 +88,8 @@ pyflakes==1.6.0
 pylint==1.7.4
 pyOpenSSL==17.3.0
 python-dateutil==2.6.1
-PyTumblr==0.0.6
 rcssmin==1.0.6
-
+git+git://github.com/dianakhuang/pytumblr.git@diana/python-3-support
 chardet==3.0.4
 urllib3==1.22
 
