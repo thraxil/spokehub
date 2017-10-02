@@ -2,7 +2,9 @@ from django.core.management.base import BaseCommand
 from spokehub.twitter import hashtag_search as twitter_hashtag_search
 from spokehub.instagram import hashtag_scrape as instagram_hashtag_scrape
 from spokehub.instagram import my_posts_scrape
+from spokehub.tumblr import hashtag_search as tumblr_hashtag_search
 from django.conf import settings
+import pytumblr
 import tweepy
 
 
@@ -21,6 +23,14 @@ class Command(BaseCommand):
         api = tweepy.API(auth)
 
         twitter_hashtag_search(api, settings.HASHTAG)
+
+        tumblr_client = pytumblr.TumblrRestClient(
+            settings.TUMBLR_CONSUMER_KEY,
+            settings.TUMBLR_CONSUMER_SECRET,
+            settings.TUMBLR_OAUTH_TOKEN,
+            settings.TUMBLR_OAUTH_SECRET,
+        )
+        tumblr_hashtag_search(tumblr_client)
 
         my_posts_scrape()
         instagram_hashtag_scrape()
