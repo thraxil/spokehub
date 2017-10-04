@@ -48,7 +48,7 @@ flake8==3.4.1
 funcsigs==1.0.2
 fuzzywuzzy==0.15.1
 gunicorn==19.7.1
-html2text==2016.9.19
+html2text==2017.10.4
 httplib2==0.10.3
 httpretty==0.8.14
 idna==2.6
