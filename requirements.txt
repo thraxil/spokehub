@@ -89,8 +89,9 @@ pylint==1.7.4
 pyOpenSSL==17.3.0
 python-dateutil==2.6.1
 rcssmin==1.0.6
-future==0.16.0
-git+git://github.com/dianakhuang/pytumblr.git@diana/python-3-support
+futures==3.1.1
+Unidecode==0.04.21
+PyTumblr==0.0.7
 chardet==3.0.4
 urllib3==1.22
 
