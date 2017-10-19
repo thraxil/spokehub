@@ -71,7 +71,7 @@ Markdown==2.6.9
 mock==2.0.0
 ndg-httpsclient==0.4.3
 oauth2==1.9.0.post1
-oauthlib==2.0.5
+oauthlib==2.0.6
 opbeat==3.5.3
 paramiko==2.3.1
 pathlib2==2.3.0
