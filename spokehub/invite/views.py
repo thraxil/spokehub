@@ -114,7 +114,7 @@ def upload_image(d, f):
     path = "%simages/%04d/%02d/%02d/" % (d, now.year, now.month, now.day)
     try:
         os.makedirs(settings.MEDIA_ROOT + "/" + path)
-    except:
+    except:  # noqa: E722
         pass
     full_filename = path + "%s.%s" % (basename, ext)
     fd = open(settings.MEDIA_ROOT + "/" + full_filename, 'wb')

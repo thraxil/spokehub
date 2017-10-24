@@ -34,7 +34,7 @@ class Adder(object):
     def text(self, media):
         try:
             return self.caption_text(media)
-        except:
+        except:  # noqa: E722
             return ""
 
     def video_url(self, media, sru):
