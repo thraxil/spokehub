@@ -135,7 +135,6 @@ INSTALLED_APPS = [
     'waffle',
     'discover_jenkins',
     'smoketest',
-    'django_extensions',
     'registration',
     'spokehub.main',
     'spokehub.profile',
