@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.views.generic import TemplateView
 from spokehub.main import views
-from spokehub.main.forms import CustomAuthenticationForm
 from spokehub.profile.forms import ExtendedEditProfileForm
 from spokehub.profile.views import ProfileListView
 admin.autodiscover()
@@ -20,10 +19,9 @@ urlpatterns = [
     url(r'^accounts/logout/$',
         django.contrib.auth.views.logout,
         {'next_page': '/'}, name='auth_logout'),
-    url(r'^accounts/signin/$',
-        userena.views.signin,
-        {'auth_form': CustomAuthenticationForm},
-        name='userena_signin'),
+    url(r'^accounts/login/$',
+        django.contrib.auth.views.login,
+        name='auth_login'),
     url(r'^accounts/(?P<username>[\@\.\w-]+)/edit/$',
         userena.views.profile_edit,
         {'edit_profile_form': ExtendedEditProfileForm},

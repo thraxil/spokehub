@@ -106,6 +106,7 @@ TEMPLATES = [
 ]
 
 MIDDLEWARE_CLASSES = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django_statsd.middleware.GraphiteRequestTimingMiddleware',
     'django_statsd.middleware.GraphiteMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -211,7 +212,7 @@ AUTHENTICATION_BACKENDS = (
 ANONYMOUS_USER_ID = -1
 AUTH_PROFILE_MODULE = 'profile.Profile'
 
-LOGIN_URL = '/accounts/signin/'
+LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = '/accounts/logout/'
 
 LOGGING = {

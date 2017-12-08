@@ -3,35 +3,35 @@
 
 <div class="we">
 
-{% block content %}
+    {% block content %}
 
-	<div id="site-wrapper"> 
-		<div class="content-wrapper content-container">
-		    <div class="page-heading">
-				<ul class="archives-post">
-					<li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
-				    <li><a href="{% url 'we-archive' %}"><i class="mdi mdi-folder"></i> Browse Archives</a></li>
-				</ul>
-		    	<h2><b>ASK A QUESTION</b></h2>
-		    </div>
-			<div class="conversation">
-	          	<form action="." method="post" role="form">
-					<textarea id="textarea" class="convo-question" maxlength="140" placeholder="Hub members exchange visuals in response to a theme or question. Feel free to ask the hub for collective exploration here." name="body"></textarea>
-					<p id="textarea_feedback"></p>
-					<input type="submit" value="SUBMIT" class="convo-submit">
-	              	{% switch "send_email" %}
-	              	{% else %}
-	              	{% if request.user.is_staff %}
-	              		<p>'send_email' switch is off. Only Staff will be sent email. Enable the switch if you want all users to get email for a new question.</p>
-	              		{% endif %}
+	      <div id="site-wrapper"> 
+		        <div class="content-wrapper content-container">
+		            <div class="page-heading">
+				            <ul class="archives-post">
+					              <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+				                <li><a href="{% url 'we-archive' %}"><i class="mdi mdi-folder"></i> Browse Archives</a></li>
+				            </ul>
+		    	          <h2><b>ASK A QUESTION</b></h2>
+		            </div>
+			          <div class="conversation">
+	          	      <form action="." method="post" role="form">{% csrf_token %}
+					              <textarea id="textarea" class="convo-question" maxlength="140" placeholder="Hub members exchange visuals in response to a theme or question. Feel free to ask the hub for collective exploration here." name="body"></textarea>
+					              <p id="textarea_feedback"></p>
+					              <input type="submit" value="SUBMIT" class="convo-submit">
+	              	      {% switch "send_email" %}
+	  {% else %}
+	              	      {% if request.user.is_staff %}
+	              		        <p>'send_email' switch is off. Only Staff will be sent email. Enable the switch if you want all users to get email for a new question.</p>
+	              		    {% endif %}
 	        		{% endswitch %}
-	          	</form>
-			</div>
-			
-		</div>
-	</div>
+	          	      </form>
+			          </div>
+			          
+		        </div>
+	      </div>
 </div>
 
-{% endblock %}
+    {% endblock %}
 
 </div>

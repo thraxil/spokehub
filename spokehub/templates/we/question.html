@@ -1,153 +1,153 @@
 <div class="we we-question">
 
-{% extends 'base.html' %}
-{% load markup %}
+    {% extends 'base.html' %}
+    {% load markup %}
     {% load waffle_tags %}
     {% load target_blank %}
 
-{% block content %}
+    {% block content %}
 
-	  <div id="site-wrapper"> 
-		    <div class="content-wrapper content-container">
-		        <div class="page-heading clearfix">
-			        <ul class="archives-post">
-				        <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
-				        <li><a href="{% url 'we-archive' %}"><i class="mdi mdi-folder"></i> Browse Archives</a></li>
-                    	{% if request.user.is_authenticated and request.user.profile.completed %}
-					        <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
-                    	{% endif %}
-			        </ul>
-	    	      	<h2><b>WE</b> ask questions with visual answers</h2>
-		      	</div>
-				<div class="conversation">
-					<div class="question">
-			            {% if request.user.is_superuser or request.user == conversation.author %}
-			                <p id="we-question-edit"><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
-			            {% endif %}
-						<h3>{{conversation.body|markdown|urlize|url_target_blank}}</h3>
-						<p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='{% url 'userena_profile_detail' conversation.author.username %}'>
-							<div class='cover-photo' {% if conversation.author.profile.cover %}style='background-image:url({{conversation.author.profile.cover.url}});'{% endif %}></div>
-							<div class='profile-img-thumb' style='background-image:url({{conversation.author.profile.get_mugshot_url}});'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>{{conversation.author.username}}</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>{{conversation.author.profile.profession}}</li>
-							<li>{{conversation.author.profile.location}}</li>
-							<li><a href='{{conversation.author.profile.website_url}}'target='blank'>{{conversation.author.profile.website_name}}</a></li>
-							<li><a href='mailto:{{conversation.author.profile.user.email}}'>{{conversation.author.profile.user.email}}</a></li>
-						</ul>
-					</div>">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
-						<p class="timestamp">{{conversation.author.profile.location}}, {{conversation.added}}</p>
-					</div>
-				</div>
-				<h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
+	      <div id="site-wrapper"> 
+		        <div class="content-wrapper content-container">
+		            <div class="page-heading clearfix">
+			              <ul class="archives-post">
+				                <li><a href="{% url 'we' %}"><i class="mdi mdi-arrow-left"></i> Back to Forum</a></li>
+				                <li><a href="{% url 'we-archive' %}"><i class="mdi mdi-folder"></i> Browse Archives</a></li>
+                    	  {% if request.user.is_authenticated and request.user.profile.completed %}
+					                  <li><a href="{% url 'ask-question' %}"><i class="mdi mdi-comment-processing"></i> Ask a Question</a></li>
+                    	  {% endif %}
+			              </ul>
+	    	      	    <h2><b>WE</b> ask questions with visual answers</h2>
+		      	    </div>
+				        <div class="conversation">
+					          <div class="question">
+			                  {% if request.user.is_superuser or request.user == conversation.author %}
+			                      <p id="we-question-edit"><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
+			                  {% endif %}
+						            <h3>{{conversation.body|markdown|urlize|url_target_blank}}</h3>
+						            <p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
+					                                           <div class='username-hover'>
+						                                         <a href='{% url 'userena_profile_detail' conversation.author.username %}'>
+							                                       <div class='cover-photo' {% if conversation.author.profile.cover %}style='background-image:url({{conversation.author.profile.cover.url}});'{% endif %}></div>
+							                                       <div class='profile-img-thumb' style='background-image:url({{conversation.author.profile.get_mugshot_url}});'></div>
+							                                       <div class='page-heading'>
+								                                     <h2 class='hub-list-username'><b>{{conversation.author.username}}</b></h2>
+							                                       </div>
+						                                         </a>
+						                                         <ul>
+							                                       <li>{{conversation.author.profile.profession}}</li>
+							                                       <li>{{conversation.author.profile.location}}</li>
+							                                       <li><a href='{{conversation.author.profile.website_url}}'target='blank'>{{conversation.author.profile.website_name}}</a></li>
+							                                       <li><a href='mailto:{{conversation.author.profile.user.email}}'>{{conversation.author.profile.user.email}}</a></li>
+						                                         </ul>
+					                                           </div>">{{conversation.author.username}}</a>, {{conversation.author.profile.profession}}</p>
+						            <p class="timestamp">{{conversation.author.profile.location}}, {{conversation.added}}</p>
+					          </div>
+				        </div>
+				        <h3 class="responses-heading">{{conversation.reply_set.count}} RESPONSE{{conversation.reply_set.count|pluralize}}</h3>
 
-			<div id="grid" class="clearfix" data-columns>
+			          <div id="grid" class="clearfix" data-columns>
 
-	            {% if not request.user.is_anonymous %}
-					<div class="question" id="add-a-response">
-		                <h3>Add a visual to the conversation</h3>
-		                <p class="copyright-message-we">Uploaded images must belong to you, or be in the public domain. Please share all other visuals by linking to an original source.</p>
-		                <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">
-						    <div class="upload-enter">
-                                <div><input type='file' name="image" title="Choose a video or image please" id="comment-image" class="inputfile inputfile-1" onchange="pressed()">
-                                	<label for="comment-image">Choose a file</label>
-                                	<p id="fileLabel">Select a file from your phone or desktop</p>
-                                </div>
-		                        <input type="text" name="url" id="comment-url" placeholder="Enter URL to image, gif or video"/>
-						    </div>                    
-						    <div class="clearfix"></div>
-						    <textarea name="body" id="textarea" class="convo-question" placeholder="Would you like to add some context?" maxlength="140"></textarea>
-						    <p id="textarea_feedback"></p>
-						    <input type="submit" value="SUBMIT" class="convo-submit">
-		            	</form>
-					</div>
-		        {% endif %}
-
-        		{% for reply in conversation.reply_set.all %}
-				    <div class="question">
-		                {% if request.user.is_superuser or request.user == reply.author %}
-		                    <p class="edit-response"><a href="{% url 'edit-reply' reply.id %}">Edit</a></p>
+	                  {% if not request.user.is_anonymous %}
+					              <div class="question" id="add-a-response">
+		                        <h3>Add a visual to the conversation</h3>
+		                        <p class="copyright-message-we">Uploaded images must belong to you, or be in the public domain. Please share all other visuals by linking to an original source.</p>
+		                        <form action="{% url 'reply-to-question' conversation.pk %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+						                    <div class="upload-enter">
+                                    <div><input type='file' name="image" title="Choose a video or image please" id="comment-image" class="inputfile inputfile-1" onchange="pressed()">
+                                	      <label for="comment-image">Choose a file</label>
+                                	      <p id="fileLabel">Select a file from your phone or desktop</p>
+                                    </div>
+		                                <input type="text" name="url" id="comment-url" placeholder="Enter URL to image, gif or video"/>
+						                    </div>                    
+						                    <div class="clearfix"></div>
+						                    <textarea name="body" id="textarea" class="convo-question" placeholder="Would you like to add some context?" maxlength="140"></textarea>
+						                    <p id="textarea_feedback"></p>
+						                    <input type="submit" value="SUBMIT" class="convo-submit">
+		            	          </form>
+					              </div>
 		                {% endif %}
-					    <p class="username"><a href="{% url 'userena_profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='{% url 'userena_profile_detail' reply.author.username %}'>
-							<div class='cover-photo' {% if reply.author.profile.cover %}style='background-image:url({{reply.author.profile.cover.url}});'{% endif %}></div>
-							<div class='profile-img-thumb' style='background-image:url({{reply.author.profile.get_mugshot_url}});'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>{{reply.author.username}}</b></h2>
-							</div>
-						</a>
-						<ul>
-							<li>{{reply.author.profile.profession}}</li>
-							<li>{{reply.author.profile.location}}</li>
-							<li><a href='{{reply.author.profile.website_url}}'target='blank'>{{reply.author.profile.website_name}}</a></li>
-							<li><a href='mailto:{{reply.author.profile.user.email}}'>{{reply.author.profile.user.email}}</a></li>
-						</ul>
-					</div>">{{reply.author.username}}</a>, {{reply.author.profile.profession}}</p>
-					    <p class="response-timestamp timestamp">{{reply.author.profile.location}}, {{reply.added}}</p>
 
-                		{% if reply.rhash %}
-					              <div class="media-center"><a href="#image-{{reply.id}}" data-featherlight="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/1000w1000h/image{{reply.extension}}"><img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/400w400h/image{{reply.extension}}"></a></div>
-                		{% endif %}
-                		{% if reply.url %}
-                    		{% if reply.is_video %}
-                        		{% if reply.is_vimeo %}
-                            		<iframe width="100%" src="https://player.vimeo.com/video/{{reply.get_vimeo_id}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                        		{% endif %}
-                        		{% if reply.is_youtube %}
-                            		<iframe width="100%" src="https://www.youtube.com/embed/{{reply.get_youtube_id}}" frameborder="0" allowfullscreen></iframe>
-                        		{% endif %}
-                    		{% else %}
-                            {% if reply.is_image %}
-                                <div class="media-center"><a href="#image-{{reply.id}}" data-featherlight="{{reply.url}}"><img src="{{reply.url}}" alt="{{reply.title}}" width=""/></a></div>
-                            {% else %}
-                        			  <p><a href="{{reply.url}}">{{reply.title}}</a></p>
+        		        {% for reply in conversation.reply_set.all %}
+				                <div class="question">
+		                        {% if request.user.is_superuser or request.user == reply.author %}
+		                            <p class="edit-response"><a href="{% url 'edit-reply' reply.id %}">Edit</a></p>
+		                        {% endif %}
+					                  <p class="username"><a href="{% url 'userena_profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
+					                                               <div class='username-hover'>
+						                                             <a href='{% url 'userena_profile_detail' reply.author.username %}'>
+							                                           <div class='cover-photo' {% if reply.author.profile.cover %}style='background-image:url({{reply.author.profile.cover.url}});'{% endif %}></div>
+							                                           <div class='profile-img-thumb' style='background-image:url({{reply.author.profile.get_mugshot_url}});'></div>
+							                                           <div class='page-heading'>
+								                                         <h2 class='hub-list-username'><b>{{reply.author.username}}</b></h2>
+							                                           </div>
+						                                             </a>
+						                                             <ul>
+							                                           <li>{{reply.author.profile.profession}}</li>
+							                                           <li>{{reply.author.profile.location}}</li>
+							                                           <li><a href='{{reply.author.profile.website_url}}'target='blank'>{{reply.author.profile.website_name}}</a></li>
+							                                           <li><a href='mailto:{{reply.author.profile.user.email}}'>{{reply.author.profile.user.email}}</a></li>
+						                                             </ul>
+					                                               </div>">{{reply.author.username}}</a>, {{reply.author.profile.profession}}</p>
+					                  <p class="response-timestamp timestamp">{{reply.author.profile.location}}, {{reply.added}}</p>
+
+                		        {% if reply.rhash %}
+					                      <div class="media-center"><a href="#image-{{reply.id}}" data-featherlight="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/1000w1000h/image{{reply.extension}}"><img src="https://d2f33fmhbh7cs9.cloudfront.net/image/{{reply.rhash}}/400w400h/image{{reply.extension}}"></a></div>
+                		        {% endif %}
+                		        {% if reply.url %}
+                    		        {% if reply.is_video %}
+                        		        {% if reply.is_vimeo %}
+                            		        <iframe width="100%" src="https://player.vimeo.com/video/{{reply.get_vimeo_id}}?title=0&byline=0&portrait=0" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        		        {% endif %}
+                        		        {% if reply.is_youtube %}
+                            		        <iframe width="100%" src="https://www.youtube.com/embed/{{reply.get_youtube_id}}" frameborder="0" allowfullscreen></iframe>
+                        		        {% endif %}
+                    		        {% else %}
+                                    {% if reply.is_image %}
+                                        <div class="media-center"><a href="#image-{{reply.id}}" data-featherlight="{{reply.url}}"><img src="{{reply.url}}" alt="{{reply.title}}" width=""/></a></div>
+                                    {% else %}
+                        			          <p><a href="{{reply.url}}">{{reply.title}}</a></p>
+                                    {% endif %}
+                    			      {% endif %}
+                			      {% endif %}
+			                      <div class="response-body">{% if reply.body %}{{reply.body|markdown|urlize|url_target_blank}}{% endif %}</div>
+
+                            {% flag comments %}
+                            {% if reply.comment_set.count %}
+                                <h3>comments</h3>
+                                {% for comment in reply.comment_set.all %}
+                                    <p class="username">from <a href="{% url 'userena_profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
+					                                                            <div class='username-hover'>
+						                                                          <a href='{% url 'userena_profile_detail' comment.author.username %}'>
+							                                                        <div class='cover-photo' {% if comment.author.profile.cover %}style='background-image:url({{comment.author.profile.cover.url}});'{% endif %}></div>
+							                                                        <div class='profile-img-thumb' style='background-image:url({{comment.author.profile.get_mugshot_url}});'></div>
+							                                                        <div class='page-heading'>
+								                                                      <h2 class='hub-list-username'><b>{{comment.author.username}}</b></h2>
+							                                                        </div>
+						                                                          </a>
+						                                                          <dd>{{comment.author.profile.profession}}</dd>
+						                                                          <dd>{{comment.author.profile.location}}</dd>
+						                                                          <dd><a href='{{comment.author.profile.website_url}}'target='blank'>{{comment.author.profile.website_name}}</a></dd>
+						                                                          <dd><a href='mailto:{{comment.author.profile.user.email}}'>{{comment.author.profile.user.email}}</a></dd>
+					                                                            </div>">{{comment.author.username}}</a> @ {{reply.added}}</p>
+                                    <div class="comment-body">{{comment.body|markdown|urlize|url_target_blank}}</div>
+                                {% endfor %}
                             {% endif %}
-                    			{% endif %}
-                			{% endif %}
-			                <div class="response-body">{% if reply.body %}{{reply.body|markdown|urlize|url_target_blank}}{% endif %}</div>
-
-                      {% flag comments %}
-                      {% if reply.comment_set.count %}
-                          <h3>comments</h3>
-                          {% for comment in reply.comment_set.all %}
-                              <p class="username">from <a href="{% url 'userena_profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
-					<div class='username-hover'>
-						<a href='{% url 'userena_profile_detail' comment.author.username %}'>
-							<div class='cover-photo' {% if comment.author.profile.cover %}style='background-image:url({{comment.author.profile.cover.url}});'{% endif %}></div>
-							<div class='profile-img-thumb' style='background-image:url({{comment.author.profile.get_mugshot_url}});'></div>
-							<div class='page-heading'>
-								<h2 class='hub-list-username'><b>{{comment.author.username}}</b></h2>
-							</div>
-						</a>
-						<dd>{{comment.author.profile.profession}}</dd>
-						<dd>{{comment.author.profile.location}}</dd>
-						<dd><a href='{{comment.author.profile.website_url}}'target='blank'>{{comment.author.profile.website_name}}</a></dd>
-						<dd><a href='mailto:{{comment.author.profile.user.email}}'>{{comment.author.profile.user.email}}</a></dd>
-					</div>">{{comment.author.username}}</a> @ {{reply.added}}</p>
-                              <div class="comment-body">{{comment.body|markdown|urlize|url_target_blank}}</div>
-                          {% endfor %}
-                      {% endif %}
-                      <form action="{% url 'add-comment' reply.id %}" method="post">
-                          {% csrf_token %}
-                          <textarea name="body" placeholder="add a comment"></textarea>
-                          <input type="submit" value="add comment" />
-                      </form>
+                            <form action="{% url 'add-comment' reply.id %}" method="post">
+                                {% csrf_token %}
+                                <textarea name="body" placeholder="add a comment"></textarea>
+                                <input type="submit" value="add comment" />
+                            </form>
                       {% endflag comments %}
-				    </div>
-        			{% endfor %}
-        
-				</div>
-			
-			</div>
-		</div>
-	</div>
+				                </div>
+        			      {% endfor %}
+                    
+				        </div>
+			          
+			      </div>
+		    </div>
+</div>
 <script src="//cdn.rawgit.com/noelboss/featherlight/1.4.1/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
-{% endblock %}
+    {% endblock %}
 
 </div>

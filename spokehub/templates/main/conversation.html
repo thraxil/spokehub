@@ -49,40 +49,40 @@
 <div>
 	<h3>Add Link Reply</h3>
 	<form action="/conversation/{{conversation.id}}/reply/" method="post"
-			enctype="multipart/form-data" role="form">
+			  enctype="multipart/form-data" role="form">{% csrf_token %}
 
 			<label for="link-url">URL
-			<input type="text" name="url" id="link-url" placeholder="http://" />
+			    <input type="text" name="url" id="link-url" placeholder="http://" />
 			</label>
 
 			<label for="link-title">Link Title
-				<input type="text" name="title" class="form-control" id="link-title" /></label>
+				  <input type="text" name="title" class="form-control" id="link-title" /></label>
 
-			<input type="submit" class="btn btn-primary" value="Link Reply"/>
+			    <input type="submit" class="btn btn-primary" value="Link Reply"/>
 	</form>
 </div>
 
 <div>
-	<h3>Add Image Reply</h3>
-	<form action="/conversation/{{conversation.id}}/reply/" method="post"
-				enctype="multipart/form-data" role="form">
-		<label for="exampleInputFile">Image
-			<input type="file" id="image" name="image"></label>
+	  <h3>Add Image Reply</h3>
+	  <form action="/conversation/{{conversation.id}}/reply/" method="post"
+				  enctype="multipart/form-data" role="form">{% csrf_token %}
+		    <label for="exampleInputFile">Image
+			      <input type="file" id="image" name="image"></label>
 
-		<label for="comment-body">Caption
-			<textarea name="body" class="form-control" rows="10"
-								id="comment-body"></textarea></label>
+		        <label for="comment-body">Caption
+			          <textarea name="body" class="form-control" rows="10"
+								                id="comment-body"></textarea></label>
 
-		<input type="submit" class="btn btn-primary" value="Image Reply"/>
+		        <input type="submit" class="btn btn-primary" value="Image Reply"/>
 
-	</form>
+	  </form>
 </div>
 
 
 <div>
-	<h3>Add Video Reply</h3>
-	<form action="/conversation/{{conversation.id}}/reply/" method="post"
-			enctype="multipart/form-data" role="form">
+	  <h3>Add Video Reply</h3>
+	  <form action="/conversation/{{conversation.id}}/reply/" method="post"
+			            enctype="multipart/form-data" role="form">{% csrf_token %}
 
 			<label>Youtube/Vimeo URL
 			<input type="text" name="url" placeholder="http://" />

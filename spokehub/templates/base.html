@@ -134,11 +134,11 @@
     <div>	
     	<a href="#close" title="Close" class="close"><i class="mdi mdi-close"></i></a>
         <h2>LOGIN</h2>
-        <form action="{% url 'userena_signin' %}" method="post">
+        <form action="{% url 'auth_login' %}" method="post">
             {% csrf_token %}
             <input type="hidden" name="next" value="{{request.path}}" />
         <p>Hey there stranger! Only hub members can log into this site. If this irks you feel free to shoot a message to <a href="mailto:hello@spokehub.org">hello@spokehub.org</a>. Thanks!</p>
-        <input type="text" name="identification" placeholder="Username"/>
+        <input type="text" name="username" placeholder="Username"/>
         <input type="password" name="password" placeholder="Password"/>
 		    <input type="submit" value="SUBMIT">
 	      <input type="hidden" name="remember_me" value="True">

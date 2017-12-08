@@ -9,13 +9,13 @@
     
     
     <div class="p">
-    If you already have a username or password, but have forgotten either,
+        If you already have a username or password, but have forgotten either,
         <a href="{% url 'auth_password_reset' %}">reset them here</a>.
     </div>
     
-    <form method="post" action="." class="register form">
-      {{ form|bootstrap }}
-      <input class="btn btn-primary" type="submit" value="{% trans 'Sign up!' %}" />
+    <form method="post" action="." class="register form">{% csrf_token %}
+        {{ form|bootstrap }}
+        <input class="btn btn-primary" type="submit" value="{% trans 'Sign up!' %}" />
     </form>
 
 {% endblock %}
