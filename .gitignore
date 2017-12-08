@@ -10,3 +10,7 @@ node_modules
 .DS_Store
 wheelhouse
 spokehub/lib
+media/admin/
+media/django_extensions/
+media/guardian/
+media/stick.js
