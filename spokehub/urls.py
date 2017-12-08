@@ -19,8 +19,7 @@ site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 urlpatterns = [
     url(r'^accounts/logout/$',
         django.contrib.auth.views.logout,
-        {'next_page': '/'},
-        name='auth_logout'),
+        {'next_page': '/'}, name='auth_logout'),
     url(r'^accounts/signin/$',
         userena.views.signin,
         {'auth_form': CustomAuthenticationForm},
