@@ -1,5 +1,6 @@
 import os.path
 import userena.views
+import django.contrib.auth.views
 import django.views.static
 
 from django.conf.urls import include, url
@@ -16,8 +17,10 @@ admin.autodiscover()
 site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 
 urlpatterns = [
-    url(r'^accounts/signout/(?P<next_page>.*)/$',
-        userena.views.signout, name='userena_signout_next'),
+    url(r'^accounts/logout/$',
+        django.contrib.auth.views.logout,
+        {'next_page': '/'},
+        name='auth_logout'),
     url(r'^accounts/signin/$',
         userena.views.signin,
         {'auth_form': CustomAuthenticationForm},

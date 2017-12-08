@@ -212,7 +212,7 @@ ANONYMOUS_USER_ID = -1
 AUTH_PROFILE_MODULE = 'profile.Profile'
 
 LOGIN_URL = '/accounts/signin/'
-LOGOUT_URL = '/accounts/signout/'
+LOGOUT_URL = '/accounts/logout/'
 
 LOGGING = {
     'version': 1,
