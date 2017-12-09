@@ -1,5 +1,5 @@
 from datetime import datetime
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import login
 from django.views.generic.base import View
 from django.views.generic.edit import FormView
 from django.http import HttpResponse, HttpResponseRedirect
@@ -79,8 +79,8 @@ class SignupView(InviteTokenRequiredMixin, FormView):
         p.save()
 
         # log them in
-        user = authenticate(identification=user.email, check_password=False)
-        login(self.request, user)
+        login(self.request, user,
+              backend='django.contrib.auth.backends.ModelBackend')
         self.request.session.set_expiry(
             userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
         self.user = user

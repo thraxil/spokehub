@@ -205,9 +205,8 @@ USERENA_REMEMBER_ME_DAYS = ('', 365 * 5)
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTOCOL', 'https')
 
 AUTHENTICATION_BACKENDS = (
-    'userena.backends.UserenaAuthenticationBackend',
-    'guardian.backends.ObjectPermissionBackend',
     'django.contrib.auth.backends.ModelBackend',
+    'guardian.backends.ObjectPermissionBackend',
 )
 ANONYMOUS_USER_ID = -1
 AUTH_PROFILE_MODULE = 'profile.Profile'
