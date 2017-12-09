@@ -1,6 +1,18 @@
 from django.conf import settings
-
+from django.utils.encoding import smart_bytes
+from django.utils.http import urlencode
+from django.utils.six import text_type
+from hashlib import sha1, md5
 from userena.compat import SiteProfileNotAvailable, get_model
+
+import random
+
+DEFAULT_USERENA_USE_HTTPS = False
+_USERENA_USE_HTTPS = getattr(settings, 'USERENA_USE_HTTPS',
+                             DEFAULT_USERENA_USE_HTTPS)
+USERENA_MUGSHOT_GRAVATAR_SECURE = getattr(settings,
+                                          'USERENA_MUGSHOT_GRAVATAR_SECURE',
+                                          _USERENA_USE_HTTPS)
 
 
 def get_profile_model():
@@ -36,3 +48,36 @@ def get_user_profile(user):
     if profile:
         return profile
     return profile_model.objects.create(user=user)
+
+
+def get_gravatar(email, size=80, default='identicon'):
+    if USERENA_MUGSHOT_GRAVATAR_SECURE:
+        base_url = 'https://secure.gravatar.com/avatar/'
+    else:
+        base_url = '//www.gravatar.com/avatar/'
+
+    gravatar_url = ('%(base_url)s%(gravatar_id)s?' %
+                    {
+                        'base_url': base_url,
+                        'gravatar_id': md5(
+                            email.lower().encode(
+                                'utf-8')).hexdigest()})
+
+    gravatar_url += urlencode({
+        's': str(size),
+        'd': default
+    })
+    return gravatar_url
+
+
+def generate_sha1(string, salt=None):
+    if not isinstance(string, (str, text_type)):
+        string = str(string)
+
+    if not salt:
+        salt = sha1(str(random.random()).encode('utf-8')).hexdigest()[:5]
+
+    salted_bytes = (smart_bytes(salt) + smart_bytes(string))
+    hash_ = sha1(salted_bytes).hexdigest()
+
+    return salt, hash_
