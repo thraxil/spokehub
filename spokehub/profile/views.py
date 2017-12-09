@@ -1,5 +1,7 @@
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.translation import ugettext as _
@@ -13,6 +15,11 @@ from userena.forms import EditProfileForm
 from userena.utils import get_profile_model, get_user_profile
 
 import userena.views
+
+
+USERENA_PROFILE_DETAIL_TEMPLATE = getattr(
+    settings, 'USERENA_PROFILE_DETAIL_TEMPLATE',
+    'userena/profile_detail.html')
 
 
 class ProfileListView(userena.views.ProfileListView):
@@ -36,6 +43,21 @@ class ExtraContextTemplateView(TemplateView):
         return context
 
     post = TemplateView.get
+
+
+def profile_detail(request, username,
+                   template_name=USERENA_PROFILE_DETAIL_TEMPLATE,
+                   extra_context=None, **kwargs):
+    user = get_object_or_404(get_user_model(), username__iexact=username)
+    profile = get_user_profile(user=user)
+    if not profile.can_view_profile(request.user):
+        raise PermissionDenied
+    if not extra_context:
+        extra_context = dict()
+    extra_context['profile'] = profile
+    return ExtraContextTemplateView.as_view(
+        template_name=template_name,
+        extra_context=extra_context)(request)
 
 
 @secure_required
