@@ -62,7 +62,7 @@ urlpatterns = [
     url(r'^confirm-email/(?P<confirmation_key>\w+)/$',
         email_confirm,
         name='userena_email_confirm'),
-    url(r'^accounts/', include('userena.urls')),
+    url(r'^accounts/', include('django.contrib.auth.urls')),
 
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),
