@@ -2,13 +2,16 @@ from django.conf import settings
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
+from django.contrib.sites.models import Site
 from django.template.loader import get_template
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 from guardian.shortcuts import get_perms
 from easy_thumbnails.fields import ThumbnailerImageField
-from userena.managers import UserenaBaseProfileManager
-from userena.utils import (get_gravatar, generate_sha1, get_datetime_now)
+from userena.mail import UserenaConfirmationMail
+from userena.managers import UserenaBaseProfileManager, UserenaManager
+from userena.utils import (get_gravatar, generate_sha1, get_datetime_now,
+                           user_model_label, get_protocol)
 
 
 USERENA_MUGSHOT_SIZE = getattr(settings,
@@ -190,3 +193,87 @@ class Profile(UserenaBaseProfile):
         t = get_template('userena/hover_div.html')
         d = {'profile': self}
         return t.render(d)
+
+
+@python_2_unicode_compatible
+class UserenaSignup(models.Model):
+    """
+    Userena model which stores all the necessary information to have a full
+    functional user implementation on your Django website.
+    """
+    user = models.OneToOneField(
+        user_model_label,
+        verbose_name=_('user'),
+        related_name='userena_signup',
+        on_delete=models.CASCADE)
+
+    last_active = models.DateTimeField(
+        _('last active'),
+        blank=True,
+        null=True,
+        help_text=_('The last date that the user was active.'))
+
+    activation_key = models.CharField(
+        _('activation key'),
+        max_length=40,
+        blank=True)
+
+    activation_notification_send = models.BooleanField(
+        _('notification send'),
+        default=False,
+        help_text=_('Designates whether this user has already got '
+                    'a notification about activating their account.'))
+
+    email_unconfirmed = models.EmailField(
+        _('unconfirmed email address'),
+        blank=True,
+        help_text=_('Temporary email address when the user '
+                    'requests an email change.'))
+
+    email_confirmation_key = models.CharField(
+        _('unconfirmed email verification key'),
+        max_length=40,
+        blank=True)
+
+    email_confirmation_key_created = models.DateTimeField(
+        _('creation date of email confirmation key'),
+        blank=True,
+        null=True)
+
+    objects = UserenaManager()
+
+    class Meta:
+        verbose_name = _('userena registration')
+        verbose_name_plural = _('userena registrations')
+
+    def __str__(self):
+        return '%s' % self.user.username
+
+    def change_email(self, email):
+        self.email_unconfirmed = email
+
+        salt, hash = generate_sha1(self.user.username)
+        self.email_confirmation_key = hash
+        self.email_confirmation_key_created = get_datetime_now()
+        self.save()
+
+        # Send email for activation
+        self.send_confirmation_email()
+
+    def send_confirmation_email(self):
+        context = {
+            'user': self.user,
+            'without_usernames': USERENA_WITHOUT_USERNAMES,
+            'new_email': self.email_unconfirmed,
+            'protocol': get_protocol(),
+            'confirmation_key': self.email_confirmation_key,
+            'site': Site.objects.get_current()}
+
+        mailer = UserenaConfirmationMail(context=context)
+        mailer.generate_mail("confirmation", "_old")
+
+        if self.user.email:
+            mailer.send_mail(self.user.email)
+
+        mailer.generate_mail("confirmation", "_new")
+        mailer.send_mail(self.email_unconfirmed)

@@ -13,8 +13,9 @@ from guardian.decorators import permission_required_or_403
 
 from userena import signals as userena_signals
 from userena.decorators import secure_required
-from userena.forms import (EditProfileForm, ChangeEmailForm)
-from userena.models import UserenaSignup
+
+from .forms import EditProfileForm, ChangeEmailForm
+from .models import UserenaSignup
 from .utils import get_profile_model, get_user_profile
 
 
@@ -24,6 +25,10 @@ USERENA_PROFILE_DETAIL_TEMPLATE = getattr(
 USERENA_PROFILE_LIST_TEMPLATE = getattr(
     settings, 'USERENA_PROFILE_LIST_TEMPLATE',
     'userena/profile_list.html')
+USERENA_WITHOUT_USERNAMES = getattr(
+    settings,
+    'USERENA_WITHOUT_USERNAMES',
+    False)
 
 
 class ProfileListView(ListView):

@@ -145,7 +145,6 @@ INSTALLED_APPS = [
     'spokehub.work',
     'spokehub.edit',
     'gunicorn',
-    'userena',
     'guardian',
     'easy_thumbnails',
     'spokehub.gravatar',
