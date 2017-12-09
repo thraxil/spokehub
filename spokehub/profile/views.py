@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView
+from django.views.generic.list import ListView
 
 from guardian.decorators import permission_required_or_403
 
@@ -16,15 +17,40 @@ from userena.forms import (EditProfileForm, ChangeEmailForm)
 from userena.models import UserenaSignup
 from userena.utils import get_profile_model, get_user_profile
 
-import userena.views
-
 
 USERENA_PROFILE_DETAIL_TEMPLATE = getattr(
     settings, 'USERENA_PROFILE_DETAIL_TEMPLATE',
     'userena/profile_detail.html')
+USERENA_PROFILE_LIST_TEMPLATE = getattr(
+    settings, 'USERENA_PROFILE_LIST_TEMPLATE',
+    'userena/profile_list.html')
 
 
-class ProfileListView(userena.views.ProfileListView):
+class ProfileListView(ListView):
+    """ Lists all profiles """
+    context_object_name = 'profile_list'
+    page = 1
+    paginate_by = 50
+    template_name = USERENA_PROFILE_LIST_TEMPLATE
+    extra_context = None
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(ProfileListView, self).get_context_data(**kwargs)
+        try:
+            page = int(self.request.GET.get('page', None))
+        except (TypeError, ValueError):
+            page = self.page
+
+        if not self.extra_context:
+            self.extra_context = dict()
+
+        context['page'] = page
+        context['paginate_by'] = self.paginate_by
+        context['extra_context'] = self.extra_context
+
+        return context
+
     def get_queryset(self):
         profile_model = get_profile_model()
         queryset = profile_model.objects.get_visible_profiles(
