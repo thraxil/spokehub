@@ -46,7 +46,7 @@ NOW_POSTS_PER_PAGE = 500
 INSTALLED_APPS += [
     'opbeat.contrib.django',
 ]
-MIDDLEWARE_CLASSES.insert(0, 'opbeat.contrib.django.middleware.OpbeatAPMMiddleware')
+MIDDLEWARE.insert(0, 'opbeat.contrib.django.middleware.OpbeatAPMMiddleware')
 
 try:
     from .local_settings import *
