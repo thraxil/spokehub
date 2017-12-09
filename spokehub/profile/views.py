@@ -12,7 +12,8 @@ from guardian.decorators import permission_required_or_403
 
 from userena import signals as userena_signals
 from userena.decorators import secure_required
-from userena.forms import EditProfileForm
+from userena.forms import (EditProfileForm, ChangeEmailForm)
+from userena.models import UserenaSignup
 from userena.utils import get_profile_model, get_user_profile
 
 import userena.views
@@ -154,3 +155,63 @@ def direct_to_user_template(request, username, template_name,
     return ExtraContextTemplateView.as_view(
         template_name=template_name,
         extra_context=extra_context)(request)
+
+
+@secure_required
+@permission_required_or_403('change_user',
+                            (get_user_model(), 'username', 'username'))
+def email_change(request, username, email_form=ChangeEmailForm,
+                 template_name='userena/email_form.html', success_url=None,
+                 extra_context=None):
+    user = get_object_or_404(get_user_model(), username__iexact=username)
+    prev_email = user.email
+    form = email_form(user)
+
+    if request.method == 'POST':
+        form = email_form(user, request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+
+            if success_url:
+                # Send a signal that the email has changed
+                userena_signals.email_change.send(sender=None,
+                                                  user=user,
+                                                  prev_email=prev_email,
+                                                  new_email=user.email)
+                redirect_to = success_url
+            else:
+                redirect_to = reverse('userena_email_change_complete',
+                                      kwargs={'username': user.username})
+            return redirect(redirect_to)
+
+    if not extra_context:
+        extra_context = dict()
+    extra_context['form'] = form
+    extra_context['profile'] = get_user_profile(user=user)
+    return ExtraContextTemplateView.as_view(
+        template_name=template_name,
+        extra_context=extra_context)(request)
+
+
+@secure_required
+def email_confirm(request, confirmation_key,
+                  template_name='userena/email_confirm_fail.html',
+                  success_url=None, extra_context=None):
+    user = UserenaSignup.objects.confirm_email(confirmation_key)
+    if user:
+        messages.success(request, _('Your email address has been changed.'),
+                         fail_silently=True)
+
+        if success_url:
+            redirect_to = success_url
+        else:
+            redirect_to = reverse('userena_email_confirm_complete',
+                                  kwargs={'username': user.username})
+        return redirect(redirect_to)
+    else:
+        if not extra_context:
+            extra_context = dict()
+        return ExtraContextTemplateView.as_view(
+            template_name=template_name,
+            extra_context=extra_context)(request)

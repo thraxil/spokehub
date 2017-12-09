@@ -11,7 +11,8 @@ from spokehub.main import views
 from spokehub.profile.forms import ExtendedEditProfileForm
 from spokehub.profile.views import (
     ProfileListView, profile_edit, profile_detail,
-    password_change, direct_to_user_template
+    password_change, direct_to_user_template, email_confirm,
+    email_change,
 )
 admin.autodiscover()
 
@@ -47,6 +48,20 @@ urlpatterns = [
         direct_to_user_template,
         {'template_name': 'userena/password_complete.html'},
         name='userena_password_change_complete'),
+    url(r'^(?P<username>[\@\.\+\w-]+)/email/$',
+        email_change,
+        name='userena_email_change'),
+    url(r'^(?P<username>[\@\.\+\w-]+)/email/complete/$',
+        direct_to_user_template,
+        {'template_name': 'userena/email_change_complete.html'},
+        name='userena_email_change_complete'),
+    url(r'^(?P<username>[\@\.\+\w-]+)/confirm-email/complete/$',
+        direct_to_user_template,
+        {'template_name': 'userena/email_confirm_complete.html'},
+        name='userena_email_confirm_complete'),
+    url(r'^confirm-email/(?P<confirmation_key>\w+)/$',
+        email_confirm,
+        name='userena_email_confirm'),
     url(r'^accounts/', include('userena.urls')),
 
     url(r'^$', views.IndexView.as_view(), name='index'),
