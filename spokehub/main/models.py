@@ -6,10 +6,10 @@ import re
 import os.path
 from django.dispatch import receiver
 from django.db.models.signals import post_save
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 from django.template.loader import get_template
 
-from userena.utils import get_user_profile
+from spokehub.profile.utils import get_user_profile
 import urllib.parse as urlparse
 import waffle
 
@@ -23,7 +23,7 @@ class Conversation(models.Model):
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     rhash = models.TextField(blank=True, null=True)
     extension = models.TextField(blank=True, null=True)
 
@@ -119,8 +119,8 @@ class ReplyManager(models.Manager):
 
 
 class Reply(models.Model):
-    item = models.ForeignKey(Conversation)
-    author = models.ForeignKey(User)
+    item = models.ForeignKey(Conversation, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField(blank=True, default=u"")
     added = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
@@ -297,9 +297,9 @@ class CommentManager(models.Manager):
 
 
 class Comment(models.Model):
-    reply = models.ForeignKey(Reply)
+    reply = models.ForeignKey(Reply, on_delete=models.CASCADE)
     added = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(User)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField(blank=True, default=u"")
 
     objects = CommentManager()

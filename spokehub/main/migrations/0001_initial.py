@@ -40,7 +40,7 @@ class Migration(migrations.Migration):
                 ('image_url', models.TextField(default=b'', blank=True)),
                 ('image_width', models.IntegerField(default=0)),
                 ('image_height', models.IntegerField(default=0)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -57,8 +57,8 @@ class Migration(migrations.Migration):
                 ('url', models.TextField(default='', blank=True)),
                 ('title', models.TextField(default='', blank=True)),
                 ('youtube_id', models.TextField(default=b'', blank=True)),
-                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
-                ('item', models.ForeignKey(to='main.Item')),
+                ('author', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
+                ('item', models.ForeignKey(to='main.Item', on_delete=models.CASCADE)),
             ],
             options={
                 'ordering': ['added'],
@@ -73,7 +73,7 @@ class Migration(migrations.Migration):
                 ('title', models.TextField(default=b'', blank=True)),
                 ('youtube_id', models.TextField(default=b'', blank=True)),
                 ('vimeo_id', models.TextField(default=b'', blank=True)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
             },

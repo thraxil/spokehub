@@ -15,7 +15,7 @@ from userena import signals as userena_signals
 from userena.decorators import secure_required
 from userena.forms import (EditProfileForm, ChangeEmailForm)
 from userena.models import UserenaSignup
-from userena.utils import get_profile_model, get_user_profile
+from .utils import get_profile_model, get_user_profile
 
 
 USERENA_PROFILE_DETAIL_TEMPLATE = getattr(
