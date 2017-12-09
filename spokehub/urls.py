@@ -125,7 +125,7 @@ urlpatterns = [
     url(r'^invite/', include('spokehub.invite.urls')),
     url(r'^contact/', include('spokehub.contact.urls')),
     url(r'^broadcast/', include('spokehub.broadcast.urls')),
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', admin.site.urls),
     url(r'^stats/$', TemplateView.as_view(template_name="stats.html"),
         name='stats'),
     url(r'^smoketest/', include('smoketest.urls')),

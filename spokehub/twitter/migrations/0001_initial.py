@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('oauth_verifier', models.TextField(default=b'', blank=True)),
                 ('screen_name', models.TextField(default=b'', blank=True)),
                 ('profile_image_url', models.TextField(default=b'', blank=True)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL)),
+                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
             },
