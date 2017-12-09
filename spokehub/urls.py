@@ -10,7 +10,9 @@ from django.views.generic import TemplateView
 from spokehub.main import views
 from spokehub.profile.forms import ExtendedEditProfileForm
 from spokehub.profile.views import (
-    ProfileListView, profile_edit, profile_detail)
+    ProfileListView, profile_edit, profile_detail,
+    password_change, direct_to_user_template
+)
 admin.autodiscover()
 
 site_media_root = os.path.join(os.path.dirname(__file__), "../media")
@@ -38,6 +40,13 @@ urlpatterns = [
     url(r'^accounts/password/reset/done/',
         django.contrib.auth.views.password_reset_done,
         name='userena_password_reset_done'),
+    url(r'^(?P<username>[\@\.\+\w-]+)/password/$',
+        password_change,
+        name='userena_password_change'),
+    url(r'^(?P<username>[\@\.\+\w-]+)/password/complete/$',
+        direct_to_user_template,
+        {'template_name': 'userena/password_complete.html'},
+        name='userena_password_change_complete'),
     url(r'^accounts/', include('userena.urls')),
 
     url(r'^$', views.IndexView.as_view(), name='index'),

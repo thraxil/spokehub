@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import PasswordChangeForm
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
@@ -100,6 +101,56 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
         extra_context = dict()
     extra_context['form'] = form
     extra_context['profile'] = profile
+    return ExtraContextTemplateView.as_view(
+        template_name=template_name,
+        extra_context=extra_context)(request)
+
+
+@secure_required
+@permission_required_or_403('change_user',
+                            (get_user_model(), 'username', 'username'))
+def password_change(request, username,
+                    template_name='userena/password_form.html',
+                    pass_form=PasswordChangeForm, success_url=None,
+                    extra_context=None):
+    user = get_object_or_404(get_user_model(),
+                             username__iexact=username)
+
+    form = pass_form(user=user)
+
+    if request.method == "POST":
+        form = pass_form(user=user, data=request.POST)
+        if form.is_valid():
+            form.save()
+
+            # Send a signal that the password has changed
+            userena_signals.password_complete.send(sender=None,
+                                                   user=user)
+
+            if success_url:
+                redirect_to = success_url
+            else:
+                redirect_to = reverse('userena_password_change_complete',
+                                      kwargs={'username': user.username})
+            return redirect(redirect_to)
+
+    if not extra_context:
+        extra_context = dict()
+    extra_context['form'] = form
+    extra_context['profile'] = get_user_profile(user=user)
+    return ExtraContextTemplateView.as_view(
+        template_name=template_name,
+        extra_context=extra_context)(request)
+
+
+def direct_to_user_template(request, username, template_name,
+                            extra_context=None):
+    user = get_object_or_404(get_user_model(), username__iexact=username)
+
+    if not extra_context:
+        extra_context = dict()
+    extra_context['viewed_user'] = user
+    extra_context['profile'] = get_user_profile(user=user)
     return ExtraContextTemplateView.as_view(
         template_name=template_name,
         extra_context=extra_context)(request)
