@@ -1,6 +1,6 @@
 from django import forms
 from userena.forms import SignupForm, USERNAME_RE
-from userena.utils import get_user_profile
+from spokehub.profile.utils import get_user_profile
 
 invalid_username_message = (
     'Username must contain only letters, numbers, dots and underscores.')

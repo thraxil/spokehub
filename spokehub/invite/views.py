@@ -10,8 +10,8 @@ from django.contrib import messages
 from django.template.defaultfilters import slugify
 from .models import Invite
 from .forms import FullSignupForm
-from userena.utils import get_user_profile
-from userena.models import upload_to_mugshot
+from spokehub.profile.utils import get_user_profile
+from spokehub.profile.models import upload_to_mugshot
 from userena import settings as userena_settings
 from easy_thumbnails.files import get_thumbnailer
 import random
