@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('discipline2', models.CharField(default=b'', max_length=256, blank=True)),
                 ('website_url', models.CharField(default=b'', max_length=256, blank=True)),
                 ('website_name', models.CharField(default=b'', max_length=256, blank=True)),
-                ('user', models.OneToOneField(related_name='profile', verbose_name='user', to=settings.AUTH_USER_MODEL)),
+                ('user', models.OneToOneField(related_name='profile', verbose_name='user', to=settings.AUTH_USER_MODEL, on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,

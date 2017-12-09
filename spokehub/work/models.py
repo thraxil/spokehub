@@ -91,16 +91,16 @@ class Project(models.Model):
 
 
 class ProjectContributor(models.Model):
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     fullname = models.TextField(blank=True, default="")
-    user = models.ForeignKey(User, null=True)
+    user = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     class Meta:
         order_with_respect_to = 'project'
 
 
 class ProjectMedia(models.Model):
-    project = models.ForeignKey(Project)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
     image_hash = models.TextField(blank=True, null=True)
     image_extension = models.TextField(blank=True, null=True)
     youtube_id = models.TextField(default="", blank=True)

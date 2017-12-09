@@ -11,7 +11,8 @@ class Profile(UserenaBaseProfile):
         User,
         unique=True,
         verbose_name=_('user'),
-        related_name='profile')
+        related_name='profile',
+        on_delete=models.CASCADE)
     about_me = models.TextField(blank=True, default="")
     profession = models.CharField(max_length=256, blank=False)
     website_url = models.CharField(max_length=256, blank=False)
