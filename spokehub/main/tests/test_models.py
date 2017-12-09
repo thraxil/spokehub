@@ -3,7 +3,7 @@ from django.core import mail
 from django.test import TestCase
 from django.utils import timezone
 from waffle.testutils import override_switch
-from userena.utils import get_user_profile
+from spokehub.profile.utils import get_user_profile
 from .factories import (
     UserFactory, ConversationFactory, ReplyFactory,
     NowPostFactory)

@@ -1,5 +1,5 @@
 from django.test import TestCase
-from userena.utils import get_user_profile
+from ..utils import get_user_profile
 from spokehub.main.tests.factories import UserFactory
 
 
