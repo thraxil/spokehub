@@ -89,7 +89,7 @@ def new_conversation_emails(sender, **kwargs):
 
 def user_new_convo_email(u, i):
     profile = get_user_profile(u)
-    if (u.is_anonymous() or u.username == 'AnonymousUser' or
+    if (u.is_anonymous or u.username == 'AnonymousUser' or
             not profile.allow_email):
         return
     if waffle.switch_is_active('send_email') or u.is_staff:
