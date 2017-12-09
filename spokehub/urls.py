@@ -1,5 +1,4 @@
 import os.path
-import userena.views
 import django.contrib.auth.views
 import django.views.static
 
@@ -10,7 +9,7 @@ from django.conf import settings
 from django.views.generic import TemplateView
 from spokehub.main import views
 from spokehub.profile.forms import ExtendedEditProfileForm
-from spokehub.profile.views import ProfileListView
+from spokehub.profile.views import ProfileListView, profile_edit
 admin.autodiscover()
 
 site_media_root = os.path.join(os.path.dirname(__file__), "../media")
@@ -23,7 +22,7 @@ urlpatterns = [
         django.contrib.auth.views.login,
         name='auth_login'),
     url(r'^accounts/(?P<username>[\@\.\w-]+)/edit/$',
-        userena.views.profile_edit,
+        profile_edit,
         {'edit_profile_form': ExtendedEditProfileForm},
         name='userena_profile_edit'),
     url(r'^accounts/$',
@@ -36,6 +35,7 @@ urlpatterns = [
         django.contrib.auth.views.password_reset_done,
         name='userena_password_reset_done'),
     url(r'^accounts/', include('userena.urls')),
+
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^about/$', TemplateView.as_view(template_name="about.html"),
         name='about'),
