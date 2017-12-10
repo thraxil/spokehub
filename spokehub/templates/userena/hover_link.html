@@ -1,7 +1,7 @@
 {% load user_profile %}
 {% user_profile username as u %}
 {% if u and u.profile %}
-    <a href="{% url 'userena_profile_detail' u.username %}"
+    <a href="{% url 'profile_detail' u.username %}"
        class='btn btn-primary btn-large' data-popover="true" data-html="true"
        data-content="{{u.profile.hover_div|escape}}">{{fullname}}</a>
 {% else %}

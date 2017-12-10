@@ -150,7 +150,7 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
                 profile_change.send(sender=None, user=user)
                 redirect_to = success_url
             else:
-                redirect_to = reverse('userena_profile_detail',
+                redirect_to = reverse('profile_detail',
                                       kwargs={'username': username})
             return redirect(redirect_to)
 

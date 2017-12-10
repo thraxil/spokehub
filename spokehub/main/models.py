@@ -196,7 +196,7 @@ class Reply(models.Model):
     def link_usernames(self):
         body = self.body
         for u in self.all_mentioned_users():
-            link = reverse('userena_profile_detail', args=[u.username, ])
+            link = reverse('profile_detail', args=[u.username, ])
             body = re.sub(
                 '@' + u.username,
                 '[@%s](%s)' % (u.username, link),

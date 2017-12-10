@@ -12,7 +12,7 @@
         <div class="content-wrapper content-container edit-profile user-page">
             <div class="page-heading">
                 <ul class="archives-post">
-                    <li><a href="{% url 'userena_profile_detail' user.username %}"><i class="mdi mdi-account"></i> View Profile</a></li>
+                    <li><a href="{% url 'profile_detail' user.username %}"><i class="mdi mdi-account"></i> View Profile</a></li>
                     <li><a href="{% url 'userena_email_change' user.username %}"><i class="mdi mdi-email"></i> Change Email</a></li>
                     <li><a href="{% url 'userena_password_change' user.username %}"><i class="mdi mdi-lock-open"></i> Change Password</a></li>
                 </ul>

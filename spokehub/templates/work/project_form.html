@@ -65,7 +65,7 @@
                         {% for c in object.projectcontributor_set.all %}
                             <div class="list-group-item contributor" id="{{c.pk}}">
                                 {% if c.user %}
-                                    <a href="{% url 'userena_profile_detail' c.user.username %}">{{c.user.first_name}} {{c.user.last_name}}</a>
+                                    <a href="{% url 'profile_detail' c.user.username %}">{{c.user.first_name}} {{c.user.last_name}}</a>
                                     {% if c.fullname %}
                                         (display as: "{{c.fullname}}")
                                     {% endif %}

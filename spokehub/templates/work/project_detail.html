@@ -65,7 +65,7 @@
                 <p>
                     {% for c in object.projectcontributor_set.all %}
                         {% if c.user and c.user.profile %}
-                            <a href="{% url 'userena_profile_detail' c.user.username %}"
+                            <a href="{% url 'profile_detail' c.user.username %}"
                                class='btn btn-primary btn-large' data-popover="true" data-html="true"
                                data-content="{{c.user.profile.hover_div|escape}}">
                                 {% if c.fullname %}{{c.fullname}}{% else %}{{c.user.first_name}} {{c.user.last_name}}{% endif %}

@@ -31,7 +31,7 @@ urlpatterns = [
         name='profile_edit'),
     url(r'^accounts/(?P<username>(?!(signout|signup|signin)/)[\@\.\+\w-]+)/$',
         profile_detail,
-        name='userena_profile_detail'),
+        name='profile_detail'),
     url(r'^accounts/$',
         login_required(ProfileListView.as_view(paginate_by=100)),
         name='userena_profile_list'),

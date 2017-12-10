@@ -25,9 +25,9 @@
 			                      <p id="we-question-edit"><a href="{{conversation.get_edit_url}}" class="btn btn-primary pull-right">Edit</a></p>
 			                  {% endif %}
 						            <h3>{{conversation.body|markdown|urlize|url_target_blank}}</h3>
-						            <p class="username"><a href="{% url 'userena_profile_detail' conversation.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
+						            <p class="username"><a href="{% url 'profile_detail' conversation.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
 					                                           <div class='username-hover'>
-						                                         <a href='{% url 'userena_profile_detail' conversation.author.username %}'>
+						                                         <a href='{% url 'profile_detail' conversation.author.username %}'>
 							                                       <div class='cover-photo' {% if conversation.author.profile.cover %}style='background-image:url({{conversation.author.profile.cover.url}});'{% endif %}></div>
 							                                       <div class='profile-img-thumb' style='background-image:url({{conversation.author.profile.get_mugshot_url}});'></div>
 							                                       <div class='page-heading'>
@@ -73,9 +73,9 @@
 		                        {% if request.user.is_superuser or request.user == reply.author %}
 		                            <p class="edit-response"><a href="{% url 'edit-reply' reply.id %}">Edit</a></p>
 		                        {% endif %}
-					                  <p class="username"><a href="{% url 'userena_profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
+					                  <p class="username"><a href="{% url 'profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
 					                                               <div class='username-hover'>
-						                                             <a href='{% url 'userena_profile_detail' reply.author.username %}'>
+						                                             <a href='{% url 'profile_detail' reply.author.username %}'>
 							                                           <div class='cover-photo' {% if reply.author.profile.cover %}style='background-image:url({{reply.author.profile.cover.url}});'{% endif %}></div>
 							                                           <div class='profile-img-thumb' style='background-image:url({{reply.author.profile.get_mugshot_url}});'></div>
 							                                           <div class='page-heading'>
@@ -116,9 +116,9 @@
                             {% if reply.comment_set.count %}
                                 <h3>comments</h3>
                                 {% for comment in reply.comment_set.all %}
-                                    <p class="username">from <a href="{% url 'userena_profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
+                                    <p class="username">from <a href="{% url 'profile_detail' reply.author.username %}" class='btn btn-primary btn-large' data-popover="true" data-html="true" data-content="
 					                                                            <div class='username-hover'>
-						                                                          <a href='{% url 'userena_profile_detail' comment.author.username %}'>
+						                                                          <a href='{% url 'profile_detail' comment.author.username %}'>
 							                                                        <div class='cover-photo' {% if comment.author.profile.cover %}style='background-image:url({{comment.author.profile.cover.url}});'{% endif %}></div>
 							                                                        <div class='profile-img-thumb' style='background-image:url({{comment.author.profile.get_mugshot_url}});'></div>
 							                                                        <div class='page-heading'>

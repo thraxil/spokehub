@@ -94,7 +94,7 @@
 					<p><a href="#openModal" id="login-link">Login</a></p>
 					{% else %}
 					<p>
-						<a href="{% url 'userena_profile_detail' request.user.username %}">
+						<a href="{% url 'profile_detail' request.user.username %}">
 							<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
 							<span class="username-link">
 								{{request.user.username}}
@@ -114,7 +114,7 @@
 			<p><a href="#openModal" id="login-link">Login</a></p>
 			{% else %}
 			<p>
-				<a href="{% url 'userena_profile_detail' request.user.username %}">
+				<a href="{% url 'profile_detail' request.user.username %}">
 					<img src="{{request.user.profile.get_mugshot_url}}" class="logged-in-thumb"/>
 					<span class="username-link">
 						{{request.user.username}}
