@@ -12,11 +12,15 @@ from .models import Invite
 from .forms import FullSignupForm
 from spokehub.profile.utils import get_user_profile
 from spokehub.profile.models import upload_to_mugshot
-from userena import settings as userena_settings
 from easy_thumbnails.files import get_thumbnailer
 import random
 import string
 import os
+
+
+USERENA_REMEMBER_ME_DAYS = getattr(settings,
+                                   'USERENA_REMEMBER_ME_DAYS',
+                                   ('a month', 30))
 
 
 def new_token():
@@ -82,7 +86,7 @@ class SignupView(InviteTokenRequiredMixin, FormView):
         login(self.request, user,
               backend='django.contrib.auth.backends.ModelBackend')
         self.request.session.set_expiry(
-            userena_settings.USERENA_REMEMBER_ME_DAYS[1] * 86400)
+            USERENA_REMEMBER_ME_DAYS[1] * 86400)
         self.user = user
         return super(SignupView, self).form_valid(form)
 
