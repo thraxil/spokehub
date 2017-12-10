@@ -85,7 +85,7 @@ def twitter_images_to_https(apps, schema_editor):
 
         
 class Migration(migrations.Migration):
-
+    atomic = False
     replaces = [('main', '0001_initial'), ('main', '0002_auto_20150311_1746'), ('main', '0003_auto_20150311_1830'), ('main', '0004_reply_vimeo_id'), ('main', '0005_auto_20150322_2030'), ('main', '0006_nowpost_video_url'), ('main', '0007_auto_20160225_1130'), ('main', '0008_auto_20160225_1133'), ('main', '0009_auto_20160225_1204'), ('main', '0010_auto_20160225_1210'), ('main', '0011_remove_conversation_title'), ('main', '0012_remove_reply_title'), ('main', '0013_auto_20160311_1424'), ('main', '0014_comment'), ('main', '0015_auto_20160611_1216'), ('main', '0016_auto_20160611_1219'), ('main', '0015_auto_20160513_1637'), ('main', '0017_merge'), ('main', '0018_auto_20160627_2028'), ('main', '0019_auto_20160627_2124'), ('main', '0020_auto_20160627_2125'), ('main', '0021_auto_20160627_2223'), ('main', '0022_auto_20170930_1232')]
 
     initial = True
