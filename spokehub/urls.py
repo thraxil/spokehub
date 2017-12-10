@@ -37,7 +37,7 @@ urlpatterns = [
         name='profile_list'),
     url(r'^accounts/password/reset/',
         django.contrib.auth.views.password_reset,
-        name='userena_password_reset'),
+        name='password_reset'),
     url(r'^accounts/password/reset/done/',
         django.contrib.auth.views.password_reset_done,
         name='userena_password_reset_done'),
