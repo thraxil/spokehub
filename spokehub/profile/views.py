@@ -186,7 +186,7 @@ def password_change(request, username,
             if success_url:
                 redirect_to = success_url
             else:
-                redirect_to = reverse('userena_password_change_complete',
+                redirect_to = reverse('password_change_complete',
                                       kwargs={'username': user.username})
             return redirect(redirect_to)
 
