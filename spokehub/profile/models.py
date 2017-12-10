@@ -10,9 +10,11 @@ from guardian.shortcuts import get_perms
 from easy_thumbnails.fields import ThumbnailerImageField
 from userena.mail import UserenaConfirmationMail
 from userena.managers import UserenaBaseProfileManager, UserenaManager
-from userena.utils import get_protocol
+
 from .utils import (
-    get_gravatar, generate_sha1, get_datetime_now, user_model_label)
+    get_gravatar, generate_sha1, get_datetime_now, user_model_label,
+    get_protocol
+)
 
 
 USERENA_MUGSHOT_SIZE = getattr(settings,

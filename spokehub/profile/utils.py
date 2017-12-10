@@ -98,3 +98,15 @@ def get_datetime_now():
         return timezone.now()
     except ImportError:
         return datetime.datetime.now()
+
+
+def get_protocol():
+    """
+    Returns a string with the current protocol.
+    This can be either 'http' or 'https' depending on ``USERENA_USE_HTTPS``
+    setting.
+    """
+    protocol = 'http'
+    if getattr(settings, 'USERENA_USE_HTTPS', DEFAULT_USERENA_USE_HTTPS):
+        protocol = 'https'
+    return protocol
