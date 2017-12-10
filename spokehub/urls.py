@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'^accounts/(?P<username>[\@\.\w-]+)/edit/$',
         profile_edit,
         {'edit_profile_form': ExtendedEditProfileForm},
-        name='userena_profile_edit'),
+        name='profile_edit'),
     url(r'^accounts/(?P<username>(?!(signout|signup|signin)/)[\@\.\+\w-]+)/$',
         profile_detail,
         name='userena_profile_detail'),

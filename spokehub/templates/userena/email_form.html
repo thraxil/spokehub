@@ -9,7 +9,7 @@
         <div class="page-heading clearfix">
             <ul class="archives-post">
                 <li><a href="{% url 'userena_profile_detail' user.username %}"><i class="mdi mdi-account"></i> View Profile</a></li>
-                <li><a href="{% url 'userena_profile_edit' user.username %}"><i class="mdi mdi-pencil"></i> Edit Profile</a></li>
+                <li><a href="{% url 'profile_edit' user.username %}"><i class="mdi mdi-pencil"></i> Edit Profile</a></li>
                 <li><a href="{% url 'userena_password_change' user.username %}"><i class="mdi mdi-lock-open"></i> Change Password</a></li>
             </ul>
             <h2><b>Change Email</b></h2>
