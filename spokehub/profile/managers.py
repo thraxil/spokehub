@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.db.models import Q
+from django.dispatch import Signal
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import UserManager, Permission, AnonymousUser
@@ -11,7 +12,6 @@ from django.utils.six import text_type
 
 from .utils import generate_sha1, get_profile_model, get_datetime_now, \
     get_user_profile
-from userena import signals as userena_signals
 
 from guardian.shortcuts import assign_perm, get_perms
 
@@ -31,6 +31,8 @@ ASSIGNED_PERMISSIONS = {
 USERENA_ACTIVATED = getattr(settings,
                             'USERENA_ACTIVATED',
                             'ALREADY_ACTIVATED')
+activation_complete = Signal(providing_args=["user", ])
+confirmation_complete = Signal(providing_args=["user", "old_email"])
 
 
 class UserenaManager(UserManager):
@@ -155,8 +157,7 @@ class UserenaManager(UserManager):
                 user.save(using=self._db)
 
                 # Send the activation_complete signal
-                userena_signals.activation_complete.send(sender=None,
-                                                         user=user)
+                activation_complete.send(sender=None, user=user)
 
                 return user
         return False
@@ -212,9 +213,8 @@ class UserenaManager(UserManager):
                 user.save(using=self._db)
 
                 # Send the confirmation_complete signal
-                userena_signals.confirmation_complete.send(sender=None,
-                                                           user=user,
-                                                           old_email=old_email)
+                confirmation_complete.send(sender=None, user=user,
+                                           old_email=old_email)
 
                 return user
         return False
