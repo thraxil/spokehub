@@ -8,7 +8,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 from guardian.shortcuts import get_perms
 from easy_thumbnails.fields import ThumbnailerImageField
-from userena.mail import UserenaConfirmationMail
+from .mail import UserenaConfirmationMail
 from .managers import UserenaBaseProfileManager, UserenaManager
 
 from .utils import (
