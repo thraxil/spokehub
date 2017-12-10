@@ -4,15 +4,16 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.exceptions import PermissionDenied
 from django.dispatch import Signal
+from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
+from django.utils.decorators import available_attrs
+from django.utils.functional import wraps
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView
 
 from guardian.decorators import permission_required_or_403
-
-from userena.decorators import secure_required
 
 from .forms import EditProfileForm, ChangeEmailForm
 from .models import UserenaSignup
@@ -29,8 +30,31 @@ USERENA_WITHOUT_USERNAMES = getattr(
     settings,
     'USERENA_WITHOUT_USERNAMES',
     False)
+DEFAULT_USERENA_USE_HTTPS = False
 password_complete = Signal(providing_args=["user", ])
 profile_change = Signal(providing_args=["user", ])
+
+
+def secure_required(view_func):
+    """
+    Decorator to switch an url from http to https.
+    If a view is accessed through http and this decorator is applied to that
+    view, than it will return a permanent redirect to the secure (https)
+    version of the same view.
+    The decorator also must check that ``USERENA_USE_HTTPS`` is enabled. If
+    disabled, it should not redirect to https because the project doesn't
+    support it.
+    """
+    def _wrapped_view(request, *args, **kwargs):
+        if not request.is_secure():
+            if getattr(settings, 'USERENA_USE_HTTPS',
+                       DEFAULT_USERENA_USE_HTTPS):
+                request_url = request.build_absolute_uri(
+                    request.get_full_path())
+                secure_url = request_url.replace('http://', 'https://')
+                return HttpResponsePermanentRedirect(secure_url)
+        return view_func(request, *args, **kwargs)
+    return wraps(view_func, assigned=available_attrs(view_func))(_wrapped_view)
 
 
 class ProfileListView(ListView):
