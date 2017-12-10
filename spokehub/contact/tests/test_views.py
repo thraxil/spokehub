@@ -1,7 +1,7 @@
 from django.core import mail
 from django.test import TestCase
 from django.test.client import RequestFactory
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 from spokehub.contact.views import ContactView, ThanksView
 

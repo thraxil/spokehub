@@ -1,6 +1,6 @@
 from django.views.generic.edit import FormView
-from django.core.urlresolvers import reverse
 from django.views.generic.base import TemplateView
+from django.urls import reverse
 
 
 from .forms import ContactForm

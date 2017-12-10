@@ -4,10 +4,10 @@ from django.views.generic.base import View
 from django.views.generic.edit import FormView
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.shortcuts import render
 from django.contrib import messages
 from django.template.defaultfilters import slugify
+from django.urls import reverse
 from .models import Invite
 from .forms import FullSignupForm
 from spokehub.profile.utils import get_user_profile

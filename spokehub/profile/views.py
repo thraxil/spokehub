@@ -3,8 +3,8 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, get_object_or_404
+from django.urls import reverse
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView
 from django.views.generic.list import ListView

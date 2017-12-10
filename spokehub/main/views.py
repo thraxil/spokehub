@@ -1,5 +1,4 @@
 from django.conf import settings
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic.base import TemplateView, View
@@ -7,6 +6,7 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.urls import reverse
 from .models import Conversation, NowPost, Reply
 from .forms import ReplyUpdateForm, ConversationUpdateForm
 

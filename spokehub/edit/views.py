@@ -1,9 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.messages.views import SuccessMessageMixin
-from django.core.urlresolvers import reverse_lazy, reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404
+from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, View
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 

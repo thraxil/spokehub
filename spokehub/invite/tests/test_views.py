@@ -1,10 +1,10 @@
 import unittest
 from django.contrib.auth.models import User
 from django.core.files.uploadedfile import SimpleUploadedFile
-from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.utils import override_settings
 from django.utils.encoding import force_bytes, force_text
+from django.urls import reverse
 from waffle.testutils import override_flag
 from spokehub.invite.views import new_token, upload_image
 from spokehub.invite.models import Invite
