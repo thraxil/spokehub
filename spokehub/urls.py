@@ -34,7 +34,7 @@ urlpatterns = [
         name='profile_detail'),
     url(r'^accounts/$',
         login_required(ProfileListView.as_view(paginate_by=100)),
-        name='userena_profile_list'),
+        name='profile_list'),
     url(r'^accounts/password/reset/',
         django.contrib.auth.views.password_reset,
         name='userena_password_reset'),
