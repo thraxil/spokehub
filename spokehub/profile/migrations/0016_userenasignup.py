@@ -6,7 +6,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
-import userena.managers
+import spokehub.profile.managers
 
 
 class Migration(migrations.Migration):
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'userena registrations',
             },
             managers=[
-                ('objects', userena.managers.UserenaManager()),
+                ('objects', spokehub.profile.managers.UserenaManager()),
             ],
         ),
     ]

@@ -9,7 +9,7 @@ from django.utils.translation import ugettext as _
 from guardian.shortcuts import get_perms
 from easy_thumbnails.fields import ThumbnailerImageField
 from userena.mail import UserenaConfirmationMail
-from userena.managers import UserenaBaseProfileManager, UserenaManager
+from .managers import UserenaBaseProfileManager, UserenaManager
 
 from .utils import (
     get_gravatar, generate_sha1, get_datetime_now, user_model_label,
