@@ -40,7 +40,7 @@ urlpatterns = [
         name='password_reset'),
     url(r'^accounts/password/reset/done/',
         django.contrib.auth.views.password_reset_done,
-        name='userena_password_reset_done'),
+        name='password_reset_done'),
     url(r'^(?P<username>[\@\.\+\w-]+)/password/$',
         password_change,
         name='userena_password_change'),
