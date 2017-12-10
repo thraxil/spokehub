@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.exceptions import PermissionDenied
+from django.dispatch import Signal
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
 from django.utils.translation import ugettext as _
@@ -11,7 +12,6 @@ from django.views.generic.list import ListView
 
 from guardian.decorators import permission_required_or_403
 
-from userena import signals as userena_signals
 from userena.decorators import secure_required
 
 from .forms import EditProfileForm, ChangeEmailForm
@@ -29,6 +29,8 @@ USERENA_WITHOUT_USERNAMES = getattr(
     settings,
     'USERENA_WITHOUT_USERNAMES',
     False)
+password_complete = Signal(providing_args=["user", ])
+profile_change = Signal(providing_args=["user", ])
 
 
 class ProfileListView(ListView):
@@ -121,8 +123,7 @@ def profile_edit(request, username, edit_profile_form=EditProfileForm,
 
             if success_url:
                 # Send a signal that the profile has changed
-                userena_signals.profile_change.send(sender=None,
-                                                    user=user)
+                profile_change.send(sender=None, user=user)
                 redirect_to = success_url
             else:
                 redirect_to = reverse('userena_profile_detail',
@@ -156,8 +157,7 @@ def password_change(request, username,
             form.save()
 
             # Send a signal that the password has changed
-            userena_signals.password_complete.send(sender=None,
-                                                   user=user)
+            password_complete.send(sender=None, user=user)
 
             if success_url:
                 redirect_to = success_url
@@ -206,10 +206,10 @@ def email_change(request, username, email_form=ChangeEmailForm,
 
             if success_url:
                 # Send a signal that the email has changed
-                userena_signals.email_change.send(sender=None,
-                                                  user=user,
-                                                  prev_email=prev_email,
-                                                  new_email=user.email)
+                email_change.send(sender=None,
+                                  user=user,
+                                  prev_email=prev_email,
+                                  new_email=user.email)
                 redirect_to = success_url
             else:
                 redirect_to = reverse('userena_email_change_complete',
