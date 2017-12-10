@@ -1,9 +1,9 @@
+from django.apps import apps
 from django.conf import settings
 from django.utils.encoding import smart_bytes
 from django.utils.http import urlencode
 from django.utils.six import text_type
 from hashlib import sha1, md5
-from userena.compat import SiteProfileNotAvailable, get_model
 
 import datetime
 import random
@@ -17,6 +17,10 @@ USERENA_MUGSHOT_GRAVATAR_SECURE = getattr(settings,
 user_model_label = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
 
+class SiteProfileNotAvailable(Exception):
+    pass
+
+
 def get_profile_model():
     """
     Return the model class for the currently-active user profile
@@ -28,7 +32,8 @@ def get_profile_model():
         raise SiteProfileNotAvailable
 
     try:
-        profile_mod = get_model(*settings.AUTH_PROFILE_MODULE.rsplit('.', 1))
+        profile_mod = apps.get_model(
+            *settings.AUTH_PROFILE_MODULE.rsplit('.', 1))
     except LookupError:
         profile_mod = None
 
