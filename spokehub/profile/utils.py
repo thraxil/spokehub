@@ -14,6 +14,7 @@ _USERENA_USE_HTTPS = getattr(settings, 'USERENA_USE_HTTPS',
 USERENA_MUGSHOT_GRAVATAR_SECURE = getattr(settings,
                                           'USERENA_MUGSHOT_GRAVATAR_SECURE',
                                           _USERENA_USE_HTTPS)
+user_model_label = getattr(settings, 'AUTH_USER_MODEL', 'auth.User')
 
 
 def get_profile_model():
