@@ -112,7 +112,6 @@
                 			      {% endif %}
 			                      <div class="response-body">{% if reply.body %}{{reply.body|markdown|urlize|url_target_blank}}{% endif %}</div>
 
-                            {% flag comments %}
                             {% if reply.comment_set.count %}
                                 <h3>comments</h3>
                                 {% for comment in reply.comment_set.all %}
@@ -138,7 +137,6 @@
                                 <textarea name="body" placeholder="add a comment"></textarea>
                                 <input type="submit" value="add comment" />
                             </form>
-                      {% endflag comments %}
 				                </div>
         			      {% endfor %}
                     
