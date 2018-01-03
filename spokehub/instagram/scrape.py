@@ -25,7 +25,8 @@ def parse_json(script):
 
 
 def entries(d):
-    return d['entry_data']['TagPage'][0]['tag']['media']['nodes']
+    graphql = d['entry_data']['TagPage'][0]['graphql']
+    return graphql['hashtag']['edge_hashtag_to_media']['edges']
 
 
 def user_page_entries(d):
@@ -46,16 +47,20 @@ def clean_url(url):
 
 
 class Entry(object):
-    def __init__(self, d):
-        self.caption = d.get('caption', '')
-        self.code = d['code']
-        self.comments = d['comments']
-        self.date = datetime.fromtimestamp(int(d['date']))
-        self.dimensions = d['dimensions']
-        self.display_src = d['display_src']
+    def __init__(self, d, graphql=False):
+        if graphql:
+            self.caption = d['edge_media_to_caption'][
+                'edges'][0]['node']['text']
+            self.code = d['shortcode']
+            self.date = datetime.fromtimestamp(int(d['taken_at_timestamp']))
+            self.display_src = d['display_url']
+        else:
+            self.caption = d.get('caption', '')
+            self.code = d['code']
+            self.date = datetime.fromtimestamp(int(d['date']))
+            self.display_src = d['display_src']
         self.id = d['id']
         self.is_video = d['is_video']
-        self.likes = d['likes']
         self.owner = d['owner']['id']
         self.thumbnail_src = d['thumbnail_src']
         self._username = None

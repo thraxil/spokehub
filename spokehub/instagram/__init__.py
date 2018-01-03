@@ -101,8 +101,15 @@ class ScrapeAdder(Adder):
 def scrape_entries(entry_data):
     a = ScrapeAdder()
     for entry in entry_data:
-        print("- entry {}".format(entry['code']))
-        e = Entry(entry)
+        graphql = False
+        if 'node' in entry.keys():
+            entry = entry['node']
+            graphql = True
+        if graphql:
+            print("- entry {}".format(entry['shortcode']))
+        else:
+            print("- entry {}".format(entry['code']))
+        e = Entry(entry, graphql)
         if e.is_video:
             # can't handle video yet
             print("skip video")
