@@ -25,8 +25,11 @@ def parse_json(script):
 
 
 def entries(d):
-    graphql = d['entry_data']['TagPage'][0]['graphql']
-    return graphql['hashtag']['edge_hashtag_to_media']['edges']
+    top = d['entry_data']['TagPage'][0]
+    if 'graphql' in top.keys():
+        graphql = d['entry_data']['TagPage'][0]['graphql']
+        return graphql['hashtag']['edge_hashtag_to_media']['edges']
+    return d['entry_data']['TagPage'][0]['tag']['media']['nodes']
 
 
 def user_page_entries(d):
