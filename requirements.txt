@@ -68,7 +68,7 @@ lxml==4.1.1
 
 mccabe==0.6.1
 
-Markdown==2.6.10
+Markdown==2.6.11
 
 mock==2.0.0
 ndg-httpsclient==0.4.3
