@@ -92,7 +92,7 @@ pyOpenSSL==17.5.0
 python-dateutil==2.6.1
 rcssmin==1.0.6
 future==0.16.0
-Unidecode==0.04.21
+Unidecode==1.0.22
 PyTumblr==0.0.7
 chardet==3.0.4
 urllib3==1.22
