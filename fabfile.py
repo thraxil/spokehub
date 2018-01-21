@@ -1,13 +1,13 @@
 from fabric.api import run, sudo, local, cd, env
 
-env.hosts = ['gustav.spokehub.org']
+env.hosts = ['188.166.52.181']
 env.user = 'anders'
 nginx_hosts = ['octopus.spokehub.org']
 
 
 def restart_gunicorn():
-    sudo("/sbin/stop spokehub || true", shell=False)
-    sudo("/sbin/start spokehub", shell=False)
+    sudo("systemctl stop spokehub || true", shell=False)
+    sudo("systemctl start spokehub", shell=False)
 
 
 def prepare_deploy():
