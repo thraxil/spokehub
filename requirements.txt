@@ -13,7 +13,7 @@ contextlib2==0.5.5
 
 text-unidecode==1.1
 
-coverage==4.4.2
+coverage==4.5
 
 cssselect==1.0.3
 decorator==4.2.1
