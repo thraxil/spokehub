@@ -42,7 +42,7 @@ enum34==1.1.6
 Fabric3==1.14.post1
 pytz==2018.3
 
-Faker==0.8.10
+Faker==0.8.11
 
 factory-boy==2.10.0
 
