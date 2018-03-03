@@ -111,7 +111,7 @@ statsd==3.2.2
 sure==1.4.7
 tornado==4.5.3
 traitlets==4.3.2
-tweepy==3.5.0
+tweepy==3.6.0
 versiontools==1.9.1
 wcwidth==0.1.7
 wrapt==1.10.11
