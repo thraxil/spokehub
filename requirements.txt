@@ -108,7 +108,7 @@ singledispatch==3.4.0.3
 six==1.11.0
 sqlparse==0.2.4
 statsd==3.2.2
-sure==1.4.7
+sure==1.4.9
 tornado==5.0
 traitlets==4.3.2
 tweepy==3.6.0
