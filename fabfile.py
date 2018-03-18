@@ -46,3 +46,4 @@ def deploy():
                  "%s:/var/www/spokehub/spokehub/media/") % n)
     restart_gunicorn()
     opbeat()
+    sentry()
