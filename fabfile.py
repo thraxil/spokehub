@@ -31,7 +31,7 @@ def sentry():
     local("""COMMIT=$(git log -n 1 --pretty=format:'%%H') && curl %s \
     -X POST \
     -H 'Content-Type: application/json' \
-    -d "{\"version\": \"$COMMIT\"}" """ % (url))
+    -d "{\\\"version\\\": \\\"$COMMIT\\\"}" """ % (url))
 
 
 def deploy():
