@@ -33,7 +33,8 @@ def entries(d):
 
 
 def user_page_entries(d):
-    return d['entry_data']['ProfilePage'][0]['user']['media']['nodes']
+    return d['entry_data']['ProfilePage'][0][
+        'graphql']['user']['edge_owner_to_timeline_media']['edges']
 
 
 def owner(d):
@@ -52,8 +53,11 @@ def clean_url(url):
 class Entry(object):
     def __init__(self, d, graphql=False):
         if graphql:
-            self.caption = d['edge_media_to_caption'][
-                'edges'][0]['node']['text']
+            edges = d['edge_media_to_caption']['edges']
+            if len(edges) > 0:
+                self.caption = edges[0]['node']['text']
+            else:
+                self.caption = ""
             self.code = d['shortcode']
             self.date = datetime.fromtimestamp(int(d['taken_at_timestamp']))
             self.display_src = d['display_url']
