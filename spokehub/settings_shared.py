@@ -150,6 +150,7 @@ INSTALLED_APPS = [
     'spokehub.gravatar',
     'spokehub.broadcast',
     'flatblocks',
+    'raven.contrib.django.raven_compat',
 ]
 
 INTERNAL_IPS = ('127.0.0.1', )
