@@ -28,7 +28,7 @@ def sentry():
     url = ("https://sentry.io/api/hooks/release/builtin/"
            "305941/a1598af8c2efee2a4fd205aff2386cad5b25e"
            "451c31f2fbfc89b5f85b8d0232b/")
-    local("""COMMIT=$(git log -n 1 --pretty=format:'%H') && curl %s \
+    local("""COMMIT=$(git log -n 1 --pretty=format:'%%H') && curl %s \
   -X POST \
   -H 'Content-Type: application/json' \
     -d '{"version": "$COMMIT"}'""" % (url))
