@@ -5,12 +5,14 @@ from spokehub.instagram import my_posts_scrape
 from spokehub.tumblr import hashtag_search as tumblr_hashtag_search
 from django.conf import settings
 import pytumblr
+import time
 import tweepy
 
 
 class Command(BaseCommand):
     args = ''
     help = ''
+    max_tries = 5
 
     def handle(self, *args, **kwargs):
         CONSUMER_KEY = settings.TWITTER_API_KEY
@@ -32,5 +34,15 @@ class Command(BaseCommand):
         )
         tumblr_hashtag_search(tumblr_client)
 
-        my_posts_scrape()
-        instagram_hashtag_scrape()
+        tries = 0
+        captured_exception = None
+        while tries < self.max_tries:
+            try:
+                my_posts_scrape()
+                instagram_hashtag_scrape()
+                return
+            except Exception as e:
+                tries += 1
+                time.sleep(2 ** tries)
+                captured_exception = e
+        raise captured_exception
