@@ -14,16 +14,6 @@ def prepare_deploy():
     local("make test")
 
 
-def opbeat():
-    url = ("https://intake.opbeat.com/api/v1/organizations/" +
-           "68fbae23422f4aa98cb810535e54c5f1/apps/db3da4248a/releases/")
-    local("""curl %s \
-    -H "Authorization: Bearer 2d0f64cf9464a3f383554dce3311e709fd928a5c" \
-    -d rev=`git log -n 1 --pretty=format:%%H` \
-    -d branch=`git rev-parse --abbrev-ref HEAD` \
-    -d status=completed""" % url)
-
-
 def sentry():
     url = ("https://sentry.io/api/hooks/release/builtin/"
            "305941/a1598af8c2efee2a4fd205aff2386cad5b25e"
@@ -45,5 +35,4 @@ def deploy():
             run(("rsync -avp media/ "
                  "%s:/var/www/spokehub/spokehub/media/") % n)
     restart_gunicorn()
-    opbeat()
     sentry()
