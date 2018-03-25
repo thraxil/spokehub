@@ -90,7 +90,7 @@ pycrypto==2.6.1
 pyflakes==1.6.0
 pylint==1.8.3
 pyOpenSSL==17.5.0
-python-dateutil==2.7.0
+python-dateutil==2.7.1
 rcssmin==1.0.6
 future==0.16.0
 Unidecode==1.0.22
