@@ -31,7 +31,7 @@ django-guardian==1.4.9
 django-libsass==0.7
 django-markwhat==1.6.0
 django-picklefield==1.0.0
-django-registration-redux==2.2
+django-registration-redux==2.3
 django-smoketest==1.1.0
 django-statsd-mozilla==0.4.0
 
