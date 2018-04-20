@@ -76,7 +76,7 @@ oauth2==1.9.0.post1
 oauthlib==2.0.7
 raven==6.7.0
 paramiko==2.4.1
-pathlib2==2.3.0
+pathlib2==2.3.2
 pep8==1.7.1
 pickleshare==0.7.4
 Pillow==5.1.0
