@@ -103,7 +103,7 @@ requests-oauthlib==0.8.0
 rjsmin==1.0.12
 setuptools-scm==2.0.0
 simplegeneric==0.8.1
-simplejson==3.13.2
+simplejson==3.14.0
 singledispatch==3.4.0.3
 six==1.11.0
 sqlparse==0.2.4
