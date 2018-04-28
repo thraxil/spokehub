@@ -52,7 +52,7 @@ fuzzywuzzy==0.16.0
 gunicorn==19.7.1
 html2text==2018.1.9
 httplib2==0.11.3
-httpretty==0.8.14
+httpretty==0.9.4
 idna==2.6
 ipaddress==1.0.21
 
