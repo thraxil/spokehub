@@ -112,7 +112,7 @@ six==1.11.0
 sqlparse==0.2.4
 statsd==3.2.2
 sure==1.4.11
-tornado==5.0.2
+tornado==5.1
 traitlets==4.3.2
 tweepy==3.6.0
 versiontools==1.9.1
