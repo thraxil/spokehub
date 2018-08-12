@@ -4,7 +4,7 @@ astroid==2.0.4
 backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
 backports.ssl-match-hostname==3.5.0.1
-beautifulsoup4==4.6.1
+beautifulsoup4==4.6.2
 certifi==2018.4.16
 
 colorama==0.3.9
