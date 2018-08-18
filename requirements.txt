@@ -18,12 +18,12 @@ text-unidecode==1.2
 coverage==4.5.1
 
 cssselect==1.0.3
-decorator==4.2.1
+decorator==4.3.0
 
 django-appconf==1.0.2
 django-bootstrap-form==3.4
 django-bootstrap3==10.0.1
-django-compressor==2.1.1
+django-compressor==2.2
 django-debug-toolbar==1.9.1
 django-discover-jenkins==0.1.4
 
@@ -44,22 +44,22 @@ enum34==1.1.6
 Fabric3==1.14.post1
 pytz==2018.5
 
-Faker==0.8.18
+Faker==0.9.0
 
 factory-boy==2.11.1
 
 flake8==3.5.0
 funcsigs==1.0.2
 fuzzywuzzy==0.16.0
-gunicorn==19.8.1
+gunicorn==19.9.0
 html2text==2018.1.9
 httplib2==0.11.3
 httpretty==0.9.5
 idna==2.7
-ipaddress==1.0.21
+ipaddress==1.0.22
 
-ipdb==0.10.2 # pyup: < 0.10.3
-ipython==5.8.0 # pyup: < 6.0
+ipdb==0.11 # pyup: < 0.10.3
+ipython==6.5.0 # pyup: < 6.0
 
 ipython-genutils==0.2.0
 lazy-object-proxy==1.3.1
@@ -86,7 +86,7 @@ prompt-toolkit==2.0.4
 psycopg2-binary==2.7.5
 ptyprocess==0.6.0
 
-pycodestyle==2.3.1
+pycodestyle==2.4.0
 cryptography==2.3.1
 pycrypto==2.6.1
 pyflakes==2.0.0
@@ -99,9 +99,9 @@ python-dateutil==2.7.3
 rcssmin==1.0.6
 future==0.16.0
 Unidecode==1.0.22
-PyTumblr==0.0.7
+PyTumblr==0.0.8
 chardet==3.0.4
-urllib3==1.22
+urllib3==1.23
 
 requests==2.19.1
 requests-oauthlib==1.0.0
