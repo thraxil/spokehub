@@ -1,5 +1,5 @@
 import os.path
-import django.contrib.auth.views
+import django.contrib.auth.views as auth_views
 import django.views.static
 
 from django.conf.urls import include, url
@@ -20,10 +20,8 @@ site_media_root = os.path.join(os.path.dirname(__file__), "../media")
 
 urlpatterns = [
     url(r'^accounts/logout/$',
-        django.contrib.auth.views.logout,
-        {'next_page': '/'}, name='auth_logout'),
-    url(r'^accounts/login/$',
-        django.contrib.auth.views.login,
+        auth_views.LogoutView.as_view(next_page='/'), name='auth_logout'),
+    url(r'^accounts/login/$', auth_views.LoginView.as_view(),
         name='auth_login'),
     url(r'^accounts/(?P<username>[\@\.\w-]+)/edit/$',
         profile_edit,
@@ -36,10 +34,10 @@ urlpatterns = [
         login_required(ProfileListView.as_view(paginate_by=100)),
         name='profile_list'),
     url(r'^accounts/password/reset/',
-        django.contrib.auth.views.password_reset,
+        auth_views.PasswordResetView.as_view(),
         name='password_reset'),
     url(r'^accounts/password/reset/done/',
-        django.contrib.auth.views.password_reset_done,
+        auth_views.PasswordChangeDoneView.as_view(),
         name='password_reset_done'),
     url(r'^(?P<username>[\@\.\+\w-]+)/password/$',
         password_change,
