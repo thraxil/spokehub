@@ -39,7 +39,7 @@ USERENA_MUGSHOT_PATH = getattr(settings,
                                'USERENA_MUGSHOT_PATH',
                                'mugshots/')
 PROFILE_PERMISSIONS = (
-            ('view_profile', 'Can view profile'),
+            ('can_view_profile', 'Can view profile'),
 )
 
 
@@ -146,7 +146,7 @@ class UserenaBaseProfile(models.Model):
             return True
 
         # Checks done by guardian for owner and admins.
-        elif 'view_profile' in get_perms(user, self):
+        elif 'can_view_profile' in get_perms(user, self):
             return True
 
         # Fallback to closed profile.
