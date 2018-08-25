@@ -112,7 +112,7 @@ simplejson==3.16.0
 singledispatch==3.4.0.3
 six==1.11.0
 sqlparse==0.2.4
-statsd==3.2.2
+statsd==3.3.0
 sure==1.4.11
 tornado==5.1
 traitlets==4.3.2
