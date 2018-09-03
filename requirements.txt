@@ -22,7 +22,7 @@ decorator==4.3.0
 
 django-appconf==1.0.2
 django-bootstrap-form==3.4
-django-bootstrap3==10.0.1
+django-bootstrap3==11.0.0
 django-compressor==2.2
 django-debug-toolbar==1.9.1
 django-discover-jenkins==0.1.4
