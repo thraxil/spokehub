@@ -24,7 +24,7 @@ django-appconf==1.0.2
 django-bootstrap-form==3.4
 django-bootstrap3==11.0.0
 django-compressor==2.2
-django-debug-toolbar==1.10
+django-debug-toolbar==1.10.1
 django-discover-jenkins==0.1.4
 
 django-flatblocks==0.9.4
