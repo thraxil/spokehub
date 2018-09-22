@@ -70,7 +70,7 @@ lxml==4.2.4
 
 mccabe==0.6.1
 
-Markdown==2.6.11
+Markdown==3.0
 
 mock==2.0.0
 ndg-httpsclient==0.5.1
