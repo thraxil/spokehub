@@ -98,7 +98,7 @@ pyOpenSSL==18.0.0
 
 pylint==2.1.1
 
-python-dateutil==2.7.4
+python-dateutil==2.7.5
 rcssmin==1.0.6
 future==0.17.0
 Unidecode==1.0.22
