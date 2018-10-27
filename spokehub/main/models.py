@@ -160,7 +160,7 @@ class Reply(models.Model):
         self.save()
 
     def mentioned_users(self):
-        pattern = re.compile('\@(\w+)', re.MULTILINE)
+        pattern = re.compile(r'\@(\w+)', re.MULTILINE)
         usernames = [u.lower() for u in pattern.findall(self.body)]
         usernames = list(set(usernames))
         users = []
@@ -182,7 +182,7 @@ class Reply(models.Model):
         return list(set(users))
 
     def all_mentioned_users(self):
-        pattern = re.compile('\@(\w+)', re.MULTILINE)
+        pattern = re.compile(r'\@(\w+)', re.MULTILINE)
         usernames = [u.lower() for u in pattern.findall(self.body)]
         usernames = list(set(usernames))
         users = []

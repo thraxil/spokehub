@@ -76,7 +76,7 @@ urlpatterns = [
         paginate_by=10, template_name='we/archive.html'),
         name='we-archive'),
     url(r'^we/question/(?P<year>\d+)/'
-        '(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
+        r'(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$',
         views.ConversationDetailView.as_view(
             template_name='we/question.html'), name='question'),
     url(r'^we/question/(?P<year>\d+)/(?P<month>\d+)/'
