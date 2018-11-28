@@ -96,7 +96,7 @@ pyflakes==2.0.0
 
 pyOpenSSL==18.0.0
 
-pylint==2.1.1
+pylint==2.2.2
 
 python-dateutil==2.7.5
 rcssmin==1.0.6
