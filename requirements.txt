@@ -55,7 +55,7 @@ gunicorn==19.9.0
 html2text==2018.1.9
 httplib2==0.12.0
 httpretty==0.9.6
-idna==2.7
+idna==2.8
 ipaddress==1.0.22
 
 ipdb==0.10.2 # pyup: < 0.10.3
