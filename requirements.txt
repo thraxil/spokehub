@@ -113,7 +113,7 @@ setuptools-scm==3.1.0
 simplegeneric==0.8.1
 simplejson==3.16.0
 singledispatch==3.4.0.3
-six==1.11.0
+six==1.12.0
 sqlparse==0.2.4
 statsd==3.3.0
 sure==1.4.11
