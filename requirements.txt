@@ -82,7 +82,7 @@ pathlib2==2.3.3
 pep8==1.7.1
 pickleshare==0.7.5
 
-Pillow==5.4.0
+Pillow==5.4.1
 
 prompt-toolkit==2.0.7
 
