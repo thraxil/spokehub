@@ -3,7 +3,7 @@ Django==2.1.5
 astroid==2.1.0
 backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
-backports.ssl-match-hostname==3.5.0.1
+backports.ssl-match-hostname==3.7.0.1
 
 certifi==2018.11.29
 
