@@ -90,7 +90,7 @@ psycopg2-binary==2.7.6.1
 ptyprocess==0.6.0
 
 pycodestyle==2.4.0
-cryptography==2.4.1
+cryptography==2.5
 pycryptodome==3.7.2
 pyflakes==2.1.0
 
