@@ -1,4 +1,4 @@
-Django==2.1.5
+Django==2.1.7
 
 astroid==2.1.0
 backports-abc==0.5
