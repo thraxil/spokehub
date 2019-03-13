@@ -1,26 +1,26 @@
-Django==2.1.4
+Django==2.1.7
 
-astroid==2.1.0
+astroid==2.2.5
 backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
-backports.ssl-match-hostname==3.5.0.1
+backports.ssl-match-hostname==3.7.0.1
 
-certifi==2018.11.29
+certifi==2019.3.9
 
-beautifulsoup4==4.6.3
+beautifulsoup4==4.7.1
 
 colorama==0.4.1
-configparser==3.5.0
+configparser==3.7.3
 contextlib2==0.5.5
 
 text-unidecode==1.2
 
-coverage==4.5.2
+coverage==4.5.3
 
 cssselect==1.0.3
-decorator==4.3.0
+decorator==4.3.2
 
-django-appconf==1.0.2
+django-appconf==1.0.3
 django-bootstrap-form==3.4
 django-bootstrap3==11.0.0
 django-compressor==2.2
@@ -29,7 +29,7 @@ django-discover-jenkins==0.1.4
 
 django-flatblocks==0.9.4
 django-ga-context==0.1.0
-django-guardian==1.4.9
+django-guardian==1.5.0
 django-libsass==0.7
 django-markwhat==1.6.1
 django-picklefield==2.0
@@ -37,25 +37,25 @@ django-registration-redux==2.5
 django-smoketest==1.1.0
 django-statsd-mozilla==0.4.0
 
-django-waffle==0.14.0
-easy-thumbnails==2.5
+django-waffle==0.15.1
+easy-thumbnails==2.6
 ecdsa==0.13
 enum34==1.1.6
 Fabric3==1.14.post1
-pytz==2018.7
+pytz==2018.9
 
-Faker==1.0.0
+Faker==1.0.4
 
 factory-boy==2.11.1
 
-flake8==3.6.0
+flake8==3.7.7
 funcsigs==1.0.2
 fuzzywuzzy==0.17.0
 gunicorn==19.9.0
 html2text==2018.1.9
-httplib2==0.12.0
+httplib2==0.12.1
 httpretty==0.9.6
-idna==2.7
+idna==2.8
 ipaddress==1.0.22
 
 ipdb==0.10.2 # pyup: < 0.10.3
@@ -63,10 +63,10 @@ ipython==5.8.0 # pyup: < 6.0
 
 ipython-genutils==0.2.0
 lazy-object-proxy==1.3.1
-libsass==0.16.1
+libsass==0.17.0
 logilab-astng==0.24.3
 logilab-common==1.4.2
-lxml==4.2.5
+lxml==4.3.2
 
 mccabe==0.6.1
 
@@ -75,30 +75,30 @@ Markdown==2.6.11
 mock==2.0.0
 ndg-httpsclient==0.5.1
 oauth2==1.9.0.post1
-oauthlib==2.1.0
-raven==6.9.0
+oauthlib==3.0.1
+raven==6.10.0
 paramiko==2.4.2
 pathlib2==2.3.3
 pep8==1.7.1
 pickleshare==0.7.5
 
-Pillow==5.3.0
+Pillow==5.4.1
 
-prompt-toolkit==2.0.7
+prompt-toolkit==2.0.9
 
-psycopg2-binary==2.7.6.1
+psycopg2-binary==2.7.7
 ptyprocess==0.6.0
 
-pycodestyle==2.4.0
-cryptography==2.4.1
+pycodestyle==2.5.0
+cryptography==2.6.1
 pycryptodome==3.7.2
-pyflakes==2.0.0
+pyflakes==2.1.1
 
-pyOpenSSL==18.0.0
+pyOpenSSL==19.0.0
 
-pylint==2.2.2
+pylint==2.3.1
 
-python-dateutil==2.7.5
+python-dateutil==2.8.0
 rcssmin==1.0.6
 future==0.17.1
 Unidecode==1.0.23
@@ -106,20 +106,20 @@ PyTumblr==0.0.8
 chardet==3.0.4
 urllib3==1.24.1
 
-requests==2.20.1
-requests-oauthlib==1.0.0
+requests==2.21.0
+requests-oauthlib==1.2.0
 rjsmin==1.0.12
-setuptools-scm==3.1.0
+setuptools-scm==3.2.0
 simplegeneric==0.8.1
 simplejson==3.16.0
 singledispatch==3.4.0.3
-six==1.11.0
-sqlparse==0.2.4
+six==1.12.0
+sqlparse==0.3.0
 statsd==3.3.0
 sure==1.4.11
-tornado==5.1.1
+tornado==6.0.1
 traitlets==4.3.2
 tweepy==3.7.0
 versiontools==1.9.1
 wcwidth==0.1.7
-wrapt==1.10.11
+wrapt==1.11.1
