@@ -48,6 +48,8 @@ Faker==1.0.4
 
 factory-boy==2.11.1
 
+entrypoints==0.3
+
 flake8==3.7.7
 funcsigs==1.0.2
 fuzzywuzzy==0.17.0
@@ -82,7 +84,7 @@ pathlib2==2.3.3
 pep8==1.7.1
 pickleshare==0.7.5
 
-Pillow==5.4.1
+Pillow==6.0.0
 
 prompt-toolkit==2.0.9
 
