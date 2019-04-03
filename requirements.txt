@@ -48,6 +48,8 @@ Faker==1.0.4
 
 factory-boy==2.11.1
 
+entrypoints==0.3
+
 flake8==3.7.7
 funcsigs==1.0.2
 fuzzywuzzy==0.17.0
