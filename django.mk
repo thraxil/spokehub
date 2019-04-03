@@ -7,12 +7,12 @@ coverage: $(SENTINAL) flake8
 	. $(VE)/bin/activate && $(VE)/bin/coverage run --source='$(APP)' $(MANAGE) test \
 	&& $(VE)/bin/coverage html -d reports --omit='*migrations*,*settings_*,*wsgi*'
 
-$(SENTINAL): $(REQUIREMENTS) $(VIRTUALENV) $(SUPPORT_DIR)*
+$(SENTINAL): $(REQUIREMENTS) $(SUPPORT_DIR)*
 	rm -rf $(VE)
-	$(SYS_PYTHON) $(VIRTUALENV) --extra-search-dir=$(SUPPORT_DIR) --never-download $(VE)
+	$(SYS_PYTHON) -mvirtualenv --extra-search-dir=$(SUPPORT_DIR) --never-download $(VE) -p python3
 	$(PIP) install wheel==$(WHEEL_VERSION)
-	$(PIP) install --use-wheel --no-deps --requirement $(REQUIREMENTS)
-	$(SYS_PYTHON) $(VIRTUALENV) --relocatable $(VE)
+	$(PIP) install --no-deps --requirement $(REQUIREMENTS)
+	$(SYS_PYTHON) -mvirtualenv --relocatable $(VE)
 	touch $(SENTINAL)
 
 flake8: $(SENTINAL)
