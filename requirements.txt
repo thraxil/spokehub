@@ -37,7 +37,7 @@ django-registration-redux==2.5
 django-smoketest==1.1.0
 django-statsd-mozilla==0.4.0
 
-django-waffle==0.15.1
+django-waffle==0.16.0
 easy-thumbnails==2.6
 ecdsa==0.13
 enum34==1.1.6
