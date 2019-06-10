@@ -68,7 +68,7 @@ lazy-object-proxy==1.4.0
 libsass==0.18.0
 logilab-astng==0.24.3
 logilab-common==1.4.2
-lxml==4.3.3
+lxml==4.3.4
 
 mccabe==0.6.1
 
