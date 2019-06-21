@@ -105,7 +105,7 @@ pylint==2.3.1
 python-dateutil==2.8.0
 rcssmin==1.0.6
 future==0.17.1
-Unidecode==1.0.23
+Unidecode==1.1.1
 PyTumblr==0.0.8
 chardet==3.0.4
 urllib3==1.25.2
