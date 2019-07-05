@@ -77,7 +77,7 @@ Markdown==2.6.11 # pyup: <3.0
 mock==3.0.5
 ndg-httpsclient==0.5.1
 oauth2==1.9.0.post1
-oauthlib==3.0.1
+oauthlib==3.0.2
 raven==6.10.0
 paramiko==2.6.0
 pathlib2==2.3.3
