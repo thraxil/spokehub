@@ -71,7 +71,7 @@ lazy-object-proxy==1.4.1
 
 logilab-astng==0.24.3
 logilab-common==1.4.2
-lxml==4.3.4
+lxml==4.4.0
 
 mccabe==0.6.1
 
