@@ -67,7 +67,7 @@ ipython-genutils==0.2.0
 
 libsass==0.19.2
 
-lazy-object-proxy==1.4.1
+lazy-object-proxy==1.4.2
 
 logilab-astng==0.24.3
 
