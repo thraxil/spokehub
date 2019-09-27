@@ -55,7 +55,7 @@ funcsigs==1.0.2
 fuzzywuzzy==0.17.0
 gunicorn==19.9.0
 html2text==2019.8.11
-httplib2==0.13.1
+httplib2==0.14.0
 httpretty==0.9.6
 idna==2.8
 ipaddress==1.0.22
