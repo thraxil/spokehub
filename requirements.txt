@@ -1,6 +1,6 @@
 Django==2.2.5
 
-astroid==2.2.5
+astroid==2.3.1
 backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
 backports.ssl-match-hostname==3.7.0.1
@@ -54,8 +54,11 @@ flake8==3.7.8
 funcsigs==1.0.2
 fuzzywuzzy==0.17.0
 gunicorn==19.9.0
+
 html2text==2019.9.26
-httplib2==0.13.1
+
+httplib2==0.14.0
+
 httpretty==0.9.6
 idna==2.8
 ipaddress==1.0.22
@@ -85,13 +88,13 @@ oauth2==1.9.0.post1
 oauthlib==3.1.0
 raven==6.10.0
 paramiko==2.6.0
-pathlib2==2.3.4
+pathlib2==2.3.5
 pep8==1.7.1
 pickleshare==0.7.5
 
-Pillow==6.1.0
+Pillow==6.2.0
 
-prompt-toolkit==2.0.9
+prompt-toolkit==2.0.10
 
 psycopg2-binary==2.8.3
 ptyprocess==0.6.0
@@ -105,7 +108,7 @@ pyflakes==2.1.1
 
 pyOpenSSL==19.0.0
 
-pylint==2.3.1
+pylint==2.4.2
 
 python-dateutil==2.8.0
 rcssmin==1.0.6
@@ -113,7 +116,7 @@ future==0.17.1
 Unidecode==1.1.1
 PyTumblr==0.1.0
 chardet==3.0.4
-urllib3==1.25.5
+urllib3==1.25.6
 
 requests==2.22.0
 requests-oauthlib==1.2.0
@@ -127,7 +130,7 @@ sqlparse==0.3.0
 statsd==3.3.0
 sure==1.4.11
 tornado==6.0.3
-traitlets==4.3.2
+traitlets==4.3.3
 tweepy==3.8.0
 versiontools==1.9.1
 wcwidth==0.1.7
