@@ -59,7 +59,7 @@ html2text==2019.9.26
 
 httplib2==0.14.0
 
-httpretty==0.9.6
+httpretty==0.9.7
 idna==2.8
 ipaddress==1.0.22
 
