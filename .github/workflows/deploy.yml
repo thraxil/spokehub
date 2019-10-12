@@ -9,4 +9,4 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build docker image
-      runs: docker build -t thraxil/spokehub:${{ github.sha }} .
+      run: docker build -t thraxil/spokehub:${{ github.sha }} .
