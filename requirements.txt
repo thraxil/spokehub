@@ -102,7 +102,7 @@ ptyprocess==0.6.0
 pycryptodome==3.9.0
 
 pycodestyle==2.5.0
-cryptography==2.7
+cryptography==2.8
 
 pyflakes==2.1.1
 
