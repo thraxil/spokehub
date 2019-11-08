@@ -76,7 +76,7 @@ logilab-astng==0.24.3
 
 lxml==4.4.1
 
-logilab-common==1.4.3
+logilab-common==1.4.4
 
 mccabe==0.6.1
 
