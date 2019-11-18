@@ -106,7 +106,7 @@ cryptography==2.8
 
 pyflakes==2.1.1
 
-pyOpenSSL==19.0.0
+pyOpenSSL==19.1.0
 
 pylint==2.4.4
 
