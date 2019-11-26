@@ -53,7 +53,7 @@ entrypoints==0.3
 flake8==3.7.9
 funcsigs==1.0.2
 fuzzywuzzy==0.17.0
-gunicorn==20.0.0
+gunicorn==20.0.3
 
 html2text==2019.9.26
 
