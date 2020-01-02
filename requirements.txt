@@ -39,7 +39,7 @@ django-statsd-mozilla==0.4.0
 
 django-waffle==0.18.0
 easy-thumbnails==2.6
-ecdsa==0.14.1
+ecdsa==0.15
 enum34==1.1.6
 Fabric3==1.14.post1
 pytz==2019.2
