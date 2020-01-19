@@ -44,7 +44,7 @@ enum34==1.1.6
 Fabric3==1.14.post1
 pytz==2019.2
 
-Faker==2.0.4
+Faker==3.0.0
 
 factory-boy==2.12.0
 
@@ -72,8 +72,6 @@ libsass==0.19.4
 
 lazy-object-proxy==1.4.3
 
-logilab-astng==0.24.3
-
 lxml==4.4.2
 
 logilab-common==1.5.1
@@ -93,8 +91,6 @@ pep8==1.7.1
 pickleshare==0.7.5
 
 Pillow==6.2.1
-
-prompt-toolkit==3.0.2
 
 psycopg2-binary==2.8.4
 ptyprocess==0.6.0
