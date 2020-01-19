@@ -1,4 +1,4 @@
-Django==2.2.7
+Django==2.2.9
 
 astroid==2.3.3
 backports-abc==0.5
@@ -41,9 +41,12 @@ django-registration-redux==2.7
 django-smoketest==1.1.0
 django-statsd-mozilla==0.4.0
 
+easy-thumbnails==2.7
+
 django-waffle==0.19.0
-easy-thumbnails==2.6
+
 ecdsa==0.15
+
 enum34==1.1.6
 Fabric3==1.14.post1
 pytz==2019.2
