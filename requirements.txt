@@ -7,24 +7,28 @@ backports.ssl-match-hostname==3.7.0.1
 
 certifi==2019.11.28
 
-beautifulsoup4==4.8.0
+beautifulsoup4==4.8.2
 
-colorama==0.4.1
+colorama==0.4.3
 configparser==4.0.2
 contextlib2==0.6.0.post1
 
 text-unidecode==1.3
 
-coverage==4.5.4
+coverage==5.0.3
 
 cssselect==1.1.0
 decorator==4.4.1
 
 django-appconf==1.0.3
 django-bootstrap-form==3.4
-django-bootstrap3==11.1.0
+
 django-compressor==2.4
-django-debug-toolbar==2.0
+
+django-bootstrap3==12.0.3
+
+django-debug-toolbar==2.1
+
 django-discover-jenkins==0.1.4
 
 django-flatblocks==0.9.4
@@ -33,18 +37,18 @@ django-guardian==2.1.0
 django-libsass==0.7
 django-markwhat==1.6.2
 django-picklefield==2.0
-django-registration-redux==2.6
+django-registration-redux==2.7
 django-smoketest==1.1.0
 django-statsd-mozilla==0.4.0
 
-django-waffle==0.18.0
+django-waffle==0.19.0
 easy-thumbnails==2.6
-ecdsa==0.14.1
+ecdsa==0.15
 enum34==1.1.6
 Fabric3==1.14.post1
 pytz==2019.2
 
-Faker==3.0.0
+Faker==4.0.0
 
 factory-boy==2.12.0
 
@@ -55,9 +59,9 @@ funcsigs==1.0.2
 fuzzywuzzy==0.17.0
 gunicorn==20.0.4
 
-html2text==2019.9.26
+html2text==2020.1.16
 
-httplib2==0.14.0
+httplib2==0.16.0
 
 httpretty==0.9.7
 idna==2.8
@@ -72,11 +76,9 @@ libsass==0.19.4
 
 lazy-object-proxy==1.4.3
 
-logilab-astng==0.24.3
-
 lxml==4.4.2
 
-logilab-common==1.5.1
+logilab-common==1.5.2
 
 mccabe==0.6.1
 
@@ -87,14 +89,12 @@ ndg-httpsclient==0.5.1
 oauth2==1.9.0.post1
 oauthlib==3.1.0
 raven==6.10.0
-paramiko==2.6.0
+paramiko==2.7.1
 pathlib2==2.3.5
 pep8==1.7.1
 pickleshare==0.7.5
 
-Pillow==6.2.1
-
-prompt-toolkit==3.0.2
+Pillow==7.0.0
 
 psycopg2-binary==2.8.4
 ptyprocess==0.6.0
@@ -121,11 +121,11 @@ urllib3==1.25.7
 requests==2.22.0
 requests-oauthlib==1.3.0
 rjsmin==1.0.12
-setuptools-scm==3.3.3
+setuptools-scm==3.4.1
 simplegeneric==0.8.1
 simplejson==3.17.0
 singledispatch==3.4.0.3
-six==1.13.0
+six==1.14.0
 sqlparse==0.3.0
 statsd==3.3.0
 sure==1.4.11
@@ -133,5 +133,5 @@ tornado==6.0.3
 traitlets==4.3.3
 tweepy==3.8.0
 versiontools==1.9.1
-wcwidth==0.1.7
+wcwidth==0.1.8
 wrapt==1.11.2
