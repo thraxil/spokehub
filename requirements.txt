@@ -67,7 +67,7 @@ html2text==2020.1.16
 httplib2==0.17.0
 
 httpretty==0.9.7
-idna==2.8
+idna==2.9
 ipaddress==1.0.23
 
 ipdb==0.10.2 # pyup: < 0.10.3
