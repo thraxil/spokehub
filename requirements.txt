@@ -137,4 +137,4 @@ traitlets==4.3.3
 tweepy==3.8.0
 versiontools==1.9.1
 wcwidth==0.1.8
-wrapt==1.11.2
+wrapt==1.12.0
