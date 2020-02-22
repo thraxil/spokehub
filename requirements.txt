@@ -47,7 +47,7 @@ django-waffle==0.20.0
 
 ecdsa==0.15
 
-enum34==1.1.6
+enum34==1.1.8
 Fabric3==1.14.post1
 pytz==2019.2
 
