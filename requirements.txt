@@ -99,7 +99,7 @@ pickleshare==0.7.5
 
 Pillow==7.1.1
 
-psycopg2-binary==2.8.4
+psycopg2-binary==2.8.5
 ptyprocess==0.6.0
 
 pycryptodome==3.9.7
