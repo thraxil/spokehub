@@ -75,7 +75,7 @@ ipython==5.10.0 # pyup: < 6.0
 
 ipython-genutils==0.2.0
 
-libsass==0.19.4
+libsass==0.20.0
 
 lazy-object-proxy==1.4.3
 
