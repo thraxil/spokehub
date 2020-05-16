@@ -106,6 +106,7 @@ TEMPLATES = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django_statsd.middleware.GraphiteRequestTimingMiddleware',
     'django_statsd.middleware.GraphiteMiddleware',
@@ -176,6 +177,7 @@ SERVER_EMAIL = "spokehub@spokehub.org"
 DEFAULT_FROM_EMAIL = SERVER_EMAIL
 
 STATIC_ROOT = os.path.join(os.path.dirname(__file__), "../media")
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATICFILES_DIRS = (
 )
 
