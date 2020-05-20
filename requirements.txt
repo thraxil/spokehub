@@ -139,4 +139,4 @@ versiontools==1.9.1
 wcwidth==0.1.9
 wrapt==1.12.1
 
-whitenoise==5.0.1
+whitenoise==5.1.0
