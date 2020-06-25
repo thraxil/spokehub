@@ -102,7 +102,7 @@ Pillow==7.1.2
 psycopg2-binary==2.8.5
 ptyprocess==0.6.0
 
-pycryptodome==3.9.7
+pycryptodome==3.9.8
 
 pycodestyle==2.6.0
 cryptography==2.9.2
