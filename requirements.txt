@@ -45,7 +45,7 @@ easy-thumbnails==2.7
 
 django-waffle==1.0.0
 
-ecdsa==0.15
+ecdsa==0.16.0
 
 enum34==1.1.10
 Fabric3==1.14.post1
