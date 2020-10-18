@@ -79,7 +79,7 @@ libsass==0.20.1
 
 lazy-object-proxy==1.5.1
 
-lxml==4.5.2
+lxml==4.6.1
 
 logilab-common==1.6.1
 
