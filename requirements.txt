@@ -41,7 +41,7 @@ django-registration-redux==2.8
 django-smoketest==1.1.2
 django-statsd-mozilla==0.4.0
 
-easy-thumbnails==2.7
+easy-thumbnails==2.7.1
 
 django-waffle==2.0.0
 
