@@ -77,7 +77,7 @@ ipython-genutils==0.2.0
 
 libsass==0.20.1
 
-lazy-object-proxy==1.5.1
+lazy-object-proxy==1.5.2
 
 lxml==4.6.2
 
