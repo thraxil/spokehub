@@ -5,7 +5,7 @@ backports-abc==0.5
 backports.shutil-get-terminal-size==1.0.0
 backports.ssl-match-hostname==3.7.0.1
 
-certifi==2020.11.8
+certifi==2020.12.5
 
 beautifulsoup4==4.9.3
 
