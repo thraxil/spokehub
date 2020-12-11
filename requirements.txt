@@ -118,7 +118,7 @@ rcssmin==1.0.6
 future==0.18.2
 Unidecode==1.1.1
 PyTumblr==0.1.0
-chardet==3.0.4
+chardet==4.0.0
 urllib3==1.26.2
 
 requests==2.25.0
