@@ -81,7 +81,7 @@ lazy-object-proxy==1.5.2
 
 lxml==4.6.2
 
-logilab-common==1.6.1
+logilab-common==1.8.1
 
 mccabe==0.6.1
 
