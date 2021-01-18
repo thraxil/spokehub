@@ -1,4 +1,3 @@
-import factory
 from factory.django import DjangoModelFactory
 from spokehub.invite.models import Invite
 
