@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.contrib.sites.models import Site
 from django.template.loader import get_template
-from django.utils.encoding import python_2_unicode_compatible
+from six import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 from guardian.shortcuts import get_perms
 from easy_thumbnails.fields import ThumbnailerImageField

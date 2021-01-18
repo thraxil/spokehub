@@ -7,7 +7,6 @@ from django.dispatch import Signal
 from django.http import HttpResponsePermanentRedirect
 from django.shortcuts import redirect, get_object_or_404
 from django.urls import reverse
-from django.utils.decorators import available_attrs
 from django.utils.functional import wraps
 from django.utils.translation import ugettext as _
 from django.views.generic import TemplateView
@@ -54,7 +53,7 @@ def secure_required(view_func):
                 secure_url = request_url.replace('http://', 'https://')
                 return HttpResponsePermanentRedirect(secure_url)
         return view_func(request, *args, **kwargs)
-    return wraps(view_func, assigned=available_attrs(view_func))(_wrapped_view)
+    return wraps(view_func)(_wrapped_view)
 
 
 class ProfileListView(ListView):
