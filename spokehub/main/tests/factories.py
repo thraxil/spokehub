@@ -1,24 +1,25 @@
 import factory
+from factory.django import DjangoModelFactory
 from django.contrib.auth.models import User
 from django.utils import timezone
 from spokehub.main.models import Conversation, Reply, NowPost, Comment
 
 
-class UserFactory(factory.DjangoModelFactory):
+class UserFactory(DjangoModelFactory):
     class Meta:
         model = User
     username = factory.Sequence(lambda n: 'user{0}'.format(n))
     email = factory.Sequence(lambda n: 'user{0}@example.com'.format(n))
 
 
-class ConversationFactory(factory.DjangoModelFactory):
+class ConversationFactory(DjangoModelFactory):
     class Meta:
         model = Conversation
     body = 'foo'
     author = factory.SubFactory(UserFactory)
 
 
-class ReplyFactory(factory.DjangoModelFactory):
+class ReplyFactory(DjangoModelFactory):
     class Meta:
         model = Reply
     item = factory.SubFactory(ConversationFactory)
@@ -26,7 +27,7 @@ class ReplyFactory(factory.DjangoModelFactory):
     body = "reply body"
 
 
-class CommentFactory(factory.DjangoModelFactory):
+class CommentFactory(DjangoModelFactory):
     class Meta:
         model = Comment
     reply = factory.SubFactory(ReplyFactory)
@@ -34,7 +35,7 @@ class CommentFactory(factory.DjangoModelFactory):
     body = "comment body"
 
 
-class NowPostFactory(factory.DjangoModelFactory):
+class NowPostFactory(DjangoModelFactory):
     class Meta:
         model = NowPost
     screen_name = factory.Sequence(lambda n: 'user{0}'.format(n))

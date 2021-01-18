@@ -9,10 +9,9 @@ coverage: $(SENTINAL) flake8
 
 $(SENTINAL): $(REQUIREMENTS) $(SUPPORT_DIR)*
 	rm -rf $(VE)
-	$(SYS_PYTHON) -mvirtualenv --extra-search-dir=$(SUPPORT_DIR) --never-download $(VE) -p python3
+	$(SYS_PYTHON) $(VIRTUALENV) --extra-search-dir=$(SUPPORT_DIR) --never-download $(VE)
 	$(PIP) install wheel==$(WHEEL_VERSION)
-	$(PIP) install --no-deps --requirement $(REQUIREMENTS)
-	$(SYS_PYTHON) -mvirtualenv --relocatable $(VE)
+	$(PIP) install --use-wheel --requirement $(REQUIREMENTS)
 	touch $(SENTINAL)
 
 flake8: $(SENTINAL)
