@@ -11,7 +11,7 @@ certifi==2020.12.5
 beautifulsoup4==4.9.3
 
 colorama==0.4.4
-configparser
+configparser==5.0.1
 contextlib2==0.6.0.post1
 
 text-unidecode==1.3
