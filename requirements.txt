@@ -85,7 +85,7 @@ mccabe==0.6.1
 
 Markdown==2.6.11 # pyup: <3.0
 
-piprot
+piprot==0.9.10
 mock
 ndg-httpsclient==0.5.1
 oauth2==1.9.0.post1
