@@ -52,7 +52,7 @@ ecdsa==0.16.1
 
 enum34==1.1.10
 Fabric3==1.14.post1
-pytz==2020.5
+pytz==2021.1
 
 Faker==5.8.0
 
