@@ -118,7 +118,7 @@ future==0.18.2
 Unidecode==1.1.2
 PyTumblr==0.1.0
 chardet==4.0.0
-urllib3==1.26.3
+urllib3==1.26.4
 
 requests==2.25.1
 requests-oauthlib==1.3.0
