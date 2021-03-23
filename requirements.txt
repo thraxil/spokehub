@@ -75,7 +75,7 @@ ipaddress==1.0.23
 
 libsass==0.20.1
 
-lazy-object-proxy==1.5.2
+lazy-object-proxy==1.6.0
 
 lxml==4.6.2
 
